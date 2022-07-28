@@ -2004,6 +2004,14 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
     {
         profile = ac5x_48x1G6x10G_port_profile;
     }
+    else if (ALDRIN2XLFL == devType)
+    {
+        profile = aldrin2_xl_fujitsu_large_profile;
+    }
+    else if (AC3XFS == devType)
+    {
+        profile = ac3x_fujitsu_small_profile;
+    }
     else
     {
         LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
@@ -2058,6 +2066,16 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
         if (AC5X48x1G6x10G == devType)
         {
             profile = ac5x_48x1G6x10G_port_profile;
+        }
+
+        if (ALDRIN2XLFL == devType)
+        {
+            profile = aldrin2_xl_fujitsu_large_profile;
+        }
+
+        if (AC3XFS == devType)
+        {
+            profile = ac3x_fujitsu_small_profile;
         }
 
         rc = cpssHalInitializeDeviceApi(devNum, devType, profile);

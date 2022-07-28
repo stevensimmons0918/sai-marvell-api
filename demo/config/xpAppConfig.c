@@ -663,6 +663,14 @@ void getOptValues(int argc, char* argv[], const char** moduleNames)
                 {
                     xpAppConf.devType = AC5X48x1G6x10G;
                 }
+                if (!strncasecmp("ALDRIN2XLFL", optarg, strlen("ALDRIN2XLFL")))
+                {
+                    xpAppConf.devType = ALDRIN2XLFL;
+                }
+                if (!strncasecmp("AC3XFS", optarg, strlen("AC3XFS")))
+                {
+                    xpAppConf.devType = AC3XFS;
+                }
 
                 break;
 

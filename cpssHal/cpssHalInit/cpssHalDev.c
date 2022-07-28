@@ -202,6 +202,13 @@ mrvSupportedDevinfo mrvSupportedDevData[] =
         { CPSS_DXCH_IMPLEMENT_WA_LAST_E }
     },
     {
+        CPSS_98DX8410_CNS,
+        GT_TRUE,
+        GT_FALSE,
+        CPSS_DXCH_PP_SERDES_REF_CLOCK_EXTERNAL_156_25_DIFF_E,
+        { CPSS_DXCH_IMPLEMENT_WA_LAST_E }
+    },
+    {
         CPSS_98DX8548_CNS,
         GT_TRUE,
         GT_FALSE,
@@ -219,6 +226,13 @@ mrvSupportedDevinfo mrvSupportedDevData[] =
     /* AC3X devices - B2B board */
     {
         CPSS_98DX3255_CNS,
+        GT_TRUE,
+        GT_FALSE,
+        CPSS_DXCH_PP_SERDES_REF_CLOCK_EXTERNAL_156_25_DIFF_E,
+        { CPSS_DXCH_IMPLEMENT_WA_LAST_E }
+    },
+    {
+        CPSS_98DX3258_CNS,
         GT_TRUE,
         GT_FALSE,
         CPSS_DXCH_PP_SERDES_REF_CLOCK_EXTERNAL_156_25_DIFF_E,
@@ -469,6 +483,20 @@ PROFILE_TYPE_HW_SKU_STC hw_sku_profiles_aldrin2_xl[]=
 {
     {
         .maxPhyPorts = 64,
+        .maxVlans    = _8K,
+        .maxLAgrps   = (_4K-1),
+        .maxMCgrps   = (_4K-1), //4095 is reserved by HW.
+        .maxMCeVidxgrps   = (_16K-1),//HW supported range 4096 to max.
+        .maxSTPgrps  = _1K,
+        .maxLAGMbrPerGrp = 8
+    }
+};
+
+/*=== ALDRIN2-Fujitsu_Large ===*/
+PROFILE_TYPE_HW_SKU_STC hw_sku_profiles_aldrin2_fl[]=
+{
+    {
+        .maxPhyPorts = 48,
         .maxVlans    = _8K,
         .maxLAgrps   = (_4K-1),
         .maxMCgrps   = (_4K-1), //4095 is reserved by HW.
@@ -735,3 +763,9 @@ PROFILE_STC cygnus[] =
 
 PROFILE_STC aldrin2_xl_port_profile[] =
 #include "aldrin2_xl_port_profile.h"
+
+PROFILE_STC aldrin2_xl_fujitsu_large_profile[] =
+#include "aldrin2_xl_fujitsu_large_profile.h"
+
+PROFILE_STC ac3x_fujitsu_small_profile[] =
+#include "ac3x_fujitsu_small_profile.h"

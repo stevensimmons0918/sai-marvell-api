@@ -5219,7 +5219,7 @@ XP_STATUS xpsL3InitIpHostScope(xpsScope_t scopeId)
     XP_DEV_TYPE_T devType;
     cpssHalGetDeviceType((xpsDevice_t)scopeId, &devType);
 
-    if (devType == ALDB2B || devType == ALDRIN2XL || devType == TG48M_P)
+    if (devType == ALDB2B || devType == ALDRIN2XL || devType == TG48M_P || devType == AC3XFS || devType == ALDRIN2XLFL)
     {
         xpsL3FdbMgrEnable((xpsDevice_t)scopeId, FALSE);
     }

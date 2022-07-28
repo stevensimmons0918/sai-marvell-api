@@ -361,7 +361,8 @@ XP_STATUS cpssHalPortGlobalSwitchControlGetMacMaxChannelNumber(int devId,
 
     cpssHalGetDeviceType((xpsDevice_t)devId, &devType);
 
-    if (IS_DEVICE_AC3X(devType) || devType == ALDRIN2XL || IS_DEVICE_AC5X(devType))
+    if (IS_DEVICE_AC3X(devType) || devType == ALDRIN2XL || IS_DEVICE_AC5X(devType) \
+            || IS_DEVICE_FUJITSU_LARGE(devType) || IS_DEVICE_FUJITSU_SMALL(devType))
     {
         *macMaxChanNum = 1;
     }

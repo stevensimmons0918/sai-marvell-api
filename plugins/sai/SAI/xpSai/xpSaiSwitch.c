@@ -5160,6 +5160,14 @@ sai_status_t xpSaiDefaultProfileSet(const char* switch_hardware_id,
             pProfile->devType = AC5X48x1G6x10G;
             XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC5X48x1G6x10G", AC5X48x1G6x10G);
             break;
+        case XP_SDK_DEV_TYPE_ALDRIN2_XL_FL:
+            pProfile->devType = ALDRIN2XLFL;
+            XP_SAI_LOG_INFO("Device Type %s [%d]\n", "ALDRIN2XLFL", ALDRIN2XLFL);
+            break;
+        case XP_SDK_DEV_TYPE_AC3X_FS:
+            pProfile->devType = AC3XFS;
+            XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC3XFS", AC3XFS);
+            break;
         default:
             XP_SAI_LOG_ERR("Wrong sdkDevType is passed!\n");
             return SAI_STATUS_FAILURE;
@@ -8700,7 +8708,8 @@ sai_status_t xpSaiGetSwitchAttribute(sai_object_id_t switchId,
                         {
                             if ((ALD == devType) ||(ALDDB == devType) ||
                                 (ALDRIN2XL == devType) || (IS_DEVICE_AC3X(devType)) ||
-                                (IS_DEVICE_AC5X(devType)))
+                                (IS_DEVICE_AC5X(devType)) || IS_DEVICE_FUJITSU_LARGE(devType) ||
+                                IS_DEVICE_FUJITSU_SMALL(devType))
                             {
                                 attr_list[count].value.u32 = entryCountCtxPtr->max_ipv4RouteEntries -
                                                              entryCountCtxPtr->ipv4RouteEntries;
@@ -8736,7 +8745,8 @@ sai_status_t xpSaiGetSwitchAttribute(sai_object_id_t switchId,
                         {
                             if ((ALD == devType) ||(ALDDB == devType) ||
                                 (ALDRIN2XL == devType) || (IS_DEVICE_AC3X(devType)) ||
-                                (IS_DEVICE_AC5X(devType)))
+                                (IS_DEVICE_AC5X(devType)) || (IS_DEVICE_FUJITSU_LARGE(devType)) ||
+                                (IS_DEVICE_FUJITSU_SMALL(devType)))
                             {
                                 attr_list[count].value.u32 = entryCountCtxPtr->max_ipv6RouteEntries -
                                                              entryCountCtxPtr->ipv6RouteEntries;

@@ -622,6 +622,12 @@ int appMain(int argc, char *argv[])
         case AC5X48x1G6x10G:
             XP_CONFIG.withHw = "AC5X48x1G6x10G";
             break;
+        case ALDRIN2XLFL:
+            XP_CONFIG.withHw = "ALDRIN2XLFL";
+            break;
+        case AC3XFS:
+            XP_CONFIG.withHw = "AC3XFS";
+            break;
         default:
             XP_CONFIG.withHw = "et6448m";
     }

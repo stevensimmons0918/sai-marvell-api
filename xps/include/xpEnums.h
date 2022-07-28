@@ -1967,6 +1967,8 @@ typedef enum XP_DEV_TYPE_E
     F2T48x10G8x100G,     /* 2T 48x10G+8x100R4 */
     F2T48x25G8x100G,     /* 2T  48x25CR1+8x100R4 */
     FALCON_RANGE_END=F2T48x25G8x100G,
+    ALDRIN2XLFL, /* Fujitsu Large*/
+    AC3XFS, /* Fujitsu Small*/
     XP_DEV_TYPE_TOTAL
 } XP_DEV_TYPE_T;
 
@@ -2019,6 +2021,14 @@ typedef enum XP_DEV_TYPE_E
 
 #define IS_DEVICE_EBOF_PROFILE(DEV_TYPE)       ( \
                                                 (FALCONEBOF==DEV_TYPE) \
+                                               )
+
+#define IS_DEVICE_FUJITSU_LARGE(DEV_TYPE)      ( \
+                                                (ALDRIN2XLFL==DEV_TYPE) \
+                                               )
+
+#define IS_DEVICE_FUJITSU_SMALL(DEV_TYPE)      ( \
+                                                (AC3XFS==DEV_TYPE) \
                                                )
 
 /**

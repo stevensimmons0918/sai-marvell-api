@@ -38,6 +38,8 @@ inline CPSS_PP_INTERFACE_CHANNEL_ENT cpssHalSys_param_mngInterfaceType(
         case CYGNUS:
         case ALDRIN2XL:
         case TG48M_P:
+        case AC3XFS:
+        case ALDRIN2XLFL:
             return CPSS_CHANNEL_PEX_MBUS_E;
         default: //FALCON, AC5X
             return CPSS_CHANNEL_PEX_EAGLE_E;
@@ -59,6 +61,8 @@ inline GT_U32 cpssHalSys_param_rxDescNum(XP_DEV_TYPE_T xpDevType)
         case ALDDB:
         case ALDRIN2XL:
         case TG48M_P:
+        case AC3XFS:
+        case ALDRIN2XLFL:
             return 256;
         default:
             return 160;
@@ -85,6 +89,8 @@ inline GT_U32 cpssHalSys_param_rxBuffNum(XP_DEV_TYPE_T xpDevType)
         case ALDDB:
         case ALDRIN2XL:
         case TG48M_P:
+        case AC3XFS:
+        case ALDRIN2XLFL:
             return 256;
         default:
             return 160;

@@ -591,6 +591,47 @@ GT_STATUS cpssHalLedPortForcedStatus(GT_U8 cpssDevNum,
         }
     }
 
+    if (devType == ALDRIN2XLFL)
+    {
+        /* return GT_OK; */
+        CPSS_DXCH_DETAILED_PORT_MAP_STC portMapShadowPtr;
+        GT_U32 portMacNum = 0;
+
+        cpssRet = cpssDxChPortPhysicalPortDetailedMapGet(cpssDevNum, portNum,
+                                                         &portMapShadowPtr);
+        if (cpssRet != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "cpssDxChPortPhysicalPortDetailedMapGet dev %d Port %d failed(%d)", cpssDevNum,
+                  portNum, cpssRet);
+            return cpssRet;
+        }
+
+        portMacNum = portMapShadowPtr.portMap.macNum;
+        if (portMacNum < 12)
+        {
+            ledInterfaceNum = 0;
+        }
+        else if (portMacNum < 24)
+        {
+            ledInterfaceNum = 1;
+        }
+        else if ((portMacNum < 48) ||
+                 (portMacNum == 72))
+        {
+            ledInterfaceNum = 3;
+        }
+        else if (portMacNum < 72)
+        {
+            ledInterfaceNum = 2;
+        }
+    }
+
+    if (devType == AC3XFS)
+    {
+        return GT_OK;
+    }
+
     cpssRet = cpssDxChLedStreamPortPositionGet(cpssDevNum, portNum, &bitPos);
     if (cpssRet != GT_OK)
     {
