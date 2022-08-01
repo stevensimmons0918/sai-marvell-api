@@ -868,9 +868,9 @@ def main():
         elif argmnts[4] == "sai-ac5x":
             devType = "AC5X"
         elif argmnts[4] == "sai-fs":
-            devType = "M0"
+            devType = "AC3XFS"
         elif argmnts[4] == "sai-fl":
-            devType = "M0"
+            devType = "ALDRIN2XLFL"
         else:
             devType = "Falcon"
         LOGS_DIR = os.path.join("TestResults",
@@ -897,6 +897,10 @@ def main():
                 test_list = testListFeature.ebof_featureRegressionUT
             elif devType == "AC5X":
                 test_list = testListFeature.ac5x_featureRegressionUT
+            elif devType == "AC3XFS":
+                test_list = testListFeature.fujitsu_featureRegressionUT
+            elif devType == "ALDRIN2XLFL":
+                test_list = testListFeature.fujitsu_featureRegressionUT
             else:
                 test_list = testListFeature.m0_featureRegressionUT
         elif argmnts[5] == "sanity":
