@@ -9,5 +9,6 @@ dist/
 *.lua
 *.html
 plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/
+plugins/sai/SAI/saiShell/genScripts/saiShellPyWrappers/
 plugins/sai/SAI/xpSai/sai/html/
 demo/slanConnector/pss_unix_utils/
