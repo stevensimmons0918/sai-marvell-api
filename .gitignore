@@ -2,10 +2,12 @@ build/
 apptest/TestResults/
 cpss/lua_cli/scripts/dxCh/exec/
 dist/
+*.xml
 *.i*
 *.d*
 *.pyc
 *.lua
+*.html
 plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/
 plugins/sai/SAI/xpSai/sai/html/
 demo/slanConnector/pss_unix_utils/

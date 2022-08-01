@@ -190,6 +190,10 @@ def runApp(xpType, testUnit):
         run_app = "./dist/xpSaiApp -g AC5XRD -u"
     elif xpType == "sai-fc2T":
         run_app = "./dist/xpSaiApp -g F2T80x25G -u"
+    elif xpType == "sai-fs":
+        run_app = "./dist/xpSaiApp -g AC3XFS -u"
+    elif xpType == "sai-fl":
+        run_app = "./dist/xpSaiApp -g ALDRIN2XLFL -u"
     else:
         print("Invalid argument for xptype. Taking sai as default")
         run_app = "./dist/xpSaiApp -g FALCON128 -u"
@@ -863,6 +867,10 @@ def main():
             devType = "ebof"
         elif argmnts[4] == "sai-ac5x":
             devType = "AC5X"
+        elif argmnts[4] == "sai-fs":
+            devType = "M0"
+        elif argmnts[4] == "sai-fl":
+            devType = "M0"
         else:
             devType = "Falcon"
         LOGS_DIR = os.path.join("TestResults",
