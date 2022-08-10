@@ -78,6 +78,7 @@ typedef enum
     XP_SDK_DEV_TYPE_AC5XRD,
     XP_SDK_DEV_TYPE_AC5XRD_48x1G6x10G,
     XP_SDK_DEV_TYPE_ALDRIN2_XL_FL,
+    XP_SDK_DEV_TYPE_ALDRIN2_EVAL,
     XP_SDK_DEV_TYPE_AC3X_FS,
     XP_SDK_DEV_TYPE_UNKNOWN
 } xpSdkDevType_t;
@@ -158,8 +159,9 @@ static const char *xpSdkDevTypeName[XP_SDK_DEV_TYPE_UNKNOWN + 1] =
     /* [XP_SDK_DEV_TYPE_AC5XRD] =*/ "AC5XRD",
     /* [XP_SDK_DEV_TYPE_AC5XRD_48x1G6x10G] =*/ "AC5X48x1G6x10G",
     /* [XP_SDK_DEV_TYPE_ALDRIN2_XL_FL] =*/ "ALDRIN2XLFL",
+    /* [XP_SDK_DEV_TYPE_ALDRIN2_EVAL] =*/ "ALDRIN2EVAL",
     /* [XP_SDK_DEV_TYPE_AC3X_FS] =*/ "AC3XFS",
-    /* [XP_SDK_DEV_TYPE_UNKNOWN]   =*/ "\0"
+    /* [XP_SDK_DEV_TYPE_UNKNOWN] =*/ "\0"
 };
 
 static inline xpSdkDevType_t xpPlatformGetBoardType(const char *targetPlatform)

@@ -11,4 +11,5 @@ dist/
 plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/
 plugins/sai/SAI/saiShell/genScripts/saiShellPyWrappers/
 plugins/sai/SAI/xpSai/sai/html/
+plugins/sai/sai-src/xpSai/sai/html
 demo/slanConnector/pss_unix_utils/

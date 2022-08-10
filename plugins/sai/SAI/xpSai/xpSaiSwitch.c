@@ -5164,6 +5164,10 @@ sai_status_t xpSaiDefaultProfileSet(const char* switch_hardware_id,
             pProfile->devType = ALDRIN2XLFL;
             XP_SAI_LOG_INFO("Device Type %s [%d]\n", "ALDRIN2XLFL", ALDRIN2XLFL);
             break;
+        case XP_SDK_DEV_TYPE_ALDRIN2_EVAL:
+            pProfile->devType = ALDRIN2EVAL;
+            XP_SAI_LOG_INFO("Device Type %s [%d]\n", "ALDRIN2EVAL", ALDRIN2EVAL);
+            break;
         case XP_SDK_DEV_TYPE_AC3X_FS:
             pProfile->devType = AC3XFS;
             XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC3XFS", AC3XFS);

@@ -591,7 +591,7 @@ GT_STATUS cpssHalLedPortForcedStatus(GT_U8 cpssDevNum,
         }
     }
 
-    if (devType == ALDRIN2XLFL)
+    if (devType == ALDRIN2XLFL || devType == ALDRIN2EVAL)
     {
         /* return GT_OK; */
         CPSS_DXCH_DETAILED_PORT_MAP_STC portMapShadowPtr;
