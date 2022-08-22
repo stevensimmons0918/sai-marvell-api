@@ -2852,6 +2852,7 @@ GT_STATUS cpssHalInitializePort
     {
         cpssHalEnableLog(!gEnableCpssLog);
     }
+
     cpssDxChPortManagerPortParamsStructInit(CPSS_PORT_MANAGER_PORT_TYPE_REGULAR_E,
                                             &portParams);
     if (gEnableCpssLog)
@@ -2870,10 +2871,20 @@ GT_STATUS cpssHalInitializePort
         CPSS_PM_SET_VALID_ATTR(&portParams, CPSS_PM_PORT_ATTR_AUTO_NEG_ENABLE);
         portParams.portParamsType.regPort.portAttributes.autoNegotiation.inbandEnable =
             GT_TRUE;
-        portParams.portParamsType.regPort.portAttributes.autoNegotiation.duplexEnable =
-            GT_TRUE;
-        portParams.portParamsType.regPort.portAttributes.autoNegotiation.speedEnable =
-            GT_TRUE;
+        if (!IS_DEVICE_FUJITSU_LARGE(xpDevType) && !IS_DEVICE_FUJITSU_LARGE_EVAL(xpDevType))
+        {
+            portParams.portParamsType.regPort.portAttributes.autoNegotiation.duplexEnable =
+                GT_TRUE;
+            portParams.portParamsType.regPort.portAttributes.autoNegotiation.speedEnable =
+                GT_TRUE;
+        }
+        else
+        {
+            portParams.portParamsType.regPort.portAttributes.autoNegotiation.flowCtrlEnable =
+                GT_TRUE;
+            portParams.portParamsType.regPort.portAttributes.autoNegotiation.flowCtrlPauseAdvertiseEnable =
+                GT_TRUE;
+        }
         if (IS_DEVICE_AC5X(xpDevType))
         {
 #ifndef ASIC_SIMULATION
@@ -2902,8 +2913,9 @@ GT_STATUS cpssHalInitializePort
         }
         else
         {
-            portParams.portParamsType.regPort.portAttributes.autoNegotiation.byPassEnable =
-                GT_TRUE;
+            if (!IS_DEVICE_FUJITSU_LARGE(xpDevType))
+                portParams.portParamsType.regPort.portAttributes.autoNegotiation.byPassEnable =
+                    GT_TRUE;
         }
     }
 
@@ -2937,6 +2949,21 @@ GT_STATUS cpssHalInitializePort
             =
                 GT_FALSE;
 
+    }
+
+    if (speed == CPSS_PORT_SPEED_10000_E)
+    {
+        if (IS_DEVICE_FUJITSU_LARGE(xpDevType))
+        {
+            if ((interfaceMode == CPSS_PORT_INTERFACE_MODE_KR_E ||
+                interfaceMode == CPSS_PORT_INTERFACE_MODE_SR_LR_E))
+            {
+                portParams.portParamsType.regPort.portAttributes.fecMode =
+                    CPSS_PORT_FEC_MODE_ENABLED_E;
+                CPSS_PM_SET_VALID_ATTR(&portParams, CPSS_PM_ATTR_FEC_MODE_E);
+
+            } 
+        }
     }
     /* Attributes */
     /* common param - FEC params */
@@ -3567,7 +3594,7 @@ GT_STATUS cpssHalInitializePorts
                 {
                     endPort = profile[laneItr].profileValue.portMap.portNum;
                 }
-                if (!IS_DEVICE_AC5X(xpDevType))
+                if (!IS_DEVICE_AC5X(xpDevType) && !IS_DEVICE_FUJITSU_SMALL(xpDevType))
                 {
                     /*TODO AC5X */
                     /* Do Phy initialization with static configuration

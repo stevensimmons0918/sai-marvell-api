@@ -1221,7 +1221,7 @@ XP_STATUS cpssHalMacMgrPortInitWithLinkStatusControl(xpDevice_t devId,
                 cpssPortParamsStcPtr.portParamsType.apPort.modesArr[0].speed =
                     CPSS_PORT_SPEED_1000_E;
                 cpssHalGetDeviceType(devId, &devType);
-                if (devType == ALDRIN2XL)
+                if (devType == ALDRIN2XL || devType == ALDRIN2XLFL || devType == ALDRIN2EVAL)
                 {
                     cpssPortParamsStcPtr.portParamsType.regPort.ifMode =
                         CPSS_PORT_INTERFACE_MODE_1000BASE_X_E;
