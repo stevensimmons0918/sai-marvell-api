@@ -2852,7 +2852,6 @@ GT_STATUS cpssHalInitializePort
     {
         cpssHalEnableLog(!gEnableCpssLog);
     }
-
     cpssDxChPortManagerPortParamsStructInit(CPSS_PORT_MANAGER_PORT_TYPE_REGULAR_E,
                                             &portParams);
     if (gEnableCpssLog)
