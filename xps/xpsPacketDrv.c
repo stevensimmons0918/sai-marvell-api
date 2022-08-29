@@ -162,6 +162,8 @@ XP_STATUS xpsHostIfGenetlinkWrite(uint8_t devnum, int32_t tnFd,
                                   uint32_t mcgrpId, GT_U8 *pktBuf,
                                   GT_U32 packetLen, GT_VOID *rxParamsPtr);
 
+static xpsPacketDrvRxHandler  rxPacketHandler = NULL;
+static xpsPacketDrvRxHandler  prevRxPacketHandler = NULL;
 
 static int32_t netDevMgrKeyComp(void* key1, void* key2)
 {
@@ -468,6 +470,16 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
                 status = xpsHostIfGenetlinkWrite(devNum, fd, hostIfEntry->nl_family_id,
                                                  hostIfEntry->mcgrpId, packetBuffs[0], buffLen[0], rxParamsPtr);
             }
+            if (rxPacketHandler)
+            {
+                status = rxPacketHandler(devNum, ingressPortNum, packetBuffs[0], buffLen[0]);
+                if (status != XP_NO_ERR)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          "Failed to call LearnHandler: (%d)", status);
+                    return GT_FALSE; // status;
+                }
+            }
             NSUNLOCK();
             return status;
         }
@@ -481,6 +493,16 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
             {
                 status = xpsHostIfGenetlinkWrite(devNum, fd, hostIfEntry->nl_family_id,
                                                  hostIfEntry->mcgrpId, keepVlanBuff, (buffLen[0]+4), rxParamsPtr);
+            }
+            if (rxPacketHandler)
+            {
+                status = rxPacketHandler(devNum, ingressPortNum, keepVlanBuff, (buffLen[0]+4));
+                if (status != XP_NO_ERR)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          "Failed to call LearnHandler: (%d)", status);
+                    return GT_FALSE; // status;
+                }
             }
             NSUNLOCK();
             return status;
@@ -532,6 +554,16 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
     if (status != XP_NO_ERR)
     {
         //Handle error
+    }
+    if (rxPacketHandler)
+    {
+        status = rxPacketHandler(devNum, ingressPortNum, buff, packetLen);
+        if (status != XP_NO_ERR)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "Failed to call LearnHandler: (%d)", status);
+            return GT_FALSE; // status;
+        }
     }
     NSUNLOCK();
     return status;
@@ -2648,6 +2680,30 @@ XP_STATUS xpsPacketDriverRxDeInit(uint32_t devId)
         return status;
     }
     return status;
+}
+
+XP_STATUS xpsPacketDrvUnRegisterRxHandler(xpsDevice_t devId)
+{
+    XPS_FUNC_ENTRY_LOG();
+
+    rxPacketHandler = NULL;
+
+    XPS_FUNC_EXIT_LOG();
+
+    return XP_NO_ERR;
+}
+
+XP_STATUS xpsPacketDrvRegisterRxHandler(xpsDevice_t devId,
+                                           xpsPacketDrvRxHandler rxPacketDrvHandler)
+{
+    XPS_FUNC_ENTRY_LOG();
+
+    rxPacketHandler = rxPacketDrvHandler;
+    prevRxPacketHandler = rxPacketHandler;
+
+    XPS_FUNC_EXIT_LOG();
+
+    return XP_NO_ERR;
 }
 
 #ifdef __cplusplus

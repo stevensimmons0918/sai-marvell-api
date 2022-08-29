@@ -268,6 +268,9 @@ void xpSaiResetSoftFwdInfo();
 sai_status_t xpSaiHostInterfaceTrapQueueDropCounter(uint32_t queue,
                                                     uint64_t *DropPkts);
 
+XP_STATUS xpSaiRxPacketEventNotification(xpsDevice_t devId,
+                                         uint32_t ingressPortNum,
+                                         uint8_t *buff, uint32_t packetLen);
 #ifdef __cplusplus
 }
 #endif

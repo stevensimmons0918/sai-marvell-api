@@ -60,6 +60,8 @@ static uint32_t           gXpSaiDumpAllowedPktCount =
     XP_SAI_DEFAULT_DUMP_PKT_COUNT;
 static uint32_t           gXpSaiDumpedPktCount = 0;
 
+extern sai_switch_notification_t switch_notifications_g[XP_MAX_DEVICES];
+
 XP_SAI_LOG_REGISTER_API(SAI_API_HOSTIF);
 
 #define SAI_HOSTIF_TRAP_TYPE_SWITCH_CUSTOM(offset)      ((sai_hostif_trap_type_t)(SAI_HOSTIF_TRAP_TYPE_SWITCH_CUSTOM_RANGE_BASE + (offset)))
@@ -4838,6 +4840,16 @@ sai_status_t xpSaiHostInterfaceInit(xpsDevice_t xpsDevId)
             return saiRetVal;
         }
     }
+
+    // Packet Rx event handler
+    retVal = xpsPacketDrvRegisterRxHandler(xpsDevId, xpSaiRxPacketEventNotification);
+    if (retVal != XP_NO_ERR)
+    {
+        XP_SAI_LOG_ERR("xpsPacketDrvRegisterRxHandler Failed for device id %d Error #%1d",
+                       xpsDevId, retVal);
+        return retVal;
+    }
+
     return SAI_STATUS_SUCCESS;
 }
 
@@ -5721,4 +5733,47 @@ sai_status_t xpSaiHostInterfaceTrapQueueDropCounter(uint32_t queue,
     }
 
     return SAI_STATUS_SUCCESS;
+}
+
+XP_STATUS xpSaiRxPacketEventNotification(xpsDevice_t devId,
+                                         uint32_t ingressPortNum,
+                                         uint8_t *buff, uint32_t packetLen)
+{
+    sai_object_id_t port_id;
+    XP_STATUS xpStatus = XP_NO_ERR;
+    sai_status_t saiStatus = SAI_STATUS_SUCCESS;
+
+    XP_SAI_LOG_DBG("**********************************************************\n");
+    XP_SAI_LOG_DBG("SAI: Packet Rx interrupt received on port: %d, devId: %d\n",
+                   ingressPortNum, devId);
+    XP_SAI_LOG_DBG("***********************************************************\n");
+
+    saiStatus = xpSaiObjIdCreate(SAI_OBJECT_TYPE_PORT, devId,
+                                 (sai_uint64_t)ingressPortNum, &port_id);
+    if (SAI_STATUS_SUCCESS != saiStatus)
+    {
+        XP_SAI_LOG_ERR("Error : SAI object id creation failed for port %d\n", ingressPortNum);
+        return XP_ERR_FAILED;
+    }
+
+    if (switch_notifications_g[devId].on_packet_event != NULL)
+    {
+
+        sai_object_id_t switchObjId = 0;
+        // Fill up required fields as data before sending to user
+        if (xpSaiObjIdCreate(SAI_OBJECT_TYPE_SWITCH, devId, 0,
+                             &switchObjId) != SAI_STATUS_SUCCESS)
+        {
+            XP_SAI_LOG_ERR("SAI switch object could not be created.\n");
+            return XP_ERR_FAILED; // Equivalent of SAI_STATUS_INVALID_PARAMETER
+        }
+
+        sai_attribute_t packet_attribute[1];
+        packet_attribute[0].id = SAI_HOSTIF_PACKET_ATTR_INGRESS_PORT;
+        packet_attribute[0].value.oid = port_id;
+
+        switch_notifications_g[devId].on_packet_event(switchObjId, packetLen, buff, 1, packet_attribute);
+    }
+
+    return xpStatus;
 }

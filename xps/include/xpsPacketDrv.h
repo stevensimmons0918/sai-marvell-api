@@ -358,6 +358,29 @@ XP_STATUS xpsHostIfGenetlinkGetFamilyId(uint8_t *genetlinkName,
                                         uint8_t *mcgrpName, uint32_t *mcgrpId);
 
 
+
+
+/**
+ * \brief This defines the type of function pointer that the user can register for MAC learning.
+ */
+typedef XP_STATUS (*xpsPacketDrvRxHandler)(xpsDevice_t devNum, uint32_t ingressPortNum,
+                                      uint8_t *buff, uint32_t packetLen);
+
+/**
+ * \brief This methods allow the user to register a rx packet handler api
+ *
+ * \param [in] devId Device Id of device.
+ * \param [in] fdbLearnHandler func where fdbLearnHandler is of type XP_STATUS (*xpsPacketDrvRxHandler)(xpsDevice_t, struct xphRxHdr*, void*, uint16_t)
+ * \param [in] *userData User Provided Data
+ *
+ * \return XP_STATUS
+ */
+
+XP_STATUS xpsPacketDrvRegisterRxHandler(xpsDevice_t devId,
+                                           xpsPacketDrvRxHandler rxPacketHandler);
+
+XP_STATUS xpsPacketDrvUnRegisterRxHandler(xpsDevice_t devId);
+
 #ifdef __cplusplus
 }
 #endif
