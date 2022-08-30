@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CpssFunctionPrototypes>
+ <Structures>
+  <!-- string as input -->
+  <Structure name="GT_U64">
+   <Member array="2" class="int" name="l" type="GT_U32"/>
+  </Structure>
+  <Structure name="GT_ETHERADDR" special="string"/>
+  <Structure name="GT_IPADDR" special="string"/>
+  <Structure name="GT_IPV6ADDR" special="string"/>
+
+  <Structure name="CPSS_DXCH_FLOW_MANAGER_STC">
+      <Member class="struct" name="cpssFwCfg" type="CPSS_DXCH_FLOW_MANAGER_FW_CFG_STC"/>
+      <Member class="int" name="flowDbSize" type="GT_U32"/>
+  </Structure>
+  <Structure name="CPSS_PM_AP_PORT_ATTR_STC">
+   <Comment>
+<![CDATA[/**
+* @struct CPSS_PM_AP_PORT_ATTR_STC
+ *
+ * @brief This structure contains ap port attributes
+/]]>   </Comment>
+   <Member class="int" name="validAttrsBitMask" type="GT_U32"/>
+   <Member class="bool" name="nonceDisable" type="GT_BOOL"/>
+   <Member class="bool" name="fcPause" type="GT_BOOL"/>
+   <Member class="enum" name="fcAsmDir" type="CPSS_PORT_AP_FLOW_CONTROL_ENT"/>
+   <Member class="int" name="negotiationLaneNum" type="GT_U32"/>
+   <Member array="24" class="struct" name="overrideLaneParams" type="CPSS_PM_AP_MODE_LANE_PARAM_STC"/>
+   <Member class="struct" name="linkBinding" type="CPSS_PORT_MANAGER_LKB_CONFIG_STC"/>
+   <Member class="int" name="portExtraOperation" type="GT_U32"/>
+   <Member class="enum" name="interconnectProfile" type="CPSS_PORT_MANAGER_INTERCONNECT_PROFILE_ENT"/>
+  </Structure>
+
+  <!-- unusable structures -->
+  <Structure name="CPSS_DXCH_PP_PHASE1_INIT_INFO_STC" special="unused"/>
+  <Structure name="CPSS_DXCH_PP_PHASE2_INIT_INFO_STC" special="unused"/>
+  <Structure name="CPSS_RX_BUF_INFO_STC" special="unused"/>
+  <Structure name="CPSS_NET_IF_CFG_STC" special="unused"/>
+  <Structure name="CPSS_DXCH_NETIF_MII_INIT_STC" special="unused"/>
+  <Structure name="CPSS_DRV_HW_ACCESS_OBJ_STC" special="unused"/>
+  <Structure name="CPSS_AUQ_CFG_STC" special="unused"/>
+  <Structure name="CPSS_DXCH_CFG_HW_ACCESS_OBJ_STC" special="unused"/>
+  <Structure name="CPSS_DXCH_NET_TX_PARAMS_STC" special="unused"/>
+
+ </Structures>
+</CpssFunctionPrototypes>

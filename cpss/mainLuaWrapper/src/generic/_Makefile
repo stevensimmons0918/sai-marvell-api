@@ -1,0 +1,63 @@
+# $(warning "Started") 
+
+FILES := \
+ cmdLuaBitwizeFunctions.c \
+ wraplGtU64.c \
+ wraplOsMsgQ.c \
+ wraplOsSem.c \
+ wraplTFTPC.c \
+ wraplTaskCreate.c \
+ wraplTrace.c \
+ wraplWriteBin.c \
+ wraplReadJSON.c \
+ wraplXmodem.c \
+ wraplIncrement.c
+
+ifneq (yes,$(CMDFS_NIX))
+FILES += wraplZlib.c
+endif
+
+
+ifeq ($(FAMILY), DX)
+FILES += \
+ all_common_lua_c_type_manual_wrappers.c \
+ all_common_lua_c_type_wrappers.c
+endif
+
+ifeq ($(FAMILY), PX)
+FILES += \
+ all_common_noppdrv_lua_c_type_manual_wrappers.c \
+ all_common_noppdrv_lua_c_type_wrappers.c
+endif
+
+ifeq ($(FAMILY), DXPX)
+FILES += \
+ all_common_lua_c_type_manual_wrappers.c \
+ all_common_noppdrv_lua_c_type_manual_wrappers.c \
+ all_common_dxpx_lua_c_type_wrappers.c
+endif
+
+ifneq (yes,$(LUACLI_STANDALONE_BUILD))
+  #List of files to include in list
+  FILES_WRAP += \
+    wraplCpssGenEvents.c \
+    wraplGaltisWrapper.c
+endif
+
+
+MODULES := \
+ private \
+ cider
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINLUAWRAPPER_SRC += $(patsubst %,$(CWD)%,$(FILES) $(FILES_WRAP))
+MAINLUAWRAPPER_LUA_STANDALONE_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

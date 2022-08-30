@@ -1,0 +1,58 @@
+README for apptest.py
+
+directory structure
+apptest
+     -
+     -
+     -----pcaps
+          -
+          -
+          -----abc.pcap
+                  .
+                  .
+     -
+     -
+     -----testCases
+           -
+           -
+           -
+           -----example.py
+                   .
+                   .      
+     -----apptest.py
+     -----testList.py
+     -----readme  
+
+steps to write test (example vlanut1)
+1. Edit testList.py
+   add ut name in regressionUT string 
+   ex. regressionUT='''example
+                       vlanut1'''
+2. Add vlanut1.py in testCases directory
+   a. Follow example.py structure where tcParams holds parameters as ingress port ,egress port ,pcap file name and packet action. 
+   b. If there is no ingress and egress port put null string.
+   c. Put test case configuration in tcProgramStr
+   d. Put steps to flush the configuration in tcFlushStr
+   e. Put expected data in expectedData
+   f. put .pcap needed ij pcaps directory where the name of pcap should be same as of tcParams's ingressPcap member.   
+
+ 
+steps to execute.
+
+1. Compile xdk for machine and copy to the board.
+2. go to xdk/apptest(on host)
+  2a.execute "python apptest.py ip username passwd path_to_xdk xptype testtype"
+   ip: ip of the board where xdk is copied
+   username:  user name (root)
+   passwd: passwd for user name if no password please pass ''
+   path_to_xdk: absolute path to xdk ex /home/xdk/
+   xptype : xpsApp or xpSaiApp
+   testtype: for now give all
+**result 
+if the test case is passed test passed message will be printed.   
+    
+
+Steps for expected data:
+1. FORWARD case : expect1-packet data  expect2-cpuCode
+2. TRAP case : expect1-packet data  expect2-cpuCode 
+3. DROP case: -

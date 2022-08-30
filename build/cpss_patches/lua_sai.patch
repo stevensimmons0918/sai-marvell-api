@@ -1,0 +1,2298 @@
+diff --git a/mainLuaWrapper/scripts/regen.sh b/mainLuaWrapper/scripts/regen.sh
+index 5bd6d51b13..4d70368816 100755
+--- a/mainLuaWrapper/scripts/regen.sh
++++ b/mainLuaWrapper/scripts/regen.sh
+@@ -5,7 +5,18 @@
+ set -e
+ 
+ # Evaluate CPSS path from script location
+-C=$(realpath $(dirname $0)/../../)
++#C=$(realpath $(dirname $0)/../../)
++ 
++C=$PWD/../../
++
++#create a soft link 
++if [ -d $C/lua_sai ] 
++then 
++    echo "Directory /path/to/dir exists." 
++else
++    mkdir $C/lua_sai/
++    ln -s $C../plugins/sai/SAI $C/lua_sai/h
++fi
+ 
+ L=$C/mainLuaWrapper
+ S=$L/scripts
+@@ -14,83 +25,83 @@ D=$L/data
+ 
+ # create family related type wrappers
+ # all_dxCh_lua_c_type_wrappers.c:
+-python $S/make_type_wrapper.py \
+-	-i $D/type_info_file_dx -p $S/already_implemented.lst -X $S/excludelist \
+-	-C $C -M $S/lua_C_mapping -N -T -F dxCh\
+-	-o $L/src/dxCh/all_dxCh_lua_c_type_wrappers.c
+-
++#python $S/make_type_wrapper.py \
++#	-i $D/sai_type_info -p $S/already_implemented.lst -X $S/excludelist \
++#	-C $C -M $S/lua_C_mapping -N -T -F dxCh\
++#	-o $L/src/dxCh/all_dxCh_lua_c_type_wrappers.c
++#
+ # all_px_lua_c_type_wrappers.c:
+-python $S/make_type_wrapper.py \
+-	-i $D/type_info_file_px -p $S/already_implemented.lst -X $S/excludelist \
+-	-C $C -M $S/lua_C_mapping -N -F px\
+-	-o $L/src/px/all_px_lua_c_type_wrappers.c
+-
+-# all_dxpx_lua_c_type_wrappers.c:
+ #python $S/make_type_wrapper.py \
+-#	-i $D/type_info_file_dxpx -p $S/already_implemented.lst -X $S/excludelist \
+-#	-C $C -M $S/lua_C_mapping -N -T -F px -F dxCh\
+-#	-o $L/src/dxpx/all_dxpx_lua_c_type_wrappers.c
+-
+-
+-# create common type wrappers
+-# all_common_lua_c_type_wrappers.c:
+-python $S/make_type_wrapper.py \
+-	-i $D/type_info_file_dx \
+-	-p $S/already_implemented.lst -X $S/excludelist \
+-	-C $C -M $S/lua_C_mapping -N -T -F NONE \
+-        -I common \
+-	-o $L/src/generic/all_common_lua_c_type_wrappers.c
+-
+-# all_common_noppdrv_lua_c_type_wrappers.c:
+-python $S/make_type_wrapper.py \
+-	-i $D/type_info_file_px \
+-	-p $S/already_implemented.lst -X $S/excludelist \
+-	-C $C -M $S/lua_C_mapping -N -F NONE \
+-	-I common -I mainPxDrv \
+-	-o $L/src/generic/all_common_noppdrv_lua_c_type_wrappers.c
+-
+-# all_common_dxpx_lua_c_type_wrappers.c:
+-python $S/make_type_wrapper.py \
+-	-i $D/type_info_file_dxpx \
+-	-p $S/already_implemented.lst -X $S/excludelist \
+-	-C $C -M $S/lua_C_mapping -N -F NONE \
+-	-I common -I mainPxDrv -I mainPpDrv \
+-	-o $L/src/generic/all_common_dxpx_lua_c_type_wrappers.c
+-
+-
+-# cpssAPI.xml
++#	-i $D/sai_type_info -p $S/already_implemented.lst -X $S/excludelist \
++#	-C $C -M $S/lua_C_mapping -N -F px\
++#	-o $L/src/px/all_px_lua_c_type_wrappers.c
++#
++## all_dxpx_lua_c_type_wrappers.c:
++##python $S/make_type_wrapper.py \
++##	-i $D/sai_type_infopx -p $S/already_implemented.lst -X $S/excludelist \
++##	-C $C -M $S/lua_C_mapping -N -T -F px -F dxCh\
++##	-o $L/src/dxpx/all_dxpx_lua_c_type_wrappers.c
++#
++#
++## create common type wrappers
++## all_common_lua_c_type_wrappers.c:
++#python $S/make_type_wrapper.py \
++#	-i $D/sai_type_info \
++#	-p $S/already_implemented.lst -X $S/excludelist \
++#	-C $C -M $S/lua_C_mapping -N -T -F NONE \
++#        -I common \
++#	-o $L/src/generic/all_common_lua_c_type_wrappers.c
++#
++## all_common_noppdrv_lua_c_type_wrappers.c:
++#python $S/make_type_wrapper.py \
++#	-i $D/sai_type_info \
++#	-p $S/already_implemented.lst -X $S/excludelist \
++#	-C $C -M $S/lua_C_mapping -N -F NONE \
++#	-I common -I mainPxDrv \
++#	-o $L/src/generic/all_common_noppdrv_lua_c_type_wrappers.c
++#
++### all_common_dxpx_lua_c_type_wrappers.c:
++#python $S/make_type_wrapper.py \
++#	-i $D/sai_type_info \
++#	-p $S/already_implemented.lst -X $S/excludelist \
++#	-C $C -M $S/lua_C_mapping -N -F NONE \
++#	-I common -I mainPxDrv -I mainPpDrv \
++#	-o $L/src/generic/all_common_dxpx_lua_c_type_wrappers.c
++#
++#
++## cpssAPI.xml
+ X=$D/dxCh_xml
+ #Create integrated DX cpssAPI.xml
+-python $S/gen_xml_funcdescr.py -i $D/type_info_file_dx -A $D/hiddenAPIs -C $C -F dxCh \
++python $S/gen_xml_funcdescr.py -i $D/sai_type_info -A $D/hiddenAPIs -C $C -F dxCh \
+ 	-X $S/excludelist -o $X/cpssAPI.xml -B $X/bad_s.xml -c \
+ 	-M $S/manual_s.xml -m $S/lua_C_mapping
+-# cpssAPI_xml_embed_file.c
++## cpssAPI_xml_embed_file.c
+ python $S/cmdFS_RAM_embed_files.py \
+     -E _XML -z .xml \
+     -S 10000000 \
+     -o $X/cpssAPI_xml_embed_file.c \
+     -F $X/cpssAPI.xml
+ 
+-X=$D/px_xml
+-#Create integrated PX cpssAPI.xml
+-python $S/gen_xml_funcdescr.py -i $D/type_info_file_px -A $D/hiddenAPIs -C $C -F px \
+-	-X $S/excludelist -o $X/cpssAPI.xml -B $X/bad_s.xml -c \
+-	-m $S/lua_C_mapping
+-# cpssAPI_xml_embed_file.c
+-python $S/cmdFS_RAM_embed_files.py \
+-    -E _XML -z .xml \
+-    -S 10000000 \
+-    -o $X/cpssAPI_xml_embed_file.c \
+-    -F $X/cpssAPI.xml
+-
+-X=$D/dxpx_xml
+-#Create integrated DXPX cpssAPI.xml
+-python $S/gen_xml_funcdescr.py -i $D/type_info_file_dxpx -A $D/hiddenAPIs -C $C -F px -F dxCh \
+-	-X $S/excludelist -o $X/cpssAPI.xml -B $X/bad_s.xml -c \
+-	-M $S/manual_s.xml -m $S/lua_C_mapping
+-# cpssAPI_xml_embed_file.c
+-python $S/cmdFS_RAM_embed_files.py \
+-    -E _XML -z .xml \
+-    -S 10000000 \
+-    -o $X/cpssAPI_xml_embed_file.c \
+-    -F $X/cpssAPI.xml
++#X=$D/px_xml
++###Create integrated PX cpssAPI.xml
++#python $S/gen_xml_funcdescr.py -i $D/sai_type_info -A $D/hiddenAPIs -C $C -F px \
++#	-X $S/excludelist -o $X/cpssAPI.xml -B $X/bad_s.xml -c \
++#	-m $S/lua_C_mapping
++## cpssAPI_xml_embed_file.c
++#python $S/cmdFS_RAM_embed_files.py \
++#    -E _XML -z .xml \
++#    -S 10000000 \
++#    -o $X/cpssAPI_xml_embed_file.c \
++#    -F $X/cpssAPI.xml
++#
++#X=$D/dxpx_xml
++###Create integrated DXPX cpssAPI.xml
++#python $S/gen_xml_funcdescr.py -i $D/sai_type_info -A $D/hiddenAPIs -C $C -F px -F dxCh \
++#	-X $S/excludelist -o $X/cpssAPI.xml -B $X/bad_s.xml -c \
++#	-M $S/manual_s.xml -m $S/lua_C_mapping
++## cpssAPI_xml_embed_file.c
++#python $S/cmdFS_RAM_embed_files.py \
++#    -E _XML -z .xml \
++#    -S 10000000 \
++#    -o $X/cpssAPI_xml_embed_file.c \
++#    -F $X/cpssAPI.xml
+diff --git a/mainLuaWrapper/scripts/gen_xml_funcdescr.py b/mainLuaWrapper/scripts/gen_xml_funcdescr.py
+index 1d11315fd5..41237c80f3 100755
+--- a/mainLuaWrapper/scripts/gen_xml_funcdescr.py
++++ b/mainLuaWrapper/scripts/gen_xml_funcdescr.py
+@@ -47,13 +47,13 @@
+ 
+ import pprint
+ import json
+-
++import pdb 
+ pp = pprint.PrettyPrinter(indent=2,width=100)
+ import re, os, getopt, sys, time
+ 
+ cpssRoot = "/home/serg/tmp/Marvell/cpss"
+ 
+-integer_types = [ "int", "char", "short", "long" ]
++integer_types = [ "int", "char", "short", "long", "const", "sai_object_id_t", "void" ]
+ float_types = [ "float", "double" ]
+ privateAPIStartsWith = ("prv", "pvr", "shmIpc", "gen")
+ 
+@@ -136,10 +136,18 @@ def scan_type_info_from_gdb(file_name):
+             return "file"
+         if line.startswith("typedef enum {"):
+             return "enum"
++        if line.startswith("typedef enum _sai"):
++            return "enum"
+         if line.startswith("typedef struct {"):
+             return "struct"
++        if line.startswith("typedef struct _sai"):
++            return "struct"
+         if line.startswith("typedef union {"):
+             return "union"
++        if line.startswith("typedef struct shell"):
++            return "struct"
++        if line.startswith("typedef union _sai"):
++            return "union"
+         if reTypedefInt.match(line) != None:
+             return "int"
+         if line.startswith("typedef "):
+@@ -483,6 +491,9 @@ if __name__ == '__main__':
+     # scan CPSS header files for structures/unions prototypes
+     for srcpath in all_files_x(search_dirs,"*.h"):
+         # skip uneeded families
++        if 'xpSai' not in srcpath and 'saiLuaWrapper' not in srcpath:
++             continue
++
+         family='none'
+         for f in [ "dxCh", "px" ]:
+             if srcpath.find(os.path.sep+f+os.path.sep) >= 0:
+@@ -590,7 +601,7 @@ if __name__ == '__main__':
+             # skip banned API's
+             if name in banList:
+                 continue
+-            if decl['type'] not in [ "GT_STATUS", "void", "GT_VOID" ]:
++            if decl['type'] not in [ "GT_STATUS", "void", "GT_VOID" ,"sai_status_t", "sai_uint32_t", "sai_object_id_t"]:
+                 x = doc.createElement("Function")
+                 x.setAttribute("name", name)
+                 x.setAttribute("srcpath", decl['srcpath'])
+diff --git a/mainLuaWrapper/scripts/make_type_wrapper.py b/mainLuaWrapper/scripts/make_type_wrapper.py
+index 81e52885ad..4ceae30737 100755
+--- a/mainLuaWrapper/scripts/make_type_wrapper.py
++++ b/mainLuaWrapper/scripts/make_type_wrapper.py
+@@ -40,7 +40,7 @@
+ import re, os, getopt, sys, time
+ 
+ 
+-integer_types = [ "int", "char", "short" ]
++integer_types = [ "int", "char", "short", "sai_uint64_t", "sai_int64_t", "sai_uint32_t", "sai_int32_t", "sai_uint16_t", "sai_int16_t", "sai_uint8_t", "sai_int8_t", "sai_size_t", "sai_object_id_t", "sai_ip4_t" ]
+ float_types = [ "float", "double" ]
+ mainppdrv_families = ["dxCh", "dxSal", "exMx", "exMxPm", "cpssFa", "mainFxDrv", "mainTmDrv", "NONE"]
+ 
+@@ -86,10 +86,16 @@ def scan_type_info_from_gdb(file_name):
+             return "file"
+         if line.startswith("typedef enum {"):
+             return "enum"
++        if line.startswith("typedef enum _sai"):
++            return "enum"
+         if line.startswith("typedef struct {"):
+             return "struct"
++        if line.startswith("typedef struct struct"):
++            return "struct"
+         if line.startswith("typedef union {"):
+             return "union"
++        if line.startswith("typedef union _sai"):
++            return "union"
+         if reTypefefInt.match(line) != None:
+             return "int"
+         if line.startswith("typedef "):
+@@ -240,6 +246,7 @@ def to_lua_field(t,s,idx,fpath,fname,ftype,fcls):
+ def make_struct_wrapper(t):
+     # scan struct fields, add fiels types to types_required if not in decls
+     global types_required
++    #pdb.set_trace()
+     global scanned_structs
+     global mapping
+     global fcls
+@@ -285,8 +292,27 @@ def make_struct_wrapper(t):
+                 ftype = m.group(1)
+                 fname = m.group(2)
+                 fcls = type_classify(m.group(1))
+-                if m.group(4) == None:
+-                    # Not an array
++                #if m.group(4) == None:
++                #pdb.set_trace()
++                ftypeTemp = ftype
++                arrLength = m.group(4)
++                if ftype == 'sai_mac_t':
++                    ftype = 'uint8_t'
++                    arrLength = '6'
++                if ftype == 'sai_ip6_t':
++                    ftype = 'uint8_t'
++                    arrLength = '16'
++                if ftype == 'sai_macsec_sak_t':
++                    ftype = 'uint8_t'
++                    arrLength = '32'
++                if ftype == 'sai_macsec_auth_key_t':
++                    ftype = 'uint8_t'
++                    arrLength = '16'
++                if ftype == 'sai_macsec_salt_t':
++                    ftype = 'uint8_t'
++                    arrLength = '12'
++                fcls = type_classify(ftype)
++                if arrLength == None:      # Not an array
+                     if fcls in [ "BOOL", "NUMBER", "FLOAT", "ENUM", "STRUCT", "STRUCT_CUSTOM", "ARRAY_TYPE", "ARRAY_TYPE_CUSTOM", "UNION" ]:
+                         to_c += to_c_field(t, "val", fname,fname, ftype, fcls)
+                         to_l += to_lua_field(t, "val", "t",fname,fname,ftype,fcls)
+@@ -299,14 +325,14 @@ def make_struct_wrapper(t):
+                     if fcls in [ "NUMBER", "FLOAT", "STRUCT", "ENUM", "BOOL", "UNION" ]:
+                         to_c += "    {\n"
+                         to_c += "        int idx;\n"
+-                        to_c += "        for (idx = 0; idx < "+m.group(4)+"; idx++) {\n"
++                        to_c += "        for (idx = 0; idx < "+arrLength+"; idx++) {\n"
+                         to_c += "            F_ARRAY_"+fcls+"(val, "+fname+", idx, "+ftype+");\n"
+                         to_c += "        }\n"
+                         to_c += "    }\n"
+                         #
+                         to_l += "    {\n"
+                         to_l += "        int idx;\n"
+-                        to_l += "        for (idx = 0; idx < "+m.group(4)+"; idx++) {\n"
++                        to_l += "        for (idx = 0; idx < "+arrLength+"; idx++) {\n"
+                         to_l += "            FO_ARRAY_"+fcls+"(val, "+fname+", idx, "+ftype+");\n"
+                         to_l += "        }\n"
+                         to_l += "    }\n"
+@@ -444,6 +470,8 @@ def make_struct_wrapper(t):
+ 
+ def parse_union_members(t):
+     # scan union members, add fiels types to types_required if not in decls
++    import pdb
++    #pdb.set_trace()
+     global types_required
+     if len(all_unions[t]) < 3:
+         return
+@@ -561,6 +589,13 @@ if __name__ == '__main__':
+ 
+         for srcpath in all_files(cpssRoot,"*.h"):
+             # scan files in /h/ only
++            if 'xpSai/sai/inc' not in  srcpath:
++                 continue
++            #if 'saitypes' not in  srcpath:
++            #     continue
++            #if 'saitypes' in srcpath:
++            #    import pdb
++            #    pdb.set_trace()
+             if not srcpath.startswith(cpssRoot):
+                 continue
+             incpath = srcpath[len(cpssRoot):].replace('\\', '/')
+@@ -574,8 +609,8 @@ if __name__ == '__main__':
+                 if notInDirs:
+                     continue
+ 
+-            file_is_mainPpDrv_common = False
+-            family = "NONE"
++            file_is_mainPpDrv_common = True
++            family = "dxCh"
+             if incpath.startswith("/mainPpDrv/") or incpath.startswith("/common/"):
+                 file_is_mainPpDrv_common = True
+             if incpath.startswith(("/mainPpDrv/src/", "/common/src/")):
+@@ -662,7 +697,7 @@ if __name__ == '__main__':
+                 if generate_wrappers_for_all_types:
+                     if not file_is_mainPpDrv_common and family in mainppdrv_families:
+                         continue
+-                    if not name.startswith(("CPSS","GT_","MV_HWS")):
++                    if not name.startswith(("CPSS","GT_","MV_HWS", "sai", "_sai")):
+                         continue
+                     if name.endswith("_FUNC"):
+                         continue
+@@ -673,7 +708,7 @@ if __name__ == '__main__':
+                     if name not in types_required:
+                         types_required.append(name)
+                 elif len(families) > 0 and family in families:
+-                    if not name.startswith(("CPSS","GT_","MV_HWS")):
++                    if not name.startswith(("CPSS","GT_","MV_HWS", "sai", "_sai")):
+                         continue
+                     if name.endswith("_FUNC"):
+                         continue
+diff --git a/mainExtUtils/src/extUtils/luaCLI/luaCLIEngine_genWrapper.c b/mainExtUtils/src/extUtils/luaCLI/luaCLIEngine_genWrapper.c
+index 81fa654c18..c1603424d5 100644
+--- a/mainExtUtils/src/extUtils/luaCLI/luaCLIEngine_genWrapper.c
++++ b/mainExtUtils/src/extUtils/luaCLI/luaCLIEngine_genWrapper.c
+@@ -1873,6 +1873,20 @@ static int mgmType_to_lua_uintptr(
+ */
+ int luaEngineGenWrapper_init(lua_State *L)
+ {
++    lua_register(L, "mgmType_to_c_sai_object_id_t",  mgmType_to_c_GT_U64);
++    lua_register(L, "mgmType_to_lua_sai_object_id_t", mgmType_to_lua_GT_U64);
++    lua_register(L, "mgmType_to_c_uint32_t", mgmType_to_c_int);
++    lua_register(L, "mgmType_to_lua_uint32_t", mgmType_to_lua_int);
++    lua_register(L, "mgmType_to_c_sai_uint32_t", mgmType_to_c_int);
++    lua_register(L, "mgmType_to_lua_sai_uint32_t", mgmType_to_lua_int);
++    lua_register(L, "mgmType_to_c_sai_uint16_t", mgmType_to_c_int);
++    lua_register(L, "mgmType_to_lua_sai_uint16_t", mgmType_to_lua_int);
++    lua_register(L, "mgmType_to_c_sai_uint8_t", mgmType_to_c_int);
++    lua_register(L, "mgmType_to_lua_sai_uint8_t", mgmType_to_lua_int);
++    lua_register(L, "mgmType_to_c_uint8_t", mgmType_to_c_int);
++    lua_register(L, "mgmType_to_lua_uint8_t", mgmType_to_lua_int);
++    lua_register(L, "mgmType_to_c_const", mgmType_to_c_int);
++    lua_register(L, "mgmType_to_lua_const", mgmType_to_lua_int);
+     lua_register(L, "cpssGenWrapper", cpssGenWrapper);
+     lua_register(L, "cpssGenWrapperCheckParam", cpssGenWrapperCheckParam);
+     lua_register(L, "mgmType_to_c_int", mgmType_to_c_int);
+diff --git a/mainLuaWrapper/scripts/xml_funcdescr.json b/mainLuaWrapper/scripts/xml_funcdescr.json
+index 11b291f6b0..ce0384be5a 100644
+--- a/mainLuaWrapper/scripts/xml_funcdescr.json
++++ b/mainLuaWrapper/scripts/xml_funcdescr.json
+@@ -6,14 +6,8 @@
+    },
+    "Search": {
+       "Search_list": [
+-        "embeddedCommands/h",
+-        "embeddedCommands/px/pxEC/h",
+-        "embeddedCommands/dx/dxEC/h",
+-        "mainPpDrv/h",
+-        "mainPxDrv/h",
+-        "common/h",
+-        "mainLuaWrapper/h",
+-        "mainExtUtils/h"
++        "lua_sai/h/saiLuaWrapper",
++        "lua_sai/h/xpSai/sai/inc"
+       ]
+    }
+ }
+diff --git a/mainLuaWrapper/src/dxCh/all_dxCh_lua_c_type_wrappers.c b/mainLuaWrapper/src/dxCh/all_dxCh_lua_c_type_wrappers.c
+index 1b9ea8474b..3f96f459e7 100755
+--- a/mainLuaWrapper/src/dxCh/all_dxCh_lua_c_type_wrappers.c
++++ b/mainLuaWrapper/src/dxCh/all_dxCh_lua_c_type_wrappers.c
+@@ -8,10 +8,64 @@
+ *       A lua type wrapper
+ *       It implements support for the following types:
+ *           struct  CPSS_GEN_DRAGONITE_PORT_STATUSES_STC
++*           struct  sai_map_t
++*           union   sai_tlv_entry_t
++*           struct  sai_s16_list_t
++*           union   sai_acl_field_data_mask_t
++*           struct  sai_fabric_port_reachability_t
++*           struct  sai_port_lane_eye_values_t
++*           struct  sai_port_err_status_list_t
++*           struct  sai_u16_list_t
++*           struct  sai_u32_list_t
++*           struct  sai_acl_capability_t
++*           struct  sai_ip_prefix_t
++*           union   sai_ip_addr_t
++*           struct  sai_hmac_t
++*           enum    sai_outseg_exp_mode_t
++*           enum    sai_switch_attr_t
++*           enum    sai_ip_address_list_t
++*           enum    sai_port_attr_t
++*           enum    sai_acl_stage_t
++*           union   sai_acl_action_parameter_t
++*           struct  sai_ip_address_t
++*           union   sai_attribute_value_t
++*           struct  sai_prbs_rx_state_t
++*           struct  sai_port_eye_values_list_t
++*           struct  sai_timespec_t
++*           struct  sai_system_port_config_list_t
++*           struct  sai_acl_resource_list_t
++*           struct  sai_tlv_list_t
++*           struct  sai_map_list_t
++*           struct  sai_s8_list_t
++*           struct  sai_tlv_t
++*           struct  sai_acl_resource_t
++*           enum    sai_acl_bind_point_type_t
++*           struct  sai_acl_field_data_t
++*           struct  sai_qos_map_params_t
++*           struct  sai_s32_list_t
++*           union   sai_vlan_list_t
++*           struct  sai_s32_range_t
++*           struct  sai_attribute_t
++*           union   sai_acl_field_data_data_t
++*           struct  sai_system_port_config_t
++*           struct  sai_qos_map_t
++*           struct  sai_u8_list_t
++*           struct  sai_acl_action_data_t
++*           enum    sai_port_err_status_t
++*           struct  sai_object_list_t
++*           enum    sai_tlv_type_t
++*           enum    sai_packet_color_t
++*           struct  sai_segment_list_t
++*           enum    sai_tam_bind_point_type_t
++*           struct  sai_qos_map_list_t
++*           enum    sai_outseg_type_t
++*           struct  sai_u32_range_t
++*           enum    sai_outseg_ttl_mode_t
+ *           enum    CPSS_DXCH_PTP_TS_TIMESTAMPING_MODE_ENT
+ *           struct  CPSS_DXCH_LPM_LEAF_ENTRY_STC
+ *           struct  CPSS_DXCH_MACSEC_CLASSIFY_VPORT_STC
+ *           enum    CPSS_DXCH_HSU_DATA_TYPE_ENT
++*           enum    sai_bridge_attr_t
+ *           enum    CPSS_DXCH_CFG_SHARED_TABLE_ILLEGAL_CLIENT_ACCESS_ENT
+ *           struct  CPSS_GEN_DRAGONITE_CHIP_STC
+ *           struct  CPSS_DXCH_VIRTUAL_TCAM_RULE_ACTION_DATA_TTI_STC
+@@ -1220,6 +1274,7 @@
+ #include <cpss/dxCh/dxChxGen/config/cpssDxChCfgInit.h>
+ #include <cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.h>
+ #include <cpss/common/cpssTypes.h>
++#include <cpss/common/saitypes.h>
+ #include <cpss/dxCh/dxChxGen/vnt/cpssDxChVnt.h>
+ #include <cpss/dxCh/dxChxGen/tunnel/cpssDxChTunnelTypes.h>
+ #include <cpss/dxCh/dxChxGen/cpssHwInit/cpssDxChHwInitLedCtrl.h>
+@@ -1346,7 +1401,48 @@
+ #include <cpss/common/config/cpssGenCfg.h>
+ 
+ /***** declarations ********/
+-
++use_prv_struct(sai_map_t);
++use_prv_struct(sai_tlv_entry_t);
++use_prv_struct(sai_s16_list_t);
++use_prv_struct(sai_acl_field_data_mask_t);
++use_prv_struct(sai_fabric_port_reachability_t);
++use_prv_struct(sai_port_lane_eye_values_t);
++use_prv_struct(sai_port_err_status_list_t);
++use_prv_struct(sai_u16_list_t);
++use_prv_struct(sai_u32_list_t);
++use_prv_struct(sai_acl_capability_t);
++use_prv_struct(sai_ip_prefix_t);
++use_prv_struct(sai_ip_addr_t);
++use_prv_struct(sai_hmac_t);
++use_prv_struct(sai_acl_action_parameter_t);
++use_prv_struct(sai_ip_address_t);
++use_prv_struct(sai_attribute_value_t);
++use_prv_struct(sai_prbs_rx_state_t);
++use_prv_struct(sai_port_eye_values_list_t);
++use_prv_struct(sai_timespec_t);
++use_prv_struct(sai_system_port_config_list_t);
++use_prv_struct(sai_acl_resource_list_t);
++use_prv_struct(sai_tlv_list_t);
++use_prv_struct(sai_map_list_t);
++use_prv_struct(sai_s8_list_t);
++use_prv_struct(sai_tlv_t);
++use_prv_struct(sai_acl_resource_t);
++use_prv_struct(sai_acl_field_data_t);
++use_prv_struct(sai_qos_map_params_t);
++use_prv_struct(sai_s32_list_t);
++use_prv_struct(sai_vlan_list_t);
++use_prv_struct(sai_s32_range_t);
++use_prv_struct(sai_attribute_t);
++use_prv_struct(sai_acl_field_data_data_t);
++use_prv_struct(sai_system_port_config_t);
++use_prv_struct(sai_qos_map_t);
++use_prv_struct(sai_u8_list_t);
++use_prv_struct(sai_acl_action_data_t);
++use_prv_struct(sai_object_list_t);
++use_prv_struct(sai_segment_list_t);
++use_prv_struct(sai_qos_map_list_t);
++use_prv_struct(sai_u32_range_t);
++use_prv_struct(sai_ip_address_t);
+ use_prv_struct(CPSS_GEN_DRAGONITE_PORT_STATUSES_STC);
+ use_prv_struct(CPSS_DXCH_LPM_LEAF_ENTRY_STC);
+ use_prv_struct(CPSS_DXCH_MACSEC_CLASSIFY_VPORT_STC);
+@@ -2037,6 +2133,9 @@ void prv_c_to_lua_CPSS_GEN_DRAGONITE_PORT_STATUSES_STC(
+ }
+ add_mgm_type(CPSS_GEN_DRAGONITE_PORT_STATUSES_STC);
+ 
++add_mgm_enum(sai_bridge_attr_t);
++add_mgm_enum(sai_switch_attr_t);
++add_mgm_enum(sai_port_attr_t);
+ add_mgm_enum(CPSS_DXCH_PTP_TS_TIMESTAMPING_MODE_ENT);
+ 
+ void prv_lua_to_c_CPSS_DXCH_LPM_LEAF_ENTRY_STC(
+@@ -3009,6 +3108,1743 @@ void prv_c_to_lua_CPSS_DXCH_VIRTUAL_TCAM_RULE_ACTION_DATA_UNT(
+ add_mgm_type(CPSS_DXCH_VIRTUAL_TCAM_RULE_ACTION_DATA_UNT);
+ add_mgm_union(CPSS_DXCH_VIRTUAL_TCAM_RULE_ACTION_DATA_UNT);
+ 
++
++void prv_lua_to_c_sai_map_t(
++    lua_State *L,
++    sai_map_t *val
++)
++{
++    F_NUMBER(val, -1, key, sai_uint32_t);
++    F_NUMBER(val, -1, value, sai_int32_t);
++}
++
++void prv_c_to_lua_sai_map_t(
++    lua_State *L,
++    sai_map_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, key, sai_uint32_t);
++    FO_NUMBER(val, t, value, sai_int32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_map_t);
++
++void prv_lua_to_c_sai_tlv_entry_t(
++    lua_State *L,
++    sai_tlv_entry_t *val
++)
++{
++    F_ARRAY_START(val, -1, ingress_node);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, ingress_node, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, ingress_node);
++    F_ARRAY_START(val, -1, egress_node);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, egress_node, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, egress_node);
++    F_ARRAY_START(val, -1, opaque_container);
++    {
++        int idx;
++        for (idx = 0; idx < 4; idx++) {
++            F_ARRAY_NUMBER(val, opaque_container, idx, sai_uint32_t);
++        }
++    }
++    F_ARRAY_END(val, -1, opaque_container);
++    F_STRUCT(val, -1, hmac, sai_hmac_t);
++}
++
++void prv_c_to_lua_sai_tlv_entry_t(
++    lua_State *L,
++    sai_tlv_entry_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_ARRAY_START(val, t, ingress_node);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, ingress_node, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, ingress_node);
++    FO_ARRAY_START(val, t, egress_node);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, egress_node, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, egress_node);
++    FO_ARRAY_START(val, t, opaque_container);
++    {
++        int idx;
++        for (idx = 0; idx < 4; idx++) {
++            FO_ARRAY_NUMBER(val, opaque_container, idx, sai_uint32_t);
++        }
++    }
++    FO_ARRAY_END(val, t, opaque_container);
++    FO_STRUCT(val, t, hmac, sai_hmac_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_tlv_entry_t);
++add_mgm_union(sai_tlv_entry_t);
++
++void prv_lua_to_c_sai_s16_list_t(
++    lua_State *L,
++    sai_s16_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++int16_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_s16_list_t(
++    lua_State *L,
++    sai_s16_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++int16_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_s16_list_t);
++
++void prv_lua_to_c_sai_acl_field_data_mask_t(
++    lua_State *L,
++    sai_acl_field_data_mask_t *val
++)
++{
++    F_NUMBER(val, -1, u8, sai_uint8_t);
++    F_NUMBER(val, -1, s8, sai_int8_t);
++    F_NUMBER(val, -1, u16, sai_uint16_t);
++    F_NUMBER(val, -1, s16, sai_int16_t);
++    F_NUMBER(val, -1, u32, sai_uint32_t);
++    F_NUMBER(val, -1, s32, sai_int32_t);
++    F_NUMBER(val, -1, u64, sai_uint64_t);
++    F_ARRAY_START(val, -1, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            F_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, mac);
++    F_NUMBER(val, -1, ip4, sai_ip4_t);
++    F_ARRAY_START(val, -1, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, ip6);
++    F_STRUCT(val, -1, u8list, sai_u8_list_t);
++}
++
++void prv_c_to_lua_sai_acl_field_data_mask_t(
++    lua_State *L,
++    sai_acl_field_data_mask_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, u8, sai_uint8_t);
++    FO_NUMBER(val, t, s8, sai_int8_t);
++    FO_NUMBER(val, t, u16, sai_uint16_t);
++    FO_NUMBER(val, t, s16, sai_int16_t);
++    FO_NUMBER(val, t, u32, sai_uint32_t);
++    FO_NUMBER(val, t, s32, sai_int32_t);
++    FO_NUMBER(val, t, u64, sai_uint64_t);
++    FO_ARRAY_START(val, t, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            FO_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, mac);
++    FO_NUMBER(val, t, ip4, sai_ip4_t);
++    FO_ARRAY_START(val, t, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, ip6);
++    FO_STRUCT(val, t, u8list, sai_u8_list_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_field_data_mask_t);
++add_mgm_union(sai_acl_field_data_mask_t);
++
++void prv_lua_to_c_sai_fabric_port_reachability_t(
++    lua_State *L,
++    sai_fabric_port_reachability_t *val
++)
++{
++    F_NUMBER(val, -1, switch_id, uint32_t);
++    F_BOOL(val, -1, reachable);
++}
++
++void prv_c_to_lua_sai_fabric_port_reachability_t(
++    lua_State *L,
++    sai_fabric_port_reachability_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, switch_id, uint32_t);
++    FO_BOOL(val, t, reachable);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_fabric_port_reachability_t);
++
++void prv_lua_to_c_sai_port_lane_eye_values_t(
++    lua_State *L,
++    sai_port_lane_eye_values_t *val
++)
++{
++    F_NUMBER(val, -1, lane, uint32_t);
++    F_NUMBER(val, -1, left, int32_t);
++    F_NUMBER(val, -1, right, int32_t);
++    F_NUMBER(val, -1, up, int32_t);
++    F_NUMBER(val, -1, down, int32_t);
++}
++
++void prv_c_to_lua_sai_port_lane_eye_values_t(
++    lua_State *L,
++    sai_port_lane_eye_values_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, lane, uint32_t);
++    FO_NUMBER(val, t, left, int32_t);
++    FO_NUMBER(val, t, right, int32_t);
++    FO_NUMBER(val, t, up, int32_t);
++    FO_NUMBER(val, t, down, int32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_port_lane_eye_values_t);
++
++void prv_lua_to_c_sai_port_err_status_list_t(
++    lua_State *L,
++    sai_port_err_status_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_port_err_status_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_port_err_status_list_t(
++    lua_State *L,
++    sai_port_err_status_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_port_err_status_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_port_err_status_list_t);
++
++void prv_lua_to_c_sai_u16_list_t(
++    lua_State *L,
++    sai_u16_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++uint16_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_u16_list_t(
++    lua_State *L,
++    sai_u16_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++uint16_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_u16_list_t);
++
++void prv_lua_to_c_sai_u32_list_t(
++    lua_State *L,
++    sai_u32_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++uint32_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_u32_list_t(
++    lua_State *L,
++    sai_u32_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++uint32_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_u32_list_t);
++
++void prv_lua_to_c_sai_acl_capability_t(
++    lua_State *L,
++    sai_acl_capability_t *val
++)
++{
++    F_BOOL(val, -1, is_action_list_mandatory);
++    F_STRUCT(val, -1, action_list, sai_s32_list_t);
++}
++
++void prv_c_to_lua_sai_acl_capability_t(
++    lua_State *L,
++    sai_acl_capability_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_BOOL(val, t, is_action_list_mandatory);
++    FO_STRUCT(val, t, action_list, sai_s32_list_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_capability_t);
++
++void prv_lua_to_c_sai_ip_prefix_t(
++    lua_State *L,
++    sai_ip_prefix_t *val
++)
++{
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_ip_addr_family_t addr_family; */
++#endif
++    F_UNION(val, -1, addr, sai_ip_addr_t);
++    F_UNION(val, -1, mask, sai_ip_addr_t);
++}
++
++void prv_c_to_lua_sai_ip_prefix_t(
++    lua_State *L,
++    sai_ip_prefix_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_ip_addr_family_t addr_family; */
++#endif
++    FO_UNION(val, t, addr, sai_ip_addr_t);
++    FO_UNION(val, t, mask, sai_ip_addr_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_ip_prefix_t);
++
++void prv_lua_to_c_sai_ip_addr_t(
++    lua_State *L,
++    sai_ip_addr_t *val
++)
++{
++    F_NUMBER(val, -1, ip4, sai_ip4_t);
++    F_ARRAY_START(val, -1, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, ip6);
++}
++
++void prv_c_to_lua_sai_ip_addr_t(
++    lua_State *L,
++    sai_ip_addr_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, ip4, sai_ip4_t);
++    FO_ARRAY_START(val, t, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, ip6);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_ip_addr_t);
++add_mgm_union(sai_ip_addr_t);
++
++void prv_lua_to_c_sai_hmac_t(
++    lua_State *L,
++    sai_hmac_t *val
++)
++{
++    F_NUMBER(val, -1, key_id, sai_uint32_t);
++    F_ARRAY_START(val, -1, hmac);
++    {
++        int idx;
++        for (idx = 0; idx < 8; idx++) {
++            F_ARRAY_NUMBER(val, hmac, idx, sai_uint32_t);
++        }
++    }
++    F_ARRAY_END(val, -1, hmac);
++}
++
++void prv_c_to_lua_sai_hmac_t(
++    lua_State *L,
++    sai_hmac_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, key_id, sai_uint32_t);
++    FO_ARRAY_START(val, t, hmac);
++    {
++        int idx;
++        for (idx = 0; idx < 8; idx++) {
++            FO_ARRAY_NUMBER(val, hmac, idx, sai_uint32_t);
++        }
++    }
++    FO_ARRAY_END(val, t, hmac);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_hmac_t);
++
++add_mgm_enum(sai_outseg_exp_mode_t);
++
++add_mgm_enum(sai_acl_stage_t);
++
++void prv_lua_to_c_sai_acl_action_parameter_t(
++    lua_State *L,
++    sai_acl_action_parameter_t *val
++)
++{
++    F_BOOL(val, -1, booldata);
++    F_NUMBER(val, -1, u8, sai_uint8_t);
++    F_NUMBER(val, -1, s8, sai_int8_t);
++    F_NUMBER(val, -1, u16, sai_uint16_t);
++    F_NUMBER(val, -1, s16, sai_int16_t);
++    F_NUMBER(val, -1, u32, sai_uint32_t);
++    F_NUMBER(val, -1, s32, sai_int32_t);
++    F_ARRAY_START(val, -1, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            F_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, mac);
++    F_NUMBER(val, -1, ip4, sai_ip4_t);
++    F_ARRAY_START(val, -1, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, ip6);
++    F_NUMBER(val, -1, oid, sai_object_id_t);
++    F_STRUCT(val, -1, objlist, sai_object_list_t);
++    F_STRUCT(val, -1, ipaddr, sai_ip_address_t);
++}
++
++void prv_c_to_lua_sai_acl_action_parameter_t(
++    lua_State *L,
++    sai_acl_action_parameter_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_BOOL(val, t, booldata);
++    FO_NUMBER(val, t, u8, sai_uint8_t);
++    FO_NUMBER(val, t, s8, sai_int8_t);
++    FO_NUMBER(val, t, u16, sai_uint16_t);
++    FO_NUMBER(val, t, s16, sai_int16_t);
++    FO_NUMBER(val, t, u32, sai_uint32_t);
++    FO_NUMBER(val, t, s32, sai_int32_t);
++    FO_ARRAY_START(val, t, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            FO_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, mac);
++    FO_NUMBER(val, t, ip4, sai_ip4_t);
++    FO_ARRAY_START(val, t, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, ip6);
++    FO_NUMBER(val, t, oid, sai_object_id_t);
++    FO_STRUCT(val, t, objlist, sai_object_list_t);
++    FO_STRUCT(val, t, ipaddr, sai_ip_address_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_action_parameter_t);
++add_mgm_union(sai_acl_action_parameter_t);
++
++void prv_lua_to_c_sai_ip_address_t(
++    lua_State *L,
++    sai_ip_address_t *val
++)
++{
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_ip_addr_family_t addr_family; */
++#endif
++    F_UNION(val, -1, addr, sai_ip_addr_t);
++}
++
++void prv_c_to_lua_sai_ip_address_t(
++    lua_State *L,
++    sai_ip_address_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_ip_addr_family_t addr_family; */
++#endif
++    FO_UNION(val, t, addr, sai_ip_addr_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_ip_address_t);
++
++void prv_lua_to_c_sai_prbs_rx_state_t(
++    lua_State *L,
++    sai_prbs_rx_state_t *val
++)
++{
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_port_prbs_rx_status_t rx_status; */
++#endif
++    F_NUMBER(val, -1, error_count, uint32_t);
++}
++
++void prv_c_to_lua_sai_prbs_rx_state_t(
++    lua_State *L,
++    sai_prbs_rx_state_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_port_prbs_rx_status_t rx_status; */
++#endif
++    FO_NUMBER(val, t, error_count, uint32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_prbs_rx_state_t);
++
++void prv_lua_to_c_sai_port_eye_values_list_t(
++    lua_State *L,
++    sai_port_eye_values_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_port_lane_eye_values_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_port_eye_values_list_t(
++    lua_State *L,
++    sai_port_eye_values_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_port_lane_eye_values_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_port_eye_values_list_t);
++
++void prv_lua_to_c_sai_timespec_t(
++    lua_State *L,
++    sai_timespec_t *val
++)
++{
++    F_NUMBER(val, -1, tv_sec, uint64_t);
++    F_NUMBER(val, -1, tv_nsec, uint32_t);
++}
++
++void prv_c_to_lua_sai_timespec_t(
++    lua_State *L,
++    sai_timespec_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, tv_sec, uint64_t);
++    FO_NUMBER(val, t, tv_nsec, uint32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_timespec_t);
++
++void prv_lua_to_c_sai_system_port_config_list_t(
++    lua_State *L,
++    sai_system_port_config_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_system_port_config_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_system_port_config_list_t(
++    lua_State *L,
++    sai_system_port_config_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_system_port_config_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_system_port_config_list_t);
++
++void prv_lua_to_c_sai_acl_resource_list_t(
++    lua_State *L,
++    sai_acl_resource_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_acl_resource_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_acl_resource_list_t(
++    lua_State *L,
++    sai_acl_resource_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_acl_resource_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_resource_list_t);
++
++void prv_lua_to_c_sai_tlv_list_t(
++    lua_State *L,
++    sai_tlv_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_tlv_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_tlv_list_t(
++    lua_State *L,
++    sai_tlv_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_tlv_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_tlv_list_t);
++
++void prv_lua_to_c_sai_map_list_t(
++    lua_State *L,
++    sai_map_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_map_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_map_list_t(
++    lua_State *L,
++    sai_map_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_map_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_map_list_t);
++
++void prv_lua_to_c_sai_s8_list_t(
++    lua_State *L,
++    sai_s8_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++int8_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_s8_list_t(
++    lua_State *L,
++    sai_s8_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++int8_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_s8_list_t);
++
++void prv_lua_to_c_sai_tlv_t(
++    lua_State *L,
++    sai_tlv_t *val
++)
++{
++    F_ENUM(val, -1, tlv_type, sai_tlv_type_t);
++    F_UNION(val, -1, entry, sai_tlv_entry_t);
++}
++
++void prv_c_to_lua_sai_tlv_t(
++    lua_State *L,
++    sai_tlv_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_ENUM(val, t, tlv_type, sai_tlv_type_t);
++    FO_UNION(val, t, entry, sai_tlv_entry_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_tlv_t);
++
++void prv_lua_to_c_sai_acl_resource_t(
++    lua_State *L,
++    sai_acl_resource_t *val
++)
++{
++    F_ENUM(val, -1, stage, sai_acl_stage_t);
++    F_ENUM(val, -1, bind_point, sai_acl_bind_point_type_t);
++    F_NUMBER(val, -1, avail_num, sai_uint32_t);
++}
++
++void prv_c_to_lua_sai_acl_resource_t(
++    lua_State *L,
++    sai_acl_resource_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_ENUM(val, t, stage, sai_acl_stage_t);
++    FO_ENUM(val, t, bind_point, sai_acl_bind_point_type_t);
++    FO_NUMBER(val, t, avail_num, sai_uint32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_resource_t);
++
++add_mgm_enum(sai_acl_bind_point_type_t);
++
++void prv_lua_to_c_sai_acl_field_data_t(
++    lua_State *L,
++    sai_acl_field_data_t *val
++)
++{
++    F_BOOL(val, -1, enable);
++    F_UNION(val, -1, mask, sai_acl_field_data_mask_t);
++    F_UNION(val, -1, data, sai_acl_field_data_data_t);
++}
++
++void prv_c_to_lua_sai_acl_field_data_t(
++    lua_State *L,
++    sai_acl_field_data_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_BOOL(val, t, enable);
++    FO_UNION(val, t, mask, sai_acl_field_data_mask_t);
++    FO_UNION(val, t, data, sai_acl_field_data_data_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_field_data_t);
++
++void prv_lua_to_c_sai_qos_map_params_t(
++    lua_State *L,
++    sai_qos_map_params_t *val
++)
++{
++    F_NUMBER(val, -1, tc, sai_cos_t);
++    F_NUMBER(val, -1, dscp, sai_uint8_t);
++    F_NUMBER(val, -1, dot1p, sai_uint8_t);
++    F_NUMBER(val, -1, prio, sai_uint8_t);
++    F_NUMBER(val, -1, pg, sai_uint8_t);
++    F_NUMBER(val, -1, queue_index, sai_queue_index_t);
++    F_ENUM(val, -1, color, sai_packet_color_t);
++    F_NUMBER(val, -1, mpls_exp, sai_uint8_t);
++}
++
++void prv_c_to_lua_sai_qos_map_params_t(
++    lua_State *L,
++    sai_qos_map_params_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, tc, sai_cos_t);
++    FO_NUMBER(val, t, dscp, sai_uint8_t);
++    FO_NUMBER(val, t, dot1p, sai_uint8_t);
++    FO_NUMBER(val, t, prio, sai_uint8_t);
++    FO_NUMBER(val, t, pg, sai_uint8_t);
++    FO_NUMBER(val, t, queue_index, sai_queue_index_t);
++    FO_ENUM(val, t, color, sai_packet_color_t);
++    FO_NUMBER(val, t, mpls_exp, sai_uint8_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_qos_map_params_t);
++
++void prv_lua_to_c_sai_s32_list_t(
++    lua_State *L,
++    sai_s32_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++int32_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_s32_list_t(
++    lua_State *L,
++    sai_s32_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++int32_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_s32_list_t);
++
++void prv_lua_to_c_sai_vlan_list_t(
++    lua_State *L,
++    sai_vlan_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_vlan_id_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_vlan_list_t(
++    lua_State *L,
++    sai_vlan_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_vlan_id_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_vlan_list_t);
++add_mgm_union(sai_vlan_list_t);
++
++void prv_lua_to_c_sai_s32_range_t(
++    lua_State *L,
++    sai_s32_range_t *val
++)
++{
++    F_NUMBER(val, -1, min, int32_t);
++    F_NUMBER(val, -1, max, int32_t);
++}
++
++void prv_c_to_lua_sai_s32_range_t(
++    lua_State *L,
++    sai_s32_range_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, min, int32_t);
++    FO_NUMBER(val, t, max, int32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_s32_range_t);
++
++void prv_lua_to_c_sai_attribute_t(
++    lua_State *L,
++    sai_attribute_t *val
++)
++{
++    F_NUMBER(val, -1, id, sai_attr_id_t);
++    F_UNION(val, -1, value, sai_attribute_value_t);
++}
++
++void prv_c_to_lua_sai_attribute_t(
++    lua_State *L,
++    sai_attribute_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, id, sai_attr_id_t);
++    FO_UNION(val, t, value, sai_attribute_value_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_attribute_t);
++
++void prv_lua_to_c_sai_acl_field_data_data_t(
++    lua_State *L,
++    sai_acl_field_data_data_t *val
++)
++{
++    F_BOOL(val, -1, booldata);
++    F_NUMBER(val, -1, u8, sai_uint8_t);
++    F_NUMBER(val, -1, s8, sai_int8_t);
++    F_NUMBER(val, -1, u16, sai_uint16_t);
++    F_NUMBER(val, -1, s16, sai_int16_t);
++    F_NUMBER(val, -1, u32, sai_uint32_t);
++    F_NUMBER(val, -1, s32, sai_int32_t);
++    F_NUMBER(val, -1, u64, sai_uint64_t);
++    F_ARRAY_START(val, -1, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            F_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, mac);
++    F_NUMBER(val, -1, ip4, sai_ip4_t);
++    F_ARRAY_START(val, -1, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, ip6);
++    F_NUMBER(val, -1, oid, sai_object_id_t);
++    F_STRUCT(val, -1, objlist, sai_object_list_t);
++    F_STRUCT(val, -1, u8list, sai_u8_list_t);
++}
++
++void prv_c_to_lua_sai_acl_field_data_data_t(
++    lua_State *L,
++    sai_acl_field_data_data_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_BOOL(val, t, booldata);
++    FO_NUMBER(val, t, u8, sai_uint8_t);
++    FO_NUMBER(val, t, s8, sai_int8_t);
++    FO_NUMBER(val, t, u16, sai_uint16_t);
++    FO_NUMBER(val, t, s16, sai_int16_t);
++    FO_NUMBER(val, t, u32, sai_uint32_t);
++    FO_NUMBER(val, t, s32, sai_int32_t);
++    FO_NUMBER(val, t, u64, sai_uint64_t);
++    FO_ARRAY_START(val, t, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            FO_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, mac);
++    FO_NUMBER(val, t, ip4, sai_ip4_t);
++    FO_ARRAY_START(val, t, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, ip6);
++    FO_NUMBER(val, t, oid, sai_object_id_t);
++    FO_STRUCT(val, t, objlist, sai_object_list_t);
++    FO_STRUCT(val, t, u8list, sai_u8_list_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_field_data_data_t);
++add_mgm_union(sai_acl_field_data_data_t);
++
++void prv_lua_to_c_sai_system_port_config_t(
++    lua_State *L,
++    sai_system_port_config_t *val
++)
++{
++    F_NUMBER(val, -1, port_id, uint32_t);
++    F_NUMBER(val, -1, attached_switch_id, uint32_t);
++    F_NUMBER(val, -1, attached_core_index, uint32_t);
++    F_NUMBER(val, -1, attached_core_port_index, uint32_t);
++    F_NUMBER(val, -1, speed, uint32_t);
++    F_NUMBER(val, -1, num_voq, uint32_t);
++}
++
++void prv_c_to_lua_sai_system_port_config_t(
++    lua_State *L,
++    sai_system_port_config_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, port_id, uint32_t);
++    FO_NUMBER(val, t, attached_switch_id, uint32_t);
++    FO_NUMBER(val, t, attached_core_index, uint32_t);
++    FO_NUMBER(val, t, attached_core_port_index, uint32_t);
++    FO_NUMBER(val, t, speed, uint32_t);
++    FO_NUMBER(val, t, num_voq, uint32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_system_port_config_t);
++
++void prv_lua_to_c_sai_qos_map_t(
++    lua_State *L,
++    sai_qos_map_t *val
++)
++{
++    F_STRUCT(val, -1, key, sai_qos_map_params_t);
++    F_STRUCT(val, -1, value, sai_qos_map_params_t);
++}
++
++void prv_c_to_lua_sai_qos_map_t(
++    lua_State *L,
++    sai_qos_map_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_STRUCT(val, t, key, sai_qos_map_params_t);
++    FO_STRUCT(val, t, value, sai_qos_map_params_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_qos_map_t);
++
++void prv_lua_to_c_sai_u8_list_t(
++    lua_State *L,
++    sai_u8_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++uint8_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_u8_list_t(
++    lua_State *L,
++    sai_u8_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++uint8_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_u8_list_t);
++
++void prv_lua_to_c_sai_acl_action_data_t(
++    lua_State *L,
++    sai_acl_action_data_t *val
++)
++{
++    F_BOOL(val, -1, enable);
++    F_UNION(val, -1, parameter, sai_acl_action_parameter_t);
++}
++
++void prv_c_to_lua_sai_acl_action_data_t(
++    lua_State *L,
++    sai_acl_action_data_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_BOOL(val, t, enable);
++    FO_UNION(val, t, parameter, sai_acl_action_parameter_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_acl_action_data_t);
++
++add_mgm_enum(sai_port_err_status_t);
++
++void prv_lua_to_c_sai_object_list_t(
++    lua_State *L,
++    sai_object_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_object_id_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_object_list_t(
++    lua_State *L,
++    sai_object_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_object_id_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_object_list_t);
++
++add_mgm_enum(sai_tlv_type_t);
++
++add_mgm_enum(sai_packet_color_t);
++
++void prv_lua_to_c_sai_segment_list_t(
++    lua_State *L,
++    sai_segment_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_ip6_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_segment_list_t(
++    lua_State *L,
++    sai_segment_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_ip6_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_segment_list_t);
++
++add_mgm_enum(sai_tam_bind_point_type_t);
++
++void prv_lua_to_c_sai_qos_map_list_t(
++    lua_State *L,
++    sai_qos_map_list_t *val
++)
++{
++    F_NUMBER(val, -1, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_qos_map_t *list; */
++#endif
++}
++
++void prv_c_to_lua_sai_qos_map_list_t(
++    lua_State *L,
++    sai_qos_map_list_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, count, uint32_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* unhandled line
++sai_qos_map_t *list; */
++#endif
++    lua_settop(L, t);
++}
++add_mgm_type(sai_qos_map_list_t);
++
++add_mgm_enum(sai_outseg_type_t);
++
++void prv_lua_to_c_sai_u32_range_t(
++    lua_State *L,
++    sai_u32_range_t *val
++)
++{
++    F_NUMBER(val, -1, min, uint32_t);
++    F_NUMBER(val, -1, max, uint32_t);
++}
++
++void prv_c_to_lua_sai_u32_range_t(
++    lua_State *L,
++    sai_u32_range_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_NUMBER(val, t, min, uint32_t);
++    FO_NUMBER(val, t, max, uint32_t);
++    lua_settop(L, t);
++}
++add_mgm_type(sai_u32_range_t);
++
++add_mgm_enum(sai_outseg_ttl_mode_t);
++
++
++
++
++
++void prv_lua_to_c_sai_attribute_value_t(
++    lua_State *L,
++    sai_attribute_value_t *val
++)
++{
++    F_BOOL(val, -1, booldata);
++    F_ARRAY_START(val, -1, chardata);
++    {
++        int idx;
++        for (idx = 0; idx < 32; idx++) {
++            F_ARRAY_NUMBER(val, chardata, idx, char);
++        }
++    }
++    F_ARRAY_END(val, -1, chardata);
++    F_NUMBER(val, -1, u8, sai_uint8_t);
++    F_NUMBER(val, -1, s8, sai_int8_t);
++    F_NUMBER(val, -1, u16, sai_uint16_t);
++    F_NUMBER(val, -1, s16, sai_int16_t);
++    F_NUMBER(val, -1, u32, sai_uint32_t);
++    F_NUMBER(val, -1, s32, sai_int32_t);
++    F_NUMBER(val, -1, u64, sai_uint64_t);
++    F_NUMBER(val, -1, s64, sai_int64_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_pointer_t ptr; */
++#endif
++    F_ARRAY_START(val, -1, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            F_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, mac);
++    F_NUMBER(val, -1, ip4, sai_ip4_t);
++    F_ARRAY_START(val, -1, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, ip6);
++    F_STRUCT(val, -1, ipaddr, sai_ip_address_t);
++    F_STRUCT(val, -1, ipprefix, sai_ip_prefix_t);
++    F_STRUCT(val, -1, rx_state, sai_prbs_rx_state_t);
++    F_NUMBER(val, -1, oid, sai_object_id_t);
++    F_STRUCT(val, -1, objlist, sai_object_list_t);
++    F_STRUCT(val, -1, u8list, sai_u8_list_t);
++    F_STRUCT(val, -1, s8list, sai_s8_list_t);
++    F_STRUCT(val, -1, u16list, sai_u16_list_t);
++    F_STRUCT(val, -1, s16list, sai_s16_list_t);
++    F_STRUCT(val, -1, u32list, sai_u32_list_t);
++    F_STRUCT(val, -1, s32list, sai_s32_list_t);
++    F_STRUCT(val, -1, u32range, sai_u32_range_t);
++    F_STRUCT(val, -1, s32range, sai_s32_range_t);
++    F_STRUCT(val, -1, vlanlist, sai_vlan_list_t);
++    F_STRUCT(val, -1, qosmap, sai_qos_map_list_t);
++    F_STRUCT(val, -1, maplist, sai_map_list_t);
++    F_STRUCT(val, -1, aclfield, sai_acl_field_data_t);
++    F_STRUCT(val, -1, aclaction, sai_acl_action_data_t);
++    F_STRUCT(val, -1, aclcapability, sai_acl_capability_t);
++    F_STRUCT(val, -1, aclresource, sai_acl_resource_list_t);
++    F_STRUCT(val, -1, tlvlist, sai_tlv_list_t);
++    F_STRUCT(val, -1, segmentlist, sai_segment_list_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_ip_address_list_t ipaddrlist; */
++#endif
++    F_STRUCT(val, -1, porteyevalues, sai_port_eye_values_list_t);
++    F_STRUCT(val, -1, timespec, sai_timespec_t);
++    F_ARRAY_START(val, -1, macsecsak);
++    {
++        int idx;
++        for (idx = 0; idx < 32; idx++) {
++            F_ARRAY_NUMBER(val, macsecsak, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, macsecsak);
++    F_ARRAY_START(val, -1, macsecauthkey);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            F_ARRAY_NUMBER(val, macsecauthkey, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, macsecauthkey);
++    F_ARRAY_START(val, -1, macsecsalt);
++    {
++        int idx;
++        for (idx = 0; idx < 12; idx++) {
++            F_ARRAY_NUMBER(val, macsecsalt, idx, uint8_t);
++        }
++    }
++    F_ARRAY_END(val, -1, macsecsalt);
++    F_STRUCT(val, -1, sysportconfig, sai_system_port_config_t);
++    F_STRUCT(val, -1, sysportconfiglist, sai_system_port_config_list_t);
++    F_STRUCT(val, -1, reachability, sai_fabric_port_reachability_t);
++    F_STRUCT(val, -1, porterror, sai_port_err_status_list_t);
++}
++
++
++void prv_c_to_lua_sai_attribute_value_t(
++    lua_State *L,
++    sai_attribute_value_t *val
++)
++{
++    int t;
++    lua_newtable(L);
++    t = lua_gettop(L);
++    FO_BOOL(val, t, booldata);
++    FO_ARRAY_START(val, t, chardata);
++    {
++        int idx;
++        for (idx = 0; idx < 32; idx++) {
++            FO_ARRAY_NUMBER(val, chardata, idx, char);
++        }
++    }
++    FO_ARRAY_END(val, t, chardata);
++    FO_NUMBER(val, t, u8, sai_uint8_t);
++    FO_NUMBER(val, t, s8, sai_int8_t);
++    FO_NUMBER(val, t, u16, sai_uint16_t);
++    FO_NUMBER(val, t, s16, sai_int16_t);
++    FO_NUMBER(val, t, u32, sai_uint32_t);
++    FO_NUMBER(val, t, s32, sai_int32_t);
++    FO_NUMBER(val, t, u64, sai_uint64_t);
++    FO_NUMBER(val, t, s64, sai_int64_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_pointer_t ptr; */
++#endif
++    FO_ARRAY_START(val, t, mac);
++    {
++        int idx;
++        for (idx = 0; idx < 6; idx++) {
++            FO_ARRAY_NUMBER(val, mac, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, mac);
++    FO_NUMBER(val, t, ip4, sai_ip4_t);
++    FO_ARRAY_START(val, t, ip6);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, ip6, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, ip6);
++    FO_STRUCT(val, t, ipaddr, sai_ip_address_t);
++    FO_STRUCT(val, t, ipprefix, sai_ip_prefix_t);
++    FO_STRUCT(val, t, rx_state, sai_prbs_rx_state_t);
++    FO_NUMBER(val, t, oid, sai_object_id_t);
++    FO_STRUCT(val, t, objlist, sai_object_list_t);
++    FO_STRUCT(val, t, u8list, sai_u8_list_t);
++    FO_STRUCT(val, t, s8list, sai_s8_list_t);
++    FO_STRUCT(val, t, u16list, sai_u16_list_t);
++    FO_STRUCT(val, t, s16list, sai_s16_list_t);
++    FO_STRUCT(val, t, u32list, sai_u32_list_t);
++    FO_STRUCT(val, t, s32list, sai_s32_list_t);
++    FO_STRUCT(val, t, u32range, sai_u32_range_t);
++    FO_STRUCT(val, t, s32range, sai_s32_range_t);
++    FO_STRUCT(val, t, vlanlist, sai_vlan_list_t);
++    FO_STRUCT(val, t, qosmap, sai_qos_map_list_t);
++    FO_STRUCT(val, t, maplist, sai_map_list_t);
++    FO_STRUCT(val, t, aclfield, sai_acl_field_data_t);
++    FO_STRUCT(val, t, aclaction, sai_acl_action_data_t);
++    FO_STRUCT(val, t, aclcapability, sai_acl_capability_t);
++    FO_STRUCT(val, t, aclresource, sai_acl_resource_list_t);
++    FO_STRUCT(val, t, tlvlist, sai_tlv_list_t);
++    FO_STRUCT(val, t, segmentlist, sai_segment_list_t);
++#ifndef _VISUALC
++# warning "TBD manually"
++#else
++# pragma message ( "TBD manually" )
++#endif
++#if 0
++    /* cannot identify type classUNKNOWN
++sai_ip_address_list_t ipaddrlist; */
++#endif
++    FO_STRUCT(val, t, porteyevalues, sai_port_eye_values_list_t);
++    FO_STRUCT(val, t, timespec, sai_timespec_t);
++    FO_ARRAY_START(val, t, macsecsak);
++    {
++        int idx;
++        for (idx = 0; idx < 32; idx++) {
++            FO_ARRAY_NUMBER(val, macsecsak, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, macsecsak);
++    FO_ARRAY_START(val, t, macsecauthkey);
++    {
++        int idx;
++        for (idx = 0; idx < 16; idx++) {
++            FO_ARRAY_NUMBER(val, macsecauthkey, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, macsecauthkey);
++    FO_ARRAY_START(val, t, macsecsalt);
++    {
++        int idx;
++        for (idx = 0; idx < 12; idx++) {
++            FO_ARRAY_NUMBER(val, macsecsalt, idx, uint8_t);
++        }
++    }
++    FO_ARRAY_END(val, t, macsecsalt);
++    FO_STRUCT(val, t, sysportconfig, sai_system_port_config_t);
++    FO_STRUCT(val, t, sysportconfiglist, sai_system_port_config_list_t);
++    FO_STRUCT(val, t, reachability, sai_fabric_port_reachability_t);
++    FO_STRUCT(val, t, porterror, sai_port_err_status_list_t);
++    lua_settop(L, t);
++}
++
++add_mgm_type(sai_attribute_value_t);
++add_mgm_union(sai_attribute_value_t);
++
+ void prv_lua_to_c_CPSS_DXCH_LPM_REGULAR_BIT_VECTOR_STC(
+     lua_State *L,
+     CPSS_DXCH_LPM_REGULAR_BIT_VECTOR_STC *val

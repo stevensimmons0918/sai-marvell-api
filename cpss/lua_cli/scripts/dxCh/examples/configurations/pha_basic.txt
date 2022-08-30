@@ -1,0 +1,39 @@
+// TAG:               PHA; firmware; ioam
+// Short Description: Configures PHA ioam commands
+// Description:       Configures PHA ioam commands
+//            Note that 'statisticalProcessingFactor 100' means that not all packets that send to the thread will actually do it.
+end
+config
+pha thread-id-info ioam-ingress-switch ipv4 device ${dev} thread-id 100 1.common.busyStallMode ordered-bypass 1.common.stallDropCode 200 2.ioam.05.node_id 700
+pha thread-id-info ioam-ingress-switch ipv4 device ${dev} thread-id 111 1.common.busyStallMode drop 1.common.statisticalProcessingFactor 100 1.common.stallDropCode 150 2.ioam.01.IOAM_Trace_Type  100 2.ioam.02.Maximum_Length 101 2.ioam.03.Flags 102 2.ioam.04.Hop_Lim 103 2.ioam.05.node_id 104 2.ioam.06.Type1  105 2.ioam.07.IOAM_HDR_len1  106 2.ioam.08.Reserved1  107 2.ioam.09.Next_Protocol1 108 2.ioam.10.Type2 109 2.ioam.11.IOAM_HDR_len2 110 2.ioam.12.Reserved2 111 2.ioam.13.Next_Protocol2 112
+pha thread-id-info ioam-ingress-switch ipv6 device ${dev} thread-id 101 1.common.busyStallMode drop 2.ioam.01.IOAM_Trace_Type 0x1234 2.ioam.09.Next_Protocol1 0xab
+pha thread-id-info ioam-transit-switch ipv4 device ${dev} thread-id 200 2.ioam.02.node_id 0x123456
+pha thread-id-info ioam-transit-switch ipv6 device ${dev} thread-id 201 2.ioam.02.node_id 0x654321
+pha thread-id-info ioam-transit-switch ipv4 device ${dev} thread-id 211 1.common.busyStallMode ordered-bypass 1.common.statisticalProcessingFactor 110 1.common.stallDropCode 120 2.ioam.02.node_id 104
+pha thread-id-info erspan-type-II-trg-dev-lc-ipv4-mirroring device ${dev} thread-id 6 1.common.statisticalProcessingFactor 20
+pha thread-id-info ipv4-template-shared-memory-erspan-type-II-trg-dev-mirroring device ${dev} analyzer-index ${analyzer-index} 1.erspan.01.macDa 00:00:00:00:00:01 1.erspan.02.macSa 00:00:00:00:00:02 1.erspan.06.vid 1 2.erspan_ipv4.01.dscp 6 2.erspan_ipv4.02.flags 1 2.erspan_ipv4.03.ttl 1 2.erspan_ipv4.04.sipAddr 192.168.0.1 2.erspan_ipv4.05.dipAddr 192.168.1.0 2.erspan_ipv4.05.isid 10
+pha thread-id-info shared-memory-global-erspan-type-II device ${dev} erspan-device ${erspanDev} isVoQ ${isVoQ}
+pha thread-id-info erspan-type-II-trg-dev-lc-ipv6-mirroring device ${dev} thread-id 7 1.common.statisticalProcessingFactor 20
+pha thread-id-info ipv6-template-shared-memory-erspan-type-II-trg-dev-mirroring device ${dev} analyzer-index ${analyzer-index} 1.erspan.01.macDa 00:00:00:00:00:01 1.erspan.02.macSa 00:00:00:00:00:02 1.erspan.06.vid 1 2.erspan_ipv6.01.tc 6 2.erspan_ipv6.02.flowLabel 1 2.erspan_ipv6.03.hopLimit 1 2.erspan_ipv6.04.sipAddr FF::01 2.erspan_ipv6.05.dipAddr FF:10 2.erspan_ipv4.06.esid 10
+pha thread-id-info shared-memory-global-erspan-type-II device {dev} erspan-device {erspanDev}
+pha thread-id-info erspan-type-II-trg-dev-direct-ipv4-mirroring device ${dev} thread-id 8 1.common.statisticalProcessingFactor 20
+pha thread-id-info ipv4-template-shared-memory-erspan-type-II-trg-dev-mirroring device ${dev} analyzer-index ${analyzer-index} 1.erspan.01.macDa 00:00:00:00:00:01 1.erspan.02.macSa 00:00:00:00:00:02 1.erspan.03.tpid 0x8100 1.erspan.06.vid 1 2.erspan_ipv4.01.dscp 6 2.erspan_ipv4.02.flags 1 2.erspan_ipv4.03.ttl 1 2.erspan_ipv4.04.sipAddr 192.168.0.1 2.erspan_ipv4.05.dipAddr 192.168.1.0 2.erspan_ipv4.05.isid 10
+pha thread-id-info shared-memory-global-erspan-type-II device ${dev} erspan-device ${erspanDev} isVoQ ${isVoQ}
+pha thread-id-info erspan-type-II-trg-dev-direct-ipv6-mirroring device ${dev} thread-id 9 1.common.statisticalProcessingFactor 20
+pha thread-id-info ipv6-template-shared-memory-erspan-type-II-trg-dev-mirroring device ${dev} analyzer-index ${analyzer-index} 1.erspan.01.macDa 00:00:00:00:00:01 1.erspan.02.macSa 00:00:00:00:00:02 1.erspan.03.tpid 0x8100 1.erspan.06.vid 1 2.erspan_ipv6.01.tc 6 2.erspan_ipv6.02.flowLabel 1 2.erspan_ipv6.03.hopLimit 1 2.erspan_ipv6.04.sipAddr FF::01 2.erspan_ipv6.05.dipAddr FF:10 2.erspan_ipv4.06.esid 10
+pha thread-id-info shared-memory-global-erspan-type-II device {dev} erspan-device {erspanDev}
+pha thread-id-info vxlan-gbp-source-group-policy-id device ${dev} thread-id 11 2.vxlanGbp.01.copyReservedLsb 0x0 2.vxlanGbp.02.copyReservedMsb 0x0a
+pha thread-id-info srv6-be-tunnel device ${dev} thread-id 48 1.common.busyStallMode drop 1.common.statisticalProcessingFactor 20
+pha thread-id-info srv6-gsid-single-pass-one-container device ${dev} thread-id 49 1.common.busyStallMode drop 1.common.statisticalProcessingFactor 20 2.srcAddr FF::01
+pha thread-id-info srv6-gsid-first-pass-with-multi-containers device ${dev} thread-id 50 1.common.busyStallMode drop 1.common.statisticalProcessingFactor 20 2.srcAddr FF::01
+pha thread-id-info srv6-gsid-second-pass-with-two-containers device ${dev} thread-id 51 1.common.busyStallMode drop 1.common statisticalProcessingFactor 20
+pha thread-id-info srv6-gsid-second-pass-with-three-containers device ${dev} thread-id 52 1.common.busyStallMode drop 1.common.statisticalProcessingFactor 20
+pha thread-id-info srv6-dip-with-gsid device ${dev} thread-id 53 1.common.busyStallMode drop 1.common.statisticalProcessingFactor 20 2.dipCommonPrefixLength 64
+pha thread-id-info ipv4-ttl-increment device ${dev} thread-id 54 1.common.statisticalProcessingFactor 20
+pha thread-id-info ipv6-hop-limit-increment device ${dev} thread-id 55 1.common.busyStallMode drop 1.common statisticalProcessingFactor 20
+pha thread-id-info clear-outgoing-mtag-cmd device ${dev} thread-id 56 1.common.busyStallMode drop 1.common statisticalProcessingFactor 20
+//
+//
+do show  pha-info common device ${dev}
+do show  pha-info ioam   device ${dev}
+

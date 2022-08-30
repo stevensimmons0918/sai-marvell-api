@@ -1,0 +1,406 @@
+#!/bin/bash
+#set -x
+
+################################################################################
+# this is a wrapper to GNU make:
+# it prepares the call to GNU make and interprets the results
+#
+# it allows for people to do
+# >maker
+# in a subdirectory, even though we only have a Makefile in the top-level directory
+#
+#
+# this script is intended to work exactly like GNU Make, with the following exceptions:
+#
+#
+# we must have either Makefile or dir.mk in the current directory
+#
+#
+# if we don't have a Makefile in the current directory, we go up the directory tree searching for it
+# when we find one, we execute
+# <top> >make <our arguments>
+# except we prepend make goal arguments with the path from the Makefile to our current directory
+# so that we use goals like
+#
+# <top> >make dir/dir1/foobar
+#
+#
+# if no goal is given, the default goal is
+#
+# <top> >make <path to current directory>/all
+#
+################################################################################
+
+# if DOCKER_ENABLE is 1, then use dockerized way of maker
+if [ "$DOCKER_ENABLE" = "1" ] ; then
+docker -v
+if [ $? -ne 0 ]; then
+    echo "The program 'docker' is currently not installed. Please install docker, add current user to the docker group"
+    exit 1
+else
+    echo "Continuing with dockerized way of maker"
+fi
+
+function print-help () {
+    echo
+    echo "Usage examples:"
+    echo "    DOCKER_ENABLE=1 ./maker -j8 xpApp"
+    echo "    DOCKER_ENABLE=1 ./maker clean"
+    echo "    DOCKER_ENABLE=1 ./maker -i"
+    echo "    DOCKER_ENABLE=1 ./maker --build"
+    echo
+    echo "--help              | Print this help"
+    echo "--build             | Rebuild Docker image with XDK build emnvironment"
+    echo "-i,  --interactive  | Start build environment without build command execution"
+    echo
+    echo "-n,  --name         | Docker container name"
+    echo "-v,  --volume       | Mount additional volume(s) for Docker container"
+    echo
+    echo "--no-cleanup        | Do not remove Docker container with build environment on exit"
+    echo
+    echo "--32bit             | Start/build with 32bit based Docker build environment"
+    echo
+}
+
+# Defaults
+VOLUMES=""
+DOCKER_IMAGE_NAME="xdk-build-env"
+FORWARDED_OPTIONS=""
+CLEANUP="--rm"
+ARCH_TYPE=""
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+    case $key in
+        "-h"|"--help")
+            print-help
+            exit 0
+        ;;
+        "--build")
+            REBUILD=true
+        ;;
+        "-i"|"--interactive")
+            INTERACTIVE=true
+        ;;
+        "-n"|"--name")
+            CONTAINER_NAME="--name $2"
+            shift
+        ;;
+        "-v"|"--volume")
+            VOLUMES="${VOLUMES} $1 $2"
+            shift
+        ;;
+        "--no-cleanup")
+            CLEANUP=""
+        ;;
+        "--32bit")
+            ARCH_TYPE="-32bit"
+        ;;
+        *)  # Passing unknown options further
+            FORWARDED_OPTIONS="${FORWARDED_OPTIONS} ${1}"
+        ;;
+    esac
+    shift # past argument or value
+done
+
+if [[ ${REBUILD} == true || "$(docker images -q ${DOCKER_IMAGE_NAME}${ARCH_TYPE} 2> /dev/null)" == "" ]]; then
+    docker build -t ${DOCKER_IMAGE_NAME}${ARCH_TYPE} -f dockerfile-sdk-maker${ARCH_TYPE} .
+    exit 1
+fi
+
+VOLUMES="${VOLUMES} -v $(readlink -f .. ):$(readlink -f .. )"
+
+if [[ ${INTERACTIVE} == true ]]; then
+    if [ -n "$SUDO_UID" ]; then
+        DEV_USER="su"
+    else
+        DEV_USER="\
+            cd $(readlink -f . );
+            adduser --disabled-password --gecos '' dev;
+            adduser dev sudo;
+            groupmod -g $(id -g ${USER}) dev;
+            usermod -u ${UID} -g $(id -g ${USER}) dev;
+            su dev;
+        "
+    fi
+    docker run ${VOLUMES} ${CONTAINER_NAME} \
+        -e ENABLE_MULTITHREAD=${ENABLE_MULTITHREAD} \
+        -e XDK_ENABLE_O2=${XDK_ENABLE_O2} \
+        -e XDK_DISABLE_DBG=${XDK_DISABLE_DBG} \
+        -e NO_TRACE_TIME=${NO_TRACE_TIME} \
+        -e NO_TRACE_THREAD=${NO_TRACE_THREAD} \
+        ${CLEANUP} -it ${DOCKER_IMAGE_NAME}${ARCH_TYPE} -c "${DEV_USER}"
+else
+    docker run -u ${UID}:$(id -g ${USER}) ${VOLUMES} ${CONTAINER_NAME} \
+        -e ENABLE_MULTITHREAD=${ENABLE_MULTITHREAD} \
+        -e XDK_ENABLE_O2=${XDK_ENABLE_O2} \
+        -e XDK_DISABLE_DBG=${XDK_DISABLE_DBG} \
+        -e NO_TRACE_TIME=${NO_TRACE_TIME} \
+        -e NO_TRACE_THREAD=${NO_TRACE_THREAD} \
+        ${CLEANUP} -i ${DOCKER_IMAGE_NAME}${ARCH_TYPE} -c "cd $(readlink -f . ) && ./maker ${FORWARDED_OPTIONS}"
+fi
+
+# if DOCKER_ENABLE is not 1, use traditional maker as it is
+else
+
+    if [ "$1" == "--pkg" ] || [ "$1" == "--package" ]
+    then
+        if [ -f ../sw-tools/release-scripts/xpliant/make_xdk_cust_tar.py ]
+        then
+            shift
+            python ../sw-tools/release-scripts/xpliant/make_xdk_cust_tar.py $@
+        else
+            echo "Error: Package script is not found"
+        fi
+        exit 0
+    fi
+    if [ "$1" == "help" ] || [ "$1" == "usage" ]
+    then
+        echo
+        echo 'Release Packaging help: '
+        echo ' Usage:-'
+        echo '   ./maker --package -v <version> -d <Build path> -c <customer list separated by commas> -w {with wm lib} -x <xp-tools branch name>'
+        echo '    --package or --pkg can be used but should be first argument'
+        echo
+        echo ' Examples:-'
+        echo '   ./maker --package -v 3.4.15 -d /data/xdk-cloned/BUILD/ -c <cust_name> -w'
+    fi
+
+# Verify pre-requisites (make version) prior to build source code
+function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
+
+OUTPUT="$(make --version | head -1)"
+
+expected_version=3.82
+your_version="$(echo \"${OUTPUT}\" | grep -o '[0-9]*[\.][0-9]*[\.]*[0-9]*')"
+
+# If make version is not equal or greater than 3.82, it will give error message and exit
+if version_gt $expected_version $your_version; then
+     echo "Make version $your_version is less than $expected_version, please install make with version equal or greater than $expected_version!"
+     exit 1
+else
+     echo "Make version $your_version satisfies the expected version $expected_version!"
+fi
+
+if [ ! -e dir.mk ] && [ ! -e Makefile ]
+then
+        echo
+        echo '** No Makefile or dir.mk found in current directory. Stop.'
+        exit 1
+fi
+
+function crosscompile {
+if
+echo ${CMD} | grep -q cleanall   # don't need TARGET with cleanall
+then
+return
+fi
+
+export TARGET
+if [  ! -n "${TARGET}"  ]
+then
+        TARGET=native
+fi
+if [ -s targets/${TARGET}.config -a -r targets/${TARGET}.config ]
+then
+    config=targets/${TARGET}.config
+    export PIC_OPTION=-fPIC  # will be overridden in source if needed
+    source ${config}
+else
+        echo ERROR TARGET CONFIG FILE ${config} DOES NOT EXIST >&2
+        echo USAGE: $0 TARGET='<TARGET MACHINE NAME>  ...' >&2
+        echo For native build use TARGET=native   >&2
+        echo TARGET can be exported in the environment instead of setting on command line >&2
+        exit 1
+fi
+
+}
+export PATH=:$PATH:/vmscratch/MIPS_Toolchain/CodeSourcery/Sourcery_CodeBench_Lite_for_MIPS_ELF/bin export PATH=:$PATH:/scratch/dump6/tools/MIPS_Toolchain/CodeSourcery/Sourcery_CodeBench_Lite_for_MIPS_ELF/bin
+
+# Determine environment
+PLATFORM=`uname`
+
+#default values for "dependable" variables
+export SM=0
+export DBG=1
+
+#flags to build static and shared libs, both on
+export STATIC=1
+
+# Only build shared libraries on Linux
+if [ $PLATFORM != "Darwin" ]; then
+        export SHARED=1
+fi
+
+SUBDIR=$PWD/
+
+until [ -e Makefile ]; do
+        cd ..
+done
+
+# on MAC (Darwin), there is realpath but grealpath
+# outside MAC, we want to use make command from revision 4.0
+if [ `uname` == 'Darwin' ]
+then
+        ABS_PATH=grealpath
+else
+        ABS_PATH="readlink -f"
+fi
+
+export ABS_PATH
+
+PREFIX=${SUBDIR#$PWD/}
+
+FILTER_OUT='| ./filterOut'
+
+CMD+="make -Rw SUBDIR=$SUBDIR"
+#CMD+="make -Rw --debug=j SUBDIR=$SUBDIR"
+
+for token in $*
+do
+        case $token in
+                -f | -I | -j | -l | -o | -W)
+                        CMD+=' '$token; OPT=1;;
+                #-k)
+                #       export KXDKFLAG=$token;;
+                -*)
+                        CMD+=' '$token ;;
+
+
+                COLOR=0)
+                        FILTER_OUT= ;;
+
+                TARGET=*)
+                        eval "export $token" ;;
+                *=*)
+                        CMD+=' '$token ;;
+
+                *)
+                        export TARGET_APP=$token
+                        if [ $OPT ]; then
+                                CMD+=' '$token
+                                OPT=
+                        else
+                                GOALS+=' '$PREFIX$token
+                        fi;;
+        esac
+done
+CMD+=$GOALS
+
+if [ $PREFIX ]
+then
+        if [ ! $GOALS ]
+        then
+                CMD+=' '${PREFIX}all
+        fi
+        echo
+        echo in directory $PWD ...
+        echo
+        echo executing command:
+        echo $CMD
+        echo
+fi
+
+export REL_TOP=..
+export SAI_SRC=plugins/sai/SAI
+mkdir -p logs
+
+crosscompile   # function at top. handle different TARGETs for cross compiling
+rm ${REL_TOP}/dist/LASTTARGET* 2>/dev/null
+# STDERR to logs/error.log
+# then all output to logs/out.log
+
+errors=logs/error.log
+rm .maker_failure 2>/dev/null
+CMD='(( '$CMD' 2>&1 1>&3 || echo $? > .maker_failure ) | tee $errors ) 3>&1 | tee logs/out.log '$FILTER_OUT
+
+#if
+#    ! echo ${CMD} | grep -q -e "clean\|saiPreproc\|help"
+#then
+#    make aapl
+#fi
+
+echo PATH:$PATH
+echo RUNNING: $CMD
+eval $CMD
+
+(
+for i in ${REL_TOP}/dist/*
+do
+ n=`basename $i`
+ if [ -L "$i" ]
+ then
+   rm "$i"
+ fi
+done
+
+#######################################################################################
+## printing MULTITHREAD banner
+#######################################################################################
+
+if [ "$ENABLE_MULTITHREAD" = "1" ]
+then
+echo
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "+                                                                              +"
+echo "+                       MULTITHREAD MODE ENABLED                               +"
+echo "+                                                                              +"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo
+fi
+
+#######################################################################################
+## printing O2 FLAG banner
+#######################################################################################
+if [ $XDK_ENABLE_O2 ]
+then
+echo
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "+                                                                              +"
+echo "+                               O2 FLAG ENABLED                                +"
+echo "+                                                                              +"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo
+fi
+
+#######################################################################################
+## printing DBG FLAG banner
+#######################################################################################
+if [ "$XDK_DISABLE_DBG" = "1" ]
+then
+echo
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "+                                                                              +"
+echo "+                           DEBUG SETTINGS DISABLED                            +"
+echo "+                                                                              +"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo
+fi
+
+#######################################################################################
+## Verify MultiThread mode sanity
+#######################################################################################
+
+if [ -d ${REL_TOP}/dist/${TARGET} ]
+then
+cd ${REL_TOP}/dist
+for i in ${TARGET}/*
+do
+   rm LASTTARGET* 2>/dev/null
+   touch LASTTARGET-${TARGET}
+   ln -f -s $i
+done
+fi
+)
+# remove if nothing there
+if ! [ -s $errors ]
+then
+        rm $errors
+fi
+
+if [ -e .maker_failure ]
+then
+        failure=`cat .maker_failure`
+        exit $failure
+fi
+fi

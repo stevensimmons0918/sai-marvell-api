@@ -1,0 +1,496 @@
+/*******************************************************************************
+*              (c), Copyright 2001, Marvell International Ltd.                 *
+* THIS CODE CONTAINS CONFIDENTIAL INFORMATION OF MARVELL SEMICONDUCTOR, INC.   *
+* NO RIGHTS ARE GRANTED HEREIN UNDER ANY PATENT, MASK WORK RIGHT OR COPYRIGHT  *
+* OF MARVELL OR ANY THIRD PARTY. MARVELL RESERVES THE RIGHT AT ITS SOLE        *
+* DISCRETION TO REQUEST THAT THIS CODE BE IMMEDIATELY RETURNED TO MARVELL.     *
+* THIS CODE IS PROVIDED "AS IS". MARVELL MAKES NO WARRANTIES, EXPRESSED,       *
+* IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.   *
+********************************************************************************
+* prvCpssDxChLog.c
+*       WARNING!!! this is a generated file, please don't edit it manually
+* COMMENTS:
+*
+* FILE REVISION NUMBER:
+*       $Revision: 1 $
+*******************************************************************************/
+
+/* disable deprecation warnings (if one) */
+#ifdef __GNUC__
+#if  (__GNUC__*100+__GNUC_MINOR__) >= 406
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+#endif
+
+#include <cpss/generic/log/cpssLog.h>
+#include <cpss/generic/log/prvCpssLog.h>
+#include <cpss/extServices/private/prvCpssBindFunc.h>
+#include <cpss/common/private/globalShared/prvCpssGlobalDb.h>
+#include <cpss/common/private/globalShared/prvCpssGlobalDbInterface.h>
+#include <cpss/dxCh/dxChxGen/cpssDxChTypes.h>
+#include <cpss/dxCh/dxChxGen/log/private/prvCpssDxChLog.h>
+#include <cpss/dxCh/dxChxGen/tunnel/private/prvCpssDxChTunnelLog.h>
+#include <cpss/generic/log/prvCpssGenCommonTypesLog.h>
+
+
+/********* enums *********/
+
+const char * const prvCpssLogEnum_CPSS_DXCH_ETHERTYPE_TABLE_ENT[]  =
+{
+    "CPSS_DXCH_ETHERTYPE_TABLE_INGRESS_E",
+    "CPSS_DXCH_ETHERTYPE_TABLE_EGRESS_E",
+    "CPSS_DXCH_ETHERTYPE_TABLE_EGRESS_LOGICAL_PORT_E",
+    "CPSS_DXCH_ETHERTYPE_TABLE_EGRESS_TS_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_DXCH_ETHERTYPE_TABLE_ENT);
+const char * const prvCpssLogEnum_CPSS_DXCH_FDB_LEARN_PRIORITY_ENT[]  =
+{
+    "CPSS_DXCH_FDB_LEARN_PRIORITY_LOW_E",
+    "CPSS_DXCH_FDB_LEARN_PRIORITY_HIGH_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_DXCH_FDB_LEARN_PRIORITY_ENT);
+const char * const prvCpssLogEnum_CPSS_DXCH_MEMBER_SELECTION_MODE_ENT[]  =
+{
+    "CPSS_DXCH_MEMBER_SELECTION_MODE_12_BITS_E",
+    "CPSS_DXCH_MEMBER_SELECTION_MODE_6_LSB_E",
+    "CPSS_DXCH_MEMBER_SELECTION_MODE_6_MSB_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_DXCH_MEMBER_SELECTION_MODE_ENT);
+const char * const prvCpssLogEnum_CPSS_DXCH_PAIR_READ_WRITE_FORM_ENT[]  =
+{
+    "CPSS_DXCH_PAIR_READ_WRITE_FIRST_ONLY_E",
+    "CPSS_DXCH_PAIR_READ_WRITE_SECOND_NEXT_POINTER_ONLY_E",
+    "CPSS_DXCH_PAIR_READ_WRITE_WHOLE_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_DXCH_PAIR_READ_WRITE_FORM_ENT);
+const char * const prvCpssLogEnum_CPSS_DXCH_PORT_PROFILE_ENT[]  =
+{
+    "CPSS_DXCH_PORT_PROFILE_NETWORK_E",
+    "CPSS_DXCH_PORT_PROFILE_CSCD_E",
+    "CPSS_DXCH_PORT_PROFILE_FABRIC_E",
+    "CPSS_DXCH_PORT_PROFILE_LOOPBACK_E",
+    "CPSS_DXCH_PORT_PROFILE_NETWORK_PREEMPTIVE_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_DXCH_PORT_PROFILE_ENT);
+const char * const prvCpssLogEnum_CPSS_DXCH_UNIT_ENT[]  =
+{
+    "CPSS_DXCH_UNIT_TTI_E",
+    "CPSS_DXCH_UNIT_PCL_E",
+    "CPSS_DXCH_UNIT_L2I_E",
+    "CPSS_DXCH_UNIT_FDB_E",
+    "CPSS_DXCH_UNIT_EQ_E",
+    "CPSS_DXCH_UNIT_LPM_E",
+    "CPSS_DXCH_UNIT_EGF_EFT_E",
+    "CPSS_DXCH_UNIT_EGF_QAG_E",
+    "CPSS_DXCH_UNIT_EGF_SHT_E",
+    "CPSS_DXCH_UNIT_HA_E",
+    "CPSS_DXCH_UNIT_ETS_E",
+    "CPSS_DXCH_UNIT_MLL_E",
+    "CPSS_DXCH_UNIT_IPLR_E",
+    "CPSS_DXCH_UNIT_EPLR_E",
+    "CPSS_DXCH_UNIT_IPVX_E",
+    "CPSS_DXCH_UNIT_IOAM_E",
+    "CPSS_DXCH_UNIT_EOAM_E",
+    "CPSS_DXCH_UNIT_TCAM_E",
+    "CPSS_DXCH_UNIT_RXDMA_E",
+    "CPSS_DXCH_UNIT_EPCL_E",
+    "CPSS_DXCH_UNIT_TM_FCU_E",
+    "CPSS_DXCH_UNIT_TM_DROP_E",
+    "CPSS_DXCH_UNIT_TM_QMAP_E",
+    "CPSS_DXCH_UNIT_TM_E",
+    "CPSS_DXCH_UNIT_GOP_E",
+    "CPSS_DXCH_UNIT_MIB_E",
+    "CPSS_DXCH_UNIT_SERDES_E",
+    "CPSS_DXCH_UNIT_ERMRK_E",
+    "CPSS_DXCH_UNIT_BM_E",
+    "CPSS_DXCH_UNIT_TM_INGRESS_GLUE_E",
+    "CPSS_DXCH_UNIT_TM_EGRESS_GLUE_E",
+    "CPSS_DXCH_UNIT_ETH_TXFIFO_E",
+    "CPSS_DXCH_UNIT_ILKN_TXFIFO_E",
+    "CPSS_DXCH_UNIT_ILKN_E",
+    "CPSS_DXCH_UNIT_LMS0_0_E",
+    "CPSS_DXCH_UNIT_LMS0_1_E",
+    "CPSS_DXCH_UNIT_LMS0_2_E",
+    "CPSS_DXCH_UNIT_LMS0_3_E",
+    "CPSS_DXCH_UNIT_TX_FIFO_E",
+    "CPSS_DXCH_UNIT_BMA_E",
+    "CPSS_DXCH_UNIT_CNC_0_E",
+    "CPSS_DXCH_UNIT_CNC_1_E",
+    "CPSS_DXCH_UNIT_TXQ_QUEUE_E",
+    "CPSS_DXCH_UNIT_TXQ_LL_E",
+    "CPSS_DXCH_UNIT_TXQ_PFC_E",
+    "CPSS_DXCH_UNIT_TXQ_QCN_E",
+    "CPSS_DXCH_UNIT_TXQ_DQ_E",
+    "CPSS_DXCH_UNIT_DFX_SERVER_E",
+    "CPSS_DXCH_UNIT_MPPM_E",
+    "CPSS_DXCH_UNIT_LMS1_0_E",
+    "CPSS_DXCH_UNIT_LMS1_1_E",
+    "CPSS_DXCH_UNIT_LMS1_2_E",
+    "CPSS_DXCH_UNIT_LMS1_3_E",
+    "CPSS_DXCH_UNIT_LMS2_0_E",
+    "CPSS_DXCH_UNIT_LMS2_1_E",
+    "CPSS_DXCH_UNIT_LMS2_2_E",
+    "CPSS_DXCH_UNIT_LMS2_3_E",
+    "CPSS_DXCH_UNIT_MPPM_1_E",
+    "CPSS_DXCH_UNIT_CTU_0_E",
+    "CPSS_DXCH_UNIT_CTU_1_E",
+    "CPSS_DXCH_UNIT_TXQ_SHT_E",
+    "CPSS_DXCH_UNIT_TXQ_EGR0_E",
+    "CPSS_DXCH_UNIT_TXQ_EGR1_E",
+    "CPSS_DXCH_UNIT_TXQ_DIST_E",
+    "CPSS_DXCH_UNIT_IPLR_1_E",
+    "CPSS_DXCH_UNIT_TXDMA_E",
+    "CPSS_DXCH_UNIT_MG_E",
+    "CPSS_DXCH_UNIT_TCC_IPCL_E",
+    "CPSS_DXCH_UNIT_TCC_IPVX_E",
+    "CPSS_DXCH_UNIT_CNM_RFU_E",
+    "CPSS_DXCH_UNIT_CNM_MPP_RFU_E",
+    "CPSS_DXCH_UNIT_CNM_AAC_E",
+    "CPSS_DXCH_UNIT_SMI_0_E",
+    "CPSS_DXCH_UNIT_SMI_1_E",
+    "CPSS_DXCH_UNIT_SMI_2_E",
+    "CPSS_DXCH_UNIT_SMI_3_E",
+    "CPSS_DXCH_UNIT_LED_0_E",
+    "CPSS_DXCH_UNIT_LED_1_E",
+    "CPSS_DXCH_UNIT_LED_2_E",
+    "CPSS_DXCH_UNIT_LED_3_E",
+    "CPSS_DXCH_UNIT_LED_4_E",
+    "CPSS_DXCH_UNIT_RXDMA1_E",
+    "CPSS_DXCH_UNIT_TXDMA1_E",
+    "CPSS_DXCH_UNIT_TX_FIFO1_E",
+    "CPSS_DXCH_UNIT_ETH_TXFIFO1_E",
+    "CPSS_DXCH_UNIT_RXDMA_GLUE_E",
+    "CPSS_DXCH_UNIT_TXDMA_GLUE_E",
+    "CPSS_DXCH_UNIT_RXDMA2_E",
+    "CPSS_DXCH_UNIT_RXDMA3_E",
+    "CPSS_DXCH_UNIT_RXDMA4_E",
+    "CPSS_DXCH_UNIT_RXDMA5_E",
+    "CPSS_DXCH_UNIT_RXDMA6_E",
+    "CPSS_DXCH_UNIT_RXDMA7_E",
+    "CPSS_DXCH_UNIT_TXDMA2_E",
+    "CPSS_DXCH_UNIT_TXDMA3_E",
+    "CPSS_DXCH_UNIT_TXDMA4_E",
+    "CPSS_DXCH_UNIT_TXDMA5_E",
+    "CPSS_DXCH_UNIT_TXDMA6_E",
+    "CPSS_DXCH_UNIT_TXDMA7_E",
+    "CPSS_DXCH_UNIT_TX_FIFO2_E",
+    "CPSS_DXCH_UNIT_TX_FIFO3_E",
+    "CPSS_DXCH_UNIT_TX_FIFO4_E",
+    "CPSS_DXCH_UNIT_TX_FIFO5_E",
+    "CPSS_DXCH_UNIT_TX_FIFO6_E",
+    "CPSS_DXCH_UNIT_TX_FIFO7_E",
+    "CPSS_DXCH_UNIT_TXQ_DQ1_E",
+    "CPSS_DXCH_UNIT_TXQ_DQ2_E",
+    "CPSS_DXCH_UNIT_TXQ_DQ3_E",
+    "CPSS_DXCH_UNIT_TXQ_DQ4_E",
+    "CPSS_DXCH_UNIT_TXQ_DQ5_E",
+    "CPSS_DXCH_UNIT_MIB1_E",
+    "CPSS_DXCH_UNIT_GOP1_E",
+    "CPSS_DXCH_UNIT_TAI_E",
+    "CPSS_DXCH_UNIT_TAI1_E",
+    "CPSS_DXCH_UNIT_EGF_SHT_1_E",
+    "CPSS_DXCH_UNIT_TTI_1_E",
+    "CPSS_DXCH_UNIT_IPCL_1_E",
+    "CPSS_DXCH_UNIT_L2I_1_E",
+    "CPSS_DXCH_UNIT_IPVX_1_E",
+    "CPSS_DXCH_UNIT_IPLR_0_1_E",
+    "CPSS_DXCH_UNIT_IPLR_1_1_E",
+    "CPSS_DXCH_UNIT_IOAM_1_E",
+    "CPSS_DXCH_UNIT_MLL_1_E",
+    "CPSS_DXCH_UNIT_EQ_1_E",
+    "CPSS_DXCH_UNIT_EGF_EFT_1_E",
+    "CPSS_DXCH_UNIT_CNC_0_1_E",
+    "CPSS_DXCH_UNIT_CNC_1_1_E",
+    "CPSS_DXCH_UNIT_SERDES_1_E",
+    "CPSS_DXCH_UNIT_HA_1_E",
+    "CPSS_DXCH_UNIT_ERMRK_1_E",
+    "CPSS_DXCH_UNIT_EPCL_1_E",
+    "CPSS_DXCH_UNIT_EPLR_1_E",
+    "CPSS_DXCH_UNIT_EOAM_1_E",
+    "CPSS_DXCH_UNIT_RX_DMA_GLUE_1_E",
+    "CPSS_DXCH_UNIT_POE_E",
+    "CPSS_DXCH_UNIT_TXQ_BMX_E",
+    "CPSS_DXCH_UNIT_LPM_1_E",
+    "CPSS_DXCH_UNIT_IA_E",
+    "CPSS_DXCH_UNIT_IA_1_E",
+    "CPSS_DXCH_UNIT_EREP_E",
+    "CPSS_DXCH_UNIT_EREP_1_E",
+    "CPSS_DXCH_UNIT_PREQ_E",
+    "CPSS_DXCH_UNIT_PREQ_1_E",
+    "CPSS_DXCH_UNIT_PHA_E",
+    "CPSS_DXCH_UNIT_PHA_1_E",
+    "CPSS_DXCH_UNIT_SHM_E",
+    "CPSS_DXCH_UNIT_MG_0_1_E",
+    "CPSS_DXCH_UNIT_MG_0_2_E",
+    "CPSS_DXCH_UNIT_MG_0_3_E",
+    "CPSS_DXCH_UNIT_MG_1_0_E",
+    "CPSS_DXCH_UNIT_MG_1_1_E",
+    "CPSS_DXCH_UNIT_MG_1_2_E",
+    "CPSS_DXCH_UNIT_MG_1_3_E",
+    "CPSS_DXCH_UNIT_BMA_1_E",
+    "CPSS_DXCH_UNIT_EGF_QAG_1_E",
+    "CPSS_DXCH_UNIT_TXQ_PSI_E",
+    "CPSS_DXCH_UNIT_TXQ_PDX_E",
+    "CPSS_DXCH_UNIT_TXQ_PDX_PAC_0_E",
+    "CPSS_DXCH_UNIT_TXQ_PDX_PAC_1_E",
+    "CPSS_DXCH_UNIT_TXQ_PFCC_E",
+    "CPSS_DXCH_UNIT_EM_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_PDS0_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_PDS1_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_PDS2_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_PDS3_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_PDS0_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_PDS1_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_PDS2_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_PDS3_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_SDQ0_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_SDQ1_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_SDQ2_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_SDQ3_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_SDQ0_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_SDQ1_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_SDQ2_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_SDQ3_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_QFC0_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_QFC1_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_QFC2_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE0_QFC3_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_QFC0_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_QFC1_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_QFC2_E",
+    "CPSS_DXCH_UNIT_TXQ_PIPE1_QFC3_E",
+    "CPSS_DXCH_UNIT_TAI_SLAVE_PIPE0_TAI0_E",
+    "CPSS_DXCH_UNIT_TAI_SLAVE_PIPE0_TAI1_E",
+    "CPSS_DXCH_UNIT_TAI_SLAVE_PIPE1_TAI0_E",
+    "CPSS_DXCH_UNIT_TAI_SLAVE_PIPE1_TAI1_E",
+    "CPSS_DXCH_UNIT_TXQ_TAI_SLAVE_PIPE0_TAI0_E",
+    "CPSS_DXCH_UNIT_TXQ_TAI_SLAVE_PIPE0_TAI1_E",
+    "CPSS_DXCH_UNIT_TXQ_TAI_SLAVE_PIPE1_TAI0_E",
+    "CPSS_DXCH_UNIT_TXQ_TAI_SLAVE_PIPE1_TAI1_E",
+    "CPSS_DXCH_UNIT_PB_CENTER_BLK_E",
+    "CPSS_DXCH_UNIT_PB_SMB_WRITE_ARBITER_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_PACKET_WRITE_0_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_CELL_READ_0_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_CELL_READ_1_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_PACKET_READ_0_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_PACKET_READ_1_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_PACKET_WRITE_1_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_CELL_READ_2_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_CELL_READ_3_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_PACKET_READ_2_E",
+    "CPSS_DXCH_UNIT_PB_GPC_GRP_PACKET_READ_3_E",
+    "CPSS_DXCH_UNIT_PB_NEXT_POINTER_MEMO_0_E",
+    "CPSS_DXCH_UNIT_PB_NEXT_POINTER_MEMO_1_E",
+    "CPSS_DXCH_UNIT_PB_NEXT_POINTER_MEMO_2_E",
+    "CPSS_DXCH_UNIT_PB_SHARED_MEMO_BUF_0_0_E",
+    "CPSS_DXCH_UNIT_PB_SHARED_MEMO_BUF_0_1_E",
+    "CPSS_DXCH_UNIT_PB_SHARED_MEMO_BUF_1_0_E",
+    "CPSS_DXCH_UNIT_PB_SHARED_MEMO_BUF_1_1_E",
+    "CPSS_DXCH_UNIT_PB_SHARED_MEMO_BUF_2_0_E",
+    "CPSS_DXCH_UNIT_PB_SHARED_MEMO_BUF_2_1_E",
+    "CPSS_DXCH_UNIT_CHIPLET_0_E",
+    "CPSS_DXCH_UNIT_CHIPLET_1_E",
+    "CPSS_DXCH_UNIT_CHIPLET_2_E",
+    "CPSS_DXCH_UNIT_CHIPLET_3_E",
+    "CPSS_DXCH_UNIT_CHIPLET_0_TAI0_E",
+    "CPSS_DXCH_UNIT_CHIPLET_0_TAI1_E",
+    "CPSS_DXCH_UNIT_CHIPLET_1_TAI0_E",
+    "CPSS_DXCH_UNIT_CHIPLET_1_TAI1_E",
+    "CPSS_DXCH_UNIT_CHIPLET_2_TAI0_E",
+    "CPSS_DXCH_UNIT_CHIPLET_2_TAI1_E",
+    "CPSS_DXCH_UNIT_CHIPLET_3_TAI0_E",
+    "CPSS_DXCH_UNIT_CHIPLET_3_TAI1_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_0_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_1_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_2_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_3_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_4_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_5_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_6_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_7_E",
+    "CPSS_DXCH_UNIT_MAIN_DIE_D2D_CP_IN_CHIPLET_E",
+    "CPSS_DXCH_UNIT_HBU_E",
+    "CPSS_DXCH_UNIT_HBU_1_E",
+    "CPSS_DXCH_UNIT_LAST_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_DXCH_UNIT_ENT);
+
+
+/********* structure fields log functions *********/
+
+void prvCpssLogParamFuncStc_CPSS_DXCH_HASH_BIT_SELECTION_PROFILE_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_DXCH_HASH_BIT_SELECTION_PROFILE_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, firstBit);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, lastBit);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, salt);
+    PRV_CPSS_LOG_STC_BOOL_MAC(valPtr, srcPortHashEnable);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_DXCH_OUTPUT_INTERFACE_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_DXCH_OUTPUT_INTERFACE_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_BOOL_MAC(valPtr, isTunnelStart);
+    prvCpssLogStcLogStart(contextLib,  logType, "tunnelStartInfo");
+    PRV_CPSS_LOG_STC_ENUM_MAC((&valPtr->tunnelStartInfo), passengerPacketType, CPSS_DXCH_TUNNEL_PASSANGER_TYPE_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC((&valPtr->tunnelStartInfo), ptr);
+    prvCpssLogStcLogEnd(contextLib, logType);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, physicalInterface, CPSS_INTERFACE_INFO_STC);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+
+
+/********* parameters log functions *********/
+
+void prvCpssLogParamFunc_CPSS_DXCH_ETHERTYPE_TABLE_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_ETHERTYPE_TABLE_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_DXCH_ETHERTYPE_TABLE_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_FDB_LEARN_PRIORITY_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_FDB_LEARN_PRIORITY_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_DXCH_FDB_LEARN_PRIORITY_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_FDB_LEARN_PRIORITY_ENT_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_FDB_LEARN_PRIORITY_ENT*, paramVal);
+    if (paramVal == NULL)
+    {
+        PRV_CPSS_LOG_AND_HISTORY_PARAM_MAC(contextLib, logType, "%s = NULL\n", namePtr);
+        return;
+    }
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, *paramVal, CPSS_DXCH_FDB_LEARN_PRIORITY_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_HASH_BIT_SELECTION_PROFILE_STC_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_PARAM_STC_MAC(CPSS_DXCH_HASH_BIT_SELECTION_PROFILE_STC*, paramVal);
+    prvCpssLogParamFuncStc_CPSS_DXCH_HASH_BIT_SELECTION_PROFILE_STC_PTR(contextLib, logType, namePtr, paramVal, inOutParamInfoPtr);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_MEMBER_SELECTION_MODE_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_MEMBER_SELECTION_MODE_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_DXCH_MEMBER_SELECTION_MODE_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_MEMBER_SELECTION_MODE_ENT_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_MEMBER_SELECTION_MODE_ENT*, paramVal);
+    if (paramVal == NULL)
+    {
+        PRV_CPSS_LOG_AND_HISTORY_PARAM_MAC(contextLib, logType, "%s = NULL\n", namePtr);
+        return;
+    }
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, *paramVal, CPSS_DXCH_MEMBER_SELECTION_MODE_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_PAIR_READ_WRITE_FORM_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_PAIR_READ_WRITE_FORM_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_DXCH_PAIR_READ_WRITE_FORM_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_PORT_PROFILE_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_PORT_PROFILE_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_DXCH_PORT_PROFILE_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_PORT_PROFILE_ENT_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_PORT_PROFILE_ENT*, paramVal);
+    if (paramVal == NULL)
+    {
+        PRV_CPSS_LOG_AND_HISTORY_PARAM_MAC(contextLib, logType, "%s = NULL\n", namePtr);
+        return;
+    }
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, *paramVal, CPSS_DXCH_PORT_PROFILE_ENT);
+}
+void prvCpssLogParamFunc_CPSS_DXCH_UNIT_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_DXCH_UNIT_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_DXCH_UNIT_ENT);
+}
+

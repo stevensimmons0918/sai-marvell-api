@@ -1,0 +1,7 @@
+
+    /**
+     * @brief Get MAC information from port number
+     * @type sai_uint8_t
+     * @flags READ_ONLY
+     */
+    SAI_PORT_ATTR_MAC_NUMBER = SAI_PORT_ATTR_CUSTOM_RANGE_START,

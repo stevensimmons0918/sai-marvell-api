@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__map__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_map_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__map__t_1aaaca85a7e8c04d1d9600d8ebdfb04524" prot="public" static="no" mutable="no">
+        <type>sai_uint32_t</type>
+        <definition>sai_uint32_t _sai_map_t::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Input key value </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="685" column="1" bodyfile="inc/saitypes.h" bodystart="685" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__map__t_1a53e544a8a1c05a894ba1fbeb37d52172" prot="public" static="no" mutable="no">
+        <type>sai_int32_t</type>
+        <definition>sai_int32_t _sai_map_t::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Input data value for the key </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="688" column="1" bodyfile="inc/saitypes.h" bodystart="688" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/saitypes.h" line="683" column="1" bodyfile="inc/saitypes.h" bodystart="682" bodyend="690"/>
+    <listofallmembers>
+      <member refid="struct__sai__map__t_1aaaca85a7e8c04d1d9600d8ebdfb04524" prot="public" virt="non-virtual"><scope>_sai_map_t</scope><name>key</name></member>
+      <member refid="struct__sai__map__t_1a53e544a8a1c05a894ba1fbeb37d52172" prot="public" virt="non-virtual"><scope>_sai_map_t</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

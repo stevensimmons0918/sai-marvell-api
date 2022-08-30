@@ -1,0 +1,24 @@
+// TAG:               PRP-SAN-CPU
+// Short Description: Configures CPU port in PRP-SAN switch
+// Description:       Configures CPU port in PRP-SAN , in addition to other prp/interlink ports.
+end
+configure
+
+access-list device ${dev} pcl-ID 10
+rule-id 60 action trap-to-cpu mac-destination   ${macB1} /48 eport-assign ${ePort_PRP_port_A} src-id ${remove_rct_src_id_PRP_port_A} bypass-ingress-pipe 
+rule-id 66 action mirror-to-cpu mac-destination ${macC1} /48 eport-assign ${ePort_PRP_port_A} src-id ${remove_rct_src_id_PRP_port_A} bypass-ingress-pipe 
+exit 
+
+access-list device ${dev} pcl-ID 11
+rule-id 72 action trap-to-cpu mac-destination   ${macB1} /48 eport-assign ${ePort_PRP_port_B} src-id ${remove_rct_src_id_PRP_port_B} bypass-ingress-pipe 
+rule-id 78 action mirror-to-cpu mac-destination ${macC1} /48 eport-assign ${ePort_PRP_port_B} src-id ${remove_rct_src_id_PRP_port_B} bypass-ingress-pipe 
+exit 
+
+access-list device ${dev} egress pcl-ID 99
+rule-id 84 action trap-to-cpu mac-destination   ${macA2} /48 
+exit 
+
+interface ethernet ${dev}/${interlink}
+service-acl pcl-ID 99 egress lookup 0
+exit 
+ 

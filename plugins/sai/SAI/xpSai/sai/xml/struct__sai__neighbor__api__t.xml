@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__neighbor__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_neighbor_api_t</compoundname>
+    <includes refid="saineighbor_8h" local="no">saineighbor.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__neighbor__api__t_1a376933bb4edc21edf7e72314f69f36fe" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga8e179b3fad2059f9edecab19e82583d8" kindref="member">sai_create_neighbor_entry_fn</ref></type>
+        <definition>sai_create_neighbor_entry_fn _sai_neighbor_api_t::create_neighbor_entry</definition>
+        <argsstring></argsstring>
+        <name>create_neighbor_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="275" column="1" bodyfile="inc/saineighbor.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__neighbor__api__t_1a020c02aacaef39b7c3017956711c93ef" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga920277ac5c74cc1f7d3759688dd678a4" kindref="member">sai_remove_neighbor_entry_fn</ref></type>
+        <definition>sai_remove_neighbor_entry_fn _sai_neighbor_api_t::remove_neighbor_entry</definition>
+        <argsstring></argsstring>
+        <name>remove_neighbor_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="276" column="1" bodyfile="inc/saineighbor.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__neighbor__api__t_1a91ae520beec55e3f83557a80f2608869" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1gadb84f46515359209d22ce4bfd6e49266" kindref="member">sai_set_neighbor_entry_attribute_fn</ref></type>
+        <definition>sai_set_neighbor_entry_attribute_fn _sai_neighbor_api_t::set_neighbor_entry_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_neighbor_entry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="277" column="1" bodyfile="inc/saineighbor.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__neighbor__api__t_1a343c7e67db168d72a62aa71af8762fd6" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga33896dfb5183f3fdc6d0746c5433b684" kindref="member">sai_get_neighbor_entry_attribute_fn</ref></type>
+        <definition>sai_get_neighbor_entry_attribute_fn _sai_neighbor_api_t::get_neighbor_entry_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_neighbor_entry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="278" column="1" bodyfile="inc/saineighbor.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__neighbor__api__t_1aeca9575ab59e41f7a48e3b36ef2b0474" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga67f0ac85a18c7e93e19e69f10ac4da9c" kindref="member">sai_remove_all_neighbor_entries_fn</ref></type>
+        <definition>sai_remove_all_neighbor_entries_fn _sai_neighbor_api_t::remove_all_neighbor_entries</definition>
+        <argsstring></argsstring>
+        <name>remove_all_neighbor_entries</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="279" column="1" bodyfile="inc/saineighbor.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Neighbor table methods, retrieved via <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="965">
+        <label>_sai_neighbor_entry_t</label>
+        <link refid="struct__sai__neighbor__entry__t"/>
+        <childnode refid="966" relation="usage">
+          <edgelabel>ip_address</edgelabel>
+        </childnode>
+      </node>
+      <node id="964">
+        <label>_sai_neighbor_api_t</label>
+        <link refid="struct__sai__neighbor__api__t"/>
+        <childnode refid="965" relation="usage">
+          <edgelabel>remove_neighbor_entry</edgelabel>
+          <edgelabel>create_neighbor_entry</edgelabel>
+          <edgelabel>set_neighbor_entry_attribute</edgelabel>
+          <edgelabel>get_neighbor_entry_attribute</edgelabel>
+        </childnode>
+      </node>
+      <node id="966">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="967" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="967">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saineighbor.h" line="274" column="1" bodyfile="inc/saineighbor.h" bodystart="273" bodyend="281"/>
+    <listofallmembers>
+      <member refid="struct__sai__neighbor__api__t_1a376933bb4edc21edf7e72314f69f36fe" prot="public" virt="non-virtual"><scope>_sai_neighbor_api_t</scope><name>create_neighbor_entry</name></member>
+      <member refid="struct__sai__neighbor__api__t_1a343c7e67db168d72a62aa71af8762fd6" prot="public" virt="non-virtual"><scope>_sai_neighbor_api_t</scope><name>get_neighbor_entry_attribute</name></member>
+      <member refid="struct__sai__neighbor__api__t_1aeca9575ab59e41f7a48e3b36ef2b0474" prot="public" virt="non-virtual"><scope>_sai_neighbor_api_t</scope><name>remove_all_neighbor_entries</name></member>
+      <member refid="struct__sai__neighbor__api__t_1a020c02aacaef39b7c3017956711c93ef" prot="public" virt="non-virtual"><scope>_sai_neighbor_api_t</scope><name>remove_neighbor_entry</name></member>
+      <member refid="struct__sai__neighbor__api__t_1a91ae520beec55e3f83557a80f2608869" prot="public" virt="non-virtual"><scope>_sai_neighbor_api_t</scope><name>set_neighbor_entry_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

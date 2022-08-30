@@ -1,0 +1,4197 @@
+module MTS-Platform-Yang-Module {
+	yang-version "1.1";
+	namespace "urn:marvell:mts:hw:platform:yang";
+	prefix "mtsplt";
+	import ietf-yang-metadata {
+		prefix "md";
+	}
+	import mts-metadata {
+		prefix "mtsmd";
+	}
+	organization
+		"Marvell Technology Group Ltd.";
+	contact
+		"WG Web: <https:// ???/>
+		WG List: <???>
+		WG Chair: ???
+	mailto:???";
+	description
+		"This YANG module defines the essential components for the management
+		of a routing subsystem. Platform Model supported by Marvell MTS.
+		Copyright (c)2019.	All rights reserved.";
+	revision 2020-08-13 {
+		description "3.19
+			added ledstream new support";
+	}
+	revision 2020-08-12 {
+		description "3.18
+			added support for 22g speed-type";
+	}
+	revision 2020-07-29 {
+		description "3.17
+			added PoE BT types to PSEport-type and to PSE-type";
+	}
+	revision 2020-06-23 {
+		description "3.16
+			added board description support";
+	}			
+	revision 2020-06-18 {
+		description "3.15
+			added cpu-info-current supporting num-of-usb-devices";
+	}			
+	revision 2020-05-21 {
+		description "3.14
+			led-interface-select - added verification is-phy-used on network port for phy leds";
+	}		
+	revision 2020-05-03 {
+		description "3.13
+			lane-number-type 0..255 -> 0..257";
+	}		
+	revision 2020-04-21 {
+		description "3.12
+			add is-logical-port-required global field (override per front-panel value)";
+	}
+	revision 2020-04-17 {
+		description "3.11
+			added support for cpu-sdma-port-mapping";
+	}
+	revision 2020-04-13 {
+		description "3.10
+			change port-lane-number-type range to 0..7 (not 0..3)
+			change logical-port-number-type range up to 287 (not 255)
+			change pp-port-number-type range up to 271 (not 127)";
+	}
+	revision 2020-03-24 {
+		description "3.10
+		-- add PHYs 88E2540 & 88X3540";
+	}	
+	revision 2020-01-19 {
+		description "3.9
+		-- add typedef logical-port-number-type to panel. 
+		-- added is-logical-port-required to Network Ports.
+		-- added logical-port-number to port-list.";
+	}	
+	revision 2019-08-13 {
+		description "3.8
+		-- added phy secondary address 
+		-- added pse mapping to address
+		-- added poe mcu type
+		-- pse activeInfo depend on mcu type
+		-- add support for port single led.";
+	}	
+	revision 2019-06-11 {
+		description "3.7
+		-- added to mux bus and access and transaction type
+		-- added external driver to sensor, fan, led
+		-- added to front panel prefix";
+	}
+	revision 2019-06-06 {
+		description "3.7
+		-- added access size to i2c MUX.";
+	}	
+	revision 2019-03-25 {
+		description "3.6
+		-- added new i2c transaction type";
+	}		
+	revision 2019-02-10 {
+		description "3.5
+		-- added new fan PWM 
+		-- update PoE banks max-elements to 17 as WA so that we can have 16 power banks";
+	}
+	revision 2019-02-03 {
+		description "3.4,
+		-- added right-serdes-lane-list and left-serdes-lane-list to Back-to-Back-links
+		-- changed serdes-exist and serdes-group to serdes-lane-list";
+	}
+	revision 2018-10-17 {
+		description "3.3,
+		-- changed software fan controller to point to sensor id
+		-- changed sensors to allow define sensor for CPU, board, PHY and mac";
+	}
+	revision 2018-10-11 {
+		description "3.2,
+		-- changed software fan controller 
+		";
+	}
+	revision 2018-09-16 {
+		description "3.1,
+		-- SERDES->list-lane remove lane-attributes-exist and lane-attributes, 
+		   changed info-list to lane-attributes-info-list
+		   allow list with 0 elements ( for case no lane attributes)
+		-- L1-interface-mode-list added phy-init-list to allow serdes tunning in PHY
+		   allow list with 0 elements ( for case no phy serdes configure )
+		-- gpio-pin-value-type added  pin-initial-value to decide default source
+		-- centralize handle of sensor thresholds
+		";
+	}
+	revision 2018-08-15 {
+		description "3.0,
+		-- structure change";
+	}
+	revision 2018-07-22 {
+		description "2.37
+		-- changed ordered by to system for any list that is position agnostic
+		-- mpp-device-number-type added range 0..1 and 255
+		-- added new fan EMC2305 ";
+	}
+	revision 2018-07-18 {
+		description "2.36
+		-- added ordered-by to all list ";
+	}
+	revision 2018-06-24 {
+		description "2.35,
+		-- panel-group-ordering-type fix indentation 
+	 	-- moved mpp pins to start " ;
+	}
+	revision 2018-05-27 {
+		description "2.34,
+		-- bank-source-type changed description for RPS and PD
+	 	-- L1-interface-mode-type removed NA" ;
+	}
+	revision 2018-05-21 {
+		description "2.33,
+		-- fan-controller-role-type changed to fan-role-type
+	 	-- fan-controller-role moved from fan-controller to  connected-FANs" ;
+	}
+	revision 2018-05-10 {
+		description "2.32,
+		-- fixed parse errors in smi-xsmi 
+		-- replace choice used for supported  or used with if boolean and container with when";
+	}
+	revision 2018-04-26 {
+		description "2.31,
+		-- added import mts-metadata
+		-- moved typedef to new imported file mts-metadata
+		-- moved version to new imported file mts-metadata
+		-- movedversion shouyld show the lates reviusion - first from top
+		-- add fanLed 
+		-- added smi-xsmi type
+		-- fixed gbic read memory using i2c only
+		-- chaned led operatiuon toi be by off, color and blink
+		-- cpu type changed to leaf
+		-- fix temparature spelling 
+		-- sensore state info is now  in choice";
+	}
+	revision 2018-03-27 {
+		description "2.32,
+			-- fixed power banks
+			-- added feature poe supported
+			-- moved coinnected FANs to be shared attrrbute for all fans
+			-- added port led support smi + led stream";
+	}
+	revision 2018-03-16 {
+		description "2.31,
+		-- added version
+		-- replaced all _ with -
+		-- added type annotation 
+		-- added typedef-definition container
+		-- add import ietf-yang-metadata for metadata
+		-- added root container MTS-Platform
+		-- added enum values
+		-- added import md";
+	}
+	revision 2018-03-15 {
+		description "2.30,
+		-- added stack led support led list
+		-- added fan control type  - normal redundant
+		-- fixed hw fan controller operation ";
+	}
+	revision 2018-03-09 {
+		description "2.29,
+		-- added stack support
+		-- added stack led support
+		-- serdes information removed index - replaced with interface type and connector type";
+	}
+	revision 2018-02-27 {
+		description "2.28,
+		-- aligned text
+		-- change order
+		-- sperate group from feature 
+		-- per port change serdes to serdes list
+		-- added container for packet processors";
+	}
+	revision 2018-02-22 {
+			description "2.27,
+			--	add new fan controller 
+			--	add serdes configuration";
+	}
+	revision 2018-02-06 {
+		description "2.26,
+			-- smi interlace 0..1 -> 0..3
+			-- fix misspelling
+			-- added cpu container with cpu type
+			-- added oob eth id
+			-- swap lane moved from port to lane
+			-- lane-number-type 0..3 -> 0..255
+			-- Fan controller changed to HwFanController
+			--	Fan changed module to fit Hw spwcification";
+	}
+	revision 2018-01-31 {
+		description "2.25,
+			-- add cpu type
+			-- add cpu port number for oob port
+			-- add oob port phy type";
+		reference "???";
+		}
+	revision 2018-01-11 {
+		description "2.24,
+			-- add fan operational fields
+			-- fix misspelling
+			-- gpio fixed";
+		reference "???";
+		}
+	revision 2017-12-17 {
+		description "2.23,
+		-- i2c, gpi and SMI/XSMI are defined as containers
+		-- MUXes are defined as optionals
+		-- RotationDirectionControl of a fan is optional";
+		reference "???";
+	}
+	revision 2017-12-11 {
+		description "2.22,
+		-- gpio-mux was updated";
+		reference "???";
+	}
+	revision 2017-11-19 {
+		description "2.21,
+		-- a value of gpio-readable-writable-pin was added to type mpp-pin-mode-type";
+		reference "???";
+	}
+	revision 2017-11-08 {
+		description "2.20,
+		-- type 'number-of-pps-type' was added";
+		reference "???";
+	}
+	revision 2017-11-06 {
+		description "2.19,
+		-- gpio MUX for I2C was added
+		-- sensor status was added";
+		reference "???";
+	}
+	revision 2017-10-31 {
+		description "2.18,
+		-- access was added to i2c-read-write-address-group-type";
+		reference "???";
+	}
+	revision 2017-10-26 {
+		description "2.17,
+		-- Offset was added to I2C MUX";
+		reference "???";
+	}
+	revision 2017-10-18 {
+		description "2.16,
+		-- PHY definition was modified";
+		reference "???";
+	}
+	revision 2017-10-17 {
+		description "2.15,
+		-- leaf first-port-number-shift was added into list front-panel-group";
+		reference "???";
+	}
+	revision 2017-10-16 {
+		description "2.14,
+		-- definition of SMI/XSMI was move into section SMI/XSMI from PHY";
+		reference "???";
+	}
+	revision 2017-09-24 {
+		description "2.13,
+		-- leaf speed was moved from list port to list front-panel-group";
+		reference "???";
+	}
+	revision 2017-09-05 {
+		description "2.12,
+		-- container SwFanController was added
+		-- gpio-mux was added";
+		reference "???";
+	}
+	revision 2017-08-15 {
+		description "2.11,
+		-- grouping PoEbanks-type was added
+		-- PoEbanks are defined per PS and RPS";
+		reference "???";
+	}
+	revision 2017-08-10 {
+		description "2.10,
+		-- Fixed must statement expressions defining specifiable mpp pins for controls
+		-- Fixed some mistakes in description";
+		reference "???";
+	}
+	revision 2017-06-18 {
+		description "2.09,
+		-- default value of leaf oob-feature-is-supported: true => false
+		-- grouping gbic-on-gpio-type: 
+			 container mux => container gbic-mux
+		-- typos into typedef speed-type were fixed";
+		reference "???";
+	}
+	revision 2017-06-06 {
+		description "2.08, 
+		-- introduced in led-combo-group-type containers gpio-group and 
+			 i2c-group to force XML instance data to contain a gpio-group and an i2c-group node";
+		reference "???";
+	}
+	revision 2017-05-30 {
+		description "2.07, 
+		-- mistakes in writing were fixed into:
+			 -- grouping port-led-group-type
+			 -- container PortsLeds
+		-- if-feature replaced by corresponding 'when' expression
+			 in all containers except feature leaves.";
+		reference "???";
+	}
+	revision 2017-05-29 {
+		description "2.06, 
+		-- off-value was added into i2s part of combo LEDs.
+		-- grouping led-mode-list-type was removed.
+		-- if-feature replaced by corresponding 'when' expression 
+			 in all containers except feature leaves";
+		reference "???";
+	}
+	revision 2017-05-28 {
+		description "2.05, 
+		-- grouping led-mode-list-type was added.
+		-- mandatory true was added in choices.
+		-- a default value of 0 was added.";
+		reference "???";
+	}
+	revision 2017-05-25 {
+		description "2.04, 
+		-- cosmetic changes into statement must of grouping gbic-on-gpio-type.
+		-- grouping gpio-group-type was replaced by the following ones:
+			 -- grouping gpio-read-address-group-type
+			 -- grouping gpio-write-address-group-type
+		-- grouping power-connection-group-type was replaced by the following ones:
+			 -- grouping power-connection-read-only-group-type
+			 -- grouping power-connection-read-wrie-group-type
+		-- add case combo to grouping led-cpu-group-type
+		-- add CPU MPP pins";
+		reference "???";
+	}
+	revision 2017-05-24 {
+		description "2.03, 
+		-- grouping gbic-on-gpio-type was modified:
+			 -- some bugs were fixed
+			 -- statement must checking the pin was added.";
+		reference "???";
+	}
+	revision 2017-05-23 {
+		description "2.02, 
+		-- For each feature a read-only node is defined that is present only when the feature is supported.
+		-- The presence statement was added to container LEDs to avoid warnings.";
+		reference "???";
+	}
+	revision 2017-05-22 {
+		description "2.01, 
+		-- GBIC specification was updated - offset was added.";
+		reference "???";
+	}
+	revision 2017-05-21 {
+		description "2.00, 
+		-- CPLD was removed: CPLD is only a MUX.
+		-- Variable i2c-access was removed.
+		-- GBIC specification was updated.
+		-- LEDs specification was updated.
+		-- Fan Controller specification was updated.
+		-- FANs specification was updated.";
+		reference "???";
+	}
+	revision 2017-05-18 {
+		description "1.10, 
+		-- Some bugs in statements must were fixed.
+		-- Mandatory statements were removed from key leafs.";
+		reference "???";
+	}
+	revision 2017-05-17 {
+		description "1.09, 
+		-- Some bugs in statements must were fixed.";
+		reference "???";
+	}
+	revision 2017-03-06 {
+		description "1.08, 
+		-- Type 'led-state-type': 'enum blinking' was replaced by:
+			 * 'enum lowRateBlinking'
+			 * 'enum normalRateBlinking'
+			 * 'enum highRateBlinking'";
+		reference "???";
+	}
+	revision 2017-03-04 {
+		description "1.07, 
+		-- Section 'MPP' was replaced by section 'GPIO'.
+		-- Section 'LEDs' was modified:
+			 --- The i2c interface was removed.
+			 --- The cpld interface was modified.
+			 --- The mpp interface was replaced by the gpio interface.";
+		reference "???";
+	}
+	revision 2017-03-01 {
+		description "1.06, 
+		-- Section 'LEDs' was modified: 'pp-led-interface' was added.";
+		reference "???";
+	}
+	revision 2017-02-28 {
+		description "1.05, 
+		-- Section 'Back-to-Back Links' was replaced by section 'Packet Processors'.
+		-- Node 'number-of-pps' was added.";
+		reference "???";
+	}
+	revision 2017-02-27 {
+		description "1.04, 
+		-- Section 'smi and xsmi' was removed.
+		-- OOB Port Configuration was updated. 
+		-- PHY configuration was updated (sections 'Types Definitions' and 'PHYs').";
+		reference "???";
+	}
+	revision 2017-02-26 {
+		description "1.03, 
+		-- Some features were added.
+		-- Some bugs were fixed.";
+		reference "???";
+	}
+	revision 2017-02-25 {
+		description "1.02, 
+		-- Serdes is defined per Packet Processor";
+		reference "???";
+	}
+	revision 2017-02-22 {
+		description "1.01, 
+		-- Definition of network-ports was modified";
+		reference "???";
+	}
+	revision 2017-02-21 {
+		description "1.00, Initial revision.";
+		reference "???";
+	}
+// annotations 
+	md:annotation type {
+		type mtsmd:typedef-type;
+		description "This annotation contains the type of the node whose value is passed.
+			         Enables defining a type metadata for each value.";
+	}
+// features 
+	feature MPP-pin-feature {
+		description "Multi Purpose Pins are supported";
+	}
+	feature SERDES-feature {
+		description "SERDES are supported";
+	}
+	feature PHY-feature {
+		description "PHY is supported";
+	}
+	feature OOB-feature {
+		description "OOB port is supported";
+	}
+	feature Fan-feature {
+		description "FANs are supported";
+	}
+	feature Sensor-feature {
+		description "Temperature Sensors are supported";
+	}
+	feature POWER-feature {
+		description "Power is supported";
+	}
+	feature POE-feature {
+		description "Power Over Ethernet is supported";
+	}
+    feature Button-feature {
+		description "Buttons are supported";
+	}
+	feature LED-feature {
+		description "LEDs are supported";
+	}
+	feature CPU-feature {
+		description "CPU information is supported";
+	}
+	feature Stack-feature {
+		description "Stack is supported";
+	}
+	feature External-driver-feature {
+		description "External Drivers are supported";
+	}
+	feature board-description-feature {
+		description "Board description is supported";
+	}
+	
+// root
+	container MTS-Platform {
+		description "MTS Platform Yang, this describes the hardware and access for MTS boards.";
+// 
+// Section Features Definitions
+// 	
+		leaf MPP-pin-feature-is-supported {
+			if-feature MPP-pin-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The node can be configured only if an MPP-pin is supported.";
+		}
+		leaf SERDES-feature-is-supported {
+			if-feature SERDES-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The node can be configured only if SERDES is supported.";
+		}
+		leaf PHY-feature-is-supported {
+			if-feature PHY-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if PHY is supported.";
+		}
+		leaf oob-feature-is-supported {
+			if-feature OOB-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if OOB port is supported.";
+		}
+		leaf Fan-feature-is-supported {
+			if-feature Fan-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if Fan is supported.";
+		}
+		leaf LED-feature-is-supported {
+			if-feature LED-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if LED is supported.";
+		}
+		leaf Sensor-feature-is-supported {
+			if-feature Sensor-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if PHY is supported.";
+		}
+		leaf POWER-feature-is-supported {
+			if-feature POWER-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if POWER is supported.";
+		}
+		leaf POE-feature-is-supported {
+			if-feature POE-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if POE is supported.";
+		}
+		leaf Button-feature-is-supported {
+			if-feature Button-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if Buttons are supported.";
+		}
+		leaf CPU-feature-is-supported {
+			if-feature CPU-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if CPU information is supported.";
+		}
+		leaf CPU-SDMA-port-mapping-is-supported {
+			if-feature CPU-sdma-port-mapping-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if CPU SDMA port mapping information is supported.";
+		}
+		leaf Stack-feature-is-supported {
+			if-feature Stack-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if Stack is supported.";
+		}
+		leaf External-driver-feature-is-supported {
+			if-feature External-driver-feature;
+			type boolean;
+			default false;
+			//config false;
+			description "The feature can be configured only if an External-driver is supported.";
+		}
+		leaf is-logical-port-required {
+			type boolean;
+			description "Specifies if logical port number required, when the logical port and mac port are different.";
+			default false;
+		}
+		leaf Board-description-feature-is-supported {
+			if-feature board-description-feature;
+			type boolean;
+			default false;
+			description "The feature can be configured only if an Board description is supported.";		
+		}		
+// 
+// Section Type Definitions
+// 
+// I2C	
+		typedef i2c-access-type {
+			type enumeration {
+				enum one-byte {
+					description "Access by one byte.";
+					value 1;
+				}
+				enum two-bytes {
+					description "Access by two bytes.";
+					value 2;
+				}
+				enum four-bytes {
+					 description "Access by four bytes.";
+					 value 3;
+			 	}
+			}
+			description "Specifies the access to i2c in number of bytes.";
+		}
+		typedef i2c-bus-id-type {
+			type uint8 {
+				range "0..1";
+			}
+			description "Specifies the i2c BUS Identifier.";
+		}
+		typedef i2c-address-type {
+			type uint8 {
+				range "0..127";
+			}
+			description "Specifies the i2c Address (7 bits).";
+		}	
+		typedef i2c-offset-type {
+			type uint16;
+			description "Specifies the i2c Offset.";
+		}
+		typedef i2c-mask-type {
+			type uint16 {
+				range "1..65535";
+			}
+			description
+				"Specifies the i2c mask.
+				The following values are allowed:
+					I2c type	allowed value
+					One-byte	<= 0xFF.
+					Two-bytes	<= 0xFFFF.";
+		}
+		typedef i2c-value-type {
+			type uint16;
+			description
+				"Specifies the i2c value.";
+		}
+		typedef i2c-transaction-type {
+			description
+				"Specifies the i2c Transaction mode.";
+			type enumeration {
+				enum offset-and-data {
+					description "Offset and data are calculated in one transaction.";
+					value 1;
+				}
+				enum offset-then-data {
+					description "Two transactions are used: one for offset and then one for data.";
+					value 2;
+				}
+			}
+		}			
+// MPP
+		typedef mpp-device-number-type {
+			type uint8 {
+				range "0..255";
+			}
+			description "Specifies that the device supports MPP pins:
+				0-254: Specify the Packet Processor device number.
+				255: Represents the CPU device.";
+		}
+		typedef mpp-pin-mode-type {
+			type enumeration {
+				enum gpio-readable-pin {
+					description "This pin is GPIO readable.";
+					value 1;
+				}
+				enum gpio-writable-pin {
+					description "This pin is GPIO writable.";
+					value 2;
+				}
+				enum gpio-readable-writable-pin {
+					description "This pin is a GPIO readable and writable pin.";
+					value 3;
+				}
+			}
+			description "Specifies the MPP pin mode type used by the GPIO interface.";
+		}
+		typedef mpp-pin-number-type {
+			type uint8 {
+	      			range "0..63";
+			} 
+			description "Specifies the MPP pin number.";
+		}
+		typedef mpp-pin-value-type {
+			type uint8 {
+				range "0..1";
+			} 
+			description "Specifies the MPP pin value.";
+		}
+		typedef mpp-pin-init-value-type {
+			type enumeration {
+				enum 0 {
+					description "Writable GPIO is initialized to value 0.";
+					value 1;
+				}
+				enum 1 {
+					description "Writable GPIO is initialized to value 1.";
+					value 2;
+				}
+				enum hw {
+					description "Writable GPIO is initialized to a value that is read from hardware.";
+					value 3;
+				}
+			}
+			description "Specifies the initial value of the Writable MPP pin.";
+		}
+// GPIO	
+		typedef gpio-device-number-type {
+			type mpp-device-number-type;
+			description "The device supports GPIO pins.";
+		}
+		typedef gpio-pin-number-type {
+			type mpp-pin-number-type;
+			description "The GPIO pin number.";
+		}
+		typedef gpio-pin-value-type {
+			type mpp-pin-value-type;
+			description "The GPIO pin value.";
+		}
+// Interface
+		typedef interface-type {
+			type enumeration {
+				enum interface-gpio {
+					description "The Interface type is GPIO";
+					value 1;
+				}
+				enum interface-i2c {
+					description "The Interface type is i2c";
+					value 2;
+				}
+			}
+			description "Specifies the interface Type GPIO/i2c.";
+		}
+// SMI-XSMI
+		typedef smi-xsmi-interface-id-type {
+			type uint8 {
+				range "0..3";
+			}
+			description "Specifies the SMI/XSMI interface ID.";
+		}
+		typedef smi-xsmi-address-type {
+			type uint8 {
+				range "0..31";
+			}
+			description "Specifies the SMI/XSMI Address.";
+		}
+		typedef smi-xsmi-register-type {
+			type uint16; 
+			description "Specifies the SMI/XSMI Register.";
+		}
+		typedef smi-xsmi-device-or-page-type {
+			type uint8 {
+				range "0..255";
+			}
+			description "Specifies the SMI Page or XSMI Device.";
+		}
+		typedef smi-xsmi-type-type {
+			type enumeration {
+				enum smi {
+					description "The type is SMI.";
+					value 1;
+				}
+				enum xsmi {
+					description "The type is XSMI.";
+					value 2;
+				}
+			}
+			description "Specifies the SMI/XSMI type.";
+		}
+		typedef smi-xsmi-mask-value-type {
+			type uint16 {
+				range "0..65535";
+			}
+			description "Specifies SMI/XSMI mask or value";
+		}
+		typedef smi-xsmi-address-role-type {
+			type enumeration {
+				enum secondary {
+					description "The type is secondary address.";
+					value 1;
+				}
+			}
+			description "Specifies the SMI/XSMI address role.";
+		}
+// PP
+		typedef number-of-pps-type {
+			type uint8 {
+				range "1..2";
+			}
+			description "Specifies the number of Packet Processors.";
+		}
+		typedef pp-device-number-type {
+			type uint8 {
+				range "0..1";
+			}
+			description "Specifies the Packet Processor device number.
+				     Must be smaller than the number of Packet Processors.
+				     Range is 0..(number of Packet Processors minus one), i.e. {0} for single Packet Processor system or {0..1} for two Packet Processors system.";
+		}
+		typedef pp-port-number-type {
+			type uint32 {
+				range "0..271";
+			}
+			description "Specifies the Packet Processor port number.";
+		}
+// PANEL	
+		typedef panel-group-number-type {
+			type uint8 {
+				range "1..4";
+			}
+			description "Specifies the front panel group number, this is a logical number used to enumerate the different front panel groups.";
+		}
+		typedef panel-port-number-type {
+			type uint8;
+			description "Specifies the front panel port number within a specific front panel group.";
+		}
+		typedef logical-port-number-type {
+			type uint32 {
+				range "0..287";
+			}
+			description "Specifies the logical port number within a specific front panel group.";
+		}
+		typedef panel-group-ordering-type {
+			type enumeration {
+				enum RightDown {
+					description
+						"Defines line-by-line ordering of the ports on the Front Panel:
+						   01 | 02 | 03 | .. | 24
+						   25 | 26 | 27 | .. | 48";
+					value 1;
+				}
+				enum DownRight {
+					description
+						"Defines left-to-right ordering of the ports on the Front Panel:
+							1 | 3 | 5 | .. | 47
+							2 | 4 | 6 | .. | 48";
+					value 2;
+				}
+				enum Single2ndRow {
+					description
+						"Defines a single 2nd row ordering of the ports on the Front Panel:
+						
+							1	2  3  4  5  ..  48";
+					value 3;
+				}
+			}
+			description "Specifies ports location on the front panel for the group.";
+		}
+// PORT	
+		typedef speed-type {
+			type enumeration {
+				enum 10M {
+					description "10 Mbits/s";
+					value 1;
+				}
+				enum 100M {
+					description "100 Mbits/s";
+					value 2;
+				}
+				enum 1G {
+					description "1 Gbits/s";
+					value 3;
+				}
+				enum 2.5G {
+					description "2.5 Gbits/s";
+					value 4;
+				}
+				enum 5G {
+					description "5 Gbits/s";
+					value 5;
+				}
+				enum 10G {
+					description "10 Gbits/s";
+					value 6;
+				}
+				enum 20G {
+					description "20 Gbits/s";
+					value 7;
+				}
+				enum 24G {
+					description "24 Gbits/s";
+					value 8;
+				}
+				enum 25G {
+					description "25 Gbits/s";
+					value 9;
+				}
+				enum 40G {
+					description "40 Gbits/s";
+					value 10;
+				}
+				enum 50G {
+					description "50 Gbits/s";
+					value 11;
+				}
+				enum 100G {
+					description "100 Gbits/s";
+					value 12;
+				}
+				enum 22G {
+					description "22 Gbits/s";
+					value 13;
+				}				
+			} 
+			description "Specifies the Speed.";
+		}
+		typedef lane-number-type {
+			type uint32 {
+				range "0..257";
+			}
+			description "Specifies the SERDES Lane Number.";
+		}
+		typedef port-lane-number-type {
+			type uint8 {
+				range "0..7";
+			}
+			description "Specifies the SERDES Lane relative Number of port.";
+		}
+		typedef transceiver-type {
+			type enumeration {
+				enum fiber {
+					description "Fiber";
+					value 1;
+				}
+				enum copper {
+					description "Copper";
+					value 2;
+				}
+				enum combo {
+					 description "Combo";
+					 value 3;
+				}
+		 	}
+			description "Specifies the port transceiver type.";
+		}
+		typedef connector-type-type {
+			type enumeration {
+				enum SFPPlus {
+					description "SFP+";
+					value 1;
+				}
+				enum DAC {
+					 description "Direct connected Cable";
+					 value 2;
+				}
+				enum RJ45 {
+					 description "Copper";
+					 value 3;
+				}
+			 }
+			description "Specifies the port connector type.";
+		}
+		typedef L1-interface-mode-type {
+			type enumeration {
+				enum SGMII {
+					description "SGMII";
+					value 1;
+				}
+				enum XGMII {
+					description "XGMII";
+					value 2;
+				}
+				enum 1000BASE-X {
+					description "1000BASE-X";
+					value 3;
+				}
+				enum QX {
+					description "QX";
+					value 4;
+				}
+				enum HX {
+					description "HX";
+					value 5;
+				}
+				enum RXAUI {
+					description "RXAUI";
+					value 6;
+				}
+				enum 100BASE-FX {
+					description "100BASE-FX";
+					value 7;
+				}
+				enum KR {
+					description "KR";
+					value 8;
+				}
+				enum SR-LR {
+					description "SR-LR";
+					value 9;
+				}
+				enum QSGMII {
+					description "QSGMII";
+					value 10;
+				}
+				enum MII {
+					description "MII";
+					value 12;
+				} 
+				enum XHGS {
+					description "XHGS (11800, 23600, 47200)";
+					value 13;
+				}
+				enum KR2 {
+					description "KR2";
+					value 14;
+				}
+				enum CR4 {
+					description "CR4";
+					value 15;
+				}
+				enum KR4 {
+					description "KR4";
+					value 16;
+				}					
+				enum SXGMII {
+					description "SXGMII";
+					value 17;
+				}
+				enum DXGMII {
+					description "DXGMII";
+					value 18;
+				}				
+				enum QUSGMII {
+					description "QUSGMII";
+					value 19;
+				}
+				enum QXGMII {
+					description "QXGMII";
+					value 20;
+				}
+				enum OUSGMII {
+					description "OUSGMII";
+					value 21;
+				}
+				enum OXGMII {
+					description "OXGMII";
+					value 22;
+				}			
+				enum XHGS-SR {
+					description "XHGS-SR (22000)";
+					value 23;
+				}
+			}
+			description "Specifies the Interface Mode for a Packet Processor Port.";
+		}
+// list
+		typedef list-number-type {
+			type uint16 {
+				range "1..65535";
+			}
+			description "Specifies the List Element Logical Number, used to insert entries to the list";
+		}
+		typedef list-comment-type {
+			type string {
+				length "0..255";
+			}
+			description "Specifies the description of this node in the List";
+		}
+// FAN	
+		typedef fan-id-type {
+			type uint8 {
+				range "1..16";
+			}
+			description "Specifies the FAN-unique Identifier (system wide).";
+		}
+		typedef fan-number-type {
+			type uint8 {
+				range "1..8";
+			}
+			description "Specifies the FAN Number, relative number within a FAN Controller.";
+		}
+		typedef fan-controller-number-type {
+			type uint8 {
+				range "0..16";
+			}
+			description "Specifies the FAN Controller Number.";
+		}
+		typedef fan-role-type {
+			type enumeration {
+				enum normal {
+					description "normal";
+					value 1;
+				}
+				enum redundant {
+					description "redundant";
+					value 2;
+				}
+			}
+			description "Specifies the FAN role: normal or redundant.";
+		}
+		typedef hw-fan-operation-type {
+			type enumeration {
+				enum initialize {
+					description "Initialize the FAN.";
+					value 1;
+				}
+				enum all-fan-max-speed {
+					description "Set all FANs to 100% speed, including redundant.";
+					value 2;
+				}
+				enum all-fan-normal-speed {
+					description "Set all FANs to normal speed, including redundant(recovery).";
+					value 3;
+				}
+				enum enable-fan {
+					description "Enable the FAN.";
+					value 4;
+				}
+				enum disable-redundant-fan {
+					description "Disable the FAN.";
+					value 5;
+				}
+			}
+			description "Specifies a hardware FAN controller operations.";
+		}
+		typedef fan-ADT7476-fault-detection-type {
+			type enumeration {
+				enum interrupt-status {
+					description "Access by one byte";
+					value 1;
+				}
+				enum TACHI-low-byte {
+					description "Access by two bytes";
+					value 2;
+				}
+			}
+			description "Specifies the fault detection register for the ADT7476 FAN.";
+		}
+		typedef fan-type {
+			type enumeration {
+				enum tc654 {
+					description "Specifies FAN type as tc654.";
+					value 1;
+				}
+				enum ADT7476 {
+					description "Specifies FAN type as ADT7476.";
+					value 2;
+				}
+				enum EMC2305 {
+					description "Specifies FAN type as EMC2305.";
+					value 3;
+				}
+				enum PWM {
+					description "Specifies FAN type as PWM.";
+					value 4;
+				}
+				enum userDefined {
+					description "Specifies FAN type as user-defined.";
+					value 5;
+				}
+			}
+			description "Specifies the hardware FAN type.";
+		}
+
+// POE 	
+		typedef bank-number-type {
+			type uint8 {
+				range "0..15";
+			}
+			description "Specifies the Power Bank Number.";
+		}
+		typedef bank-watts-type {
+			type uint16;
+			description "Specifies the Power Bank size in Watts.";
+		}
+		typedef bank-source-type {
+			type enumeration {
+				enum PS {
+					description "Specifies the Power source as the main Power Supply.";
+					value 1;
+				}
+				enum RPS {
+					description "Specifies the Power source as the Redundant Power Supply.";
+					value 2;
+				}
+				enum PDports {
+					description "Specifies the Power source as the PoE Powered Device ports.";
+					value 3;
+				}
+			}
+			description "Specifies the Power Bank Power source.";
+		}
+		typedef PSEindex-type {
+			type uint8 {
+				range "0..127";
+			}
+			description "Specifies the PSE index.";
+		}
+		typedef PSEport-type {
+			type enumeration {
+				enum AF {
+					description "Specifies the PSE Port type is AF (PoE).";
+					value 1;
+				}
+				enum AT {
+					description "Specifies the PSE Port type as AT (PoE Plus).";
+					value 2;
+				}
+				enum 60W {
+					description "Specifies the PSE Port type as 60W (UPoE).";
+					value 3;
+				}
+				enum BT {
+					description "Specifies the PSE Port type as BT.";
+					value 4;
+				}
+			}
+			description "Specifies the PSE Port Type";
+		}
+		typedef PSE-type {
+			type enumeration {
+				enum undefined {
+					description "Specifies the PSE is not defined, legacy Yang.";
+					value 1;
+				}
+				enum 690xx {
+					description "Specifies the PSE Microsemi 69008.";
+					value 2;
+				}
+				enum 691xx {
+					description "Specifies the PSE Microsemi 69100.";
+					value 3;
+				}
+				enum 692xx {
+					description "Specifies the PSE Microsemi 69200.";
+					value 4;
+				}
+				enum 2388xx {
+					description "Specifies the PSE TI tps 238800.";
+					value 5;
+				}
+				enum 692bt {
+					description "Specifies the PSE Microsemi 692x0-BT.";
+					value 6;
+				}
+			}
+			description "Specifies the PSE Type";
+		}
+		typedef PSE-number-type {
+			type uint8 {
+				range "0..127";
+			}
+			description "Specifies the PSE number.";
+		}
+		typedef PSE-address-type {
+			type uint8 {
+				range "0..127";
+			}
+			description "Specifies the PSE index.";
+		}
+// POWER
+		typedef power-status-type {
+			type enumeration {
+				enum standBy {
+					description "Specifies Power status is Standby.";
+					value 1;
+				}
+				enum notAvailable {
+					description "Specifies Power status is notAvailable.";
+					value 2;
+				}
+				enum backUp {
+					description "Specifies Power status is BackUp Power.";
+					value 3;
+				}
+				enum ready {
+					description "Specifies Power status is Ready.";
+					value 4;
+				}
+			}
+			description "Specifies Power Status.";
+		}
+// PHY
+		typedef phy-number-type {
+			type uint8{
+				range "0..127";
+			}
+			description "Specifies the PHY Number.";
+		}
+		typedef phy-position-type {
+			type uint8 {
+				range "0..7";
+			}
+			description "Specifies the PHY Position within the PHY (e.g. Relative PHY in a Quad PHY).";
+		}
+		typedef phy-type-type {
+			type enumeration {
+				enum no-phy-direct-attached-fiber {
+					description "Specifies direct connection between SFP cage to mac PP";
+					value 1;
+				}
+				enum alaska-88E1543 {
+					description "Specifies PHY identifier 88E1543, used for Combo ports.";
+					value 2;
+				}
+				enum alaska-88E1545 {
+					description "Specifies PHY identifier 88E1545, used for Copper GE with MAC on PHY support.";
+					value 3;
+				}
+				enum alaska-88E1548 {
+					description "Specifies PHY identifier 88E1548, used for Fiber GE.";
+					value 4;
+				}				
+				enum alaska-88E1680 {
+					description "Specifies PHY identifier 88E1680, used for Copper with speeds of 10M/100M/1G.";
+					value 5;
+				}
+				enum alaska-88E1680L {
+					description "Specifies PHY identifier 88E1680L, used for Copper with speeds of 10M/100M/1G.";
+					value 6;
+				}				
+				enum alaska-88E151X {
+					description "Specifies PHY identifier 88E151X, used for Copper (HW supports combo and fiber).";
+					value 7;
+				}
+				enum alaska-88E3680 {
+					description "Specifies PHY identifier 88E3680, used for Octal Copper 100M.";
+					value 8;
+				}
+				enum alaska-88E32X0 {
+					description "Specifies PHY identifier 88E32X0, used for Copper or Combo port with speeds of 100M/1G/10G. Uses FW";
+					value 9;
+				}
+				enum alaska-88E33X0 {
+					description "Specifies PHY identifier 88E33X0, used for MGIG Copper or Combo.";
+					value 10;
+				}
+				enum alaska-88E20X0 {
+					description "Specifies PHY identifier 88E20X0, used for Copper with speeds of 10M/100M/1G/2.5G/5G.";
+					value 11;
+				}
+				enum alaska-88E2180 {
+					description "Specifies PHY identifier 88E2180, used for Copper with speeds of 10M/100M/1G/2.5G/5G.";
+					value 12;
+				}				
+				enum alaska-88E2540 {
+					description "Specifies PHY identifier 88E2540, used for Copper with speeds of 10M/100M/1G/2.5G/5G.";
+					value 13;
+				}				
+				enum alaska-88X3540 {
+					description "Specifies PHY identifier 88X3540, used for Copper with speeds of 10M/100M/1G/2.5G/5G/10G.";
+					value 14;
+				}				
+			}
+			description "Specifies the PHY Part Identifier.";
+		}
+		typedef phy-firmware-download-method-type {
+			type enumeration {
+                enum none {
+					description "None";
+					value 1;
+                }
+				enum RAM {
+					description "RAM";
+					value 2;
+				}
+				enum Flash {
+					description "Flash";
+					value 3;
+				}
+			}
+			description "Specifies the PHY Firmware Download method.";
+		}
+// LED	
+		typedef color-type {
+			type enumeration {
+				enum green {
+					description "Specifies LED color Green.";
+					value 1;
+				}
+				enum amber {
+					description "Specifies LED color Amber";
+					value 2;
+				}
+			}
+			description "Specifies the LED color.";
+		}
+		typedef led-state-type {
+			type enumeration {
+				enum solid {
+					description "Specifies LED state is solid turned on.";
+					value 1;
+				}
+				enum lowRateblinking {
+					description "Specifies LED state is low-rate blinking, turned on.";
+					value 2;
+				}
+				enum normalRateblinking {
+					description "Specifies LED state is normal-rate blinking, turned on.";
+					value 3;
+				}
+				enum highRateblinking {
+					description "Specifies LED state is high-rate blinking, turned on.";
+					value 4;
+				}
+			}
+			description "Specifies the LED state.";
+		}
+		typedef stack-led-id-type {
+			type uint8 {
+				range "1..8";
+			}
+			description "Specifies the Stack LED identifier, indicating the Unit Number.";
+		}
+		typedef led-gpio-i2c-interface-type {
+			type enumeration {
+				enum led-interface-gpio {
+					description "Specifies LED interface type is GPIO.";
+					value 1;
+				}
+				enum led-interface-i2c {
+					description "Specifies LED interface type is i2c.";
+					value 2;
+				}
+				enum led-interface-external-driver {
+					description "Specifies LED interface type is External Driver.";
+					value 3;
+				}
+			}
+			description "Specifies the LED interface GPIO/i2c/External Driver.";
+		}
+		typedef led-gpio-i2c-phy-interface-type {
+			type enumeration {
+				enum led-interface-gpio {
+					description "Specifies LED interface type is GPIO.";
+					value 1;
+				}
+				enum led-interface-i2c {
+					description "Specifies LED interface type is i2c.";
+					value 2;
+				}
+				enum led-interface-phy {
+					description "Specifies LED interface type is PHY.";
+					value 3;
+				}
+			}
+			description "Specifies the LED interface GPIO/i2c/PHY.";
+		}
+		typedef led-gpio-i2c-phy-pp-interface-type {
+			type enumeration {
+				enum led-interface-gpio {
+					description "Specifies LED interface type is GPIO.";
+					value 1;
+				}
+				enum led-interface-i2c {
+					description "Specifies LED interface type is i2c.";
+					value 2;
+				}
+				enum led-interface-phy {
+					description "Specifies LED interface type is PHY.";
+					value 3;
+				}
+				enum led-interface-pp {
+					description "Specifies LED interface type is Packet Processor.";
+					value 4;
+				}
+				enum led-interface-external-driver {
+					description "Specifies LED interface type is External Driver.";
+					value 5;
+				}
+			}
+			description "Specifies the LED interface GPIO/i2c/PHY/Packet Processor/External Driver.";
+		}
+		typedef port-leds-supported-type {
+			type enumeration {
+				enum left-and-right {
+					description "Specifies left and right LEDs.";
+					value 1;
+				}
+				enum single {
+					description "Specifies single LED.";
+					value 2;
+				}
+			}
+			description "Indicates which port LED is supported ";
+		}	
+		typedef led-stream-blink-select-type {
+			type enumeration {
+				enum BLINK_SELECT_0 {
+					description "Blink 0 signal.";
+					value 1;
+				}
+				enum BLINK_SELECT_1 {
+					description "Blink 1 signal";
+					value 2;
+				}
+			}
+			description "Specifies the LED stream blink select type.";
+		}		
+		typedef led-stream-order-mode-type {
+			type enumeration {
+				enum ORDER_MODE_BY_PORT {
+					description "the indication order is arranged by port.";
+					value 1;
+				}
+				enum ORDER_MODE_BY_CLASS {
+					description "the indication order is arranged by class.";
+					value 2;
+				}
+			}
+			description "Specifies the LED stream ordering mode.";
+		}		
+		typedef led-stream-blink-duty-cycle-type {
+			type enumeration {
+				enum BLINK_DUTY_CYCLE_0 {
+					description "25% on, 75% off.";
+					value 1;
+				}
+				enum BLINK_DUTY_CYCLE_1 {
+					description "50% on, 50% off.";
+					value 2;
+				}
+				enum BLINK_DUTY_CYCLE_2 {
+					description "50% on, 50% off.";
+					value 3;
+				}
+				enum BLINK_DUTY_CYCLE_3 {
+					description "75% on, 25% off.";
+					value 4;
+				}
+			}
+			description "Specifies the LED stream blink cycle duty cycle type.";
+		}		
+		typedef led-stream-blink-duration-type {
+			type enumeration {
+				enum BLINK_DURATION_0 {
+					description "BLINK_DURATION_0.";
+					value 1;
+				}
+				enum BLINK_DURATION_1 {
+					description "BLINK_DURATION_1.";
+					value 2;
+				}
+				enum BLINK_DURATION_2 {
+					description "BLINK_DURATION_2.";
+					value 3;
+				}
+				enum BLINK_DURATION_3 {
+					description "BLINK_DURATION_3.";
+					value 4;
+				}
+				enum BLINK_DURATION_4 {
+					description "BLINK_DURATION_4.";
+					value 5;
+				}
+				enum BLINK_DURATION_5 {
+					description "BLINK_DURATION_5.";
+					value 6;
+				}
+				enum BLINK_DURATION_6 {
+					description "(APPLICABLE DEVICES: xCat3; AC5; Lion2; Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Pipe) .";
+					value 7;
+				}
+				enum BLINK_DURATION_7 {
+					description "APPLICABLE DEVICES: Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Pipe).";
+					value 8;
+				}
+			}
+			description "Specifies the LED stream blink period type.";
+		}		
+		typedef led-stream-pulse-stretch-type {
+			type enumeration {
+				enum PULSE_STRETCH_0_NO {
+					description "PULSE_STRETCH_0_NO.";
+					value 1;
+				}
+				enum PULSE_STRETCH_1 {
+					description "PULSE_STRETCH_1.";
+					value 2;
+				}
+				enum PULSE_STRETCH_2 {
+					description "PULSE_STRETCH_2.";
+					value 3;
+				}
+				enum PULSE_STRETCH_3 {
+					description "PULSE_STRETCH_3.";
+					value 4;
+				}
+				enum PULSE_STRETCH_4 {
+					description "PULSE_STRETCH_4.";
+					value 5;
+				}
+				enum PULSE_STRETCH_5 {
+					description "PULSE_STRETCH_5.";
+					value 6;
+				}
+				enum PULSE_STRETCH_6 {
+					description "(APPLICABLE DEVICES: Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; Pipe).";
+					value 7;
+				}
+				enum PULSE_STRETCH_7 {
+					description "(APPLICABLE DEVICES: Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; Pipe).";
+					value 8;
+				}
+			}
+			description "Specifies the LED stream length of stretching for dynamic signals.";
+		}	
+		typedef led-stream-clock-out-frequency-type {
+			type enumeration {
+				enum _CLOCK_OUT_FREQUENCY_500 {
+					description "500 KHz LED clock frequency.";
+					value 1;
+				}
+				enum CLOCK_OUT_FREQUENCY_1000 {
+					description "1 MHz LED clock frequency.";
+					value 2;
+				}
+				enum CLOCK_OUT_FREQUENCY_2000 {
+					description "2 MHz LED clock frequency.";
+					value 3;
+				}
+				enum CLOCK_OUT_FREQUENCY_3000 {
+					description "3 MHz LED clock frequency.";
+					value 4;
+				}
+			}
+			description "Specifies the LED stream blink cycle duty cycle type.";
+		}
+		typedef led-stream-class5-select-type {
+			type enumeration {
+				enum CLASS_5_SELECT_HALF_DUPLEX {
+					description "Half Duplex is displayed on class5.";
+					value 1;
+				}
+				enum CLASS_5_SELECT_FIBER_LINK_UP {
+					description "If port is a dual media port, Fiber Link Up is displayed on class5.";
+					value 2;
+				}
+			}
+			description "Specifies the LED stream indication displayed on class5 (for dual-media port/phy).";
+		}				
+		typedef led-stream-class13-select-type {
+			type enumeration {
+				enum CLASS_13_SELECT_LINK_DOWN {
+					description "Link Down is displayed on class13.";
+					value 1;
+				}
+				enum CLASS_13_SELECT_COPPER_LINK_UP {
+					description "If port is a dual media port, Copper Link Up is displayed on class13.";
+					value 2;
+				}
+			}
+			description "Specifies the LED stream indication displayed on class13 (for dual-media port/phy).";
+		}				
+		typedef led-stream-port-type {
+			type enumeration {
+				enum PORT_TYPE_TRI_SPEED {
+					description "tri-speed port.";
+					value 1;
+				}
+				enum PORT_TYPE_XG {
+					description "XG port.";
+					value 2;
+				}
+			}
+			description "Specifies the ledstream port type.";
+		}
+// CPU 
+		typedef cpu-type-type {
+			type enumeration {
+				// MSYS family
+				enum xp-embedded {
+					description "Specifies CPU is XP Embedded ARMv7 (MSYS).";
+					value 1;
+				}
+				// Armada XP family
+				enum armada-MV78130 {
+					description "Specifies CPU is Armada XP Family, Identifier MV78130.";
+					value 2;
+				}
+				enum armada-MV78160 {
+					description "Specifies CPU is Armada XP Family, Identifier MV78160.";
+					value 3;
+				}
+				enum armada-MV78230 {
+					description "Specifies CPU is Armada XP Family, Identifier MV78230.";
+					value 4;
+				}
+				enum armada-MV78260 {
+					description "Specifies CPU is Armada XP Family, Identifier MV78260.";
+					value 5;
+				}
+				enum armada-MV78460 {
+					description "Specifies CPU is Armada XP Family, Identifier MV78460.";
+					value 6;
+				}
+				// Armada 38x family
+				enum armada-88F6810 {
+					description "Specifies CPU is Armada 38x Family, Identifier 88F6810.";
+					value 7;
+				}
+				enum armada-88F6811 {
+					description "Specifies CPU is Armada 38x Family, Identifier 88F6811.";
+					value 8;
+				}
+				enum armada-88F6820 {
+					description "Specifies CPU is Armada 38x Family, Identifier 88F6820.";
+					value 9;
+				}
+				enum armada-88F6821 {
+					description "Specifies CPU is Armada 38x Family, Identifier 88F6821.";
+					value 10;
+				}
+				enum armada-88F6W21 {
+					description "Specifies CPU is Armada 38x Family, Identifier 88F6W21.";
+					value 11;
+				}
+				enum armada-88F6828 {
+					description "Specifies CPU is Armada 38x Family, Identifier 88F6828.";
+					value 12;
+				}
+			}
+			description "Specifies the CPU Family and Part Identifier.";	
+		}
+		typedef cpu-port-number-type {
+			type uint8 {
+				range "0..2";
+			}
+			description "Specifies the CPU Linux eth identifier.";
+		}
+		typedef cpu-sdma-port-index-type {
+			type uint8 {
+				range "1..8";
+			}
+			description "Specifies the CPU SDMA port index number.";
+		}		
+		typedef cpu-logical-port-number-type {
+			type uint32 {
+				range "0..287";
+			}
+			description "Specifies the logical cpu port number.";
+		}		
+//Buttons		
+		typedef button-type {
+			type enumeration {
+				enum  Reset{
+					description "Specifies Reset Button.";
+					value 1;
+				}
+				enum LED {
+					description "Specifies LED Button.";
+					value 2;
+				}
+			}
+			description "Specifies the Button types.";
+		}
+// sensors
+		typedef sensor-hw-type {
+			type enumeration {
+				enum  BOARD{
+					description "Specifies BOARD sensor (e.g. LM).";
+					value 1;
+				}
+				enum  CPU{
+					description "Specifies CPU sensor.";
+					value 2;
+				}
+				enum PHY {
+					description "Specifies PHY sensor.";
+					value 3;
+				}
+				enum MAC {
+					description "Specifies MAC (i.e. Packet Processor) sensor.";
+					value 4;
+				}
+				enum POE {
+					description "Specifies PoE (i.e. Power over Ethernet) sensor.";
+					value 5;
+				}
+			}
+			description "Specifies the Sensor types.";
+		}	
+// Threshold
+		typedef threshold-type {
+			type enumeration {
+				enum  normal{
+					description "Specifies Normal operation threshold.";
+					value 1;
+				}
+				enum warning {
+					description "Specifies Warning threshold.";
+					value 2;
+				}
+				enum critical {
+					description "Specifies Critical threshold.";
+					value 3;
+				}
+			}
+			description "Specifies threshold levels.";
+		}	
+// ext drv 
+		typedef external-driver-id-type {
+			type uint8;
+			description "Specifies the External driver identifier.";
+		}
+// 
+// Section Grouping
+// 
+// Section GPIO
+		grouping gpio-mux-group-type {
+			leaf mux-gpio-device-number {
+				type gpio-device-number-type;
+				must ". < /MTS-Platform/Packet-Processors/number-of-pps or current() = 255" {
+					error-message "GPIO Device is not CPU device number (255) and is not a Packet Processor Device number.";	
+				}
+				description "Specifies the GPIO Device number Packet Processor/CPU(255).";
+				mandatory true;
+			}
+			leaf mux-gpio-write-pin-number {
+				type gpio-pin-number-type;
+				must "/MTS-Platform/MPP-GPIO-pins/mpp-device-list/pin-list[pin-number = current() and (pin-mode = 'gpio-readable-writable-pin' or pin-mode = 'gpio-writable-pin')]/../mpp-device-number = current()/../mux-gpio-device-number" { 
+					error-message "The MPP pin is not a writable GPIO pin in /MTS-Platform/MPP-GPIO-pins/mpp-device-list/pin-list.";
+				}
+				description "Specifies the writable GPIO Pin Number.";
+			}
+			leaf mux-gpio-pin-value {
+				type gpio-pin-value-type;
+				description "Specifies the GPIO Pin Value 0/1.";
+				mandatory true;
+			}
+		}
+		grouping gpio-read-address-group-type {
+			container gpio-read-address {
+				when "/MTS-Platform/MPP-pin-feature-is-supported = 'true'";
+				leaf gpio-read-device-number {
+					type gpio-device-number-type;
+					must ". < /MTS-Platform/Packet-Processors/number-of-pps or . = 255" {
+						error-message "GPIO Device is not CPU device number (255) and is not a Packet Processor Device number.";	
+					}
+					description "Specifies the GPIO Device number Packet Processor/CPU(255).";
+					mandatory true;
+				}
+				leaf gpio-read-pin-number {
+					type mpp-pin-number-type;
+					must '/MTS-Platform/MPP-GPIO-pins/mpp-device-list/pin-list[../mpp-device-number = current()/../gpio-read-device-number and pin-number = current() and (pin-mode = "gpio-readable-writable-pin" or pin-mode = "gpio-readable-pin")]' { 
+						error-message "The MPP pin is not a readable GPIO pin in /MTS-Platform/MPP-GPIO-pins/mpp-device-list/pin-list.";
+					}
+					mandatory true;
+					description "Specifies the readable GPIO Pin Number.";
+				}
+			}
+		}
+		grouping gpio-write-address-group-type {
+			container gpio-write-address {
+				when "/MTS-Platform/MPP-pin-feature-is-supported = 'true'";
+				leaf gpio-write-device-number {
+					type gpio-device-number-type;
+					must ". < /MTS-Platform/Packet-Processors/number-of-pps or . = 255" {
+						error-message "GPIO Device is not CPU device number (255) and is not a Packet Processor Device number.";	
+					}
+					description "Specifies the GPIO Device number Packet Processor/CPU(255).";
+					mandatory true;
+				}
+				leaf gpio-write-pin-number {
+					type mpp-pin-number-type;
+					must '/MTS-Platform/MPP-GPIO-pins/mpp-device-list/pin-list[../mpp-device-number = current()/../gpio-write-device-number and pin-number = current() and (pin-mode = "gpio-readable-writable-pin" or pin-mode = "gpio-writable-pin")]' {
+						error-message "The MPP pin is not a writable GPIO pin in /MTS-Platform/MPP-GPIO-pins/mpp-device-list/pin-list.";
+					}
+					mandatory true;
+					description "Specifies the writable GPIO Pin Number.";
+				}
+			}
+		}
+// Section I2C
+		 grouping i2c-mux-group-type {
+		 	leaf mux-i2c-bus-id {
+				type i2c-bus-id-type;
+				default 0;
+				description "Specifies the i2c BUS identifier.";   
+            }
+			leaf mux-i2c-access {
+				type i2c-access-type;
+				default one-byte;
+				description "Specifies the access byte size of the i2c 1/2/4.";
+			}
+			leaf mux-i2c-transaction-type {
+				type i2c-transaction-type;
+				default offset-and-data;
+				description "Specifies the i2c transaction type.";					
+			}							
+		 	leaf mux-i2c-address {
+				type i2c-address-type;
+				mandatory true;
+				description "Specifies the i2c address.";
+			}
+			leaf mux-i2c-offset {
+				type i2c-offset-type;
+				mandatory true;
+				description "Specifies the i2c offset.";
+			}
+			leaf mux-i2c-mask {
+				type i2c-mask-type;
+				mandatory true;
+				description "Specifies the i2c mask.";
+			}
+			leaf mux-i2c-value {
+				type i2c-value-type;
+				mandatory true;
+				description "Specifies the i2c value.";
+			}
+		}
+		grouping mux-group-type {
+			list mux-list {
+				key "mux-number";
+				ordered-by user;
+				min-elements 0;
+				leaf mux-number {
+					type uint8;
+					description "Specifies the MUX number, a logical identifier to allow multiple MUX definitions.";
+				}
+				choice mux-type
+				{
+					description "Specifies the MUX type GPIO/i2c.";
+					case mux-i2c {
+						description "Specifies the MUX type is i2c.";
+						container mux-i2c-info {
+						description "Specifies the MUX i2c information.";
+							uses i2c-mux-group-type;
+						}
+					}
+					case  mux-gpio {
+						description "Specifies the MUX type is i2c.";
+						when "/MTS-Platform/MPP-pin-feature-is-supported = 'true'";
+						container mux-gpio-info {
+							description "Specifies the MUX i2c information.";
+							uses gpio-mux-group-type;
+						}
+					}
+				}
+			}			
+		}
+		grouping i2c-read-write-address-fields-group-type {
+			leaf i2c-bus-id {
+				type i2c-bus-id-type;
+				mandatory true;
+				description "Specifies the i2c BUS identifier.";
+			}
+			leaf i2c-access {
+				type i2c-access-type;
+				default one-byte;
+				description "Specifies the access to the i2c.";
+			}
+			leaf i2c-address {
+				type i2c-address-type;
+				mandatory true;
+				description "Specifies the i2c address.";
+			}
+			leaf i2c-offset {
+				type i2c-offset-type;
+				mandatory true;
+				description "Specifies the i2c offset.";
+			}
+			leaf i2c-mask {
+				type i2c-mask-type;
+				mandatory true;
+				description "Specifies the i2c mask.";
+			}
+			leaf i2c-transaction-type {
+				type i2c-transaction-type;
+				default offset-and-data;
+				description "Specifies the i2c transaction type.";					
+			}							
+			uses mux-group-type;
+		}
+		grouping i2c-read-write-address-group-type {
+			container i2c-read-write-address {
+				description "Specifies the i2c read/write address.";
+				uses i2c-read-write-address-fields-group-type;
+			}
+		}
+//	 Section SMI/XSMI
+		grouping phy-mask-value-group-type {
+			container phy-mask-value {
+				when "/MTS-Platform/PHY-feature-is-supported = 'true'";
+				leaf phy-device-or-page {
+					type smi-xsmi-device-or-page-type;
+					mandatory true;
+					description "Specifies the SMI/XSMI PHY device.";
+				}
+				leaf phy-register {
+					type smi-xsmi-register-type;				
+					description "Specifies the SMI/XSMI Register address";
+					mandatory true;
+				}	
+				leaf phy-mask {
+					type smi-xsmi-mask-value-type;
+					description "Specifies the SMI/XSMI mask value.";
+					mandatory true;
+				}
+				leaf phy-value {			 
+					type smi-xsmi-mask-value-type;
+					description "Specifies the SMI/XSMI value.";
+					mandatory true;
+				}
+			}
+		}
+// Section PHYs
+		grouping phy-read-write-address-group-type {
+			container phy-read-write-address {
+				description "Specifies the PHY read/write address information.";
+				when "/MTS-Platform/PHY-feature-is-supported = 'true'";
+				leaf phy-number {
+					type phy-number-type;
+					description "Specifies the PHY Number.";
+					must '/MTS-Platform/PHYs/phy-list[phy-number = current()]' { 
+						error-message "The PHY number is not defined in /MTS-Platform/PHYs/phy-list.";
+					}
+					mandatory true;
+				}
+				leaf phy-position {
+					type phy-position-type;
+					description "Specifies the PHY Position in a single/dual/quad/octal PHY (for a signal PHY use value 0).";
+					mandatory true;
+				}
+				leaf phy-smi-interface-type {
+					 type smi-xsmi-type-type;
+					 mandatory true;
+					 description "Specifies the PHY SMI/XSMI type.";
+				}
+				leaf phy-pp-device {
+					type pp-device-number-type;
+					mandatory true;
+					must ". < /MTS-Platform/Packet-Processors/number-of-pps" {
+						error-message "Device is not defined as Packet Processor device";	
+					}
+					description "Specifies which Packet Processor Device the PHY is connected to.";
+				}
+				leaf phy-smi-xsmi-interface-id {
+					type smi-xsmi-interface-id-type;
+					mandatory true;
+					description "Specifies the SMI/XSMI interface-id.";
+				}
+				leaf phy-smi-xsmi-address {
+					type smi-xsmi-address-type;
+					mandatory true;
+					description "Specifies the SMI/XSMI address.";
+				}
+				list phy-additional-smi-xsmi-address-list {
+					ordered-by user;
+					min-elements 0;
+					max-elements 2;
+					key "phy-smi-xsmi-address-role";
+					leaf phy-smi-xsmi-address-role {
+						type smi-xsmi-address-role-type;
+						mandatory true;
+						description "Specifies the  SMI/XSMI address role, e.g. secondary.";
+					}
+					leaf phy-smi-xsmi-address {
+						type smi-xsmi-address-type;
+						mandatory true;
+						description "Specifies the additional SMI/XSMI address.";
+					}
+				}
+			}
+		}
+// Section Network Ports
+		grouping Port-L1-interface-modes-group-type {
+			list L1-interface-mode-list {
+				key "speed";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies a list of L1 interface modes per interface speed.";
+				leaf speed {
+					type speed-type;
+					description "Specifies the port interface speed.";
+				}
+				leaf mode {
+					type L1-interface-mode-type;
+					mandatory true;
+					description "Specifies the Port L1 interface mode.";
+				}
+				list phy-init-list {
+					when "/MTS-Platform/PHY-feature-is-supported = 'true' and ../../../is-phy-used = 'true'";
+					key "phy-init-index";
+					ordered-by user;
+					min-elements 0;
+					description "Specifies a list of PHY initialization information Per Logical PHY Initialize index.";
+					leaf phy-init-index {
+						description "Specifies the List Logical Index.";
+						type list-number-type;
+					}
+					uses phy-mask-value-group-type;							
+				}
+			}
+		}
+// FAN
+// GBIC
+		grouping read-interface-group-type {
+			leaf read-interface-select{
+				description "Specifies the Read Interface type GPIO/i2c.";
+				type interface-type;
+				must " (current() = 'interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ) or current() = 'interface-i2c' " {
+					error-message "Interface GPIO can be configured only if MPP-pin-feature-is-supported is set to true";		
+				}
+				mandatory true;
+			}
+			container read-i2c-interface {
+				when "../read-interface-select = 'interface-i2c' ";
+				description "Specifies the Read Interface i2c information.";
+				uses i2c-read-write-address-group-type;
+				leaf i2c-read-value {
+					type i2c-value-type;
+						mandatory true;
+						description "Specifies the i2c read value.";
+				}
+			}
+			container read-gpio-interface {
+				when "../read-interface-select = 'interface-gpio' and  /MTS-Platform/MPP-pin-feature-is-supported = 'true'";
+				description "Specifies the Read Interface GPIO information.";
+				uses gpio-read-address-group-type;
+          		leaf gpio-read-value {
+					type mpp-pin-value-type;
+					mandatory true;
+					description "Specifies the GPIO read value.";
+				}
+			}
+		}
+		grouping write-interface-group-type {
+			leaf write-interface-select{
+				description "Specifies the Write Interface type GPIO/i2c.";
+				type interface-type;
+				must " (current() = 'interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ) or current() = 'interface-i2c' " {
+					error-message "Interface GPIO can be configured only if MPP-pin-feature-is-supported is true";		
+				}
+				mandatory true;
+			}
+			container write-i2c-interface {
+				when "../write-interface-select = 'interface-i2c' ";
+				description "Specifies the Write Interface i2c information.";
+				uses i2c-read-write-address-group-type;
+				leaf i2c-write-value {
+					type i2c-value-type;
+					mandatory true;
+					description "Specifies the i2c write value.";
+				}
+			}
+			container write-gpio-interface {
+				when "../write-interface-select = 'interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ";
+				description "Specifies the Write Interface GPIO information.";
+				uses gpio-write-address-group-type;
+          		leaf gpio-write-value {
+					type mpp-pin-value-type;
+					mandatory true;
+					description "Specifies the GPIO write value";
+				}
+			}
+		}
+// Section LEDs
+		grouping function-call-group-type {
+			list function-call-list {
+				description "Specific a List of function calls, indexed bt functional call logical identifier.";
+				key "function-call-number";
+				ordered-by user;
+				min-elements 1;
+				leaf function-call-number {
+					type list-number-type;
+					description "Specific the List function call number, this is a logical index to allow List.";
+				}
+				leaf function-call-comment {
+					type list-comment-type;
+					description "Specific the List entry comment.";
+				}
+				leaf function-call-name {
+					description "Specific the Function name to call.";
+					type string;
+					mandatory true;
+				}
+				list function-call-parameters-list {
+					description "Specific a List of Parameters, indexed by Parameter name.";
+					key "function-call-parameter-name";
+					ordered-by user;
+					leaf function-call-parameter-name {
+						description "Specifies the Parameter Name.";
+						type string;
+					}
+					leaf function-call-parameter-value {
+						description "Specifies the Parameter value (an integer).";
+						type uint32;
+						mandatory true;
+					}
+					leaf function-call-parameter-comment {
+						description "Specifies the Parameter type comment.";
+						type string;
+					}
+				}
+			}
+		}
+		grouping lestream-manipulation-group-type {
+			leaf portType {
+				mandatory true;
+				description "tri-speed or XG port type";
+				type led-stream-port-type;						
+			}	
+			leaf classNum {
+				description "classNum for this manipulation set";
+				mandatory true;
+				type uint32 {
+					range 0..11;
+				}
+			}
+			leaf invertEnable {
+				description "Enables a NOT operation on Class data. <br>
+							 TRUE - data inversion enabled. <br>
+							 FALSE - data is not inverted. <br>
+							 (APPLICABLE DEVICES: xCat3; AC5; Lion2)";
+				default false;
+				type boolean;
+			}
+			leaf blinkEnable {
+				description "Enables an AND operation on Class with selected Blink signals. <br>
+							 TRUE - blinking enabled: High data displayed as blinking. <br>
+							 FALSE - blinking feature not enabled.";
+				default false;
+				type boolean;
+			}
+			leaf blinkSelect {
+				description "Selects between Blink 0 or Blink 1 signals.";
+				mandatory true;
+				type led-stream-blink-select-type;
+			}
+			leaf forceEnable {
+				description "Enables forcing Class data. <br>
+							 TRUE - forceData is the data displayed. <br>
+							 FALSE - no forcing on dispalyed data.";
+				default false;
+				type boolean;
+			}
+			leaf pulseStretchEnable {
+				description "enable the stretch affect on a specific class <br>
+							 (APPLICABLE DEVICES: Bobcat2, Caelum, Aldrin, AC3X, Bobcat3, Aldrin2, Falcon, AC5P)";
+				default false;
+				type boolean;
+			}			
+			leaf disableOnLinkDown {
+				description "disable the LED indication classes when the link is down <br>
+							 (APPLICABLE DEVICES: Bobcat2, Caelum, Aldrin, AC3X, Bobcat3; Aldrin2; Falcon; AC5P)";
+				default false;
+				type boolean;
+			}
+		}
+
+		grouping ledstream-interface-manipulation-group-type {
+			uses lestream-manipulation-group-type;
+			leaf forceData {
+				description "The data to be forced on Class data. <br>
+							 For GE devices: range 0x0..0xFFF (12 bits length) <br>
+							 For XG devices: range 0x0..0x3   (2 bits length)";
+				type uint32;
+				mandatory true;
+			}					
+		}
+		
+		grouping ledstream-port-manipulation-group-type {
+			uses lestream-manipulation-group-type;
+			leaf forceData {
+				description "The data to be forced on Class data. <br>
+							 This is the data you'll use for a port which position is 1<br>
+							 forceData for other ports will be calculated according to port position";
+				type uint32 {
+					range 0..1;
+				}
+				mandatory true;
+			}					
+		}
+		grouping led-pp-group-type {
+			leaf led-interface-select {
+				description "Specifies the LED interface type: External Driver/GPIO/i2c/PHY/Packet Processor.";
+				must "(current() = 'led-interface-external-driver' and /MTS-Platform/External-driver-feature-is-supported = 'true' ) or
+				      (current() = 'led-interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ) or
+				      (current() = 'led-interface-phy' and  /MTS-Platform/PHY-feature-is-supported = 'true' and
+                                    	  	/MTS-Platform/Network-ports/front-panel-group-list[group-number = current()/../../panel-group-number]/port-list[port-number = current()/../../panel-port-number]/is-phy-used = 'true') or
+				      (current() = 'led-interface-i2c') or
+				      (current() = 'led-interface-pp' ) " {
+				      error-message "LED interface is not Supported / Missing Network port PHY information";
+				}
+				type led-gpio-i2c-phy-pp-interface-type;
+				mandatory true;
+			}
+			container led-i2c {
+				when "../led-interface-select = 'led-interface-i2c' ";
+				description "Specifies the LED i2c information.";
+				uses i2c-read-write-address-group-type;
+				leaf led-i2c-off-value {
+					type i2c-value-type;
+					description "Specifies the i2c value to turn OFF the LED.";
+					mandatory true;
+				}
+				leaf led-i2c-init-value {
+					type i2c-value-type;
+					description "Specifies the LED i2c initialize value.";
+					mandatory true;
+				}			
+			}
+			container led-phy {
+				when "../led-interface-select = 'led-interface-phy' and  /MTS-Platform/PHY-feature-is-supported = 'true' ";
+				description "Specifies the LED PHY information.";
+				leaf led-phy-off-exist {
+					type boolean;
+					description "Specifies if PHY support OFF operation.";
+					default false;
+				}
+				container led-phy-off-value {
+					when "../led-phy-off-exist = 'true'";
+					description "Specifies the LED PHY OFF value.";
+					uses phy-mask-value-group-type;
+				}
+				leaf led-phy-init-values-exist {
+					type boolean;
+					description "Specifies if LED PHY requires a List of PHY writes to Initialize.";
+					default false;
+				}			
+				list led-phy-init-list {
+					when "../led-phy-init-values-exist = 'true'";
+					description "Specifies a List of PHY writes, indexed by Logical number."; 
+					key "led-phy-init-number";
+					ordered-by user;
+					min-elements 1;
+					leaf led-phy-init-number {
+						type list-number-type;
+						description "Specifies the PHY Initialize number.";
+					}
+					leaf led-phy-init-comment {
+						type list-comment-type;
+						description "Specifies the entry comments.";
+					}
+					uses phy-mask-value-group-type;
+				}
+			}
+			container led-pp {
+				when "../led-interface-select = 'led-interface-pp' ";
+				description "Specifies the Packer Processor LED information.";
+				container led-pp-off-value {
+					uses function-call-group-type;				
+					description "Specifies the LED stream function call to perform OFF operation.";
+				}
+				container led-pp-init-value {
+					uses function-call-group-type;
+					description "Specifies the LED stream function call to perform Initialize operation.";
+				}	
+			}				
+			list led-gpio-color-list {
+				when "../led-interface-select = 'led-interface-gpio'";
+				description "Specifies a List of GPIO information per LED color.";
+				key "led-color";
+				ordered-by system;
+				min-elements 1;
+				leaf led-color {
+					type color-type;
+					description "Specifies the LED color.";
+				}
+				container led-gpio {
+					description "Specifies the GPIO information needed to configure LED color.";
+					uses gpio-write-address-group-type;
+					leaf led-pin-value {
+						type gpio-pin-value-type;
+		        		description "Specifies the GPIO PIN value to write.";
+		        		mandatory true;
+					}					
+				}
+			}
+			list led-color-list {
+				when "../led-interface-select = 'led-interface-i2c' or ../led-interface-select = 'led-interface-phy' or ../led-interface-select = 'led-interface-pp'";
+				key "led-color led-state";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies a List of i2c/PHY/PP information per LED color.";
+				leaf led-color {
+					type color-type;
+					description "Specifies the LED color.";
+				}
+				leaf led-state {
+					type led-state-type;
+					description "Specifies the LED state.";
+					mandatory true;
+				}
+				container led-i2c {
+					when "../../led-interface-select = 'led-interface-i2c' ";
+					description "Specifies the i2c information needed to configure LED color and state.";
+					leaf led-i2c-value {
+						type i2c-value-type;
+						mandatory true;
+						description "Specifies the i2c value to turn on the color and state.";
+					}
+					leaf led-i2c-mask {
+						type i2c-value-type;
+						mandatory true;
+						description "Specifies the i2c mask to turn on the color and state.";
+					}
+				}
+				container led-phy {
+					when "../../led-interface-select = 'led-interface-phy' ";
+					description "Specifies the PHY information needed to configure LED color and state.";
+					uses phy-mask-value-group-type;
+				}
+				
+				container led-pp {
+					when "../../led-interface-select = 'led-interface-pp' ";
+					description "Specifies the Packet Processor information needed to configure LED color and state.";
+					uses function-call-group-type;
+				}
+			}
+			leaf external-driver-id {
+				when "../led-interface-select = 'led-interface-external-driver' ";
+				must "/MTS-Platform/External-driver/external-driver-list[current() = external-driver-id]" {
+					error-message "The External driver is not defined in MTS-Platform/External-driver/external-driver-list";
+				}
+				type external-driver-id-type;
+				description "Specifies the External driver id that supports the LED.";
+				mandatory true;
+			}	
+		}
+
+		grouping ledstream-interface-manipulation-list-type {
+			list manipulation-list {
+				key "manipulation-index";
+				ordered-by user;
+				min-elements 0;
+				description "Specifies a list of class manipulations required to set interface port leds in given state. <br>
+							 (this list will be used with CPSS API LedStreamClassManipulationSet)";
+				leaf manipulation-index {
+					description "Specifies the List Logical Index.";
+					type list-number-type;
+				}
+				uses ledstream-interface-manipulation-group-type;							
+			}		
+		}
+
+		grouping ledstream-port-manipulation-list-type {
+			list manipulation-list {
+				key "manipulation-index";
+				ordered-by user;
+				min-elements 0;
+				description "Specifies a list of class manipulations required to set port led in given state.";
+				leaf manipulation-index {
+					description "Specifies the List Logical Index.";
+					type list-number-type;
+				}
+				uses ledstream-port-manipulation-group-type;							
+			}		
+		}
+
+		grouping ledstream-port-values-list-type {
+			list ledstream-port-mode-list {
+				key "ledstream-port-mode-index";
+				ordered-by user;
+				min-elements 0;
+				description "Specifies a list of manipulations required to set port led in given state.";
+				leaf ledstream-port-mode-index {
+					description "The index value that will be used in the software API to executre this manipulation";
+					type list-number-type;
+				}
+				leaf ledstream-port-mode-description {
+					description "Desription for this port led more (config to 10G / set as PoE / init ) ";
+					type string {
+						length 0..48;
+					}
+				}				
+				uses ledstream-port-manipulation-list-type;
+			}			
+		}
+		
+		grouping ledstream-group-type {
+			leaf ledstream-interface-off-exist {
+				type boolean;
+				description "Specifies if Ledstream support off operation (for all ports).";
+				default false;
+			}			
+			container ledstream-interface-off-value {
+				when "../ledstream-interface-off-exist = 'true'";
+				uses ledstream-interface-manipulation-list-type;				
+			}
+			list interface-mode-list {
+				key "led-color led-state";
+				ordered-by system;
+				min-elements 0;
+				description "Specifies a List of Ledstream information per LED color.";
+				leaf led-color {
+					type color-type;
+					description "Specifies the LED color.";
+				}
+				leaf led-state {
+					type led-state-type;
+					description "Specifies the LED state.";
+					mandatory true;
+				}	
+				uses ledstream-interface-manipulation-list-type;
+			}		
+		}
+		grouping led-oob-group-type {
+			leaf led-interface-select {
+				description "Specifies the Out-Of-Band LED interface type i2c/PHY/GPIO.";
+                must "(current() = 'led-interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ) or
+                           (current() = 'led-interface-phy' and  /MTS-Platform/PHY-feature-is-supported = 'true') or
+                           (current() = 'led-interface-i2c') " {
+                    error-message "LED interface is not supported ";
+                }
+ 				type led-gpio-i2c-phy-interface-type;
+				mandatory true;
+			}
+			container led-i2c {
+				when "../led-interface-select = 'led-interface-i2c' ";
+				description "Specifies the LED i2c information.";
+				uses i2c-read-write-address-group-type;
+				leaf led-i2c-off-value {
+					type i2c-value-type;
+					description "Specifies the i2c value to turn OFF the LED.";
+					mandatory true;
+				}
+				leaf led-i2c-init-value {
+					type i2c-value-type;
+					description "Specifies the LED i2c initialize value.";
+					mandatory true;
+				}			
+			}
+			container led-phy {
+				when "../led-interface-select = 'led-interface-phy' and  /MTS-Platform/PHY-feature-is-supported = 'true' ";
+				description "Specifies the LED PHY information.";
+				leaf led-phy-off-exist {
+					type boolean;
+					description "Specifies if PHY support OFF operation.";
+					default false;
+				}
+				container led-phy-off-value {
+					when "../led-phy-off-exist = 'true'";
+					description "Specifies the LED PHY OFF value.";
+					uses phy-mask-value-group-type;
+				}
+				leaf led-phy-init-values-exist {
+					type boolean;
+					description "Specifies if LED PHY requires a List of PHY writes to Initialize.";
+					default false;
+				}			
+				list led-phy-init-list {
+					when "../led-phy-init-values-exist = 'true'";
+					description "Specifies a List of PHY writes indexed by Logical number."; 
+					key "led-phy-init-number";
+					ordered-by user;
+					min-elements 1;
+					leaf led-phy-init-number {
+						type list-number-type;
+						description "Specifies the PHY Initialize number.";
+					}
+					leaf led-phy-init-comment {
+						type list-comment-type;
+						description "Specifies the entry comments.";
+					}
+					uses phy-mask-value-group-type;
+				}
+			}
+			list led-color-list {
+				key "led-color led-state";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies a List of i2c/PHY/PP information per LED color and state.";
+				leaf led-color {
+					type color-type;
+					description "Specifies the LED color.";
+				}
+				leaf led-state {
+					type led-state-type;
+					description "Specifies the LED state.";
+					mandatory true;
+				}
+				container led-gpio {
+					when "../../led-interface-select = 'led-interface-gpio' ";
+					description "Specifies a List of GPIO information per LED color.";
+					uses gpio-write-address-group-type;
+					leaf led-pin-value {
+						type gpio-pin-value-type;
+		        		description "Specifies the GPIO PIN value to write.";
+		        		mandatory true;
+					}					
+				}
+				container led-i2c {
+					when "../../led-interface-select = 'led-interface-i2c' ";
+					description "Specifies the i2c information needed to configure LED color and state.";
+					leaf led-i2c-value {
+						type i2c-value-type;
+						mandatory true;
+						description "Specifies the i2c value to turn on the color and state.";
+					}
+					leaf led-i2c-mask {
+						type i2c-value-type;
+						mandatory true;
+						description "Specifies the i2c mask to turn on the color and state.";
+					}
+				}
+				container led-phy {
+					when "../../led-interface-select = 'led-interface-phy' ";
+					description "Specifies the PHY information needed to configure LED color and state.";
+					uses phy-mask-value-group-type;
+				}
+			}
+		}
+		grouping led-gpio-i2c-extdrv-group-type {
+			leaf led-interface-select {
+				must "(current() = 'led-interface-external-driver' and /MTS-Platform/External-driver-feature-is-supported = 'true' ) or
+				      (current() = 'led-interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ) or
+					  (current() = 'led-interface-i2c') " {
+					  error-message "Select Type not Supported ";
+				}
+				description "Specifies the External driver id that supports the LED.";
+				type led-gpio-i2c-interface-type;
+				mandatory true;
+			}
+			container led-i2c {
+				when "../led-interface-select = 'led-interface-i2c' ";
+				description "Specifies the LED i2c information.";
+				 uses i2c-read-write-address-group-type;
+				leaf led-i2c-off-value {
+					type i2c-value-type;
+					description "Specifies the i2c value to turn OFF the LED.";
+					mandatory true;
+				}
+				leaf led-i2c-init-value {
+					type i2c-value-type;
+					description "Specifies the LED i2c initialize value.";
+					mandatory true;
+				}			
+			}
+			list led-i2c-color-list {
+				when "../led-interface-select = 'led-interface-i2c' ";
+				key "led-color led-state";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies a List of i2c information per LED color and state.";
+				leaf led-color {
+					type color-type;
+					description "Specifies the LED color.";
+				}
+				leaf led-state {
+					type led-state-type;
+					description "Specifies the LED state.";
+					mandatory true;
+				}
+				container led-i2c {
+					leaf led-i2c-value {
+						type i2c-value-type;
+						mandatory true;
+						description "Specifies the i2c information needed to configure LED color and state.";
+					}
+				}
+			}
+			list led-gpio-color-list {
+				when "../led-interface-select = 'led-interface-gpio' ";
+				key "led-color";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies a List of GPIO information per LED color.";
+				leaf led-color {
+					type color-type;
+					description "Specifies the LED color.";
+				}
+				container led-gpio {
+					uses gpio-write-address-group-type;
+					description "Specifies the GPIO information needed to configure LED color.";
+					leaf led-pin-value {
+						type gpio-pin-value-type;
+		        		description "Specifies the GPIO PIN value to write.";
+		        		mandatory true;
+					}					
+				}
+			}
+			leaf external-driver-id {
+				when "../led-interface-select = 'led-interface-external-driver' ";
+				must "/MTS-Platform/External-driver/external-driver-list[current() = external-driver-id]" {
+					error-message "The External driver is not defined in MTS-Platform/External-driver/external-driver-list";
+				}
+				type external-driver-id-type;
+				description "Specifies the External driver id that supports the LED.";
+				mandatory true;
+			}	
+		}
+// Section Power
+		grouping power-connection-read-only-group-type {
+			leaf interface-select{
+				description "Specifies the Power connection read interface type i2c/GPIO.";
+				type interface-type;
+				must " (current() = 'interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ) or current() = 'interface-i2c' "{
+					error-message "Interface GPIO can be configured only if MPP-pin-feature-is-supported is true";		
+				}
+				mandatory true;
+			}
+			container i2c {
+				when "../interface-select = 'interface-i2c' ";
+				description "Specifies the Power connection i2c information."; 
+				uses i2c-read-write-address-group-type;
+				leaf active-value {
+					description "Specifies the Power connection i2c active value."; 
+					type i2c-value-type;
+					mandatory true;
+				}
+			}
+			list GPIO-read-group-list {
+				when "../interface-select = 'interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ";
+				description "Specifies a List of GPIO to read the Power active, indexed by logical GPIO read index."; 
+				key "read-gpio-index";
+				ordered-by user;
+				min-elements 1;
+				leaf read-gpio-index {
+					type uint8;
+					description "Specifies the Index of the GPIO read operation.";
+				}
+				uses gpio-read-address-group-type;
+				leaf active-value {
+					description "Specifies the value GPIO active value.";
+					type mpp-pin-value-type;
+					mandatory true;					
+				}
+			}
+		}
+		grouping power-connection-read-write-group-type {
+			leaf interface-select{
+				description "Specifies the Power connection read/write interface type i2c/GPIO.";
+				type interface-type;
+				must " (current() = 'interface-gpio' and /MTS-Platform/MPP-pin-feature-is-supported = 'true' ) or current() = 'interface-i2c' " {
+					error-message "Interface GPIO can be configured only if MPP-pin-feature-is-supported is true";		
+				}
+				mandatory true;
+			}
+			container i2c {
+				when "../interface-select = 'interface-i2c' ";
+				description "Specifies the Power connection i2c information."; 
+				uses i2c-read-write-address-group-type;
+				leaf i2c-active-value {
+					description "Specifies the Power connection i2c active value."; 
+					type i2c-value-type;
+					mandatory true;
+				}
+			}
+			container gpio {
+				when "../interface-select = 'interface-gpio' ";
+				description "Specifies the GPIO write information ro set Power active."; 
+				uses gpio-write-address-group-type;
+				leaf gpio-active-value {
+					type mpp-pin-value-type;
+					mandatory true;
+					description "Specifies the value GPIO active value.";
+				}
+			}
+		}
+// serdes
+		grouping serdes-group-type {
+			list serdes-lane-list {
+				key "lane-number";
+				ordered-by system;
+				min-elements 0;
+						description "Specifies a List of all SERDES-lanes connected to this port";
+				leaf lane-number {
+					type lane-number-type;
+					mandatory true;
+					must '/MTS-Platform/SERDES/Packet-Processor-list/lane-list[lane-number = current() and ../pp-device-number = current()/../../pp-device-number ]' { 
+								error-message "The lane-number is not defined in SERDES/Packet-Processor/lane";
+					}
+							description "Specifies the absolute lane-number.";
+				}
+				leaf port-lane-number {
+					type port-lane-number-type;
+					mandatory true;
+							description "Specifies the lane-number relative to port.";
+				}
+			}
+		}
+//
+// Section Configuration
+//
+// Section Packet Processors 
+		container Packet-Processors {
+			description "Specifies the Information of the Packet Processors.";
+			leaf number-of-pps {
+				type number-of-pps-type;
+				mandatory true;
+				description "Specifies the number of Packet Processors in the system 1/2.";
+			}
+		}
+// Section Network Ports
+		container Network-ports {
+			presence "Enables network ports";
+			description
+				"Specifies Network ports:
+					a. Location on the Front Panel: <groups, port in group>
+					b. Mapping port panel ports to ports of the Packet Processors
+					c. Port attribute";
+			list front-panel-group-list {
+				key "group-number";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies a front panel group on the Front Panel. <br>
+                            Example: Front panel of target board = 48*1G + 4*10G <br>
+                            front-panel-group-list = 2 <br>
+                            group number 1 - 1G ports <br>
+                            group number 2 - 10G ports";
+				leaf group-number {
+					type panel-group-number-type;
+					description "Specifies a Panel group number.";
+				}
+				leaf group-ordering {
+					type panel-group-ordering-type;
+					mandatory true;
+					description "Specifies the Port ordering of the group.";
+				}
+				leaf speed {
+					type speed-type;
+					mandatory true;
+					description "Specifies the Maximum Speed of ports in the group.";
+				}
+				leaf prefix-name {
+					type string {
+						length "0..16";
+					}
+					mandatory false;
+					description "Specifies the group prefix name written on the board (e.g. Ge).";
+				}
+				leaf first-port-number-shift {
+					type panel-port-number-type;
+					default 48;
+					description "Specifies the group port-number shift: <br>
+						if group-number == 1 then <br>
+							unit-port-number-of-the-first-group-port = number-of-the-group-first-port; <br>
+						else if number-of-the-first-group-port-number == 1 <br>
+							unit-port-number-of-the-first-group-port = unit-port-number-of-the-previous-group-first-port; <br>
+						else <br>
+							unit-port-number-of-the-first-group-port = number-of-the-group-first-port;";
+				}
+				leaf is-logical-port-required {
+						when "../../../is-logical-port-required = 'false'";
+						type boolean;
+						description "Specifies if logical port number required, when the logical port and mac port are different.";
+						default false;
+				}
+				list port-list {
+					key "port-number";
+					ordered-by user;
+					min-elements 1;
+					description "Specifies a List of Ports of the Panel.";
+					leaf port-number {
+						type panel-port-number-type;
+						description "Specifies the mac number in the front panel group.";
+					}
+					leaf pp-device-number {
+						type pp-device-number-type;
+						must ". < /MTS-Platform/Packet-Processors/number-of-pps" {
+							error-message "Device is not defined as a Packet Processor device.";	
+						}
+						mandatory true;
+						description "Specifies the Packet Processor number.";
+					}
+					leaf pp-port-number {
+						type pp-port-number-type;
+						mandatory true;
+						description "Specifies the Packet Processor MAC Port number.";
+					}
+					leaf logical-port-number {
+						when "../../../../is-logical-port-required = 'true' or ../../is-logical-port-required = 'true'";
+						type logical-port-number-type;
+						mandatory true;
+						description "Specifies the Packet Processor Physical Port number.";
+					}
+					leaf is-phy-used {
+						when "/MTS-Platform/PHY-feature-is-supported = 'true'";
+						type boolean;
+						description "Specifies if Port has a connected PHY.";
+						default false;
+					}
+					container port-phy {
+						when "../is-phy-used = 'true'";
+						uses phy-read-write-address-group-type;
+						list phy-post-init-list {
+							key "phy-init-index";
+							ordered-by user;
+							min-elements 0;
+							leaf phy-init-index {
+								type list-number-type;
+							}
+							uses phy-mask-value-group-type;	
+							description "Specifies a List of PHY post initialize configuration, this will be applied after initialize configuration and is intended for serdes configuration";
+						}
+						description "Specifies the PHY port information.";
+					}
+					leaf swap-abcd {
+						type boolean;
+						description "Swap on the phy tx and rx lanes, ABCD to DCBA.";
+						default false;
+					}
+					leaf transceiver {
+						type transceiver-type;
+						mandatory true;
+						description "Specifies the Port Transceiver Type Fiber/Copper/Combo.";
+					}
+					container fiber-L1-interface-modes-group {
+						when "../transceiver = 'combo' or ../transceiver = 'fiber'";
+						description "Specifies the Fiber L1 interface modes information.";
+						uses Port-L1-interface-modes-group-type;
+					}
+					container copper-L1-interface-modes-group {
+						when "../transceiver = 'combo' or ../transceiver = 'copper'";
+						description "Specifies the Copper L1 interface modes information.";
+						uses Port-L1-interface-modes-group-type;
+					}
+					container gbic-group {
+						when "(../transceiver = 'fiber') or (../transceiver = 'combo')";
+						description "Specifies the Port Fiber gbic (SFP) Parameters.";
+						container gbicConnectedInfo {
+							description "Specifies whether the gbic is connected.";
+							uses read-interface-group-type;
+						}
+					    container laserIsLossInfo {
+							description "Specifies whether the laser is loss.";
+							uses read-interface-group-type;
+						}
+						container txIsEnabledControl {
+							description "Specifies whether TX Enable can be configured.";
+							uses write-interface-group-type;
+						}
+						container txIsDisabledControl {
+							description "Specifies whether TX Disable can be configured.";
+							uses write-interface-group-type;
+						}
+						container memoryControl {
+						description "Specifies the i2c to read the GBIC memory.";
+						uses i2c-read-write-address-group-type;
+						}
+					}
+					uses serdes-group-type;
+				}
+			}
+		}
+// Section Cascade
+		container Back-to-Back-Link-Information {
+			 when "/MTS-Platform/Packet-Processors/number-of-pps = 2";
+			description "Specifies the internal cascade links (back-to-back) connecting the 2 packet processors on board<br>
+						 information format is current.";
+			leaf left-pp-device-number {
+				type pp-device-number-type;
+				must ". < /MTS-Platform/Packet-Processors/number-of-pps"{
+							error-message "Device is not defined as PP device.";	
+						}
+						description "Specifies the Left Packet Processor Number.";
+					}
+					leaf right-pp-device-number {
+						type pp-device-number-type;
+						must ". < /MTS-Platform/Packet-Processors/number-of-pps and . != ../left-pp-device-number"{
+							error-message "Device is not defined as PP device or matches left device number.";	
+						}
+						mandatory true;
+						description "Specifies the Right Packet Processor Number.";
+			}
+			list Back-to-Back-Port-list {
+				key "left-pp-port-number";
+				ordered-by system;
+				min-elements 1;
+						description "Specifies a List of Back-to-Back Links.";
+				leaf left-pp-port-number {
+					type pp-port-number-type;
+							description "Specifies the Left Packet Processor Port Number.";
+				}
+						leaf left-logical-port-number {
+							when "../../../is-logical-port-required = 'true'";
+							type logical-port-number-type;
+							mandatory true;
+							description "Specifies the Packet Processor Physical Port number.";
+						}						
+				leaf right-pp-port-number {
+					type pp-port-number-type;
+					mandatory true;
+							description "Specifies the Right Packet Processor Port Number.";
+						}
+						leaf right-logical-port-number {
+							when "../../../is-logical-port-required = 'true'";
+							type logical-port-number-type;
+							mandatory true;
+							description "Specifies the Packet Processor Physical Port number.";
+				}
+				leaf speed {
+					type speed-type;
+					mandatory true;
+							description "Specifies the Link Speed.";
+				}
+				leaf mode {
+					type L1-interface-mode-type;
+					mandatory true;
+							description "Port L1 Interface Mode";
+				}
+				list left-serdes-lane-list {
+					key "lane-number";
+					ordered-by system;
+					min-elements 1;
+							description "Specifies a List of all SERDES connected to this port.";
+					leaf lane-number {
+						type lane-number-type;
+						mandatory true;
+						must '/MTS-Platform/SERDES/Packet-Processor-list/lane-list[lane-number = current() and ../pp-device-number = current()/../../../left-pp-device-number ]' { 
+									error-message "The lane-number is not defined in SERDES/Packet-Processor/lane.";
+						}
+								description "Specifies the absolute Lane number.";
+					}
+					leaf port-lane-number {
+						type port-lane-number-type;
+						mandatory true;
+								description "Specifies the Lane number relative to the port.";
+					}
+				}
+				list right-serdes-lane-list {
+					key "lane-number";
+					ordered-by system;
+					min-elements 1;
+							description "Specifies a List of all SERDES connected to this port.";
+					leaf lane-number {
+						type lane-number-type;
+						mandatory true;
+						must '/MTS-Platform/SERDES/Packet-Processor-list/lane-list[lane-number = current() and ../pp-device-number = current()/../../../right-pp-device-number ]' { 
+							error-message "The lane-number is not defined in SERDES/Packet-Processor/lane";
+						}
+								description "Specifies the absolute Lane number.";
+					}
+					leaf port-lane-number {
+						type port-lane-number-type;
+						mandatory true;
+								description "Specifies the Lane number relative to the port.";
+					}
+				}
+			}
+		}
+// Section MPP pins
+		container MPP-GPIO-pins {
+			presence "Enables mpp";
+			when "/MTS-Platform/MPP-pin-feature-is-supported = 'true' ";
+			description "Specifies the MPP pins of Packet Processors, Required for GPIO support.";
+			list mpp-device-list {
+				key "mpp-device-number";
+				ordered-by user;
+				min-elements 1;
+				description "Specifies pins of one Packet Processor";
+				leaf mpp-device-number {
+					type mpp-device-number-type;
+					must ". < /MTS-Platform/Packet-Processors/number-of-pps or . = 255" {
+						error-message "Device is not defined as a Packet Processor device and is not CPU device";
+					}
+					description "Specifies the MPP Device number Packet Processor (0/1) or CPU (255).";
+				}
+				list pin-list {
+					key "pin-number";
+					ordered-by user;
+					min-elements 1;
+					description "Specifies Packet Processors Pins.";
+					leaf pin-number {
+						type mpp-pin-number-type;
+						description "Specifies the Pin number.";
+					}
+					leaf pin-mode {
+						type mpp-pin-mode-type;
+						mandatory true;
+						description "Specifies the Pin mode Read only/Write only/Read and Write.";
+					}
+					leaf pin-description {
+						type string;
+						description "Specifies the Pin usage/functionality/name.";
+						mandatory false;
+					}
+					leaf pin-initial-value {
+						when " ../pin-mode = 'gpio-writable-pin' or ../pin-mode = 'gpio-readable-writable-pin' ";
+						type mpp-pin-init-value-type;
+						default hw;
+						description "Specifies Pin Initial value.";
+					}							
+				}
+			}
+		}
+// Section SERDES 
+		container SERDES {
+			presence "Enables Packet Processors Serdes";
+			when "/MTS-Platform/SERDES-feature-is-supported = 'true'";
+			description "Specifies Packet Processors Serdes.";
+			list Packet-Processor-list {
+				key "pp-device-number";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies the Packet Processor SERDES.";
+				leaf pp-device-number {
+					type pp-device-number-type;
+					must ". < /MTS-Platform/Packet-Processors/number-of-pps"{
+						error-message "Device is not defined as a Packet Processor device.";
+					}
+					description "Specifies the Packet Processor Number.";
+				}
+				list lane-list {
+					key "lane-number";
+					ordered-by user;
+					min-elements 1;
+					description "Specifies a List of SERDES lane-number.";
+					leaf lane-number {
+						type lane-number-type;
+						description "Specifies the lane number.";
+					}
+					container lane-attributes-group {
+						description "Specifies SERDES lane attributes.";
+						leaf tx-swap {
+							type boolean;
+							default false;
+							description "Specifies the Tx-swap true/false.";
+						}
+						leaf rx-swap {
+							type boolean;
+							default false;
+							description "Specifies the Rx-swap true/false.";
+						}
+					}
+					list lane-attributes-info-list {
+								description "Specifies a List of lane attribute information per interface mode and connector type."; 
+						key "interface-mode connector-type";
+						ordered-by system;
+						min-elements 0;
+						leaf interface-mode {
+									description "Specifies the Interface Mode.";	
+							type L1-interface-mode-type;
+						}	
+						leaf connector-type {
+									description "Specifies the connector type fiber/copper.";	
+							type connector-type-type;
+						}	
+						leaf is-tx-fine-tune-supported {
+									description "Specifies if Tx fine tuning is needed.";
+							type boolean;
+							default false;
+						}
+						container tx-fine-tune {
+							when "../is-tx-fine-tune-supported = 'true' ";
+									description "Specifies the Tx Fine Tune parameters.";
+							leaf txAmp {
+								type uint8;
+								mandatory true;
+										description "txAmp";
+							}
+							leaf txAmpAdjEn {
+								type boolean;
+								mandatory true;
+										description "txAmpAdjEn";
+							}
+							leaf emph0 {
+								type uint8;
+								mandatory true;
+										description "emph0";
+							}	
+							leaf emph1 {
+								type uint8;
+								mandatory true;
+										description "emph1";
+							}
+							leaf txAmpShft {
+								type boolean;
+								mandatory true;
+										description "txAmpShft";
+							}
+							leaf txEmphEn {
+								type boolean;
+								mandatory true;
+										description "txEmphEn";
+							}
+							leaf slewRate {
+								type uint8;
+								mandatory true;
+										description "slewRate";
+							}
+						}
+						leaf is-rx-fine-tune-supported {
+									description "Specifies if Rx fine tuning is needed";
+							type boolean;
+							default false;
+						}
+						container rx-fine-tune {
+							when "../is-rx-fine-tune-supported = 'true' ";
+											description "Specifies the Rx Fine Tune Parameters.";
+							leaf sqlch {
+								type uint32;
+								mandatory true;
+								description "sqlch";
+							}
+							leaf ffeRes {
+								type uint32;
+								mandatory true;
+												description "ffeRef";
+							}
+							leaf ffeCap {
+								type uint32;
+								mandatory true;
+												description "ffeCap";
+							}
+							leaf align90 {
+								type uint32;
+								mandatory true;
+												description "align90";
+							}
+							leaf dcGain {
+								type uint32;
+								mandatory true;
+												description "dcGain";
+							}
+							leaf bandWidth {
+								type uint32;
+								mandatory true;
+												description "bandWidth";
+							}
+							leaf loopBandwidth {
+								type uint32;
+								mandatory true;
+												description "loopBandwidth";
+							}
+						}
+					}
+				}
+			}
+		}		
+// Section PHYs
+		container PHYs {
+			when "/MTS-Platform/PHY-feature-is-supported = 'true'";
+			description "PHYs Information, enables configuring PHY for Network ports and OOB";
+			list phy-list {
+				description "Lists PHY information.";
+				key "phy-number";
+				ordered-by system;
+				min-elements 1;
+				leaf phy-number {
+					type phy-number-type;
+					description "Specifies the PHY Number, Logical index.";
+				}
+				leaf phy-type {
+					type phy-type-type;
+					mandatory true;
+					description "Specifies the PHY Type.";
+				}
+				leaf download-method {
+					description "Specifies the PHY firmware download method (if exist).";
+					type phy-firmware-download-method-type;
+					default none;
+				}
+			}
+		}
+// Section OOB Port
+		container OOB-port {
+			when "/MTS-Platform/oob-feature-is-supported = 'true'"; 
+			presence "Enables Out Off Band";
+			description "Specifies the Out Off Band port Information.";
+			leaf speed {
+				type speed-type;
+				mandatory true;
+				description "Specifies the OOB Port Speed";
+			}
+			leaf eth-id {
+					type uint8 {
+							range "0 .. 2";
+						}
+					mandatory true;
+					description "Specifies the Linux ethernet id (e.g. eth1).";
+			}
+			leaf cpu-port-number {
+				type cpu-port-number-type;
+				description "Specifies the CPU port number that this OOB port is connected to.";
+				mandatory true;
+			}
+			uses phy-read-write-address-group-type;
+		}
+// Section FANs
+		container FANs {
+			when "/MTS-Platform/Fan-feature-is-supported = 'true'"; 
+			description "Specifies that the Fan feature is supported.";
+			leaf FanController-is-supported {
+				type boolean;
+				default false;
+				description "Specifies the if hardware fan controller is supported.";
+			}
+			list fan-controller-list {
+				when "/MTS-Platform/FANs/FanController-is-supported = 'true'";
+				description "Specifies a list of fan controllers.";
+				key "fan-controller-number";
+				ordered-by system;
+				min-elements 1;
+				leaf fan-controller-number {
+					type fan-controller-number-type;
+					description "Specifies the fan controller number.";
+				}
+				list fan-connected-list{
+					key "fan-number";
+					min-elements 1;
+					ordered-by system;
+					leaf fan-number {
+						type fan-number-type;
+						description "Specifies the fan hardware number inside the fan controller.";
+					}				
+					leaf fan-id {
+						type fan-id-type;
+						description "Specifies the fan unique id in the system.";
+						mandatory true;
+					}	
+					leaf fan-role {
+						type fan-role-type;
+						description "Specifies the fan type redundant/normal.";
+						mandatory true;
+					}
+				}
+				leaf fan-hw {
+					must "(current() != 'userDefined') or (/MTS-Platform/External-driver-feature-is-supported = 'true' )" {
+						error-message "The user defined requires External driver to be supported";
+					}
+					description "Specifies the hardware type of fan, or user-defined type.";
+					type fan-type;
+					mandatory true;
+				}
+				leaf fan-hw-display-name {
+					when "../fan-hw = 'userDefined'";
+					description "Specifies the name to display for this fan.";
+					type string;
+					mandatory false;
+				}
+				
+				container i2c-read-write-address {
+					when "../fan-hw != 'userDefined' ";
+					description "Specifies the i2c information needed to access this fan.";
+					uses i2c-read-write-address-fields-group-type;
+				}
+
+				leaf external-driver-id {
+					when "../fan-hw = 'userDefined' ";
+					must "/MTS-Platform/External-driver/external-driver-list[current() = external-driver-id]" {
+						error-message "The External driver is not defined in MTS-Platform/External-driver/external-driver-list";
+					}
+					type external-driver-id-type;
+					description "Specifies the External driver id that supports this user-defined fan.";
+					mandatory true;
+				}	
+
+				container fan-ADT7476-specific {
+					when "../fan-hw = 'ADT7476' "; 
+					description "Specifies the Fan Hw to be SDT7476.";
+					leaf fan-ADT7476-fault-detection {
+						type fan-ADT7476-fault-detection-type;
+						default interrupt-status;
+						description "Specifies the method to determine the fan fault";
+					}
+					list fan-ADT7476-operation-list {
+						key "fan-operation-type";
+						ordered-by system;
+						min-elements 1;
+						description "Specifies the supported operation types and scripts.";
+						leaf fan-operation-type {
+							type hw-fan-operation-type;	
+							description "Specifies the supported operation types.";
+						}
+						list fan-operation-list {
+							description "Specifies a List of fan operations.";
+							key "fan-operation-number";
+							ordered-by user;
+							min-elements 1;
+							leaf fan-operation-number {
+								type list-number-type;
+								description "Specifies the list index number.";
+							}
+							leaf fan-operation-comment {
+								type list-comment-type;
+								description "Specifies the list entry comments.";
+							}
+							uses i2c-read-write-address-group-type;						
+							leaf fan-operation-value {
+								type i2c-value-type;
+								mandatory true;
+								description "Specifies the value to be set to support the fan operation.";
+							}
+						}
+					}
+				}
+			}
+			leaf SwFanController-is-supported {
+				type boolean;
+				default false;
+				description "Specifies if a software fan fontroller is supported.";
+			}
+
+			container sw-fan-controllers {
+				when "/MTS-Platform/FANs/SwFanController-is-supported = 'true'"; 
+				description "Specifies the software fan controller information.";
+				list threshold-list {
+					key "fan-speed";
+					ordered-by system;
+					min-elements 1;
+					leaf fan-speed {
+						type uint8;
+						description "Specifies the fan speed.";
+						mandatory true;
+					}
+					leaf threshold-state {
+						type threshold-type;
+						description "Specifies the threshold type.";
+						default normal;
+					}
+					list sensor-list {
+						when "/MTS-Platform/Sensor-feature-is-supported = 'true' "; 
+						description "Specifies a list of sensors and thresholds.";
+						key "sensor-number";
+						ordered-by system;
+						min-elements 0;
+						leaf sensor-number {
+							type uint8;
+							description "Specifies the Sensor Number.";
+							must "/MTS-Platform/Sensors/sensor-list[sensor-number = current()]" { 
+								error-message "The sensor-number is not defined in /MTS-Platform/Sensors/sensor-list.";
+							}
+						}
+						leaf threshold-temperature {
+							type uint8;
+							description "Specifies the threshold temperature.";
+							mandatory true;
+						}
+					}
+				}
+			}
+		}
+// LEDs Configuration
+		container LEDs {
+			when "/MTS-Platform/LED-feature-is-supported= 'true' ";
+			presence "Enables LEDs";
+			description "Specifies the Platform LEDs.";
+			leaf SystemLed-is-supported {
+				type boolean;
+				default false;
+				description "Specifies if System LED is supported.";
+			}
+			container SystemLed {
+				when "/MTS-Platform/LEDs/SystemLed-is-supported = 'true'"; 
+				description "Specifies the System LED information.";
+				uses led-gpio-i2c-extdrv-group-type;
+			}
+			leaf RPSLed-is-supported {
+				when "/MTS-Platform/POWER-feature-is-supported = 'true'"; 
+				type boolean;
+				default false;
+				description "Specifies if RPS LED is supported.";
+			}
+			container RPSLed {
+				when "/MTS-Platform/LEDs/RPSLed-is-supported = 'true'"; 
+				description "Specifies the RPS LED information.";
+				uses led-gpio-i2c-extdrv-group-type;
+			}
+			leaf StackLed-is-supported {
+				when "/MTS-Platform/Stack-feature-is-supported = 'true' ";
+				type boolean;
+				default false;
+				description "Specifies if RPS LED is supported.";
+			}
+			container StackLeds {
+				when "/MTS-Platform/LEDs/StackLed-is-supported = 'true'"; 
+				description "Specifies the Stack Led information.";
+				container stack-led-master {
+					description "Specifies the stack Master LED";
+					uses led-gpio-i2c-extdrv-group-type;
+				}
+				list stackLed-list {
+					description "Specifies a list of Stack LED information.";
+					key "stack-led-id";
+					ordered-by system;
+					min-elements 1;
+					leaf stack-led-id {
+						description "Specifies the Stack LED identifier.";
+						type stack-led-id-type;
+					}
+					container stack-led {
+						uses led-gpio-i2c-extdrv-group-type;
+						description "Specifies the Stack LED information.";
+					}				
+				}			
+			}
+			leaf PoELed-is-supported {
+				when "/MTS-Platform/POE-feature-is-supported = 'true'";
+				type boolean;
+				default false;
+				description "Specifies if PoE LED is supported.";
+			}
+			container PoELed {
+				when "/MTS-Platform/LEDs/PoELed-is-supported = 'true'"; 
+				description "Specifies the PoE LED information.";
+				uses led-gpio-i2c-extdrv-group-type;
+			}
+			leaf FanLed-is-supported {
+				when "/MTS-Platform/Fan-feature-is-supported = 'true'";
+				type boolean;
+				default false;
+				description "Specifies if Fan LED is supported.";
+			}
+			container FanLed {
+				when "/MTS-Platform/LEDs/FanLed-is-supported = 'true'"; 
+				description "Specifies the Fan LED information.";
+				uses led-gpio-i2c-extdrv-group-type;
+			}
+			leaf PortLedState-is-supported {
+				type boolean;
+				default false;
+				description "Specifies if Port LED State LED is supported.";
+			}
+			container PortLedStateLed {
+				when "/MTS-Platform/LEDs/PortLedState-is-supported = 'true'"; 
+				description "Specifies the Port LED State LED information.";
+				uses led-gpio-i2c-extdrv-group-type;
+			}
+			leaf OOBLedState-is-supported {
+				when "/MTS-Platform/oob-feature-is-supported = 'true' "; 
+				type boolean;
+				default false;
+				description "Specifies if OOB led State LED is supported.";
+			}
+			container OOBLeds {
+				when "/MTS-Platform/LEDs/OOBLedState-is-supported = 'true'"; 
+				description "OOB Leds";
+				container OOBLeftLed {
+					description "Specifies the OOB Left LED information.";
+					uses led-oob-group-type;
+				}
+				container OOBRightLed {
+						description "Specifies the OOB Left LED information.";
+					uses led-oob-group-type;
+				}
+			}
+			leaf PortLeds-is-supported {
+				type boolean;
+				default false;
+				description "Specifies if Port LEDs are supported";
+			} 	
+			container PortsLeds {
+				when "/MTS-Platform/LEDs/PortLeds-is-supported = 'true'";
+				description "Specifies the LEDs of Port information.";
+				leaf PortLeds-supported-type {
+					description "Indicates the Port LED supported";
+					type port-leds-supported-type;
+					default 'left-and-right';
+				}
+				list PortLeds-list {
+					key "panel-group-number panel-port-number";
+					ordered-by user;
+					min-elements 1;
+					description "Specifies a list of Port LEDs.";
+					leaf panel-group-number {
+						type panel-group-number-type;
+						description "Specifies the Panel Group Number.";
+						must '/MTS-Platform/Network-ports/front-panel-group-list[group-number = current()]' { 
+							error-message "This Group number is not defined in Network-ports";
+						}
+					}
+					leaf panel-port-number {
+						type panel-port-number-type;
+						description "Specifies the Panel Port Number.";
+						must '/MTS-Platform/Network-ports/front-panel-group-list/port-list[port-number = current()]' { 
+							error-message "The Group number is not a defined Port Number in /MTS-Platform/Network-ports/front-panel-group-list/port-list.";
+						}
+					}
+					container LeftLed {
+						when "/MTS-Platform/LEDs/PortsLeds/PortLeds-supported-type = 'left-and-right' ";
+						description "Specifies the Left Port LED.";
+						uses led-pp-group-type;
+					}
+					container RightLed {
+						when "/MTS-Platform/LEDs/PortsLeds/PortLeds-supported-type = 'left-and-right' ";
+						description "Specifies the Right Port LED.";
+						uses led-pp-group-type;
+					}
+					container SingleLed {
+						when "/MTS-Platform/LEDs/PortsLeds/PortLeds-supported-type = 'single' ";
+						description "Specifies the Single Port LED.";
+						uses led-pp-group-type;
+					}
+				}
+			}
+			leaf Ledstream-is-supported {
+				type boolean;
+				default false;
+				description "Specifies if Ledstream port led control is supported";
+			} 	
+			container LedstreamLeds {
+				when "/MTS-Platform/LEDs/Ledstream-is-supported = 'true'";
+				description "Specifies system LED stream information.";
+				list Ledstream-interface-list {
+					key "pp-device-number ledstream-interface-number";
+					ordered-by user;
+					description "Specifies a list of Ledstream interfaces.";
+					leaf pp-device-number {
+						type pp-device-number-type;
+						must ". < /MTS-Platform/Packet-Processors/number-of-pps" {
+							error-message "Device is not defined as a Packet Processor device.";	
+						}
+						description "Specifies the Packet Processor number.";
+					}
+					leaf ledstream-interface-number {
+						type uint8;
+						mandatory true;
+						description "Specifies the ledstream interface number.";
+					}
+					container ledstream-interface-configSet {
+						leaf ledOrganize {
+							mandatory true;
+							type led-stream-order-mode-type;
+							description "Specifies the order of the signals driven in the LED stream.";
+						}
+						leaf disableOnLinkDown {
+							default false;
+							type boolean;
+							description "How to display indications when the link is down: <br>
+										 FALSE - No effect, Link status has no effect on other indications. <br>
+										 TRUE - When link is down, the following indications: speed, duplex, activity are forced down.<br>
+										 (APPLICABLE DEVICES: xCat3; AC5; Lion2)";
+						}
+						leaf blink0DutyCycle {
+							mandatory true;
+							type led-stream-blink-duty-cycle-type;
+							description "Specifies the duty cycle of the Blink0 signal.";
+						}
+						leaf blink0Duration {
+							mandatory true;
+							type led-stream-blink-duration-type;
+							description "Specifies the period of the Blink0 signal.";
+						}
+						leaf blink1DutyCycle {
+							mandatory true;
+							type led-stream-blink-duty-cycle-type;
+							description "Specifies the duty cycle of the Blink1 signal.";
+						}
+						leaf blink1Duration {
+							mandatory true;
+							type led-stream-blink-duration-type;
+							description "Specifies the period of the Blink0 signal.";
+						}						
+						leaf pulseStretch {
+							mandatory true;
+							type led-stream-pulse-stretch-type;
+							description "Specifies the length of stretching for dynamic signals.";
+						}						
+						leaf ledStart {
+							mandatory true;
+							type uint32;
+							description "Specifies the first bit in the LED stream to be driven, range 0..255";
+						}					
+						leaf ledEnd {
+							mandatory true;
+							type uint32;
+							description "Specifies the last bit in the LED stream to be driven, range 0..255";
+						}					
+						leaf clkInvert {
+							default false;
+							type boolean;
+							description "Inverts the LEDClk pin, FALSE - disable, TRUE - enable. <br>
+										 (APPLICABLE DEVICES: xCat3; AC5; Lion2)";
+						}					
+						leaf class5select {
+							mandatory true;
+							type led-stream-class5-select-type;
+							description "Selects the indication displayed on class5 (relevant only for GE ports LED stream <br>
+										 (APPLICABLE DEVICES: xCat3; AC5; Lion2)";
+						}
+						leaf class13select {
+							mandatory true;
+							type led-stream-class13-select-type;
+							description "Selects the indication displayed on class13 (relevant only for GE ports LED stream <br>
+										 (APPLICABLE DEVICES: xCat3; AC5; Lion2)";
+						}
+						leaf invertEnable {
+							default false;
+							type boolean;
+							description "LED data polarity <br>
+										 TRUE - active low: LED light is in low indication. <br>
+										 FALSE - active high: LED light is in high indication. <br>
+										 (APPLICABLE DEVICES: Bobcat2, Caelum, Aldrin, AC3X, Bobcat3, Aldrin2, Falcon, AC5P)";
+						}
+						leaf ledClockFrequency {
+							mandatory true;
+							type led-stream-clock-out-frequency-type;
+							description "LED output clock frequency <br>
+										 For SIP6 devices - sip6LedConfig.ledClockFrequency need to be used <br>
+										 (APPLICABLE DEVICES: Bobcat2, Caelum, Aldrin, AC3X, Bobcat3; Aldrin2)";
+						}
+					}
+					leaf ledstream-interface-init-exist {
+						type boolean;
+						description "Specifies if Ledstream support init operation (for all ports).";
+						default false;
+					}			
+					container ledstream-interface-init-value {
+						when "../ledstream-interface-init-exist = 'true'";
+						uses ledstream-interface-manipulation-list-type;
+					}	
+
+					container ledstream-interface-modes {
+						uses ledstream-group-type;					
+						container ledstream-port-modes {
+							container LeftLed-port-modes {
+								when "/MTS-Platform/LEDs/PortsLeds/PortLeds-supported-type = 'left-and-right' ";
+								description "Specifies the left led of Port with position=1 operational class manipulation data. <br>
+											 will be used for calling LedStreamClassManipulationSet API";
+								uses ledstream-port-values-list-type;
+							}
+							container RightLed-port-modes {
+								when "/MTS-Platform/LEDs/PortsLeds/PortLeds-supported-type = 'left-and-right' ";
+								description "Specifies the right led of Port with position=1 operational class manipulation data. <br>
+											 will be used for calling LedStreamClassManipulationSet API";
+								uses ledstream-port-values-list-type;
+							}
+							container SingleLed-port-modes {
+								when "/MTS-Platform/LEDs/PortsLeds/PortLeds-supported-type = 'single' ";
+								description "Specifies the single led of Port with position=1 operational class manipulation data. <br>
+											 will be used for calling LedStreamClassManipulationSet API";
+								uses ledstream-port-values-list-type;
+							}													
+						}
+					}
+				}
+				container LedstreamPortsLeds {
+					description "Specifies the ledstream Port information.";
+					list LedstreamPortLeds-list {
+						key "panel-group-number panel-port-number";
+						ordered-by user;
+						min-elements 1;
+						description "Specifies a list of Port LEDs.";
+						leaf panel-group-number {
+							type panel-group-number-type;
+							description "Specifies the Panel Group Number.";
+							must '/MTS-Platform/Network-ports/front-panel-group-list[group-number = current()]' { 
+								error-message "This Group number is not defined in Network-ports";
+							}
+						}
+						leaf panel-port-number {
+							type panel-port-number-type;
+							description "Specifies the Panel Port Number.";
+							must '/MTS-Platform/Network-ports/front-panel-group-list/port-list[port-number = current()]' { 
+								error-message "The Group number is not a defined Port Number in /MTS-Platform/Network-ports/front-panel-group-list/port-list.";
+							}
+						}
+						container Ledstream-port-init {
+							description "Specifies the LED stream information to perform port initialization.";
+							leaf ledInterface {
+								description "LED stream interface number.";
+								type uint8;
+								must '/MTS-Platform/LEDs/LedstreamLeds/Ledstream-interface-list[ledstream-interface-number = current()]' { 
+									error-message "The Interface number is not defined in /MTS-Platform/LEDs/PortsLeds/ledstream-interface-list.";
+								}						
+							}
+							leaf ledPosition {
+								mandatory true;
+								description "port  index in LED stream";
+								type uint8 {
+									range 0..63;
+								}
+							}
+							leaf polarityEnable {
+								default false;
+								description "status of the selected polarity indication.<br>
+											 TRUE  - polarity inverted<br>
+											 FALSE - polarity not inverted";
+								type boolean;
+							}
+							leaf classNum {
+								description "classNum for polarity settings";
+								mandatory true;
+								type uint32 {
+									range 0..11;
+								}
+							}
+						}				
+					}
+				}
+			}
+			
+		}
+// Section Sensors
+		container Sensors {
+			when "/MTS-Platform/Sensor-feature-is-supported = 'true' "; 
+			description "Specifies the Platform Sensors.";
+			list sensor-list {
+				key "sensor-number";
+				ordered-by system;
+				min-elements 1;
+				description "Specifies a List of Sensor information per Sensor number.";
+				leaf sensor-number {
+					type uint8;
+					description "Specifies the Sensor Number.";
+				}
+				leaf sensor-type {
+					must " ( current() = 'PHY' and /MTS-Platform/PHY-feature-is-supported = 'true' ) or 
+					       ( current() = 'CPU' and /MTS-Platform/CPU-feature-is-supported = 'true' ) or 
+						   ( current() = 'MAC' ) or 
+						   ( current() = 'BOARD' ) or 
+						   ( current() = 'POE' and /MTS-Platform/POE-feature-is-supported = 'true' ) " { 
+						error-message "The Sensor Type Not Supported";
+					}
+					type sensor-hw-type;
+					description "Specifies the Sensor Type.";
+					default BOARD;
+				}
+				leaf sensor-description {
+					type string;
+					description "Specifies the Sensor description.";
+					mandatory false;
+				}		
+
+				leaf board-interface-is-i2c {
+					when "/MTS-Platform/External-driver-feature-is-supported = 'true' and ../sensor-type = 'BOARD' ";
+					type boolean;
+					description "Specifies if the board interface is i2c or external driver.";
+					default true;
+				}
+				
+				container board-sensor {
+					when "../sensor-type = 'BOARD' and ../board-interface-is-i2c = 'true' ";
+					description "Specifies the Board sensor i2c information.";
+					leaf is-stateInfoControl-supported {
+						type boolean;
+						description "Specifies if stateInfoControl is supported";
+						default false;
+					}
+					container StateInfoControl {
+						when "../is-stateInfoControl-supported = 'true'";
+						description "Specifies the interface to read the sensor status.";
+						uses i2c-read-write-address-group-type;
+						leaf StateOkValue {
+							type i2c-value-type;
+							description "Specifies the state Okay value.";
+							mandatory true;
+						}
+					}			
+					container temperature {
+						description "Specifies the interface to read the sensor temperature.";
+						uses i2c-read-write-address-group-type;
+					}
+				}
+				leaf phy-number {
+					when "../sensor-type = 'PHY' and /MTS-Platform/PHY-feature-is-supported = 'true'";
+					must "/MTS-Platform/PHYs/phy-list[phy-number = current()]" { 
+						error-message "The PHY-number is not defined in /MTS-Platform/PHYs/phy-list.";
+					}
+					type phy-number-type;
+					description "Specifies the PHY Number.";
+				}			
+
+				leaf external-driver-id {
+					when "/MTS-Platform/External-driver-feature-is-supported = 'true'  and ../sensor-type = 'BOARD' and ../ board-interface-is-i2c = 'false'";
+					must "/MTS-Platform/External-driver-feature-is-supported = 'true' and /MTS-Platform/External-driver/external-driver-list[current() = external-driver-id]" {
+						error-message "The External driver is not defined in MTS-Platform/External-driver/external-driver-list";
+					}
+					type external-driver-id-type;
+					description "Specifies the External driver id.";
+					mandatory true;
+				}	
+										
+			}
+		}
+// Section Power
+		container Power {
+			when "/MTS-Platform/POWER-feature-is-supported = 'true'"; 
+			presence "Enables Power";
+			description "Specifies the Power Supply (PS) configuration.";
+			container PS {
+				description "Specifies the PS configuration.";
+				container activeInfo {
+					description "Specifies the interface to read the PS status.";
+					uses power-connection-read-only-group-type;
+				}
+			}
+			leaf RPS-is-supported {
+				type boolean;
+				default false;
+				description "Specifies the if RPS is supported.";
+			}
+			container RPS {
+				when "/MTS-Platform/Power/RPS-is-supported = 'true'"; 
+				description "Specifies the RPS configuration.";
+				container connectedInfo {
+					description "Specifies the interface to read the RPS connected status.";
+					uses power-connection-read-only-group-type;
+				}
+				list status-list {
+					key "status-type";
+					ordered-by system;
+					min-elements 1;
+					description "Specifies RPS possible status.";
+					leaf status-type {
+						type power-status-type;
+						description "panel group number";
+					}
+					container status-value {
+						description "Specifies the interface to read the RPS status.";
+						uses power-connection-read-only-group-type;
+					}
+				}
+			}
+		}
+// Section POE
+		container PoE {
+			when "/MTS-Platform/POE-feature-is-supported = 'true'"; 
+			presence "Enable POE";
+			description "POE feature is supported";	
+			container POE-power-banks {
+				when "/MTS-Platform/POE-feature-is-supported = 'true'"; 
+				description "Specifies the power banks configuration.";
+				list PoEbank-list {
+					description "Specifies a list of PoE Banks.";
+					when "/MTS-Platform/POE-feature-is-supported = 'true'";
+					key "bank-number";
+					ordered-by system;
+					min-elements 1;
+					max-elements 17;
+					leaf bank-number {
+						type bank-number-type;
+						description "Specifies the Bank Number.";
+					}
+					leaf bank-watts {
+						type bank-watts-type;
+						mandatory true;
+						description "Specifies the Watts provided by the Bank.";
+					}
+					leaf bank-source {
+						type  bank-source-type;
+						description "Specifies the power source of this Bank.";
+						mandatory true;
+					}
+				}
+			}
+			leaf PSEports-are-supported {
+				type boolean;
+				default false;
+				description "Specifies if PSE ports are supported.";
+			}
+			container PSEports {
+				when "/MTS-Platform/PoE/PSEports-are-supported = 'true'"; 
+				description "Specifies the PSE ports configuration.";
+				
+				leaf PSE-information {
+					description "PSE type";
+					type PSE-type;
+					default undefined;
+				}
+				
+				list PSEport-list {
+					key "panel-group-number panel-port-number";
+					ordered-by user;
+					min-elements 1;
+					description "Specifies one PSE Port configuration.";
+					leaf panel-group-number {
+						type panel-group-number-type;
+						description "Specifies the panel group number.";
+						must '/MTS-Platform/Network-ports/front-panel-group-list[group-number = current()]' { 
+							error-message "The Group number is not a defined Group Number in Network-ports";
+						}
+					}
+					leaf panel-port-number {
+						type panel-port-number-type;
+						description "Specifies the panel port number.";
+						must '/MTS-Platform/Network-ports/front-panel-group-list/port-list[port-number = current()]' { 
+							error-message "The Group number is not a defined Port Number in Network-ports";
+						}
+					}
+					container pse-group {
+						description "Specifies the PSE configuration.";
+						container activeInfo {
+							when "/MTS-Platform/PoE/PSEports/PSE-information = 'undefined' or /MTS-Platform/PoE/PSEports/PSE-information = '690xx' ";
+							description "Specifies the whether Power is Active.";
+							uses power-connection-read-only-group-type;
+						}
+						leaf port-type {
+							type PSEport-type;
+							mandatory true;
+							description "Specifies the PSE Port Type.";
+						}
+						leaf index1 {
+							type PSEindex-type;
+							mandatory true;
+							description "Specifies the PSE Port Index 1.";
+						}
+						leaf index2 {
+							when "../port-type = '60W' or ../port-type = 'BT'";
+							type PSEindex-type;
+							description "Specifies the PSE Port Index 2. This index is used only when port-type = '60W' or 'BT'.";
+						}
+					}
+				}
+				
+				list PSE-list {
+					key "PSE-number";
+					unique "PSE-address";
+					leaf PSE-number {
+						type PSE-number-type;
+						mandatory true;
+						description "Specifies the PSE number.";
+					}
+					leaf PSE-address {
+						type PSE-address-type;
+						mandatory true;
+						description "Specifies the PSE address.";
+					}					
+				}
+			}
+			leaf PDports-are-supported {
+				type boolean;
+				default false;
+				description "Specifies if PD ports are supported.";
+			 }
+			container PDports {
+				when "/MTS-Platform/PoE/PDports-are-supported = 'true'"; 
+				description "Specifies the PD ports configuration.";
+				list PDport-list {
+					key "panel-group-number panel-port-number";
+					ordered-by system;
+					min-elements 1;
+					description "Specifies a list of PD port configuration.";
+					leaf panel-group-number {
+						type panel-group-number-type;
+						description "Specifies the Panel Group Number.";
+						must '/MTS-Platform/Network-ports/front-panel-group-list[group-number = current()]' { 
+							error-message "This Group number is not defined in Network-ports";
+						}
+					}
+					leaf panel-port-number {
+						type panel-port-number-type;
+						description "Specifies the Panel Port Number.";
+						must '/MTS-Platform/Network-ports/front-panel-group-list/port-list[port-number = current()]' { 
+							error-message "This Group number is not defined in Network-ports";
+						}
+					}
+					container pd-group {
+						description "Specifies the PD Port Configuration.";
+						container ATinfo {
+							description "Specifies the PD Port AT Information.";
+							uses power-connection-read-only-group-type;
+						}
+						container AFinfo {
+							description "Specifies the PD Port AF Information.";
+							uses power-connection-read-only-group-type;
+						}
+						container sixstyWinfo {
+							description "Specifies the PD Port 60W Information.";
+							uses power-connection-read-only-group-type;
+						}
+						container clearControl {
+							description "Specifies the PD Port Clear Control.";
+							uses power-connection-read-write-group-type;
+						}
+						container ATcontrol {
+							description "Specifies the PD Port AT Control.";
+							uses power-connection-read-write-group-type;
+						}
+						container AFcontrol {
+							description "Specifies the PD Port AF Control.";
+							uses power-connection-read-write-group-type;
+						}
+						container sixstycontrol {
+							description "Specifies the PD Port 60W Control.";
+							uses power-connection-read-write-group-type;
+						}
+					}
+				}
+			}
+		}
+// Section Buttons
+		container Buttons {
+			presence "Enables Buttons";
+			when "/MTS-Platform/Button-feature-is-supported = 'true' ";
+			description "Buttons are supported.";
+			list buttons-list {
+				key "button-id";
+				ordered-by user;
+				min-elements 1;
+				leaf button-id {
+					type button-type;
+					description "Specifies the button type.";
+				}
+				container push-value {
+					description "Specifies the Push value of the button.";
+					uses read-interface-group-type;
+				}
+			}
+		}
+// Section CPU
+		container CPU-info-current {
+			when "/MTS-Platform/CPU-feature-is-supported = 'true' ";
+			description "Specifies the CPU information.";
+			leaf cpu-type {
+				type cpu-type-type;
+				description "Specifies the CPU type.";
+				mandatory true;
+			}
+			leaf num-of-usb-devices {
+				type uint8;
+				description "Number of USB devices";
+				default 0;
+			}		
+		}
+		container CPU-SDMA-port-mapping {
+			when "/MTS-Platform/CPU-SDMA-port-mapping-is-supported = 'true' ";
+			list cpu-sdma-port-list {
+				key "cpu-sdma-port-index";
+				unique "logical-port-number"; 
+				ordered-by user;
+				min-elements 1;
+				description "Specifies a List of CPU SDMA port mapping information.";
+				leaf cpu-sdma-port-index {
+					type cpu-sdma-port-index-type;
+				}
+				leaf pp-device-number {
+					type pp-device-number-type;
+					must ". < /MTS-Platform/Packet-Processors/number-of-pps" {
+						error-message "Device is not defined as a Packet Processor device.";
+					}
+					mandatory true;
+					description "Specifies the Packet Processor number.";
+				}
+				leaf pp-port-number {
+					type pp-port-number-type;
+					mandatory true;
+					description "Specifies the Packet Processor Interface number.";
+				}
+				leaf logical-port-number {
+					type cpu-logical-port-number-type;
+					default 63;
+					description "Specifies the Packet Processor CPSS Physical Port number.";
+				}
+			}
+		}
+// Section EXT DRV
+		container External-driver {
+			presence "Enables External Drivers";
+			when "/MTS-Platform/External-driver-feature-is-supported = 'true' ";
+			description "Specifies the External Drivers supported.";
+			list external-driver-list {
+				key "external-driver-id";
+				ordered-by system;
+				min-elements 0;
+				description "Specifies a List of External Driver identifiers.";
+				leaf external-driver-id {
+					type external-driver-id-type;
+					description "Specifies the External Driver id.";
+				}
+				leaf external-driver-description {
+					type string;
+					description "Specifies the External Driver id description.";
+					mandatory false;
+				}
+			}
+		}
+
+// Section BOARD DESCRIPTION
+		leaf Board-description {
+			when "/MTS-Platform/Board-description-feature-is-supported = 'true' ";
+			type string {
+				length "0..200";
+			}
+			description "Specifies Board Description information.";
+		}			
+
+// End of file tags	
+	}
+}	

@@ -1,0 +1,81 @@
+/*******************************************************************************
+*                Copyright 2001, Marvell International Ltd.
+* This code contains confidential information of Marvell semiconductor, inc.
+* no rights are granted herein under any patent, mask work right or copyright
+* of Marvell or any third party.
+* Marvell reserves the right at its sole discretion to request that this code
+* be immediately returned to Marvell. This code is provided "as is".
+* Marvell makes no warranties, express, implied or otherwise, regarding its
+* accuracy, completeness or performance.
+********************************************************************************
+*/
+/**
+********************************************************************************
+* @file mvHwsUsxRsfecUnits.h
+*
+* @brief Hawk port interface header file
+*
+* @version   1
+********************************************************************************
+*/
+#ifndef __mvHwsUsxRsfecUnits_H
+#define __mvHwsUsxRsfecUnits_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef enum {
+  /*0*/  USX_RSFEC_UNITS_RSFEC_CONTROL_BYPASS_CORRECTION_E,
+  /*1*/  USX_RSFEC_UNITS_RSFEC_CONTROL_BYPASS_ERROR_INDICATION_E,
+  /*2*/  USX_RSFEC_UNITS_RSFEC_CONTROL_FEC91_ENA_E,
+  /*3*/  USX_RSFEC_UNITS_RSFEC_CONTROL_TC_PAD_VALUE_E,
+  /*4*/  USX_RSFEC_UNITS_RSFEC_STATUS_BYPASS_CORRECTION_ABILITY_E,
+  /*5*/  USX_RSFEC_UNITS_RSFEC_STATUS_BYPASS_INDICATION_ABILITY_E,
+  /*6*/  USX_RSFEC_UNITS_RSFEC_STATUS_HIGH_SER_E,
+  /*7*/  USX_RSFEC_UNITS_RSFEC_STATUS_AMPS_LOCK_E,
+  /*8*/  USX_RSFEC_UNITS_RSFEC_STATUS_FEC_ALIGN_STATUS_E,
+  /*9*/  USX_RSFEC_UNITS_RSFEC_STATUS_FEC_PCS_ALIGN_STATUS_E,
+  /*10*/  USX_RSFEC_UNITS_RSFEC_CCW_LO_RSFEC_CCW_LO_E,
+  /*11*/  USX_RSFEC_UNITS_RSFEC_CCW_HI_RSFEC_CCW_HI_E,
+  /*12*/  USX_RSFEC_UNITS_RSFEC_NCCW_LO_RSFEC_NCCW_LO_E,
+  /*13*/  USX_RSFEC_UNITS_RSFEC_NCCW_HI_RSFEC_NCCW_HI_E,
+  /*14*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR0_LO_SYMBLERR0_LO_E,
+  /*15*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR0_HI_SYMBLERR0_HI_E,
+  /*16*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR1_LO_SYMBLERR1_LO_E,
+  /*17*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR1_HI_SYMBLERR1_HI_E,
+  /*18*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR2_LO_SYMBLERR2_LO_E,
+  /*19*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR2_HI_SYMBLERR2_HI_E,
+  /*20*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR3_LO_SYMBLERR3_LO_E,
+  /*21*/  USX_RSFEC_UNITS_RSFEC_SYMBLERR3_HI_SYMBLERR3_HI_E,
+  /*22*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_AMPS_LOCK_E,
+  /*23*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_ALIGN_STATUS_LH_E,
+  /*24*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_MARKER_CHECK_RESTART_E,
+  /*25*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_RX_DATAPATH_RESTART_E,
+  /*26*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_TX_DATAPATH_RESTART_E,
+  /*27*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_RX_DP_OVERFLOW_E,
+  /*28*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_TX_DP_OVERFLOW_E,
+  /*29*/  USX_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_ALIGN_STATUS_LL_E,
+  /*30*/  USX_RSFEC_UNITS_RSFEC_VENDOR_REVISION_REVISION_E,
+  /*31*/  USX_RSFEC_UNITS_RSFEC_VENDOR_DECODER_THRESHOLD_RSFEC_DECODER_THRESHOLD_E,
+  /*32*/  USX_RSFEC_UNITS_RSFEC_VENDOR_TX_FIFO_THRESHOLD_TX_LANE_THRESH_E,
+  /*33*/  USX_RSFEC_UNITS_RSFEC_VENDOR_TX_FIFO_THRESHOLD_TOGGLE_EN_E,
+  /*34*/  USX_RSFEC_UNITS_BASE_R_FEC_CW_HI_FEC_CW_HI_E,
+  /*35*/  USX_RSFEC_UNITS_BASE_R_FEC_CONTROL_FEC_ENABLE_E,
+  /*36*/  USX_RSFEC_UNITS_BASE_R_FEC_CONTROL_FEC_ERROR_INDICATION_ENABLE_E,
+  /*37*/  USX_RSFEC_UNITS_BASE_R_FEC_ABILITY_FEC_ABILITY_E,
+  /*38*/  USX_RSFEC_UNITS_BASE_R_FEC_ABILITY_FEC_ERROR_INDICATION_ABILITY_E,
+  /*39*/  USX_RSFEC_UNITS_BASE_R_FEC_STATUS_FEC_LOCKED_E,
+  /*40*/  USX_RSFEC_UNITS_BASE_R_FEC_CCW_LO_FEC_CCW_LO_E,
+  /*41*/  USX_RSFEC_UNITS_BASE_R_FEC_NCCW_LO_FEC_NCCW_LO_E,
+    USX_RSFEC_UNITS_REGISTER_LAST_E /* should be last */
+} MV_HWS_USX_RSFEC_UNITS_FIELDS_E;
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __mvHwsUsxRsfecUnits_H */
+

@@ -1,0 +1,85 @@
+# $(warning "Started") 
+
+FLS:=
+ifeq (y.yes,$(CONFIG_CMD_FS).$(CMDFS_NIX))
+        #SUBDIRS = NONE
+        MODULES :=
+        FILES := \
+        cmdFS_NIX.c 
+
+else
+        #C_EXCLUDE_FILE_LIST = cmdFS_NIX.c cmdFS_VIRT.c
+
+        ifeq (y, $(CONFIG_CMD_FS))
+            FILES := \
+             cmdFS_RAM.c 
+
+             MODULES := \
+               zlib 
+
+        else
+            #C_EXCLUDE_FILE_LIST = ALL
+            FILES :=
+        endif
+
+        ifneq (yes,$(LUACLI_STANDALONE_BUILD))
+        	ifeq (1,$(CPSS_SPLIT_LIBRARIES))
+        	    LIB_NAME = mainCmd.lib
+        	endif
+        endif
+
+        ifeq (y,$(CONFIG_CMD_LUA_CLI))
+           #RAM_DATA_CPSS = $(subst \,/,$(USER_BASE))/mainLuaWrapper/data
+           RAM_DATA_CPSS = mainLuaWrapper/data
+           RAM_DATA ?= $(RAM_DATA_CPSS)
+           ifeq ($(FAMILY), DXPX)
+                 RAM_DATA_SUBDIR = dxpx
+           else
+              ifneq (,$(findstring DX, $(FAMILY)))
+                 RAM_DATA_SUBDIR = dxCh
+              endif
+              ifneq (,$(findstring PX, $(FAMILY)))
+                 RAM_DATA_SUBDIR = px
+              endif
+           endif
+
+           ifneq (,$(RAM_DATA_SUBDIR))
+              ifneq (,$(wildcard $(RAM_DATA)/$(RAM_DATA_SUBDIR)/cmdFS_RAM_embed_files*.c))
+                 #INCLUDE_PATH += $(FIS)$(CURDIR)$(FIE)
+        	     luaCLI_standalone_PROJECT_PATH += luaCLI_standalone/src/FS
+                 FLS += $(wildcard $(RAM_DATA)/$(RAM_DATA_SUBDIR)/cmdFS_RAM_embed_files*.c)         
+                 ifneq (,$(wildcard $(RAM_DATA)/$(RAM_DATA_SUBDIR)/cmdFS_RAM_lua_cli_examples*.c))
+                    ifneq (yes, $(NO_LUACLI_EXAMPLES))
+                      FLS += $(wildcard $(RAM_DATA)/$(RAM_DATA_SUBDIR)/cmdFS_RAM_lua_cli_examples*.c)    
+                    endif
+                 endif
+                 ifneq (,$(wildcard $(RAM_DATA)/$(RAM_DATA_SUBDIR)_xml/cpssAPI_xml*.c))
+                    FLS += $(wildcard $(RAM_DATA)/$(RAM_DATA_SUBDIR)_xml/cpssAPI_xml*.c)   
+                 else
+                    ifneq (,$(wildcard $(RAM_DATA_CPSS)/$(RAM_DATA_SUBDIR)_xml/cpssAPI_xml*.c))
+                       FLS += $(wildcard $(RAM_DATA_CPSS)/$(RAM_DATA_SUBDIR)_xml/cpssAPI_xml*.c)   
+                    endif
+                 endif
+              endif
+           endif  
+        endif
+endif
+
+#List of subfolders to include in build
+MODULES := \
+ zlib 
+
+#$(warning "FLS=$(FLS)")
+FILES += $(addprefix ../../../,$(FLS) )
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+LUACLI_STANDALONE_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

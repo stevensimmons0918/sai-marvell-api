@@ -1,0 +1,42 @@
+# $(warning "Started") 
+
+
+#List of files to include in list
+FILES := \
+ wrapCpssAsicSim.c 
+
+simFilesUsed=0
+
+ifeq (y, $(CONFIG_ASIC_SIMULATION))
+    simFilesUsed=1
+endif
+#check if we forbid the use of the simulation files ! even if the CONFIG_ASIC_SIMULATION is used !
+ifeq (y, $(CONFIG_ASIC_SIMULATION_ENV_FORBIDDEN))
+    simFilesUsed=0
+endif
+
+ifeq (0, $(simFilesUsed))
+	#C_EXCLUDE_FILE_LIST = ALL
+	FILES :=
+endif
+ifeq (NOT_USED, $(NO_PP_USED))
+	#C_EXCLUDE_FILE_LIST = ALL
+	FILES :=
+endif
+
+#List of subfolders to include in build
+MODULES := 
+
+# $(warning "FILES=$(FILES)")
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINGALTISWRAPPER_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

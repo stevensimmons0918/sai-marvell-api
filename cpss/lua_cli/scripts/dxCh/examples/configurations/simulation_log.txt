@@ -1,0 +1,8 @@
+// TAG:               simulation log
+// Short Description: start simulation log
+// Description:       start simulation log
+end
+debug-mode
+simulation startSimulationLog
+exit
+end

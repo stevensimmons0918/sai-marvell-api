@@ -1,0 +1,19 @@
+{
+   "comment": "",
+   "Base": {
+      "project_name": "cpss",
+      "release_number": "4.2"
+   },
+   "Search": {
+      "Search_list": [
+        "embeddedCommands/h",
+        "embeddedCommands/px/pxEC/h",
+        "embeddedCommands/dx/dxEC/h",
+        "mainPpDrv/h",
+        "mainPxDrv/h",
+        "common/h",
+        "mainLuaWrapper/h",
+        "mainExtUtils/h"
+      ]
+   }
+}

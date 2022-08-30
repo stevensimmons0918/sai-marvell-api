@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saimcastfdb_8h" kind="file" language="C++">
+    <compoundname>saimcastfdb.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <includedby refid="saiobject_8h" local="no">inc/saiobject.h</includedby>
+    <incdepgraph>
+      <node id="177">
+        <label>stdbool.h</label>
+      </node>
+      <node id="176">
+        <label>stdint.h</label>
+      </node>
+      <node id="174">
+        <label>inc/saimcastfdb.h</label>
+        <link refid="saimcastfdb.h"/>
+        <childnode refid="175" relation="include">
+        </childnode>
+      </node>
+      <node id="178">
+        <label>sys/types.h</label>
+      </node>
+      <node id="175">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="179">
+        <label>inc/saimcastfdb.h</label>
+        <link refid="saimcastfdb.h"/>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>inc/saiobject.h</label>
+        <link refid="saiobject_8h"/>
+        <childnode refid="180" relation="include">
+        </childnode>
+      </node>
+      <node id="180">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__mcast__fdb__entry__t" prot="public">_sai_mcast_fdb_entry_t</innerclass>
+    <innerclass refid="struct__sai__mcast__fdb__api__t" prot="public">_sai_mcast_fdb_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_m_c_f_d_b_1gaa7910c55c920ee61e44ec19e1fa386df" prot="public" static="no">
+        <name>_sai_mcast_fdb_entry_attr_t</name>
+        <enumvalue id="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfab4b737de0bbdfa7c5c7e463983fbad4b" prot="public">
+          <name>SAI_MCAST_FDB_ENTRY_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa1dbeca3790c9ec20ed7b7fc0bd28e01f" prot="public">
+          <name>SAI_MCAST_FDB_ENTRY_ATTR_GROUP_ID</name>
+          <initializer>= SAI_MCAST_FDB_ENTRY_ATTR_START</initializer>
+          <briefdescription>
+<para>Multicast FDB entry group id. </para>          </briefdescription>
+          <detaileddescription>
+<para>The group id refers to a L2MC group object. In case of empty group, packets will be discarded.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_L2MC_GROUP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa03579919f530a962e92e25d56ddfb632" prot="public">
+          <name>SAI_MCAST_FDB_ENTRY_ATTR_PACKET_ACTION</name>
+          <briefdescription>
+<para>Multicast FDB entry packet action. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_packet_action_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa8a05197f52a9cfb4282bdea7b26e9f0b" prot="public">
+          <name>SAI_MCAST_FDB_ENTRY_ATTR_META_DATA</name>
+          <briefdescription>
+<para>User based Meta Data. </para>          </briefdescription>
+          <detaileddescription>
+<para>Value Range <ref refid="group___s_a_i_s_w_i_t_c_h_1gga96df0871b3925f973f4a9079ffb3e634a59c3c2e6cd28d2664ed68f299bf82565" kindref="member">SAI_SWITCH_ATTR_FDB_DST_USER_META_DATA_RANGE</ref></para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa46d70a9ab4f69f3e292e83504b297fc7" prot="public">
+          <name>SAI_MCAST_FDB_ENTRY_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfaca3805f404d7f35f274e150a6491c267" prot="public">
+          <name>SAI_MCAST_FDB_ENTRY_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Start of custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfab72ee29b0ba291c182adbc42d9123755" prot="public">
+          <name>SAI_MCAST_FDB_ENTRY_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute Id for multicast FDB entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="64" column="1" bodyfile="inc/saimcastfdb.h" bodystart="63" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_m_c_f_d_b_1gadca9751b5d023778309d1d84dba296a7" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__mcast__fdb__entry__t" kindref="compound">_sai_mcast_fdb_entry_t</ref></type>
+        <definition>typedef struct _sai_mcast_fdb_entry_t  sai_mcast_fdb_entry_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mcast_fdb_entry_t</name>
+        <briefdescription>
+<para>MCAST FDB entry key. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_c_f_d_b_1gab7b2c257da13a03930d750b6b8cc88ab" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_c_f_d_b_1gaa7910c55c920ee61e44ec19e1fa386df" kindref="member">_sai_mcast_fdb_entry_attr_t</ref></type>
+        <definition>typedef enum _sai_mcast_fdb_entry_attr_t  sai_mcast_fdb_entry_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mcast_fdb_entry_attr_t</name>
+        <briefdescription>
+<para>Attribute Id for multicast FDB entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="112" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_c_f_d_b_1ga4462f3d2a67f5793e58257ddd2b56c8a" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_mcast_fdb_entry_fn) (_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_mcast_fdb_entry_fn</name>
+        <briefdescription>
+<para>Create Multicast FDB entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mcast_fdb_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FDB entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="123" column="1" bodyfile="inc/saimcastfdb.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_c_f_d_b_1gab29591a52ae460585b315310cac2b449" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_mcast_fdb_entry_fn) (_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry)</definition>
+        <argsstring>)(_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry)</argsstring>
+        <name>sai_remove_mcast_fdb_entry_fn</name>
+        <briefdescription>
+<para>Remove Multicast FDB entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mcast_fdb_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FDB entry</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="135" column="1" bodyfile="inc/saimcastfdb.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_c_f_d_b_1gac0d49fc00511da823c58eb601be37407" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_mcast_fdb_entry_attribute_fn) (_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_mcast_fdb_entry_attribute_fn</name>
+        <briefdescription>
+<para>Set multicast FDB entry attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mcast_fdb_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FDB entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="146" column="1" bodyfile="inc/saimcastfdb.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_c_f_d_b_1gac8ba102575002167619d7e2d48296cdf" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_mcast_fdb_entry_attribute_fn) (_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_mcast_fdb_entry_t *mcast_fdb_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_mcast_fdb_entry_attribute_fn</name>
+        <briefdescription>
+<para>Get FDB entry attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mcast_fdb_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>FDB entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="159" column="1" bodyfile="inc/saimcastfdb.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_c_f_d_b_1gae2a786572991f2524ad3704ca03eca68" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__mcast__fdb__api__t" kindref="compound">_sai_mcast_fdb_api_t</ref></type>
+        <definition>typedef struct _sai_mcast_fdb_api_t  sai_mcast_fdb_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mcast_fdb_api_t</name>
+        <briefdescription>
+<para>Multicast FDB method table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimcastfdb.h" line="174" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI multicast FDB interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIMCASTFDB_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIMCASTFDB_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="struct__sai__mcast__fdb__entry__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__mcast__fdb__entry__t" kindref="compound">_sai_mcast_fdb_entry_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46" refid="struct__sai__mcast__fdb__entry__t_1aad2c42fe22d8f3ae99bef6b24e79cdc9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__mcast__fdb__entry__t_1aad2c42fe22d8f3ae99bef6b24e79cdc9" kindref="member">switch_id</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="struct__sai__mcast__fdb__entry__t_1aecb854a2845dce3af3f6c7cf1cf62e8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_mac_t<sp/><ref refid="struct__sai__mcast__fdb__entry__t_1aecb854a2845dce3af3f6c7cf1cf62e8a" kindref="member">mac_address</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="struct__sai__mcast__fdb__entry__t_1a2913799efb488f61a0ab4c7eb0eadf11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__mcast__fdb__entry__t_1a2913799efb488f61a0ab4c7eb0eadf11" kindref="member">bv_id</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_c_f_d_b_1gadca9751b5d023778309d1d84dba296a7" kindref="member">sai_mcast_fdb_entry_t</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="group___s_a_i_m_c_f_d_b_1gaa7910c55c920ee61e44ec19e1fa386df" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_c_f_d_b_1gaa7910c55c920ee61e44ec19e1fa386df" kindref="member">_sai_mcast_fdb_entry_attr_t</ref></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68" refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfab4b737de0bbdfa7c5c7e463983fbad4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfab4b737de0bbdfa7c5c7e463983fbad4b" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa1dbeca3790c9ec20ed7b7fc0bd28e01f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa1dbeca3790c9ec20ed7b7fc0bd28e01f" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_GROUP_ID</ref><sp/>=<sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfab4b737de0bbdfa7c5c7e463983fbad4b" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa03579919f530a962e92e25d56ddfb632" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa03579919f530a962e92e25d56ddfb632" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_PACKET_ACTION</ref>,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa8a05197f52a9cfb4282bdea7b26e9f0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa8a05197f52a9cfb4282bdea7b26e9f0b" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_META_DATA</ref>,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa46d70a9ab4f69f3e292e83504b297fc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfa46d70a9ab4f69f3e292e83504b297fc7" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfaca3805f404d7f35f274e150a6491c267" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfaca3805f404d7f35f274e150a6491c267" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfab72ee29b0ba291c182adbc42d9123755" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ggaa7910c55c920ee61e44ec19e1fa386dfab72ee29b0ba291c182adbc42d9123755" kindref="member">SAI_MCAST_FDB_ENTRY_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_c_f_d_b_1gab7b2c257da13a03930d750b6b8cc88ab" kindref="member">sai_mcast_fdb_entry_attr_t</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="group___s_a_i_m_c_f_d_b_1ga4462f3d2a67f5793e58257ddd2b56c8a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_c_f_d_b_1ga4462f3d2a67f5793e58257ddd2b56c8a" kindref="member">sai_create_mcast_fdb_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__mcast__fdb__entry__t" kindref="compound">sai_mcast_fdb_entry_t</ref><sp/>*mcast_fdb_entry,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="group___s_a_i_m_c_f_d_b_1gab29591a52ae460585b315310cac2b449" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_c_f_d_b_1gab29591a52ae460585b315310cac2b449" kindref="member">sai_remove_mcast_fdb_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__mcast__fdb__entry__t" kindref="compound">sai_mcast_fdb_entry_t</ref><sp/>*mcast_fdb_entry);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="group___s_a_i_m_c_f_d_b_1gac0d49fc00511da823c58eb601be37407" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_c_f_d_b_1gac0d49fc00511da823c58eb601be37407" kindref="member">sai_set_mcast_fdb_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__mcast__fdb__entry__t" kindref="compound">sai_mcast_fdb_entry_t</ref><sp/>*mcast_fdb_entry,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="group___s_a_i_m_c_f_d_b_1gac8ba102575002167619d7e2d48296cdf" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_c_f_d_b_1gac8ba102575002167619d7e2d48296cdf" kindref="member">sai_get_mcast_fdb_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__mcast__fdb__entry__t" kindref="compound">sai_mcast_fdb_entry_t</ref><sp/>*mcast_fdb_entry,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="struct__sai__mcast__fdb__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__mcast__fdb__api__t" kindref="compound">_sai_mcast_fdb_api_t</ref></highlight></codeline>
+<codeline lineno="168"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1ga4462f3d2a67f5793e58257ddd2b56c8a" kindref="member">sai_create_mcast_fdb_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_mcast_fdb_entry;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1gab29591a52ae460585b315310cac2b449" kindref="member">sai_remove_mcast_fdb_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_mcast_fdb_entry;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1gac0d49fc00511da823c58eb601be37407" kindref="member">sai_set_mcast_fdb_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_mcast_fdb_entry_attribute;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_c_f_d_b_1gac8ba102575002167619d7e2d48296cdf" kindref="member">sai_get_mcast_fdb_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_mcast_fdb_entry_attribute;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_c_f_d_b_1gae2a786572991f2524ad3704ca03eca68" kindref="member">sai_mcast_fdb_api_t</ref>;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saimcastfdb.h"/>
+  </compounddef>
+</doxygen>

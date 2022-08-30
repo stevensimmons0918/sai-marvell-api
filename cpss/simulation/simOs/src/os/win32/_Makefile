@@ -1,0 +1,58 @@
+# $(warning "Started")
+
+FILES :=
+ifeq (APPLICATION_SIDE_ONLY, $(DISTRIBUTED_SIMULATION_ROLE))
+    #C_EXCLUDE_FILE_LIST      = simOsWin32Slan.c
+	#List of files to include in list
+	FILES := \
+	 simOsWin32Console.c \
+	 simOsWin32IniFile.c \
+	 simOsWin32Intr.c \
+	 simOsWin32Process.c \
+	 simOsWin32Sync.c \
+	 simOsWin32Task.c 
+else
+	FILES := \
+	 simOsWin32Slan.c \
+	 simOsWin32Console.c \
+	 simOsWin32IniFile.c \
+	 simOsWin32Intr.c \
+	 simOsWin32Process.c \
+	 simOsWin32Sync.c \
+	 simOsWin32Task.c 
+endif
+ifeq (BROKER_ONLY, $(DISTRIBUTED_SIMULATION_ROLE))
+    #C_EXCLUDE_FILE_LIST      = simOsWin32Slan.c
+	#List of files to include in list
+	FILES := \
+	 simOsWin32Console.c \
+	 simOsWin32IniFile.c \
+	 simOsWin32Intr.c \
+	 simOsWin32Process.c \
+	 simOsWin32Sync.c \
+	 simOsWin32Task.c
+else
+	FILES := \
+	 simOsWin32Slan.c \
+	 simOsWin32Console.c \
+	 simOsWin32IniFile.c \
+	 simOsWin32Intr.c \
+	 simOsWin32Process.c \
+	 simOsWin32Sync.c \
+	 simOsWin32Task.c           
+endif
+
+#List of subfolders to include in build
+MODULES := 
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+SIMULATION_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

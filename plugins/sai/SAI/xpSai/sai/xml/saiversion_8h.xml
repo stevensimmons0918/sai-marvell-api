@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saiversion_8h" kind="file" language="C++">
+    <compoundname>saiversion.h</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="saiversion_8h_1afed11ed82932f2ec493d2820b5abe94d" prot="public" static="no">
+        <name>SAI_MAJOR</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiversion.h" line="28" column="9" bodyfile="inc/saiversion.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="saiversion_8h_1a24f0ad33d392556b8b70733de2a82600" prot="public" static="no">
+        <name>SAI_MINOR</name>
+        <initializer>9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiversion.h" line="29" column="9" bodyfile="inc/saiversion.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="saiversion_8h_1a0128228e20c8656536c87138fe1ce7b0" prot="public" static="no">
+        <name>SAI_REVISION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiversion.h" line="30" column="9" bodyfile="inc/saiversion.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="saiversion_8h_1a835b448289bf5a0b347e44a728511ecb" prot="public" static="no">
+        <name>SAI_VERSION</name>
+        <param><defname>major</defname></param>
+        <param><defname>minor</defname></param>
+        <param><defname>revision</defname></param>
+        <initializer>(10000 * (major) + 100 * (minor) + (revision))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiversion.h" line="32" column="9" bodyfile="inc/saiversion.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="saiversion_8h_1a444743b8142e39b3500ad466a71addf7" prot="public" static="no">
+        <name>SAI_API_VERSION</name>
+        <initializer>SAI_VERSION(SAI_MAJOR, SAI_MINOR, SAI_REVISION)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiversion.h" line="34" column="9" bodyfile="inc/saiversion.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Define the current version. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIVERSION_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIVERSION_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAI_MAJOR<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAI_MINOR<sp/>9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAI_REVISION<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAI_VERSION(major,<sp/>minor,<sp/>revision)<sp/>(10000<sp/>*<sp/>(major)<sp/>+<sp/>100<sp/>*<sp/>(minor)<sp/>+<sp/>(revision))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAI_API_VERSION<sp/>SAI_VERSION(SAI_MAJOR,<sp/>SAI_MINOR,<sp/>SAI_REVISION)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saiversion.h"/>
+  </compounddef>
+</doxygen>

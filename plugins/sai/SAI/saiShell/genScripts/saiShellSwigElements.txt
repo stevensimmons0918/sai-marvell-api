@@ -1,0 +1,174 @@
+
+//------------------- SAI ARRAY FUNCTIONS ----------------------
+%array_functions(uint8_t, arr_sai_u8)
+%array_functions(int8_t, arr_sai_s8)
+%array_functions(uint16_t, arr_sai_u16)
+%array_functions(int16_t, arr_sai_s16)
+%array_functions(uint32_t, arr_sai_u32)
+%array_functions(int32_t, arr_sai_s32)
+%array_functions(sai_vlan_id_t, arr_sai_vlan)
+%array_functions(sai_object_id_t, arr_sai_object)
+%array_functions(sai_attribute_t, arr_sai_attribute_tp)
+%array_functions(sai_object_id_t, arr_sai_object_id_tp);
+%array_functions(sai_qos_map_t, arr_sai_qos_map)
+%array_functions(sai_buffer_pool_stat_t, arr_sai_buffer_pool_stats_tp)
+%array_functions(sai_ingress_priority_group_stat_t, arr_sai_ingress_priority_group_stats_tp)
+%array_functions(sai_queue_stat_t, arr_sai_queue_stats_tp)
+%array_functions(sai_vlan_stat_t, arr_sai_vlan_stats_tp)
+%array_functions(sai_port_stat_t, arr_sai_port_stats_tp)
+%array_functions(sai_policer_stat_t, arr_sai_policer_stats_tp)
+%array_functions(sai_stat_id_t, arr_sai_stat_id_tp)
+
+
+//------------------- SAI POINTER FUNCTIONS ----------------------
+%pointer_functions(sai_object_id_t, sai_object_id_tp);
+%pointer_functions(sai_attribute_t, sai_attribute_tp);
+%pointer_functions(sai_fdb_entry_t, sai_fdb_entry_tp);
+%pointer_functions(sai_attribute_value_t,sai_attribute_value_tp);
+%pointer_functions(sai_ip_addr_t, sai_ip_addr_tp);
+%pointer_functions(sai_ip_address_t, sai_ip_address_tp);
+%pointer_functions(sai_route_entry_t, sai_route_entry_tp);
+%pointer_functions(sai_neighbor_entry_t, sai_neighbor_entry_tp);
+%pointer_functions(shell_ip6, shell_ip6p);
+%pointer_functions(shell_mac, shell_macp);
+%pointer_functions(shell_string, shell_stringp);
+%pointer_functions(field_mask, field_maskp);
+%pointer_functions(field_data, field_datap);
+%pointer_functions(shell_acl_field_t, shell_acl_field_tp);
+%pointer_functions(action_data, action_datap);
+%pointer_functions(shell_acl_action_t, shell_acl_action_tp);
+%pointer_functions(sai_u8_list_t, sai_u8_list_tp);
+%pointer_functions(sai_s8_list_t, sai_s8_list_tp);
+%pointer_functions(sai_u16_list_t, sai_u16_list_tp);
+%pointer_functions(sai_s16_list_t, sai_s16_list_tp);
+%pointer_functions(sai_u32_list_t, sai_u32_list_tp);
+%pointer_functions(sai_s32_list_t, sai_s32_list_tp);
+%pointer_functions(sai_object_list_t, sai_object_list_tp);
+%pointer_functions(sai_vlan_list_t, sai_vlan_list_tp);
+%pointer_functions(sai_acl_field_data_t, sai_acl_field_data_tp);
+%pointer_functions(sai_acl_action_data_t, sai_acl_action_data_tp);
+%pointer_functions(xpSaiAttrEntry_t, xpSaiAttrEntry_tp);
+%pointer_functions(sai_qos_map_list_t, sai_qos_map_list_tp);
+%pointer_functions(sai_mcast_fdb_entry_t, sai_mcast_fdb_entry_tp);
+
+//------------------- SAI ADAPTER FILES ----------------------
+%include "../plugins/sai/SAI/xpSai/include/xpSaiAcl.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiFdb.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSai.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiBuffer.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiHostInterface.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiLag.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiMirror.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiNeighbor.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiNextHopGroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiNextHop.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiPolicer.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiPort.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiQosMap.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiQueue.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiRoute.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiRouterInterface.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiSamplePacket.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiSchedulerGroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiScheduler.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiStp.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiSwitch.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiVirtualRouter.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiVlan.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiWred.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiUdf.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiHash.gen.i"
+%include "../plugins/sai/SAI/xpSai/util/include/xpSaiUtil.gen.i"
+%include "../plugins/sai/SAI/xpSai/util/include/xpSaiValidationArrays.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiMcastFdb.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiL2Mc.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiL2McGroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiTunnel.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiIpmc.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiIpmcGroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/include/xpSaiRpfGroup.gen.i"
+
+//------------------- SAI HEADER FILES ----------------------
+%include "../plugins/sai/SAI/xpSai/sai/inc/sairouterinterface.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saibridge.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiacl.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saibuffer.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saitypes.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saifdb.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sai.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saihash.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saihostif.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sailag.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saimirror.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saineighbor.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sainexthopgroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sainexthop.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saipolicer.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiport.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiqosmap.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiqueue.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sairoute.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saivirtualrouter.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saisamplepacket.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saischedulergroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saischeduler.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saistatus.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saistp.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiswitch.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saitunnel.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiudf.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saivlan.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiwred.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saimcastfdb.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sail2mc.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sail2mcgroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiipmc.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/saiipmcgroup.gen.i"
+%include "../plugins/sai/SAI/xpSai/sai/inc/sairpfgroup.gen.i"
+%{
+#if defined(SAI_1_8_1)
+#include "../plugins/sai/SAI/xpSai/sai/saiversion.h"
+#elif defined(SAI_1_9_1)
+#include "../plugins/sai/SAI/xpSai/sai/inc/saiversion.h"
+#endif
+%}
+//------------------- SAI GENERATED HEADER FILES ----------------------
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShell.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellFdb.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellVlan.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellStp.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellLag.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellPort.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSwitch.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMirror.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellAcl.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellQueue.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellWred.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellPolicer.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellQosmap.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellUdf.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellHash.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNexthop.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNexthopgroup.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellBuffer.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellScheduler.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSchedulergroup.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNeighbor.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRoute.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellVirtualrouter.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRouterinterface.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellHostif.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSamplepacket.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellBridge.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellL2mc.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellL2mcgroup.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMcastfdb.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellTunnel.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIpmc.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIpmcgroup.gen.i"
+%include "../plugins/sai/SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRpfgroup.gen.i"
+
+namespace std {
+   %template(vector_sai_attribute_t) vector<sai_attribute_t>;
+}
+

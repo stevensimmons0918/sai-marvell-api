@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__object__key__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_object_key_t</compoundname>
+    <includes refid="saiobject_8h" local="no">saiobject.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__object__key__t_1abaae33c9c3fe719fbe70c1b78354464a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_o_b_j_e_c_t_1gab18f31e2267ce3545e864006c13befc1" kindref="member">sai_object_key_entry_t</ref></type>
+        <definition>sai_object_key_entry_t _sai_object_key_t::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>object_type </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="92" column="1" bodyfile="inc/saiobject.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure for bulk retrieval of object ids, attribute and values for each object-type. Key will be used in case of object-types not having object-ids. </para>    </briefdescription>
+    <detaileddescription>
+<para>sai_object_type_t object_type </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="1090">
+        <label>_sai_mcast_fdb_entry_t</label>
+        <link refid="struct__sai__mcast__fdb__entry__t"/>
+      </node>
+      <node id="1089">
+        <label>_sai_l2mc_entry_t</label>
+        <link refid="struct__sai__l2mc__entry__t"/>
+        <childnode refid="1086" relation="usage">
+          <edgelabel>destination</edgelabel>
+          <edgelabel>source</edgelabel>
+        </childnode>
+      </node>
+      <node id="1087">
+        <label>_sai_inseg_entry_t</label>
+        <link refid="struct__sai__inseg__entry__t"/>
+      </node>
+      <node id="1088">
+        <label>_sai_neighbor_entry_t</label>
+        <link refid="struct__sai__neighbor__entry__t"/>
+        <childnode refid="1086" relation="usage">
+          <edgelabel>ip_address</edgelabel>
+        </childnode>
+      </node>
+      <node id="1085">
+        <label>_sai_ipmc_entry_t</label>
+        <link refid="struct__sai__ipmc__entry__t"/>
+        <childnode refid="1086" relation="usage">
+          <edgelabel>destination</edgelabel>
+          <edgelabel>source</edgelabel>
+        </childnode>
+      </node>
+      <node id="1076">
+        <label>_sai_object_key_entry_t</label>
+        <link refid="union__sai__object__key__entry__t"/>
+        <childnode refid="1077" relation="usage">
+          <edgelabel>route_entry</edgelabel>
+        </childnode>
+        <childnode refid="1080" relation="usage">
+          <edgelabel>nat_entry</edgelabel>
+        </childnode>
+        <childnode refid="1084" relation="usage">
+          <edgelabel>fdb_entry</edgelabel>
+        </childnode>
+        <childnode refid="1085" relation="usage">
+          <edgelabel>ipmc_entry</edgelabel>
+        </childnode>
+        <childnode refid="1087" relation="usage">
+          <edgelabel>inseg_entry</edgelabel>
+        </childnode>
+        <childnode refid="1088" relation="usage">
+          <edgelabel>neighbor_entry</edgelabel>
+        </childnode>
+        <childnode refid="1089" relation="usage">
+          <edgelabel>l2mc_entry</edgelabel>
+        </childnode>
+        <childnode refid="1090" relation="usage">
+          <edgelabel>mcast_fdb_entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1078">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1079" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1080">
+        <label>_sai_nat_entry_t</label>
+        <link refid="struct__sai__nat__entry__t"/>
+        <childnode refid="1081" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="1084">
+        <label>_sai_fdb_entry_t</label>
+        <link refid="struct__sai__fdb__entry__t"/>
+      </node>
+      <node id="1083">
+        <label>_sai_nat_entry_key_t</label>
+        <link refid="struct__sai__nat__entry__key__t"/>
+      </node>
+      <node id="1082">
+        <label>_sai_nat_entry_mask_t</label>
+        <link refid="struct__sai__nat__entry__mask__t"/>
+      </node>
+      <node id="1086">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1079" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1081">
+        <label>_sai_nat_entry_data_t</label>
+        <link refid="struct__sai__nat__entry__data__t"/>
+        <childnode refid="1082" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+        <childnode refid="1083" relation="usage">
+          <edgelabel>key</edgelabel>
+        </childnode>
+      </node>
+      <node id="1077">
+        <label>_sai_route_entry_t</label>
+        <link refid="struct__sai__route__entry__t"/>
+        <childnode refid="1078" relation="usage">
+          <edgelabel>destination</edgelabel>
+        </childnode>
+      </node>
+      <node id="1079">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="1075">
+        <label>_sai_object_key_t</label>
+        <link refid="struct__sai__object__key__t"/>
+        <childnode refid="1076" relation="usage">
+          <edgelabel>key</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saiobject.h" line="90" column="1" bodyfile="inc/saiobject.h" bodystart="89" bodyend="94"/>
+    <listofallmembers>
+      <member refid="struct__sai__object__key__t_1abaae33c9c3fe719fbe70c1b78354464a" prot="public" virt="non-virtual"><scope>_sai_object_key_t</scope><name>key</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+e87e77f
+e87e77f SONIC-000: AF to xps porting PR #117-#140
+ create mode 100755 apptest/testCases/saiPortStatsIpv4_I.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv4_II.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv4_III.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv6_I.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv6_II.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv6_III.py
+ create mode 100644 build/cpss_patches/CPSS-13588.patch
+ create mode 100644 build/cpss_patches/CPSS-14628.patch
+ create mode 100644 build/cpss_patches/CPSS-14664.patch
+1ec8453a
+dfef27e0c0

@@ -1,0 +1,391 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saischedulergroup_8h" kind="file" language="C++">
+    <compoundname>saischedulergroup.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="309">
+        <label>stdbool.h</label>
+      </node>
+      <node id="308">
+        <label>stdint.h</label>
+      </node>
+      <node id="310">
+        <label>sys/types.h</label>
+      </node>
+      <node id="306">
+        <label>inc/saischedulergroup.h</label>
+        <link refid="saischedulergroup.h"/>
+        <childnode refid="307" relation="include">
+        </childnode>
+      </node>
+      <node id="307">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="308" relation="include">
+        </childnode>
+        <childnode refid="309" relation="include">
+        </childnode>
+        <childnode refid="310" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="311">
+        <label>inc/saischedulergroup.h</label>
+        <link refid="saischedulergroup.h"/>
+        <childnode refid="312" relation="include">
+        </childnode>
+      </node>
+      <node id="312">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__scheduler__group__api__t" prot="public">_sai_scheduler_group_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga3a2980fde4379410ccaed608442d2d60" prot="public" static="no">
+        <name>_sai_scheduler_group_attr_t</name>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60aa5b85005680f45ce3398d6afe427292f" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_START</name>
+          <initializer>= 0x00000000</initializer>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ac76a36fc46f4bdf5330de48c4525aeb0" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_CHILD_COUNT</name>
+          <initializer>= SAI_SCHEDULER_GROUP_ATTR_START</initializer>
+          <briefdescription>
+<para>Number of queues/groups childs added to scheduler. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a078e53b1b24b6e5525c6b83db1dbdc20" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_CHILD_LIST</name>
+          <initializer>= 0x00000001</initializer>
+          <briefdescription>
+<para>Scheduler Group child object id list. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_SCHEDULER_GROUP, SAI_OBJECT_TYPE_QUEUE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ae30c3eb933c7d337d412a25f6748ed85" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_PORT_ID</name>
+          <initializer>= 0x00000002</initializer>
+          <briefdescription>
+<para>Scheduler group on port. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60abc55cfdf5f9a3c1f1fc09df2aee26de2" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_LEVEL</name>
+          <initializer>= 0x00000003</initializer>
+          <briefdescription>
+<para>Scheduler group level. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a87a07bf275f71a9ceec1eb0f508b6b10" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_MAX_CHILDS</name>
+          <initializer>= 0x00000004</initializer>
+          <briefdescription>
+<para>Maximum Number of childs on group. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a39d2d2c1acc49720a482fae6e16b4297" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_SCHEDULER_PROFILE_ID</name>
+          <initializer>= 0x00000005</initializer>
+          <briefdescription>
+<para>Scheduler id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_SCHEDULER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60adcb335855b15bc2f4350a8616da349d7" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_PARENT_NODE</name>
+          <initializer>= 0x00000006</initializer>
+          <briefdescription>
+<para>Scheduler group parent node. </para>          </briefdescription>
+          <detaileddescription>
+<para>This is conditional when the level &gt; 0, when level == 0, the parent is the port.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_SCHEDULER_GROUP, SAI_OBJECT_TYPE_PORT </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ad584ada02e8e77d54f00a77d281b5f7a" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a090f7c80594cce4eee08e497b11162cf" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60aaf95b34d7e104ad4bfbfc0f6db0b70f5" prot="public">
+          <name>SAI_SCHEDULER_GROUP_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining scheduler group attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saischedulergroup.h" line="40" column="1" bodyfile="inc/saischedulergroup.h" bodystart="39" bodyend="121"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gad7ae1db25e6b3f694c767ae4b8952385" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga3a2980fde4379410ccaed608442d2d60" kindref="member">_sai_scheduler_group_attr_t</ref></type>
+        <definition>typedef enum _sai_scheduler_group_attr_t  sai_scheduler_group_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_scheduler_group_attr_t</name>
+        <briefdescription>
+<para>Enum defining scheduler group attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saischedulergroup.h" line="121" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gabae94cc079343cd77d6640111109f004" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_scheduler_group_fn) (_Out_ sai_object_id_t *scheduler_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *scheduler_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_scheduler_group_fn</name>
+        <briefdescription>
+<para>Create Scheduler group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">scheduler_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scheduler group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saischedulergroup.h" line="133" column="1" bodyfile="inc/saischedulergroup.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gad8a2728bb39960f8a72bf2bdfd64a2fc" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_scheduler_group_fn) (_In_ sai_object_id_t scheduler_group_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t scheduler_group_id)</argsstring>
+        <name>sai_remove_scheduler_group_fn</name>
+        <briefdescription>
+<para>Remove Scheduler group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">scheduler_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scheduler group id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saischedulergroup.h" line="146" column="1" bodyfile="inc/saischedulergroup.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga4cbabbd389a25f5682ba8d2864b0cb2f" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_scheduler_group_attribute_fn) (_In_ sai_object_id_t scheduler_group_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t scheduler_group_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_scheduler_group_attribute_fn</name>
+        <briefdescription>
+<para>Set Scheduler group Attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">scheduler_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scheduler group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute to set</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saischedulergroup.h" line="157" column="1" bodyfile="inc/saischedulergroup.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gaf8905b725a210a5e7079eace071af4c5" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_scheduler_group_attribute_fn) (_In_ sai_object_id_t scheduler_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t scheduler_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_scheduler_group_attribute_fn</name>
+        <briefdescription>
+<para>Get Scheduler Group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">scheduler_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scheduler group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saischedulergroup.h" line="170" column="1" bodyfile="inc/saischedulergroup.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga3763d26d518338daed4d2582be4c9138" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__scheduler__group__api__t" kindref="compound">_sai_scheduler_group_api_t</ref></type>
+        <definition>typedef struct _sai_scheduler_group_api_t  sai_scheduler_group_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_scheduler_group_api_t</name>
+        <briefdescription>
+<para>Scheduler Group methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saischedulergroup.h" line="185" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI QOS Scheduler Group interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAISCHEDULERGROUP_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAISCHEDULERGROUP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga3a2980fde4379410ccaed608442d2d60" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga3a2980fde4379410ccaed608442d2d60" kindref="member">_sai_scheduler_group_attr_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60aa5b85005680f45ce3398d6afe427292f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60aa5b85005680f45ce3398d6afe427292f" kindref="member">SAI_SCHEDULER_GROUP_ATTR_START</ref><sp/>=<sp/>0x00000000,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ac76a36fc46f4bdf5330de48c4525aeb0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ac76a36fc46f4bdf5330de48c4525aeb0" kindref="member">SAI_SCHEDULER_GROUP_ATTR_CHILD_COUNT</ref><sp/>=<sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60aa5b85005680f45ce3398d6afe427292f" kindref="member">SAI_SCHEDULER_GROUP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a078e53b1b24b6e5525c6b83db1dbdc20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a078e53b1b24b6e5525c6b83db1dbdc20" kindref="member">SAI_SCHEDULER_GROUP_ATTR_CHILD_LIST</ref><sp/>=<sp/>0x00000001,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ae30c3eb933c7d337d412a25f6748ed85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ae30c3eb933c7d337d412a25f6748ed85" kindref="member">SAI_SCHEDULER_GROUP_ATTR_PORT_ID</ref><sp/>=<sp/>0x00000002,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60abc55cfdf5f9a3c1f1fc09df2aee26de2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60abc55cfdf5f9a3c1f1fc09df2aee26de2" kindref="member">SAI_SCHEDULER_GROUP_ATTR_LEVEL</ref><sp/>=<sp/>0x00000003,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a87a07bf275f71a9ceec1eb0f508b6b10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a87a07bf275f71a9ceec1eb0f508b6b10" kindref="member">SAI_SCHEDULER_GROUP_ATTR_MAX_CHILDS</ref><sp/>=<sp/>0x00000004,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a39d2d2c1acc49720a482fae6e16b4297" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a39d2d2c1acc49720a482fae6e16b4297" kindref="member">SAI_SCHEDULER_GROUP_ATTR_SCHEDULER_PROFILE_ID</ref><sp/>=<sp/>0x00000005,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60adcb335855b15bc2f4350a8616da349d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60adcb335855b15bc2f4350a8616da349d7" kindref="member">SAI_SCHEDULER_GROUP_ATTR_PARENT_NODE</ref><sp/>=<sp/>0x00000006,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ad584ada02e8e77d54f00a77d281b5f7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60ad584ada02e8e77d54f00a77d281b5f7a" kindref="member">SAI_SCHEDULER_GROUP_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a090f7c80594cce4eee08e497b11162cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60a090f7c80594cce4eee08e497b11162cf" kindref="member">SAI_SCHEDULER_GROUP_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60aaf95b34d7e104ad4bfbfc0f6db0b70f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gga3a2980fde4379410ccaed608442d2d60aaf95b34d7e104ad4bfbfc0f6db0b70f5" kindref="member">SAI_SCHEDULER_GROUP_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gad7ae1db25e6b3f694c767ae4b8952385" kindref="member">sai_scheduler_group_attr_t</ref>;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gabae94cc079343cd77d6640111109f004" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gabae94cc079343cd77d6640111109f004" kindref="member">sai_create_scheduler_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*scheduler_group_id,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gad8a2728bb39960f8a72bf2bdfd64a2fc" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gad8a2728bb39960f8a72bf2bdfd64a2fc" kindref="member">sai_remove_scheduler_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>scheduler_group_id);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga4cbabbd389a25f5682ba8d2864b0cb2f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga4cbabbd389a25f5682ba8d2864b0cb2f" kindref="member">sai_set_scheduler_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>scheduler_group_id,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gaf8905b725a210a5e7079eace071af4c5" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gaf8905b725a210a5e7079eace071af4c5" kindref="member">sai_get_scheduler_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>scheduler_group_id,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="struct__sai__scheduler__group__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__scheduler__group__api__t" kindref="compound">_sai_scheduler_group_api_t</ref></highlight></codeline>
+<codeline lineno="179"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gabae94cc079343cd77d6640111109f004" kindref="member">sai_create_scheduler_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_scheduler_group;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gad8a2728bb39960f8a72bf2bdfd64a2fc" kindref="member">sai_remove_scheduler_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_scheduler_group;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga4cbabbd389a25f5682ba8d2864b0cb2f" kindref="member">sai_set_scheduler_group_attribute_fn</ref><sp/><sp/><sp/>set_scheduler_group_attribute;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1gaf8905b725a210a5e7079eace071af4c5" kindref="member">sai_get_scheduler_group_attribute_fn</ref><sp/><sp/><sp/>get_scheduler_group_attribute;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_c_h_e_d_u_l_e_r_g_r_o_u_p_1ga3763d26d518338daed4d2582be4c9138" kindref="member">sai_scheduler_group_api_t</ref>;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saischedulergroup.h"/>
+  </compounddef>
+</doxygen>

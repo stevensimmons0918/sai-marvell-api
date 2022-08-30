@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__tlv__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_tlv_t</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__tlv__t_1ab726691297aa22cc68af066e7d13aaaa" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1gaf9b07b195061a90867da54aec056be11" kindref="member">sai_tlv_type_t</ref></type>
+        <definition>sai_tlv_type_t _sai_tlv_t::tlv_type</definition>
+        <argsstring></argsstring>
+        <name>tlv_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="883" column="1" bodyfile="inc/saitypes.h" bodystart="883" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tlv__t_1ab2ef9f22edca1e6aeb17b3e93309ff8d" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga8097e12477eb980704007abb3e19cec6" kindref="member">sai_tlv_entry_t</ref></type>
+        <definition>sai_tlv_entry_t _sai_tlv_t::entry</definition>
+        <argsstring></argsstring>
+        <name>entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>tlv_type </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="886" column="1" bodyfile="inc/saitypes.h" bodystart="886" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Segment Routing Tag Length Value entry. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1757">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="1758" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1758">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1759" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1759">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitypes.h" line="882" column="1" bodyfile="inc/saitypes.h" bodystart="881" bodyend="887"/>
+    <listofallmembers>
+      <member refid="struct__sai__tlv__t_1ab2ef9f22edca1e6aeb17b3e93309ff8d" prot="public" virt="non-virtual"><scope>_sai_tlv_t</scope><name>entry</name></member>
+      <member refid="struct__sai__tlv__t_1ab726691297aa22cc68af066e7d13aaaa" prot="public" virt="non-virtual"><scope>_sai_tlv_t</scope><name>tlv_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

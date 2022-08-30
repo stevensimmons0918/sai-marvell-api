@@ -1,0 +1,66 @@
+# $(warning "Started")
+
+LIB_NAME = cpssDrvPpHwPci.lib
+
+#List of files to include in list
+
+simUsed=0
+
+ifeq (y, $(CONFIG_ASIC_SIMULATION))
+    simUsed=1
+endif
+#check if we forbid the use of the simulation files ! even if the CONFIG_ASIC_SIMULATION is used !
+ifeq (y, $(CONFIG_ASIC_SIMULATION_ENV_FORBIDDEN))
+    simUsed=0
+endif
+
+ifeq (1, $(simUsed))
+
+        FILES := \
+         cpssDrvPpHwPciCntlSim.c \
+         cpssDrvPpHwPciCntlStandBy.c \
+         cpssDrvPpHwPexMbusCntl.c \
+         newdrv_simCntl.c \
+         newdrv_eagleCntl.c \
+         newdrv_sip6MbusCtrl.c\
+         newdrv_falconZCntl.c
+
+else
+        FILES := \
+                cpssDrvPpHwPciCntl.c\
+                cpssDrvPpHwPciCntlStandBy.c\
+                cpssDrvPpHwPexMbusCntl.c\
+                newdrv_pexCntl.c\
+                newdrv_eagleCntl.c\
+                newdrv_sip6MbusCtrl.c\
+                newdrv_falconZCntl.c
+
+
+    ifeq (linux, $(OS_RUN))
+
+        ifeq (YES,$(NO_KERN_PP_DRV))
+            FILES := $(filter-out new_cpssDrvPpHwPciKernCntl.c,$(FILES))
+        endif
+
+
+
+    else
+        #C_EXCLUDE_FILE_LIST += new_cpssDrvPpHwPciKernCntl.c
+        FILES := $(filter-out new_cpssDrvPpHwPciKernCntl.c,$(FILES))
+    endif
+endif
+
+#List of subfolders to include in build
+MODULES :=
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+COMMON_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

@@ -1,0 +1,54 @@
+From ed05abc72448f3b7af0a9742ee45d20ef81dcafa Mon Sep 17 00:00:00 2001
+From: Sergei Shkonda <sergeish@marvell.com>
+Date: Tue, 08 Aug 2017 13:32:25 +0300
+Subject: [PATCH] Enable PCI mmap for arm64
+
+    Enable PCI mmap using /sys/bus/pci/DDDD:BB:DD.F/resourceX
+
+Change-Id: I825355c5171ac8b0e9c826e3b59d83b7583013f5
+---
+
+diff --git a/arch/arm64/include/asm/pci.h b/arch/arm64/include/asm/pci.h
+index b008a72..e7afe8d 100644
+--- a/arch/arm64/include/asm/pci.h
++++ b/arch/arm64/include/asm/pci.h
+@@ -39,5 +39,11 @@
+ }
+ #endif  /* CONFIG_PCI */
+ 
++#define HAVE_PCI_MMAP
++
++extern int pci_mmap_page_range(struct pci_dev *dev, struct vm_area_struct *vma,
++	enum pci_mmap_state mmap_state, int write_combine);
++
++
+ #endif  /* __KERNEL__ */
+ #endif  /* __ASM_PCI_H */
+diff --git a/arch/arm64/kernel/pci.c b/arch/arm64/kernel/pci.c
+index b3d098b..fac54a7 100644
+--- a/arch/arm64/kernel/pci.c
++++ b/arch/arm64/kernel/pci.c
+@@ -84,3 +84,23 @@
+ 	return NULL;
+ }
+ #endif
++
++int pci_mmap_page_range(struct pci_dev *dev, struct vm_area_struct *vma,
++		enum pci_mmap_state mmap_state, int write_combine)
++{
++	/*
++	* I/O space can be accessed via normal processor loads and stores on
++	* this platform but for now we elect not to do this and portable
++	* drivers should not do this anyway.
++	*/
++	if (mmap_state == pci_mmap_io)
++		return -EINVAL;
++
++	if (write_combine)
++		vma->vm_page_prot = pgprot_writecombine(vma->vm_page_prot);
++	else
++		vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
++
++	return remap_pfn_range(vma, vma->vm_start, vma->vm_pgoff,
++	       vma->vm_end - vma->vm_start, vma->vm_page_prot);
++}

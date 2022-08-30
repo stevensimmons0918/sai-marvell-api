@@ -1,0 +1,2 @@
+%rename(xpsSerdesFirmwareUpload2) xpsSerdesFirmwareUpload_2(xpsDevice_t devId, uint8_t serdesId, uint32_t addr, int32_t serdesRomSize, const int32_t *serdesRom, int32_t serdesCtrlrRomSize, const int32_t *serdesCtrlrRom, int32_t sdiRomSize, const int32_t *sdiRom); 
+%rename(xpsSerdesFirmwareUploadFile2) xpsSerdesFirmwareUploadFile_2(xpsDevice_t devId, uint8_t serdesId, uint32_t addr, const char *serdesRomFile, const char *serdesCtrlrRomFile, const char *sdiRomFile);

@@ -1,0 +1,43 @@
+/*!**************************************************RND Template version 4.1
+ *!          S T R U C T U R E   T Y P E   D E F I N I T I O N 
+ *!==========================================================================
+ *$ TITLE: the interrupt table stc
+ *!--------------------------------------------------------------------------
+ *$ FILENAME:
+ *!--------------------------------------------------------------------------
+ *$ SYSTEM, SUBSYSTEM: nste
+ *!--------------------------------------------------------------------------
+ *$ AUTHORS: eyran     
+ *!--------------------------------------------------------------------------
+ *$ LATEST UPDATE: 18-Jun-97  15:55:53         CREATION DATE: 18-Jun-97
+ *!**************************************************************************
+ *!
+ *!**************************************************************************
+ *!
+ *$ GENERAL DESCRIPTION:
+ *!
+ *$ INCLUDE REQUIRED:
+ *!
+ *$ REMARKS:
+ *!
+ *!**************************************************************************
+ *!*/
+
+/*
+ * If you define specific data types, constants, and macros for 
+ * this structure, define them here.
+ */
+
+
+/*! this function gets CIB mutex to prevent dead lock when suspending
+	CPU tasks on interrupt */
+typedef void SHOSTG_cib_db_lock_or_release_FUN(
+	/*!		INPUT			*/
+		
+	UINT_32           		lock
+
+	/*!     INPUTS / OUTPUTS:   */
+	/*!     OUTPUTS:            */
+);
+
+typedef SHOSTG_cib_db_lock_or_release_FUN *SHOSTG_cib_db_lock_or_release_TYP;

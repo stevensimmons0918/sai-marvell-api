@@ -1,0 +1,10 @@
+// TAG:               PX devices(PIPE); Data Integrity;
+// Short Description: PIPE device: Data Integrity test deconfiguration.
+// Description:       PIPE device: Data Integrity deconfiguration.
+//
+do configure
+//
+no data-integrity error-counter-enable device ${dev} table pha-shared-dmem
+data-integrity event-mask-set device ${dev} table pha-shared-dmem
+no data-integrity error-injection-config device ${dev} table pha-shared-dmem mode single
+exit

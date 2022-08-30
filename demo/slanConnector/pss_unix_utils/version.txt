@@ -1,0 +1,34 @@
+Tag  : PSS_UNIX_UTILS_01_002
+Date : Mon Oct 12 15:36:01 2015
+
+BRIEF DESCRIPTION
+
+sergeish : Syncronize slanConnector with private copy
+
+DETAILED DESCRIPTION
+
+- Author   :  Sergei Shkonda
+- Owner    :  sergeish (Adi Kachal)
+- Name     :  Syncronize slanConnector with private copy
+- Date     :  2015-08-31 22:00:31 +0300
+- Comments :      Changes summary:
+    1. max packet length increased to 12K
+    2. slanConnector redesigned, don't block in send()
+    3. slanEthPortLinux now monitors link status
+    4. a simple client apps added: slanRcv, slanSendPkt
+
+Reviewed-on: http://vgitil10.il.marvell.com:8080/7793
+Reviewed-by: Adi Kachal <adik@marvell.com>
+Tested-by: Adi Kachal <adik@marvell.com>
+
+- Files    :
+         	.\Makefile
+         	.\evHandler.c
+         	.\evHandler.h
+         	.\linux_mii.h
+         	.\slanConnector.c
+         	.\slanEthPortLinux.c
+         	.\slanLib.h
+         	.\slanRcv.c
+         	.\slanSendPkt.c
+-----------------------------------------------------

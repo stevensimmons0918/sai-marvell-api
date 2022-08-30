@@ -1,0 +1,42 @@
+From 6ff68c7a640b4779f11608b9f0f9c6ef14a6e33e Mon Sep 17 00:00:00 2001
+From: Eyal Oron <oeyal@marvell.com>
+Date: Tue, 6 Apr 2021 14:22:55 +0300
+Subject: [PATCH] PCI: Fix missing IRQ for ComExpress
+
+Note: For detailed description please refer to 
+      tools/build/kernel_patches/4.14/0001-PCI-Fix-missing-IRQ-in-Falcon.patch
+
+Change-Id: Id94c3ada5069f14218722fa1a3f462760fea09ed
+---
+ drivers/pci/pci.c               | 1 +
+ drivers/pci/pcie/portdrv_core.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index b1b2c8ddbc..7cc9c10517 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -1860,6 +1860,7 @@ EXPORT_SYMBOL(pcim_pin_device);
+  */
+ int __weak pcibios_add_device(struct pci_dev *dev)
+ {
++	dev->irq = of_irq_parse_and_map_pci(dev, 0, 0);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/pci/pcie/portdrv_core.c b/drivers/pci/pcie/portdrv_core.c
+index 1b33012908..9500b319d2 100644
+--- a/drivers/pci/pcie/portdrv_core.c
++++ b/drivers/pci/pcie/portdrv_core.c
+@@ -105,7 +105,7 @@ static int pcie_port_enable_irq_vec(struct pci_dev *dev, int *irqs, int mask)
+ 
+ 	/* Allocate the maximum possible number of MSI/MSI-X vectors */
+ 	nr_entries = pci_alloc_irq_vectors(dev, 1, PCIE_PORT_MAX_MSI_ENTRIES,
+-			PCI_IRQ_MSIX | PCI_IRQ_MSI);
++			PCI_IRQ_MSI);
+ 	if (nr_entries < 0)
+ 		return nr_entries;
+ 
+-- 
+2.26.2
+

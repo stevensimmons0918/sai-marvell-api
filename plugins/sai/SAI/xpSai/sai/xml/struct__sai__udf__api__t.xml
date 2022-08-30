@@ -1,0 +1,514 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__udf__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_udf_api_t</compoundname>
+    <includes refid="saiudf_8h" local="no">saiudf.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a1bf0988c3d0dd4772962101209d02e34" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1gad8ec31f23255e4212eb56dc918e86289" kindref="member">sai_create_udf_fn</ref></type>
+        <definition>sai_create_udf_fn _sai_udf_api_t::create_udf</definition>
+        <argsstring></argsstring>
+        <name>create_udf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="423" column="1" bodyfile="inc/saiudf.h" bodystart="423" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1aa3ca13aa90b1959dae40e1295fb4f8d4" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1gac4681ea0cf78a59f30f46efe6f086f07" kindref="member">sai_remove_udf_fn</ref></type>
+        <definition>sai_remove_udf_fn _sai_udf_api_t::remove_udf</definition>
+        <argsstring></argsstring>
+        <name>remove_udf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="424" column="1" bodyfile="inc/saiudf.h" bodystart="424" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a80e5570c99f945f73fd5709853f64122" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga0ee35983bd670f465521a87d0b4eb1b9" kindref="member">sai_set_udf_attribute_fn</ref></type>
+        <definition>sai_set_udf_attribute_fn _sai_udf_api_t::set_udf_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_udf_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="425" column="1" bodyfile="inc/saiudf.h" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a91c6f6c4c17086fcb3b48185f46f8a79" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga7c161a4453b519179a2da5c90772669b" kindref="member">sai_get_udf_attribute_fn</ref></type>
+        <definition>sai_get_udf_attribute_fn _sai_udf_api_t::get_udf_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_udf_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="426" column="1" bodyfile="inc/saiudf.h" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a03ef9d97be7431be3ef588af7efd0ff4" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1gaa9864eeaded4ff8b80cf040b35b8143c" kindref="member">sai_create_udf_match_fn</ref></type>
+        <definition>sai_create_udf_match_fn _sai_udf_api_t::create_udf_match</definition>
+        <argsstring></argsstring>
+        <name>create_udf_match</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="427" column="1" bodyfile="inc/saiudf.h" bodystart="427" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a6cdc25ae42c716b0360b0aeb790adf40" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga9c30145aad41b16f94fb58214112ca08" kindref="member">sai_remove_udf_match_fn</ref></type>
+        <definition>sai_remove_udf_match_fn _sai_udf_api_t::remove_udf_match</definition>
+        <argsstring></argsstring>
+        <name>remove_udf_match</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="428" column="1" bodyfile="inc/saiudf.h" bodystart="428" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a097f0d11ec8acc72b69bd595698b6b8f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga4ca3493ad2debc6a281896d1ed89e0cc" kindref="member">sai_set_udf_match_attribute_fn</ref></type>
+        <definition>sai_set_udf_match_attribute_fn _sai_udf_api_t::set_udf_match_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_udf_match_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="429" column="1" bodyfile="inc/saiudf.h" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a5e9926577600e861bed16c90418f4bfa" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga04d63f8b34e3717919fefba6a3f069dd" kindref="member">sai_get_udf_match_attribute_fn</ref></type>
+        <definition>sai_get_udf_match_attribute_fn _sai_udf_api_t::get_udf_match_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_udf_match_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="430" column="1" bodyfile="inc/saiudf.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a7ff4742a1b9ab78546d40a6e9a8daf65" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga3cc1f94a6dc866381fac7c79101fe57d" kindref="member">sai_create_udf_group_fn</ref></type>
+        <definition>sai_create_udf_group_fn _sai_udf_api_t::create_udf_group</definition>
+        <argsstring></argsstring>
+        <name>create_udf_group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="431" column="1" bodyfile="inc/saiudf.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1ae2c113fe2010e6d0372a0655969546ff" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga5fe00b240ef1334ac637be7c3097b423" kindref="member">sai_remove_udf_group_fn</ref></type>
+        <definition>sai_remove_udf_group_fn _sai_udf_api_t::remove_udf_group</definition>
+        <argsstring></argsstring>
+        <name>remove_udf_group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="432" column="1" bodyfile="inc/saiudf.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1abe9209c6ff0fc5a53eac4997e17a5a98" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga34e708e68a0d439297777447a4e3ac8a" kindref="member">sai_set_udf_group_attribute_fn</ref></type>
+        <definition>sai_set_udf_group_attribute_fn _sai_udf_api_t::set_udf_group_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_udf_group_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="433" column="1" bodyfile="inc/saiudf.h" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__udf__api__t_1a5263deb536ff9ef2a7f88f3c7059719b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_u_d_f_1ga2c93099a1a3a6283cce46ce59b6a2176" kindref="member">sai_get_udf_group_attribute_fn</ref></type>
+        <definition>sai_get_udf_group_attribute_fn _sai_udf_api_t::get_udf_group_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_udf_group_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="434" column="1" bodyfile="inc/saiudf.h" bodystart="434" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>UDF methods, retrieved via <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1835">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="1836" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1821">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="1822">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="1823" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1838">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="1842">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="1843" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="1836">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="1830">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="1823">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="1824" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1824">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="1846">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="1828">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="1829" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="1832" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1849">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="1850" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1817">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="1818" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1816">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="1817" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1839">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="1815">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="1837">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="1848">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="1814">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="1815" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="1816" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="1820" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="1822" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="1825" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="1828" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="1833" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="1834" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="1835" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="1837" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="1838" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="1836" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="1839" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="1840" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="1830" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1841" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="1842" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="1844" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="1826" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="1831" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="1845" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="1846" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="1847" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="1848" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="1849" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="1851" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="1853" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="1829">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="1830" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1831" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1813">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="1814" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1834">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1827" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1845">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="1844">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="1818">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1819" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1851">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="1852" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1853">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="1819">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="1832">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="1831" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1841">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="1852">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="1850">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="1820">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="1821" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1826">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1827" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1840">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="1825">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="1826" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1827">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="1831">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="1833">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="1843">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="1830" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1826" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1847">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="1840" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1812">
+        <label>_sai_udf_api_t</label>
+        <link refid="struct__sai__udf__api__t"/>
+        <childnode refid="1813" relation="usage">
+          <edgelabel>set_udf_attribute</edgelabel>
+          <edgelabel>create_udf_match</edgelabel>
+          <edgelabel>create_udf</edgelabel>
+          <edgelabel>set_udf_group_attribute</edgelabel>
+          <edgelabel>set_udf_match_attribute</edgelabel>
+          <edgelabel>get_udf_group_attribute</edgelabel>
+          <edgelabel>create_udf_group</edgelabel>
+          <edgelabel>get_udf_match_attribute</edgelabel>
+          <edgelabel>get_udf_attribute</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saiudf.h" line="422" column="1" bodyfile="inc/saiudf.h" bodystart="421" bodyend="436"/>
+    <listofallmembers>
+      <member refid="struct__sai__udf__api__t_1a1bf0988c3d0dd4772962101209d02e34" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>create_udf</name></member>
+      <member refid="struct__sai__udf__api__t_1a7ff4742a1b9ab78546d40a6e9a8daf65" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>create_udf_group</name></member>
+      <member refid="struct__sai__udf__api__t_1a03ef9d97be7431be3ef588af7efd0ff4" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>create_udf_match</name></member>
+      <member refid="struct__sai__udf__api__t_1a91c6f6c4c17086fcb3b48185f46f8a79" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>get_udf_attribute</name></member>
+      <member refid="struct__sai__udf__api__t_1a5263deb536ff9ef2a7f88f3c7059719b" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>get_udf_group_attribute</name></member>
+      <member refid="struct__sai__udf__api__t_1a5e9926577600e861bed16c90418f4bfa" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>get_udf_match_attribute</name></member>
+      <member refid="struct__sai__udf__api__t_1aa3ca13aa90b1959dae40e1295fb4f8d4" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>remove_udf</name></member>
+      <member refid="struct__sai__udf__api__t_1ae2c113fe2010e6d0372a0655969546ff" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>remove_udf_group</name></member>
+      <member refid="struct__sai__udf__api__t_1a6cdc25ae42c716b0360b0aeb790adf40" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>remove_udf_match</name></member>
+      <member refid="struct__sai__udf__api__t_1a80e5570c99f945f73fd5709853f64122" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>set_udf_attribute</name></member>
+      <member refid="struct__sai__udf__api__t_1abe9209c6ff0fc5a53eac4997e17a5a98" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>set_udf_group_attribute</name></member>
+      <member refid="struct__sai__udf__api__t_1a097f0d11ec8acc72b69bd595698b6b8f" prot="public" virt="non-virtual"><scope>_sai_udf_api_t</scope><name>set_udf_match_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

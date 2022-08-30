@@ -1,0 +1,636 @@
+From 104f51b769792aadc71404cdfc41489a0eac2424 Mon Sep 17 00:00:00 2001
+From: Chandra Prakash <pchandra@marvell.com>
+Date: Tue, 7 Dec 2021 22:06:24 +0530
+Subject: [PATCH] API to load seed value for pseudo random
+
+Change-Id: I10e64d2c9f0f8f054a59b838ec8a080be5e0a20f
+Reviewed-on: http://vgitil10.il.marvell.com:8080/c/NPS/cpss/+/99260
+Tested-by: Jenkins 2 <pt-gen-jenk@marvell.com>
+Reviewed-by: Vladimir Even <vladimira@marvell.com>
+---
+ .../cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.h  |  64 +++++
+ .../trunk/private/prvCpssDxChTrunkLog.h       |   4 +-
+ .../src/cpss/dxCh/dxChxGen/ip/cpssDxChIp.c    |  35 +--
+ .../cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.c  | 245 ++++++++++++++++++
+ .../dxCh/dxChxGen/trunk/cpssDxChTrunkUT.c     | 202 ++++++++++++++-
+ 5 files changed, 515 insertions(+), 35 deletions(-)
+
+diff --git a/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.h b/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.h
+index c7a8f64e6e..81f7141de8 100755
+--- a/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.h
++++ b/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.h
+@@ -4203,6 +4203,70 @@ GT_STATUS cpssDxChTrunkDbSharedPortInfoGet
+     OUT CPSS_TRUNK_SHARED_PORT_INFO_STC *sharedPortInfoPtr
+ );
+
++/**
++* @internal cpssDxChTrunkHashPrngSeedSet function
++* @endinternal
++*
++* @brief   Set the seed value for pseudo random generator parameter used by the Trunk/L2/L3 ECMP hash mechanism
++*
++* @note   APPLICABLE DEVICES:      Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
++* @note   NOT APPLICABLE DEVICES:  xCat3; AC5; Lion2.
++*
++* @param[in] devNum                   - the device number
++* @param[in] hashClient               - hash client
++*                                      (APPLICABLE VALUES: CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E)
++* @param[in] seed                     - the seed value for pseudo random generator parameter
++*                                      (APPLICABLE RANGES: 1..0xffffffff)
++*
++* @retval GT_OK                    - on success
++* @retval GT_NOT_APPLICABLE_DEVICE - on not applicable device
++* @retval GT_HW_ERROR              - on hardware error
++* @retval GT_BAD_PARAM             - on wrong devNum
++* @retval GT_OUT_OF_RANGE          - on wrong seed
++*
++*/
++GT_STATUS cpssDxChTrunkHashPrngSeedSet
++(
++    IN GT_U8                                devNum,
++    IN CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    IN GT_U32                               seed
++);
++
++/**
++* @internal cpssDxChTrunkHashPrngSeedGet function
++* @endinternal
++*
++* @brief   Get the seed value for pseudo random generator parameter used by the Trunk/L2/L3 ECMP hash mechanism
++*
++* @note   APPLICABLE DEVICES:      Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
++* @note   NOT APPLICABLE DEVICES:  xCat3; AC5; Lion2.
++*
++* @param[in]  devNum                   - the device number
++* @param[in]  hashClient               - hash client
++*                                      (APPLICABLE VALUES: CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E)
++* @param[out] seedPtr                  - (pointer to) the seed value for pseudo random generator parameter
++* @param[out] triggerDonePtr           - (pointer to) the trigger status of pseudo random generator load operation
++*                                        GT_TRUE - load done
++*                                        GT_FALSE - load in progress
++*
++* @retval GT_OK                    - on success
++* @retval GT_NOT_APPLICABLE_DEVICE - on not applicable device
++* @retval GT_HW_ERROR              - on hardware error
++* @retval GT_BAD_PARAM             - on wrong devNum
++* @retval GT_BAD_PTR               - one of the parameters is NULL pointer
++*
++*/
++GT_STATUS cpssDxChTrunkHashPrngSeedGet
++(
++    IN  GT_U8                                devNum,
++    IN  CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    OUT GT_U32                               *seedPtr,
++    OUT GT_U32                               *triggerDonePtr
++);
+
+ #ifdef __cplusplus
+ }
+diff --git a/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/private/prvCpssDxChTrunkLog.h b/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/private/prvCpssDxChTrunkLog.h
+index 95f33fcdf3..9966afdb19 100644
+--- a/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/private/prvCpssDxChTrunkLog.h
++++ b/mainPpDrv/h/cpss/dxCh/dxChxGen/trunk/private/prvCpssDxChTrunkLog.h
+@@ -434,7 +434,9 @@ enum {
+     PRV_CPSS_LOG_FUNC_cpssDxChTrunkDbSharedPortEnableSet_E,
+     PRV_CPSS_LOG_FUNC_cpssDxChTrunkDbSharedPortEnableGet_E,
+     PRV_CPSS_LOG_FUNC_cpssDxChTrunkDbSharedPortInfoSet_E,
+-    PRV_CPSS_LOG_FUNC_cpssDxChTrunkDbSharedPortInfoGet_E
++    PRV_CPSS_LOG_FUNC_cpssDxChTrunkDbSharedPortInfoGet_E,
++    PRV_CPSS_LOG_FUNC_cpssDxChTrunkHashPrngSeedSet_E,
++    PRV_CPSS_LOG_FUNC_cpssDxChTrunkHashPrngSeedGet_E
+ };
+
+ #ifdef __cplusplus
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/ip/cpssDxChIp.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/ip/cpssDxChIp.c
+index 69faa2b994..0c5a51fd5d 100644
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/ip/cpssDxChIp.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/ip/cpssDxChIp.c
+@@ -6498,29 +6498,7 @@ static GT_STATUS internal_cpssDxChIpEcmpHashSeedValueSet
+     IN GT_U32                       seed
+ )
+ {
+-    GT_U32      regAddr;
+-    GT_STATUS   rc;
+-
+-    PRV_CPSS_DXCH_DEV_CHECK_MAC(devNum);
+-    PRV_CPSS_DXCH_PP_HW_INFO_E_ARCH_SUPPORTED_CHECK_MAC(devNum);
+-
+-    if (seed == 0)
+-    {
+-        CPSS_LOG_ERROR_AND_RETURN_MAC(GT_OUT_OF_RANGE, LOG_ERROR_NO_MSG);
+-    }
+-
+-    /* set the seed value */
+-    regAddr = PRV_CPSS_DXCH_DEV_REGS_VER1_MAC(devNum)->IPvX.ECMPRoutingConfig.ECMPSeed;
+-    rc = prvCpssHwPpWriteRegister(devNum, regAddr, seed);
+-    if (rc != GT_OK)
+-    {
+-        return rc;
+-    }
+-
+-    /* in order that the new seed value will be uploaded we need to set
+-       <Seed Load Enable> to 1 */
+-    regAddr = PRV_CPSS_DXCH_DEV_REGS_VER1_MAC(devNum)->IPvX.ECMPRoutingConfig.ECMPConfig;
+-    return prvCpssHwPpSetRegField(devNum, regAddr, 0, 1, 1);
++    return cpssDxChTrunkHashPrngSeedSet(devNum, CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E, seed);
+ }
+
+ /**
+@@ -6600,15 +6578,8 @@ static GT_STATUS internal_cpssDxChIpEcmpHashSeedValueGet
+     OUT GT_U32                      *seedPtr
+ )
+ {
+-    GT_U32      regAddr;
+-
+-    PRV_CPSS_DXCH_DEV_CHECK_MAC(devNum);
+-    PRV_CPSS_DXCH_PP_HW_INFO_E_ARCH_SUPPORTED_CHECK_MAC(devNum);
+-    CPSS_NULL_PTR_CHECK_MAC(seedPtr);
+-
+-    /* get the seed value */
+-    regAddr = PRV_CPSS_DXCH_DEV_REGS_VER1_MAC(devNum)->IPvX.ECMPRoutingConfig.ECMPSeed;
+-    return prvCpssHwPpReadRegister(devNum, regAddr, seedPtr);
++    GT_BOOL triggerDone;
++    return cpssDxChTrunkHashPrngSeedGet(devNum, CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E, seedPtr, &triggerDone);
+ }
+
+ /**
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.c
+index 8ad04aae63..a659817327 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunk.c
+@@ -14837,4 +14837,249 @@ GT_STATUS cpssDxChTrunkDbSharedPortInfoGet
+     return rc;
+ }
+
++/**
++* @internal internal_cpssDxChTrunkHashPrngSeedSet function
++* @endinternal
++*
++* @brief   Set the seed value for pseudo random generator parameter used by the Trunk/L2/L3 ECMP hash mechanism
++*
++* @note   APPLICABLE DEVICES:      Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
++* @note   NOT APPLICABLE DEVICES:  xCat3; AC5; Lion2.
++*
++* @param[in] devNum                   - the device number
++* @param[in] hashClient               - hash client
++*                                      (APPLICABLE VALUES: CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E)
++* @param[in] seed                     - the seed value for pseudo random generator parameter
++*                                      (APPLICABLE RANGES: 1..0xffffffff)
++*
++* @retval GT_OK                    - on success
++* @retval GT_NOT_APPLICABLE_DEVICE - on not applicable device
++* @retval GT_HW_ERROR              - on hardware error
++* @retval GT_BAD_PARAM             - on wrong devNum
++* @retval GT_OUT_OF_RANGE          - on wrong seed
++*
++*/
++static GT_STATUS internal_cpssDxChTrunkHashPrngSeedSet
++(
++    IN GT_U8                                devNum,
++    IN CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    IN GT_U32                               seed
++)
++{
++    GT_U32      regAddr1;
++    GT_U32      regAddr2;
++    GT_STATUS   rc;
++
++    PRV_CPSS_DXCH_DEV_CHECK_MAC(devNum);
++    PRV_CPSS_NOT_APPLICABLE_DEV_CHECK_MAC(devNum, CPSS_XCAT3_E | CPSS_AC5_E | CPSS_LION2_E);
++    if (seed == 0)
++    {
++        CPSS_LOG_ERROR_AND_RETURN_MAC(GT_OUT_OF_RANGE, LOG_ERROR_NO_MSG);
++    }
++
++    switch(hashClient)
++    {
++        case CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E:
++            regAddr1 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.trunkLFSRSeed;
++            regAddr2 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.trunkLFSRConfig;
++            break;
++        case CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E:
++            regAddr1 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.ePortECMPLFSRSeed;
++            regAddr2 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.ePortECMPLFSRConfig;
++            break;
++        case CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E:
++            regAddr1 = PRV_CPSS_DXCH_DEV_REGS_VER1_MAC(devNum)->IPvX.ECMPRoutingConfig.ECMPSeed;
++            regAddr2 = PRV_CPSS_DXCH_DEV_REGS_VER1_MAC(devNum)->IPvX.ECMPRoutingConfig.ECMPConfig;
++            break;
++        default:
++            CPSS_LOG_ERROR_AND_RETURN_MAC(GT_BAD_PARAM, LOG_ERROR_NO_MSG);
++    }
++
++    /* set the seed value */
++    rc = prvCpssHwPpWriteRegister(devNum, regAddr1, seed);
++    if (rc != GT_OK)
++    {
++        return rc;
++    }
++
++    /* in order that the new seed value will be uploaded we need to set
++       <Seed Load Enable> to 1 */
++    return prvCpssHwPpSetRegField(devNum, regAddr2, 0, 1, 1);
++}
++
++/**
++* @internal cpssDxChTrunkHashPrngSeedSet function
++* @endinternal
++*
++* @brief   Set the seed value for pseudo random generator parameter used by the Trunk/L2/L3 ECMP hash mechanism
++*
++* @note   APPLICABLE DEVICES:      Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
++* @note   NOT APPLICABLE DEVICES:  xCat3; AC5; Lion2.
++*
++* @param[in] devNum                   - the device number
++* @param[in] hashClient               - hash client
++*                                      (APPLICABLE VALUES: CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E)
++* @param[in] seed                     - the seed value for pseudo random generator parameter
++*                                      (APPLICABLE RANGES: 1..0xffffffff)
++*
++* @retval GT_OK                    - on success
++* @retval GT_NOT_APPLICABLE_DEVICE - on not applicable device
++* @retval GT_HW_ERROR              - on hardware error
++* @retval GT_BAD_PARAM             - on wrong devNum
++* @retval GT_OUT_OF_RANGE          - on wrong seed
++*
++*/
++GT_STATUS cpssDxChTrunkHashPrngSeedSet
++(
++    IN GT_U8                                devNum,
++    IN CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    IN GT_U32                               seed
++)
++{
++    GT_STATUS rc;
++    CPSS_LOG_FUNC_VARIABLE_DECLARE_MAC(funcId, cpssDxChTrunkHashPrngSeedSet);
++
++    CPSS_API_LOCK_MAC(devNum,PRV_CPSS_FUNCTIONALITY_CONFIGURATION_CNS);
++    CPSS_LOG_API_ENTER_MAC((funcId, devNum, hashClient, seed));
++
++    rc = internal_cpssDxChTrunkHashPrngSeedSet(devNum, hashClient, seed);
++
++    CPSS_LOG_API_EXIT_MAC(funcId, rc);
++    CPSS_APP_SPECIFIC_CB_MAC((funcId, rc, devNum, hashClient, seed));
++    CPSS_API_UNLOCK_MAC(devNum,PRV_CPSS_FUNCTIONALITY_CONFIGURATION_CNS);
++
++    return rc;
++}
++
++/**
++* @internal internal_cpssDxChTrunkHashPrngSeedGet function
++* @endinternal
++*
++* @brief   Get the seed value for pseudo random generator parameter used by the Trunk/L2/L3 ECMP hash mechanism
++*
++* @note   APPLICABLE DEVICES:      Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
++* @note   NOT APPLICABLE DEVICES:  xCat3; AC5; Lion2.
++*
++* @param[in]  devNum                   - the device number
++* @param[in]  hashClient               - hash client
++*                                      (APPLICABLE VALUES: CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E)
++* @param[out] seedPtr                  - (pointer to) the seed value for pseudo random generator parameter
++* @param[out] triggerDonePtr           - (pointer to) the trigger status of pseudo random generator load operation
++*                                        GT_TRUE - load done
++*                                        GT_FALSE - load in progress
++*
++* @retval GT_OK                    - on success
++* @retval GT_NOT_APPLICABLE_DEVICE - on not applicable device
++* @retval GT_HW_ERROR              - on hardware error
++* @retval GT_BAD_PARAM             - on wrong devNum
++* @retval GT_BAD_PTR               - one of the parameters is NULL pointer
++*
++*/
++static GT_STATUS internal_cpssDxChTrunkHashPrngSeedGet
++(
++    IN  GT_U8                                devNum,
++    IN  CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    OUT GT_U32                               *seedPtr,
++    OUT GT_BOOL                              *triggerDonePtr
++)
++{
++    GT_STATUS   rc;
++    GT_U32      regAddr1;
++    GT_U32      regAddr2;
++    GT_U32      data;
++
++    PRV_CPSS_DXCH_DEV_CHECK_MAC(devNum);
++    PRV_CPSS_NOT_APPLICABLE_DEV_CHECK_MAC(devNum, CPSS_XCAT3_E | CPSS_AC5_E | CPSS_LION2_E);
++    CPSS_NULL_PTR_CHECK_MAC(seedPtr);
++    CPSS_NULL_PTR_CHECK_MAC(triggerDonePtr);
++
++    switch(hashClient)
++    {
++        case CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E:
++            regAddr1 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.trunkLFSRSeed;
++            regAddr2 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.trunkLFSRConfig;
++            break;
++        case CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E:
++            regAddr1 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.ePortECMPLFSRSeed;
++            regAddr2 = PRV_DXCH_REG1_UNIT_EQ_MAC(devNum).L2ECMP.ePortECMPLFSRConfig;
++            break;
++        case CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E:
++            regAddr1 = PRV_CPSS_DXCH_DEV_REGS_VER1_MAC(devNum)->IPvX.ECMPRoutingConfig.ECMPSeed;
++            regAddr2 = PRV_CPSS_DXCH_DEV_REGS_VER1_MAC(devNum)->IPvX.ECMPRoutingConfig.ECMPConfig;
++            break;
++        default:
++            CPSS_LOG_ERROR_AND_RETURN_MAC(GT_BAD_PARAM, LOG_ERROR_NO_MSG);
++    }
++
++    /* get the seed value */
++    rc = prvCpssHwPpReadRegister(devNum, regAddr1, seedPtr);
++    if (rc != GT_OK)
++    {
++        return rc;
++    }
++
++    /* get the status of the trigger operation by reading register field <Seed Load Enable> */
++    rc = prvCpssHwPpGetRegField(devNum, regAddr2, 0, 1, &data);
++    if (rc != GT_OK)
++    {
++        return rc;
++    }
++    *triggerDonePtr = (data == 1) ? GT_FALSE : GT_TRUE;
++    return GT_OK;
++}
++
++/**
++* @internal cpssDxChTrunkHashPrngSeedGet function
++* @endinternal
++*
++* @brief   Get the seed value for pseudo random generator parameter used by the Trunk/L2/L3 ECMP hash mechanism
++*
++* @note   APPLICABLE DEVICES:      Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
++* @note   NOT APPLICABLE DEVICES:  xCat3; AC5; Lion2.
++*
++* @param[in]  devNum                   - the device number
++* @param[in]  hashClient               - hash client
++*                                      (APPLICABLE VALUES: CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++*                                      CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E)
++* @param[out] seedPtr                  - (pointer to) the seed value for pseudo random generator parameter
++* @param[out] triggerDonePtr           - (pointer to) the trigger status of pseudo random generator load operation
++*                                        GT_TRUE - load done
++*                                        GT_FALSE - load in progress
++*
++* @retval GT_OK                    - on success
++* @retval GT_NOT_APPLICABLE_DEVICE - on not applicable device
++* @retval GT_HW_ERROR              - on hardware error
++* @retval GT_BAD_PARAM             - on wrong devNum
++* @retval GT_BAD_PTR               - one of the parameters is NULL pointer
++*
++*/
++GT_STATUS cpssDxChTrunkHashPrngSeedGet
++(
++    IN  GT_U8                                devNum,
++    IN  CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    OUT GT_U32                               *seedPtr,
++    OUT GT_BOOL                              *triggerDonePtr
++)
++{
++    GT_STATUS rc;
++    CPSS_LOG_FUNC_VARIABLE_DECLARE_MAC(funcId, cpssDxChTrunkHashPrngSeedGet);
++
++    CPSS_API_LOCK_MAC(devNum,PRV_CPSS_FUNCTIONALITY_CONFIGURATION_CNS);
++    CPSS_LOG_API_ENTER_MAC((funcId, devNum, hashClient, seedPtr, triggerDonePtr));
++
++    rc = internal_cpssDxChTrunkHashPrngSeedGet(devNum, hashClient, seedPtr, triggerDonePtr);
++
++    CPSS_LOG_API_EXIT_MAC(funcId, rc);
++    CPSS_APP_SPECIFIC_CB_MAC((funcId, rc, devNum, hashClient, seedPtr, triggerDonePtr));
++    CPSS_API_UNLOCK_MAC(devNum,PRV_CPSS_FUNCTIONALITY_CONFIGURATION_CNS);
++
++    return rc;
++}
+
+diff --git a/mainUT/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunkUT.c b/mainUT/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunkUT.c
+index 58a539593f..e055541b0c 100644
+--- a/mainUT/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunkUT.c
++++ b/mainUT/mainPpDrv/src/cpss/dxCh/dxChxGen/trunk/cpssDxChTrunkUT.c
+@@ -13044,6 +13044,202 @@ UTF_TEST_CASE_MAC(cpssDxChTrunkDbSharedPort_combine_basic_config)
+     }
+ }
+
++/*----------------------------------------------------------------------------*/
++/*
++GT_STATUS cpssDxChTrunkHashPrngSeedSet
++(
++    IN GT_U8                                devNum,
++    IN CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    IN GT_U32                               seed
++)
++*/
++UTF_TEST_CASE_MAC(cpssDxChTrunkHashPrngSeedSet)
++{
++/*
++    ITERATE_DEVICES (eArch devices only)
++    - Call with seed = 1
++      Expected: GT_OK.
++    - Call with seed = 0xb47ac093
++      Expected: GT_OK.
++    - Call with seed = 0xffffffff
++      Expected: GT_OK.
++    - Call with seed = 0
++      Expected: GT_OUT_OF_RANGE.
++*/
++    GT_STATUS                            st = GT_OK;
++    GT_U8                                dev;
++    GT_U32                               seed, seedGet;
++    GT_BOOL                              triggerGet;
++    GT_U32                               notAppFamilyBmp;
++    GT_U32                               i;
++    CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient;
++
++    CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClientArr[] =
++    {
++        CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++        CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++        CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E
++    };
++    GT_U32 hashClientArrSize = sizeof(hashClientArr) / sizeof(hashClientArr[0]);
++
++    /* this feature is on eArch devices */
++    UTF_E_ARCH_NOT_SUPPORTED_FAMILY_GET_MAC(&notAppFamilyBmp);
++
++    /* prepare iterator for go over all active devices */
++    PRV_TGF_NOT_APPLIC_DEV_RESET_MAC(&dev, notAppFamilyBmp);
++
++    while (GT_OK == prvUtfNextDeviceGet(&dev, GT_TRUE))
++    {
++        for(i = 0; i < hashClientArrSize; i++)
++        {
++            seed = 1;
++
++            st = cpssDxChTrunkHashPrngSeedSet(dev, hashClientArr[i], seed);
++            UTF_VERIFY_EQUAL3_PARAM_MAC(GT_OK, st, dev, seed, hashClientArr[i]);
++
++            st = cpssDxChTrunkHashPrngSeedGet(dev, hashClientArr[i], &seedGet, &triggerGet);
++            UTF_VERIFY_EQUAL3_PARAM_MAC(GT_OK, st, dev, seedGet, hashClientArr[i]);
++
++            UTF_VERIFY_EQUAL1_STRING_MAC(seed, seedGet,
++                            "get another seed than was set: ", dev);
++
++            seed = 0xb47ac093;
++
++            st = cpssDxChTrunkHashPrngSeedSet(dev, hashClientArr[i], seed);
++            UTF_VERIFY_EQUAL3_PARAM_MAC(GT_OK, st, dev, seed, hashClientArr[i]);
++
++            st = cpssDxChTrunkHashPrngSeedGet(dev, hashClientArr[i], &seedGet, &triggerGet);
++            UTF_VERIFY_EQUAL3_PARAM_MAC(GT_OK, st, dev, seedGet, hashClientArr[i]);
++
++            UTF_VERIFY_EQUAL1_STRING_MAC(seed, seedGet,
++                            "get another seed than was set: ", dev);
++
++            seed = 0xffffffff;
++
++            st = cpssDxChTrunkHashPrngSeedSet(dev, hashClientArr[i], seed);
++            UTF_VERIFY_EQUAL3_PARAM_MAC(GT_OK, st, dev, seed, hashClientArr[i]);
++
++            st = cpssDxChTrunkHashPrngSeedGet(dev, hashClientArr[i], &seedGet, &triggerGet);
++            UTF_VERIFY_EQUAL3_PARAM_MAC(GT_OK, st, dev, seedGet, hashClientArr[i]);
++
++            UTF_VERIFY_EQUAL1_STRING_MAC(seed, seedGet,
++                            "get another seed than was set: ", dev);
++
++            seed = 0;
++
++            st = cpssDxChTrunkHashPrngSeedSet(dev, hashClientArr[i], seed);
++            UTF_VERIFY_EQUAL3_PARAM_MAC(GT_OUT_OF_RANGE, st, dev, seed, hashClientArr[i]);
++        }
++
++        seed       = 1;
++        hashClient = CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E;
++        UTF_ENUMS_CHECK_MAC(cpssDxChTrunkHashPrngSeedSet
++                           (dev, hashClient, seed),
++                           hashClient);
++    }
++
++    seed       = 1;
++    hashClient = CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E;
++
++    /* For not active devices check that function returns non GT_OK. */
++
++    /* prepare iterator for go over all active devices */
++    PRV_TGF_NOT_APPLIC_DEV_RESET_MAC(&dev, notAppFamilyBmp);
++
++    /* Go over all non active devices. */
++    while(GT_OK == prvUtfNextDeviceGet(&dev, GT_FALSE))
++    {
++        st = cpssDxChTrunkHashPrngSeedSet(dev, hashClient, seed);
++        UTF_VERIFY_EQUAL1_PARAM_MAC(GT_NOT_APPLICABLE_DEVICE, st, dev);
++    }
++
++    /* Call function with out of bound value for device id */
++    dev = PRV_CPSS_MAX_PP_DEVICES_CNS;
++
++    st = cpssDxChTrunkHashPrngSeedSet(dev, hashClient, seed);
++    UTF_VERIFY_EQUAL1_PARAM_MAC(GT_BAD_PARAM, st, dev);
++}
++
++/*----------------------------------------------------------------------------*/
++/*
++GT_STATUS cpssDxChTrunkHashPrngSeedGet
++(
++    IN  GT_U8                               devNum,
++    IN CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient,
++    OUT GT_U32                              *seedPtr,
++    OUT GT_BOOL                             *triggerDonePtr
++)
++*/
++UTF_TEST_CASE_MAC(cpssDxChTrunkHashPrngSeedGet)
++{
++    /*
++    ITERATE_DEVICES (eArch devices only)
++    - Call function with not NULL seedPtr
++      Expected: GT_OK.
++    - Call function with NULL seedPtr
++      Expected: GT_BAD_PTR.
++    */
++    GT_STATUS                            st = GT_OK;
++    GT_U8                                dev;
++    GT_U32                               seed;
++    GT_BOOL                              triggerDone;
++    GT_U32                               notAppFamilyBmp;
++    GT_U32                               i;
++    CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClient;
++
++    CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_ENT hashClientArr[] =
++    {
++        CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E,
++        CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L2_ECMP_E,
++        CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_L3_ECMP_E
++    };
++    GT_U32 hashClientArrSize = sizeof(hashClientArr) / sizeof(hashClientArr[0]);
++
++    /* this feature is on eArch devices */
++    UTF_E_ARCH_NOT_SUPPORTED_FAMILY_GET_MAC(&notAppFamilyBmp);
++
++    /* prepare iterator for go over all active devices */
++    PRV_TGF_NOT_APPLIC_DEV_RESET_MAC(&dev, notAppFamilyBmp);
++
++    /* 1. Go over all active devices. */
++    while(GT_OK == prvUtfNextDeviceGet(&dev, GT_TRUE))
++    {
++        for(i = 0; i < hashClientArrSize; i++)
++        {
++            st = cpssDxChTrunkHashPrngSeedGet(dev, hashClientArr[i], &seed, &triggerDone);
++            UTF_VERIFY_EQUAL2_PARAM_MAC(GT_OK, st, dev, hashClientArr[i]);
++
++            st = cpssDxChTrunkHashPrngSeedGet(dev, hashClientArr[i], NULL, &triggerDone);
++            UTF_VERIFY_EQUAL2_PARAM_MAC(GT_BAD_PTR, st, dev, hashClientArr[i]);
++
++            st = cpssDxChTrunkHashPrngSeedGet(dev, hashClientArr[i], &seed, NULL);
++            UTF_VERIFY_EQUAL2_PARAM_MAC(GT_BAD_PTR, st, dev, hashClientArr[i]);
++        }
++        hashClient = CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E;
++        UTF_ENUMS_CHECK_MAC(cpssDxChTrunkHashPrngSeedGet
++                           (dev, hashClient, &seed, &triggerDone),
++                           hashClient);
++    }
++
++    hashClient = CPSS_DXCH_TRUNK_HASH_CLIENT_TYPE_TRUNK_E;
++
++    /* 2. For not-active devices and devices from non-applicable family */
++    /* check that function returns GT_BAD_PARAM.                        */
++    /* prepare device iterator */
++    PRV_TGF_NOT_APPLIC_DEV_RESET_MAC(&dev, notAppFamilyBmp);
++    /* go over all non active devices */
++    while(GT_OK == prvUtfNextDeviceGet(&dev, GT_FALSE))
++    {
++        st = cpssDxChTrunkHashPrngSeedGet(dev, hashClient, &seed, &triggerDone);
++        UTF_VERIFY_EQUAL1_PARAM_MAC(GT_NOT_APPLICABLE_DEVICE, st, dev);
++    }
++
++    /* 3. Call function with out of bound value for device id.*/
++    dev = PRV_CPSS_MAX_PP_DEVICES_CNS;
++
++    st = cpssDxChTrunkHashPrngSeedGet(dev, hashClient, &seed, &triggerDone);
++    UTF_VERIFY_EQUAL1_PARAM_MAC(GT_BAD_PARAM, st, dev);
++}
+
+ #define  TRUNK_HIGH_LEVEL_LIST  \
+     UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkMembersSet)                   \
+@@ -13079,8 +13275,10 @@ UTF_TEST_CASE_MAC(cpssDxChTrunkDbSharedPort_combine_basic_config)
+     UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkDbSharedPortEnableGet)             \
+     UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkDbSharedPortInfoSet)               \
+     UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkDbSharedPortInfoGet)               \
+-    UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkDbSharedPort_cascade_basic_config)\
+-    UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkDbSharedPort_combine_basic_config)
++    UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkDbSharedPort_cascade_basic_config) \
++    UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkDbSharedPort_combine_basic_config) \
++    UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkHashPrngSeedSet)                   \
++    UTF_SUIT_DECLARE_TEST_MAC(cpssDxChTrunkHashPrngSeedGet)
+
+ /* list 1 hold tests than need to run only once (take too much time) */
+ #define  TRUNK_HIGH_LEVEL_LIST_1  \
+--
+2.22.0

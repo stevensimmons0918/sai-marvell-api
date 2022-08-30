@@ -1,0 +1,71 @@
+From 1e0ae1b9a0d926456b9424caae5386c396fb0755 Mon Sep 17 00:00:00 2001
+From: Michal <mbukai@marvell.com>
+Date: Sun, 13 Feb 2022 08:49:27 +0200
+Subject: [PATCH] CPSS-14537 - Change Falcon RMF feature to RX training only
+
+Signed-off-by: Michal <mbukai@marvell.com>
+Change-Id: If567c5e9c1c6c2623fd5efb927fd9730ffcb7dd6
+Reviewed-on: http://vgitil10.il.marvell.com:8080/c/NPS/cpss/+/102062
+Tested-by: Jenkins 2 <pt-gen-jenk@marvell.com>
+Reviewed-by: Asaf Ben - Yishay <basaf@marvell.com>
+---
+ .../port/gop/src/portCtrl/src/mvHwsPortCtrlAn.c      |  5 ++++-
+ .../port/gop/src/portCtrl/src/mvHwsPortCtrlAnEng.c   | 12 +++++++++---
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAn.c b/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAn.c
+index c824a5e9b7..0e6718048f 100644
+--- a/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAn.c
++++ b/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAn.c
+@@ -416,7 +416,10 @@ static void mvPortCtrlAnPortDetectionMsgExec(MV_HWS_IPC_CTRL_MSG_STRUCT *msg, GT
+                 }
+             }
+ 
+-            mvAnPortRemoteFaultEnable(portIndex,GT_FALSE);
++            if (AN_CTRL_RX_TRAIN_GET(anSm->options))
++            {
++                mvAnPortRemoteFaultEnable(portIndex,GT_FALSE);
++            }
+             mvAnPortDeleteMsg(portIndex);
+             mvPortCtrlAnPortMsgReply(&replyMsg, msg->msgQueueId);
+         }
+diff --git a/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAnEng.c b/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAnEng.c
+index fb310126cd..5b5e306dc1 100755
+--- a/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAnEng.c
++++ b/common/src/cpss/common/labServices/port/gop/src/portCtrl/src/mvHwsPortCtrlAnEng.c
+@@ -1015,7 +1015,10 @@ GT_STATUS mvAnPortAutoNeg
+          {
+             /* Send the HCD to the host for Pizza Configuration*/
+             doorbellIntrAddEvent(AP_DOORBELL_EVENT_PORT_802_3_AP(anSm->portNum));
+-            mvAnPortRemoteFaultEnable(portIndex,GT_TRUE);
++            if (AN_CTRL_RX_TRAIN_GET(anSm->options))
++            {
++                mvAnPortRemoteFaultEnable(portIndex, GT_TRUE);
++            }
+          }
+ 
+         /* start link check timer for serdes configuration threshold.
+@@ -1271,7 +1274,7 @@ GT_STATUS mvAnPortAutoNeg
+                     mvPortCtrlThresholdSet(anIntrop->apLinkDuration, &(anTimer->linkThreshold));
+                     /* Send the HCD to the host for Pizza Configuration*/
+                     doorbellIntrAddEvent(AP_DOORBELL_EVENT_PORT_802_3_AP(anSm->portNum));
+-                    mvAnPortRemoteFaultEnable(portIndex,GT_TRUE);
++                    /*mvAnPortRemoteFaultEnable(portIndex,GT_TRUE);*/
+ 
+                             /* AP Timing measurment */
+                     anStats->hcdResoultionTime = mvPortCtrlCurrentTs() - anStats->timestampTime;
+@@ -3269,7 +3272,10 @@ GT_STATUS mvAnPortLinkUp
+ 
+                 /*Doorbell interrupt*/
+                 doorbellIntrAddEvent(AP_DOORBELL_EVENT_PORT_STATUS_CHANGE(anSm->portNum));
+-                mvAnPortRemoteFaultEnable(portIndex,GT_FALSE);
++                if (AN_CTRL_RX_TRAIN_GET(anSm->options))
++                {
++                    mvAnPortRemoteFaultEnable(portIndex,GT_FALSE);
++                }
+                 /* AP register dump */
+                 mvPortCtrlDbgCtrlRegsDump(portIndex, serdesNum, AN_PORT_SM_LINK_STATUS_STATE);
+             }
+-- 
+2.22.0
+

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="union__sai__tlv__entry__t" kind="union" language="C++" prot="public">
+    <compoundname>_sai_tlv_entry_t</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="union__sai__tlv__entry__t_1a6d08765dd98e7620f6737105d5d9c8c2" prot="public" static="no" mutable="no">
+        <type>sai_ip6_t</type>
+        <definition>sai_ip6_t _sai_tlv_entry_t::ingress_node</definition>
+        <argsstring></argsstring>
+        <name>ingress_node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      tlv_type == SAI_TLV_TYPE_INGRESS </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="866" column="1" bodyfile="inc/saitypes.h" bodystart="866" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__tlv__entry__t_1ab4cdfb80e53f97a78723564bed0c2c63" prot="public" static="no" mutable="no">
+        <type>sai_ip6_t</type>
+        <definition>sai_ip6_t _sai_tlv_entry_t::egress_node</definition>
+        <argsstring></argsstring>
+        <name>egress_node</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      tlv_type == SAI_TLV_TYPE_EGRESS </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="869" column="1" bodyfile="inc/saitypes.h" bodystart="869" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__tlv__entry__t_1a6d3f4a61ae4242eb93d4787e4acd92f6" prot="public" static="no" mutable="no">
+        <type>sai_uint32_t</type>
+        <definition>sai_uint32_t _sai_tlv_entry_t::opaque_container[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>opaque_container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      tlv_type == SAI_TLV_TYPE_OPAQUE </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="872" column="1" bodyfile="inc/saitypes.h" bodystart="872" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__tlv__entry__t_1ab58aafb8bd555b19d549ec5073659e9e" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga1e094423523cca3121566e4f061956a6" kindref="member">sai_hmac_t</ref></type>
+        <definition>sai_hmac_t _sai_tlv_entry_t::hmac</definition>
+        <argsstring></argsstring>
+        <name>hmac</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      tlv_type == SAI_TLV_TYPE_HMAC </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="875" column="1" bodyfile="inc/saitypes.h" bodystart="875" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>sai_tlv_type_t tlv_type </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="1749">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1750" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1750">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitypes.h" line="864" column="1" bodyfile="inc/saitypes.h" bodystart="863" bodyend="876"/>
+    <listofallmembers>
+      <member refid="union__sai__tlv__entry__t_1ab4cdfb80e53f97a78723564bed0c2c63" prot="public" virt="non-virtual"><scope>_sai_tlv_entry_t</scope><name>egress_node</name></member>
+      <member refid="union__sai__tlv__entry__t_1ab58aafb8bd555b19d549ec5073659e9e" prot="public" virt="non-virtual"><scope>_sai_tlv_entry_t</scope><name>hmac</name></member>
+      <member refid="union__sai__tlv__entry__t_1a6d08765dd98e7620f6737105d5d9c8c2" prot="public" virt="non-virtual"><scope>_sai_tlv_entry_t</scope><name>ingress_node</name></member>
+      <member refid="union__sai__tlv__entry__t_1a6d3f4a61ae4242eb93d4787e4acd92f6" prot="public" virt="non-virtual"><scope>_sai_tlv_entry_t</scope><name>opaque_container</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

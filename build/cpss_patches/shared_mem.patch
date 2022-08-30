@@ -1,0 +1,37 @@
+diff --git a/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c b/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c
+index 6ef8e7a441..096e764fa1 100755
+--- a/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c
++++ b/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c
+@@ -1474,6 +1474,7 @@ GT_STATUS osMemGlobalDbShmemInit
+     OUT GT_VOID      **sharedGlobalVarsPtrPtr
+ )
+ {
++#ifdef SHARED_MEMORY
+     GT_32 shm_fd = -1;
+     GT_BOOL initialize = GT_TRUE;
+ 
+@@ -1488,6 +1489,7 @@ GT_STATUS osMemGlobalDbShmemInit
+ #ifndef ASIC_SIMULATION
+     uint64_t   physAddr;
+ #endif
++#endif /* SHARED_MEMORY */
+     if(NULL == initDataSegmentPtr ||
+        NULL ==sharedGlobalVarsPtrPtr||
+        NULL ==name)
+@@ -1504,6 +1506,7 @@ GT_STATUS osMemGlobalDbShmemInit
+ #if defined SHARED_MEMORY
+     shrAddNameSuffix(name,buff,sizeof(buff));
+ #endif
++#ifdef SHARED_MEMORY
+     osSprintf(fullPathBuff, "/dev/shm/%s",buff);
+ 
+     /*It is not enoght that file exist.
+@@ -1590,7 +1593,7 @@ GT_STATUS osMemGlobalDbShmemInit
+ #endif
+ 
+     SHM_PRINT("Shared memory mapped at virtual address  %p.[Originally created by process %d ].\n", sharedMem,*((pid_t *)sharedMem));
+-
++#endif /* SHARED_MEMORY */
+     return GT_OK;
+ }
+ 

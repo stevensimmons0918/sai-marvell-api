@@ -1,0 +1,25 @@
+#ifndef HOSTTTDxxx_H
+#define HOSTTTDxxx_H
+#ifdef __cplusplus
+    #define DLLEXP  "C"  __declspec (dllexport)
+#else
+    #define DLLEXP       __declspec (dllexport)
+#endif
+
+#define KC_NTASK    100
+
+//abort function type
+typedef void SHOSTG_abort_FUN(UINT_8 *msg) ;
+
+//fatal error function type
+typedef void SHOSTC_fatal_error_FUN(UINT_8 *msg) ;
+
+//fatal error function type
+typedef void SHOSTC_free_net_tx_FUN(void *id) ;
+
+//tick function type
+typedef void SHOSTG_tick_FUN(void) ;
+
+
+#endif
+

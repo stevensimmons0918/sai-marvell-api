@@ -1,0 +1,7 @@
+//TAG:               latency-monitor; fdb
+//Short Description: Configure latency monitoring FDB entry
+//Description:       Configure latency monitoring FDB entry
+end
+configure
+mac address-table static ${@@lmu_env.mac} device ${dev} vlan 1 ethernet ${dev}/${@@lmu_env.port2}
+end

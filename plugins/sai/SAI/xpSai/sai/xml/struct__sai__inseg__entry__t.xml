@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__inseg__entry__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_inseg_entry_t</compoundname>
+    <includes refid="saimpls_8h" local="no">saimpls.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__inseg__entry__t_1a24eb5fad7edef586db8bee257718d769" prot="public" static="no" mutable="no">
+        <type>sai_object_id_t</type>
+        <definition>sai_object_id_t _sai_inseg_entry_t::switch_id</definition>
+        <argsstring></argsstring>
+        <name>switch_id</name>
+        <briefdescription>
+<para>Switch ID. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_SWITCH </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="225" column="1" bodyfile="inc/saimpls.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__inseg__entry__t_1ab1a9e44ab5ec2f7405d86a095c78ccae" prot="public" static="no" mutable="no">
+        <type>sai_label_id_t</type>
+        <definition>sai_label_id_t _sai_inseg_entry_t::label</definition>
+        <argsstring></argsstring>
+        <name>label</name>
+        <briefdescription>
+<para>MPLS label. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="230" column="1" bodyfile="inc/saimpls.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>In segment entry. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/saimpls.h" line="219" column="1" bodyfile="inc/saimpls.h" bodystart="218" bodyend="232"/>
+    <listofallmembers>
+      <member refid="struct__sai__inseg__entry__t_1ab1a9e44ab5ec2f7405d86a095c78ccae" prot="public" virt="non-virtual"><scope>_sai_inseg_entry_t</scope><name>label</name></member>
+      <member refid="struct__sai__inseg__entry__t_1a24eb5fad7edef586db8bee257718d769" prot="public" virt="non-virtual"><scope>_sai_inseg_entry_t</scope><name>switch_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

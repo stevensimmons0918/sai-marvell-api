@@ -1,0 +1,21 @@
+CFLAGS += -Wall -pthread -g
+LDFLAGS += -pthread -g
+
+LIBRARY 	= evHandler.o slanLib.o
+LIBHEADERS  = evHandler.h slanLib.h
+CONNECTOR	= slanConnector
+DRIVERS		= slanTunTapLinux
+
+all: $(LIBRARY) $(CONNECTOR) $(DRIVERS)
+
+evHandler.o: evHandler.c evHandler.h
+slanLib.o: slanLib.c slanLib.h
+
+slanConnector: slanConnector.o evHandler.o
+slanConnector.o: slanConnector.c slanLib.h evHandler.h
+
+slanTunTapLinux: slanTunTapLinux.o $(LIBRARY)
+slanTunTapLinux.o: slanTunTapLinux.c $(LIBHEADERS)
+
+clean:
+	rm -f *.o $(LIBRARY) $(CONNECTOR) $(DRIVERS)

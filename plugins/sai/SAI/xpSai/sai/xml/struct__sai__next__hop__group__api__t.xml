@@ -1,0 +1,484 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__next__hop__group__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_next_hop_group_api_t</compoundname>
+    <includes refid="sainexthopgroup_8h" local="no">sainexthopgroup.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1affdf8a0100e108e8cff330dc7da96ab4" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga2049fd1cd80e65c49d60c7200ffe8aea" kindref="member">sai_create_next_hop_group_fn</ref></type>
+        <definition>sai_create_next_hop_group_fn _sai_next_hop_group_api_t::create_next_hop_group</definition>
+        <argsstring></argsstring>
+        <name>create_next_hop_group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="423" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="423" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1a85a320c66265c165abcab5b684e15e22" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga450cbef39db97091fbd13d58784dbe71" kindref="member">sai_remove_next_hop_group_fn</ref></type>
+        <definition>sai_remove_next_hop_group_fn _sai_next_hop_group_api_t::remove_next_hop_group</definition>
+        <argsstring></argsstring>
+        <name>remove_next_hop_group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="424" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="424" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1a779cbbc39bbb598a0e6f45d36fcd7993" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga1c70d2fb8f64e90008b00d1a7979f323" kindref="member">sai_set_next_hop_group_attribute_fn</ref></type>
+        <definition>sai_set_next_hop_group_attribute_fn _sai_next_hop_group_api_t::set_next_hop_group_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_next_hop_group_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="425" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="425" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1a99e2ccf3689cce2f7d09c583de55b7f9" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga1969f8430c6369e15cb56419dd60c859" kindref="member">sai_get_next_hop_group_attribute_fn</ref></type>
+        <definition>sai_get_next_hop_group_attribute_fn _sai_next_hop_group_api_t::get_next_hop_group_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_next_hop_group_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="426" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1a0e67dc1c718ce13fe9638ade10118973" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gaf5dfb1ec50d89a4f0f27fad080c8e202" kindref="member">sai_create_next_hop_group_member_fn</ref></type>
+        <definition>sai_create_next_hop_group_member_fn _sai_next_hop_group_api_t::create_next_hop_group_member</definition>
+        <argsstring></argsstring>
+        <name>create_next_hop_group_member</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="427" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="427" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1a0ac2b1b0f36c99a61e32ce9beb69473f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga446db527437df136ef0575b586fcd87b" kindref="member">sai_remove_next_hop_group_member_fn</ref></type>
+        <definition>sai_remove_next_hop_group_member_fn _sai_next_hop_group_api_t::remove_next_hop_group_member</definition>
+        <argsstring></argsstring>
+        <name>remove_next_hop_group_member</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="428" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="428" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1a0e887aea015c7e9034131811756d5434" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gab63b0029fc830b2970892f81dd9ae473" kindref="member">sai_set_next_hop_group_member_attribute_fn</ref></type>
+        <definition>sai_set_next_hop_group_member_attribute_fn _sai_next_hop_group_api_t::set_next_hop_group_member_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_next_hop_group_member_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="429" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1a857b469fb3494e9ee9acd10b0584f464" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gafeacb8d6ee2c94ec30de42b2b48629f8" kindref="member">sai_get_next_hop_group_member_attribute_fn</ref></type>
+        <definition>sai_get_next_hop_group_member_attribute_fn _sai_next_hop_group_api_t::get_next_hop_group_member_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_next_hop_group_member_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="430" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1aacaa07b1973d1013eb562e9feb6640d3" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga4610f346b1ad7a6272ba9d9bf933da94" kindref="member">sai_bulk_object_create_fn</ref></type>
+        <definition>sai_bulk_object_create_fn _sai_next_hop_group_api_t::create_next_hop_group_members</definition>
+        <argsstring></argsstring>
+        <name>create_next_hop_group_members</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="431" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__next__hop__group__api__t_1af0a031e5f796a2832207d0ea222ec027" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga4bbefb281d59e3e5c25ad8b9868d35c7" kindref="member">sai_bulk_object_remove_fn</ref></type>
+        <definition>sai_bulk_object_remove_fn _sai_next_hop_group_api_t::remove_next_hop_group_members</definition>
+        <argsstring></argsstring>
+        <name>remove_next_hop_group_members</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="432" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Next Hop methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1039">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="1040" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1025">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="1026">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="1027" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1042">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="1046">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="1047" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="1040">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="1034">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="1027">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="1028" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1028">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="1050">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="1032">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="1033" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="1036" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1053">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="1054" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1021">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="1022" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1020">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="1021" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1043">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="1016">
+        <label>_sai_next_hop_group_api_t</label>
+        <link refid="struct__sai__next__hop__group__api__t"/>
+        <childnode refid="1017" relation="usage">
+          <edgelabel>create_next_hop_group_members</edgelabel>
+          <edgelabel>get_next_hop_group_attribute</edgelabel>
+          <edgelabel>get_next_hop_group_member_attribute</edgelabel>
+          <edgelabel>create_next_hop_group_member</edgelabel>
+          <edgelabel>create_next_hop_group</edgelabel>
+          <edgelabel>set_next_hop_group_attribute</edgelabel>
+          <edgelabel>set_next_hop_group_member_attribute</edgelabel>
+        </childnode>
+      </node>
+      <node id="1019">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="1041">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="1052">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="1018">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="1019" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="1020" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="1024" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="1026" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="1029" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="1032" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="1037" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="1038" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="1039" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="1041" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="1042" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="1040" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="1043" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="1044" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="1034" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1045" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="1046" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="1048" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="1030" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="1035" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="1049" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="1050" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="1051" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="1052" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="1053" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="1055" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="1057" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="1033">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="1034" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1035" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1017">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="1018" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1038">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1031" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1049">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="1048">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="1022">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1023" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1055">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="1056" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1057">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="1023">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="1036">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="1035" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1045">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="1056">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="1054">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="1024">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="1025" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1030">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1031" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1044">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="1029">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="1030" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1031">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="1035">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="1037">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="1047">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="1034" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1030" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1051">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="1044" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/sainexthopgroup.h" line="422" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="421" bodyend="433"/>
+    <listofallmembers>
+      <member refid="struct__sai__next__hop__group__api__t_1affdf8a0100e108e8cff330dc7da96ab4" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>create_next_hop_group</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1a0e67dc1c718ce13fe9638ade10118973" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>create_next_hop_group_member</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1aacaa07b1973d1013eb562e9feb6640d3" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>create_next_hop_group_members</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1a99e2ccf3689cce2f7d09c583de55b7f9" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>get_next_hop_group_attribute</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1a857b469fb3494e9ee9acd10b0584f464" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>get_next_hop_group_member_attribute</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1a85a320c66265c165abcab5b684e15e22" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>remove_next_hop_group</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1a0ac2b1b0f36c99a61e32ce9beb69473f" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>remove_next_hop_group_member</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1af0a031e5f796a2832207d0ea222ec027" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>remove_next_hop_group_members</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1a779cbbc39bbb598a0e6f45d36fcd7993" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>set_next_hop_group_attribute</name></member>
+      <member refid="struct__sai__next__hop__group__api__t_1a0e887aea015c7e9034131811756d5434" prot="public" virt="non-virtual"><scope>_sai_next_hop_group_api_t</scope><name>set_next_hop_group_member_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

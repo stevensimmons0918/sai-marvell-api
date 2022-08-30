@@ -1,0 +1,1281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saisrv6_8h" kind="file" language="C++">
+    <compoundname>saisrv6.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="saiobject_8h" local="no">inc/saiobject.h</includedby>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="333">
+        <label>stdbool.h</label>
+      </node>
+      <node id="332">
+        <label>stdint.h</label>
+      </node>
+      <node id="334">
+        <label>sys/types.h</label>
+      </node>
+      <node id="330">
+        <label>inc/saisrv6.h</label>
+        <link refid="saisrv6.h"/>
+        <childnode refid="331" relation="include">
+        </childnode>
+      </node>
+      <node id="331">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="332" relation="include">
+        </childnode>
+        <childnode refid="333" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="335">
+        <label>inc/saisrv6.h</label>
+        <link refid="saisrv6.h"/>
+        <childnode refid="336" relation="include">
+        </childnode>
+        <childnode refid="337" relation="include">
+        </childnode>
+      </node>
+      <node id="336">
+        <label>inc/saiobject.h</label>
+        <link refid="saiobject_8h"/>
+        <childnode refid="337" relation="include">
+        </childnode>
+      </node>
+      <node id="337">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__my__sid__entry__t" prot="public">_sai_my_sid_entry_t</innerclass>
+    <innerclass refid="struct__sai__srv6__api__t" prot="public">_sai_srv6_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_s_r_v6_1gadd7bc05c09ac47f3eaf339d65b2d543b" prot="public" static="no">
+        <name>_sai_srv6_sidlist_type_t</name>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543baf7963cfc468e0ab749efa37ab5931fcb" prot="public">
+          <name>SAI_SRV6_SIDLIST_TYPE_INSERT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insertion of SRV6 Policy </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543baef6b57b7393244839508944e14f42c94" prot="public">
+          <name>SAI_SRV6_SIDLIST_TYPE_INSERT_RED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insertion of SRV6 Policy with Reduced SRH </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543ba5b71e229cdb86afe0fdebfd1248299f6" prot="public">
+          <name>SAI_SRV6_SIDLIST_TYPE_ENCAPS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Encapsulation in a SRV6 Policy </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543badc5c14ec797f5116ab48a49485caae70" prot="public">
+          <name>SAI_SRV6_SIDLIST_TYPE_ENCAPS_RED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Encapsulation in a SRV6 Policy with Reduced SRH </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543bade72a99c8df5e15e8add7912851e132b" prot="public">
+          <name>SAI_SRV6_SIDLIST_TYPE_CUSTOM_RANGE_BASE</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining Head-end Behavior. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="40" column="1" bodyfile="inc/saisrv6.h" bodystart="39" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_s_r_v6_1ga1d1ba85acac9ff04bcdae39fef7764e5" prot="public" static="no">
+        <name>_sai_my_sid_entry_endpoint_behavior_t</name>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a5229566197a087c36bcb2d0f3dfdbe90" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_E</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Basic Endpoint </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a9ad9a09380cc0ca0af0aa5451478f671" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.X Endpoint with Layer-3 Cross-connect </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a034c4e565ec200422497d134b5655ff0" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_T</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.T Endpoint with specific IPv6 Table </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5ac0e5af85ff6adeeb7171c9a0ebc16d2b" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DX6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and IPv6 Cross-connect </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5adc2c46703262ca4806cc18a582e419b1" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DX4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and IPv4 Cross-connect </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5abd1dc5c71825882998a205a6df8c959b" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and specific IPv6 table lookup </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a9ebd6bee568d67921489bc745a7f1383" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and specific IPv6 table lookup </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a578f1aea6d566c166c94f3e75c5cee63" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT46</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and specific IP table lookup </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1dddb1db977f413447aab059924fe32b" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_ENCAPS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint Bound to a policy with Encapsulation </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a34fe5bce5580329e89b7752e9926aa2f" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_ENCAPS_RED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.B6.Encaps function with a reduced SRH </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a420f68f7b59fd1ca30736a689ba27fb8" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_INSERT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint Bound to a policy with Insertion </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1c0bc1f4354d7b54b45e79ffed3bc4d8" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_INSERT_RED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.B6.Insert function with a reduced SRH </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1fcad23f448feaa483b04fb74e463076" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_UN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.uN function for shift-and-lookup behavior </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a3f2dd1fc4a7c04b4172d2f1eaef60b1b" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_UA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.uA function for shift-and-xconnect behavior </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5adff3e52cee69c8b748b9b0b3407410b8" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a06983b1551e0965b7442c60dc4bead95" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of Custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining Endpoint Behavior. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="62" column="1" bodyfile="inc/saisrv6.h" bodystart="61" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_s_r_v6_1ga3a1af4ce43318e4e9588c6fb37739c88" prot="public" static="no">
+        <name>_sai_my_sid_entry_endpoint_behavior_flavor_t</name>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88acca077bb85478e7a6322124b3bfc247b" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>None </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a4595d18af17de507a7f368830941c971" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Penultimate segment pop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a4027d8ee0972dba228faa1eff19e6f95" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_USP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ultimate Segment pop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a7f757648ec2604dc598ebc0aec31f041" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_USD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ultimate Segment decapsulation </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a660626444ab6719a28304ff76f69f88a" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP_AND_USP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>PSP and USP </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88aa858e50904b7a46fefe7843d989721af" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_USD_AND_USP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>USD and USP </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a3aadf5bf6a9b6d08141b53be3b9004fb" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP_AND_USD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>PSP and USD </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a60fc4a5def95f7b21fd843cc1bb335c9" prot="public">
+          <name>SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP_AND_USP_AND_USD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>PSP, USP and USD </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining Endpoint Behavior flavors for End, End.X and End.T functions. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="117" column="1" bodyfile="inc/saisrv6.h" bodystart="116" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_s_r_v6_1ga918fa9158accbf8a7e5c864ed1cbe28f" prot="public" static="no">
+        <name>_sai_srv6_sidlist_attr_t</name>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa9b1dcba7e5e741f984206f23d3bdc5b6" prot="public">
+          <name>SAI_SRV6_SIDLIST_ATTR_START</name>
+          <initializer>= 0x00000000</initializer>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa7ece17fbec801769da79fd77db3e015f" prot="public">
+          <name>SAI_SRV6_SIDLIST_ATTR_TYPE</name>
+          <initializer>= SAI_SRV6_SIDLIST_ATTR_START</initializer>
+          <briefdescription>
+<para>Transit or Source Type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_srv6_sidlist_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa86f6b92417b3cfd02da698ccbf3d869d" prot="public">
+          <name>SAI_SRV6_SIDLIST_ATTR_TLV_LIST</name>
+          <briefdescription>
+<para>List of Type Length Values for Source. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_tlv_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa0976781d37e308213309374c152498e5" prot="public">
+          <name>SAI_SRV6_SIDLIST_ATTR_SEGMENT_LIST</name>
+          <briefdescription>
+<para>List of Segments for Source / Transit. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_segment_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa59cef573eb31afbfee433146346b465b" prot="public">
+          <name>SAI_SRV6_SIDLIST_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa66f63e756d073a8bd5ff0f8f265e1c1a" prot="public">
+          <name>SAI_SRV6_SIDLIST_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa5a67fd78c8ddb07ec4596562e6748f49" prot="public">
+          <name>SAI_SRV6_SIDLIST_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute data for SRV6 SID List Entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="148" column="1" bodyfile="inc/saisrv6.h" bodystart="147" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_s_r_v6_1gacb23319263664eaebc22eade0fc9d464" prot="public" static="no">
+        <name>_sai_my_sid_entry_attr_t</name>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac971049f7bce2fd2cc7c4445c6729666" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a61c17cb06cde92f3eaffc689ea0e3ba3" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR</name>
+          <initializer>= SAI_MY_SID_ENTRY_ATTR_START</initializer>
+          <briefdescription>
+<para>Endpoint Function. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_my_sid_entry_endpoint_behavior_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0dd17da10599dd6a228ea595de7dc88e" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR_FLAVOR</name>
+          <briefdescription>
+<para>Flavor for End, End.X and End.T functions. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_my_sid_entry_endpoint_behavior_flavor_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_NONE </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_E or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_X or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_T </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a26087af84fbcdfa08d6cd01097a2e452" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_PACKET_ACTION</name>
+          <briefdescription>
+<para>Packet action. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_packet_action_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_PACKET_ACTION_FORWARD </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a9268073cf279e9dbc5c2ef7f280eebe1" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_TRAP_PRIORITY</name>
+          <briefdescription>
+<para>Packet priority for trap/log actions. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a9aec86e482037ad59f5212884a079403" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_NEXT_HOP_ID</name>
+          <briefdescription>
+<para>Next hop for cross-connect functions. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_NEXT_HOP, SAI_OBJECT_TYPE_NEXT_HOP_GROUP, SAI_OBJECT_TYPE_ROUTER_INTERFACE </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_X or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DX4 or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DX6 or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_ENCAPS or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_ENCAPS_RED or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_INSERT or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_INSERT_RED </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac59a6ebe7dcb20ffc5fca171b9d44caf" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_TUNNEL_ID</name>
+          <briefdescription>
+<para>Tunnel id for decapsulation. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_TUNNEL </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT4 or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT6 or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT46 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac81cc430b41581b240c717d29b395ebc" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_VRF</name>
+          <briefdescription>
+<para>VRF for decapsulation and specific table lookup functions. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_VIRTUAL_ROUTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_T or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT4 or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT6 or SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR == SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT46 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0d8ceecf12030c2983cd541b8845e277" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_COUNTER_ID</name>
+          <briefdescription>
+<para>Attach a counter. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is empty, then packet hits won&apos;t be counted</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_COUNTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0017d0004dd72931f959355475d5b7d3" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a7adc47b2bd6d34b4381b33a3b5c130a4" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a4041702fa150a4e0ccc88fcbf1e2ff00" prot="public">
+          <name>SAI_MY_SID_ENTRY_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute list for My SID. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="248" column="1" bodyfile="inc/saisrv6.h" bodystart="247" bodyend="350"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga816179d42ddacd6b2938af84f5aa4843" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_r_v6_1gadd7bc05c09ac47f3eaf339d65b2d543b" kindref="member">_sai_srv6_sidlist_type_t</ref></type>
+        <definition>typedef enum _sai_srv6_sidlist_type_t  sai_srv6_sidlist_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_srv6_sidlist_type_t</name>
+        <briefdescription>
+<para>Enum defining Head-end Behavior. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="56" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gaafaee269055a87c07c330636b8e0fa1a" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_r_v6_1ga1d1ba85acac9ff04bcdae39fef7764e5" kindref="member">_sai_my_sid_entry_endpoint_behavior_t</ref></type>
+        <definition>typedef enum _sai_my_sid_entry_endpoint_behavior_t  sai_my_sid_entry_endpoint_behavior_t</definition>
+        <argsstring></argsstring>
+        <name>sai_my_sid_entry_endpoint_behavior_t</name>
+        <briefdescription>
+<para>Enum defining Endpoint Behavior. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="111" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga7c2366cce9f0b79de14014293472d5f0" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_r_v6_1ga3a1af4ce43318e4e9588c6fb37739c88" kindref="member">_sai_my_sid_entry_endpoint_behavior_flavor_t</ref></type>
+        <definition>typedef enum _sai_my_sid_entry_endpoint_behavior_flavor_t  sai_my_sid_entry_endpoint_behavior_flavor_t</definition>
+        <argsstring></argsstring>
+        <name>sai_my_sid_entry_endpoint_behavior_flavor_t</name>
+        <briefdescription>
+<para>Enum defining Endpoint Behavior flavors for End, End.X and End.T functions. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="142" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga118fe91bf028c4e5e0151628e378cc85" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_r_v6_1ga918fa9158accbf8a7e5c864ed1cbe28f" kindref="member">_sai_srv6_sidlist_attr_t</ref></type>
+        <definition>typedef enum _sai_srv6_sidlist_attr_t  sai_srv6_sidlist_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_srv6_sidlist_attr_t</name>
+        <briefdescription>
+<para>Attribute data for SRV6 SID List Entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="190" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gab816829b2b0c1c71b3f848f7b9c7fd3a" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_srv6_sidlist_fn) (_Out_ sai_object_id_t *srv6_sidlist_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *srv6_sidlist_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_srv6_sidlist_fn</name>
+        <briefdescription>
+<para>Create Segment ID List. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">srv6_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="202" column="1" bodyfile="inc/saisrv6.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga14ff9484ce4fbd1b40bfb9f6a60d7b7b" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_srv6_sidlist_fn) (_In_ sai_object_id_t srv6_sidlist_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t srv6_sidlist_id)</argsstring>
+        <name>sai_remove_srv6_sidlist_fn</name>
+        <briefdescription>
+<para>Remove Segment ID List. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">srv6_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="215" column="1" bodyfile="inc/saisrv6.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gaf679222a196c710cd8bef4d440fe93f6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_srv6_sidlist_attribute_fn) (_In_ sai_object_id_t srv6_sidlist_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t srv6_sidlist_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_srv6_sidlist_attribute_fn</name>
+        <briefdescription>
+<para>Set Segment ID List attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">srv6_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="226" column="1" bodyfile="inc/saisrv6.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga95edb12243ea48a44ede7367db998d43" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_srv6_sidlist_attribute_fn) (_In_ sai_object_id_t srv6_sidlist_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t srv6_sidlist_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_srv6_sidlist_attribute_fn</name>
+        <briefdescription>
+<para>Get Segment ID List attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">srv6_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="239" column="1" bodyfile="inc/saisrv6.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gad32e668fca462252da5e0f99837fec47" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_r_v6_1gacb23319263664eaebc22eade0fc9d464" kindref="member">_sai_my_sid_entry_attr_t</ref></type>
+        <definition>typedef enum _sai_my_sid_entry_attr_t  sai_my_sid_entry_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_my_sid_entry_attr_t</name>
+        <briefdescription>
+<para>Attribute list for My SID. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="350" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gaecccf6d0d660914dca9179a98b5f3dc5" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__my__sid__entry__t" kindref="compound">_sai_my_sid_entry_t</ref></type>
+        <definition>typedef struct _sai_my_sid_entry_t  sai_my_sid_entry_t</definition>
+        <argsstring></argsstring>
+        <name>sai_my_sid_entry_t</name>
+        <briefdescription>
+<para>My SID Entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="396" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gac50b06be6b5d3ba14be302bfbd45e896" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_my_sid_entry_fn) (_In_ const sai_my_sid_entry_t *my_sid_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_my_sid_entry_t *my_sid_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_my_sid_entry_fn</name>
+        <briefdescription>
+<para>Create My SID entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>My SID entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="407" column="1" bodyfile="inc/saisrv6.h" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga7c278006ea5b0f4f6e287302a1caef65" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_my_sid_entry_fn) (_In_ const sai_my_sid_entry_t *my_sid_entry)</definition>
+        <argsstring>)(_In_ const sai_my_sid_entry_t *my_sid_entry)</argsstring>
+        <name>sai_remove_my_sid_entry_fn</name>
+        <briefdescription>
+<para>Remove My SID entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>My SID entry</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="419" column="1" bodyfile="inc/saisrv6.h" bodystart="419" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gae81d2ed58f69a01ce099b84e49e96507" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_my_sid_entry_attribute_fn) (_In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_my_sid_entry_attribute_fn</name>
+        <briefdescription>
+<para>Set My SID attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>My SID entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="430" column="1" bodyfile="inc/saisrv6.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga660608b5392b42fff3d76853c2c58ae2" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_my_sid_entry_attribute_fn) (_In_ const sai_my_sid_entry_t *my_sid_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_my_sid_entry_t *my_sid_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_my_sid_entry_attribute_fn</name>
+        <briefdescription>
+<para>My SID attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>My SID entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="443" column="1" bodyfile="inc/saisrv6.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gac5912629500020869a8aeb1d28a11642" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_create_my_sid_entry_fn) (_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const uint32_t *attr_count, _In_ const sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const uint32_t *attr_count, _In_ const sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_create_my_sid_entry_fn</name>
+        <briefdescription>
+<para>Bulk create My SID entries. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to create </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of object to create </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attr_count. Caller passes the number of attribute for each object to create. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes for every object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are created or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to create. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="465" column="1" bodyfile="inc/saisrv6.h" bodystart="465" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga6403f39e284b564215fccf230ad697b9" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_remove_my_sid_entry_fn) (_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_remove_my_sid_entry_fn</name>
+        <briefdescription>
+<para>Bulk remove My SID entries. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to remove </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of objects to remove </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are removed or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to remove. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="487" column="1" bodyfile="inc/saisrv6.h" bodystart="487" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga43b9504f1e09dc98a877dc39f459608a" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_set_my_sid_entry_attribute_fn) (_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const sai_attribute_t *attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const sai_attribute_t *attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_set_my_sid_entry_attribute_fn</name>
+        <briefdescription>
+<para>Bulk set attribute on My SID entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes to set on objects, one attribute per object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are removed or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to remove. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="508" column="1" bodyfile="inc/saisrv6.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1ga1233c9321f34b034dc470e24fb186759" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_get_my_sid_entry_attribute_fn) (_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const uint32_t *attr_count, _Inout_ sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_my_sid_entry_t *my_sid_entry, _In_ const uint32_t *attr_count, _Inout_ sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_get_my_sid_entry_attribute_fn</name>
+        <briefdescription>
+<para>Bulk get attribute on My SID entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">my_sid_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attr_count. Caller passes the number of attribute for each object to get </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes to set on objects, one attribute per object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are removed or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to remove. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="532" column="1" bodyfile="inc/saisrv6.h" bodystart="532" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_r_v6_1gad67c61e5a6aa9456f2d72f1847479aea" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__srv6__api__t" kindref="compound">_sai_srv6_api_t</ref></type>
+        <definition>typedef struct _sai_srv6_api_t  sai_srv6_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_srv6_api_t</name>
+        <briefdescription>
+<para>SRV6 methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisrv6.h" line="562" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI SRV6 Entry interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2017 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAISRV6_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAISRV6_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_s_r_v6_1gadd7bc05c09ac47f3eaf339d65b2d543b" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_r_v6_1gadd7bc05c09ac47f3eaf339d65b2d543b" kindref="member">_sai_srv6_sidlist_type_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543baf7963cfc468e0ab749efa37ab5931fcb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543baf7963cfc468e0ab749efa37ab5931fcb" kindref="member">SAI_SRV6_SIDLIST_TYPE_INSERT</ref>,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543baef6b57b7393244839508944e14f42c94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543baef6b57b7393244839508944e14f42c94" kindref="member">SAI_SRV6_SIDLIST_TYPE_INSERT_RED</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543ba5b71e229cdb86afe0fdebfd1248299f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543ba5b71e229cdb86afe0fdebfd1248299f6" kindref="member">SAI_SRV6_SIDLIST_TYPE_ENCAPS</ref>,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543badc5c14ec797f5116ab48a49485caae70" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543badc5c14ec797f5116ab48a49485caae70" kindref="member">SAI_SRV6_SIDLIST_TYPE_ENCAPS_RED</ref>,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543bade72a99c8df5e15e8add7912851e132b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggadd7bc05c09ac47f3eaf339d65b2d543bade72a99c8df5e15e8add7912851e132b" kindref="member">SAI_SRV6_SIDLIST_TYPE_CUSTOM_RANGE_BASE</ref><sp/>=<sp/>0x10000000</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_r_v6_1ga816179d42ddacd6b2938af84f5aa4843" kindref="member">sai_srv6_sidlist_type_t</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="group___s_a_i_s_r_v6_1ga1d1ba85acac9ff04bcdae39fef7764e5" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_r_v6_1ga1d1ba85acac9ff04bcdae39fef7764e5" kindref="member">_sai_my_sid_entry_endpoint_behavior_t</ref></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a5229566197a087c36bcb2d0f3dfdbe90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a5229566197a087c36bcb2d0f3dfdbe90" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_E</ref>,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a9ad9a09380cc0ca0af0aa5451478f671" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a9ad9a09380cc0ca0af0aa5451478f671" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_X</ref>,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a034c4e565ec200422497d134b5655ff0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a034c4e565ec200422497d134b5655ff0" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_T</ref>,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5ac0e5af85ff6adeeb7171c9a0ebc16d2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5ac0e5af85ff6adeeb7171c9a0ebc16d2b" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DX6</ref>,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5adc2c46703262ca4806cc18a582e419b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5adc2c46703262ca4806cc18a582e419b1" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DX4</ref>,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5abd1dc5c71825882998a205a6df8c959b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5abd1dc5c71825882998a205a6df8c959b" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT6</ref>,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a9ebd6bee568d67921489bc745a7f1383" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a9ebd6bee568d67921489bc745a7f1383" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT4</ref>,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a578f1aea6d566c166c94f3e75c5cee63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a578f1aea6d566c166c94f3e75c5cee63" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_DT46</ref>,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1dddb1db977f413447aab059924fe32b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1dddb1db977f413447aab059924fe32b" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_ENCAPS</ref>,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a34fe5bce5580329e89b7752e9926aa2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a34fe5bce5580329e89b7752e9926aa2f" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_ENCAPS_RED</ref>,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a420f68f7b59fd1ca30736a689ba27fb8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a420f68f7b59fd1ca30736a689ba27fb8" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_INSERT</ref>,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1c0bc1f4354d7b54b45e79ffed3bc4d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1c0bc1f4354d7b54b45e79ffed3bc4d8" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_B6_INSERT_RED</ref>,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1fcad23f448feaa483b04fb74e463076" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a1fcad23f448feaa483b04fb74e463076" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_UN</ref>,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a3f2dd1fc4a7c04b4172d2f1eaef60b1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a3f2dd1fc4a7c04b4172d2f1eaef60b1b" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_UA</ref>,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5adff3e52cee69c8b748b9b0b3407410b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5adff3e52cee69c8b748b9b0b3407410b8" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a06983b1551e0965b7442c60dc4bead95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga1d1ba85acac9ff04bcdae39fef7764e5a06983b1551e0965b7442c60dc4bead95" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_r_v6_1gaafaee269055a87c07c330636b8e0fa1a" kindref="member">sai_my_sid_entry_endpoint_behavior_t</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="group___s_a_i_s_r_v6_1ga3a1af4ce43318e4e9588c6fb37739c88" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_r_v6_1ga3a1af4ce43318e4e9588c6fb37739c88" kindref="member">_sai_my_sid_entry_endpoint_behavior_flavor_t</ref></highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88acca077bb85478e7a6322124b3bfc247b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88acca077bb85478e7a6322124b3bfc247b" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_NONE</ref>,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a4595d18af17de507a7f368830941c971" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a4595d18af17de507a7f368830941c971" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP</ref>,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a4027d8ee0972dba228faa1eff19e6f95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a4027d8ee0972dba228faa1eff19e6f95" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_USP</ref>,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a7f757648ec2604dc598ebc0aec31f041" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a7f757648ec2604dc598ebc0aec31f041" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_USD</ref>,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a660626444ab6719a28304ff76f69f88a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a660626444ab6719a28304ff76f69f88a" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP_AND_USP</ref>,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88aa858e50904b7a46fefe7843d989721af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88aa858e50904b7a46fefe7843d989721af" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_USD_AND_USP</ref>,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a3aadf5bf6a9b6d08141b53be3b9004fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a3aadf5bf6a9b6d08141b53be3b9004fb" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP_AND_USD</ref>,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a60fc4a5def95f7b21fd843cc1bb335c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga3a1af4ce43318e4e9588c6fb37739c88a60fc4a5def95f7b21fd843cc1bb335c9" kindref="member">SAI_MY_SID_ENTRY_ENDPOINT_BEHAVIOR_FLAVOR_PSP_AND_USP_AND_USD</ref></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_r_v6_1ga7c2366cce9f0b79de14014293472d5f0" kindref="member">sai_my_sid_entry_endpoint_behavior_flavor_t</ref>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="group___s_a_i_s_r_v6_1ga918fa9158accbf8a7e5c864ed1cbe28f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_r_v6_1ga918fa9158accbf8a7e5c864ed1cbe28f" kindref="member">_sai_srv6_sidlist_attr_t</ref></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152" refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa9b1dcba7e5e741f984206f23d3bdc5b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa9b1dcba7e5e741f984206f23d3bdc5b6" kindref="member">SAI_SRV6_SIDLIST_ATTR_START</ref><sp/>=<sp/>0x00000000,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa7ece17fbec801769da79fd77db3e015f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa7ece17fbec801769da79fd77db3e015f" kindref="member">SAI_SRV6_SIDLIST_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa9b1dcba7e5e741f984206f23d3bdc5b6" kindref="member">SAI_SRV6_SIDLIST_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa86f6b92417b3cfd02da698ccbf3d869d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa86f6b92417b3cfd02da698ccbf3d869d" kindref="member">SAI_SRV6_SIDLIST_ATTR_TLV_LIST</ref>,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa0976781d37e308213309374c152498e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa0976781d37e308213309374c152498e5" kindref="member">SAI_SRV6_SIDLIST_ATTR_SEGMENT_LIST</ref>,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa59cef573eb31afbfee433146346b465b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa59cef573eb31afbfee433146346b465b" kindref="member">SAI_SRV6_SIDLIST_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa66f63e756d073a8bd5ff0f8f265e1c1a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa66f63e756d073a8bd5ff0f8f265e1c1a" kindref="member">SAI_SRV6_SIDLIST_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa5a67fd78c8ddb07ec4596562e6748f49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gga918fa9158accbf8a7e5c864ed1cbe28fa5a67fd78c8ddb07ec4596562e6748f49" kindref="member">SAI_SRV6_SIDLIST_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_r_v6_1ga118fe91bf028c4e5e0151628e378cc85" kindref="member">sai_srv6_sidlist_attr_t</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="group___s_a_i_s_r_v6_1gab816829b2b0c1c71b3f848f7b9c7fd3a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1gab816829b2b0c1c71b3f848f7b9c7fd3a" kindref="member">sai_create_srv6_sidlist_fn</ref>)(</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*srv6_sidlist_id,</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="group___s_a_i_s_r_v6_1ga14ff9484ce4fbd1b40bfb9f6a60d7b7b" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1ga14ff9484ce4fbd1b40bfb9f6a60d7b7b" kindref="member">sai_remove_srv6_sidlist_fn</ref>)(</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>srv6_sidlist_id);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="group___s_a_i_s_r_v6_1gaf679222a196c710cd8bef4d440fe93f6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1gaf679222a196c710cd8bef4d440fe93f6" kindref="member">sai_set_srv6_sidlist_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>srv6_sidlist_id,</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="group___s_a_i_s_r_v6_1ga95edb12243ea48a44ede7367db998d43" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1ga95edb12243ea48a44ede7367db998d43" kindref="member">sai_get_srv6_sidlist_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>srv6_sidlist_id,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="group___s_a_i_s_r_v6_1gacb23319263664eaebc22eade0fc9d464" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_r_v6_1gacb23319263664eaebc22eade0fc9d464" kindref="member">_sai_my_sid_entry_attr_t</ref></highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="252" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac971049f7bce2fd2cc7c4445c6729666" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac971049f7bce2fd2cc7c4445c6729666" kindref="member">SAI_MY_SID_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a61c17cb06cde92f3eaffc689ea0e3ba3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a61c17cb06cde92f3eaffc689ea0e3ba3" kindref="member">SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR</ref><sp/>=<sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac971049f7bce2fd2cc7c4445c6729666" kindref="member">SAI_MY_SID_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0dd17da10599dd6a228ea595de7dc88e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0dd17da10599dd6a228ea595de7dc88e" kindref="member">SAI_MY_SID_ENTRY_ATTR_ENDPOINT_BEHAVIOR_FLAVOR</ref>,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a26087af84fbcdfa08d6cd01097a2e452" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a26087af84fbcdfa08d6cd01097a2e452" kindref="member">SAI_MY_SID_ENTRY_ATTR_PACKET_ACTION</ref>,</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a9268073cf279e9dbc5c2ef7f280eebe1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a9268073cf279e9dbc5c2ef7f280eebe1" kindref="member">SAI_MY_SID_ENTRY_ATTR_TRAP_PRIORITY</ref>,</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a9aec86e482037ad59f5212884a079403" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a9aec86e482037ad59f5212884a079403" kindref="member">SAI_MY_SID_ENTRY_ATTR_NEXT_HOP_ID</ref>,</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac59a6ebe7dcb20ffc5fca171b9d44caf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac59a6ebe7dcb20ffc5fca171b9d44caf" kindref="member">SAI_MY_SID_ENTRY_ATTR_TUNNEL_ID</ref>,</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac81cc430b41581b240c717d29b395ebc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464ac81cc430b41581b240c717d29b395ebc" kindref="member">SAI_MY_SID_ENTRY_ATTR_VRF</ref>,</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0d8ceecf12030c2983cd541b8845e277" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0d8ceecf12030c2983cd541b8845e277" kindref="member">SAI_MY_SID_ENTRY_ATTR_COUNTER_ID</ref>,</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0017d0004dd72931f959355475d5b7d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a0017d0004dd72931f959355475d5b7d3" kindref="member">SAI_MY_SID_ENTRY_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a7adc47b2bd6d34b4381b33a3b5c130a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a7adc47b2bd6d34b4381b33a3b5c130a4" kindref="member">SAI_MY_SID_ENTRY_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348" refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a4041702fa150a4e0ccc88fcbf1e2ff00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ggacb23319263664eaebc22eade0fc9d464a4041702fa150a4e0ccc88fcbf1e2ff00" kindref="member">SAI_MY_SID_ENTRY_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_r_v6_1gad32e668fca462252da5e0f99837fec47" kindref="member">sai_my_sid_entry_attr_t</ref>;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355" refid="struct__sai__my__sid__entry__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__my__sid__entry__t" kindref="compound">_sai_my_sid_entry_t</ref></highlight></codeline>
+<codeline lineno="356"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="362" refid="struct__sai__my__sid__entry__t_1ad3c183ca89cec507850b8469164ac604" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__my__sid__entry__t_1ad3c183ca89cec507850b8469164ac604" kindref="member">switch_id</ref>;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369" refid="struct__sai__my__sid__entry__t_1a7cdd9ae451c503a7f349fb549d66c662" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__my__sid__entry__t_1a7cdd9ae451c503a7f349fb549d66c662" kindref="member">vr_id</ref>;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374" refid="struct__sai__my__sid__entry__t_1ab1142664b19e25d5cb314f6246124add" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_uint8_t<sp/><ref refid="struct__sai__my__sid__entry__t_1ab1142664b19e25d5cb314f6246124add" kindref="member">locator_block_len</ref>;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379" refid="struct__sai__my__sid__entry__t_1a2327f14c1f3f761d8196524cd1cc5116" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_uint8_t<sp/><ref refid="struct__sai__my__sid__entry__t_1a2327f14c1f3f761d8196524cd1cc5116" kindref="member">locator_node_len</ref>;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="struct__sai__my__sid__entry__t_1a549ea54157743a656c6ca36bf3a39cf8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_uint8_t<sp/><ref refid="struct__sai__my__sid__entry__t_1a549ea54157743a656c6ca36bf3a39cf8" kindref="member">function_len</ref>;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389" refid="struct__sai__my__sid__entry__t_1a85c9e67edc156ff14a9c3f47305a12a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_uint8_t<sp/><ref refid="struct__sai__my__sid__entry__t_1a85c9e67edc156ff14a9c3f47305a12a0" kindref="member">args_len</ref>;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394" refid="struct__sai__my__sid__entry__t_1acd359a543a156b243b6eeeabbfa0df3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_ip6_t<sp/><ref refid="struct__sai__my__sid__entry__t_1acd359a543a156b243b6eeeabbfa0df3d" kindref="member">sid</ref>;</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_r_v6_1gaecccf6d0d660914dca9179a98b5f3dc5" kindref="member">sai_my_sid_entry_t</ref>;</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="407" refid="group___s_a_i_s_r_v6_1gac50b06be6b5d3ba14be302bfbd45e896" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1gac50b06be6b5d3ba14be302bfbd45e896" kindref="member">sai_create_my_sid_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry,</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419" refid="group___s_a_i_s_r_v6_1ga7c278006ea5b0f4f6e287302a1caef65" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1ga7c278006ea5b0f4f6e287302a1caef65" kindref="member">sai_remove_my_sid_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry);</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430" refid="group___s_a_i_s_r_v6_1gae81d2ed58f69a01ce099b84e49e96507" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1gae81d2ed58f69a01ce099b84e49e96507" kindref="member">sai_set_my_sid_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry,</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443" refid="group___s_a_i_s_r_v6_1ga660608b5392b42fff3d76853c2c58ae2" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1ga660608b5392b42fff3d76853c2c58ae2" kindref="member">sai_get_my_sid_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry,</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"></highlight></codeline>
+<codeline lineno="465" refid="group___s_a_i_s_r_v6_1gac5912629500020869a8aeb1d28a11642" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1gac5912629500020869a8aeb1d28a11642" kindref="member">sai_bulk_create_my_sid_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry,</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>*attr_count,</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>**attr_list,</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="487" refid="group___s_a_i_s_r_v6_1ga6403f39e284b564215fccf230ad697b9" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1ga6403f39e284b564215fccf230ad697b9" kindref="member">sai_bulk_remove_my_sid_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry,</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"></highlight></codeline>
+<codeline lineno="508" refid="group___s_a_i_s_r_v6_1ga43b9504f1e09dc98a877dc39f459608a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1ga43b9504f1e09dc98a877dc39f459608a" kindref="member">sai_bulk_set_my_sid_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry,</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list,</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="532" refid="group___s_a_i_s_r_v6_1ga1233c9321f34b034dc470e24fb186759" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_r_v6_1ga1233c9321f34b034dc470e24fb186759" kindref="member">sai_bulk_get_my_sid_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__my__sid__entry__t" kindref="compound">sai_my_sid_entry_t</ref><sp/>*my_sid_entry,</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>*attr_count,</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>**attr_list,</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"></highlight></codeline>
+<codeline lineno="543" refid="struct__sai__srv6__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__srv6__api__t" kindref="compound">_sai_srv6_api_t</ref></highlight></codeline>
+<codeline lineno="544"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gab816829b2b0c1c71b3f848f7b9c7fd3a" kindref="member">sai_create_srv6_sidlist_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_srv6_sidlist;</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ga14ff9484ce4fbd1b40bfb9f6a60d7b7b" kindref="member">sai_remove_srv6_sidlist_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_srv6_sidlist;</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gaf679222a196c710cd8bef4d440fe93f6" kindref="member">sai_set_srv6_sidlist_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/>set_srv6_sidlist_attribute;</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ga95edb12243ea48a44ede7367db998d43" kindref="member">sai_get_srv6_sidlist_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/>get_srv6_sidlist_attribute;</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_t_y_p_e_s_1ga4610f346b1ad7a6272ba9d9bf933da94" kindref="member">sai_bulk_object_create_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_srv6_sidlists;</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_t_y_p_e_s_1ga4bbefb281d59e3e5c25ad8b9868d35c7" kindref="member">sai_bulk_object_remove_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_srv6_sidlists;</highlight></codeline>
+<codeline lineno="551"><highlight class="normal"></highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gac50b06be6b5d3ba14be302bfbd45e896" kindref="member">sai_create_my_sid_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_my_sid_entry;</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ga7c278006ea5b0f4f6e287302a1caef65" kindref="member">sai_remove_my_sid_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_my_sid_entry;</highlight></codeline>
+<codeline lineno="554"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gae81d2ed58f69a01ce099b84e49e96507" kindref="member">sai_set_my_sid_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/>set_my_sid_entry_attribute;</highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ga660608b5392b42fff3d76853c2c58ae2" kindref="member">sai_get_my_sid_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/>get_my_sid_entry_attribute;</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"></highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1gac5912629500020869a8aeb1d28a11642" kindref="member">sai_bulk_create_my_sid_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_my_sid_entries;</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ga6403f39e284b564215fccf230ad697b9" kindref="member">sai_bulk_remove_my_sid_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_my_sid_entries;</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ga43b9504f1e09dc98a877dc39f459608a" kindref="member">sai_bulk_set_my_sid_entry_attribute_fn</ref><sp/>set_my_sid_entries_attribute;</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_r_v6_1ga1233c9321f34b034dc470e24fb186759" kindref="member">sai_bulk_get_my_sid_entry_attribute_fn</ref><sp/>get_my_sid_entries_attribute;</highlight></codeline>
+<codeline lineno="561"><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_r_v6_1gad67c61e5a6aa9456f2d72f1847479aea" kindref="member">sai_srv6_api_t</ref>;</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saisrv6.h"/>
+  </compounddef>
+</doxygen>

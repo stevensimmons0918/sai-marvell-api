@@ -1,0 +1,62 @@
+/*!**************************************************RND Template version 4.1
+ *!                 D A T A   T Y P E   D E F I N I T I O N
+ *!==========================================================================
+ *$ TITLE: Router Server - General definitions, Part 1
+ *!--------------------------------------------------------------------------
+ *$ FILENAME:
+ *!--------------------------------------------------------------------------
+ *$ SYSTEM, SUBSYSTEM: Router Server, General definitions
+ *!--------------------------------------------------------------------------
+ *$ AUTHORS: Michael
+ *!--------------------------------------------------------------------------
+ *$ LATEST UPDATE: 06-Nov-00  17:13:50        CREATION DATE: 29-Dec-94
+ *!**************************************************************************
+ *!
+ *!**************************************************************************
+ *!
+ *$ GENERAL DESCRIPTION:
+ *!
+ *$ REMARKS:
+ *!
+ *!**************************************************************************
+ *!*/
+
+/* ACSII constants */
+
+#define NUL     000     /* null                 */
+#define SOH     001     /* start of header      */
+#define EOT     004     /* end of transmission  */
+#define ACK     006     /* acnowledge           */
+#define BS      010     /* backspace            */
+#define TAB     011     /* tab                  */
+#define CR      015     /* carriage return      */
+#define L_F     012     /* line feed            */
+#define NAK     025     /* no acnowledge        */
+#define CAN     030     /* cancel               */
+#define SP      040     /* space                */
+#define DEL     177     /* delete               */
+#define CTRL_P  020     /* Control P            */
+#define XON     021     /* flow control on      */
+#define XOFF    023     /* flow control off     */
+#define SYNC    026     /*! Sync character      */
+#define SPACE   0x20    /*! Space character     */
+
+/*! Standard macros definitions: */
+
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
+#define ABS(a) ((a) > 0 ? (a) : -(a))
+#define MODULU %
+
+/*! Processor Bytes order */
+
+#define LITTLE_ENDIAN_MEM_FORMAT 1234
+#define BIG_ENDIAN_MEM_FORMAT    4321
+
+/*! Processor Stack order */
+
+#define STACK_FROM_HIGH_TO_LOW  0
+#define STACK_FROM_LOW_TO_HIGH  1
+
+/* Useful constants */
+#define KBYTES      1024

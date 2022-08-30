@@ -1,0 +1,53 @@
+# $(warning "Started") 
+
+
+#List of subfolders to include in build
+MODULES := 
+
+#List of files to include in list
+FILES := \
+ smem.c \
+ smemBobcat2.c \
+ smemBobcat3.c \
+ smemAldrin2.c \
+ smemFalcon.c \
+ smemFalconInterrupts.c \
+ smemHawk.c \
+ smemHawkInterrupts.c \
+ smemPhoenix.c \
+ smemPhoenixInterrupts.c \
+ smemHarrier.c \
+ smemHarrierInterrupts.c \
+ smemBobk.c \
+ smemCheetah.c \
+ smemCheetah2.c \
+ smemCheetah3.c \
+ smemCheetahGM.c \
+ smemGm.c \
+ smemLion.c \
+ smemLion2.c \
+ smemLion3.c \
+ smemMacsec.c \
+ smemPipe.c \
+ smemPipeInterrupts.c \
+ smemPhy.c \
+ smemSalsa.c \
+ smemSoho.c \
+ smemXCat2.c \
+ smemXCat3.c \
+ smemAc5.c \
+ smemIronmanInterrupts.c \
+ smemIronman.c 
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+SIMULATION_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

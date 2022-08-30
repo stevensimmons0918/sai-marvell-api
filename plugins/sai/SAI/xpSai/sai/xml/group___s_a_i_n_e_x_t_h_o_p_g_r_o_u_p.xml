@@ -1,0 +1,693 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p" kind="group">
+    <compoundname>SAINEXTHOPGROUP</compoundname>
+    <title>SAI - Next hop group specific API definitions</title>
+    <innerclass refid="struct__sai__next__hop__group__api__t" prot="public">_sai_next_hop_group_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga65376d4b497008039f88e3c6b4213f04" prot="public" static="no">
+        <name>_sai_next_hop_group_type_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gga65376d4b497008039f88e3c6b4213f04a51ecbdcd2313ff7eaa4ce77373982b22" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_TYPE_DYNAMIC_UNORDERED_ECMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop group is ECMP, with a dynamic number of members, unordered </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gga65376d4b497008039f88e3c6b4213f04aa966c68aa353b01b175897f307967953" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_TYPE_ECMP</name>
+          <initializer>= SAI_NEXT_HOP_GROUP_TYPE_DYNAMIC_UNORDERED_ECMP</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Ignored:</title><para> @@ignore         - for backward compatibility </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gga65376d4b497008039f88e3c6b4213f04a1e3d6b2be08bde9165e48ab369e267e1" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_TYPE_DYNAMIC_ORDERED_ECMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop group is ECMP, with a dynamic number of members, sorted by priority </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gga65376d4b497008039f88e3c6b4213f04a0414f52b0569c7b89000f06442a6a890" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_TYPE_FINE_GRAIN_ECMP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop group is ECMP, with a fixed, usually large, number of members, sorted by index </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gga65376d4b497008039f88e3c6b4213f04a47e731daa0334a3535e2d8eddbc8f866" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_TYPE_PROTECTION</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop protection group. Contains primary and backup next hops. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Next hop group type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="40" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="39" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gafb7fd3b4821f366561639401bf43bd4b" prot="public" static="no">
+        <name>_sai_next_hop_group_member_configured_role_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggafb7fd3b4821f366561639401bf43bd4baa72fbffdd3d656fcc263b3ef6001ca6e" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_CONFIGURED_ROLE_PRIMARY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop group member is primary </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggafb7fd3b4821f366561639401bf43bd4baf04b5dfba1b108ebab4d28478af8b422" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_CONFIGURED_ROLE_STANDBY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop group member is standby </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Next hop group member configured protection role. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="64" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="63" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga8c0918e885a7fd4bd7505e6c7f95211e" prot="public" static="no">
+        <name>_sai_next_hop_group_member_observed_role_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gga8c0918e885a7fd4bd7505e6c7f95211ea855d867fda5f8e20d8a55be5aaf00ce9" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_OBSERVED_ROLE_ACTIVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop group member is active </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gga8c0918e885a7fd4bd7505e6c7f95211eacad3cef1d105b550d8c19425e3d2b554" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_OBSERVED_ROLE_INACTIVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Next hop group member is inactive </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Next hop group member observed role. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="77" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="76" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gaacacfaee756bb7943fe554ed9c7f38ea" prot="public" static="no">
+        <name>_sai_next_hop_group_attr_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaa85c7eac3b41e50d84f45309ac65fb546" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaaefd56e974951d3933eb58db8f7358112" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_NEXT_HOP_COUNT</name>
+          <initializer>= SAI_NEXT_HOP_GROUP_ATTR_START</initializer>
+          <briefdescription>
+<para>Number of next hops in the group. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaa4db90d66440d2f184bdee0a54559be70" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_NEXT_HOP_MEMBER_LIST</name>
+          <briefdescription>
+<para>Next hop member list. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_NEXT_HOP_GROUP_MEMBER </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaa5b9ba33a4b68834eed941447e7752d59" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_TYPE</name>
+          <briefdescription>
+<para>Next hop group type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_next_hop_group_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY  true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaa1e2ba95ffb550710e34950bc2d78d610" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_SET_SWITCHOVER</name>
+          <briefdescription>
+<para>Trigger a switch-over from primary to backup next hop. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_GROUP_ATTR_TYPE == SAI_NEXT_HOP_GROUP_TYPE_PROTECTION </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaaae7c5417da6006907f5f2125ca36013c" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_COUNTER_ID</name>
+          <briefdescription>
+<para>Attach a counter. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is empty, then packet hits won&apos;t be counted</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_COUNTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaa5e796da4d7abc98d7aeaf759ad8aa80f" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_CONFIGURED_SIZE</name>
+          <briefdescription>
+<para>Configured group size. </para>          </briefdescription>
+          <detaileddescription>
+<para>Maximum desired number of members. The real size should be queried from SAI_NEXT_HOP_GROUP_ATTR_REAL_SIZE</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_GROUP_ATTR_TYPE == SAI_NEXT_HOP_GROUP_TYPE_FINE_GRAIN_ECMP  true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaa4ca3478a6174d5896c57103dcc015c0a" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_REAL_SIZE</name>
+          <briefdescription>
+<para>Real group size. </para>          </briefdescription>
+          <detaileddescription>
+<para>Can be different (greater or equal) from the configured size. Application must use this value to know the exact size of the group. Should be used with SAI_NEXT_HOP_GROUP_TYPE_FINE_GRAIN_ECMP.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaaa3bd2a80ad77ed2f1e1bd4b262d7fece" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaad66b7c0131da2cd9408909bfdde492ee" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggaacacfaee756bb7943fe554ed9c7f38eaa76448ee5ac9bbd2f4a716d3797fa3ef3" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute id for next hop. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="90" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="89" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gacaba8b3f4b1ed900f6e963a03ff37105" prot="public" static="no">
+        <name>_sai_next_hop_group_member_attr_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a97f7384336ce87914811f577da19bccc" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a1c7076d7b294e909f9dad8d2e21d3d6e" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_NEXT_HOP_GROUP_ID</name>
+          <initializer>= SAI_NEXT_HOP_GROUP_MEMBER_ATTR_START</initializer>
+          <briefdescription>
+<para>Next hop group id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_NEXT_HOP_GROUP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a3dde3ed9850e060ee21f679fe3c08c6b" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_NEXT_HOP_ID</name>
+          <briefdescription>
+<para>Next hop id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_NEXT_HOP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a2e6572b7223abef27ee11739a59fc7d6" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_WEIGHT</name>
+          <briefdescription>
+<para>Member weights. </para>          </briefdescription>
+          <detaileddescription>
+<para>Should only be used if the type of owning group is SAI_NEXT_HOP_GROUP_TYPE_DYNAMIC_ORDERED_ECMP or SAI_NEXT_HOP_GROUP_TYPE_DYNAMIC_UNORDERED_ECMP</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        1 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105afd6a14cd6c3712a047081afc6d830579" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_CONFIGURED_ROLE</name>
+          <briefdescription>
+<para>Configured role in the protection group. </para>          </briefdescription>
+          <detaileddescription>
+<para>Should only be used if the type of owning group is SAI_NEXT_HOP_GROUP_TYPE_PROTECTION</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_next_hop_group_member_configured_role_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NEXT_HOP_GROUP_MEMBER_CONFIGURED_ROLE_PRIMARY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a4915723971c4fbef5d401433c4e2e798" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_OBSERVED_ROLE</name>
+          <briefdescription>
+<para>The actual role in protection group. </para>          </briefdescription>
+          <detaileddescription>
+<para>Should only be used if the type of owning group is SAI_NEXT_HOP_GROUP_TYPE_PROTECTION</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_next_hop_group_member_observed_role_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105aa712da37ea76ca71494d7b1f4cc51c98" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_MONITORED_OBJECT</name>
+          <briefdescription>
+<para>The object to be monitored for this next hop. </para>          </briefdescription>
+          <detaileddescription>
+<para>If the specified objects fails, the switching entity marks this next hop as SAI_NEXT_HOP_GROUP_MEMBER_PROTECTION_ROLE_FAILED and does not use it to forward traffic. If there is a backup next hop available in this group then the backup&apos;s observed role is set to SAI_NEXT_HOP_GROUP_MEMBER_PROTECTION_ROLE_FORWARDING and it is used to forward traffic.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT, SAI_OBJECT_TYPE_LAG, SAI_OBJECT_TYPE_ROUTER_INTERFACE, SAI_OBJECT_TYPE_VLAN_MEMBER, SAI_OBJECT_TYPE_TUNNEL, SAI_OBJECT_TYPE_BRIDGE_PORT </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a6170dd1f498f3444b9765778096404e5" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_INDEX</name>
+          <briefdescription>
+<para>Object index in the fine grain ECMP table. </para>          </briefdescription>
+          <detaileddescription>
+<para>Index specifying the strict member&apos;s order. Allowed value range for is from 0 to SAI_NEXT_HOP_GROUP_ATTR_REAL_SIZE - 1. Should only be used if the type of owning group is SAI_NEXT_HOP_GROUP_TYPE_FINE_GRAIN_ECMP.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a4085c97ffba5806561bb74259e693c05" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_SEQUENCE_ID</name>
+          <briefdescription>
+<para>Object&apos;s sequence ID for enforcing the members&apos; order. </para>          </briefdescription>
+          <detaileddescription>
+<para>Loose index specifying the member&apos;s order. The index is not strict allowing for the missing IDs in a sequence. It&apos;s driver&apos;s job to translate the sequence IDs to the real indexes in the group. Should only be used if the type of owning group is SAI_NEXT_HOP_GROUP_TYPE_DYNAMIC_ORDERED_ECMP.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a7e587dd7daa18eb68e0c24f7dc31307d" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_COUNTER_ID</name>
+          <briefdescription>
+<para>Attach a counter. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is empty, then packet hits won&apos;t be counted</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_COUNTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105a99b06dc995a868527c430adf59740ff6" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105acf21f939bfcc5c1b5c3698e51e7444d2" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ggacaba8b3f4b1ed900f6e963a03ff37105ad73f61fbb55d2d53edb21b40df640dd2" prot="public">
+          <name>SAI_NEXT_HOP_GROUP_MEMBER_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="186" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="185" bodyend="312"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gab696ad57043b57e86817f722176b73eb" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga65376d4b497008039f88e3c6b4213f04" kindref="member">_sai_next_hop_group_type_t</ref></type>
+        <definition>typedef enum _sai_next_hop_group_type_t  sai_next_hop_group_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_group_type_t</name>
+        <briefdescription>
+<para>Next hop group type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gae04b89be1673125edbdd207fcd0ccac9" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gafb7fd3b4821f366561639401bf43bd4b" kindref="member">_sai_next_hop_group_member_configured_role_t</ref></type>
+        <definition>typedef enum _sai_next_hop_group_member_configured_role_t  sai_next_hop_group_member_configured_role_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_group_member_configured_role_t</name>
+        <briefdescription>
+<para>Next hop group member configured protection role. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga3decfa4ce624d93be09fbca016f22cc6" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga8c0918e885a7fd4bd7505e6c7f95211e" kindref="member">_sai_next_hop_group_member_observed_role_t</ref></type>
+        <definition>typedef enum _sai_next_hop_group_member_observed_role_t  sai_next_hop_group_member_observed_role_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_group_member_observed_role_t</name>
+        <briefdescription>
+<para>Next hop group member observed role. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="84" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gaf165c7147fa234e2c7a1942ace10642a" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gaacacfaee756bb7943fe554ed9c7f38ea" kindref="member">_sai_next_hop_group_attr_t</ref></type>
+        <definition>typedef enum _sai_next_hop_group_attr_t  sai_next_hop_group_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_group_attr_t</name>
+        <briefdescription>
+<para>Attribute id for next hop. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="183" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga6acf7943e0605aa16c47304e0e2fcbc5" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gacaba8b3f4b1ed900f6e963a03ff37105" kindref="member">_sai_next_hop_group_member_attr_t</ref></type>
+        <definition>typedef enum _sai_next_hop_group_member_attr_t  sai_next_hop_group_member_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_group_member_attr_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="312" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga2049fd1cd80e65c49d60c7200ffe8aea" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_next_hop_group_fn) (_Out_ sai_object_id_t *next_hop_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *next_hop_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_next_hop_group_fn</name>
+        <briefdescription>
+<para>Create next hop group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">next_hop_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="324" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="324" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga450cbef39db97091fbd13d58784dbe71" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_next_hop_group_fn) (_In_ sai_object_id_t next_hop_group_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_group_id)</argsstring>
+        <name>sai_remove_next_hop_group_fn</name>
+        <briefdescription>
+<para>Remove next hop group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="337" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga1c70d2fb8f64e90008b00d1a7979f323" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_next_hop_group_attribute_fn) (_In_ sai_object_id_t next_hop_group_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_group_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_next_hop_group_attribute_fn</name>
+        <briefdescription>
+<para>Set Next Hop Group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="348" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga1969f8430c6369e15cb56419dd60c859" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_next_hop_group_attribute_fn) (_In_ sai_object_id_t next_hop_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_next_hop_group_attribute_fn</name>
+        <briefdescription>
+<para>Get Next Hop Group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="361" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="361" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gaf5dfb1ec50d89a4f0f27fad080c8e202" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_next_hop_group_member_fn) (_Out_ sai_object_id_t *next_hop_group_member_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *next_hop_group_member_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_next_hop_group_member_fn</name>
+        <briefdescription>
+<para>Create next hop group member. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">next_hop_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group member id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="376" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga446db527437df136ef0575b586fcd87b" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_next_hop_group_member_fn) (_In_ sai_object_id_t next_hop_group_member_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_group_member_id)</argsstring>
+        <name>sai_remove_next_hop_group_member_fn</name>
+        <briefdescription>
+<para>Remove next hop group member. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group member ID</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="389" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="389" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gab63b0029fc830b2970892f81dd9ae473" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_next_hop_group_member_attribute_fn) (_In_ sai_object_id_t next_hop_group_member_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_group_member_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_next_hop_group_member_attribute_fn</name>
+        <briefdescription>
+<para>Set Next Hop Group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group member ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="400" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1gafeacb8d6ee2c94ec30de42b2b48629f8" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_next_hop_group_member_attribute_fn) (_In_ sai_object_id_t next_hop_group_member_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_group_member_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_next_hop_group_member_attribute_fn</name>
+        <briefdescription>
+<para>Get Next Hop Group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop group member ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="413" column="1" bodyfile="inc/sainexthopgroup.h" bodystart="413" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_g_r_o_u_p_1ga95daa90be425109e74cf58049a117ebc" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__next__hop__group__api__t" kindref="compound">_sai_next_hop_group_api_t</ref></type>
+        <definition>typedef struct _sai_next_hop_group_api_t  sai_next_hop_group_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_group_api_t</name>
+        <briefdescription>
+<para>Next Hop methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthopgroup.h" line="433" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

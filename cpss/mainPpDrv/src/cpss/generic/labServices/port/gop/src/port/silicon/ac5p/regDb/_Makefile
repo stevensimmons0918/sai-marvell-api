@@ -1,0 +1,43 @@
+# $(warning "Started")
+
+
+#List of subfolders to include in build
+MODULES :=
+
+#List of files to include in list
+FILES := \
+ mvHwsAc5pMtiExtRegDb.c \
+ mvHwsMtiMac400RegDb.c \
+ mvHwsMifRegDb.c \
+ mvHwsMtiPcs50Units.c \
+ mvHwsMtiPcs100Units.c \
+ mvHwsMtiPcs200Units.c \
+ mvHwsMtiPcs400Units.c \
+ mvHwsMtiRsfecUnits.c \
+ mvHwsAc5pAnpUnits.c \
+ mvHwsMtipUsxExtUnits.c \
+ mvHwsLpcsUnits.c \
+ mvHwsUsxmUnits.c \
+ mvHwsUsxRsfecUnits.c \
+ mvHwsUsxPcsUnits.c \
+ mvHwsPcsCpuUnits.c \
+ mvHwsMacCpuUnits.c \
+ mvHwsMtipCpuExtUnits.c \
+ mvHwsCpuRsfecUnits.c \
+ mvHwsCpuSgpcsUnits.c \
+ mvHwsAc5pMtiExtBrRegDb.c \
+ mvHwsMtiMac100BrRegDb.c \
+ mvHwsAnUnits.c \
+ mvHwsMtiRsfecStatisticsUnits.c
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINPPDRV_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

@@ -1,0 +1,237 @@
+diff --git a/inc/saiacl.h b/inc/saiacl.h
+index f8c0b8b..4f893c4 100644
+--- a/inc/saiacl.h
++++ b/inc/saiacl.h
+@@ -881,6 +881,71 @@ typedef enum _sai_acl_table_attr_t
+      */
+     SAI_ACL_TABLE_ATTR_FIELD_ROUTE_NPU_META_DST_HIT,
+ 
++     /**
++     * @brief GPRS Tunneling protocol TEID.
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default false
++     */
++    SAI_ACL_TABLE_ATTR_UDF_GTP_TEID,
++
++    /**
++     * @brief GPRS Tunneling protocol version.
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default false
++     */
++    SAI_ACL_TABLE_ATTR_UDF_GTP_VERSION,
++
++    /**
++     * @brief GPRS Tunneling protocol message type.
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default false
++     */
++    SAI_ACL_TABLE_ATTR_UDF_GTP_MSG_TYPE,
++
++    /**
++     * @brief Combination of "is unicasted routed" bit and metadata from
++     *        from previous ACL. LSB bit is "is unicast routed" information
++     *        and next 10 LSB bits are metadata information.
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default false
++     */
++    SAI_ACL_TABLE_ATTR_UDF_IS_UCAST_ROUTED_AND_METADATA,
++
++    /**
++     * @brief ACL id
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default false
++     */
++    SAI_ACL_TABLE_ATTR_UDF_ACL_ID,
++
++    /**
++     * @brief Ingress Vif
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default false
++     */
++    SAI_ACL_TABLE_ATTR_UDF_INGRESS_VIF,
++
++    /**
++     * @brief Bridge domain id
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default false
++     */
++    SAI_ACL_TABLE_ATTR_UDF_BD_ID,
++
+     /**
+      * @brief User Defined Field Groups
+      *
+@@ -1524,6 +1589,67 @@ typedef enum _sai_acl_entry_attr_t
+      */
+     SAI_ACL_ENTRY_ATTR_USER_DEFINED_FIELD_GROUP_MIN,
+ 
++     /**
++     * @brief GPRS Tunneling protocol TEID
++     *
++     * @type sai_acl_field_data_t sai_uint32_t
++     * @flags CREATE_AND_SET
++     */
++    SAI_ACL_ENTRY_ATTR_UDF_GTP_TEID,
++
++    /**
++     * @brief GPRS Tunneling protocol version
++     *
++     * @type sai_acl_field_data_t sai_uint8_t
++     * @flags CREATE_AND_SET
++     */
++    SAI_ACL_ENTRY_ATTR_UDF_GTP_VERSION,
++
++    /**
++     * @brief GPRS Tunneling protocol message type
++     *
++     * @type sai_acl_field_data_t sai_uint8_t
++     * @flags CREATE_AND_SET
++     */
++    SAI_ACL_ENTRY_ATTR_UDF_GTP_MSG_TYPE,
++
++    /**
++     * @brief Combination of "is unicast routed" bit and metadata from
++     *        from previous ACL. LSB bit is "is unicast routed" information
++     *        and next 10 LSB bits are metadata information.
++     *
++     * @type sai_acl_field_data_t sai_uint16_t
++     * @flags CREATE_AND_SET
++     */
++    SAI_ACL_ENTRY_ATTR_UDF_IS_UCAST_ROUTED_AND_METADATA,
++
++    /**
++     * @brief ACL id
++     *
++     * @type sai_acl_field_data_t sai_uint8_t
++     * @flags CREATE_AND_SET
++     * @default disabled
++     */
++    SAI_ACL_ENTRY_ATTR_UDF_ACL_ID,
++
++    /**
++     * @brief Ingress Vif
++     *
++     * @type sai_acl_field_data_t sai_uint16_t
++     * @flags CREATE_AND_SET
++     * @default disabled
++     */
++    SAI_ACL_ENTRY_ATTR_UDF_INGRESS_VIF,
++
++    /**
++     * @brief Bridge domain id
++     *
++     * @type sai_acl_field_data_t sai_uint16_t
++     * @flags CREATE_AND_SET
++     * @default disabled
++     */
++    SAI_ACL_ENTRY_ATTR_UDF_BD_ID,
++
+     /**
+      * @brief User Defined Field data max
+      *
+@@ -1892,10 +2018,19 @@ typedef enum _sai_acl_entry_attr_t
+      */
+     SAI_ACL_ENTRY_ATTR_ACTION_SET_DO_NOT_LEARN,
+ 
++     /**
++     * @brief Enable/disable tagging egress packet with vlan id
++     *
++     * @type sai_acl_action_data_t bool
++     * @flags CREATE_AND_SET
++     * @default disabled
++     */
++    SAI_ACL_ENTRY_ATTR_ACTION_TAG_VLAN_ID,
++
+     /**
+      * @brief End of Rule Actions
+      */
+-    SAI_ACL_ENTRY_ATTR_ACTION_END = SAI_ACL_ENTRY_ATTR_ACTION_SET_DO_NOT_LEARN,
++    SAI_ACL_ENTRY_ATTR_ACTION_END = SAI_ACL_ENTRY_ATTR_ACTION_TAG_VLAN_ID,
+ 
+     /**
+      * @brief End of ACL Entry attributes
+diff --git a/inc/sailag.h b/inc/sailag.h
+index 8c73741..105b77d 100644
+--- a/inc/sailag.h
++++ b/inc/sailag.h
+@@ -126,6 +126,15 @@ typedef enum _sai_lag_attr_t
+     SAI_LAG_ATTR_DROP_TAGGED,
+ 
+     /**
++     * @brief Enable/disable auto-distribution on LAG
++     *
++     * @type bool
++     * @flags CREATE_ONLY
++     * @default true
++     */
++    SAI_LAG_ATTR_AUTO_DISTRIBUTION,
++
++    /**
+      * @brief End of attributes
+      */
+     SAI_LAG_ATTR_END,
+diff --git a/inc/saiport.h b/inc/saiport.h
+index ec186a8..ece6717 100644
+--- a/inc/saiport.h
++++ b/inc/saiport.h
+@@ -1090,6 +1090,27 @@ typedef enum _sai_port_attr_t
+      */
+     SAI_PORT_ATTR_LOCATION_LED,
+ 
++    /**
++     * @brief Enable/diable PVID mode for all packets
++     *
++     * @type bool
++     * @flags CREATE_AND_SET
++     * @default false
++     */
++    SAI_PORT_ATTR_PVID_MODE_ALL_PACKETS,
++
++    /**
++     * @brief Egress Timestamp configuration
++     *
++     * Congfiguration to add timestamp on packets egress from this port
++     *
++     * @type bool
++     * @flags CREATE_AND_SET
++     * @isvlan false
++     * @default false
++     */
++    SAI_PORT_ATTR_EGRESS_TIMESTAMP,
++
+     /** End of custom range base */
+     SAI_PORT_ATTR_CUSTOM_RANGE_END
+ 
+diff --git a/inc/saiswitch.h b/inc/saiswitch.h
+index 6dad641..43b0f00 100644
+--- a/inc/saiswitch.h
++++ b/inc/saiswitch.h
+@@ -1530,6 +1530,15 @@ typedef enum _sai_switch_attr_t
+     SAI_SWITCH_ATTR_TPID_INNER_VLAN,
+ 
+     /**
++    * @brief Enable/disable GTP Network packet broker fundtionality
++    *
++    * @type bool
++    * @flags CREATE_AND_SET
++    * @default false
++    */
++    SAI_SWITCH_ATTR_GTP_NETWORK_PACKET_BROKER_ENABLE,
++
++    /**
+      * @brief End of attributes
+      */
+     SAI_SWITCH_ATTR_END,

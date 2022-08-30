@@ -1,0 +1,598 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__buffer__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_buffer_api_t</compoundname>
+    <includes refid="saibuffer_8h" local="no">saibuffer.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1a746dcc246f140e67f5fedcd4e4f1b71a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1gae64750ee68725a87f1237634d1947c30" kindref="member">sai_create_buffer_pool_fn</ref></type>
+        <definition>sai_create_buffer_pool_fn _sai_buffer_api_t::create_buffer_pool</definition>
+        <argsstring></argsstring>
+        <name>create_buffer_pool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="740" column="1" bodyfile="inc/saibuffer.h" bodystart="740" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1ac4770e5c248e3bcc63424edbd83239ce" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga4a5f09863c52c3eaf0a212e1a8d3bfa2" kindref="member">sai_remove_buffer_pool_fn</ref></type>
+        <definition>sai_remove_buffer_pool_fn _sai_buffer_api_t::remove_buffer_pool</definition>
+        <argsstring></argsstring>
+        <name>remove_buffer_pool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="741" column="1" bodyfile="inc/saibuffer.h" bodystart="741" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1ac9e491c1d39a16ad04a4dda21d657244" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga1f2d097b27cc12b8e2a538ab552ba4af" kindref="member">sai_set_buffer_pool_attribute_fn</ref></type>
+        <definition>sai_set_buffer_pool_attribute_fn _sai_buffer_api_t::set_buffer_pool_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_buffer_pool_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="742" column="1" bodyfile="inc/saibuffer.h" bodystart="742" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1aef87d72fc663c7b9a03fe4ea5e7a48af" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga04a384a8fc97d28dff41ec8f62bc2ff2" kindref="member">sai_get_buffer_pool_attribute_fn</ref></type>
+        <definition>sai_get_buffer_pool_attribute_fn _sai_buffer_api_t::get_buffer_pool_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_buffer_pool_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="743" column="1" bodyfile="inc/saibuffer.h" bodystart="743" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1a5d14cd089f817ad21f1cb2fd029b008a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga9a39bf03bbdc87cf7f99a2ca3724bece" kindref="member">sai_get_buffer_pool_stats_fn</ref></type>
+        <definition>sai_get_buffer_pool_stats_fn _sai_buffer_api_t::get_buffer_pool_stats</definition>
+        <argsstring></argsstring>
+        <name>get_buffer_pool_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="744" column="1" bodyfile="inc/saibuffer.h" bodystart="744" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1abf8537079ad4490b65f0afcb4442ffa3" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga6bd30fc5090a5ac01700b89bf3ea4aba" kindref="member">sai_get_buffer_pool_stats_ext_fn</ref></type>
+        <definition>sai_get_buffer_pool_stats_ext_fn _sai_buffer_api_t::get_buffer_pool_stats_ext</definition>
+        <argsstring></argsstring>
+        <name>get_buffer_pool_stats_ext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="745" column="1" bodyfile="inc/saibuffer.h" bodystart="745" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1a44b7df0dda446ce29ccce4d5b4ba5cc7" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga2b28f0e2981ac5c50ac4e2c95e2142d5" kindref="member">sai_clear_buffer_pool_stats_fn</ref></type>
+        <definition>sai_clear_buffer_pool_stats_fn _sai_buffer_api_t::clear_buffer_pool_stats</definition>
+        <argsstring></argsstring>
+        <name>clear_buffer_pool_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="746" column="1" bodyfile="inc/saibuffer.h" bodystart="746" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1acc1081e66ca8a8f7cb0bac9870712c9d" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1gaeb26c8cfee0cc0e3caf0f7f698f5f18c" kindref="member">sai_create_ingress_priority_group_fn</ref></type>
+        <definition>sai_create_ingress_priority_group_fn _sai_buffer_api_t::create_ingress_priority_group</definition>
+        <argsstring></argsstring>
+        <name>create_ingress_priority_group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="747" column="1" bodyfile="inc/saibuffer.h" bodystart="747" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1a390ba78ae59a19f88bd1b7400733d9a4" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga595321014af379d3047937dbe4096b3d" kindref="member">sai_remove_ingress_priority_group_fn</ref></type>
+        <definition>sai_remove_ingress_priority_group_fn _sai_buffer_api_t::remove_ingress_priority_group</definition>
+        <argsstring></argsstring>
+        <name>remove_ingress_priority_group</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="748" column="1" bodyfile="inc/saibuffer.h" bodystart="748" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1a480cc1e723abdd5fe3cd7cf4a2391be3" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1gae1e01be012479a1c9929da0e998bb742" kindref="member">sai_set_ingress_priority_group_attribute_fn</ref></type>
+        <definition>sai_set_ingress_priority_group_attribute_fn _sai_buffer_api_t::set_ingress_priority_group_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_ingress_priority_group_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="749" column="1" bodyfile="inc/saibuffer.h" bodystart="749" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1adf2afdb2499faea948d9299c5d7d07af" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1gaa27459f1bb728b0adc2f4f9481b484f6" kindref="member">sai_get_ingress_priority_group_attribute_fn</ref></type>
+        <definition>sai_get_ingress_priority_group_attribute_fn _sai_buffer_api_t::get_ingress_priority_group_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_ingress_priority_group_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="750" column="1" bodyfile="inc/saibuffer.h" bodystart="750" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1ac493210180dd2dc09ed03b00bcde6318" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1gabd3e3cccfdc3ff25d6ea58f33d5e0688" kindref="member">sai_get_ingress_priority_group_stats_fn</ref></type>
+        <definition>sai_get_ingress_priority_group_stats_fn _sai_buffer_api_t::get_ingress_priority_group_stats</definition>
+        <argsstring></argsstring>
+        <name>get_ingress_priority_group_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="751" column="1" bodyfile="inc/saibuffer.h" bodystart="751" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1acf18f24d8abc6dade1bef230fecb47cc" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1gad893539adc8f877b3a538457bc698b1d" kindref="member">sai_get_ingress_priority_group_stats_ext_fn</ref></type>
+        <definition>sai_get_ingress_priority_group_stats_ext_fn _sai_buffer_api_t::get_ingress_priority_group_stats_ext</definition>
+        <argsstring></argsstring>
+        <name>get_ingress_priority_group_stats_ext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="752" column="1" bodyfile="inc/saibuffer.h" bodystart="752" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1af0873db88e9b3624fe7506c2da3abeb9" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga3c3be4d27a9c1ef7b88352bd48477a84" kindref="member">sai_clear_ingress_priority_group_stats_fn</ref></type>
+        <definition>sai_clear_ingress_priority_group_stats_fn _sai_buffer_api_t::clear_ingress_priority_group_stats</definition>
+        <argsstring></argsstring>
+        <name>clear_ingress_priority_group_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="753" column="1" bodyfile="inc/saibuffer.h" bodystart="753" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1ae1d9c28d2b2a9d3034f959730c0a0af2" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga12459b95f226e0de5bfea8b623b43ca0" kindref="member">sai_create_buffer_profile_fn</ref></type>
+        <definition>sai_create_buffer_profile_fn _sai_buffer_api_t::create_buffer_profile</definition>
+        <argsstring></argsstring>
+        <name>create_buffer_profile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="754" column="1" bodyfile="inc/saibuffer.h" bodystart="754" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1a707f38ff9f5f207db40bf7a712a0cf37" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga2a73ceaa1ec70abce8f1a068afeb3b89" kindref="member">sai_remove_buffer_profile_fn</ref></type>
+        <definition>sai_remove_buffer_profile_fn _sai_buffer_api_t::remove_buffer_profile</definition>
+        <argsstring></argsstring>
+        <name>remove_buffer_profile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="755" column="1" bodyfile="inc/saibuffer.h" bodystart="755" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1a61d2b26e04e7119fd4e4e69d57b5f3bb" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga9e4c7760935141f4dace123efece3575" kindref="member">sai_set_buffer_profile_attribute_fn</ref></type>
+        <definition>sai_set_buffer_profile_attribute_fn _sai_buffer_api_t::set_buffer_profile_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_buffer_profile_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="756" column="1" bodyfile="inc/saibuffer.h" bodystart="756" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__buffer__api__t_1ad998621fb19c64d7716a69b426c22996" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_b_u_f_f_e_r_1ga53141523ce29287dca64944c4b576581" kindref="member">sai_get_buffer_profile_attribute_fn</ref></type>
+        <definition>sai_get_buffer_profile_attribute_fn _sai_buffer_api_t::get_buffer_profile_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_buffer_profile_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="757" column="1" bodyfile="inc/saibuffer.h" bodystart="757" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Buffer methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="272">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="273" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="258">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="259">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="260" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="275">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="279">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="280" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="273">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="267">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="260">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="261" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="261">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="283">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="265">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="266" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="269" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="286">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="287" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="254">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="255" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="253">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="254" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="276">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="252">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="274">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="285">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="251">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="252" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="253" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="257" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="259" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="262" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="265" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="270" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="271" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="272" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="274" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="275" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="273" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="276" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="277" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="267" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="278" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="279" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="281" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="263" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="268" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="282" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="283" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="284" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="285" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="286" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="288" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="290" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="266">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="267" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="268" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="250">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="251" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="271">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="264" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="282">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="249">
+        <label>_sai_buffer_api_t</label>
+        <link refid="struct__sai__buffer__api__t"/>
+        <childnode refid="250" relation="usage">
+          <edgelabel>create_buffer_pool</edgelabel>
+          <edgelabel>get_buffer_profile_attribute</edgelabel>
+          <edgelabel>set_buffer_profile_attribute</edgelabel>
+          <edgelabel>create_buffer_profile</edgelabel>
+          <edgelabel>set_ingress_priority_group_attribute</edgelabel>
+          <edgelabel>set_buffer_pool_attribute</edgelabel>
+          <edgelabel>get_buffer_pool_attribute</edgelabel>
+          <edgelabel>create_ingress_priority_group</edgelabel>
+          <edgelabel>get_ingress_priority_group_attribute</edgelabel>
+        </childnode>
+      </node>
+      <node id="281">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="255">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="256" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="288">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="289" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="290">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="256">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="269">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="268" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="278">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="289">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="287">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="257">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="258" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="263">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="264" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="277">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="262">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="263" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="264">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="268">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="270">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="280">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="267" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="263" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="284">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="277" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saibuffer.h" line="739" column="1" bodyfile="inc/saibuffer.h" bodystart="738" bodyend="758"/>
+    <listofallmembers>
+      <member refid="struct__sai__buffer__api__t_1a44b7df0dda446ce29ccce4d5b4ba5cc7" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>clear_buffer_pool_stats</name></member>
+      <member refid="struct__sai__buffer__api__t_1af0873db88e9b3624fe7506c2da3abeb9" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>clear_ingress_priority_group_stats</name></member>
+      <member refid="struct__sai__buffer__api__t_1a746dcc246f140e67f5fedcd4e4f1b71a" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>create_buffer_pool</name></member>
+      <member refid="struct__sai__buffer__api__t_1ae1d9c28d2b2a9d3034f959730c0a0af2" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>create_buffer_profile</name></member>
+      <member refid="struct__sai__buffer__api__t_1acc1081e66ca8a8f7cb0bac9870712c9d" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>create_ingress_priority_group</name></member>
+      <member refid="struct__sai__buffer__api__t_1aef87d72fc663c7b9a03fe4ea5e7a48af" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>get_buffer_pool_attribute</name></member>
+      <member refid="struct__sai__buffer__api__t_1a5d14cd089f817ad21f1cb2fd029b008a" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>get_buffer_pool_stats</name></member>
+      <member refid="struct__sai__buffer__api__t_1abf8537079ad4490b65f0afcb4442ffa3" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>get_buffer_pool_stats_ext</name></member>
+      <member refid="struct__sai__buffer__api__t_1ad998621fb19c64d7716a69b426c22996" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>get_buffer_profile_attribute</name></member>
+      <member refid="struct__sai__buffer__api__t_1adf2afdb2499faea948d9299c5d7d07af" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>get_ingress_priority_group_attribute</name></member>
+      <member refid="struct__sai__buffer__api__t_1ac493210180dd2dc09ed03b00bcde6318" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>get_ingress_priority_group_stats</name></member>
+      <member refid="struct__sai__buffer__api__t_1acf18f24d8abc6dade1bef230fecb47cc" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>get_ingress_priority_group_stats_ext</name></member>
+      <member refid="struct__sai__buffer__api__t_1ac4770e5c248e3bcc63424edbd83239ce" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>remove_buffer_pool</name></member>
+      <member refid="struct__sai__buffer__api__t_1a707f38ff9f5f207db40bf7a712a0cf37" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>remove_buffer_profile</name></member>
+      <member refid="struct__sai__buffer__api__t_1a390ba78ae59a19f88bd1b7400733d9a4" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>remove_ingress_priority_group</name></member>
+      <member refid="struct__sai__buffer__api__t_1ac9e491c1d39a16ad04a4dda21d657244" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>set_buffer_pool_attribute</name></member>
+      <member refid="struct__sai__buffer__api__t_1a61d2b26e04e7119fd4e4e69d57b5f3bb" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>set_buffer_profile_attribute</name></member>
+      <member refid="struct__sai__buffer__api__t_1a480cc1e723abdd5fe3cd7cf4a2391be3" prot="public" virt="non-virtual"><scope>_sai_buffer_api_t</scope><name>set_ingress_priority_group_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,118 @@
+From ecfee7abfa168033701f312ad3a6e88babb46872 Mon Sep 17 00:00:00 2001
+From: Radharani Danda <rdanda@marvell.com>
+Date: Thu, 24 Feb 2022 15:46:17 +0530
+Subject: [PATCH] temp_fix
+
+---
+ .../private/lpm/ram/prvCpssDxChLpmRamDbg.c    | 64 ++++++++++++++++---
+ 1 file changed, 54 insertions(+), 10 deletions(-)
+
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChLpmRamDbg.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChLpmRamDbg.c
+index 67bf7e705c..d184344a8b 100644
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChLpmRamDbg.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChLpmRamDbg.c
+@@ -32,7 +32,7 @@
+ #include <cpss/dxCh/dxChxGen/config/private/prvCpssDxChInfo.h>
+ #include <cpss/dxCh/dxChxGen/private/lpm/hw/prvCpssDxChLpmHw.h>
+ #include <cpss/dxCh/dxChxGen/private/lpm/prvCpssDxChLpmUtils.h>
+-
++#include <cpss/dxCh/dxChxGen/ip/private/prvCpssDxChIp.h>
+ 
+ #include <cpss/common/private/globalShared/prvCpssGlobalDb.h>
+ #include <cpss/common/private/globalShared/prvCpssGlobalDbInterface.h>
+@@ -1070,6 +1070,11 @@ GT_STATUS validateLeafSip6(GT_U8 devNum,  GT_U32 hwAddr, GT_U32 embeddedLeafVal,
+                                  0x1 = High;LPM result has priority over Exact Match */
+     GT_U32 routeEntriesNum;
+ 
++    GT_U32                              nhIndex = 0;
++    GT_U32                              indirectIndex = 0;
++    GT_U32                              maxNumOfIndirectEntries = 0;
++    GT_U32                              nextHopIndex = 0;
++
+     U32_GET_FIELD_IN_ENTRY_MAC(&embeddedLeafVal,0,1,lpmOverEmPriority);
+     U32_GET_FIELD_IN_ENTRY_MAC(&embeddedLeafVal,1,1,entryType);
+     U32_GET_FIELD_IN_ENTRY_MAC(&embeddedLeafVal,2,1,leafType);
+@@ -1084,19 +1089,26 @@ GT_STATUS validateLeafSip6(GT_U8 devNum,  GT_U32 hwAddr, GT_U32 embeddedLeafVal,
+         {
+             /* Number of entries in NH table */
+             routeEntriesNum = PRV_CPSS_DXCH_PP_MAC(devNum)->fineTuning.tableSize.routerNextHop;
++
++            /* NH base address must be within the NH table */
++            if (nhPointer >= routeEntriesNum)
++            {
++                cpssOsPrintf("\nNH pointer not in range of NH table!!! NH address %d\n",nhPointer);
++                CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, LOG_ERROR_NO_MSG);
++            }
+         }
+         else/* CPSS_DXCH_LPM_LEAF_MULTIPATH_TYPE_E */
+         {
+             /* Number of entries in ECMP/QoS table */
+             routeEntriesNum = PRV_CPSS_DXCH_PP_MAC(devNum)->fineTuning.tableSize.ecmpQos;
+-        }
+ 
+-        /* NH base address must be within the NH table */
+-        if (nhPointer >= routeEntriesNum)
+-        {
+-            cpssOsPrintf("\nNH pointer not in range of NH table!!! NH address %d\n",nhPointer);
+-            CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, LOG_ERROR_NO_MSG);
++            if (nhPointer >= routeEntriesNum)
++            {
++                cpssOsPrintf("\nECMP/QOS pointer not in range of ECMP/QOS table!!! ECMP address %d\n",nhPointer);
++                CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, LOG_ERROR_NO_MSG);
++            }
+         }
++
+         if (leafType == PRV_CPSS_DXCH_LPM_LEAF_MULTIPATH_TYPE_E)/*Multipath Leaf*/
+         {
+             ret = prvCpssDxChLpmHwEcmpEntryRead(devNum, nhPointer, &ecmpEntry);
+@@ -1106,12 +1118,44 @@ GT_STATUS validateLeafSip6(GT_U8 devNum,  GT_U32 hwAddr, GT_U32 embeddedLeafVal,
+                 CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, LOG_ERROR_NO_MSG);
+             }
+ 
+-            routeEntriesNum = PRV_CPSS_DXCH_PP_MAC(devNum)->fineTuning.tableSize.routerNextHop;
+-            if (ecmpEntry.nexthopBaseIndex + ecmpEntry.numOfPaths >= routeEntriesNum)
++            maxNumOfIndirectEntries = prvCpssDxchTableIpvxRouterEcmpPointerNumEntriesGet(devNum);
++            if (ecmpEntry.nexthopBaseIndex + ecmpEntry.numOfPaths > maxNumOfIndirectEntries)
+             {
+-                cpssOsPrintf("\nECMP entry points to illegal nexthop index %d\n",nhPointer);
++                cpssOsPrintf("\nECMP entry points to illegal ECMP Indirect index");
++                cpssOsPrintf("\nECMP entry Index = %d\n",nhPointer);
++                cpssOsPrintf("\nECMP Number of paths = %d\n",ecmpEntry.numOfPaths);
++
++                cpssOsPrintf("\nmax Num Of Indirect Entries  %d\n", maxNumOfIndirectEntries);
++                cpssOsPrintf("\nECMP Indirect index = %d\n",ecmpEntry.nexthopBaseIndex);
++
+                 CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, LOG_ERROR_NO_MSG);
+             }
++
++            routeEntriesNum = PRV_CPSS_DXCH_PP_MAC(devNum)->fineTuning.tableSize.routerNextHop;
++            for(nhIndex=0; nhIndex < ecmpEntry.numOfPaths;nhIndex++)
++            {
++                indirectIndex = ecmpEntry.nexthopBaseIndex + nhIndex;
++                /* Get the NH index Indirect table */
++                ret = prvCpssDxChReadTableEntry(devNum,
++                                                CPSS_DXCH_SIP5_25_TABLE_IPVX_ROUTER_ECMP_POINTER_E,
++                                                indirectIndex,
++                                                &nextHopIndex);
++                if (ret != GT_OK)
++                {
++                    cpssOsPrintf("\nFailed to read ECMP entry %d\n",nhPointer);
++                    CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, LOG_ERROR_NO_MSG);
++                }
++
++                if(nextHopIndex >= routeEntriesNum)
++                {
++                    cpssOsPrintf("\nECMP entry Index = %d\n",nhPointer);
++                    cpssOsPrintf("\nECMP Indirect index = %d\n", ecmpEntry.nexthopBaseIndex);
++                    cpssOsPrintf("\nNextHop out of range = %d\n", nextHopIndex);
++
++                    CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, LOG_ERROR_NO_MSG);
++                }
++            }
++
+         }
+ 
+         *leafTypePtr = leafType;
+-- 
+2.22.0
+

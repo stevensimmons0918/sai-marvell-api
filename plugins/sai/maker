@@ -1,0 +1,44 @@
+#!/bin/bash
+
+MOUNTS=""
+
+FORWARDED_OPTIONS=""
+
+function print-help () {
+    echo
+    echo "Usage examples:"
+    echo "    ./maker -j8 xpSaiApp"
+    echo "    ./maker clean"
+    echo
+    echo "--help              | Print this help"
+    echo "--p                 | Run Sai preprocessing.sh and exit"
+    echo
+}
+
+if [ "${DOCKER_ENABLE}" = "1" ]; then
+    MOUNTS="-v $(readlink -f . ):$(readlink -f . )"
+fi
+
+for arg in $@; do
+    if [ "$arg" = "--help" ]; then
+        print-help
+        echo
+
+        pushd ./xdk/build
+        ./maker --help
+        popd
+        exit
+    fi
+
+    if [ "$arg" = "--p" ]; then
+        pushd SAI/saiShell/genScripts
+        ./preprocessing.sh
+        popd
+
+        exit
+    fi
+done
+
+pushd ./xdk/build/
+./maker $MOUNTS "$@"
+popd

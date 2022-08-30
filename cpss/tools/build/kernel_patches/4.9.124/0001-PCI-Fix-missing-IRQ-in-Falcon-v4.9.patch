@@ -1,0 +1,77 @@
+From bd066f920fede7dc68bddae2eaaf20bb345150fd Mon Sep 17 00:00:00 2001
+From: Yuval Shaia <yshaia@marvell.com>
+Date: Wed, 16 Jun 2021 10:03:17 +0300
+Subject: [PATCH] PCI: Fix missing IRQ in Falcon
+
+Note: This is a temporray hack and needs to be reverted when upgrading to
+latest upstream kernel.
+
+When PCI device (or bridge) is identified, the kernel tries to set it as a
+PCI-X device, if it fails then it tries as PCI and drop to legacy mode when
+this fails.
+
+As part of PCI-X/PCI configuration, the kernel queries the config space in
+an attempt to retrieve MSI table entry for AER and PME.
+Kernel 4.14-76 exits with an error in case that entry number is invalid
+while upstream code is okay with this. When 4.14-76 exits with error it
+drops to legacy mode and this leaves the IRQ number for the bridge as it
+was (i.e. the virt-irq) and the IRQ number for the Packet Processor is not
+configured at all.
+Fix this by accepting the upstream way and do not get upset when AER entry
+is invalid.
+
+A second problematic place is when the Packet Processor is discovered
+during the PCI scan. Kernel 4.4 has special implementation for arch ARM to
+setup IRQ for a device (pcibios_add_device) by reading it from device tree.
+Both 4.14-76 and upstream do not have it.
+By adopting the 4.4-52 way, the IRQ for the Packet Processor is setup
+correctly to a legacy mode
+
+Signed-off-by: Yuval Shaia <yshaia@marvell.com>
+---
+ drivers/pci/pci.c               | 1 +
+ drivers/pci/pcie/portdrv_core.c | 9 ++++++---
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index 6b3c5c4cbb37..783e3a8c6d2f 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -1559,6 +1559,7 @@ EXPORT_SYMBOL(pcim_pin_device);
+  */
+ int __weak pcibios_add_device(struct pci_dev *dev)
+ {
++	dev->irq = of_irq_parse_and_map_pci(dev, 0, 0);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/pci/pcie/portdrv_core.c b/drivers/pci/pcie/portdrv_core.c
+index e9270b4026f3..fdc701ca23da 100644
+--- a/drivers/pci/pcie/portdrv_core.c
++++ b/drivers/pci/pcie/portdrv_core.c
+@@ -101,8 +101,11 @@ static int pcie_port_enable_msix(struct pci_dev *dev, int *vectors, int mask)
+ 		msix_entries[i].entry = i;
+ 
+ 	status = pci_enable_msix_exact(dev, msix_entries, nr_entries);
+-	if (status)
+-		goto Exit;
++	if (status < 0) {
++		status = pci_enable_msi_exact(dev, nr_entries);
++		if (status)
++			goto Exit;
++	}
+ 
+ 	for (i = 0; i < PCIE_PORT_DEVICE_MAXSERVICES; i++)
+ 		idx[i] = -1;
+@@ -151,7 +154,7 @@ static int pcie_port_enable_msix(struct pci_dev *dev, int *vectors, int mask)
+ 		pci_read_config_dword(dev, pos + PCI_ERR_ROOT_STATUS, &reg32);
+ 		entry = reg32 >> 27;
+ 		if (entry >= nr_entries)
+-			goto Error;
++			return 0;
+ 
+ 		i = pcie_port_msix_add_entry(msix_entries, entry, nvec);
+ 		if (i == nvec)
+-- 
+2.17.1
+

@@ -1,0 +1,11 @@
+// TAG:               no; packet-analyzer; basic-test
+// Short Description: disable packet-analyzer manager
+// Description:       disable all data base of packet analyzer manager
+//                    Network Shield Technology
+end
+debug-mode
+packet-analyzer manager 1 device ${dev}
+clear
+exit
+no packet-analyzer manager 1 device ${dev}
+

@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saistatus_8h" kind="file" language="C++">
+    <compoundname>saistatus.h</compoundname>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <invincdepgraph>
+      <node id="321">
+        <label>inc/saistatus.h</label>
+        <link refid="saistatus.h"/>
+        <childnode refid="322" relation="include">
+        </childnode>
+      </node>
+      <node id="322">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" prot="public" static="no">
+        <name>SAI_STATUS_CODE</name>
+        <param><defname>_S_</defname></param>
+        <initializer>(-(_S_))</initializer>
+        <briefdescription>
+<para>Any mapping schema from <emphasis>S</emphasis> to error codes convenient on *nix can be used. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="43" column="9" bodyfile="inc/saistatus.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" prot="public" static="no">
+        <name>SAI_STATUS_SUCCESS</name>
+        <initializer>0x00000000L</initializer>
+        <briefdescription>
+<para>Status success. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="50" column="9" bodyfile="inc/saistatus.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" prot="public" static="no">
+        <name>SAI_STATUS_FAILURE</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000001L)</initializer>
+        <briefdescription>
+<para>General failure. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="55" column="9" bodyfile="inc/saistatus.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga449879835cef659119c0b3147d205752" prot="public" static="no">
+        <name>SAI_STATUS_NOT_SUPPORTED</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000002L)</initializer>
+        <briefdescription>
+<para>The request is not supported. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="60" column="9" bodyfile="inc/saistatus.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gac7f6d88d9e9cb60d28f17ca11e20dc7d" prot="public" static="no">
+        <name>SAI_STATUS_NO_MEMORY</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000003L)</initializer>
+        <briefdescription>
+<para>Not enough memory to complete the operation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="65" column="9" bodyfile="inc/saistatus.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gae7fb7226f7070a35db05e19b461ffbd9" prot="public" static="no">
+        <name>SAI_STATUS_INSUFFICIENT_RESOURCES</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000004L)</initializer>
+        <briefdescription>
+<para>Insufficient system resources exist to complete the operation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="70" column="9" bodyfile="inc/saistatus.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga2a455cfafa77109b587fac44392764f9" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_PARAMETER</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000005L)</initializer>
+        <briefdescription>
+<para>An invalid parameter was passed to a function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="75" column="9" bodyfile="inc/saistatus.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga0ebfbeaf1ef5c7d1cd202b26593bafb7" prot="public" static="no">
+        <name>SAI_STATUS_ITEM_ALREADY_EXISTS</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000006L)</initializer>
+        <briefdescription>
+<para>An item already exists. For example, create a route which already exists. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="81" column="9" bodyfile="inc/saistatus.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga9f9569854e62e03b74d6eec3f5ffd05e" prot="public" static="no">
+        <name>SAI_STATUS_ITEM_NOT_FOUND</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000007L)</initializer>
+        <briefdescription>
+<para>An item was not found. For example, remove a route which does not exist. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="87" column="9" bodyfile="inc/saistatus.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga7255b9d60f461644acd8459627a43288" prot="public" static="no">
+        <name>SAI_STATUS_BUFFER_OVERFLOW</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000008L)</initializer>
+        <briefdescription>
+<para>The data was too large to fit into the specified buffer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="92" column="9" bodyfile="inc/saistatus.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga950aae1cf0fec8519115b89bf3258509" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_PORT_NUMBER</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000009L)</initializer>
+        <briefdescription>
+<para>Invalid port number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="97" column="9" bodyfile="inc/saistatus.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gaa45c51d6c8555e3712877d785278b167" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_PORT_MEMBER</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0000000AL)</initializer>
+        <briefdescription>
+<para>Invalid port member. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="102" column="9" bodyfile="inc/saistatus.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga79ad9d6c3b9a34f0ef0482967d43c728" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_VLAN_ID</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0000000BL)</initializer>
+        <briefdescription>
+<para>Invalid VLAN id. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="107" column="9" bodyfile="inc/saistatus.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga68e2d6a1159f4ad07728a0f9d415f4f9" prot="public" static="no">
+        <name>SAI_STATUS_UNINITIALIZED</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0000000CL)</initializer>
+        <briefdescription>
+<para>Object is uninitialized. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="112" column="9" bodyfile="inc/saistatus.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga3de22ce574c75106490167336eb1b51e" prot="public" static="no">
+        <name>SAI_STATUS_TABLE_FULL</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0000000DL)</initializer>
+        <briefdescription>
+<para>Table is full. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="117" column="9" bodyfile="inc/saistatus.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga2cc4876838121e28a5b5b845029c470b" prot="public" static="no">
+        <name>SAI_STATUS_MANDATORY_ATTRIBUTE_MISSING</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0000000EL)</initializer>
+        <briefdescription>
+<para>Mandatory attribute is missing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="122" column="9" bodyfile="inc/saistatus.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gac76b3ac281438671b204176b86e7f5d0" prot="public" static="no">
+        <name>SAI_STATUS_NOT_IMPLEMENTED</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0000000FL)</initializer>
+        <briefdescription>
+<para>Function is not implemented. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="127" column="9" bodyfile="inc/saistatus.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gace49a9918f273fa2642c14e6359591c3" prot="public" static="no">
+        <name>SAI_STATUS_ADDR_NOT_FOUND</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000010L)</initializer>
+        <briefdescription>
+<para>Address not found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="132" column="9" bodyfile="inc/saistatus.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gac7aa865dccdbef879ae836f42c07e820" prot="public" static="no">
+        <name>SAI_STATUS_OBJECT_IN_USE</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000011L)</initializer>
+        <briefdescription>
+<para>SAI Object is in use. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="137" column="9" bodyfile="inc/saistatus.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga32195ddc651769dec98a4cdee64acb6c" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_OBJECT_TYPE</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000012L)</initializer>
+        <briefdescription>
+<para>Invalid SAI Object type passed to a function. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the object id is passed as an attribute value in list, then <ref refid="group___s_a_i_s_t_a_t_u_s_1ga9507842e381fe975e6b1792efc758ef2" kindref="member">SAI_STATUS_INVALID_ATTR_VALUE_0</ref> status code should be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="145" column="9" bodyfile="inc/saistatus.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga4b5dfbb3ed15b2693ed14ce56be9e9bc" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_OBJECT_ID</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000013L)</initializer>
+        <briefdescription>
+<para>Invalid SAI Object ID passed to a function. </para>        </briefdescription>
+        <detaileddescription>
+<para>Return <ref refid="group___s_a_i_s_t_a_t_u_s_1ga32195ddc651769dec98a4cdee64acb6c" kindref="member">SAI_STATUS_INVALID_OBJECT_TYPE</ref> when the object type is invalid, otherwise return this <ref refid="group___s_a_i_s_t_a_t_u_s_1ga4b5dfbb3ed15b2693ed14ce56be9e9bc" kindref="member">SAI_STATUS_INVALID_OBJECT_ID</ref>. This can happen if the object id is already deleted. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="154" column="9" bodyfile="inc/saistatus.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga90848dffb49f3ee537694849ff98cb04" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_NV_STORAGE</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000014L)</initializer>
+        <briefdescription>
+<para>The NV storage used is either invalid or corrupt. (rv for initialize_switch()) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="159" column="9" bodyfile="inc/saistatus.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga41b03703139e4e2eabf8c3519e3c764d" prot="public" static="no">
+        <name>SAI_STATUS_NV_STORAGE_FULL</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000015L)</initializer>
+        <briefdescription>
+<para>The NV storage is full. (rv for shutdown_switch()) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="164" column="9" bodyfile="inc/saistatus.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gae8993ad58fc84c920cfd5d8f4b3dbdcc" prot="public" static="no">
+        <name>SAI_STATUS_SW_UPGRADE_VERSION_MISMATCH</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000016L)</initializer>
+        <briefdescription>
+<para>Version mismatch in case of Inservice upgrade (rv for initialize_switch()) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="169" column="9" bodyfile="inc/saistatus.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga760a9d3e780874beaba3f70f491bf6b1" prot="public" static="no">
+        <name>SAI_STATUS_NOT_EXECUTED</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00000017L)</initializer>
+        <briefdescription>
+<para>Operation not executed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="174" column="9" bodyfile="inc/saistatus.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga23ce98b3b6f5ab4b478748062687c39c" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_ATTRIBUTE_0</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00010000L)</initializer>
+        <briefdescription>
+<para>Attribute is invalid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Range from 0x00010000L to 0x0001FFFFL.</para><para>Return this when the property attached to the attribute does not match the API call.</para><para>For example:<itemizedlist>
+<listitem><para>When a READ_ONLY attribute is passed set_attribute or create call</para></listitem><listitem><para>When a CREATE_ONLY attribute is passed to set_attribute call</para></listitem></itemizedlist>
+</para><para>The offset from <ref refid="group___s_a_i_s_t_a_t_u_s_1ga23ce98b3b6f5ab4b478748062687c39c" kindref="member">SAI_STATUS_INVALID_ATTRIBUTE_0</ref> is the array index of the attribute list passed to the SAI API call. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="191" column="9" bodyfile="inc/saistatus.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga3dbec82eecbcb1dd885af210f15dc43d" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_ATTRIBUTE_MAX</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0001FFFFL)</initializer>
+        <briefdescription>
+<para>End of invalid attribute range. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="196" column="9" bodyfile="inc/saistatus.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga9507842e381fe975e6b1792efc758ef2" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_ATTR_VALUE_0</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00020000L)</initializer>
+        <briefdescription>
+<para>Invalid attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para>Range from 0x00020000L to 0x0002FFFFL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="203" column="9" bodyfile="inc/saistatus.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga5ec5692686c96d78a13f7b864dde446d" prot="public" static="no">
+        <name>SAI_STATUS_INVALID_ATTR_VALUE_MAX</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0002FFFFL)</initializer>
+        <briefdescription>
+<para>End of invalid attribute value range. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="208" column="9" bodyfile="inc/saistatus.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga927cd60f735a385955029a80ca0973ab" prot="public" static="no">
+        <name>SAI_STATUS_ATTR_NOT_IMPLEMENTED_0</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00030000L)</initializer>
+        <briefdescription>
+<para>Attribute is not implemented. </para>        </briefdescription>
+        <detaileddescription>
+<para>Range from 0x00030000L to 0x003FFFFL.</para><para>Return this when the attribute is supported but not implemented on the platform. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="218" column="9" bodyfile="inc/saistatus.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga201600ff69c9b6f8a7f33fe628aa65bc" prot="public" static="no">
+        <name>SAI_STATUS_ATTR_NOT_IMPLEMENTED_MAX</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0003FFFFL)</initializer>
+        <briefdescription>
+<para>End of not implemented range. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="223" column="9" bodyfile="inc/saistatus.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gae9359a70c06e48ba4bbc4cb938670905" prot="public" static="no">
+        <name>SAI_STATUS_UNKNOWN_ATTRIBUTE_0</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00040000L)</initializer>
+        <briefdescription>
+<para>Attribute is unknown. </para>        </briefdescription>
+        <detaileddescription>
+<para>Range from 0x00040000L to 0x004FFFFL.</para><para>Return this when the attribute is undefined, e.g., the attribute id is out of range. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="233" column="9" bodyfile="inc/saistatus.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga37036f4dac29f27232ddf92c74f59b4d" prot="public" static="no">
+        <name>SAI_STATUS_UNKNOWN_ATTRIBUTE_MAX</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0004FFFFL)</initializer>
+        <briefdescription>
+<para>End of unknown attribute range. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="238" column="9" bodyfile="inc/saistatus.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gaee602200c192f40839c32debeb35899c" prot="public" static="no">
+        <name>SAI_STATUS_ATTR_NOT_SUPPORTED_0</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x00050000L)</initializer>
+        <briefdescription>
+<para>Attribute is not supported. </para>        </briefdescription>
+        <detaileddescription>
+<para>Range from 0x00050000L to 0x005FFFFL.</para><para>Return this when the platform does not have the capability to support this attribute. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="248" column="9" bodyfile="inc/saistatus.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gac982e23461985b0db7321950d7b4eb71" prot="public" static="no">
+        <name>SAI_STATUS_ATTR_NOT_SUPPORTED_MAX</name>
+        <initializer><ref refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" kindref="member">SAI_STATUS_CODE</ref>(0x0005FFFFL)</initializer>
+        <briefdescription>
+<para>End of attribute not supported range. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="253" column="9" bodyfile="inc/saistatus.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga8a3485253924c9334455bf559da0c113" prot="public" static="no">
+        <name>SAI_STATUS_IS_INVALID_ATTRIBUTE</name>
+        <param><defname>x</defname></param>
+        <initializer>(((x) &amp; (~0xFFFF)) == SAI_STATUS_INVALID_ATTRIBUTE_0)</initializer>
+        <briefdescription>
+<para>Is invalid attribute helper. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="262" column="9" bodyfile="inc/saistatus.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1ga45a01481119bf92345e6765a9b9cd51c" prot="public" static="no">
+        <name>SAI_STATUS_IS_INVALID_ATTR_VALUE</name>
+        <param><defname>x</defname></param>
+        <initializer>(((x) &amp; (~0xFFFF)) == SAI_STATUS_INVALID_ATTR_VALUE_0)</initializer>
+        <briefdescription>
+<para>Is invalid attribute value helper. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="267" column="9" bodyfile="inc/saistatus.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gaa80016e804df38f44ec9ea6ac261d0fd" prot="public" static="no">
+        <name>SAI_STATUS_IS_ATTR_NOT_IMPLEMENTED</name>
+        <param><defname>x</defname></param>
+        <initializer>(((x) &amp; (~0xFFFF)) == SAI_STATUS_ATTR_NOT_IMPLEMENTED_0)</initializer>
+        <briefdescription>
+<para>Is attribute not implemented helper. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="272" column="9" bodyfile="inc/saistatus.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gadbf08314dd1e310eeaca4a3ad0be9be8" prot="public" static="no">
+        <name>SAI_STATUS_IS_UNKNOWN_ATTRIBUTE</name>
+        <param><defname>x</defname></param>
+        <initializer>(((x) &amp; (~0xFFFF)) == SAI_STATUS_INVALID_ATTRIBUTE_0)</initializer>
+        <briefdescription>
+<para>Is unknown attribute helper. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="277" column="9" bodyfile="inc/saistatus.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_s_t_a_t_u_s_1gabcd77282da69bfbf61bf6433bb5df2b6" prot="public" static="no">
+        <name>SAI_STATUS_IS_ATTR_NOT_SUPPORTED</name>
+        <param><defname>x</defname></param>
+        <initializer>(((x) &amp; (~0xFFFF)) == SAI_STATUS_ATTR_NOT_SUPPORTED_0)</initializer>
+        <briefdescription>
+<para>Is attribute not supported helper. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saistatus.h" line="282" column="9" bodyfile="inc/saistatus.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Status codes. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAISTATUS_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAISTATUS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor">#ifdef<sp/>_WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SAI_STATUS_CODE(_S_)<sp/><sp/><sp/><sp/>((sai_status_t)(_S_))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="group___s_a_i_s_t_a_t_u_s_1ga2f75d40d25fd1316ddd9c10c3c420f8d" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_CODE(_S_)<sp/><sp/><sp/><sp/>(-(_S_))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_SUCCESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000L</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_FAILURE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000001L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="group___s_a_i_s_t_a_t_u_s_1ga449879835cef659119c0b3147d205752" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_NOT_SUPPORTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000002L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="group___s_a_i_s_t_a_t_u_s_1gac7f6d88d9e9cb60d28f17ca11e20dc7d" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_NO_MEMORY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000003L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="group___s_a_i_s_t_a_t_u_s_1gae7fb7226f7070a35db05e19b461ffbd9" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INSUFFICIENT_RESOURCES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000004L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="group___s_a_i_s_t_a_t_u_s_1ga2a455cfafa77109b587fac44392764f9" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_PARAMETER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000005L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="group___s_a_i_s_t_a_t_u_s_1ga0ebfbeaf1ef5c7d1cd202b26593bafb7" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_ITEM_ALREADY_EXISTS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000006L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="group___s_a_i_s_t_a_t_u_s_1ga9f9569854e62e03b74d6eec3f5ffd05e" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_ITEM_NOT_FOUND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000007L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="group___s_a_i_s_t_a_t_u_s_1ga7255b9d60f461644acd8459627a43288" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_BUFFER_OVERFLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000008L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="group___s_a_i_s_t_a_t_u_s_1ga950aae1cf0fec8519115b89bf3258509" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_PORT_NUMBER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000009L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="group___s_a_i_s_t_a_t_u_s_1gaa45c51d6c8555e3712877d785278b167" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_PORT_MEMBER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0000000AL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="group___s_a_i_s_t_a_t_u_s_1ga79ad9d6c3b9a34f0ef0482967d43c728" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_VLAN_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0000000BL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="group___s_a_i_s_t_a_t_u_s_1ga68e2d6a1159f4ad07728a0f9d415f4f9" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_UNINITIALIZED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0000000CL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="group___s_a_i_s_t_a_t_u_s_1ga3de22ce574c75106490167336eb1b51e" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_TABLE_FULL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0000000DL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="group___s_a_i_s_t_a_t_u_s_1ga2cc4876838121e28a5b5b845029c470b" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_MANDATORY_ATTRIBUTE_MISSING<sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0000000EL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="group___s_a_i_s_t_a_t_u_s_1gac76b3ac281438671b204176b86e7f5d0" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_NOT_IMPLEMENTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0000000FL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="group___s_a_i_s_t_a_t_u_s_1gace49a9918f273fa2642c14e6359591c3" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_ADDR_NOT_FOUND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000010L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="group___s_a_i_s_t_a_t_u_s_1gac7aa865dccdbef879ae836f42c07e820" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_OBJECT_IN_USE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000011L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="group___s_a_i_s_t_a_t_u_s_1ga32195ddc651769dec98a4cdee64acb6c" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_OBJECT_TYPE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000012L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="group___s_a_i_s_t_a_t_u_s_1ga4b5dfbb3ed15b2693ed14ce56be9e9bc" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_OBJECT_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000013L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="group___s_a_i_s_t_a_t_u_s_1ga90848dffb49f3ee537694849ff98cb04" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_NV_STORAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000014L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="group___s_a_i_s_t_a_t_u_s_1ga41b03703139e4e2eabf8c3519e3c764d" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_NV_STORAGE_FULL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000015L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="group___s_a_i_s_t_a_t_u_s_1gae8993ad58fc84c920cfd5d8f4b3dbdcc" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_SW_UPGRADE_VERSION_MISMATCH<sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000016L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="group___s_a_i_s_t_a_t_u_s_1ga760a9d3e780874beaba3f70f491bf6b1" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_NOT_EXECUTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00000017L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="group___s_a_i_s_t_a_t_u_s_1ga23ce98b3b6f5ab4b478748062687c39c" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_ATTRIBUTE_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00010000L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="group___s_a_i_s_t_a_t_u_s_1ga3dbec82eecbcb1dd885af210f15dc43d" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_ATTRIBUTE_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0001FFFFL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="group___s_a_i_s_t_a_t_u_s_1ga9507842e381fe975e6b1792efc758ef2" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_ATTR_VALUE_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00020000L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="group___s_a_i_s_t_a_t_u_s_1ga5ec5692686c96d78a13f7b864dde446d" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_INVALID_ATTR_VALUE_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0002FFFFL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="group___s_a_i_s_t_a_t_u_s_1ga927cd60f735a385955029a80ca0973ab" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_ATTR_NOT_IMPLEMENTED_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00030000L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="group___s_a_i_s_t_a_t_u_s_1ga201600ff69c9b6f8a7f33fe628aa65bc" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_ATTR_NOT_IMPLEMENTED_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0003FFFFL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="group___s_a_i_s_t_a_t_u_s_1gae9359a70c06e48ba4bbc4cb938670905" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_UNKNOWN_ATTRIBUTE_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00040000L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="group___s_a_i_s_t_a_t_u_s_1ga37036f4dac29f27232ddf92c74f59b4d" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_UNKNOWN_ATTRIBUTE_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0004FFFFL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="group___s_a_i_s_t_a_t_u_s_1gaee602200c192f40839c32debeb35899c" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_ATTR_NOT_SUPPORTED_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x00050000L)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="group___s_a_i_s_t_a_t_u_s_1gac982e23461985b0db7321950d7b4eb71" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_ATTR_NOT_SUPPORTED_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAI_STATUS_CODE(0x0005FFFFL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/>*<sp/>Macros<sp/>to<sp/>check<sp/>if<sp/>attribute<sp/>related<sp/>error<sp/>is<sp/>within<sp/>the<sp/>specified<sp/>range</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="group___s_a_i_s_t_a_t_u_s_1ga8a3485253924c9334455bf559da0c113" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_IS_INVALID_ATTRIBUTE(x)<sp/><sp/><sp/><sp/><sp/><sp/>(((x)<sp/>&amp;<sp/>(~0xFFFF))<sp/>==<sp/>SAI_STATUS_INVALID_ATTRIBUTE_0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="group___s_a_i_s_t_a_t_u_s_1ga45a01481119bf92345e6765a9b9cd51c" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_IS_INVALID_ATTR_VALUE(x)<sp/><sp/><sp/><sp/><sp/>(((x)<sp/>&amp;<sp/>(~0xFFFF))<sp/>==<sp/>SAI_STATUS_INVALID_ATTR_VALUE_0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="group___s_a_i_s_t_a_t_u_s_1gaa80016e804df38f44ec9ea6ac261d0fd" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_IS_ATTR_NOT_IMPLEMENTED(x)<sp/><sp/><sp/>(((x)<sp/>&amp;<sp/>(~0xFFFF))<sp/>==<sp/>SAI_STATUS_ATTR_NOT_IMPLEMENTED_0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="group___s_a_i_s_t_a_t_u_s_1gadbf08314dd1e310eeaca4a3ad0be9be8" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_IS_UNKNOWN_ATTRIBUTE(x)<sp/><sp/><sp/><sp/><sp/><sp/>(((x)<sp/>&amp;<sp/>(~0xFFFF))<sp/>==<sp/>SAI_STATUS_INVALID_ATTRIBUTE_0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="group___s_a_i_s_t_a_t_u_s_1gabcd77282da69bfbf61bf6433bb5df2b6" refkind="member"><highlight class="preprocessor">#define<sp/>SAI_STATUS_IS_ATTR_NOT_SUPPORTED(x)<sp/><sp/><sp/><sp/><sp/>(((x)<sp/>&amp;<sp/>(~0xFFFF))<sp/>==<sp/>SAI_STATUS_ATTR_NOT_SUPPORTED_0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saistatus.h"/>
+  </compounddef>
+</doxygen>

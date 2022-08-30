@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="union__sai__object__key__entry__t" kind="union" language="C++" prot="public">
+    <compoundname>_sai_object_key_entry_t</compoundname>
+    <includes refid="saiobject_8h" local="no">saiobject.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1a99be1045f01e609b2fda86dbfdefa733" prot="public" static="no" mutable="no">
+        <type>sai_object_id_t</type>
+        <definition>sai_object_id_t _sai_object_key_entry_t::object_id</definition>
+        <argsstring></argsstring>
+        <name>object_id</name>
+        <briefdescription>
+<para>Key is object ID. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      sai_metadata_is_object_type_oid(object_type) == true </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="54" column="1" bodyfile="inc/saiobject.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1a61199cd319f57236619cb8a7c1a386d2" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_f_d_b_1gabb041fccd157dddd8988c19489230a70" kindref="member">sai_fdb_entry_t</ref></type>
+        <definition>sai_fdb_entry_t _sai_object_key_entry_t::fdb_entry</definition>
+        <argsstring></argsstring>
+        <name>fdb_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_FDB_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="57" column="1" bodyfile="inc/saiobject.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1a1e412b50b3fb6b8617c852809425fab1" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga62e3c2b5fefd7c5716927e6759911f9c" kindref="member">sai_neighbor_entry_t</ref></type>
+        <definition>sai_neighbor_entry_t _sai_object_key_entry_t::neighbor_entry</definition>
+        <argsstring></argsstring>
+        <name>neighbor_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_NEIGHBOR_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="60" column="1" bodyfile="inc/saiobject.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1ab58ef4d9b23dd672907cc7f4dc412f34" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_1gab4422ab86d408a35359297b83726ed78" kindref="member">sai_route_entry_t</ref></type>
+        <definition>sai_route_entry_t _sai_object_key_entry_t::route_entry</definition>
+        <argsstring></argsstring>
+        <name>route_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_ROUTE_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="63" column="1" bodyfile="inc/saiobject.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1ab433e5410575b4749543972b8951381d" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_m_c_f_d_b_1gadca9751b5d023778309d1d84dba296a7" kindref="member">sai_mcast_fdb_entry_t</ref></type>
+        <definition>sai_mcast_fdb_entry_t _sai_object_key_entry_t::mcast_fdb_entry</definition>
+        <argsstring></argsstring>
+        <name>mcast_fdb_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_MCAST_FDB_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="66" column="1" bodyfile="inc/saiobject.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1a5df64aece3470408383efbf1ef901a74" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_l2_m_c_1ga544dce56f9195d31bb330cb4a878649c" kindref="member">sai_l2mc_entry_t</ref></type>
+        <definition>sai_l2mc_entry_t _sai_object_key_entry_t::l2mc_entry</definition>
+        <argsstring></argsstring>
+        <name>l2mc_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_L2MC_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="69" column="1" bodyfile="inc/saiobject.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1a33d00033bcbe205c7f19829f454c49ad" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_i_p_m_c_1gaadccb8e12a4866a822512b462544fdca" kindref="member">sai_ipmc_entry_t</ref></type>
+        <definition>sai_ipmc_entry_t _sai_object_key_entry_t::ipmc_entry</definition>
+        <argsstring></argsstring>
+        <name>ipmc_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_IPMC_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="72" column="1" bodyfile="inc/saiobject.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1a32d000be1d70cbbc4b0d479cd71e700e" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_m_p_l_s_1gaf53983fcc125a09f213ab5603551d0d4" kindref="member">sai_inseg_entry_t</ref></type>
+        <definition>sai_inseg_entry_t _sai_object_key_entry_t::inseg_entry</definition>
+        <argsstring></argsstring>
+        <name>inseg_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_INSEG_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="75" column="1" bodyfile="inc/saiobject.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="union__sai__object__key__entry__t_1a3d897799c08b90d1b71bd9d71e6d2aff" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_a_t_1gaed8b6f129b8d4bf328c164a50871f1c0" kindref="member">sai_nat_entry_t</ref></type>
+        <definition>sai_nat_entry_t _sai_object_key_entry_t::nat_entry</definition>
+        <argsstring></argsstring>
+        <name>nat_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Valid only when:</title><para> @@validonly      object_type == SAI_OBJECT_TYPE_NAT_ENTRY </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiobject.h" line="78" column="1" bodyfile="inc/saiobject.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>sai_object_type_t object_type </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="1073">
+        <label>_sai_mcast_fdb_entry_t</label>
+        <link refid="struct__sai__mcast__fdb__entry__t"/>
+      </node>
+      <node id="1072">
+        <label>_sai_l2mc_entry_t</label>
+        <link refid="struct__sai__l2mc__entry__t"/>
+        <childnode refid="1069" relation="usage">
+          <edgelabel>destination</edgelabel>
+          <edgelabel>source</edgelabel>
+        </childnode>
+      </node>
+      <node id="1070">
+        <label>_sai_inseg_entry_t</label>
+        <link refid="struct__sai__inseg__entry__t"/>
+      </node>
+      <node id="1071">
+        <label>_sai_neighbor_entry_t</label>
+        <link refid="struct__sai__neighbor__entry__t"/>
+        <childnode refid="1069" relation="usage">
+          <edgelabel>ip_address</edgelabel>
+        </childnode>
+      </node>
+      <node id="1068">
+        <label>_sai_ipmc_entry_t</label>
+        <link refid="struct__sai__ipmc__entry__t"/>
+        <childnode refid="1069" relation="usage">
+          <edgelabel>destination</edgelabel>
+          <edgelabel>source</edgelabel>
+        </childnode>
+      </node>
+      <node id="1059">
+        <label>_sai_object_key_entry_t</label>
+        <link refid="union__sai__object__key__entry__t"/>
+        <childnode refid="1060" relation="usage">
+          <edgelabel>route_entry</edgelabel>
+        </childnode>
+        <childnode refid="1063" relation="usage">
+          <edgelabel>nat_entry</edgelabel>
+        </childnode>
+        <childnode refid="1067" relation="usage">
+          <edgelabel>fdb_entry</edgelabel>
+        </childnode>
+        <childnode refid="1068" relation="usage">
+          <edgelabel>ipmc_entry</edgelabel>
+        </childnode>
+        <childnode refid="1070" relation="usage">
+          <edgelabel>inseg_entry</edgelabel>
+        </childnode>
+        <childnode refid="1071" relation="usage">
+          <edgelabel>neighbor_entry</edgelabel>
+        </childnode>
+        <childnode refid="1072" relation="usage">
+          <edgelabel>l2mc_entry</edgelabel>
+        </childnode>
+        <childnode refid="1073" relation="usage">
+          <edgelabel>mcast_fdb_entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1061">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1062" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1063">
+        <label>_sai_nat_entry_t</label>
+        <link refid="struct__sai__nat__entry__t"/>
+        <childnode refid="1064" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="1067">
+        <label>_sai_fdb_entry_t</label>
+        <link refid="struct__sai__fdb__entry__t"/>
+      </node>
+      <node id="1066">
+        <label>_sai_nat_entry_key_t</label>
+        <link refid="struct__sai__nat__entry__key__t"/>
+      </node>
+      <node id="1065">
+        <label>_sai_nat_entry_mask_t</label>
+        <link refid="struct__sai__nat__entry__mask__t"/>
+      </node>
+      <node id="1069">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1062" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1064">
+        <label>_sai_nat_entry_data_t</label>
+        <link refid="struct__sai__nat__entry__data__t"/>
+        <childnode refid="1065" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+        <childnode refid="1066" relation="usage">
+          <edgelabel>key</edgelabel>
+        </childnode>
+      </node>
+      <node id="1060">
+        <label>_sai_route_entry_t</label>
+        <link refid="struct__sai__route__entry__t"/>
+        <childnode refid="1061" relation="usage">
+          <edgelabel>destination</edgelabel>
+        </childnode>
+      </node>
+      <node id="1062">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saiobject.h" line="48" column="1" bodyfile="inc/saiobject.h" bodystart="47" bodyend="80"/>
+    <listofallmembers>
+      <member refid="union__sai__object__key__entry__t_1a61199cd319f57236619cb8a7c1a386d2" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>fdb_entry</name></member>
+      <member refid="union__sai__object__key__entry__t_1a32d000be1d70cbbc4b0d479cd71e700e" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>inseg_entry</name></member>
+      <member refid="union__sai__object__key__entry__t_1a33d00033bcbe205c7f19829f454c49ad" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>ipmc_entry</name></member>
+      <member refid="union__sai__object__key__entry__t_1a5df64aece3470408383efbf1ef901a74" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>l2mc_entry</name></member>
+      <member refid="union__sai__object__key__entry__t_1ab433e5410575b4749543972b8951381d" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>mcast_fdb_entry</name></member>
+      <member refid="union__sai__object__key__entry__t_1a3d897799c08b90d1b71bd9d71e6d2aff" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>nat_entry</name></member>
+      <member refid="union__sai__object__key__entry__t_1a1e412b50b3fb6b8617c852809425fab1" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>neighbor_entry</name></member>
+      <member refid="union__sai__object__key__entry__t_1a99be1045f01e609b2fda86dbfdefa733" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>object_id</name></member>
+      <member refid="union__sai__object__key__entry__t_1ab58ef4d9b23dd672907cc7f4dc412f34" prot="public" virt="non-virtual"><scope>_sai_object_key_entry_t</scope><name>route_entry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,35 @@
+diff --git a/Makefile b/Makefile
+index 3a58158d25..ea66168341 100644
+--- a/Makefile
++++ b/Makefile
+@@ -587,9 +587,9 @@ ifeq ($(CONFIG_SHARED_MEMORY), y)
+  CPSS_SPLIT_LIBRARIES = 1
+ 
+  SHLIB_LDFLAGS := -shared $(SHLIB_LDFLAGS) $(TARGET_SPECIFIC_CFLAGS)
+- LDFLAGS := -Xlinker -z -Xlinker nocopyreloc -rdynamic -lpthread -lrt -ldl -lm $(TARGET_SPECIFIC_CFLAGS)
++ LDFLAGS := -Xlinker -z -Xlinker nocopyreloc -rdynamic -lpthread -lrt -ldl -lm $(TARGET_SPECIFIC_CFLAGS) -lcrypt
+ else
+- LDFLAGS := -lrt -lpthread -lm -ldl -rdynamic $(LDFLAGS-y) $(TARGET_SPECIFIC_CFLAGS)
++ LDFLAGS := -lrt -lpthread -lm -ldl -rdynamic $(LDFLAGS-y) $(TARGET_SPECIFIC_CFLAGS) -lcrypt
+ endif
+ 
+ ifeq (LIB,$(BUILD_CPSS_APP_PLAT))
+@@ -624,7 +624,7 @@ ifneq ($(CONFIG_GM),)
+   VC_CFLAGS += -MTd
+ endif
+ else
+-CFLAGS := -Wall -Wextra -Werror -Wno-error=cpp $(CAST) -ansi $(TARGET_SPECIFIC_CFLAGS) -fno-builtin -funroll-loops \
++CFLAGS := -Wall -Wextra -Werror -Wno-error=cpp $(CAST) -ansi $(TARGET_SPECIFIC_CFLAGS) -fno-builtin -funroll-loops -fPIC\
+            $(SHARED_CFLAGS) $(addprefix -I, $(CPSS_INC_PATH)) $(CFLAGS) $(CONFIG_CFLAGS-y)
+ #-Wno-cast-function-type  -Wextra
+ endif
+@@ -841,6 +841,9 @@ $(BUILD_FOLDER)/version_info.c:
+ 	echo const char *VERSION_DATE = '"$(VERSION_DATE)"'';'  >  $@
+ 	echo const char *VERSION_FLAGS = '"$(VERSION_FLAGS)"'';'  >> $@
+ 
++.PHONY: $(BUILD_FOLDER)/version_info.o
++$(BUILD_FOLDER)/version_info.o: $(BUILD_FOLDER)/version_info.c
++	$(call compile,$(CFLAGS),$(BUILD_FOLDER))
+ 
+ ifeq (1, $(simFilesUsed))
+ 

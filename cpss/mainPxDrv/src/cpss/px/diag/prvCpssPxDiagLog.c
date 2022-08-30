@@ -1,0 +1,982 @@
+/*******************************************************************************
+*              (c), Copyright 2001, Marvell International Ltd.                 *
+* THIS CODE CONTAINS CONFIDENTIAL INFORMATION OF MARVELL SEMICONDUCTOR, INC.   *
+* NO RIGHTS ARE GRANTED HEREIN UNDER ANY PATENT, MASK WORK RIGHT OR COPYRIGHT  *
+* OF MARVELL OR ANY THIRD PARTY. MARVELL RESERVES THE RIGHT AT ITS SOLE        *
+* DISCRETION TO REQUEST THAT THIS CODE BE IMMEDIATELY RETURNED TO MARVELL.     *
+* THIS CODE IS PROVIDED "AS IS". MARVELL MAKES NO WARRANTIES, EXPRESSED,       *
+* IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.   *
+********************************************************************************
+* prvCpssPxDiagLog.c
+*       WARNING!!! this is a generated file, please don't edit it manually
+* COMMENTS:
+*
+* FILE REVISION NUMBER:
+*       $Revision: 1 $
+*******************************************************************************/
+
+/* disable deprecation warnings (if one) */
+#ifdef __GNUC__
+#if  (__GNUC__*100+__GNUC_MINOR__) >= 406
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+#endif
+
+#include <cpss/generic/log/cpssLog.h>
+#include <cpss/generic/log/prvCpssLog.h>
+#include <cpss/extServices/private/prvCpssBindFunc.h>
+#include <cpss/common/private/globalShared/prvCpssGlobalDb.h>
+#include <cpss/common/private/globalShared/prvCpssGlobalDbInterface.h>
+#include <cpss/common/cpssHwInit/private/prvCpssCommonCpssHwInitLog.h>
+#include <cpss/generic/log/prvCpssGenCommonTypesLog.h>
+#include <cpss/generic/log/prvCpssPxGenDbLog.h>
+#include <cpss/generic/log/prvCpssPxGenLog.h>
+#include <cpss/px/cpssHwInit/private/prvCpssPxCpssHwInitLog.h>
+#include <cpss/px/diag/cpssPxDiag.h>
+#include <cpss/px/diag/cpssPxDiagDataIntegrity.h>
+#include <cpss/px/diag/cpssPxDiagDataIntegrityTables.h>
+#include <cpss/px/diag/cpssPxDiagPacketGenerator.h>
+#include <cpss/px/diag/private/prvCpssPxDiagLog.h>
+
+
+/********* enums *********/
+
+const char * const prvCpssLogEnum_CPSS_PX_DIAG_BIST_STATUS_ENT[]  =
+{
+    "CPSS_PX_DIAG_BIST_STATUS_NOT_READY_E",
+    "CPSS_PX_DIAG_BIST_STATUS_PASS_E",
+    "CPSS_PX_DIAG_BIST_STATUS_FAIL_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_PX_DIAG_BIST_STATUS_ENT);
+const char * const prvCpssLogEnum_CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT[]  =
+{
+    "CPSS_PX_DIAG_TEMPERATURE_SENSOR_0_E",
+    "CPSS_PX_DIAG_TEMPERATURE_SENSOR_AVERAGE_E",
+    "CPSS_PX_DIAG_TEMPERATURE_SENSOR_MAX_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT);
+const char * const prvCpssLogEnum_CPSS_PX_DIAG_TRANSMIT_MODE_ENT[]  =
+{
+    "CPSS_PX_DIAG_TRANSMIT_MODE_REGULAR_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_PRBS_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_ZEROS_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_ONES_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_CYCLIC_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_PRBS7_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_PRBS9_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_PRBS15_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_PRBS23_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_PRBS31_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_1T_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_2T_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_5T_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_10T_E",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_DFETraining",
+    "CPSS_PX_DIAG_TRANSMIT_MODE_MAX_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_PX_DIAG_TRANSMIT_MODE_ENT);
+const char * const prvCpssLogEnum_CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_ENT[]  =
+{
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_MG_MGCAM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_PEX2_RXDATA_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_PEX2_RXHDR_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_MG_SDMA_TX_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_PEX2_TXDATA_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_MG_CONFI_PROCESSOR_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_MUNIT_MUNIT_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_SIP_PPA_IMEM_BANK_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_SIP_PPA_PPN_SCRATCHPAD_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_SIP_PPA_SHARED_DMEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_SIP_PHA_HA_TABLE_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_BC_CT_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_CLEAR_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_BMA_FINAL_UDB_CLEAR_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_BM_FREE_BUFFERS_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_HA_DESC_IDDB_FREE_ID_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_HA_DESC_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_HEADER_REORDER_MEM_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_INTERNAL_DESC_IDDB_FREE_ID_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_INTERNAL_DESC_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_BMA_MC_CLEAR_SHIFTER_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_BMA_MC_COUNTERS_FLOOR_BANK_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_NEXT_CT_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_BM_NEXT_TABLE_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_BM_NUMBER_OF_BUFFERS_TABLE_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_PAYLOAD_REORDER_MEM_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXDMA_PREF_MEM_ID_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_BM_VALID_TABLE_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_QCN_BUFFER_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_BMX_DATA_BASE_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_Q_DQ_Q_BUF_LIMIT_DP0_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_Q_DQ_Q_DESC_LIMIT_DP0_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_Q_EQ_Q_LIMIT_DP0_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_Q_EQ_Q_LIMIT_DP12_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_BMX_FREE_ENTRY_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_CPFC_IND_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_LL_LINK_LIST_PTR_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_QCN_SAMPLE_INTERVALS_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXQ_Q_SHARED_Q_LIMIT_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_MPPM_BANK_RAM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_MPPM_RX_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_MPPM_TXDMA_RD_BURST_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_CT_BC_IDDB_FREE_ID_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_CT_BC_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_DESCRIPTOR_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_HEADER_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_HEADER_LL_FREE_BUFS_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_HEADER_LL_LINK_LIST_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_RXDMA_IBUF_HDR_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_PAYLOAD_IDDB_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_PAYLOAD_LL_FREE_BUFS_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TXFIFO_PAYLOAD_LL_LINK_LIST_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_CG_CG_RX_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_CG_CG_TX_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_CG_DESKEW_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_CG_RS_FEC_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_CG_RX_PREAMBLE_MEM_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_SIP_CNC_IP_COUNTERS_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_SIP_PCP_IP_DST_PORT_MAP_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_SIP_PCP_IP_SRC_PORT_MAP_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_DDU_FIFO_E",
+    "CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_TABLE_LAST_E"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_ENT);
+const char * const prvCpssLogEnum_CPSS_PX_LOCATION_ENT[]  =
+{
+    "CPSS_PX_LOCATION_HW_INDEX_INFO_TYPE",
+    "CPSS_PX_LOCATION_LOGICAL_INDEX_INFO_TYPE",
+    "CPSS_PX_LOCATION_RAM_INDEX_INFO_TYPE"
+};
+PRV_CPSS_LOG_STC_ENUM_ARRAY_SIZE_MAC(CPSS_PX_LOCATION_ENT);
+
+
+/********* structure fields log functions *********/
+
+void prvCpssLogParamFuncStc_CPSS_PX_DIAG_BIST_RESULT_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_DIAG_BIST_RESULT_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, memType, CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_ENT);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, location, CPSS_DIAG_DATA_INTEGRITY_MEMORY_LOCATION_STC);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, eventsType, CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, location, CPSS_PX_LOCATION_FULL_INFO_STC);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, memoryUseType, CPSS_DIAG_DATA_INTEGRITY_MEMORY_USAGE_TYPE_ENT);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, correctionMethod, CPSS_DIAG_DATA_INTEGRITY_CORRECTION_METHOD_ENT);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_DIAG_PG_CONFIGURATIONS_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_DIAG_PG_CONFIGURATIONS_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ETH_MAC(valPtr, macDa);
+    PRV_CPSS_LOG_STC_BOOL_MAC(valPtr, macDaIncrementEnable);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, macDaIncrementLimit);
+    PRV_CPSS_LOG_STC_ETH_MAC(valPtr, macSa);
+    PRV_CPSS_LOG_STC_BOOL_MAC(valPtr, vlanTagEnable);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, vpt);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, cfi);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, vid);
+    PRV_CPSS_LOG_STC_16_HEX_MAC(valPtr, etherType);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, payloadType, CPSS_DIAG_PG_PACKET_PAYLOAD_TYPE_ENT);
+    PRV_CPSS_LOG_STC_TYPE_ARRAY_MAC(valPtr, cyclicPatternArr, 64, GT_U8);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, packetLengthType, CPSS_DIAG_PG_PACKET_LENGTH_TYPE_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, packetLength);
+    PRV_CPSS_LOG_STC_BOOL_MAC(valPtr, undersizeEnable);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, transmitMode, CPSS_DIAG_PG_TRANSMIT_MODE_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, packetCount);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, packetCountMultiplier, CPSS_DIAG_PG_PACKET_COUNT_MULTIPLIER_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, ifg);
+    PRV_CPSS_LOG_STC_ENUM_MAP_MAC(valPtr, interfaceSize, CPSS_DIAG_PG_IF_SIZE_ENT);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_LOCATION_SPECIFIC_INFO_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, type, CPSS_PX_LOCATION_ENT);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, info, CPSS_PX_LOCATION_UNT);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, numOfDataIntegrityElements);
+    PRV_CPSS_LOG_STC_STC_PTR_MAC(valPtr, logicalTablesArr, CPSS_PX_LOGICAL_TABLE_SHADOW_INFO_STC);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_LOCATION_FULL_INFO_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_LOCATION_FULL_INFO_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, logicalEntryInfo, CPSS_PX_LOGICAL_TABLE_INFO_STC);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, hwEntryInfo, CPSS_PX_HW_INDEX_INFO_STC);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, ramEntryInfo, CPSS_PX_RAM_INDEX_INFO_STC);
+    PRV_CPSS_LOG_STC_BOOL_MAC(valPtr, isMppmInfoValid);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, mppmMemLocation, CPSS_DIAG_DATA_INTEGRITY_MPPM_MEMORY_LOCATION_STC);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_LOCATION_UNT_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_LOCATION_UNT *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, logicalEntryInfo, CPSS_PX_LOGICAL_TABLE_INFO_STC);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, hwEntryInfo, CPSS_PX_HW_INDEX_INFO_STC);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, ramEntryInfo, CPSS_PX_RAM_INDEX_INFO_STC);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_LOGICAL_TABLE_SHADOW_INFO_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_LOGICAL_TABLE_SHADOW_INFO_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, logicalTableName, CPSS_PX_LOGICAL_TABLE_ENT);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, shadowType, CPSS_PX_SHADOW_TYPE_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, numOfBytes);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, isSupported);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_HW_INDEX_INFO_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_HW_INDEX_INFO_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ENUM_MAP_MAC(valPtr, hwTableType, CPSS_PX_TABLE_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, hwTableEntryIndex);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_LOGICAL_TABLE_INFO_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_LOGICAL_TABLE_INFO_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, logicalTableType, CPSS_PX_LOGICAL_TABLE_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, logicalTableEntryIndex);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+void prvCpssLogParamFuncStc_CPSS_PX_RAM_INDEX_INFO_STC_PTR
+(
+    IN CPSS_LOG_LIB_ENT         contextLib,
+    IN CPSS_LOG_TYPE_ENT        logType,
+    IN GT_CHAR_PTR              namePtr,
+    IN void                   * fieldPtr,
+    INOUT PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC     * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_FIELD_STC_MAC(CPSS_PX_RAM_INDEX_INFO_STC *, valPtr);
+    PRV_CPSS_LOG_UNUSED_MAC(inOutParamInfoPtr);
+    PRV_CPSS_LOG_STC_ENUM_MAC(valPtr, memType, CPSS_PX_DIAG_DATA_INTEGRITY_MEM_TYPE_ENT);
+    PRV_CPSS_LOG_STC_NUMBER_MAC(valPtr, ramRow);
+    PRV_CPSS_LOG_STC_STC_MAC(valPtr, memLocation, CPSS_DIAG_DATA_INTEGRITY_MEMORY_LOCATION_STC);
+    prvCpssLogStcLogEnd(contextLib, logType);
+}
+
+
+/********* parameters log functions *********/
+
+void prvCpssLogParamFunc_CPSS_PX_DIAG_BIST_RESULT_STC_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_PARAM_STC_MAC(CPSS_PX_DIAG_BIST_RESULT_STC*, paramVal);
+    prvCpssLogParamFuncStc_CPSS_PX_DIAG_BIST_RESULT_STC_PTR(contextLib, logType, namePtr, paramVal, inOutParamInfoPtr);
+}
+void prvCpssLogParamFunc_CPSS_PX_DIAG_BIST_STATUS_ENT_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_PX_DIAG_BIST_STATUS_ENT*, paramVal);
+    if (paramVal == NULL)
+    {
+        PRV_CPSS_LOG_AND_HISTORY_PARAM_MAC(contextLib, logType, "%s = NULL\n", namePtr);
+        return;
+    }
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, *paramVal, CPSS_PX_DIAG_BIST_STATUS_ENT);
+}
+void prvCpssLogParamFunc_CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_PARAM_STC_MAC(CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC*, paramVal);
+    prvCpssLogParamFuncStc_CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC_PTR(contextLib, logType, namePtr, paramVal, inOutParamInfoPtr);
+}
+void prvCpssLogParamFunc_CPSS_PX_DIAG_PG_CONFIGURATIONS_STC_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_PARAM_STC_MAC(CPSS_PX_DIAG_PG_CONFIGURATIONS_STC*, paramVal);
+    prvCpssLogParamFuncStc_CPSS_PX_DIAG_PG_CONFIGURATIONS_STC_PTR(contextLib, logType, namePtr, paramVal, inOutParamInfoPtr);
+}
+void prvCpssLogParamFunc_CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT);
+}
+void prvCpssLogParamFunc_CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT*, paramVal);
+    if (paramVal == NULL)
+    {
+        PRV_CPSS_LOG_AND_HISTORY_PARAM_MAC(contextLib, logType, "%s = NULL\n", namePtr);
+        return;
+    }
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, *paramVal, CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT);
+}
+void prvCpssLogParamFunc_CPSS_PX_DIAG_TRANSMIT_MODE_ENT(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_PX_DIAG_TRANSMIT_MODE_ENT, paramVal);
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, paramVal, CPSS_PX_DIAG_TRANSMIT_MODE_ENT);
+}
+void prvCpssLogParamFunc_CPSS_PX_DIAG_TRANSMIT_MODE_ENT_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_SET_PARAM_VAL_MAC(CPSS_PX_DIAG_TRANSMIT_MODE_ENT*, paramVal);
+    if (paramVal == NULL)
+    {
+        PRV_CPSS_LOG_AND_HISTORY_PARAM_MAC(contextLib, logType, "%s = NULL\n", namePtr);
+        return;
+    }
+    PRV_CPSS_LOG_ENUM_MAC(namePtr, *paramVal, CPSS_PX_DIAG_TRANSMIT_MODE_ENT);
+}
+void prvCpssLogParamFunc_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_PARAM_STC_MAC(CPSS_PX_LOCATION_SPECIFIC_INFO_STC*, paramVal);
+    prvCpssLogParamFuncStc_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR(contextLib, logType, namePtr, paramVal, inOutParamInfoPtr);
+}
+void prvCpssLogParamFunc_CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC_PTR(
+    IN CPSS_LOG_LIB_ENT            contextLib,
+    IN CPSS_LOG_TYPE_ENT           logType,
+    IN GT_CHAR_PTR                 namePtr,
+    IN va_list                   * argsPtr,
+    IN GT_BOOL                     skipLog,
+    IN PRV_CPSS_LOG_PARAM_ENTRY_INFO_STC   * inOutParamInfoPtr
+)
+{
+    PRV_CPSS_LOG_START_PARAM_STC_MAC(CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC*, paramVal);
+    prvCpssLogParamFuncStc_CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC_PTR(contextLib, logType, namePtr, paramVal, inOutParamInfoPtr);
+}
+
+
+/********* API fields DB *********/
+
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_INOUT_CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC_PTR_tablesInfoPtr = {
+     "tablesInfoPtr", PRV_CPSS_LOG_PARAM_INOUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_INOUT_GT_U32_PTR_eventsNumPtr = {
+     "eventsNumPtr", PRV_CPSS_LOG_PARAM_INOUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_INOUT_GT_U32_PTR_regsNumPtr = {
+     "regsNumPtr", PRV_CPSS_LOG_PARAM_INOUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_INOUT_GT_U32_PTR_resultsNumPtr = {
+     "resultsNumPtr", PRV_CPSS_LOG_PARAM_INOUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT_errorType = {
+     "errorType", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_DIAG_DATA_INTEGRITY_ERROR_INJECT_MODE_ENT_injectMode = {
+     "injectMode", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_DIAG_DATA_INTEGRITY_ERROR_INJECT_MODE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_DIAG_DATA_INTEGRITY_MPPM_MEMORY_LOCATION_STC_PTR_mppmMemLocationPtr = {
+     "mppmMemLocationPtr", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_DIAG_DATA_INTEGRITY_MPPM_MEMORY_LOCATION_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_DIAG_PP_REG_TYPE_ENT_regType = {
+     "regType", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_DIAG_PP_REG_TYPE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_DIAG_TEST_PROFILE_ENT_profile = {
+     "profile", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_DIAG_TEST_PROFILE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_EVENT_MASK_SET_ENT_operation = {
+     "operation", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_EVENT_MASK_SET_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_PP_INTERFACE_CHANNEL_ENT_ifChannel = {
+     "ifChannel", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_PP_INTERFACE_CHANNEL_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_PX_DIAG_PG_CONFIGURATIONS_STC_PTR_configPtr = {
+     "configPtr", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_DIAG_PG_CONFIGURATIONS_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT_sensorType = {
+     "sensorType", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_PX_DIAG_TRANSMIT_MODE_ENT_mode = {
+     "mode", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(CPSS_PX_DIAG_TRANSMIT_MODE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_locationPtr = {
+     "locationPtr", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_LOCATION_SPECIFIC_INFO_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr = {
+     "memEntryPtr", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_LOCATION_SPECIFIC_INFO_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_32_thresholdValue = {
+     "thresholdValue", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_BOOL_connect = {
+     "connect", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_BOOL_countEnable = {
+     "countEnable", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_BOOL_doByteSwap = {
+     "doByteSwap", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_BOOL_injectEnable = {
+     "injectEnable", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_HEX_PTR_cyclicDataArr = {
+     "cyclicDataArr", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_HEX_data = {
+     "data", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_HEX_evExtData = {
+     "evExtData", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_HEX_offset = {
+     "offset", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_HEX_regAddr = {
+     "regAddr", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_HEX_regMask = {
+     "regMask", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_numOfEntries = {
+     "numOfEntries", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_U32_sensorNum = {
+     "sensorNum", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_IN_GT_UINTPTR_baseAddr = {
+     "baseAddr", PRV_CPSS_LOG_PARAM_IN_E,  PRV_CPSS_LOG_FUNC_TYPE_MAC(GT_UINTPTR)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT_PTR_errorTypePtr = {
+     "errorTypePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_DIAG_DATA_INTEGRITY_ERROR_INJECT_MODE_ENT_PTR_injectModePtr = {
+     "injectModePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_DIAG_DATA_INTEGRITY_ERROR_INJECT_MODE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_DIAG_DATA_INTEGRITY_MEM_ERROR_PROTECTION_TYPE_ENT_PTR_protectionTypePtr = {
+     "protectionTypePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_DIAG_DATA_INTEGRITY_MEM_ERROR_PROTECTION_TYPE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_EVENT_MASK_SET_ENT_PTR_operationPtr = {
+     "operationPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_EVENT_MASK_SET_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_PX_DIAG_BIST_RESULT_STC_PTR_resultsArr = {
+     "resultsArr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_DIAG_BIST_RESULT_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_PX_DIAG_BIST_STATUS_ENT_PTR_resultsStatusPtr = {
+     "resultsStatusPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_DIAG_BIST_STATUS_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC_PTR_eventsArr = {
+     "eventsArr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_PX_DIAG_PG_CONFIGURATIONS_STC_PTR_configPtr = {
+     "configPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_DIAG_PG_CONFIGURATIONS_STC)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT_PTR_sensorTypePtr = {
+     "sensorTypePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_CPSS_PX_DIAG_TRANSMIT_MODE_ENT_PTR_modePtr = {
+     "modePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(CPSS_PX_DIAG_TRANSMIT_MODE_ENT)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_32_PTR_temperaturePtr = {
+     "temperaturePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_32_PTR_thresholdValuePtr = {
+     "thresholdValuePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_burstTransmitDonePtr = {
+     "burstTransmitDonePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_checkerLockedPtr = {
+     "checkerLockedPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_connectPtr = {
+     "connectPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_countEnablePtr = {
+     "countEnablePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_injectEnablePtr = {
+     "injectEnablePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_isNoMoreEventsPtr = {
+     "isNoMoreEventsPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_isReadyPtr = {
+     "isReadyPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_lockedPtr = {
+     "lockedPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_testStatusPtr = {
+     "testStatusPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_BOOL_PTR_wasWrapAroundPtr = {
+     "wasWrapAroundPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_BOOL)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_HEX_PTR_badRegPtr = {
+     "badRegPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_HEX_PTR_cyclicDataArr = {
+     "cyclicDataArr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_HEX_PTR_dataPtr = {
+     "dataPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_HEX_PTR_readValPtr = {
+     "readValPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_HEX_PTR_regAddrPtr = {
+     "regAddrPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_HEX_PTR_regDataPtr = {
+     "regDataPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_HEX_PTR_writeValPtr = {
+     "writeValPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32_HEX)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_errorCntrPtr = {
+     "errorCntrPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_failedRowPtr = {
+     "failedRowPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_failedSegmentPtr = {
+     "failedSegmentPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_failedSyndromePtr = {
+     "failedSyndromePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_nextEntryIndexPtr = {
+     "nextEntryIndexPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_regsNumPtr = {
+     "regsNumPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_totalMemSizePtr = {
+     "totalMemSizePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U32_PTR_voltagePtr = {
+     "voltagePtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U32)
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC PX_OUT_GT_U64_PTR_patternCntrPtr = {
+     "patternCntrPtr", PRV_CPSS_LOG_PARAM_OUT_E,  PRV_CPSS_LOG_FUNC_TYPE_PTR_MAC(GT_U64)
+};
+
+
+/********* API prototypes DB *********/
+
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDeviceTemperatureSensorsSelectSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT_sensorType
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityTableEntryFix_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_locationPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityTableScan_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_locationPtr,
+    &PX_IN_GT_U32_numOfEntries,
+    &PX_OUT_GT_U32_PTR_nextEntryIndexPtr,
+    &PX_OUT_GT_BOOL_PTR_wasWrapAroundPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityEventMaskSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_IN_CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT_errorType,
+    &PX_IN_CPSS_EVENT_MASK_SET_ENT_operation
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityErrorCountEnableSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_IN_CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT_errorType,
+    &PX_IN_GT_BOOL_countEnable
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityErrorInjectionConfigSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_IN_CPSS_DIAG_DATA_INTEGRITY_ERROR_INJECT_MODE_ENT_injectMode,
+    &PX_IN_GT_BOOL_injectEnable
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityErrorInfoGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_IN_CPSS_DIAG_DATA_INTEGRITY_MPPM_MEMORY_LOCATION_STC_PTR_mppmMemLocationPtr,
+    &PX_OUT_GT_U32_PTR_errorCounterPtr,
+    &PX_OUT_GT_U32_PTR_failedRowPtr,
+    &PX_OUT_GT_U32_PTR_failedSegmentPtr,
+    &PX_OUT_GT_U32_PTR_failedSyndromePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityEventMaskGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_OUT_CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT_PTR_errorTypePtr,
+    &PX_OUT_CPSS_EVENT_MASK_SET_ENT_PTR_operationPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityErrorCountEnableGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_OUT_CPSS_DIAG_DATA_INTEGRITY_ERROR_CAUSE_TYPE_ENT_PTR_errorTypePtr,
+    &PX_OUT_GT_BOOL_PTR_countEnablePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityErrorInjectionConfigGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_OUT_CPSS_DIAG_DATA_INTEGRITY_ERROR_INJECT_MODE_ENT_PTR_injectModePtr,
+    &PX_OUT_GT_BOOL_PTR_injectEnablePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityProtectionTypeGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_CPSS_PX_LOCATION_SPECIFIC_INFO_STC_PTR_memEntryPtr,
+    &PX_OUT_CPSS_DIAG_DATA_INTEGRITY_MEM_ERROR_PROTECTION_TYPE_ENT_PTR_protectionTypePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDeviceTemperatureThresholdSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_32_thresholdValue
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPacketGeneratorConnectSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_BOOL_connect,
+    &PX_IN_CPSS_PX_DIAG_PG_CONFIGURATIONS_STC_PTR_configPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsPortTransmitModeSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_IN_CPSS_PX_DIAG_TRANSMIT_MODE_ENT_mode
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsPortGenerateEnableSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_IN_GT_BOOL_enable
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsCyclicDataSet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_IN_GT_U32_HEX_PTR_cyclicDataArr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsPortTransmitModeGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_OUT_CPSS_PX_DIAG_TRANSMIT_MODE_ENT_PTR_modePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsPortStatusGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_OUT_GT_BOOL_PTR_checkerLockedPtr,
+    &PX_OUT_GT_U32_PTR_errorCntrPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsPortGenerateEnableGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_OUT_GT_BOOL_PTR_enablePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsSerdesStatusGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_OUT_GT_BOOL_PTR_lockedPtr,
+    &PX_OUT_GT_U32_PTR_errorCntrPtr,
+    &PX_OUT_GT_U64_PTR_patternCntrPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsCyclicDataGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_IN_GT_U32_laneNum,
+    &PX_OUT_GT_U32_HEX_PTR_cyclicDataArr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPacketGeneratorBurstTransmitStatusGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_OUT_GT_BOOL_PTR_burstTransmitDonePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPacketGeneratorConnectGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_OUT_GT_BOOL_PTR_connectPtr,
+    &PX_OUT_CPSS_PX_DIAG_PG_CONFIGURATIONS_STC_PTR_configPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagPrbsPortCheckReadyGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_PHYSICAL_PORT_NUM_portNum,
+    &PX_OUT_GT_BOOL_PTR_isReadyPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityEventsGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_U32_HEX_evExtData,
+    &PX_INOUT_GT_U32_PTR_eventsNumPtr,
+    &PX_OUT_CPSS_PX_DIAG_DATA_INTEGRITY_EVENT_STC_PTR_eventsArr,
+    &PX_OUT_GT_BOOL_PTR_isNoMoreEventsPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagRegTest_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_IN_GT_U32_HEX_regAddr,
+    &PX_IN_GT_U32_HEX_regMask,
+    &PX_IN_CPSS_DIAG_TEST_PROFILE_ENT_profile,
+    &PX_OUT_GT_BOOL_PTR_testStatusPtr,
+    &PX_OUT_GT_U32_HEX_PTR_readValPtr,
+    &PX_OUT_GT_U32_HEX_PTR_writeValPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDataIntegrityShadowTableSizeGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_INOUT_CPSS_PX_LOGICAL_SHADOW_TABLES_INFO_STC_PTR_tablesInfoPtr,
+    &PX_OUT_GT_U32_PTR_totalMemSizePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagRegsDump_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_INOUT_GT_U32_PTR_regsNumPtr,
+    &PX_IN_GT_U32_HEX_offset,
+    &PX_OUT_GT_U32_HEX_PTR_regAddrPtr,
+    &PX_OUT_GT_U32_HEX_PTR_regDataPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagBistResultsGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_OUT_CPSS_PX_DIAG_BIST_STATUS_ENT_PTR_resultsStatusPtr,
+    &PX_OUT_CPSS_PX_DIAG_BIST_RESULT_STC_PTR_resultsArr,
+    &PX_INOUT_GT_U32_PTR_resultsNumPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDeviceTemperatureSensorsSelectGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_OUT_CPSS_PX_DIAG_TEMPERATURE_SENSOR_ENT_PTR_sensorTypePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDeviceTemperatureGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_OUT_GT_32_PTR_temperaturePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDeviceTemperatureThresholdGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_OUT_GT_32_PTR_thresholdValuePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagAllRegTest_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_OUT_GT_BOOL_PTR_testStatusPtr,
+    &PX_OUT_GT_U32_HEX_PTR_badRegPtr,
+    &PX_OUT_GT_U32_HEX_PTR_readValPtr,
+    &PX_OUT_GT_U32_HEX_PTR_writeValPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagRegsNumGet_PARAMS[] =  {
+    &PX_IN_GT_SW_DEV_NUM_devNum,
+    &PX_OUT_GT_U32_PTR_regsNumPtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagDeviceVoltageGet_PARAMS[] =  {
+    &PX_IN_GT_U8_devNum,
+    &PX_IN_GT_U32_sensorNum,
+    &PX_OUT_GT_U32_PTR_voltagePtr
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagRegWrite_PARAMS[] =  {
+    &PX_IN_GT_UINTPTR_baseAddr,
+    &PX_IN_CPSS_PP_INTERFACE_CHANNEL_ENT_ifChannel,
+    &PX_IN_CPSS_DIAG_PP_REG_TYPE_ENT_regType,
+    &PX_IN_GT_U32_HEX_offset,
+    &PX_IN_GT_U32_HEX_data,
+    &PX_IN_GT_BOOL_doByteSwap
+};
+const PRV_CPSS_LOG_FUNC_PARAM_STC * const cpssPxDiagRegRead_PARAMS[] =  {
+    &PX_IN_GT_UINTPTR_baseAddr,
+    &PX_IN_CPSS_PP_INTERFACE_CHANNEL_ENT_ifChannel,
+    &PX_IN_CPSS_DIAG_PP_REG_TYPE_ENT_regType,
+    &PX_IN_GT_U32_HEX_offset,
+    &PX_OUT_GT_U32_HEX_PTR_dataPtr,
+    &PX_IN_GT_BOOL_doByteSwap
+};
+
+
+/********* lib API DB *********/
+
+static const PRV_CPSS_LOG_FUNC_ENTRY_STC prvCpssPxDiagLogLibDb[] = {
+    {"cpssPxDiagRegsNumGet", 2, cpssPxDiagRegsNumGet_PARAMS, NULL},
+    {"cpssPxDiagResetAndInitControllerRegsNumGet", 2, cpssPxDiagRegsNumGet_PARAMS, NULL},
+    {"cpssPxDiagRegWrite", 6, cpssPxDiagRegWrite_PARAMS, NULL},
+    {"cpssPxDiagRegRead", 6, cpssPxDiagRegRead_PARAMS, NULL},
+    {"cpssPxDiagRegsDump", 5, cpssPxDiagRegsDump_PARAMS, NULL},
+    {"cpssPxDiagResetAndInitControllerRegsDump", 5, cpssPxDiagRegsDump_PARAMS, NULL},
+    {"cpssPxDiagRegTest", 7, cpssPxDiagRegTest_PARAMS, NULL},
+    {"cpssPxDiagAllRegTest", 5, cpssPxDiagAllRegTest_PARAMS, NULL},
+    {"cpssPxDiagDeviceTemperatureSensorsSelectSet", 2, cpssPxDiagDeviceTemperatureSensorsSelectSet_PARAMS, NULL},
+    {"cpssPxDiagDeviceTemperatureSensorsSelectGet", 2, cpssPxDiagDeviceTemperatureSensorsSelectGet_PARAMS, NULL},
+    {"cpssPxDiagDeviceTemperatureThresholdSet", 2, cpssPxDiagDeviceTemperatureThresholdSet_PARAMS, NULL},
+    {"cpssPxDiagDeviceTemperatureThresholdGet", 2, cpssPxDiagDeviceTemperatureThresholdGet_PARAMS, NULL},
+    {"cpssPxDiagDeviceTemperatureGet", 2, cpssPxDiagDeviceTemperatureGet_PARAMS, NULL},
+    {"cpssPxDiagDeviceVoltageGet", 3, cpssPxDiagDeviceVoltageGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortTransmitModeSet", 4, cpssPxDiagPrbsPortTransmitModeSet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortTransmitModeGet", 4, cpssPxDiagPrbsPortTransmitModeGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortGenerateEnableSet", 4, cpssPxDiagPrbsPortGenerateEnableSet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortGenerateEnableGet", 4, cpssPxDiagPrbsPortGenerateEnableGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortCheckEnableSet", 4, cpssPxDiagPrbsPortGenerateEnableSet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortCheckEnableGet", 4, cpssPxDiagPrbsPortGenerateEnableGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortCheckReadyGet", 3, cpssPxDiagPrbsPortCheckReadyGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsPortStatusGet", 5, cpssPxDiagPrbsPortStatusGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsCyclicDataSet", 4, cpssPxDiagPrbsCyclicDataSet_PARAMS, NULL},
+    {"cpssPxDiagPrbsCyclicDataGet", 4, cpssPxDiagPrbsCyclicDataGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsSerdesTestEnableSet", 4, cpssPxDiagPrbsPortGenerateEnableSet_PARAMS, NULL},
+    {"cpssPxDiagPrbsSerdesTestEnableGet", 4, cpssPxDiagPrbsPortGenerateEnableGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsSerdesTransmitModeSet", 4, cpssPxDiagPrbsPortTransmitModeSet_PARAMS, NULL},
+    {"cpssPxDiagPrbsSerdesTransmitModeGet", 4, cpssPxDiagPrbsPortTransmitModeGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsSerdesCounterClearOnReadEnableSet", 4, cpssPxDiagPrbsPortGenerateEnableSet_PARAMS, NULL},
+    {"cpssPxDiagPrbsSerdesCounterClearOnReadEnableGet", 4, cpssPxDiagPrbsPortGenerateEnableGet_PARAMS, NULL},
+    {"cpssPxDiagPrbsSerdesStatusGet", 6, cpssPxDiagPrbsSerdesStatusGet_PARAMS, NULL},
+    {"cpssPxDiagBistTriggerAllSet", 1, prvCpssLogGenDevNum2_PARAMS, NULL},
+    {"cpssPxDiagBistResultsGet", 4, cpssPxDiagBistResultsGet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityEventsGet", 5, cpssPxDiagDataIntegrityEventsGet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityEventMaskSet", 4, cpssPxDiagDataIntegrityEventMaskSet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityEventMaskGet", 4, cpssPxDiagDataIntegrityEventMaskGet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityErrorInfoGet", 7, cpssPxDiagDataIntegrityErrorInfoGet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityErrorInjectionConfigSet", 4, cpssPxDiagDataIntegrityErrorInjectionConfigSet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityErrorInjectionConfigGet", 4, cpssPxDiagDataIntegrityErrorInjectionConfigGet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityErrorCountEnableSet", 4, cpssPxDiagDataIntegrityErrorCountEnableSet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityErrorCountEnableGet", 4, cpssPxDiagDataIntegrityErrorCountEnableGet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityProtectionTypeGet", 3, cpssPxDiagDataIntegrityProtectionTypeGet_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityTableScan", 5, cpssPxDiagDataIntegrityTableScan_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityTableEntryFix", 2, cpssPxDiagDataIntegrityTableEntryFix_PARAMS, NULL},
+    {"cpssPxDiagDataIntegrityShadowTableSizeGet", 3, cpssPxDiagDataIntegrityShadowTableSizeGet_PARAMS, NULL},
+    {"cpssPxDiagPacketGeneratorConnectSet", 4, cpssPxDiagPacketGeneratorConnectSet_PARAMS, NULL},
+    {"cpssPxDiagPacketGeneratorConnectGet", 4, cpssPxDiagPacketGeneratorConnectGet_PARAMS, NULL},
+    {"cpssPxDiagPacketGeneratorTransmitEnable", 3, prvCpssLogGenDevNumPortNumEnable3_PARAMS, NULL},
+    {"cpssPxDiagPacketGeneratorBurstTransmitStatusGet", 3, cpssPxDiagPacketGeneratorBurstTransmitStatusGet_PARAMS, NULL},
+};
+
+/******** DB Access Function ********/
+void prvCpssLogParamLibDbGet_PX_CPSS_LOG_LIB_DIAG(
+    OUT const PRV_CPSS_LOG_FUNC_ENTRY_STC ** logFuncDbPtrPtr,
+    OUT GT_U32 * logFuncDbSizePtr
+)
+{
+    *logFuncDbPtrPtr = prvCpssPxDiagLogLibDb;
+    *logFuncDbSizePtr = sizeof(prvCpssPxDiagLogLibDb) / sizeof(PRV_CPSS_LOG_FUNC_ENTRY_STC);
+}
+

@@ -1,0 +1,149 @@
+diff --git a/saiShellCWrappers/include/saiShellStp.h b/saiShellCWrappers/include/saiShellStp.h
+index f7549c73..e36b9668 100644
+--- a/saiShellCWrappers/include/saiShellStp.h
++++ b/saiShellCWrappers/include/saiShellStp.h
+@@ -9,6 +9,26 @@
+ extern "C" {
+ #endif
+ 
++#define ADD_PARAM(num) sai_object_id_t stp##num, sai_object_id_t bridge_port##num, sai_stp_port_state_t state##num
++
++#define REM_PARAM(num) sai_object_id_t stp_port_id##num
++
++sai_object_id_t sai_bulk_create_stp_ports(sai_object_id_t switch_id, sai_bulk_op_error_mode_t mode, uint32_t count,
++ADD_PARAM(1),ADD_PARAM(2),ADD_PARAM(3),ADD_PARAM(4),ADD_PARAM(5),ADD_PARAM(6),ADD_PARAM(7),ADD_PARAM(8),ADD_PARAM(9),ADD_PARAM(10),
++ADD_PARAM(11),ADD_PARAM(12),ADD_PARAM(13),ADD_PARAM(14),ADD_PARAM(15),ADD_PARAM(16),ADD_PARAM(17),ADD_PARAM(18),ADD_PARAM(19),ADD_PARAM(20),
++ADD_PARAM(21),ADD_PARAM(22),ADD_PARAM(23),ADD_PARAM(24),ADD_PARAM(25),ADD_PARAM(26),ADD_PARAM(27),ADD_PARAM(28),ADD_PARAM(29),ADD_PARAM(30),
++ADD_PARAM(31),ADD_PARAM(32),ADD_PARAM(33),ADD_PARAM(34),ADD_PARAM(35),ADD_PARAM(36),ADD_PARAM(37),ADD_PARAM(38),ADD_PARAM(39),ADD_PARAM(40),
++ADD_PARAM(41),ADD_PARAM(42),ADD_PARAM(43),ADD_PARAM(44),ADD_PARAM(45),ADD_PARAM(46),ADD_PARAM(47),ADD_PARAM(48),ADD_PARAM(49),ADD_PARAM(50),
++ADD_PARAM(51),ADD_PARAM(52));
++
++sai_status_t sai_bulk_remove_stp_ports(sai_bulk_op_error_mode_t mode, uint32_t count,
++REM_PARAM(1),REM_PARAM(2),REM_PARAM(3),REM_PARAM(4),REM_PARAM(5),REM_PARAM(6),REM_PARAM(7),REM_PARAM(8),REM_PARAM(9),REM_PARAM(10),
++REM_PARAM(11),REM_PARAM(12),REM_PARAM(13),REM_PARAM(14),REM_PARAM(15),REM_PARAM(16),REM_PARAM(17),REM_PARAM(18),REM_PARAM(19),REM_PARAM(20),
++REM_PARAM(21),REM_PARAM(22),REM_PARAM(23),REM_PARAM(24),REM_PARAM(25),REM_PARAM(26),REM_PARAM(27),REM_PARAM(28),REM_PARAM(29),REM_PARAM(30),
++REM_PARAM(31),REM_PARAM(32),REM_PARAM(33),REM_PARAM(34),REM_PARAM(35),REM_PARAM(36),REM_PARAM(37),REM_PARAM(38),REM_PARAM(39),REM_PARAM(40),
++REM_PARAM(41),REM_PARAM(42),REM_PARAM(43),REM_PARAM(44),REM_PARAM(45),REM_PARAM(46),REM_PARAM(47),REM_PARAM(48),REM_PARAM(49),REM_PARAM(50),
++REM_PARAM(51),REM_PARAM(52));
++
+ sai_object_id_t sai_create_stp_port_default(sai_object_id_t switch_id, sai_object_id_t stp, sai_object_id_t bridge_port, sai_stp_port_state_t state);
+ 
+ sai_object_id_t sai_create_stp_port_custom(sai_object_id_t switch_id, sai_object_id_t stp, sai_object_id_t bridge_port, sai_stp_port_state_t state);
+diff --git a/saiShellCWrappers/saiShellStp.c b/saiShellCWrappers/saiShellStp.c
+index b09dc003..7310def2 100644
+--- a/saiShellCWrappers/saiShellStp.c
++++ b/saiShellCWrappers/saiShellStp.c
+@@ -8,6 +8,106 @@
+ #include "xpSaiUtil.h"
+ 
+ 
++#define ATTR_VAL(name,id) name##id
++
++#define ADD_ATTR(i) attr_list[i-1][0].value.oid = ATTR_VAL(stp,i);\
++	attr_list[i-1][1].value.oid = ATTR_VAL(bridge_port,i);\
++	attr_list[i-1][2].value.s32 = ATTR_VAL(state,i);
++
++#define REM_ATTR(i)  obj_list[i-1] = ATTR_VAL(stp_port_id,i);
++
++sai_object_id_t sai_bulk_create_stp_ports(sai_object_id_t switch_id, sai_bulk_op_error_mode_t mode, uint32_t count,
++ADD_PARAM(1),ADD_PARAM(2),ADD_PARAM(3),ADD_PARAM(4),ADD_PARAM(5),ADD_PARAM(6),ADD_PARAM(7),ADD_PARAM(8),ADD_PARAM(9),ADD_PARAM(10),
++ADD_PARAM(11),ADD_PARAM(12),ADD_PARAM(13),ADD_PARAM(14),ADD_PARAM(15),ADD_PARAM(16),ADD_PARAM(17),ADD_PARAM(18),ADD_PARAM(19),ADD_PARAM(20),
++ADD_PARAM(21),ADD_PARAM(22),ADD_PARAM(23),ADD_PARAM(24),ADD_PARAM(25),ADD_PARAM(26),ADD_PARAM(27),ADD_PARAM(28),ADD_PARAM(29),ADD_PARAM(30),
++ADD_PARAM(31),ADD_PARAM(32),ADD_PARAM(33),ADD_PARAM(34),ADD_PARAM(35),ADD_PARAM(36),ADD_PARAM(37),ADD_PARAM(38),ADD_PARAM(39),ADD_PARAM(40),
++ADD_PARAM(41),ADD_PARAM(42),ADD_PARAM(43),ADD_PARAM(44),ADD_PARAM(45),ADD_PARAM(46),ADD_PARAM(47),ADD_PARAM(48),ADD_PARAM(49),ADD_PARAM(50),
++ADD_PARAM(51),ADD_PARAM(52))
++{
++    uint32_t attr_count[60];
++    sai_attribute_t attr_list[60][3];
++    const sai_attribute_t *final_attr_list[60];
++    sai_object_id_t ret = 0;
++    uint32_t i = 0;
++
++    ADD_ATTR(1); ADD_ATTR(2); ADD_ATTR(3); ADD_ATTR(4); ADD_ATTR(5); ADD_ATTR(6); ADD_ATTR(7); ADD_ATTR(8); ADD_ATTR(9); ADD_ATTR(10);
++    ADD_ATTR(11); ADD_ATTR(12); ADD_ATTR(13); ADD_ATTR(14); ADD_ATTR(15); ADD_ATTR(16); ADD_ATTR(17); ADD_ATTR(18); ADD_ATTR(19); ADD_ATTR(20);
++    ADD_ATTR(21); ADD_ATTR(22); ADD_ATTR(23); ADD_ATTR(24); ADD_ATTR(25); ADD_ATTR(26); ADD_ATTR(27); ADD_ATTR(28); ADD_ATTR(29); ADD_ATTR(30);
++    ADD_ATTR(31); ADD_ATTR(32); ADD_ATTR(33); ADD_ATTR(34); ADD_ATTR(35); ADD_ATTR(36); ADD_ATTR(37); ADD_ATTR(38); ADD_ATTR(39); ADD_ATTR(40);
++    ADD_ATTR(41); ADD_ATTR(42); ADD_ATTR(43); ADD_ATTR(44); ADD_ATTR(45); ADD_ATTR(46); ADD_ATTR(47); ADD_ATTR(48); ADD_ATTR(49); ADD_ATTR(50);
++    ADD_ATTR(51); ADD_ATTR(52);
++
++    sai_object_id_t *stp_port_ids_out = (sai_object_id_t*) calloc(count,sizeof(sai_object_id_t)) ;
++    if(!stp_port_ids_out) return ret;
++    sai_status_t *stp_port_status_out = (sai_status_t*) calloc(count,sizeof(sai_status_t)) ;
++    if(!stp_port_status_out) {
++        free (stp_port_ids_out);
++        return ret;
++    }
++    for(i=0;i<count;i++)
++    {
++        attr_list[i][0].id = SAI_STP_PORT_ATTR_STP;
++        attr_list[i][1].id = SAI_STP_PORT_ATTR_BRIDGE_PORT;
++        attr_list[i][2].id = SAI_STP_PORT_ATTR_STATE;
++        final_attr_list[i] = attr_list[i];
++        attr_count[i] = 3;
++        stp_port_ids_out[i] = 0;
++        stp_port_status_out[i] = 0;
++    }
++
++    if(((sai_stp_api_t*)(xpSaiApiTableArr[SAI_API_STP])))
++    {
++        ((sai_stp_api_t*)(xpSaiApiTableArr[SAI_API_STP]))->create_stp_ports(switch_id, count, attr_count,  final_attr_list, mode, stp_port_ids_out, stp_port_status_out );
++    }
++    for(i=0;i<count;i++)
++        printf("stp_port_id_out = %" PRIu64 ", status : %x\n",stp_port_ids_out[i], stp_port_status_out[i]);
++    ret = stp_port_ids_out[0];
++
++    free(stp_port_ids_out);
++    free(stp_port_status_out);
++
++    return ret;
++}
++
++sai_status_t sai_bulk_remove_stp_ports(sai_bulk_op_error_mode_t mode, uint32_t count,
++REM_PARAM(1),REM_PARAM(2),REM_PARAM(3),REM_PARAM(4),REM_PARAM(5),REM_PARAM(6),REM_PARAM(7),REM_PARAM(8),REM_PARAM(9),REM_PARAM(10),
++REM_PARAM(11),REM_PARAM(12),REM_PARAM(13),REM_PARAM(14),REM_PARAM(15),REM_PARAM(16),REM_PARAM(17),REM_PARAM(18),REM_PARAM(19),REM_PARAM(20),
++REM_PARAM(21),REM_PARAM(22),REM_PARAM(23),REM_PARAM(24),REM_PARAM(25),REM_PARAM(26),REM_PARAM(27),REM_PARAM(28),REM_PARAM(29),REM_PARAM(30),
++REM_PARAM(31),REM_PARAM(32),REM_PARAM(33),REM_PARAM(34),REM_PARAM(35),REM_PARAM(36),REM_PARAM(37),REM_PARAM(38),REM_PARAM(39),REM_PARAM(40),
++REM_PARAM(41),REM_PARAM(42),REM_PARAM(43),REM_PARAM(44),REM_PARAM(45),REM_PARAM(46),REM_PARAM(47),REM_PARAM(48),REM_PARAM(49),REM_PARAM(50),
++REM_PARAM(51),REM_PARAM(52))
++{
++    sai_object_id_t obj_list[60];
++    sai_object_id_t final_obj_list[60];
++    uint32_t i = 0;
++    sai_status_t ret = SAI_STATUS_SUCCESS;
++
++    REM_ATTR(1); REM_ATTR(2); REM_ATTR(3); REM_ATTR(4); REM_ATTR(5); REM_ATTR(6); REM_ATTR(7); REM_ATTR(8); REM_ATTR(9); REM_ATTR(10);
++    REM_ATTR(11); REM_ATTR(12); REM_ATTR(13); REM_ATTR(14); REM_ATTR(15); REM_ATTR(16); REM_ATTR(17); REM_ATTR(18); REM_ATTR(19); REM_ATTR(20);
++    REM_ATTR(21); REM_ATTR(22); REM_ATTR(23); REM_ATTR(24); REM_ATTR(25); REM_ATTR(26); REM_ATTR(27); REM_ATTR(28); REM_ATTR(29); REM_ATTR(30);
++    REM_ATTR(31); REM_ATTR(32); REM_ATTR(33); REM_ATTR(34); REM_ATTR(35); REM_ATTR(36); REM_ATTR(37); REM_ATTR(38); REM_ATTR(39); REM_ATTR(40);
++    REM_ATTR(41); REM_ATTR(42); REM_ATTR(43); REM_ATTR(44); REM_ATTR(45); REM_ATTR(46); REM_ATTR(47); REM_ATTR(48); REM_ATTR(49); REM_ATTR(50);
++    REM_ATTR(51); REM_ATTR(52);
++
++    sai_status_t *stp_port_status_out = (sai_status_t*) calloc(count,sizeof(sai_status_t)) ;
++    for(i=0;i<count;i++)
++    {
++        final_obj_list[i] = obj_list[i];
++        stp_port_status_out[i] = 0;
++    }
++
++    if(((sai_stp_api_t*)(xpSaiApiTableArr[SAI_API_STP])))
++    {
++        ret = ((sai_stp_api_t*)(xpSaiApiTableArr[SAI_API_STP]))->remove_stp_ports( count, final_obj_list, mode, stp_port_status_out );
++    }
++    for(i=0;i<count;i++)
++        printf("stp_port_status_out = %x\n", stp_port_status_out[i]);
++
++    free(stp_port_status_out);
++
++    return ret;
++}
++
+ sai_object_id_t sai_create_stp_port_default(sai_object_id_t switch_id, sai_object_id_t stp, sai_object_id_t bridge_port, sai_stp_port_state_t state)
+ {
+ 	uint32_t attr_count = 3;
+@@ -314,4 +414,4 @@ sai_status_t sai_remove_stp(sai_object_id_t stp_id)
+ 	}
+ 
+ 	return ret;
+-}
+\ No newline at end of file
++}

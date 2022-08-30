@@ -1,0 +1,324 @@
+// TAG:               HSR-SAN
+// Short Description: restore 'deefault' configures after HSR-SAN switch test
+// Description:       restore 'deefault' Configures HSR-SAN (High-availability Seamless Redundancy , for single attached network devices).
+end
+configure
+
+
+tpid device ${dev} direction ingress index 1 etherType 0x8100  tag-type 4-bytes-tag
+
+tpid ingress profile 0 device ${dev} ether_type_index 0 tpid-range 0-7
+tpid ingress profile 1 device ${dev} ether_type_index 1 tpid-range 0-7
+
+
+interface range ethernet ${dev}/${ringA},${ringB},${interlink}
+tpid ingress profile 0 ether_type_index 0 is_default true
+exit
+
+//102 divided by 6
+access-list device ${dev} pcl-ID 10
+delete rule-id 102
+exit
+
+//108 divided by 6
+access-list device ${dev} pcl-ID 11
+delete rule-id 108 
+exit
+
+//114 divided by 6
+access-list device ${dev} pcl-ID 12
+delete rule-id 114 
+exit
+
+
+
+interface ethernet ${dev}/${ringA}
+no service-acl pcl-ID 10
+exit
+interface ethernet ${dev}/${ringB}
+no service-acl pcl-ID 11
+exit 
+
+interface ethernet ${dev}/${interlink}
+no service-acl pcl-ID 12
+exit 
+
+delete access-list device ${dev} pcl-id 10 
+delete access-list device ${dev} pcl-id 11 
+delete access-list device ${dev} pcl-id 12 
+
+//check content before delete specific index
+do shell-execute cpssDxChHsrPrpFdbDump ${dev}
+
+// delete before changing the partition mode 
+// delete the DDE entry for MAC-A with seqNum = 1000
+do cpss-api call cpssDxChHsrPrpDdeEntryInvalidate devNum ${dev} index 20736
+// delete the DDE entry for MAC-A with seqNum = 1001
+do cpss-api call cpssDxChHsrPrpDdeEntryInvalidate devNum ${dev} index 8448
+// delete the DDE entry for MAC-A with seqNum = 1002
+do cpss-api call cpssDxChHsrPrpDdeEntryInvalidate devNum ${dev} index 17361
+// delete the DDE entry for MAC-B with seqNum = 1003
+do cpss-api call cpssDxChHsrPrpDdeEntryInvalidate devNum ${dev} index 5952
+//delete the DDE entry for MAC-A with seqNum = 1004
+do cpss-api call cpssDxChHsrPrpDdeEntryInvalidate devNum ${dev} index 18833
+//delete the DDE entry for MAC-A with seqNum = 1005
+do cpss-api call cpssDxChHsrPrpDdeEntryInvalidate devNum ${dev} index 20353
+
+//check content after delete specific index
+do shell-execute cpssDxChHsrPrpFdbDump ${dev}
+
+
+do cpss-api call cpssDxChHsrPrpfdbPartitionModeSet devNum ${dev} mode CPSS_DXCH_HSR_PRP_FDB_PARTITION_MODE_DDE_NONE_E
+do cpss-api call cpssDxChHsrPrpHPortSrcEPortBaseSet devNum ${dev} baseEport 0x03F0
+
+callCpssAPI cpssDxChHsrPrpHPortEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "hport",      0 },
+    { "IN", "CPSS_DXCH_HSR_PRP_HPORT_ENTRY_STC", "infoPtr",
+        { pntLookupMode = 0 ,
+          fdbDdlMode = 0,
+          lreRingPortType = 0,
+          lreInstance = 0,
+          defaultForwardingBmp = 0,
+          srcIsMeBmp = 0,
+          srcDuplicateDiscardBmp = 0x0
+        }
+    }
+}
+>>>
+
+
+callCpssAPI cpssDxChHsrPrpHPortEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "hport",      1 },
+    { "IN", "CPSS_DXCH_HSR_PRP_HPORT_ENTRY_STC", "infoPtr",
+        { pntLookupMode = 0 ,
+          fdbDdlMode = 0,
+          lreRingPortType = 0,
+          lreInstance = 0,
+          defaultForwardingBmp = 0,
+          srcIsMeBmp = 0,
+          srcDuplicateDiscardBmp = 0x0
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChHsrPrpHPortEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "hport",      2 },
+    { "IN", "CPSS_DXCH_HSR_PRP_HPORT_ENTRY_STC", "infoPtr",
+        { pntLookupMode = 0 ,
+          fdbDdlMode = 0,
+          lreRingPortType = 0,
+          lreInstance = 0,
+          defaultForwardingBmp = 0,
+          srcDuplicateDiscardBmp = 0,
+          destToMeForwardingBmp  = 0
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChHsrPrpPntEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",      5 },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_OPER_ENT", "operation",      "CPSS_DXCH_HSR_PRP_PNT_OPER_SET_INVALID_E" },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_ENTRY_STC", "infoPtr",
+        { 
+        }
+    }
+}
+>>>
+
+
+callCpssAPI cpssDxChHsrPrpLreInstanceEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",      0 },
+    { "IN", "CPSS_DXCH_HSR_PRP_LRE_INSTANCE_ENTRY_STC", "infoPtr",
+        { numOfPorts = 10,
+          lowestHPort = 0,
+          eVidxMappingBase = 0
+        }
+    }
+}
+>>>
+
+do cpss-api call cpssDxChStreamSngEnableSet devNum ${dev} enable false
+
+// use resetSeqNum = true , to reset the counter from any previous run
+callCpssAPI cpssDxChStreamEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",      6 },
+    { "IN", "CPSS_DXCH_STREAM_SNG_IRF_ENTRY_STC", "sngIrfInfoPtr",
+        { seqNumAssignmentEnable = false,
+          resetSeqNum = true
+        }
+    }
+}
+>>>
+
+do cpss-api call cpssDxChBrgVlanPortRemoveTag0IfRxWithoutTag0EnableSet devNum ${dev} portNum ${ringA} enable false
+do cpss-api call cpssDxChBrgVlanPortRemoveTag0IfRxWithoutTag0EnableSet devNum ${dev} portNum ${ringB} enable false
+do cpss-api call cpssDxChBrgVlanPortRemoveTag0IfRxWithoutTag0EnableSet devNum ${dev} portNum ${interlink} enable false
+
+
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${ringA} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${ringB} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${interlink} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet devNum ${dev} portNum ${ringA} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet devNum ${dev} portNum ${ringB} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet devNum ${dev} portNum ${interlink} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1024 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1025 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1026 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1027 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1028 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1029 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1030 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1031 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = 0}
+        }
+    }
+}
+>>>
+
+do cpss-api call cpssDxChBrgNestVlanPortTargetUseIngressModeSet devNum ${dev} portNum ${ringA} mode CPSS_DXCH_BRG_NEST_VLAN_TARGET_USE_INGRESS_MODE_ALLOWED_E
+do cpss-api call cpssDxChBrgNestVlanPortTargetUseIngressModeSet devNum ${dev} portNum ${ringB} mode CPSS_DXCH_BRG_NEST_VLAN_TARGET_USE_INGRESS_MODE_ALLOWED_E
+do cpss-api call cpssDxChBrgNestVlanPortTargetUseIngressModeSet devNum ${dev} portNum ${interlink} mode CPSS_DXCH_BRG_NEST_VLAN_TARGET_USE_INGRESS_MODE_ALLOWED_E
+
+
+callCpssAPI cpssDxChBrgVlanPort8BTagInfoSet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "CPSS_DIRECTION_ENT", "direction",   "CPSS_DIRECTION_BOTH_E" },
+    { "IN", "GT_U32", "tpidEntryIndex",   1 },
+    { "IN", "CPSS_DXCH_BRG_VLAN_8B_TAG_PARSE_CONFIG_STC", "parseConfigPtr",
+        {
+            enable = false,
+            extractedValueOffset = 0,
+            hsrTag = false
+        }
+    }
+}
+>>>
+
+//clear the HPort counters
+do cpss-api call cpssDxChHsrPrpHPortEntryGet devNum ${dev} hPort 0
+do cpss-api call cpssDxChHsrPrpHPortEntryGet devNum ${dev} hPort 1
+do cpss-api call cpssDxChHsrPrpHPortEntryGet devNum ${dev} hPort 2
+
+tpid device ${dev} direction egress index 1 etherType 0x8100 tag-type 4-bytes-tag
+
+interface range ethernet ${dev}/${ringA},${ringB},${interlink}
+tpid egress bind 0 ether_type_index 0
+tpid egress bind 1 ether_type_index 0
+exit
+

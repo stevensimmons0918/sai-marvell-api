@@ -1,0 +1,44 @@
+# $(warning "Started")
+
+
+#List of subfolders to include in build
+MODULES := \
+ IOStream \
+ iterators \
+ luaCLI \
+ osNetworkStack \
+ rxEventHandler
+
+ifeq (y, $(CONFIG_INCLUDE_UTF))
+ MODULES += \
+  tgf \
+  trafficEngine
+else
+ ifeq (y, $(CONFIG_CMD_LUA_CLI))
+  MODULES += \
+   tgf \
+   trafficEngine
+ endif
+endif
+
+ifneq (,$(findstring DX, $(FAMILY)))
+  MODULES += \
+    auEventHandler \
+    cpssEnabler
+endif
+
+#List of files to include in list
+FILES :=
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINEXTUTILS_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

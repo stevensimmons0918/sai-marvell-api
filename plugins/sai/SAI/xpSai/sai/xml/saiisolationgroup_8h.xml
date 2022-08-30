@@ -1,0 +1,610 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saiisolationgroup_8h" kind="file" language="C++">
+    <compoundname>saiisolationgroup.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="138">
+        <label>inc/saiisolationgroup.h</label>
+        <link refid="saiisolationgroup.h"/>
+        <childnode refid="139" relation="include">
+        </childnode>
+      </node>
+      <node id="141">
+        <label>stdbool.h</label>
+      </node>
+      <node id="140">
+        <label>stdint.h</label>
+      </node>
+      <node id="142">
+        <label>sys/types.h</label>
+      </node>
+      <node id="139">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="143">
+        <label>inc/saiisolationgroup.h</label>
+        <link refid="saiisolationgroup.h"/>
+        <childnode refid="144" relation="include">
+        </childnode>
+      </node>
+      <node id="144">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__isolation__group__api__t" prot="public">_sai_isolation_group_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4d6498ab6812496757713b4bac293470" prot="public" static="no">
+        <name>_sai_isolation_group_type_t</name>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga4d6498ab6812496757713b4bac293470a16a5ae88272efc631a16fcf5c928f4dc" prot="public">
+          <name>SAI_ISOLATION_GROUP_TYPE_PORT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Isolation group consists of ports. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga4d6498ab6812496757713b4bac293470a9d41b34de675646fdbccd652beeee60e" prot="public">
+          <name>SAI_ISOLATION_GROUP_TYPE_BRIDGE_PORT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Isolation group consists of bridge ports. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Isolation group type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="40" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="39" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga09b520551b0df083c5a7e608b4493323" prot="public" static="no">
+        <name>_sai_isolation_group_attr_t</name>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a1d9c592f7e8d37b149c379cecdc47e3b" prot="public">
+          <name>SAI_ISOLATION_GROUP_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323aa93d5c9ed652bfb460e9c03a157065b7" prot="public">
+          <name>SAI_ISOLATION_GROUP_ATTR_TYPE</name>
+          <initializer>= SAI_ISOLATION_GROUP_ATTR_START</initializer>
+          <briefdescription>
+<para>Isolation group type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_isolation_group_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323acf5e18f03058a704d242bd91ae81106c" prot="public">
+          <name>SAI_ISOLATION_GROUP_ATTR_ISOLATION_MEMBER_LIST</name>
+          <briefdescription>
+<para>Isolation group member list. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_ISOLATION_GROUP_MEMBER </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a66cec32d12d57570b6945406eb46aafc" prot="public">
+          <name>SAI_ISOLATION_GROUP_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323aba446d102a818f62a81a5f094ae49916" prot="public">
+          <name>SAI_ISOLATION_GROUP_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a3c60e8ef24e1b3572129f82d42844d55" prot="public">
+          <name>SAI_ISOLATION_GROUP_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attributes for isolation group. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="53" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="52" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga779716623722a8566361db74232cc100" prot="public" static="no">
+        <name>_sai_isolation_group_member_attr_t</name>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a90e0ab6605d1a5d3c6664552f5b000ec" prot="public">
+          <name>SAI_ISOLATION_GROUP_MEMBER_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a7c078e248c89830719fcadad7906caa2" prot="public">
+          <name>SAI_ISOLATION_GROUP_MEMBER_ATTR_ISOLATION_GROUP_ID</name>
+          <initializer>= SAI_ISOLATION_GROUP_MEMBER_ATTR_START</initializer>
+          <briefdescription>
+<para>Isolation group id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_ISOLATION_GROUP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100ac20af8da1c817314c5b7b87433ea7d57" prot="public">
+          <name>SAI_ISOLATION_GROUP_MEMBER_ATTR_ISOLATION_OBJECT</name>
+          <briefdescription>
+<para>Isolation group member object. </para>          </briefdescription>
+          <detaileddescription>
+<para>If the isolation group type is SAI_ISOLATION_GROUP_TYPE_PORT, then the object should be of type SAI_OBJECT_TYPE_PORT. If the isolation group type is SAI_ISOLATION_GROUP_TYPE_BRIDGE_PORT, then the object should be of type SAI_OBJECT_TYPE_BRIDGE_PORT.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT, SAI_OBJECT_TYPE_BRIDGE_PORT </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100abfa49d26d23a78aaed1939bb0737a493" prot="public">
+          <name>SAI_ISOLATION_GROUP_MEMBER_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a291f79fd81a4e8eeb073af847e2cd85c" prot="public">
+          <name>SAI_ISOLATION_GROUP_MEMBER_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a5029d41473b66bf8ace9b4408b935e06" prot="public">
+          <name>SAI_ISOLATION_GROUP_MEMBER_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="90" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="89" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga905fd50ef6cd308726b82aa6d89c173c" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4d6498ab6812496757713b4bac293470" kindref="member">_sai_isolation_group_type_t</ref></type>
+        <definition>typedef enum _sai_isolation_group_type_t  sai_isolation_group_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_isolation_group_type_t</name>
+        <briefdescription>
+<para>Isolation group type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="47" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga8a8dbbebd0f94e3eb5e5dd84372512e9" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga09b520551b0df083c5a7e608b4493323" kindref="member">_sai_isolation_group_attr_t</ref></type>
+        <definition>typedef enum _sai_isolation_group_attr_t  sai_isolation_group_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_isolation_group_attr_t</name>
+        <briefdescription>
+<para>Attributes for isolation group. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga7624612861c0b3cb5e0a8ba7caedc79a" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga779716623722a8566361db74232cc100" kindref="member">_sai_isolation_group_member_attr_t</ref></type>
+        <definition>typedef enum _sai_isolation_group_member_attr_t  sai_isolation_group_member_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_isolation_group_member_attr_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="130" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gabe85a98b776a52ae8e0a6e0e6a967312" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_isolation_group_fn) (_Out_ sai_object_id_t *isolation_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *isolation_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_isolation_group_fn</name>
+        <briefdescription>
+<para>Create isolation group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">isolation_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="142" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gaec11cef947d3dbbcc3c56aa3340f18e8" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_isolation_group_fn) (_In_ sai_object_id_t isolation_group_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t isolation_group_id)</argsstring>
+        <name>sai_remove_isolation_group_fn</name>
+        <briefdescription>
+<para>Remove isolation group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">isolation_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="155" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga466202e45b20c036d15da892a3445b85" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_isolation_group_attribute_fn) (_In_ sai_object_id_t isolation_group_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t isolation_group_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_isolation_group_attribute_fn</name>
+        <briefdescription>
+<para>Set isolation group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">isolation_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="166" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4cd6d3efff252590775fd80335fc00d4" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_isolation_group_attribute_fn) (_In_ sai_object_id_t isolation_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t isolation_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_isolation_group_attribute_fn</name>
+        <briefdescription>
+<para>Get isolation group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">isolation_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="179" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gab09efc9afb6b4ab12aef49ec568294a5" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_isolation_group_member_fn) (_Out_ sai_object_id_t *isolation_group_member_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *isolation_group_member_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_isolation_group_member_fn</name>
+        <briefdescription>
+<para>Create isolation group member. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">isolation_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group member id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="194" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga7425c88bee129249830dcc40ec24887a" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_isolation_group_member_fn) (_In_ sai_object_id_t isolation_group_member_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t isolation_group_member_id)</argsstring>
+        <name>sai_remove_isolation_group_member_fn</name>
+        <briefdescription>
+<para>Remove isolation group member. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">isolation_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group member id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="207" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga9303fcaf020a338e3d3df60dd2bebdb1" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_isolation_group_member_attribute_fn) (_In_ sai_object_id_t isolation_group_member_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t isolation_group_member_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_isolation_group_member_attribute_fn</name>
+        <briefdescription>
+<para>Set isolation group member attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">isolation_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group member id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="218" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga68338e406de33cf22b804e02fef914ea" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_isolation_group_member_attribute_fn) (_In_ sai_object_id_t isolation_group_member_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t isolation_group_member_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_isolation_group_member_attribute_fn</name>
+        <briefdescription>
+<para>Get isolation group member attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">isolation_group_member_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Isolation group member id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="231" column="1" bodyfile="inc/saiisolationgroup.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga6cac2b27797f071b238d0386e0b72b4f" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__isolation__group__api__t" kindref="compound">_sai_isolation_group_api_t</ref></type>
+        <definition>typedef struct _sai_isolation_group_api_t  sai_isolation_group_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_isolation_group_api_t</name>
+        <briefdescription>
+<para>Isolation group method table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiisolationgroup.h" line="250" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Isolation Group interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2018 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIISOLATIONGROUP_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIISOLATIONGROUP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4d6498ab6812496757713b4bac293470" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4d6498ab6812496757713b4bac293470" kindref="member">_sai_isolation_group_type_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga4d6498ab6812496757713b4bac293470a16a5ae88272efc631a16fcf5c928f4dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga4d6498ab6812496757713b4bac293470a16a5ae88272efc631a16fcf5c928f4dc" kindref="member">SAI_ISOLATION_GROUP_TYPE_PORT</ref>,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga4d6498ab6812496757713b4bac293470a9d41b34de675646fdbccd652beeee60e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga4d6498ab6812496757713b4bac293470a9d41b34de675646fdbccd652beeee60e" kindref="member">SAI_ISOLATION_GROUP_TYPE_BRIDGE_PORT</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}<sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga905fd50ef6cd308726b82aa6d89c173c" kindref="member">sai_isolation_group_type_t</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga09b520551b0df083c5a7e608b4493323" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga09b520551b0df083c5a7e608b4493323" kindref="member">_sai_isolation_group_attr_t</ref></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a1d9c592f7e8d37b149c379cecdc47e3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a1d9c592f7e8d37b149c379cecdc47e3b" kindref="member">SAI_ISOLATION_GROUP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323aa93d5c9ed652bfb460e9c03a157065b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323aa93d5c9ed652bfb460e9c03a157065b7" kindref="member">SAI_ISOLATION_GROUP_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a1d9c592f7e8d37b149c379cecdc47e3b" kindref="member">SAI_ISOLATION_GROUP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323acf5e18f03058a704d242bd91ae81106c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323acf5e18f03058a704d242bd91ae81106c" kindref="member">SAI_ISOLATION_GROUP_ATTR_ISOLATION_MEMBER_LIST</ref>,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a66cec32d12d57570b6945406eb46aafc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a66cec32d12d57570b6945406eb46aafc" kindref="member">SAI_ISOLATION_GROUP_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323aba446d102a818f62a81a5f094ae49916" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323aba446d102a818f62a81a5f094ae49916" kindref="member">SAI_ISOLATION_GROUP_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a3c60e8ef24e1b3572129f82d42844d55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga09b520551b0df083c5a7e608b4493323a3c60e8ef24e1b3572129f82d42844d55" kindref="member">SAI_ISOLATION_GROUP_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}<sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga8a8dbbebd0f94e3eb5e5dd84372512e9" kindref="member">sai_isolation_group_attr_t</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga779716623722a8566361db74232cc100" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga779716623722a8566361db74232cc100" kindref="member">_sai_isolation_group_member_attr_t</ref></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a90e0ab6605d1a5d3c6664552f5b000ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a90e0ab6605d1a5d3c6664552f5b000ec" kindref="member">SAI_ISOLATION_GROUP_MEMBER_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a7c078e248c89830719fcadad7906caa2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a7c078e248c89830719fcadad7906caa2" kindref="member">SAI_ISOLATION_GROUP_MEMBER_ATTR_ISOLATION_GROUP_ID</ref><sp/>=<sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a90e0ab6605d1a5d3c6664552f5b000ec" kindref="member">SAI_ISOLATION_GROUP_MEMBER_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100ac20af8da1c817314c5b7b87433ea7d57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100ac20af8da1c817314c5b7b87433ea7d57" kindref="member">SAI_ISOLATION_GROUP_MEMBER_ATTR_ISOLATION_OBJECT</ref>,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100abfa49d26d23a78aaed1939bb0737a493" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100abfa49d26d23a78aaed1939bb0737a493" kindref="member">SAI_ISOLATION_GROUP_MEMBER_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a291f79fd81a4e8eeb073af847e2cd85c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a291f79fd81a4e8eeb073af847e2cd85c" kindref="member">SAI_ISOLATION_GROUP_MEMBER_ATTR_CUSTOM_RANGE_START</ref><sp/><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a5029d41473b66bf8ace9b4408b935e06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gga779716623722a8566361db74232cc100a5029d41473b66bf8ace9b4408b935e06" kindref="member">SAI_ISOLATION_GROUP_MEMBER_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}<sp/>sai_isolation_group_member_attr_t;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gabe85a98b776a52ae8e0a6e0e6a967312" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gabe85a98b776a52ae8e0a6e0e6a967312" kindref="member">sai_create_isolation_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*isolation_group_id,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gaec11cef947d3dbbcc3c56aa3340f18e8" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gaec11cef947d3dbbcc3c56aa3340f18e8" kindref="member">sai_remove_isolation_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>isolation_group_id);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga466202e45b20c036d15da892a3445b85" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga466202e45b20c036d15da892a3445b85" kindref="member">sai_set_isolation_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>isolation_group_id,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4cd6d3efff252590775fd80335fc00d4" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4cd6d3efff252590775fd80335fc00d4" kindref="member">sai_get_isolation_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>isolation_group_id,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gab09efc9afb6b4ab12aef49ec568294a5" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gab09efc9afb6b4ab12aef49ec568294a5" kindref="member">sai_create_isolation_group_member_fn</ref>)(</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*isolation_group_member_id,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga7425c88bee129249830dcc40ec24887a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga7425c88bee129249830dcc40ec24887a" kindref="member">sai_remove_isolation_group_member_fn</ref>)(</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>isolation_group_member_id);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga9303fcaf020a338e3d3df60dd2bebdb1" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga9303fcaf020a338e3d3df60dd2bebdb1" kindref="member">sai_set_isolation_group_member_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>isolation_group_member_id,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga68338e406de33cf22b804e02fef914ea" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga68338e406de33cf22b804e02fef914ea" kindref="member">sai_get_isolation_group_member_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>isolation_group_member_id,</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="struct__sai__isolation__group__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__isolation__group__api__t" kindref="compound">_sai_isolation_group_api_t</ref></highlight></codeline>
+<codeline lineno="240"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gabe85a98b776a52ae8e0a6e0e6a967312" kindref="member">sai_create_isolation_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_isolation_group;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gaec11cef947d3dbbcc3c56aa3340f18e8" kindref="member">sai_remove_isolation_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_isolation_group;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga466202e45b20c036d15da892a3445b85" kindref="member">sai_set_isolation_group_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_isolation_group_attribute;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga4cd6d3efff252590775fd80335fc00d4" kindref="member">sai_get_isolation_group_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_isolation_group_attribute;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1gab09efc9afb6b4ab12aef49ec568294a5" kindref="member">sai_create_isolation_group_member_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_isolation_group_member;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga7425c88bee129249830dcc40ec24887a" kindref="member">sai_remove_isolation_group_member_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_isolation_group_member;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga9303fcaf020a338e3d3df60dd2bebdb1" kindref="member">sai_set_isolation_group_member_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>set_isolation_group_member_attribute;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga68338e406de33cf22b804e02fef914ea" kindref="member">sai_get_isolation_group_member_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>get_isolation_group_member_attribute;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}<sp/><ref refid="group___s_a_i_i_s_o_l_a_t_i_o_n_g_r_o_u_p_1ga6cac2b27797f071b238d0386e0b72b4f" kindref="member">sai_isolation_group_api_t</ref>;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saiisolationgroup.h"/>
+  </compounddef>
+</doxygen>

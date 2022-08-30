@@ -1,0 +1,40 @@
+diff --git a/common/src/cpss/common/labServices/port/gop/src/port/mac/mvHwsMacIf.c b/common/src/cpss/common/labServices/port/gop/src/port/mac/mvHwsMacIf.c
+index 4841564611..5767307b25 100755
+--- a/common/src/cpss/common/labServices/port/gop/src/port/mac/mvHwsMacIf.c
++++ b/common/src/cpss/common/labServices/port/gop/src/port/mac/mvHwsMacIf.c
+@@ -76,7 +76,7 @@ GT_STATUS mvHwsMacReset
+ {
+     GT_STATUS rc;
+ #if !defined (MV_HWS_REDUCED_BUILD_EXT_CM3) || defined(FALCON_DEV_SUPPORT)
+-    GT_U8 chipIdx = 0;
++    /* GT_U8 chipIdx = 0; */
+ #endif
+     if ((macType == MAC_NA) || (macType >= LAST_MAC))
+     {
+@@ -97,7 +97,7 @@ GT_STATUS mvHwsMacReset
+       PRV_NON_SHARED_MAC_DIR_MAC_IF_SRC_GLOBAL_VAR(hwsMacFuncsPtr)[devNum][macType]->macTypeGetFunc(), action);
+     osFclose(fdHws);
+ #endif
+-
++#if 0
+     /*protect mac clock enable*/
+ #if !defined (MV_HWS_REDUCED_BUILD_EXT_CM3) || defined(FALCON_DEV_SUPPORT)
+     if ( mvHwsMtipIsReducedPort(devNum, portMacNum) )
+@@ -115,14 +115,16 @@ GT_STATUS mvHwsMacReset
+                       chipIdx,
+ #endif
+                       MV_SEMA_PM_CM3);
++#endif
+     rc = PRV_NON_SHARED_MAC_DIR_MAC_IF_SRC_GLOBAL_VAR(hwsMacFuncsPtr)[devNum][macType]->macRestFunc(devNum, portGroup, portMacNum, portMode, action);
+     /*protect mac clock enable*/
+-
++#if 0
+     mvHwsHWAccessUnlock(devNum,
+ #if !defined (MV_HWS_REDUCED_BUILD_EXT_CM3) || defined(FALCON_DEV_SUPPORT)
+                       chipIdx,
+ #endif
+                       MV_SEMA_PM_CM3);
++#endif
+     return rc;
+ }
+ 

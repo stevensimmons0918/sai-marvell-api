@@ -1,0 +1,614 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__tunnel__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_tunnel_api_t</compoundname>
+    <includes refid="saitunnel_8h" local="no">saitunnel.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a7f35ad64d21cb3590f0e49f622df67fe" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga4493d8a8045573c56304f3f60ae6f5a1" kindref="member">sai_create_tunnel_map_fn</ref></type>
+        <definition>sai_create_tunnel_map_fn _sai_tunnel_api_t::create_tunnel_map</definition>
+        <argsstring></argsstring>
+        <name>create_tunnel_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1021" column="1" bodyfile="inc/saitunnel.h" bodystart="1021" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a8a1a7ef1c5884c04765a59626d3f4664" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1gac71696d10e2eab92219306dd9798c5ee" kindref="member">sai_remove_tunnel_map_fn</ref></type>
+        <definition>sai_remove_tunnel_map_fn _sai_tunnel_api_t::remove_tunnel_map</definition>
+        <argsstring></argsstring>
+        <name>remove_tunnel_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1022" column="1" bodyfile="inc/saitunnel.h" bodystart="1022" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a72b951fd995fbe2879f3d7dda47d64d2" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga2982891913ae2c3114cb794c8eaf0b21" kindref="member">sai_set_tunnel_map_attribute_fn</ref></type>
+        <definition>sai_set_tunnel_map_attribute_fn _sai_tunnel_api_t::set_tunnel_map_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tunnel_map_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1023" column="1" bodyfile="inc/saitunnel.h" bodystart="1023" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1ac483650a38285d2eb4801f5aed5f5ccb" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga6680da2e3ceaa3ef7e5580fc9d74498e" kindref="member">sai_get_tunnel_map_attribute_fn</ref></type>
+        <definition>sai_get_tunnel_map_attribute_fn _sai_tunnel_api_t::get_tunnel_map_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tunnel_map_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1024" column="1" bodyfile="inc/saitunnel.h" bodystart="1024" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a5a97a190f24a6f2ed3f7755ac6ec4882" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga70145223d93ac8223233e941de7618f6" kindref="member">sai_create_tunnel_fn</ref></type>
+        <definition>sai_create_tunnel_fn _sai_tunnel_api_t::create_tunnel</definition>
+        <argsstring></argsstring>
+        <name>create_tunnel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1025" column="1" bodyfile="inc/saitunnel.h" bodystart="1025" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a241fc99c27af6328ebfd0339bbdc1558" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga44e799aebe213972e63fbb300107b2fa" kindref="member">sai_remove_tunnel_fn</ref></type>
+        <definition>sai_remove_tunnel_fn _sai_tunnel_api_t::remove_tunnel</definition>
+        <argsstring></argsstring>
+        <name>remove_tunnel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1026" column="1" bodyfile="inc/saitunnel.h" bodystart="1026" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1abd679c6e6fc5beea569637946287beb0" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga6b10ff3304322fb813fa1ad04606e761" kindref="member">sai_set_tunnel_attribute_fn</ref></type>
+        <definition>sai_set_tunnel_attribute_fn _sai_tunnel_api_t::set_tunnel_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tunnel_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1027" column="1" bodyfile="inc/saitunnel.h" bodystart="1027" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1aa3222ab7eb803d76b9ef7e85d16a9b66" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga58ca8217ff8b29db72dfcb822616128d" kindref="member">sai_get_tunnel_attribute_fn</ref></type>
+        <definition>sai_get_tunnel_attribute_fn _sai_tunnel_api_t::get_tunnel_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tunnel_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1028" column="1" bodyfile="inc/saitunnel.h" bodystart="1028" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a58b0ef4106aa9ab2f585ee3e927cc575" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1gad81c4845449ba3b62a90745dc30e0dda" kindref="member">sai_get_tunnel_stats_fn</ref></type>
+        <definition>sai_get_tunnel_stats_fn _sai_tunnel_api_t::get_tunnel_stats</definition>
+        <argsstring></argsstring>
+        <name>get_tunnel_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1029" column="1" bodyfile="inc/saitunnel.h" bodystart="1029" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a0496d410ead2a45ec2b8565d5d18a0f0" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga64562d50565054ff56fd0d5ca351a16f" kindref="member">sai_get_tunnel_stats_ext_fn</ref></type>
+        <definition>sai_get_tunnel_stats_ext_fn _sai_tunnel_api_t::get_tunnel_stats_ext</definition>
+        <argsstring></argsstring>
+        <name>get_tunnel_stats_ext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1030" column="1" bodyfile="inc/saitunnel.h" bodystart="1030" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a8d2a1833f672a319968f61ca0a906cec" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga0f7847c94ef38a3d8a37cc1eaac552f8" kindref="member">sai_clear_tunnel_stats_fn</ref></type>
+        <definition>sai_clear_tunnel_stats_fn _sai_tunnel_api_t::clear_tunnel_stats</definition>
+        <argsstring></argsstring>
+        <name>clear_tunnel_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1031" column="1" bodyfile="inc/saitunnel.h" bodystart="1031" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1adc10316118218f9b95821c84c55e27a8" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1gabcffb65767a7436a3f9f0f3124b72ad7" kindref="member">sai_create_tunnel_term_table_entry_fn</ref></type>
+        <definition>sai_create_tunnel_term_table_entry_fn _sai_tunnel_api_t::create_tunnel_term_table_entry</definition>
+        <argsstring></argsstring>
+        <name>create_tunnel_term_table_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1032" column="1" bodyfile="inc/saitunnel.h" bodystart="1032" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1af573f4405213bd8d64563f9447d89e6c" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga49f50c63c30561e160867a92e7326be7" kindref="member">sai_remove_tunnel_term_table_entry_fn</ref></type>
+        <definition>sai_remove_tunnel_term_table_entry_fn _sai_tunnel_api_t::remove_tunnel_term_table_entry</definition>
+        <argsstring></argsstring>
+        <name>remove_tunnel_term_table_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1033" column="1" bodyfile="inc/saitunnel.h" bodystart="1033" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1aec5e70699a12c54bf81f879556e74416" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga192502ea8b29661df56698e9f076717e" kindref="member">sai_set_tunnel_term_table_entry_attribute_fn</ref></type>
+        <definition>sai_set_tunnel_term_table_entry_attribute_fn _sai_tunnel_api_t::set_tunnel_term_table_entry_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tunnel_term_table_entry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1034" column="1" bodyfile="inc/saitunnel.h" bodystart="1034" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a5c949f54b9afb0ff8d4c07554d8b7673" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1gae39524c9b706161bb8d899e1eb83cf14" kindref="member">sai_get_tunnel_term_table_entry_attribute_fn</ref></type>
+        <definition>sai_get_tunnel_term_table_entry_attribute_fn _sai_tunnel_api_t::get_tunnel_term_table_entry_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tunnel_term_table_entry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1035" column="1" bodyfile="inc/saitunnel.h" bodystart="1035" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a4eac348ce54c731ce9673276a25bc0a8" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga15d379f8068a4f52d05c7c325af0c5bf" kindref="member">sai_create_tunnel_map_entry_fn</ref></type>
+        <definition>sai_create_tunnel_map_entry_fn _sai_tunnel_api_t::create_tunnel_map_entry</definition>
+        <argsstring></argsstring>
+        <name>create_tunnel_map_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1036" column="1" bodyfile="inc/saitunnel.h" bodystart="1036" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1a8b7288d6ad4aceec528aa20d94324624" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1ga7189f509b4280bb2f1ad3c04d4ff78fe" kindref="member">sai_remove_tunnel_map_entry_fn</ref></type>
+        <definition>sai_remove_tunnel_map_entry_fn _sai_tunnel_api_t::remove_tunnel_map_entry</definition>
+        <argsstring></argsstring>
+        <name>remove_tunnel_map_entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1037" column="1" bodyfile="inc/saitunnel.h" bodystart="1037" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1aeb2b1ee46ea220374d3b3fc72daf5df6" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1gae5ed4a15f24fc0390f59eff5b8dba3a4" kindref="member">sai_set_tunnel_map_entry_attribute_fn</ref></type>
+        <definition>sai_set_tunnel_map_entry_attribute_fn _sai_tunnel_api_t::set_tunnel_map_entry_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tunnel_map_entry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1038" column="1" bodyfile="inc/saitunnel.h" bodystart="1038" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tunnel__api__t_1ad3c6fed2eb6061bc8b5cda340c77fc4c" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_u_n_n_e_l_1gafc8b00aec49bea84a8bcb55f892a5a1d" kindref="member">sai_get_tunnel_map_entry_attribute_fn</ref></type>
+        <definition>sai_get_tunnel_map_entry_attribute_fn _sai_tunnel_api_t::get_tunnel_map_entry_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tunnel_map_entry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitunnel.h" line="1039" column="1" bodyfile="inc/saitunnel.h" bodystart="1039" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tunnel methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1784">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="1785" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1770">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="1771">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="1772" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1787">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="1761">
+        <label>_sai_tunnel_api_t</label>
+        <link refid="struct__sai__tunnel__api__t"/>
+        <childnode refid="1762" relation="usage">
+          <edgelabel>create_tunnel</edgelabel>
+          <edgelabel>create_tunnel_map_entry</edgelabel>
+          <edgelabel>get_tunnel_map_attribute</edgelabel>
+          <edgelabel>set_tunnel_map_entry_attribute</edgelabel>
+          <edgelabel>get_tunnel_map_entry_attribute</edgelabel>
+          <edgelabel>set_tunnel_term_table_entry_attribute</edgelabel>
+          <edgelabel>get_tunnel_term_table_entry_attribute</edgelabel>
+          <edgelabel>set_tunnel_attribute</edgelabel>
+          <edgelabel>create_tunnel_term_table_entry</edgelabel>
+          <edgelabel>create_tunnel_map</edgelabel>
+          <edgelabel>...</edgelabel>
+        </childnode>
+      </node>
+      <node id="1791">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="1792" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="1785">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="1779">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="1772">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="1773" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1773">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="1795">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="1777">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="1778" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="1781" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1798">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="1799" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1766">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="1767" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1765">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="1766" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1788">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="1764">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="1786">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="1797">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="1763">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="1764" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="1765" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="1769" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="1771" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="1774" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="1777" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="1782" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="1783" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="1784" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="1786" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="1787" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="1785" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="1788" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="1789" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="1779" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1790" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="1791" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="1793" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="1775" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="1780" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="1794" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="1795" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="1796" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="1797" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="1798" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="1800" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="1802" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="1778">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="1779" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1780" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1762">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="1763" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1783">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1776" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1794">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="1793">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="1767">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1768" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1800">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="1801" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1802">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="1768">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="1781">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="1780" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1790">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="1801">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="1799">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="1769">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="1770" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1775">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1776" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1789">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="1774">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="1775" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1776">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="1780">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="1782">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="1792">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="1779" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1775" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1796">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="1789" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitunnel.h" line="1020" column="1" bodyfile="inc/saitunnel.h" bodystart="1019" bodyend="1041"/>
+    <listofallmembers>
+      <member refid="struct__sai__tunnel__api__t_1a8d2a1833f672a319968f61ca0a906cec" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>clear_tunnel_stats</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a5a97a190f24a6f2ed3f7755ac6ec4882" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>create_tunnel</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a7f35ad64d21cb3590f0e49f622df67fe" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>create_tunnel_map</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a4eac348ce54c731ce9673276a25bc0a8" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>create_tunnel_map_entry</name></member>
+      <member refid="struct__sai__tunnel__api__t_1adc10316118218f9b95821c84c55e27a8" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>create_tunnel_term_table_entry</name></member>
+      <member refid="struct__sai__tunnel__api__t_1aa3222ab7eb803d76b9ef7e85d16a9b66" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>get_tunnel_attribute</name></member>
+      <member refid="struct__sai__tunnel__api__t_1ac483650a38285d2eb4801f5aed5f5ccb" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>get_tunnel_map_attribute</name></member>
+      <member refid="struct__sai__tunnel__api__t_1ad3c6fed2eb6061bc8b5cda340c77fc4c" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>get_tunnel_map_entry_attribute</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a58b0ef4106aa9ab2f585ee3e927cc575" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>get_tunnel_stats</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a0496d410ead2a45ec2b8565d5d18a0f0" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>get_tunnel_stats_ext</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a5c949f54b9afb0ff8d4c07554d8b7673" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>get_tunnel_term_table_entry_attribute</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a241fc99c27af6328ebfd0339bbdc1558" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>remove_tunnel</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a8a1a7ef1c5884c04765a59626d3f4664" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>remove_tunnel_map</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a8b7288d6ad4aceec528aa20d94324624" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>remove_tunnel_map_entry</name></member>
+      <member refid="struct__sai__tunnel__api__t_1af573f4405213bd8d64563f9447d89e6c" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>remove_tunnel_term_table_entry</name></member>
+      <member refid="struct__sai__tunnel__api__t_1abd679c6e6fc5beea569637946287beb0" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>set_tunnel_attribute</name></member>
+      <member refid="struct__sai__tunnel__api__t_1a72b951fd995fbe2879f3d7dda47d64d2" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>set_tunnel_map_attribute</name></member>
+      <member refid="struct__sai__tunnel__api__t_1aeb2b1ee46ea220374d3b3fc72daf5df6" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>set_tunnel_map_entry_attribute</name></member>
+      <member refid="struct__sai__tunnel__api__t_1aec5e70699a12c54bf81f879556e74416" prot="public" virt="non-virtual"><scope>_sai_tunnel_api_t</scope><name>set_tunnel_term_table_entry_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

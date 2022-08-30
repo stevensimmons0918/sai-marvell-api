@@ -1,0 +1,2331 @@
+/********************************************************************************/
+/* Copyright (c) 2021 Marvell. All rights reserved. The following file is       */
+/* subject to the limited use license agreement by and between Marvell and you, */
+/* your employer or other entity on behalf of whom you act. In the absence of   */
+/* such license agreement the following file is subject to Marvell`s standard   */
+/* Limited Use License Agreement.                                               */
+/********************************************************************************/
+/*
+ * Each SAI object has some number of attributes. Each attribute has some
+ * properties (MANDATORY_ON_CREATE, CREATE_ONLY, CREATE_AND_SET) that has to be
+ * Generated array will show attribute compliance report for each attribtute
+ * property. Arrays are defined in xpSaiAttrComplianceArray.txt file.
+ *
+ * The meaning of the array is:
+ *    id;                -- sai_attr_id_t -- attribute id
+ *    xpSaiSupport;      -- bool          -- is attribute supported by SAI Adapter?
+ *    validForCreate;    -- bool          -- is attribute valid for create?
+ *    validForSet;       -- bool          -- is attribute valid for set?
+ *    validForGet;       -- bool          -- is attribute valid for get?
+ * Please note, some of the attributes are not supported. List of such attributes
+ * is located in xpSaiNotSupported.txt file.
+ */
+
+---------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_nat_entry
+   remove_nat_entry
+   set_nat_entry_attribute
+   get_nat_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_NAT_ENTRY_ATTR_ENABLE_BYTE_COUNT                     false      true       true       true
+ SAI_NAT_ENTRY_ATTR_VR_ID                                 false      true       true       true
+ SAI_NAT_ENTRY_ATTR_L4_DST_PORT                           false      true       true       true
+ SAI_NAT_ENTRY_ATTR_L4_SRC_PORT                           false      true       true       true
+ SAI_NAT_ENTRY_ATTR_HIT_BIT_COR                           false      true       true       true
+ SAI_NAT_ENTRY_ATTR_ENABLE_PACKET_COUNT                   false      true       true       true
+ SAI_NAT_ENTRY_ATTR_SRC_IP                                false      true       true       true
+ SAI_NAT_ENTRY_ATTR_DST_IP_MASK                           false      true       true       true
+ SAI_NAT_ENTRY_ATTR_HIT_BIT                               false      true       true       true
+ SAI_NAT_ENTRY_ATTR_SRC_IP_MASK                           false      true       true       true
+ SAI_NAT_ENTRY_ATTR_NAT_TYPE                              false      true       true       true
+ SAI_NAT_ENTRY_ATTR_DST_IP                                false      true       true       true
+ SAI_NAT_ENTRY_ATTR_BYTE_COUNT                            false      true       true       true
+ SAI_NAT_ENTRY_ATTR_PACKET_COUNT                          false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_nat_zone_counter
+   remove_nat_zone_counter
+   set_nat_zone_counter_attribute
+   get_nat_zone_counter_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_NAT_ZONE_COUNTER_ATTR_ZONE_ID                        false      true       true       true
+ SAI_NAT_ZONE_COUNTER_ATTR_NAT_TYPE                       false      true       true       true
+ SAI_NAT_ZONE_COUNTER_ATTR_TRANSLATION_NEEDED_PACKET_COUNT  false      true       true       true
+ SAI_NAT_ZONE_COUNTER_ATTR_TRANSLATIONS_PACKET_COUNT      false      true       true       true
+ SAI_NAT_ZONE_COUNTER_ATTR_ENABLE_TRANSLATION_NEEDED      false      true       false      true
+ SAI_NAT_ZONE_COUNTER_ATTR_DISCARD_PACKET_COUNT           false      true       true       true
+ SAI_NAT_ZONE_COUNTER_ATTR_ENABLE_TRANSLATIONS            false      true       false      true
+ SAI_NAT_ZONE_COUNTER_ATTR_ENABLE_DISCARD                 false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_isolation_group
+   remove_isolation_group
+   set_isolation_group_attribute
+   get_isolation_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ISOLATION_GROUP_ATTR_TYPE                            false      true       false      true
+ SAI_ISOLATION_GROUP_ATTR_ISOLATION_MEMBER_LIST           false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_isolation_group_member
+   remove_isolation_group_member
+   set_isolation_group_member_attribute
+   get_isolation_group_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ISOLATION_GROUP_MEMBER_ATTR_ISOLATION_OBJECT         false      true       false      true
+ SAI_ISOLATION_GROUP_MEMBER_ATTR_ISOLATION_GROUP_ID       false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_port_serdes
+   remove_port_serdes
+   set_port_serdes_attribute
+   get_port_serdes_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_PORT_SERDES_ATTR_TX_FIR_POST3                        false      true       false      true
+ SAI_PORT_SERDES_ATTR_TX_FIR_POST2                        false      true       false      true
+ SAI_PORT_SERDES_ATTR_TX_FIR_POST1                        false      true       false      true
+ SAI_PORT_SERDES_ATTR_TX_FIR_ATTN                         false      true       false      true
+ SAI_PORT_SERDES_ATTR_TX_FIR_MAIN                         false      true       false      true
+ SAI_PORT_SERDES_ATTR_IPREDRIVER                          false      true       false      true
+ SAI_PORT_SERDES_ATTR_PREEMPHASIS                         false      true       false      true
+ SAI_PORT_SERDES_ATTR_TX_FIR_PRE1                         false      true       false      true
+ SAI_PORT_SERDES_ATTR_TX_FIR_PRE3                         false      true       false      true
+ SAI_PORT_SERDES_ATTR_TX_FIR_PRE2                         false      true       false      true
+ SAI_PORT_SERDES_ATTR_PORT_ID                             false      true       false      true
+ SAI_PORT_SERDES_ATTR_IDRIVER                             false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_port_connector
+   remove_port_connector
+   set_port_connector_attribute
+   get_port_connector_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_PORT_CONNECTOR_ATTR_FAILOVER_MODE                    false      true       true       true
+ SAI_PORT_CONNECTOR_ATTR_SYSTEM_SIDE_PORT_ID              false      true       false      true
+ SAI_PORT_CONNECTOR_ATTR_LINE_SIDE_FAILOVER_PORT_ID       false      true       false      true
+ SAI_PORT_CONNECTOR_ATTR_SYSTEM_SIDE_FAILOVER_PORT_ID     false      true       false      true
+ SAI_PORT_CONNECTOR_ATTR_LINE_SIDE_PORT_ID                false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_port
+   remove_port
+   set_port_attribute
+   get_port_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_SPEED                    true       false      false      true
+ SAI_PORT_ATTR_LINK_TRAINING_RX_STATUS                    false      false      false      true
+ SAI_PORT_ATTR_EEE_ENABLE                                 false      true       true       true
+ SAI_PORT_ATTR_TPID                                       false      true       true       true
+ SAI_PORT_ATTR_SERDES_IPREDRIVER                          false      true       true       true
+ SAI_PORT_ATTR_LINK_TRAINING_ENABLE                       false      true       true       true
+ SAI_PORT_ATTR_QOS_TC_AND_COLOR_TO_MPLS_EXP_MAP           false      true       true       true
+ SAI_PORT_ATTR_AUTO_NEG_STATUS                            false      false      false      true
+ SAI_PORT_ATTR_LINK_TRAINING_FAILURE_STATUS               false      false      false      true
+ SAI_PORT_ATTR_MACSEC_PORT_LIST                           false      false      false      true
+ SAI_PORT_ATTR_QOS_DEFAULT_TC                             true       true       true       true
+ SAI_PORT_ATTR_ADVERTISED_ASYMMETRIC_PAUSE_MODE           false      true       true       true
+ SAI_PORT_ATTR_INGRESS_MIRROR_SESSION                     true       true       true       true
+ SAI_PORT_ATTR_QOS_NUMBER_OF_SCHEDULER_GROUPS             true       false      false      true
+ SAI_PORT_ATTR_EEE_WAKE_TIME                              false      true       true       true
+ SAI_PORT_ATTR_DROP_UNTAGGED                              false      true       true       true
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_ASYMMETRIC_PAUSE_MODE    false      false      false      true
+ SAI_PORT_ATTR_QOS_INGRESS_BUFFER_PROFILE_LIST            true       true       true       true
+ SAI_PORT_ATTR_TAM_OBJECT                                 false      true       true       true
+ SAI_PORT_ATTR_MEDIA_TYPE                                 true       true       true       true
+ SAI_PORT_ATTR_PTP_MODE                                   false      true       true       true
+ SAI_PORT_ATTR_INGRESS_SAMPLEPACKET_ENABLE                false      true       true       true
+ SAI_PORT_ATTR_EGRESS_SAMPLEPACKET_ENABLE                 false      true       true       true
+ SAI_PORT_ATTR_PORT_SERDES_ID                             false      false      false      true
+ SAI_PORT_ATTR_FABRIC_ATTACHED                            false      false      false      true
+ SAI_PORT_ATTR_SERDES_PREEMPHASIS                         false      true       true       true
+ SAI_PORT_ATTR_EEE_IDLE_TIME                              false      true       true       true
+ SAI_PORT_ATTR_INTERFACE_TYPE                             false      true       true       true
+ SAI_PORT_ATTR_UPDATE_DSCP                                false      true       true       true
+ SAI_PORT_ATTR_EGRESS_ACL                                 true       true       true       true
+ SAI_PORT_ATTR_FABRIC_ATTACHED_SWITCH_ID                  false      false      false      true
+ SAI_PORT_ATTR_QOS_MAXIMUM_HEADROOM_SIZE                  true       false      false      true
+ SAI_PORT_ATTR_ADVERTISED_MEDIA_TYPE                      false      true       true       true
+ SAI_PORT_ATTR_MULTICAST_STORM_CONTROL_POLICER_ID         true       true       true       true
+ SAI_PORT_ATTR_SERDES_IDRIVER                             false      true       true       true
+ SAI_PORT_ATTR_ADVERTISED_AUTO_NEG_MODE                   false      true       true       true
+ SAI_PORT_ATTR_PRBS_LOCK_STATUS                           false      false      false      true
+ SAI_PORT_ATTR_PRIORITY_FLOW_CONTROL_MODE                 true       true       true       true
+ SAI_PORT_ATTR_SYSTEM_PORT                                false      false      false      true
+ SAI_PORT_ATTR_GLOBAL_FLOW_CONTROL_MODE                   false      true       true       true
+ SAI_PORT_ATTR_CURRENT_BREAKOUT_MODE_TYPE                 false      false      false      true
+ SAI_PORT_ATTR_HW_LANE_LIST                               true       true       false      true
+ SAI_PORT_ATTR_ERR_STATUS_LIST                            false      false      false      true
+ SAI_PORT_ATTR_MTU                                        true       true       true       true
+ SAI_PORT_ATTR_SUPPORTED_SPEED                            true       false      false      true
+ SAI_PORT_ATTR_SUPPORTED_ASYMMETRIC_PAUSE_MODE            false      false      false      true
+ SAI_PORT_ATTR_SUPPORTED_BREAKOUT_MODE_TYPE               false      false      false      true
+ SAI_PORT_ATTR_ADVERTISED_HALF_DUPLEX_SPEED               false      true       true       true
+ SAI_PORT_ATTR_SUPPORTED_FLOW_CONTROL_MODE                true       false      false      true
+ SAI_PORT_ATTR_QOS_MPLS_EXP_TO_TC_MAP                     false      true       true       true
+ SAI_PORT_ATTR_EGRESS_MACSEC_ACL                          false      true       true       true
+ SAI_PORT_ATTR_PRIORITY_FLOW_CONTROL_TX                   true       true       true       true
+ SAI_PORT_ATTR_OPER_SPEED                                 true       false      false      true
+ SAI_PORT_ATTR_PRBS_CONFIG                                false      true       true       true
+ SAI_PORT_ATTR_QOS_DSCP_TO_TC_MAP                         true       true       true       true
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_AUTO_NEG_MODE            true       false      false      true
+ SAI_PORT_ATTR_INTERNAL_LOOPBACK_MODE                     false      true       true       true
+ SAI_PORT_ATTR_QOS_PFC_PRIORITY_TO_QUEUE_MAP              true       true       true       true
+ SAI_PORT_ATTR_ADMIN_STATE                                true       true       true       true
+ SAI_PORT_ATTR_EYE_VALUES                                 false      false      false      true
+ SAI_PORT_ATTR_AUTO_NEG_MODE                              true       true       true       true
+ SAI_PORT_ATTR_ADVERTISED_FEC_MODE                        true       true       true       true
+ SAI_PORT_ATTR_FABRIC_ATTACHED_SWITCH_TYPE                false      false      false      true
+ SAI_PORT_ATTR_NUMBER_OF_INGRESS_PRIORITY_GROUPS          true       false      false      true
+ SAI_PORT_ATTR_PORT_VLAN_ID                               false      true       true       true
+ SAI_PORT_ATTR_QOS_DOT1P_TO_COLOR_MAP                     true       true       true       true
+ SAI_PORT_ATTR_BROADCAST_STORM_CONTROL_POLICER_ID         true       true       true       true
+ SAI_PORT_ATTR_PRBS_LOCK_LOSS_STATUS                      false      false      false      true
+ SAI_PORT_ATTR_INGRESS_ACL                                true       true       true       true
+ SAI_PORT_ATTR_QOS_TC_AND_COLOR_TO_DOT1P_MAP              true       true       true       true
+ SAI_PORT_ATTR_META_DATA                                  false      true       true       true
+ SAI_PORT_ATTR_QOS_TC_TO_QUEUE_MAP                        true       true       true       true
+ SAI_PORT_ATTR_HW_PROFILE_ID                              false      true       true       true
+ SAI_PORT_ATTR_SUPPORTED_FEC_MODE                         true       false      false      true
+ SAI_PORT_ATTR_QOS_TC_AND_COLOR_TO_DSCP_MAP               true       true       true       true
+ SAI_PORT_ATTR_QOS_NUMBER_OF_QUEUES                       true       false      false      true
+ SAI_PORT_ATTR_ADVERTISED_INTERFACE_TYPE                  false      true       true       true
+ SAI_PORT_ATTR_QOS_DSCP_TO_COLOR_MAP                      false      true       true       true
+ SAI_PORT_ATTR_QOS_PFC_PRIORITY_TO_PRIORITY_GROUP_MAP     true       true       true       true
+ SAI_PORT_ATTR_EGRESS_SAMPLE_MIRROR_SESSION               false      true       true       true
+ SAI_PORT_ATTR_TYPE                                       true       false      false      true
+ SAI_PORT_ATTR_INGRESS_PRIORITY_GROUP_LIST                true       false      false      true
+ SAI_PORT_ATTR_FABRIC_ATTACHED_PORT_INDEX                 false      false      false      true
+ SAI_PORT_ATTR_PRIORITY_FLOW_CONTROL_RX                   true       true       true       true
+ SAI_PORT_ATTR_DISABLE_DECREMENT_TTL                      false      true       true       true
+ SAI_PORT_ATTR_QOS_SCHEDULER_GROUP_LIST                   true       false      false      true
+ SAI_PORT_ATTR_DEFAULT_VLAN_PRIORITY                      false      true       true       true
+ SAI_PORT_ATTR_FULL_DUPLEX_MODE                           true       true       false      true
+ SAI_PORT_ATTR_ISOLATION_GROUP                            false      true       true       true
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_OUI_CODE                 false      false      false      true
+ SAI_PORT_ATTR_ADVERTISED_OUI_CODE                        false      true       true       true
+ SAI_PORT_ATTR_PRBS_POLYNOMIAL                            false      true       true       true
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_MEDIA_TYPE               false      false      false      true
+ SAI_PORT_ATTR_REFERENCE_CLOCK                            false      true       false      true
+ SAI_PORT_ATTR_QOS_DOT1P_TO_TC_MAP                        true       true       true       true
+ SAI_PORT_ATTR_PORT_POOL_LIST                             false      false      false      true
+ SAI_PORT_ATTR_SUPPORTED_AUTO_NEG_MODE                    true       false      false      true
+ SAI_PORT_ATTR_QOS_QUEUE_LIST                             true       false      false      true
+ SAI_PORT_ATTR_EGRESS_MIRROR_SESSION                      true       true       true       true
+ SAI_PORT_ATTR_SUPPORTED_MEDIA_TYPE                       false      false      false      true
+ SAI_PORT_ATTR_SUPPORTED_HALF_DUPLEX_SPEED                false      false      false      true
+ SAI_PORT_ATTR_PRBS_RX_STATE                              false      false      false      true
+ SAI_PORT_ATTR_INGRESS_SAMPLE_MIRROR_SESSION              false      true       true       true
+ SAI_PORT_ATTR_SPEED                                      true       true       true       true
+ SAI_PORT_ATTR_FABRIC_REACHABILITY                        false      false      false      true
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_FEC_MODE                 true       false      false      true
+ SAI_PORT_ATTR_EGRESS_BLOCK_PORT_LIST                     false      true       true       true
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_FLOW_CONTROL_MODE        false      false      false      true
+ SAI_PORT_ATTR_PKT_TX_ENABLE                              true       true       true       true
+ SAI_PORT_ATTR_ADVERTISED_SPEED                           false      true       true       true
+ SAI_PORT_ATTR_QOS_SCHEDULER_PROFILE_ID                   true       true       true       true
+ SAI_PORT_ATTR_INGRESS_MACSEC_ACL                         false      true       true       true
+ SAI_PORT_ATTR_ADVERTISED_FLOW_CONTROL_MODE               false      true       true       true
+ SAI_PORT_ATTR_OPER_STATUS                                true       false      false      true
+ SAI_PORT_ATTR_QOS_MPLS_EXP_TO_COLOR_MAP                  false      true       true       true
+ SAI_PORT_ATTR_PRIORITY_FLOW_CONTROL                      true       true       true       true
+ SAI_PORT_ATTR_POLICER_ID                                 true       true       true       true
+ SAI_PORT_ATTR_PRBS_RX_STATUS                             false      false      false      true
+ SAI_PORT_ATTR_DROP_TAGGED                                false      true       true       true
+ SAI_PORT_ATTR_REMOTE_ADVERTISED_HALF_DUPLEX_SPEED        false      false      false      true
+ SAI_PORT_ATTR_FEC_MODE                                   true       true       true       true
+ SAI_PORT_ATTR_QOS_TC_TO_PRIORITY_GROUP_MAP               true       true       true       true
+ SAI_PORT_ATTR_QOS_EGRESS_BUFFER_PROFILE_LIST             true       true       true       true
+ SAI_PORT_ATTR_FLOOD_STORM_CONTROL_POLICER_ID             true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_port_pool
+   remove_port_pool
+   set_port_pool_attribute
+   get_port_pool_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_PORT_POOL_ATTR_BUFFER_POOL_ID                        false      true       false      true
+ SAI_PORT_POOL_ATTR_PORT_ID                               false      true       false      true
+ SAI_PORT_POOL_ATTR_QOS_WRED_PROFILE_ID                   false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_scheduler_group
+   remove_scheduler_group
+   set_scheduler_group_attribute
+   get_scheduler_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_SCHEDULER_GROUP_ATTR_CHILD_COUNT                     true       false      false      true
+ SAI_SCHEDULER_GROUP_ATTR_PORT_ID                         true       true       false      true
+ SAI_SCHEDULER_GROUP_ATTR_LEVEL                           true       true       false      true
+ SAI_SCHEDULER_GROUP_ATTR_PARENT_NODE                     true       true       true       true
+ SAI_SCHEDULER_GROUP_ATTR_CHILD_LIST                      true       false      false      true
+ SAI_SCHEDULER_GROUP_ATTR_SCHEDULER_PROFILE_ID            true       true       true       true
+ SAI_SCHEDULER_GROUP_ATTR_MAX_CHILDS                      true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_ingress_priority_group
+   remove_ingress_priority_group
+   set_ingress_priority_group_attribute
+   get_ingress_priority_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_INGRESS_PRIORITY_GROUP_ATTR_INDEX                    true       true       false      true
+ SAI_INGRESS_PRIORITY_GROUP_ATTR_PORT                     true       true       false      true
+ SAI_INGRESS_PRIORITY_GROUP_ATTR_TAM                      false      true       true       true
+ SAI_INGRESS_PRIORITY_GROUP_ATTR_BUFFER_PROFILE           true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_buffer_pool
+   remove_buffer_pool
+   set_buffer_pool_attribute
+   get_buffer_pool_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_BUFFER_POOL_ATTR_SIZE                                true       true       true       true
+ SAI_BUFFER_POOL_ATTR_THRESHOLD_MODE                      true       true       false      true
+ SAI_BUFFER_POOL_ATTR_SHARED_SIZE                         true       false      false      true
+ SAI_BUFFER_POOL_ATTR_XOFF_SIZE                           false      true       true       true
+ SAI_BUFFER_POOL_ATTR_WRED_PROFILE_ID                     false      true       true       true
+ SAI_BUFFER_POOL_ATTR_TAM                                 false      true       true       true
+ SAI_BUFFER_POOL_ATTR_TYPE                                true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_buffer_profile
+   remove_buffer_profile
+   set_buffer_profile_attribute
+   get_buffer_profile_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_BUFFER_PROFILE_ATTR_BUFFER_SIZE                      true       false      false      false
+ SAI_BUFFER_PROFILE_ATTR_SHARED_DYNAMIC_TH                true       true       true       true
+ SAI_BUFFER_PROFILE_ATTR_SHARED_STATIC_TH                 true       true       true       true
+ SAI_BUFFER_PROFILE_ATTR_XON_TH                           true       true       true       true
+ SAI_BUFFER_PROFILE_ATTR_XOFF_TH                          true       true       true       true
+ SAI_BUFFER_PROFILE_ATTR_RESERVED_BUFFER_SIZE             true       true       true       true
+ SAI_BUFFER_PROFILE_ATTR_XON_OFFSET_TH                    true       true       true       true
+ SAI_BUFFER_PROFILE_ATTR_THRESHOLD_MODE                   true       true       false      true
+ SAI_BUFFER_PROFILE_ATTR_POOL_ID                          true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_ipmc_group
+   remove_ipmc_group
+   set_ipmc_group_attribute
+   get_ipmc_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_IPMC_GROUP_ATTR_IPMC_MEMBER_LIST                     false      false      false      true
+ SAI_IPMC_GROUP_ATTR_IPMC_OUTPUT_COUNT                    false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_ipmc_group_member
+   remove_ipmc_group_member
+   set_ipmc_group_member_attribute
+   get_ipmc_group_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_IPMC_GROUP_MEMBER_ATTR_IPMC_OUTPUT_ID                false      true       false      true
+ SAI_IPMC_GROUP_MEMBER_ATTR_IPMC_GROUP_ID                 false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_virtual_router
+   remove_virtual_router
+   set_virtual_router_attribute
+   get_virtual_router_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_VIRTUAL_ROUTER_ATTR_ADMIN_V4_STATE                   true       true       true       true
+ SAI_VIRTUAL_ROUTER_ATTR_UNKNOWN_L3_MULTICAST_PACKET_ACTION  true       true       true       true
+ SAI_VIRTUAL_ROUTER_ATTR_ADMIN_V6_STATE                   true       true       true       true
+ SAI_VIRTUAL_ROUTER_ATTR_LABEL                            false      true       true       true
+ SAI_VIRTUAL_ROUTER_ATTR_SRC_MAC_ADDRESS                  true       true       true       true
+ SAI_VIRTUAL_ROUTER_ATTR_VIOLATION_IP_OPTIONS_PACKET_ACTION  false      true       true       true
+ SAI_VIRTUAL_ROUTER_ATTR_VIOLATION_TTL1_PACKET_ACTION     false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tunnel
+   remove_tunnel
+   set_tunnel_attribute
+   get_tunnel_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TUNNEL_ATTR_UNDERLAY_INTERFACE                       true       true       false      true
+ SAI_TUNNEL_ATTR_DECAP_ECN_MODE                           false      true       false      true
+ SAI_TUNNEL_ATTR_DECAP_MAPPERS                            true       true       false      true
+ SAI_TUNNEL_ATTR_ENCAP_DSCP_VAL                           true       true       true       true
+ SAI_TUNNEL_ATTR_ENCAP_SRC_IP                             true       true       false      true
+ SAI_TUNNEL_ATTR_DECAP_TTL_MODE                           true       true       true       true
+ SAI_TUNNEL_ATTR_DECAP_DSCP_MODE                          true       true       true       true
+ SAI_TUNNEL_ATTR_ENCAP_TTL_VAL                            true       true       true       true
+ SAI_TUNNEL_ATTR_VXLAN_UDP_SPORT_MODE                     true       true       true       true
+ SAI_TUNNEL_ATTR_VXLAN_UDP_SPORT                          true       true       true       true
+ SAI_TUNNEL_ATTR_LOOPBACK_PACKET_ACTION                   false      true       true       true
+ SAI_TUNNEL_ATTR_ENCAP_TTL_MODE                           true       true       true       true
+ SAI_TUNNEL_ATTR_OVERLAY_INTERFACE                        false      true       false      true
+ SAI_TUNNEL_ATTR_TERM_TABLE_ENTRY_LIST                    true       false      false      true
+ SAI_TUNNEL_ATTR_PEER_MODE                                true       true       false      true
+ SAI_TUNNEL_ATTR_ENCAP_DST_IP                             true       true       false      true
+ SAI_TUNNEL_ATTR_ENCAP_ECN_MODE                           false      true       false      true
+ SAI_TUNNEL_ATTR_ENCAP_GRE_KEY_VALID                      false      true       false      true
+ SAI_TUNNEL_ATTR_ENCAP_DSCP_MODE                          true       true       true       true
+ SAI_TUNNEL_ATTR_ENCAP_GRE_KEY                            false      true       true       true
+ SAI_TUNNEL_ATTR_TYPE                                     true       true       false      true
+ SAI_TUNNEL_ATTR_ENCAP_MAPPERS                            true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tunnel_term_table_entry
+   remove_tunnel_term_table_entry
+   set_tunnel_term_table_entry_attribute
+   get_tunnel_term_table_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_IP_ADDR_FAMILY          true       false      false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_SRC_IP                  true       true       false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_DST_IP_MASK             true       true       false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_ACTION_TUNNEL_ID        true       true       false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_TUNNEL_TYPE             true       true       false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_DST_IP                  true       true       false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_TYPE                    true       true       false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_VR_ID                   true       true       false      true
+ SAI_TUNNEL_TERM_TABLE_ENTRY_ATTR_SRC_IP_MASK             true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tunnel_map_entry
+   remove_tunnel_map_entry
+   set_tunnel_map_entry_attribute
+   get_tunnel_map_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TUNNEL_MAP_ENTRY_ATTR_TUNNEL_MAP_TYPE                true       true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_VIRTUAL_ROUTER_ID_VALUE        false      true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_BRIDGE_ID_VALUE                false      true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_UECN_VALUE                     false      true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_TUNNEL_MAP                     true       true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_BRIDGE_ID_KEY                  false      true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_VNI_ID_VALUE                   true       true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_OECN_KEY                       false      true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_VNI_ID_KEY                     true       true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_VLAN_ID_VALUE                  true       true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_VLAN_ID_KEY                    true       true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_OECN_VALUE                     false      true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_UECN_KEY                       false      true       false      true
+ SAI_TUNNEL_MAP_ENTRY_ATTR_VIRTUAL_ROUTER_ID_KEY          false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tunnel_map
+   remove_tunnel_map
+   set_tunnel_map_attribute
+   get_tunnel_map_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TUNNEL_MAP_ATTR_TYPE                                 true       true       false      true
+ SAI_TUNNEL_MAP_ATTR_ENTRY_LIST                           true       false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_debug_counter
+   remove_debug_counter
+   set_debug_counter_attribute
+   get_debug_counter_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_DEBUG_COUNTER_ATTR_IN_DROP_REASON_LIST               false      true       true       true
+ SAI_DEBUG_COUNTER_ATTR_BIND_METHOD                       false      true       false      true
+ SAI_DEBUG_COUNTER_ATTR_INDEX                             false      false      false      true
+ SAI_DEBUG_COUNTER_ATTR_OUT_DROP_REASON_LIST              false      true       true       true
+ SAI_DEBUG_COUNTER_ATTR_TYPE                              false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_l2mc_entry
+   remove_l2mc_entry
+   set_l2mc_entry_attribute
+   get_l2mc_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_L2MC_ENTRY_ATTR_OUTPUT_GROUP_ID                      true       true       true       true
+ SAI_L2MC_ENTRY_ATTR_PACKET_ACTION                        true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_hash
+   remove_hash
+   set_hash_attribute
+   get_hash_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_HASH_ATTR_FINE_GRAINED_HASH_FIELD_LIST               false      true       true       true
+ SAI_HASH_ATTR_NATIVE_HASH_FIELD_LIST                     false      true       true       true
+ SAI_HASH_ATTR_UDF_GROUP_LIST                             false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_fine_grained_hash_field
+   remove_fine_grained_hash_field
+   set_fine_grained_hash_field_attribute
+   get_fine_grained_hash_field_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_FINE_GRAINED_HASH_FIELD_ATTR_IPV4_MASK               false      true       false      true
+ SAI_FINE_GRAINED_HASH_FIELD_ATTR_IPV6_MASK               false      true       false      true
+ SAI_FINE_GRAINED_HASH_FIELD_ATTR_SEQUENCE_ID             false      true       false      true
+ SAI_FINE_GRAINED_HASH_FIELD_ATTR_NATIVE_HASH_FIELD       false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_acl_table
+   remove_acl_table
+   set_acl_table_attribute
+   get_acl_table_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ACL_TABLE_ATTR_FIELD_OUT_PORT                        false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL4_TTL                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL0_TTL                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_USER_DEFINED_FIELD_GROUP_MAX          false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_VLAN_CFI                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL4_EXP                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ACL_RANGE_TYPE                  true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_SRC_IPV6                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL3_EXP                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL4_LABEL               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_ETHER_TYPE                false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ETHER_TYPE                      true       true       false      true
+ SAI_ACL_TABLE_ATTR_ACL_STAGE                             true       true       false      true
+ SAI_ACL_TABLE_ATTR_ENTRY_LIST                            false      false      false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ROUTE_NPU_META_DST_HIT          false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MACSEC_SCI                      false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_IPV6_FLOW_LABEL                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL1_LABEL               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL3_BOS                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_L4_DST_PORT                     true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_TTL                             false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ACL_IP_TYPE                     true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_DST_IP                    false      true       false      true
+ SAI_ACL_TABLE_ATTR_ACL_ACTION_TYPE_LIST                  true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_NEIGHBOR_NPU_META_DST_HIT       false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_NEIGHBOR_DST_USER_META          false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_TCP_FLAGS                       true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_IN_PORT                         false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_IPV6_NEXT_HEADER                true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_SRC_IP                    false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_TAM_INT_TYPE                    false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL3_TTL                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DSCP                            true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_MAC                         true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_OUT_PORTS                       false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_IN_PORTS                        false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL1_EXP                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_VLAN_PRI                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_VLAN_ID                   false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_FDB_DST_USER_META               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_PACKET_VLAN                     false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL0_EXP                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ECN                             false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL3_LABEL               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DST_IP                          true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_L4_SRC_PORT               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_PORT_USER_META                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL2_BOS                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_L4_DST_PORT               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DST_IPV6                        true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_TUNNEL_VNI                      false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_GRE_KEY                         false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_TOS                             true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_IPV6_WORD3                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_IPV6_WORD2                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_IPV6_WORD1                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_IPV6_WORD0                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ROUTE_DST_USER_META             false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ACL_IP_FRAG                     false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_OUTER_VLAN_PRI                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ACL_USER_META                   false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_AETH_SYNDROME                   false      true       false      true
+ SAI_ACL_TABLE_ATTR_SIZE                                  true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL0_LABEL               false      true       false      true
+ SAI_ACL_TABLE_ATTR_USER_DEFINED_FIELD_GROUP_MIN          false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_HAS_VLAN_TAG                    false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_IP_PROTOCOL               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DST_IPV6_WORD3                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DST_IPV6_WORD0                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DST_IPV6_WORD1                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_INNER_DST_IPV6                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DST_MAC                         true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL2_TTL                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_TC                              true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_PORT                        false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_IPV6                        true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_VLAN_USER_META                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ICMPV6_TYPE                     true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_SRC_IP                          true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_IP_PROTOCOL                     true       true       false      true
+ SAI_ACL_TABLE_ATTR_AVAILABLE_ACL_COUNTER                 true       false      false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL2_EXP                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_OUTER_VLAN_ID                   false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_IP_IDENTIFICATION               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL1_TTL                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ICMPV6_CODE                     true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_FDB_NPU_META_DST_HIT            false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_IP_FLAGS                        false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL2_LABEL               false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL0_BOS                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_AVAILABLE_ACL_ENTRY                   true       false      false      true
+ SAI_ACL_TABLE_ATTR_ACL_BIND_POINT_TYPE_LIST              true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_L4_SRC_PORT                     true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ICMP_TYPE                       true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL1_BOS                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_OUTER_VLAN_CFI                  false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_ICMP_CODE                       true       true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL4_BOS                 false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_BTH_OPCODE                      false      true       false      true
+ SAI_ACL_TABLE_ATTR_FIELD_DST_IPV6_WORD2                  false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_acl_range
+   remove_acl_range
+   set_acl_range_attribute
+   get_acl_range_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ACL_RANGE_ATTR_TYPE                                  true       true       false      true
+ SAI_ACL_RANGE_ATTR_LIMIT                                 true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_acl_table_group
+   remove_acl_table_group
+   set_acl_table_group_attribute
+   get_acl_table_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ACL_TABLE_GROUP_ATTR_ACL_STAGE                       true       true       false      true
+ SAI_ACL_TABLE_GROUP_ATTR_ACL_BIND_POINT_TYPE_LIST        true       true       false      true
+ SAI_ACL_TABLE_GROUP_ATTR_TYPE                            true       true       false      true
+ SAI_ACL_TABLE_GROUP_ATTR_MEMBER_LIST                     true       false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_acl_entry
+   remove_acl_entry
+   set_acl_entry_attribute
+   get_acl_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ACL_ENTRY_ATTR_FIELD_OUT_PORTS                       false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_ENDPOINT_IP                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_TTL                             false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_IP_PROTOCOL               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_EGRESS_SAMPLEPACKET_ENABLE     false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_MIRROR_INGRESS                 true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_GRE_KEY                         false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_DSCP                       false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_POLICER                    true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_INT_INSERT                     false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL0_LABEL               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ADMIN_STATE                           true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_L4_SRC_PORT                     true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_NEIGHBOR_DST_USER_META          false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_TUNNEL_VNI                      false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_IP_PROTOCOL                     true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL0_BOS                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_L4_DST_PORT                     true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DSCP                            true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_IPV6_NEXT_HEADER                true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_ADD_VLAN_ID                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_OUTER_VLAN_CFI                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_PORT                        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_ADD_VLAN_PRI                   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_SRC_IP                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_L4_SRC_PORT               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_ETHER_TYPE                false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_IP_FLAGS                        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_MIRROR_EGRESS                  true       true       true       true
+ SAI_ACL_ENTRY_ATTR_PRIORITY                              true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ROUTE_NPU_META_DST_HIT          false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DST_MAC                         true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_SRC_IPV6                   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_PACKET_VLAN                     false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL3_EXP                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL2_BOS                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL0_TTL                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL2_LABEL               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_ECMP_HASH_ID               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_HAS_VLAN_TAG                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_L4_DST_PORT               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_DO_NOT_LEARN               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_PORT_USER_META                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_OUTER_VLAN_PRI                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_SRC_IP                     false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_IN_PORT                         false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_VRF                        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_IPV6_WORD1                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_ISOLATION_GROUP            false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ACL_IP_TYPE                     true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_IPV6_WORD0                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_TAM_INT_TYPE                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_IP                          true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_IP_IDENTIFICATION               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_ACL_DTEL_FLOW_OP               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_DST_IPV6                   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_IPV6_FLOW_LABEL                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_IPV6_WORD3                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_IPV6_WORD2                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL2_EXP                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DST_IPV6                        true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_INNER_VLAN_PRI             false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL2_TTL                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_DTEL_DROP_REPORT_ENABLE        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_USER_TRAP_ID               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_ECN                        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL4_EXP                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_FDB_DST_USER_META               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL0_EXP                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_VLAN_PRI                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_NEIGHBOR_NPU_META_DST_HIT       false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_ACL_META_DATA              false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_OUTER_VLAN_ID                   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DST_IP                          true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_REDIRECT_LIST                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_L4_DST_PORT                false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_EGRESS_BLOCK_PORT_LIST         false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_SRC_MAC                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_INT_REPORT_DROPS               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_AETH_SYNDROME                   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_COUNTER                        true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_DST_IP                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_LAG_HASH_ID                false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_BTH_OPCODE                      false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL3_TTL                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DST_IPV6_WORD2                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DST_IPV6_WORD3                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DST_IPV6_WORD0                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_DST_IPV6_WORD1                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_TC                              true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL4_LABEL               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ICMP_TYPE                       true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MACSEC_SCI                      false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_REDIRECT                       true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL3_LABEL               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_TABLE_ID                              true       true       false      true
+ SAI_ACL_ENTRY_ATTR_ACTION_MACSEC_FLOW                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_PACKET_COLOR               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ACL_RANGE_TYPE                  true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL1_EXP                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL1_LABEL               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_SRC_IPV6                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL4_BOS                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_VLAN_ID                   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_IPV6                        true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_INT_REPORT_FLOW                false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_NO_NAT                         false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_SRC_MAC                         true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_TC                         false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_DTEL_TAIL_DROP_REPORT_ENABLE   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_L4_SRC_PORT                false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ACL_IP_FRAG                     false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_TCP_FLAGS                       true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ICMP_CODE                       true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ETHER_TYPE                      true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_INT_DELETE                     false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_OUT_PORT                        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_PACKET_ACTION                  true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_FLOOD                          false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_DTEL_INT_SESSION               false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_INT_REPORT_TAIL_DROPS          false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_FDB_NPU_META_DST_HIT            false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL3_BOS                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_USER_DEFINED_FIELD_GROUP_MAX          false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL1_BOS                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_OUTER_VLAN_PRI             false      true       true       true
+ SAI_ACL_ENTRY_ATTR_USER_DEFINED_FIELD_GROUP_MIN          false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_VLAN_CFI                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_INGRESS_SAMPLEPACKET_ENABLE    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_DST_MAC                    false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ICMPV6_TYPE                     true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL1_TTL                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_TAM_INT_OBJECT                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_DTEL_FLOW_SAMPLE_PERCENT       false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_OUTER_VLAN_ID              false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ACL_USER_META                   false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_TOS                             true       true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_DTEL_REPORT_ALL_PACKETS        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_VLAN_USER_META                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_INNER_DST_IPV6                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_DECREMENT_TTL                  false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_DST_IP                     false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_IN_PORTS                        false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL4_TTL                 false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ICMPV6_CODE                     true       true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ROUTE_DST_USER_META             false      true       true       true
+ SAI_ACL_ENTRY_ATTR_ACTION_SET_INNER_VLAN_ID              false      true       true       true
+ SAI_ACL_ENTRY_ATTR_FIELD_ECN                             false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_acl_counter
+   remove_acl_counter
+   set_acl_counter_attribute
+   get_acl_counter_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ACL_COUNTER_ATTR_ENABLE_BYTE_COUNT                   true       true       false      true
+ SAI_ACL_COUNTER_ATTR_TABLE_ID                            true       true       false      true
+ SAI_ACL_COUNTER_ATTR_BYTES                               true       true       true       true
+ SAI_ACL_COUNTER_ATTR_ENABLE_PACKET_COUNT                 true       true       false      true
+ SAI_ACL_COUNTER_ATTR_PACKETS                             true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_acl_table_group_member
+   remove_acl_table_group_member
+   set_acl_table_group_member_attribute
+   get_acl_table_group_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ACL_TABLE_GROUP_MEMBER_ATTR_ACL_TABLE_ID             true       true       false      true
+ SAI_ACL_TABLE_GROUP_MEMBER_ATTR_ACL_TABLE_GROUP_ID       true       true       false      true
+ SAI_ACL_TABLE_GROUP_MEMBER_ATTR_PRIORITY                 true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_bridge_port
+   remove_bridge_port
+   set_bridge_port_attribute
+   get_bridge_port_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_BRIDGE_PORT_ATTR_RIF_ID                              true       true       false      true
+ SAI_BRIDGE_PORT_ATTR_PORT_ID                             true       true       false      true
+ SAI_BRIDGE_PORT_ATTR_ADMIN_STATE                         true       true       true       true
+ SAI_BRIDGE_PORT_ATTR_TAGGING_MODE                        true       true       true       true
+ SAI_BRIDGE_PORT_ATTR_BRIDGE_ID                           true       true       true       true
+ SAI_BRIDGE_PORT_ATTR_TYPE                                true       true       false      true
+ SAI_BRIDGE_PORT_ATTR_ISOLATION_GROUP                     false      true       true       true
+ SAI_BRIDGE_PORT_ATTR_MAX_LEARNED_ADDRESSES               false      true       true       true
+ SAI_BRIDGE_PORT_ATTR_TUNNEL_ID                           true       true       false      true
+ SAI_BRIDGE_PORT_ATTR_FDB_LEARNING_MODE                   true       true       true       true
+ SAI_BRIDGE_PORT_ATTR_FDB_LEARNING_LIMIT_VIOLATION_PACKET_ACTION  true       true       true       true
+ SAI_BRIDGE_PORT_ATTR_EGRESS_FILTERING                    false      true       true       true
+ SAI_BRIDGE_PORT_ATTR_INGRESS_FILTERING                   false      true       true       true
+ SAI_BRIDGE_PORT_ATTR_VLAN_ID                             true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_bridge
+   remove_bridge
+   set_bridge_attribute
+   get_bridge_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_BRIDGE_ATTR_TYPE                                     true       true       false      true
+ SAI_BRIDGE_ATTR_MAX_LEARNED_ADDRESSES                    false      true       true       true
+ SAI_BRIDGE_ATTR_BROADCAST_FLOOD_GROUP                    true       true       true       true
+ SAI_BRIDGE_ATTR_UNKNOWN_MULTICAST_FLOOD_CONTROL_TYPE     true       true       true       true
+ SAI_BRIDGE_ATTR_UNKNOWN_UNICAST_FLOOD_GROUP              true       true       true       true
+ SAI_BRIDGE_ATTR_BROADCAST_FLOOD_CONTROL_TYPE             true       true       true       true
+ SAI_BRIDGE_ATTR_LEARN_DISABLE                            false      true       true       true
+ SAI_BRIDGE_ATTR_UNKNOWN_MULTICAST_FLOOD_GROUP            true       true       true       true
+ SAI_BRIDGE_ATTR_UNKNOWN_UNICAST_FLOOD_CONTROL_TYPE       true       true       true       true
+ SAI_BRIDGE_ATTR_PORT_LIST                                true       false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_switch
+   remove_switch
+   set_switch_attribute
+   get_switch_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_SWITCH_ATTR_PORT_STATE_CHANGE_NOTIFY                 true       true       true       true
+ SAI_SWITCH_ATTR_L3_NEIGHBOR_TABLE_SIZE                   true       false      false      true
+ SAI_SWITCH_ATTR_MAX_NUMBER_OF_SUPPORTED_PORTS            false      false      false      true
+ SAI_SWITCH_ATTR_NUMBER_OF_BFD_SESSION                    false      false      false      true
+ SAI_SWITCH_ATTR_TYPE                                     true       true       false      true
+ SAI_SWITCH_ATTR_SEGMENTROUTE_TLV_TYPE                    false      false      false      true
+ SAI_SWITCH_ATTR_FIRMWARE_BROADCAST_STOP                  false      true       true       true
+ SAI_SWITCH_ATTR_PRE_INGRESS_ACL                          false      true       true       true
+ SAI_SWITCH_ATTR_ACL_CAPABILITY                           false      false      false      true
+ SAI_SWITCH_ATTR_FAST_API_ENABLE                          false      true       true       true
+ SAI_SWITCH_ATTR_PACKET_DMA_MEMORY_POOL_SIZE              false      false      false      true
+ SAI_SWITCH_ATTR_NAT_ZONE_COUNTER_OBJECT_ID               false      true       true       true
+ SAI_SWITCH_ATTR_ACL_ENTRY_MAXIMUM_PRIORITY               true       false      false      true
+ SAI_SWITCH_ATTR_NV_STORAGE_SIZE                          false      false      false      true
+ SAI_SWITCH_ATTR_MAX_NUMBER_OF_TEMP_SENSORS               false      false      false      true
+ SAI_SWITCH_ATTR_ACL_ENTRY_MINIMUM_PRIORITY               true       false      false      true
+ SAI_SWITCH_ATTR_OPER_STATUS                              true       false      false      true
+ SAI_SWITCH_ATTR_FDB_EVENT_NOTIFY                         true       true       true       true
+ SAI_SWITCH_ATTR_NUMBER_OF_QUEUES                         true       false      false      true
+ SAI_SWITCH_ATTR_PORT_NUMBER                              true       false      false      false
+ SAI_SWITCH_ATTR_DEFAULT_OVERRIDE_VIRTUAL_ROUTER_ID       false      false      false      true
+ SAI_SWITCH_ATTR_TPID_INNER_VLAN                          false      true       true       true
+ SAI_SWITCH_ATTR_L3_ROUTE_TABLE_SIZE                      false      false      false      true
+ SAI_SWITCH_ATTR_SWITCH_ID                                false      true       false      true
+ SAI_SWITCH_ATTR_QOS_DEFAULT_TC                           true       true       true       true
+ SAI_SWITCH_ATTR_QOS_TC_AND_COLOR_TO_DOT1P_MAP            true       true       true       true
+ SAI_SWITCH_ATTR_ECMP_DEFAULT_SYMMETRIC_HASH              false      true       true       true
+ SAI_SWITCH_ATTR_FIRMWARE_LOAD_METHOD                     false      true       false      true
+ SAI_SWITCH_ATTR_DEFAULT_STP_INST_ID                      true       false      false      true
+ SAI_SWITCH_ATTR_FIRMWARE_DOWNLOAD_BROADCAST              false      true       false      true
+ SAI_SWITCH_ATTR_SWITCH_PROFILE_ID                        true       true       false      true
+ SAI_SWITCH_ATTR_LAG_HASH_IPV4_IN_IPV4                    false      true       true       true
+ SAI_SWITCH_ATTR_TUNNEL_OBJECTS_LIST                      false      true       true       true
+ SAI_SWITCH_ATTR_MCAST_SNOOPING_CAPABILITY                true       false      false      true
+ SAI_SWITCH_ATTR_FDB_DST_USER_META_DATA_RANGE             false      false      false      true
+ SAI_SWITCH_ATTR_PFC_TC_DLD_INTERVAL                      false      true       true       true
+ SAI_SWITCH_ATTR_SWITCH_SHELL_ENABLE                      true       true       true       true
+ SAI_SWITCH_ATTR_MAX_ACL_ACTION_COUNT                     true       false      false      true
+ SAI_SWITCH_ATTR_ACL_USER_META_DATA_RANGE                 false      false      false      true
+ SAI_SWITCH_ATTR_DEFAULT_VIRTUAL_ROUTER_ID                true       false      false      true
+ SAI_SWITCH_ATTR_FIRMWARE_LOAD_TYPE                       false      true       false      true
+ SAI_SWITCH_ATTR_REGISTER_READ                            false      true       true       true
+ SAI_SWITCH_ATTR_FIRMWARE_MINOR_VERSION                   false      false      false      true
+ SAI_SWITCH_ATTR_FDB_UNICAST_MISS_PACKET_ACTION           true       true       true       true
+ SAI_SWITCH_ATTR_ACL_TABLE_GROUP_MAXIMUM_PRIORITY         false      false      false      true
+ SAI_SWITCH_ATTR_PFC_TC_DLD_INTERVAL_RANGE                false      false      false      true
+ SAI_SWITCH_ATTR_DEFAULT_VLAN_ID                          false      false      false      true
+ SAI_SWITCH_ATTR_PFC_DLR_PACKET_ACTION                    false      true       true       true
+ SAI_SWITCH_ATTR_QOS_DSCP_TO_COLOR_MAP                    true       true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_IPMC_ENTRY                     false      false      false      true
+ SAI_SWITCH_ATTR_DEFAULT_TRAP_GROUP                       true       false      false      true
+ SAI_SWITCH_ATTR_QOS_MAX_NUMBER_OF_SCHEDULER_GROUP_HIERARCHY_LEVELS  true       false      false      true
+ SAI_SWITCH_ATTR_SYSTEM_PORT_LIST                         false      false      false      true
+ SAI_SWITCH_ATTR_ACL_STAGE_EGRESS                         true       false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_NEXT_HOP_GROUP_MEMBER_ENTRY    true       false      false      true
+ SAI_SWITCH_ATTR_QOS_MPLS_EXP_TO_TC_MAP                   false      true       true       true
+ SAI_SWITCH_ATTR_QOS_TC_TO_QUEUE_MAP                      true       true       true       true
+ SAI_SWITCH_ATTR_NUMBER_OF_UNICAST_QUEUES                 true       false      false      true
+ SAI_SWITCH_ATTR_FABRIC_PORT_LIST                         false      false      false      true
+ SAI_SWITCH_ATTR_ACL_TABLE_GROUP_MINIMUM_PRIORITY         false      false      false      true
+ SAI_SWITCH_ATTR_AVERAGE_TEMP                             false      false      false      true
+ SAI_SWITCH_ATTR_MIN_PLANNED_RESTART_INTERVAL             false      false      false      true
+ SAI_SWITCH_ATTR_SHUTDOWN_REQUEST_NOTIFY                  true       false      false      false
+ SAI_SWITCH_ATTR_FDB_AGING_TIME                           true       true       true       true
+ SAI_SWITCH_ATTR_ECN_ECT_THRESHOLD_ENABLE                 false      true       true       true
+ SAI_SWITCH_ATTR_MAX_MIRROR_SESSION                       true       false      false      true
+ SAI_SWITCH_ATTR_FDB_MULTICAST_MISS_PACKET_ACTION         true       true       true       true
+ SAI_SWITCH_ATTR_INGRESS_ACL                              true       true       true       true
+ SAI_SWITCH_ATTR_RESTART_TYPE                             false      false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_ACL_TABLE                      true       false      false      true
+ SAI_SWITCH_ATTR_INGRESS_BUFFER_POOL_NUM                  false      false      false      true
+ SAI_SWITCH_ATTR_QUEUE_PFC_DEADLOCK_NOTIFY                false      true       true       true
+ SAI_SWITCH_ATTR_LAG_HASH                                 false      false      false      true
+ SAI_SWITCH_ATTR_ROUTE_DST_USER_META_DATA_RANGE           false      false      false      true
+ SAI_SWITCH_ATTR_TOTAL_BUFFER_SIZE                        true       false      false      true
+ SAI_SWITCH_ATTR_MAX_BFD_SESSION                          false      false      false      true
+ SAI_SWITCH_ATTR_MAX_SAMPLED_MIRROR_SESSION               false      false      false      true
+ SAI_SWITCH_ATTR_FIRMWARE_DOWNLOAD_EXECUTE                false      true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_IPV4_NEXTHOP_ENTRY             true       false      false      true
+ SAI_SWITCH_ATTR_EGRESS_BUFFER_POOL_NUM                   false      false      false      true
+ SAI_SWITCH_ATTR_BCAST_CPU_FLOOD_ENABLE                   false      true       true       true
+ SAI_SWITCH_ATTR_PACKET_EVENT_NOTIFY                      false      true       true       true
+ SAI_SWITCH_ATTR_QOS_DOT1P_TO_COLOR_MAP                   true       true       true       true
+ SAI_SWITCH_ATTR_WARM_RECOVER                             false      true       true       true
+ SAI_SWITCH_ATTR_ECMP_DEFAULT_HASH_ALGORITHM              true       true       true       true
+ SAI_SWITCH_ATTR_CRC_RECALCULATION_ENABLE                 false      true       true       true
+ SAI_SWITCH_ATTR_SUPPORTED_FAILOVER_MODE                  false      false      false      true
+ SAI_SWITCH_ATTR_NUMBER_OF_LAGS                           true       false      false      true
+ SAI_SWITCH_ATTR_ECMP_HASH_IPV6                           false      true       true       true
+ SAI_SWITCH_ATTR_MCAST_CPU_FLOOD_ENABLE                   false      true       true       true
+ SAI_SWITCH_ATTR_PORT_CONNECTOR_LIST                      false      false      false      true
+ SAI_SWITCH_ATTR_SUPPORTED_OBJECT_TYPE_LIST               false      false      false      true
+ SAI_SWITCH_ATTR_TPID_OUTER_VLAN                          false      true       true       true
+ SAI_SWITCH_ATTR_ACL_USER_TRAP_ID_RANGE                   false      false      false      true
+ SAI_SWITCH_ATTR_SEGMENTROUTE_MAX_SID_DEPTH               false      false      false      true
+ SAI_SWITCH_ATTR_LAG_DEFAULT_HASH_ALGORITHM               true       true       true       true
+ SAI_SWITCH_ATTR_NUMBER_OF_MULTICAST_QUEUES               true       false      false      true
+ SAI_SWITCH_ATTR_QOS_MAX_NUMBER_OF_SCHEDULER_GROUPS_PER_HIERARCHY_LEVEL  true       false      false      true
+ SAI_SWITCH_ATTR_FIRMWARE_VERIFY_AND_INIT_SWITCH          false      true       true       true
+ SAI_SWITCH_ATTR_VLAN_USER_META_DATA_RANGE                false      false      false      true
+ SAI_SWITCH_ATTR_PORT_LIST                                true       false      false      true
+ SAI_SWITCH_ATTR_RESTART_WARM                             false      true       true       true
+ SAI_SWITCH_ATTR_FIRMWARE_STATUS                          false      false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_NEXT_HOP_GROUP_ENTRY           true       false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_SNAPT_ENTRY                    false      false      false      true
+ SAI_SWITCH_ATTR_SUPPORTED_PROTECTED_OBJECT_TYPE          false      false      false      true
+ SAI_SWITCH_ATTR_MIN_BFD_RX                               false      false      false      true
+ SAI_SWITCH_ATTR_MAX_TEMP                                 false      false      false      true
+ SAI_SWITCH_ATTR_ACL_STAGE_INGRESS                        true       false      false      true
+ SAI_SWITCH_ATTR_ACL_TABLE_MINIMUM_PRIORITY               true       false      false      true
+ SAI_SWITCH_ATTR_UNINIT_DATA_PLANE_ON_REMOVAL             false      true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_IPV6_NEIGHBOR_ENTRY            true       false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_DOUBLE_NAT_ENTRY               false      false      false      true
+ SAI_SWITCH_ATTR_TAM_OBJECT_ID                            false      true       true       true
+ SAI_SWITCH_ATTR_PRE_SHUTDOWN                             false      true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_DOUBLE_NAPT_ENTRY              false      false      false      true
+ SAI_SWITCH_ATTR_QOS_DOT1P_TO_TC_MAP                      true       true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_IPV6_NEXTHOP_ENTRY             true       false      false      true
+ SAI_SWITCH_ATTR_ACL_TABLE_MAXIMUM_PRIORITY               true       false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_DNAPT_ENTRY                    false      false      false      true
+ SAI_SWITCH_ATTR_LAG_HASH_IPV4                            false      true       true       true
+ SAI_SWITCH_ATTR_LAG_DEFAULT_SYMMETRIC_HASH               false      true       true       true
+ SAI_SWITCH_ATTR_ECMP_HASH_IPV4                           false      true       true       true
+ SAI_SWITCH_ATTR_SYSTEM_PORT_CONFIG_LIST                  false      true       false      true
+ SAI_SWITCH_ATTR_SWITCH_SHUTDOWN_REQUEST_NOTIFY           false      true       true       true
+ SAI_SWITCH_ATTR_CPU_PORT                                 true       false      false      true
+ SAI_SWITCH_ATTR_NAT_ENABLE                               false      true       true       true
+ SAI_SWITCH_ATTR_TAM_EVENT_NOTIFY                         false      true       true       true
+ SAI_SWITCH_ATTR_QOS_TC_AND_COLOR_TO_MPLS_EXP_MAP         false      true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_IPV6_ROUTE_ENTRY               true       false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_FDB_ENTRY                      true       false      false      true
+ SAI_SWITCH_ATTR_HARDWARE_ACCESS_BUS                      false      true       false      true
+ SAI_SWITCH_ATTR_COUNTER_REFRESH_INTERVAL                 false      true       true       true
+ SAI_SWITCH_ATTR_MACSEC_OBJECT_LIST                       false      true       true       true
+ SAI_SWITCH_ATTR_QOS_TC_AND_COLOR_TO_DSCP_MAP             true       true       true       true
+ SAI_SWITCH_ATTR_ECMP_MEMBERS                             true       false      false      true
+ SAI_SWITCH_ATTR_NUMBER_OF_ECMP_GROUPS                    true       false      false      true
+ SAI_SWITCH_ATTR_MAX_STP_INSTANCE                         false      false      false      true
+ SAI_SWITCH_ATTR_NUMBER_OF_SYSTEM_PORTS                   false      false      false      true
+ SAI_SWITCH_ATTR_LAG_HASH_IPV6                            false      true       true       true
+ SAI_SWITCH_ATTR_SWITCH_STATE_CHANGE_NOTIFY               false      true       true       true
+ SAI_SWITCH_ATTR_LAG_DEFAULT_HASH_OFFSET                  false      true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_SNAT_ENTRY                     false      false      false      true
+ SAI_SWITCH_ATTR_FIRMWARE_PATH_NAME                       false      true       false      true
+ SAI_SWITCH_ATTR_PROPOGATE_PORT_STATE_FROM_LINE_TO_SYSTEM_PORT_SUPPORT  false      false      false      true
+ SAI_SWITCH_ATTR_PFC_TC_DLR_INTERVAL_RANGE                false      false      false      true
+ SAI_SWITCH_ATTR_MIRROR_TC                                false      true       true       true
+ SAI_SWITCH_ATTR_ECMP_DEFAULT_HASH_SEED                   true       true       true       true
+ SAI_SWITCH_ATTR_MAX_LEARNED_ADDRESSES                    true       true       true       true
+ SAI_SWITCH_ATTR_VXLAN_DEFAULT_PORT                       false      true       true       true
+ SAI_SWITCH_ATTR_FIRMWARE_MAJOR_VERSION                   false      false      false      true
+ SAI_SWITCH_ATTR_NUMBER_OF_ACTIVE_PORTS                   false      false      false      true
+ SAI_SWITCH_ATTR_PLATFROM_CONTEXT                         false      true       false      true
+ SAI_SWITCH_ATTR_REGISTER_WRITE                           false      true       true       true
+ SAI_SWITCH_ATTR_SWITCH_HARDWARE_INFO                     true       true       false      true
+ SAI_SWITCH_ATTR_CRC_CHECK_ENABLE                         false      true       true       true
+ SAI_SWITCH_ATTR_SUPPORTED_IPV6_BFD_SESSION_OFFLOAD_TYPE  false      false      false      true
+ SAI_SWITCH_ATTR_QOS_DSCP_TO_TC_MAP                       true       true       true       true
+ SAI_SWITCH_ATTR_DEFAULT_1Q_BRIDGE_ID                     true       false      false      true
+ SAI_SWITCH_ATTR_NUMBER_OF_FABRIC_PORTS                   false      false      false      true
+ SAI_SWITCH_ATTR_PORT_MAX_MTU                             true       false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_L2MC_ENTRY                     false      false      false      true
+ SAI_SWITCH_ATTR_EGRESS_ACL                               true       true       true       true
+ SAI_SWITCH_ATTR_SUPPORTED_IPV4_BFD_SESSION_OFFLOAD_TYPE  false      false      false      true
+ SAI_SWITCH_ATTR_NUMBER_OF_CPU_QUEUES                     true       false      false      true
+ SAI_SWITCH_ATTR_MAX_VIRTUAL_ROUTERS                      true       false      false      true
+ SAI_SWITCH_ATTR_TEMP_LIST                                false      false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_IPV4_NEIGHBOR_ENTRY            true       false      false      true
+ SAI_SWITCH_ATTR_MAX_SYSTEM_CORES                         false      true       false      true
+ SAI_SWITCH_ATTR_LAG_MEMBERS                              true       false      false      true
+ SAI_SWITCH_ATTR_ECMP_HASH                                false      false      false      true
+ SAI_SWITCH_ATTR_QOS_NUM_LOSSLESS_QUEUES                  true       false      false      true
+ SAI_SWITCH_ATTR_MIN_BFD_TX                               false      false      false      true
+ SAI_SWITCH_ATTR_FDB_TABLE_SIZE                           true       false      false      true
+ SAI_SWITCH_ATTR_SWITCHING_MODE                           false      true       true       true
+ SAI_SWITCH_ATTR_PORT_USER_META_DATA_RANGE                false      false      false      true
+ SAI_SWITCH_ATTR_QOS_MPLS_EXP_TO_COLOR_MAP                false      true       true       true
+ SAI_SWITCH_ATTR_INIT_SWITCH                              true       true       false      true
+ SAI_SWITCH_ATTR_VXLAN_DEFAULT_ROUTER_MAC                 false      true       true       true
+ SAI_SWITCH_ATTR_SRC_MAC_ADDRESS                          true       true       true       true
+ SAI_SWITCH_ATTR_PACKET_AVAILABLE_DMA_MEMORY_POOL_SIZE    false      false      false      true
+ SAI_SWITCH_ATTR_AVAILABLE_ACL_TABLE_GROUP                true       false      false      true
+ SAI_SWITCH_ATTR_QOS_MAX_NUMBER_OF_CHILDS_PER_SCHEDULER_GROUP  true       false      false      true
+ SAI_SWITCH_ATTR_ON_LINK_ROUTE_SUPPORTED                  false      false      false      true
+ SAI_SWITCH_ATTR_QOS_MAX_NUMBER_OF_TRAFFIC_CLASSES        true       false      false      true
+ SAI_SWITCH_ATTR_ECMP_HASH_IPV4_IN_IPV4                   false      true       true       true
+ SAI_SWITCH_ATTR_FAILOVER_CONFIG_MODE                     false      true       true       true
+ SAI_SWITCH_ATTR_ECMP_DEFAULT_HASH_OFFSET                 false      true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_DNAT_ENTRY                     false      false      false      true
+ SAI_SWITCH_ATTR_FDB_BROADCAST_MISS_PACKET_ACTION         true       true       true       true
+ SAI_SWITCH_ATTR_MAX_ACL_RANGE_COUNT                      false      false      false      true
+ SAI_SWITCH_ATTR_BFD_SESSION_STATE_CHANGE_NOTIFY          false      true       true       true
+ SAI_SWITCH_ATTR_NEIGHBOR_DST_USER_META_DATA_RANGE        false      false      false      true
+ SAI_SWITCH_ATTR_PFC_TC_DLR_INTERVAL                      false      true       true       true
+ SAI_SWITCH_ATTR_LAG_DEFAULT_HASH_SEED                    true       true       true       true
+ SAI_SWITCH_ATTR_AVAILABLE_IPV4_ROUTE_ENTRY               true       false      false      true
+ SAI_SWITCH_ATTR_SUPPORTED_EXTENDED_STATS_MODE            false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_switch_tunnel
+   remove_switch_tunnel
+   set_switch_tunnel_attribute
+   get_switch_tunnel_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_SWITCH_TUNNEL_ATTR_ENCAP_MAPPERS                     false      true       false      true
+ SAI_SWITCH_TUNNEL_ATTR_LOOPBACK_PACKET_ACTION            false      true       true       true
+ SAI_SWITCH_TUNNEL_ATTR_TUNNEL_DECAP_ECN_MODE             false      true       false      true
+ SAI_SWITCH_TUNNEL_ATTR_VXLAN_UDP_SPORT                   false      true       true       true
+ SAI_SWITCH_TUNNEL_ATTR_DECAP_MAPPERS                     false      true       false      true
+ SAI_SWITCH_TUNNEL_ATTR_TUNNEL_VXLAN_UDP_SPORT_MODE       false      true       true       true
+ SAI_SWITCH_TUNNEL_ATTR_TUNNEL_TYPE                       false      true       false      true
+ SAI_SWITCH_TUNNEL_ATTR_TUNNEL_ENCAP_ECN_MODE             false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_l2mc_group
+   remove_l2mc_group
+   set_l2mc_group_attribute
+   get_l2mc_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_L2MC_GROUP_ATTR_L2MC_MEMBER_LIST                     true       false      false      true
+ SAI_L2MC_GROUP_ATTR_L2MC_OUTPUT_COUNT                    true       false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_l2mc_group_member
+   remove_l2mc_group_member
+   set_l2mc_group_member_attribute
+   get_l2mc_group_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_L2MC_GROUP_MEMBER_ATTR_L2MC_ENDPOINT_IP              false      true       false      true
+ SAI_L2MC_GROUP_MEMBER_ATTR_L2MC_GROUP_ID                 true       true       false      true
+ SAI_L2MC_GROUP_MEMBER_ATTR_L2MC_OUTPUT_ID                false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_wred
+   remove_wred
+   set_wred_attribute
+   get_wred_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_WRED_ATTR_ECN_YELLOW_MARK_PROBABILITY                false      true       true       true
+ SAI_WRED_ATTR_ECN_GREEN_MARK_PROBABILITY                 false      true       true       true
+ SAI_WRED_ATTR_RED_MAX_THRESHOLD                          true       true       true       true
+ SAI_WRED_ATTR_ECN_COLOR_UNAWARE_MAX_THRESHOLD            false      true       true       true
+ SAI_WRED_ATTR_ECN_COLOR_UNAWARE_MIN_THRESHOLD            false      true       true       true
+ SAI_WRED_ATTR_ECN_COLOR_UNAWARE_MARK_PROBABILITY         true       true       true       true
+ SAI_WRED_ATTR_YELLOW_DROP_PROBABILITY                    true       true       true       true
+ SAI_WRED_ATTR_RED_DROP_PROBABILITY                       true       true       true       true
+ SAI_WRED_ATTR_GREEN_DROP_PROBABILITY                     true       true       true       true
+ SAI_WRED_ATTR_GREEN_ENABLE                               true       true       true       true
+ SAI_WRED_ATTR_WEIGHT                                     false      true       true       true
+ SAI_WRED_ATTR_ECN_GREEN_MIN_THRESHOLD                    false      true       true       true
+ SAI_WRED_ATTR_ECN_MARK_MODE                              true       true       true       true
+ SAI_WRED_ATTR_YELLOW_MIN_THRESHOLD                       true       true       true       true
+ SAI_WRED_ATTR_ECN_RED_MIN_THRESHOLD                      false      true       true       true
+ SAI_WRED_ATTR_ECN_RED_MARK_PROBABILITY                   false      true       true       true
+ SAI_WRED_ATTR_GREEN_MIN_THRESHOLD                        true       true       true       true
+ SAI_WRED_ATTR_ECN_YELLOW_MAX_THRESHOLD                   false      true       true       true
+ SAI_WRED_ATTR_ECN_YELLOW_MIN_THRESHOLD                   false      true       true       true
+ SAI_WRED_ATTR_GREEN_MAX_THRESHOLD                        true       true       true       true
+ SAI_WRED_ATTR_RED_ENABLE                                 true       true       true       true
+ SAI_WRED_ATTR_ECN_GREEN_MAX_THRESHOLD                    false      true       true       true
+ SAI_WRED_ATTR_YELLOW_MAX_THRESHOLD                       true       true       true       true
+ SAI_WRED_ATTR_ECN_RED_MAX_THRESHOLD                      false      true       true       true
+ SAI_WRED_ATTR_YELLOW_ENABLE                              true       true       true       true
+ SAI_WRED_ATTR_RED_MIN_THRESHOLD                          true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_router_interface
+   remove_router_interface
+   set_router_interface_attribute
+   get_router_interface_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ROUTER_INTERFACE_ATTR_BRIDGE_ID                      false      true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_SRC_MAC_ADDRESS                true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_ADMIN_V4_STATE                 true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_V4_MCAST_ENABLE                true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_ADMIN_MPLS_STATE               false      true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_VLAN_ID                        true       true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_INGRESS_ACL                    true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_TYPE                           true       true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_NAT_ZONE_ID                    false      true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_DISABLE_DECREMENT_TTL          false      true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_ADMIN_V6_STATE                 true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_INNER_VLAN_ID                  false      true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_OUTER_VLAN_ID                  false      true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_PORT_ID                        true       true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_NEIGHBOR_MISS_PACKET_ACTION    true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_MTU                            true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_EGRESS_ACL                     true       true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_LOOPBACK_PACKET_ACTION         false      true       true       true
+ SAI_ROUTER_INTERFACE_ATTR_VIRTUAL_ROUTER_ID              true       true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_IS_VIRTUAL                     false      true       false      true
+ SAI_ROUTER_INTERFACE_ATTR_V6_MCAST_ENABLE                true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_udf_match
+   remove_udf_match
+   set_udf_match_attribute
+   get_udf_match_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_UDF_MATCH_ATTR_L3_TYPE                               false      true       false      true
+ SAI_UDF_MATCH_ATTR_PRIORITY                              false      true       false      true
+ SAI_UDF_MATCH_ATTR_GRE_TYPE                              false      true       false      true
+ SAI_UDF_MATCH_ATTR_L2_TYPE                               false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_udf_group
+   remove_udf_group
+   set_udf_group_attribute
+   get_udf_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_UDF_GROUP_ATTR_LENGTH                                false      true       false      true
+ SAI_UDF_GROUP_ATTR_TYPE                                  false      true       false      true
+ SAI_UDF_GROUP_ATTR_UDF_LIST                              false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_udf
+   remove_udf
+   set_udf_attribute
+   get_udf_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_UDF_ATTR_BASE                                        false      true       true       true
+ SAI_UDF_ATTR_HASH_MASK                                   false      true       true       true
+ SAI_UDF_ATTR_GROUP_ID                                    false      true       false      true
+ SAI_UDF_ATTR_MATCH_ID                                    false      true       false      true
+ SAI_UDF_ATTR_OFFSET                                      false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_scheduler
+   remove_scheduler
+   set_scheduler_attribute
+   get_scheduler_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_SCHEDULER_ATTR_MIN_BANDWIDTH_BURST_RATE              true       true       true       true
+ SAI_SCHEDULER_ATTR_SCHEDULING_TYPE                       true       true       true       true
+ SAI_SCHEDULER_ATTR_MAX_BANDWIDTH_RATE                    true       true       true       true
+ SAI_SCHEDULER_ATTR_MIN_BANDWIDTH_RATE                    true       true       true       true
+ SAI_SCHEDULER_ATTR_MAX_BANDWIDTH_BURST_RATE              true       true       true       true
+ SAI_SCHEDULER_ATTR_METER_TYPE                            true       true       true       true
+ SAI_SCHEDULER_ATTR_SCHEDULING_WEIGHT                     true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_vlan_member
+   remove_vlan_member
+   set_vlan_member_attribute
+   get_vlan_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_VLAN_MEMBER_ATTR_VLAN_ID                             true       true       false      true
+ SAI_VLAN_MEMBER_ATTR_BRIDGE_PORT_ID                      true       true       false      true
+ SAI_VLAN_MEMBER_ATTR_VLAN_TAGGING_MODE                   true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_vlan
+   remove_vlan
+   set_vlan_attribute
+   get_vlan_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_VLAN_ATTR_MAX_LEARNED_ADDRESSES                      false      true       true       true
+ SAI_VLAN_ATTR_UNKNOWN_UNICAST_FLOOD_GROUP                false      true       true       true
+ SAI_VLAN_ATTR_INGRESS_ACL                                true       true       true       true
+ SAI_VLAN_ATTR_UNKNOWN_UNICAST_FLOOD_CONTROL_TYPE         false      true       true       true
+ SAI_VLAN_ATTR_UNKNOWN_IPV4_MCAST_OUTPUT_GROUP_ID         false      true       true       true
+ SAI_VLAN_ATTR_STP_INSTANCE                               false      true       true       true
+ SAI_VLAN_ATTR_IPV4_MCAST_LOOKUP_KEY_TYPE                 true       true       true       true
+ SAI_VLAN_ATTR_TAM_OBJECT                                 false      true       true       true
+ SAI_VLAN_ATTR_CUSTOM_IGMP_SNOOPING_ENABLE                true       true       true       true
+ SAI_VLAN_ATTR_EGRESS_ACL                                 true       true       true       true
+ SAI_VLAN_ATTR_UNKNOWN_IPV6_MCAST_OUTPUT_GROUP_ID         false      true       true       true
+ SAI_VLAN_ATTR_UNKNOWN_LINKLOCAL_MCAST_OUTPUT_GROUP_ID    false      true       true       true
+ SAI_VLAN_ATTR_LEARN_DISABLE                              false      true       true       true
+ SAI_VLAN_ATTR_MEMBER_LIST                                true       false      false      true
+ SAI_VLAN_ATTR_UNKNOWN_NON_IP_MCAST_OUTPUT_GROUP_ID       false      true       true       true
+ SAI_VLAN_ATTR_VLAN_ID                                    true       true       false      true
+ SAI_VLAN_ATTR_UNKNOWN_MULTICAST_FLOOD_CONTROL_TYPE       true       true       true       true
+ SAI_VLAN_ATTR_UNKNOWN_MULTICAST_FLOOD_GROUP              true       true       true       true
+ SAI_VLAN_ATTR_IPV6_MCAST_LOOKUP_KEY_TYPE                 false      true       true       true
+ SAI_VLAN_ATTR_BROADCAST_FLOOD_GROUP                      true       true       true       true
+ SAI_VLAN_ATTR_META_DATA                                  false      true       true       true
+ SAI_VLAN_ATTR_BROADCAST_FLOOD_CONTROL_TYPE               true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_fdb_entry
+   remove_fdb_entry
+   set_fdb_entry_attribute
+   get_fdb_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_FDB_ENTRY_ATTR_ALLOW_MAC_MOVE                        false      true       true       true
+ SAI_FDB_ENTRY_ATTR_META_DATA                             false      true       true       true
+ SAI_FDB_ENTRY_ATTR_PACKET_ACTION                         true       true       true       true
+ SAI_FDB_ENTRY_ATTR_ENDPOINT_IP                           true       true       true       true
+ SAI_FDB_ENTRY_ATTR_COUNTER_ID                            false      true       true       true
+ SAI_FDB_ENTRY_ATTR_BRIDGE_PORT_ID                        true       true       true       true
+ SAI_FDB_ENTRY_ATTR_TYPE                                  true       true       true       true
+ SAI_FDB_ENTRY_ATTR_USER_TRAP_ID                          false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_fdb_flush
+   remove_fdb_flush
+   set_fdb_flush_attribute
+   get_fdb_flush_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_FDB_FLUSH_ATTR_ENTRY_TYPE                            true       true       false      true
+ SAI_FDB_FLUSH_ATTR_BV_ID                                 true       true       false      true
+ SAI_FDB_FLUSH_ATTR_BRIDGE_PORT_ID                        true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_route_entry
+   remove_route_entry
+   set_route_entry_attribute
+   get_route_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_ROUTE_ENTRY_ATTR_NEXT_HOP_ID                         true       true       true       true
+ SAI_ROUTE_ENTRY_ATTR_IP_ADDR_FAMILY                      false      false      false      true
+ SAI_ROUTE_ENTRY_ATTR_META_DATA                           false      true       true       true
+ SAI_ROUTE_ENTRY_ATTR_USER_TRAP_ID                        false      true       true       true
+ SAI_ROUTE_ENTRY_ATTR_PACKET_ACTION                       true       true       true       true
+ SAI_ROUTE_ENTRY_ATTR_COUNTER_ID                          false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_system_port
+   remove_system_port
+   set_system_port_attribute
+   get_system_port_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_SYSTEM_PORT_ATTR_QOS_TC_TO_QUEUE_MAP                 false      true       true       true
+ SAI_SYSTEM_PORT_ATTR_ADMIN_STATE                         false      true       true       true
+ SAI_SYSTEM_PORT_ATTR_QOS_VOQ_LIST                        false      false      false      true
+ SAI_SYSTEM_PORT_ATTR_CONFIG_INFO                         false      true       false      true
+ SAI_SYSTEM_PORT_ATTR_TYPE                                false      false      false      true
+ SAI_SYSTEM_PORT_ATTR_PORT                                false      false      false      true
+ SAI_SYSTEM_PORT_ATTR_QOS_NUMBER_OF_VOQS                  false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_mcast_fdb_entry
+   remove_mcast_fdb_entry
+   set_mcast_fdb_entry_attribute
+   get_mcast_fdb_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_MCAST_FDB_ENTRY_ATTR_GROUP_ID                        false      true       true       true
+ SAI_MCAST_FDB_ENTRY_ATTR_PACKET_ACTION                   false      true       true       true
+ SAI_MCAST_FDB_ENTRY_ATTR_META_DATA                       false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_qos_map
+   remove_qos_map
+   set_qos_map_attribute
+   get_qos_map_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_QOS_MAP_ATTR_MAP_TO_VALUE_LIST                       true       true       true       true
+ SAI_QOS_MAP_ATTR_TYPE                                    true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_next_hop_group
+   remove_next_hop_group
+   set_next_hop_group_attribute
+   get_next_hop_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_NEXT_HOP_GROUP_ATTR_NEXT_HOP_MEMBER_LIST             true       false      false      true
+ SAI_NEXT_HOP_GROUP_ATTR_TYPE                             true       true       false      true
+ SAI_NEXT_HOP_GROUP_ATTR_COUNTER_ID                       false      true       true       true
+ SAI_NEXT_HOP_GROUP_ATTR_SET_SWITCHOVER                   false      true       true       true
+ SAI_NEXT_HOP_GROUP_ATTR_CONFIGURED_SIZE                  false      true       false      true
+ SAI_NEXT_HOP_GROUP_ATTR_REAL_SIZE                        false      false      false      true
+ SAI_NEXT_HOP_GROUP_ATTR_NEXT_HOP_COUNT                   true       false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_next_hop_group_member
+   remove_next_hop_group_member
+   set_next_hop_group_member_attribute
+   get_next_hop_group_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_OBSERVED_ROLE             false      false      false      true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_COUNTER_ID                false      true       true       true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_WEIGHT                    false      true       true       true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_CONFIGURED_ROLE           false      true       false      true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_MONITORED_OBJECT          false      true       true       true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_INDEX                     false      true       false      true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_NEXT_HOP_ID               true       true       true       true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_NEXT_HOP_GROUP_ID         true       true       false      true
+ SAI_NEXT_HOP_GROUP_MEMBER_ATTR_SEQUENCE_ID               false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_samplepacket
+   remove_samplepacket
+   set_samplepacket_attribute
+   get_samplepacket_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_SAMPLEPACKET_ATTR_MODE                               false      true       false      true
+ SAI_SAMPLEPACKET_ATTR_TYPE                               false      true       false      true
+ SAI_SAMPLEPACKET_ATTR_SAMPLE_RATE                        false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_dtel_int_session
+   remove_dtel_int_session
+   set_dtel_int_session_attribute
+   get_dtel_int_session_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_DTEL_INT_SESSION_ATTR_COLLECT_SWITCH_ID              false      true       true       true
+ SAI_DTEL_INT_SESSION_ATTR_COLLECT_EGRESS_TIMESTAMP       false      true       true       true
+ SAI_DTEL_INT_SESSION_ATTR_COLLECT_INGRESS_TIMESTAMP      false      true       true       true
+ SAI_DTEL_INT_SESSION_ATTR_MAX_HOP_COUNT                  false      true       true       true
+ SAI_DTEL_INT_SESSION_ATTR_COLLECT_QUEUE_INFO             false      true       true       true
+ SAI_DTEL_INT_SESSION_ATTR_COLLECT_SWITCH_PORTS           false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_dtel_event
+   remove_dtel_event
+   set_dtel_event_attribute
+   get_dtel_event_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_DTEL_EVENT_ATTR_DSCP_VALUE                           false      true       true       true
+ SAI_DTEL_EVENT_ATTR_REPORT_SESSION                       false      true       true       true
+ SAI_DTEL_EVENT_ATTR_TYPE                                 false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_dtel_queue_report
+   remove_dtel_queue_report
+   set_dtel_queue_report_attribute
+   get_dtel_queue_report_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_DTEL_QUEUE_REPORT_ATTR_QUEUE_ID                      false      true       false      true
+ SAI_DTEL_QUEUE_REPORT_ATTR_DEPTH_THRESHOLD               false      true       true       true
+ SAI_DTEL_QUEUE_REPORT_ATTR_BREACH_QUOTA                  false      true       true       true
+ SAI_DTEL_QUEUE_REPORT_ATTR_LATENCY_THRESHOLD             false      true       true       true
+ SAI_DTEL_QUEUE_REPORT_ATTR_TAIL_DROP                     false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_dtel_report_session
+   remove_dtel_report_session
+   set_dtel_report_session_attribute
+   get_dtel_report_session_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_DTEL_REPORT_SESSION_ATTR_TRUNCATE_SIZE               false      true       true       true
+ SAI_DTEL_REPORT_SESSION_ATTR_UDP_DST_PORT                false      true       true       true
+ SAI_DTEL_REPORT_SESSION_ATTR_VIRTUAL_ROUTER_ID           false      true       true       true
+ SAI_DTEL_REPORT_SESSION_ATTR_SRC_IP                      false      true       true       true
+ SAI_DTEL_REPORT_SESSION_ATTR_DST_IP_LIST                 false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_dtel
+   remove_dtel
+   set_dtel_attribute
+   get_dtel_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_DTEL_ATTR_POSTCARD_ENABLE                            false      true       true       true
+ SAI_DTEL_ATTR_DROP_REPORT_ENABLE                         false      true       true       true
+ SAI_DTEL_ATTR_INT_TRANSIT_ENABLE                         false      true       true       true
+ SAI_DTEL_ATTR_FLOW_STATE_CLEAR_CYCLE                     false      true       true       true
+ SAI_DTEL_ATTR_INT_ENDPOINT_ENABLE                        false      true       true       true
+ SAI_DTEL_ATTR_INT_L4_DSCP                                false      true       true       true
+ SAI_DTEL_ATTR_LATENCY_SENSITIVITY                        false      true       true       true
+ SAI_DTEL_ATTR_QUEUE_REPORT_ENABLE                        false      true       true       true
+ SAI_DTEL_ATTR_SWITCH_ID                                  false      true       true       true
+ SAI_DTEL_ATTR_SINK_PORT_LIST                             false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_stp_port
+   remove_stp_port
+   set_stp_port_attribute
+   get_stp_port_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_STP_PORT_ATTR_BRIDGE_PORT                            true       true       false      true
+ SAI_STP_PORT_ATTR_STP                                    true       true       false      true
+ SAI_STP_PORT_ATTR_STATE                                  true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_stp
+   remove_stp
+   set_stp_attribute
+   get_stp_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_STP_ATTR_PORT_LIST                                   true       false      false      true
+ SAI_STP_ATTR_BRIDGE_ID                                   true       false      false      true
+ SAI_STP_ATTR_VLAN_LIST                                   false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_counter
+   remove_counter
+   set_counter_attribute
+   get_counter_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_COUNTER_ATTR_TYPE                                    false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_queue
+   remove_queue
+   set_queue_attribute
+   get_queue_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_QUEUE_ATTR_INDEX                                     true       true       false      true
+ SAI_QUEUE_ATTR_PAUSE_STATUS                              false      false      false      true
+ SAI_QUEUE_ATTR_TAM_OBJECT                                false      true       true       true
+ SAI_QUEUE_ATTR_WRED_PROFILE_ID                           true       true       true       true
+ SAI_QUEUE_ATTR_PARENT_SCHEDULER_NODE                     true       true       true       true
+ SAI_QUEUE_ATTR_PFC_DLR_INIT                              false      true       true       true
+ SAI_QUEUE_ATTR_SCHEDULER_PROFILE_ID                      true       true       true       true
+ SAI_QUEUE_ATTR_BUFFER_PROFILE_ID                         true       true       true       true
+ SAI_QUEUE_ATTR_PORT                                      true       true       false      true
+ SAI_QUEUE_ATTR_TYPE                                      true       true       false      true
+ SAI_QUEUE_ATTR_ENABLE_PFC_DLDR                           false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_next_hop
+   remove_next_hop
+   set_next_hop_attribute
+   get_next_hop_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_NEXT_HOP_ATTR_OUTSEG_TTL_VALUE                       false      true       true       true
+ SAI_NEXT_HOP_ATTR_OUTSEG_EXP_MODE                        false      true       true       true
+ SAI_NEXT_HOP_ATTR_SEGMENTROUTE_ENDPOINT_TYPE             false      true       true       true
+ SAI_NEXT_HOP_ATTR_COUNTER_ID                             false      true       true       true
+ SAI_NEXT_HOP_ATTR_ROUTER_INTERFACE_ID                    true       true       false      true
+ SAI_NEXT_HOP_ATTR_QOS_TC_AND_COLOR_TO_MPLS_EXP_MAP       false      true       true       true
+ SAI_NEXT_HOP_ATTR_LABELSTACK                             false      true       false      true
+ SAI_NEXT_HOP_ATTR_TYPE                                   true       true       false      true
+ SAI_NEXT_HOP_ATTR_DISABLE_DECREMENT_TTL                  false      true       true       true
+ SAI_NEXT_HOP_ATTR_TUNNEL_VNI                             false      true       true       true
+ SAI_NEXT_HOP_ATTR_IP                                     true       true       false      true
+ SAI_NEXT_HOP_ATTR_SEGMENTROUTE_SIDLIST_ID                false      true       false      true
+ SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE                        false      true       true       true
+ SAI_NEXT_HOP_ATTR_TUNNEL_MAC                             false      true       true       true
+ SAI_NEXT_HOP_ATTR_OUTSEG_TYPE                            false      true       true       true
+ SAI_NEXT_HOP_ATTR_OUTSEG_EXP_VALUE                       false      true       true       true
+ SAI_NEXT_HOP_ATTR_TUNNEL_ID                              true       true       false      true
+ SAI_NEXT_HOP_ATTR_SEGMENTROUTE_ENDPOINT_POP_TYPE         false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_macsec_flow
+   remove_macsec_flow
+   set_macsec_flow_attribute
+   get_macsec_flow_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_MACSEC_FLOW_ATTR_MACSEC_DIRECTION                    false      true       false      true
+ SAI_MACSEC_FLOW_ATTR_SC_LIST                             false      false      false      true
+ SAI_MACSEC_FLOW_ATTR_ACL_ENTRY_LIST                      false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_macsec
+   remove_macsec
+   set_macsec_attribute
+   get_macsec_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_MACSEC_ATTR_FLOW_LIST                                false      false      false      true
+ SAI_MACSEC_ATTR_SCI_IN_INGRESS_MACSEC_ACL                false      false      false      true
+ SAI_MACSEC_ATTR_DIRECTION                                false      true       false      true
+ SAI_MACSEC_ATTR_SWITCHING_MODE_STORE_AND_FORWARD_SUPPORTED  false      false      false      true
+ SAI_MACSEC_ATTR_AVAILABLE_MACSEC_FLOW                    false      false      false      true
+ SAI_MACSEC_ATTR_SECTAG_OFFSETS_SUPPORTED                 false      false      false      true
+ SAI_MACSEC_ATTR_MAX_VLAN_TAGS_PARSED                     false      true       true       true
+ SAI_MACSEC_ATTR_AVAILABLE_MACSEC_SC                      false      false      false      true
+ SAI_MACSEC_ATTR_AVAILABLE_MACSEC_SA                      false      false      false      true
+ SAI_MACSEC_ATTR_STATS_MODE_READ_CLEAR_SUPPORTED          false      false      false      true
+ SAI_MACSEC_ATTR_STATS_MODE                               false      true       true       true
+ SAI_MACSEC_ATTR_GCM_AES256_SUPPORTED                     false      false      false      true
+ SAI_MACSEC_ATTR_SUPPORTED_PORT_LIST                      false      false      false      true
+ SAI_MACSEC_ATTR_WARM_BOOT_SUPPORTED                      false      false      false      true
+ SAI_MACSEC_ATTR_SWITCHING_MODE_CUT_THROUGH_SUPPORTED     false      false      false      true
+ SAI_MACSEC_ATTR_STAG_TPID                                false      true       true       true
+ SAI_MACSEC_ATTR_SUPPORTED_CIPHER_SUITE_LIST              false      false      false      true
+ SAI_MACSEC_ATTR_SYSTEM_SIDE_MTU                          false      false      false      true
+ SAI_MACSEC_ATTR_GCM_AES128_SUPPORTED                     false      false      false      true
+ SAI_MACSEC_ATTR_PN_32BIT_SUPPORTED                       false      false      false      true
+ SAI_MACSEC_ATTR_WARM_BOOT_ENABLE                         false      true       true       true
+ SAI_MACSEC_ATTR_XPN_64BIT_SUPPORTED                      false      false      false      true
+ SAI_MACSEC_ATTR_STATS_MODE_READ_SUPPORTED                false      false      false      true
+ SAI_MACSEC_ATTR_PHYSICAL_BYPASS_ENABLE                   false      true       true       true
+ SAI_MACSEC_ATTR_CTAG_TPID                                false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_macsec_sc
+   remove_macsec_sc
+   set_macsec_sc_attribute
+   get_macsec_sc_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_MACSEC_SC_ATTR_FLOW_ID                               false      true       false      true
+ SAI_MACSEC_SC_ATTR_MACSEC_EXPLICIT_SCI_ENABLE            false      true       true       true
+ SAI_MACSEC_SC_ATTR_MACSEC_DIRECTION                      false      true       false      true
+ SAI_MACSEC_SC_ATTR_ENCRYPTION_ENABLE                     false      true       true       true
+ SAI_MACSEC_SC_ATTR_MACSEC_SECTAG_OFFSET                  false      true       true       true
+ SAI_MACSEC_SC_ATTR_MACSEC_REPLAY_PROTECTION_WINDOW       false      true       true       true
+ SAI_MACSEC_SC_ATTR_MACSEC_SCI                            false      true       false      true
+ SAI_MACSEC_SC_ATTR_MACSEC_REPLAY_PROTECTION_ENABLE       false      true       true       true
+ SAI_MACSEC_SC_ATTR_SA_LIST                               false      false      false      true
+ SAI_MACSEC_SC_ATTR_MACSEC_CIPHER_SUITE                   false      true       true       true
+ SAI_MACSEC_SC_ATTR_ACTIVE_EGRESS_SA_ID                   false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_macsec_port
+   remove_macsec_port
+   set_macsec_port_attribute
+   get_macsec_port_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_MACSEC_PORT_ATTR_MACSEC_DIRECTION                    false      true       false      true
+ SAI_MACSEC_PORT_ATTR_STAG_ENABLE                         false      true       true       true
+ SAI_MACSEC_PORT_ATTR_PORT_ID                             false      true       false      true
+ SAI_MACSEC_PORT_ATTR_CTAG_ENABLE                         false      true       true       true
+ SAI_MACSEC_PORT_ATTR_SWITCH_SWITCHING_MODE               false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_macsec_sa
+   remove_macsec_sa
+   set_macsec_sa_attribute
+   get_macsec_sa_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_MACSEC_SA_ATTR_SAK                                   false      true       false      true
+ SAI_MACSEC_SA_ATTR_CURRENT_XPN                           false      false      false      true
+ SAI_MACSEC_SA_ATTR_MACSEC_SSCI                           false      true       false      true
+ SAI_MACSEC_SA_ATTR_AUTH_KEY                              false      true       false      true
+ SAI_MACSEC_SA_ATTR_SC_ID                                 false      true       false      true
+ SAI_MACSEC_SA_ATTR_XPN                                   false      false      false      false
+ SAI_MACSEC_SA_ATTR_CONFIGURED_EGRESS_XPN                 false      true       true       true
+ SAI_MACSEC_SA_ATTR_MINIMUM_INGRESS_XPN                   false      true       true       true
+ SAI_MACSEC_SA_ATTR_MINIMUM_XPN                           false      false      false      false
+ SAI_MACSEC_SA_ATTR_SALT                                  false      true       false      true
+ SAI_MACSEC_SA_ATTR_AN                                    false      true       false      true
+ SAI_MACSEC_SA_ATTR_MACSEC_DIRECTION                      false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_lag
+   remove_lag
+   set_lag_attribute
+   get_lag_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_LAG_ATTR_EGRESS_ACL                                  true       true       true       true
+ SAI_LAG_ATTR_LABEL                                       false      true       true       true
+ SAI_LAG_ATTR_PORT_VLAN_ID                                true       true       true       true
+ SAI_LAG_ATTR_PORT_LIST                                   true       false      false      true
+ SAI_LAG_ATTR_DROP_TAGGED                                 false      true       true       true
+ SAI_LAG_ATTR_TPID                                        false      true       true       true
+ SAI_LAG_ATTR_DEFAULT_VLAN_PRIORITY                       false      true       true       true
+ SAI_LAG_ATTR_INGRESS_ACL                                 true       true       true       true
+ SAI_LAG_ATTR_DROP_UNTAGGED                               false      true       true       true
+ SAI_LAG_ATTR_SYSTEM_PORT_AGGREGATE_ID                    false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_lag_member
+   remove_lag_member
+   set_lag_member_attribute
+   get_lag_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_LAG_MEMBER_ATTR_EGRESS_DISABLE                       true       true       true       true
+ SAI_LAG_MEMBER_ATTR_INGRESS_DISABLE                      true       true       true       true
+ SAI_LAG_MEMBER_ATTR_PORT_ID                              true       true       false      true
+ SAI_LAG_MEMBER_ATTR_LAG_ID                               true       true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_event_threshold
+   remove_tam_event_threshold
+   set_tam_event_threshold_attribute
+   get_tam_event_threshold_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_EVENT_THRESHOLD_ATTR_LOW_WATERMARK               false      true       true       true
+ SAI_TAM_EVENT_THRESHOLD_ATTR_LATENCY                     false      true       true       true
+ SAI_TAM_EVENT_THRESHOLD_ATTR_RATE                        false      true       true       true
+ SAI_TAM_EVENT_THRESHOLD_ATTR_HIGH_WATERMARK              false      true       true       true
+ SAI_TAM_EVENT_THRESHOLD_ATTR_UNIT                        false      true       true       true
+ SAI_TAM_EVENT_THRESHOLD_ATTR_ABS_VALUE                   false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_report
+   remove_tam_report
+   set_tam_report_attribute
+   get_tam_report_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_REPORT_ATTR_QUOTA                                false      true       true       true
+ SAI_TAM_REPORT_ATTR_REPORT_MODE                          false      true       false      true
+ SAI_TAM_REPORT_ATTR_REPORT_INTERVAL                      false      true       true       true
+ SAI_TAM_REPORT_ATTR_ENTERPRISE_NUMBER                    false      true       true       true
+ SAI_TAM_REPORT_ATTR_HISTOGRAM_NUMBER_OF_BINS             false      true       false      true
+ SAI_TAM_REPORT_ATTR_HISTOGRAM_BIN_BOUNDARY               false      true       false      true
+ SAI_TAM_REPORT_ATTR_TYPE                                 false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_event_action
+   remove_tam_event_action
+   set_tam_event_action_attribute
+   get_tam_event_action_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_EVENT_ACTION_ATTR_QOS_ACTION_TYPE                false      true       true       true
+ SAI_TAM_EVENT_ACTION_ATTR_REPORT_TYPE                    false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_collector
+   remove_tam_collector
+   set_tam_collector_attribute
+   get_tam_collector_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_COLLECTOR_ATTR_DSCP_VALUE                        false      true       true       true
+ SAI_TAM_COLLECTOR_ATTR_SRC_IP                            false      true       true       true
+ SAI_TAM_COLLECTOR_ATTR_DST_IP                            false      true       true       true
+ SAI_TAM_COLLECTOR_ATTR_TRANSPORT                         false      true       true       true
+ SAI_TAM_COLLECTOR_ATTR_TRUNCATE_SIZE                     false      true       true       true
+ SAI_TAM_COLLECTOR_ATTR_VIRTUAL_ROUTER_ID                 false      true       true       true
+ SAI_TAM_COLLECTOR_ATTR_LOCALHOST                         false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_tel_type
+   remove_tam_tel_type
+   set_tam_tel_type_attribute
+   get_tam_tel_type_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_TEL_TYPE_ATTR_DSCP_VALUE                         false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_INT_SWITCH_IDENTIFIER              false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_MMU_STATS            false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_PORT_STATS           false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_FABRIC_Q                           false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_MATH_FUNC                          false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_TAM_TELEMETRY_TYPE                 false      true       false      true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_PORT_STATS_INGRESS   false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_NE_ENABLE                          false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_VIRTUAL_QUEUE_STATS  false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_FABRIC_STATS         false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_PORT_STATS_EGRESS    false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_RESOURCE_UTILIZATION_STATS  false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_OUTPUT_QUEUE_STATS   false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_SWITCH_ENABLE_FILTER_STATS         false      true       true       true
+ SAI_TAM_TEL_TYPE_ATTR_REPORT_ID                          false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_event
+   remove_tam_event
+   set_tam_event_attribute
+   get_tam_event_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_EVENT_ATTR_ACTION_LIST                           false      true       false      true
+ SAI_TAM_EVENT_ATTR_THRESHOLD                             false      true       true       true
+ SAI_TAM_EVENT_ATTR_DSCP_VALUE                            false      true       true       true
+ SAI_TAM_EVENT_ATTR_TYPE                                  false      true       false      true
+ SAI_TAM_EVENT_ATTR_COLLECTOR_LIST                        false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_int
+   remove_tam_int
+   set_tam_int_attribute
+   get_tam_int_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_INT_ATTR_INGRESS_SAMPLEPACKET_ENABLE             false      true       true       true
+ SAI_TAM_INT_ATTR_FLOW_LIVENESS_PERIOD                    false      true       true       true
+ SAI_TAM_INT_ATTR_ACL_GROUP                               false      true       true       true
+ SAI_TAM_INT_ATTR_REPORT_ID                               false      true       false      true
+ SAI_TAM_INT_ATTR_MATH_FUNC                               false      true       true       true
+ SAI_TAM_INT_ATTR_MAX_HOP_COUNT                           false      true       true       true
+ SAI_TAM_INT_ATTR_REPORT_ALL_PACKETS                      false      true       true       true
+ SAI_TAM_INT_ATTR_METADATA_CHECKSUM_ENABLE                false      true       true       true
+ SAI_TAM_INT_ATTR_INT_PRESENCE_TYPE                       false      true       false      true
+ SAI_TAM_INT_ATTR_NAME_SPACE_ID                           false      true       true       true
+ SAI_TAM_INT_ATTR_MAX_LENGTH                              false      true       true       true
+ SAI_TAM_INT_ATTR_TYPE                                    false      true       false      true
+ SAI_TAM_INT_ATTR_INT_PRESENCE_L3_PROTOCOL                false      true       false      true
+ SAI_TAM_INT_ATTR_COLLECTOR_LIST                          false      true       true       true
+ SAI_TAM_INT_ATTR_NAME_SPACE_ID_GLOBAL                    false      true       true       true
+ SAI_TAM_INT_ATTR_P4_INT_INSTRUCTION_BITMAP               false      true       true       true
+ SAI_TAM_INT_ATTR_TRACE_VECTOR                            false      true       true       true
+ SAI_TAM_INT_ATTR_INT_PRESENCE_DSCP_VALUE                 false      true       false      true
+ SAI_TAM_INT_ATTR_LATENCY_SENSITIVITY                     false      true       true       true
+ SAI_TAM_INT_ATTR_ACTION_VECTOR                           false      true       true       true
+ SAI_TAM_INT_ATTR_DEVICE_ID                               false      true       false      true
+ SAI_TAM_INT_ATTR_METADATA_FRAGMENT_ENABLE                false      true       true       true
+ SAI_TAM_INT_ATTR_INLINE                                  false      true       false      true
+ SAI_TAM_INT_ATTR_INT_PRESENCE_PB2                        false      true       false      true
+ SAI_TAM_INT_ATTR_INT_PRESENCE_PB1                        false      true       false      true
+ SAI_TAM_INT_ATTR_IOAM_TRACE_TYPE                         false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_transport
+   remove_tam_transport
+   set_tam_transport_attribute
+   get_tam_transport_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_TRANSPORT_ATTR_MTU                               false      true       true       true
+ SAI_TAM_TRANSPORT_ATTR_TRANSPORT_TYPE                    false      true       false      true
+ SAI_TAM_TRANSPORT_ATTR_TRANSPORT_AUTH_TYPE               false      true       true       true
+ SAI_TAM_TRANSPORT_ATTR_SRC_PORT                          false      true       true       true
+ SAI_TAM_TRANSPORT_ATTR_DST_PORT                          false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam
+   remove_tam
+   set_tam_attribute
+   get_tam_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_ATTR_EVENT_OBJECTS_LIST                          false      true       true       true
+ SAI_TAM_ATTR_INT_OBJECTS_LIST                            false      true       true       true
+ SAI_TAM_ATTR_TAM_BIND_POINT_TYPE_LIST                    false      true       false      true
+ SAI_TAM_ATTR_TELEMETRY_OBJECTS_LIST                      false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_telemetry
+   remove_tam_telemetry
+   set_tam_telemetry_attribute
+   get_tam_telemetry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_TELEMETRY_ATTR_REPORTING_INTERVAL                false      true       true       true
+ SAI_TAM_TELEMETRY_ATTR_TAM_TYPE_LIST                     false      true       true       true
+ SAI_TAM_TELEMETRY_ATTR_TAM_REPORTING_UNIT                false      true       true       true
+ SAI_TAM_TELEMETRY_ATTR_COLLECTOR_LIST                    false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_tam_math_func
+   remove_tam_math_func
+   set_tam_math_func_attribute
+   get_tam_math_func_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_TAM_MATH_FUNC_ATTR_TAM_TEL_MATH_FUNC_TYPE            false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_mirror_session
+   remove_mirror_session
+   set_mirror_session_attribute
+   get_mirror_session_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_MIRROR_SESSION_ATTR_SRC_IP_ADDRESS                   true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_VLAN_PRI                         true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_DST_IP_ADDRESS                   true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST_VALID           true       true       false      true
+ SAI_MIRROR_SESSION_ATTR_TRUNCATE_SIZE                    true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_ERSPAN_ENCAPSULATION_TYPE        true       true       false      true
+ SAI_MIRROR_SESSION_ATTR_UDP_SRC_PORT                     false      true       true       true
+ SAI_MIRROR_SESSION_ATTR_VLAN_HEADER_VALID                true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_CONGESTION_MODE                  false      true       true       true
+ SAI_MIRROR_SESSION_ATTR_VLAN_TPID                        true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_TYPE                             true       true       false      true
+ SAI_MIRROR_SESSION_ATTR_VLAN_CFI                         true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_MONITOR_PORT                     true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_SAMPLE_RATE                      false      true       true       true
+ SAI_MIRROR_SESSION_ATTR_TTL                              true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_DST_MAC_ADDRESS                  true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_SRC_MAC_ADDRESS                  true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_GRE_PROTOCOL_TYPE                true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST                 false      true       true       true
+ SAI_MIRROR_SESSION_ATTR_POLICER                          true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_VLAN_ID                          true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_IPHDR_VERSION                    true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_TOS                              true       true       true       true
+ SAI_MIRROR_SESSION_ATTR_UDP_DST_PORT                     false      true       true       true
+ SAI_MIRROR_SESSION_ATTR_TC                               true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_rpf_group
+   remove_rpf_group
+   set_rpf_group_attribute
+   get_rpf_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_RPF_GROUP_ATTR_RPF_INTERFACE_COUNT                   false      false      false      true
+ SAI_RPF_GROUP_ATTR_RPF_MEMBER_LIST                       false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_rpf_group_member
+   remove_rpf_group_member
+   set_rpf_group_member_attribute
+   get_rpf_group_member_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_RPF_GROUP_MEMBER_ATTR_RPF_GROUP_ID                   false      true       false      true
+ SAI_RPF_GROUP_MEMBER_ATTR_RPF_INTERFACE_ID               false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_bfd_session
+   remove_bfd_session
+   set_bfd_session_attribute
+   get_bfd_session_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_BFD_SESSION_ATTR_HW_LOOKUP_VALID                     false      true       false      true
+ SAI_BFD_SESSION_ATTR_LOCAL_DISCRIMINATOR                 false      true       false      true
+ SAI_BFD_SESSION_ATTR_ECHO_ENABLE                         false      true       true       true
+ SAI_BFD_SESSION_ATTR_VLAN_TPID                           false      true       true       true
+ SAI_BFD_SESSION_ATTR_VLAN_PRI                            false      true       true       true
+ SAI_BFD_SESSION_ATTR_SRC_MAC_ADDRESS                     false      true       true       true
+ SAI_BFD_SESSION_ATTR_MIN_RX                              false      true       true       true
+ SAI_BFD_SESSION_ATTR_STATE                               false      false      false      true
+ SAI_BFD_SESSION_ATTR_MIN_TX                              false      true       true       true
+ SAI_BFD_SESSION_ATTR_TUNNEL_TOS                          false      true       true       true
+ SAI_BFD_SESSION_ATTR_LOCAL_DIAG                          false      false      false      true
+ SAI_BFD_SESSION_ATTR_TUNNEL_SRC_IP_ADDRESS               false      true       false      true
+ SAI_BFD_SESSION_ATTR_DST_IP_ADDRESS                      false      true       false      true
+ SAI_BFD_SESSION_ATTR_TUNNEL_TTL                          false      true       true       true
+ SAI_BFD_SESSION_ATTR_TC                                  false      true       true       true
+ SAI_BFD_SESSION_ATTR_TOS                                 false      true       true       true
+ SAI_BFD_SESSION_ATTR_NEGOTIATED_RX                       false      false      false      true
+ SAI_BFD_SESSION_ATTR_VLAN_HEADER_VALID                   false      true       false      true
+ SAI_BFD_SESSION_ATTR_TUNNEL_DST_IP_ADDRESS               false      true       false      true
+ SAI_BFD_SESSION_ATTR_REMOTE_MIN_RX                       false      false      false      true
+ SAI_BFD_SESSION_ATTR_REMOTE_DIAG                         false      false      false      true
+ SAI_BFD_SESSION_ATTR_VLAN_ID                             false      true       false      true
+ SAI_BFD_SESSION_ATTR_TYPE                                false      true       false      true
+ SAI_BFD_SESSION_ATTR_MULTIHOP                            false      true       false      true
+ SAI_BFD_SESSION_ATTR_REMOTE_MULTIPLIER                   false      false      false      true
+ SAI_BFD_SESSION_ATTR_TTL                                 false      true       true       true
+ SAI_BFD_SESSION_ATTR_CBIT                                false      true       false      true
+ SAI_BFD_SESSION_ATTR_VLAN_CFI                            false      true       true       true
+ SAI_BFD_SESSION_ATTR_PORT                                false      true       true       true
+ SAI_BFD_SESSION_ATTR_VIRTUAL_ROUTER                      false      true       true       true
+ SAI_BFD_SESSION_ATTR_MULTIPLIER                          false      true       true       true
+ SAI_BFD_SESSION_ATTR_SRC_IP_ADDRESS                      false      true       false      true
+ SAI_BFD_SESSION_ATTR_UDP_SRC_PORT                        false      true       false      true
+ SAI_BFD_SESSION_ATTR_DST_MAC_ADDRESS                     false      true       true       true
+ SAI_BFD_SESSION_ATTR_OFFLOAD_TYPE                        false      true       false      true
+ SAI_BFD_SESSION_ATTR_NEGOTIATED_TX                       false      false      false      true
+ SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE              false      true       false      true
+ SAI_BFD_SESSION_ATTR_IPHDR_VERSION                       false      true       true       true
+ SAI_BFD_SESSION_ATTR_REMOTE_DISCRIMINATOR                false      true       false      true
+ SAI_BFD_SESSION_ATTR_REMOTE_MIN_TX                       false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_ipmc_entry
+   remove_ipmc_entry
+   set_ipmc_entry_attribute
+   get_ipmc_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_IPMC_ENTRY_ATTR_PACKET_ACTION                        false      true       true       true
+ SAI_IPMC_ENTRY_ATTR_OUTPUT_GROUP_ID                      false      true       true       true
+ SAI_IPMC_ENTRY_ATTR_RPF_GROUP_ID                         false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_inseg_entry
+   remove_inseg_entry
+   set_inseg_entry_attribute
+   get_inseg_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_INSEG_ENTRY_ATTR_PSC_TYPE                            false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_MPLS_EXP_TO_COLOR_MAP               false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_TRAP_PRIORITY                       false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_NUM_OF_POP                          false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_POP_TTL_MODE                        false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_QOS_TC                              false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_PACKET_ACTION                       false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_MPLS_EXP_TO_TC_MAP                  false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_NEXT_HOP_ID                         false      true       true       true
+ SAI_INSEG_ENTRY_ATTR_POP_QOS_MODE                        false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_hostif
+   remove_hostif
+   set_hostif_attribute
+   get_hostif_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_HOSTIF_ATTR_VLAN_TAG                                 true       true       true       true
+ SAI_HOSTIF_ATTR_TYPE                                     true       true       false      true
+ SAI_HOSTIF_ATTR_NAME                                     true       true       false      true
+ SAI_HOSTIF_ATTR_OBJ_ID                                   true       true       false      true
+ SAI_HOSTIF_ATTR_QUEUE                                    false      true       true       true
+ SAI_HOSTIF_ATTR_OPER_STATUS                              true       true       true       true
+ SAI_HOSTIF_ATTR_GENETLINK_MCGRP_NAME                     false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_hostif_trap_group
+   remove_hostif_trap_group
+   set_hostif_trap_group_attribute
+   get_hostif_trap_group_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_HOSTIF_TRAP_GROUP_ATTR_QUEUE                         true       true       true       true
+ SAI_HOSTIF_TRAP_GROUP_ATTR_POLICER                       true       true       true       true
+ SAI_HOSTIF_TRAP_GROUP_ATTR_ADMIN_STATE                   true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_hostif_user_defined_trap
+   remove_hostif_user_defined_trap
+   set_hostif_user_defined_trap_attribute
+   get_hostif_user_defined_trap_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_HOSTIF_USER_DEFINED_TRAP_ATTR_TRAP_GROUP             false      true       true       true
+ SAI_HOSTIF_USER_DEFINED_TRAP_ATTR_TRAP_PRIORITY          false      true       true       true
+ SAI_HOSTIF_USER_DEFINED_TRAP_ATTR_TYPE                   false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_hostif_trap
+   remove_hostif_trap
+   set_hostif_trap_attribute
+   get_hostif_trap_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_HOSTIF_TRAP_ATTR_COUNTER_ID                          false      true       true       true
+ SAI_HOSTIF_TRAP_ATTR_TRAP_TYPE                           true       true       false      true
+ SAI_HOSTIF_TRAP_ATTR_EXCLUDE_PORT_LIST                   true       true       true       true
+ SAI_HOSTIF_TRAP_ATTR_TRAP_PRIORITY                       false      true       true       true
+ SAI_HOSTIF_TRAP_ATTR_TRAP_GROUP                          true       true       true       true
+ SAI_HOSTIF_TRAP_ATTR_PACKET_ACTION                       true       true       true       true
+ SAI_HOSTIF_TRAP_ATTR_MIRROR_SESSION                      false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_hostif_table_entry
+   remove_hostif_table_entry
+   set_hostif_table_entry_attribute
+   get_hostif_table_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_HOSTIF_TABLE_ENTRY_ATTR_OBJ_ID                       false      true       false      true
+ SAI_HOSTIF_TABLE_ENTRY_ATTR_TYPE                         true       true       false      true
+ SAI_HOSTIF_TABLE_ENTRY_ATTR_TRAP_ID                      true       true       false      true
+ SAI_HOSTIF_TABLE_ENTRY_ATTR_CHANNEL_TYPE                 true       true       false      true
+ SAI_HOSTIF_TABLE_ENTRY_ATTR_HOST_IF                      false      true       false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_hostif_packet
+   remove_hostif_packet
+   set_hostif_packet_attribute
+   get_hostif_packet_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_HOSTIF_PACKET_ATTR_BRIDGE_ID                         false      false      false      true
+ SAI_HOSTIF_PACKET_ATTR_ZERO_COPY_TX                      false      true       false      true
+ SAI_HOSTIF_PACKET_ATTR_INGRESS_LAG                       false      false      false      true
+ SAI_HOSTIF_PACKET_ATTR_HOSTIF_TRAP_ID                    false      false      false      true
+ SAI_HOSTIF_PACKET_ATTR_TIMESTAMP                         false      false      false      true
+ SAI_HOSTIF_PACKET_ATTR_EGRESS_QUEUE_INDEX                false      true       false      true
+ SAI_HOSTIF_PACKET_ATTR_HOSTIF_TX_TYPE                    false      true       false      true
+ SAI_HOSTIF_PACKET_ATTR_EGRESS_PORT_OR_LAG                false      true       false      true
+ SAI_HOSTIF_PACKET_ATTR_INGRESS_PORT                      false      false      false      true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_neighbor_entry
+   remove_neighbor_entry
+   set_neighbor_entry_attribute
+   get_neighbor_entry_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_NEIGHBOR_ENTRY_ATTR_IS_LOCAL                         false      true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_META_DATA                        false      true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_PACKET_ACTION                    true       true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_USER_TRAP_ID                     false      true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_IP_ADDR_FAMILY                   false      false      false      true
+ SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_INDEX                      false      true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_DST_MAC_ADDRESS                  true       true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_NO_HOST_ROUTE                    true       true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_COUNTER_ID                       false      true       true       true
+ SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_IMPOSE_INDEX               false      true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_policer
+   remove_policer
+   set_policer_attribute
+   get_policer_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_POLICER_ATTR_METER_TYPE                              true       true       false      true
+ SAI_POLICER_ATTR_CIR                                     true       true       true       true
+ SAI_POLICER_ATTR_YELLOW_PACKET_ACTION                    true       true       true       true
+ SAI_POLICER_ATTR_MODE                                    true       true       false      true
+ SAI_POLICER_ATTR_ENABLE_COUNTER_PACKET_ACTION_LIST       true       true       true       true
+ SAI_POLICER_ATTR_COLOR_SOURCE                            true       true       false      true
+ SAI_POLICER_ATTR_GREEN_PACKET_ACTION                     true       true       true       true
+ SAI_POLICER_ATTR_RED_PACKET_ACTION                       true       true       true       true
+ SAI_POLICER_ATTR_CBS                                     true       true       true       true
+ SAI_POLICER_ATTR_PBS                                     true       true       true       true
+ SAI_POLICER_ATTR_PIR                                     true       true       true       true
+
+
+---------------------------------------------------------------------------------------------------------------
+API:
+   create_segmentroute_sidlist
+   remove_segmentroute_sidlist
+   set_segmentroute_sidlist_attribute
+   get_segmentroute_sidlist_attribute
+---------------------------------------------------------------------------------------------------------------
+Attributes:                                              IsSupp()   create()  set_attr()   get_attr()
+---------------------------------------------------------------------------------------------------------------
+ SAI_SEGMENTROUTE_SIDLIST_ATTR_TLV_LIST                   false      true       true       true
+ SAI_SEGMENTROUTE_SIDLIST_ATTR_TYPE                       false      true       false      true
+ SAI_SEGMENTROUTE_SIDLIST_ATTR_SEGMENT_LIST               false      true       true       true

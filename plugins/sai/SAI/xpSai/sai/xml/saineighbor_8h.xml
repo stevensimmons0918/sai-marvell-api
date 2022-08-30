@@ -1,0 +1,475 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saineighbor_8h" kind="file" language="C++">
+    <compoundname>saineighbor.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <includedby refid="saiobject_8h" local="no">inc/saiobject.h</includedby>
+    <incdepgraph>
+      <node id="208">
+        <label>stdbool.h</label>
+      </node>
+      <node id="207">
+        <label>stdint.h</label>
+      </node>
+      <node id="205">
+        <label>inc/saineighbor.h</label>
+        <link refid="saineighbor.h"/>
+        <childnode refid="206" relation="include">
+        </childnode>
+      </node>
+      <node id="209">
+        <label>sys/types.h</label>
+      </node>
+      <node id="206">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="210">
+        <label>inc/saineighbor.h</label>
+        <link refid="saineighbor.h"/>
+        <childnode refid="211" relation="include">
+        </childnode>
+        <childnode refid="212" relation="include">
+        </childnode>
+      </node>
+      <node id="212">
+        <label>inc/saiobject.h</label>
+        <link refid="saiobject_8h"/>
+        <childnode refid="211" relation="include">
+        </childnode>
+      </node>
+      <node id="211">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__neighbor__entry__t" prot="public">_sai_neighbor_entry_t</innerclass>
+    <innerclass refid="struct__sai__neighbor__api__t" prot="public">_sai_neighbor_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_n_e_i_g_h_b_o_r_1gaae5e1a835bf95e5dab9f146c57b07e78" prot="public" static="no">
+        <name>_sai_neighbor_entry_attr_t</name>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a92d11481aa1caddc09d2ab7833b1a171" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78af948159f8f46215a9d6c173d3ba3fc76" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_DST_MAC_ADDRESS</name>
+          <initializer>= SAI_NEIGHBOR_ENTRY_ATTR_START</initializer>
+          <briefdescription>
+<para>Destination MAC address for the neighbor Valid only when SAI_NEIGHBOR_ENTRY_ATTR_IS_LOCAL == true. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mac_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a47ea133a1582559e64137c4a1952bf14" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_PACKET_ACTION</name>
+          <briefdescription>
+<para>L3 forwarding action for this neighbor. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_packet_action_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_PACKET_ACTION_FORWARD </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78aa96ef83e1a66be060b30ccd7425b2b14" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_USER_TRAP_ID</name>
+          <briefdescription>
+<para>Generate User Defined Trap ID for trap/log actions. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is SAI_NULL_OBJECT_ID, then packet will not be trapped.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_HOSTIF_USER_DEFINED_TRAP </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a52ea35d480ff6b48315f0da7d356f3ee" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_NO_HOST_ROUTE</name>
+          <briefdescription>
+<para>Neighbor not to be programmed as a host route entry in ASIC and to be only used to setup next-hop purpose. </para>          </briefdescription>
+          <detaileddescription>
+<para>Typical use-case is to set this true for neighbor with IPv6 link-local addresses.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a6e46d0ac930923a1d14ed3652f160518" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_META_DATA</name>
+          <briefdescription>
+<para>User based Meta Data. </para>          </briefdescription>
+          <detaileddescription>
+<para>Value Range <ref refid="group___s_a_i_s_w_i_t_c_h_1gga96df0871b3925f973f4a9079ffb3e634aaf0e9883048efe823e2a4b0de5bd64eb" kindref="member">SAI_SWITCH_ATTR_NEIGHBOR_DST_USER_META_DATA_RANGE</ref></para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a873513e5806cc78de2e9a39f8ed2bf6d" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_COUNTER_ID</name>
+          <briefdescription>
+<para>Attach a counter. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is empty, then packet hits won&apos;t be counted</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_COUNTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a96b07984af0d260412b78f0dc71badc2" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_INDEX</name>
+          <briefdescription>
+<para>Encapsulation Index. </para>          </briefdescription>
+          <detaileddescription>
+<para>Defines the neighbor&apos;s encapsulation index</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a8f616179db4b3507ae3c16bb205d37b8" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_IMPOSE_INDEX</name>
+          <briefdescription>
+<para>Encapsulation index is imposed. </para>          </briefdescription>
+          <detaileddescription>
+<para>This is a flag which states that the encap index was imposed. On create and set the SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_INDEX must be present.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a0e03a35f2d495f3bfc9cdf447716c6be" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_IS_LOCAL</name>
+          <briefdescription>
+<para>Is Neighbor Local. </para>          </briefdescription>
+          <detaileddescription>
+<para>This is a flag which states that the neighbor being created is local. This can be used to sanity check the impose index flag. For example, in some implementations imposing an encap index when the RIF is port-based and the neighbor is local may not be allowed.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78aea6d60a91234154b8b485722913df063" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_IP_ADDR_FAMILY</name>
+          <briefdescription>
+<para>Neighbor entry IP address family. </para>          </briefdescription>
+          <detaileddescription>
+<para>READ-ONLY <simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_addr_family_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY  true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78ae51e0a1467436480e82e07ff7728b7ef" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a33ae4a8d986c3be6b1e87b3eb332b6fa" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a298c495a6735b31a56c396bb6b919968" prot="public">
+          <name>SAI_NEIGHBOR_ENTRY_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute Id for SAI neighbor object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="45" column="1" bodyfile="inc/saineighbor.h" bodystart="44" bodyend="178"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1gaa14d5df2be1a3ac18c297677fbfdba31" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1gaae5e1a835bf95e5dab9f146c57b07e78" kindref="member">_sai_neighbor_entry_attr_t</ref></type>
+        <definition>typedef enum _sai_neighbor_entry_attr_t  sai_neighbor_entry_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_neighbor_entry_attr_t</name>
+        <briefdescription>
+<para>Attribute Id for SAI neighbor object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="178" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1ga62e3c2b5fefd7c5716927e6759911f9c" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__neighbor__entry__t" kindref="compound">_sai_neighbor_entry_t</ref></type>
+        <definition>typedef struct _sai_neighbor_entry_t  sai_neighbor_entry_t</definition>
+        <argsstring></argsstring>
+        <name>sai_neighbor_entry_t</name>
+        <briefdescription>
+<para>Neighbor entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="204" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1ga8e179b3fad2059f9edecab19e82583d8" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_neighbor_entry_fn) (_In_ const sai_neighbor_entry_t *neighbor_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_neighbor_entry_t *neighbor_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_neighbor_entry_fn</name>
+        <briefdescription>
+<para>Create neighbor entry. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: IP address expected in Network Byte Order.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">neighbor_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Neighbor entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="217" column="1" bodyfile="inc/saineighbor.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1ga920277ac5c74cc1f7d3759688dd678a4" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_neighbor_entry_fn) (_In_ const sai_neighbor_entry_t *neighbor_entry)</definition>
+        <argsstring>)(_In_ const sai_neighbor_entry_t *neighbor_entry)</argsstring>
+        <name>sai_remove_neighbor_entry_fn</name>
+        <briefdescription>
+<para>Remove neighbor entry. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: IP address expected in Network Byte Order.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">neighbor_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Neighbor entry</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="231" column="1" bodyfile="inc/saineighbor.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1gadb84f46515359209d22ce4bfd6e49266" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_neighbor_entry_attribute_fn) (_In_ const sai_neighbor_entry_t *neighbor_entry, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ const sai_neighbor_entry_t *neighbor_entry, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_neighbor_entry_attribute_fn</name>
+        <briefdescription>
+<para>Set neighbor attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">neighbor_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Neighbor entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="242" column="1" bodyfile="inc/saineighbor.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1ga33896dfb5183f3fdc6d0746c5433b684" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_neighbor_entry_attribute_fn) (_In_ const sai_neighbor_entry_t *neighbor_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_neighbor_entry_t *neighbor_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_neighbor_entry_attribute_fn</name>
+        <briefdescription>
+<para>Get neighbor attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">neighbor_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Neighbor entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="255" column="1" bodyfile="inc/saineighbor.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1ga67f0ac85a18c7e93e19e69f10ac4da9c" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_all_neighbor_entries_fn) (_In_ sai_object_id_t switch_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t switch_id)</argsstring>
+        <name>sai_remove_all_neighbor_entries_fn</name>
+        <briefdescription>
+<para>Remove all neighbor entries. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="267" column="1" bodyfile="inc/saineighbor.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_i_g_h_b_o_r_1ga975ea3652317969327b4b8a990e9eb89" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__neighbor__api__t" kindref="compound">_sai_neighbor_api_t</ref></type>
+        <definition>typedef struct _sai_neighbor_api_t  sai_neighbor_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_neighbor_api_t</name>
+        <briefdescription>
+<para>Neighbor table methods, retrieved via <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saineighbor.h" line="281" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Neighbor interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd.</para><para><simplesect kind="par"><title>Abstract</title><para></para></simplesect>
+This module defines SAI neighbor table API The table contains both IPv4 and IPv6 neighbors </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="30"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAINEIGHBOR_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAINEIGHBOR_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="group___s_a_i_n_e_i_g_h_b_o_r_1gaae5e1a835bf95e5dab9f146c57b07e78" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1gaae5e1a835bf95e5dab9f146c57b07e78" kindref="member">_sai_neighbor_entry_attr_t</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a92d11481aa1caddc09d2ab7833b1a171" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a92d11481aa1caddc09d2ab7833b1a171" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78af948159f8f46215a9d6c173d3ba3fc76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78af948159f8f46215a9d6c173d3ba3fc76" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_DST_MAC_ADDRESS</ref><sp/>=<sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a92d11481aa1caddc09d2ab7833b1a171" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a47ea133a1582559e64137c4a1952bf14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a47ea133a1582559e64137c4a1952bf14" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_PACKET_ACTION</ref>,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78aa96ef83e1a66be060b30ccd7425b2b14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78aa96ef83e1a66be060b30ccd7425b2b14" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_USER_TRAP_ID</ref>,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a52ea35d480ff6b48315f0da7d356f3ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a52ea35d480ff6b48315f0da7d356f3ee" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_NO_HOST_ROUTE</ref>,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a6e46d0ac930923a1d14ed3652f160518" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a6e46d0ac930923a1d14ed3652f160518" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_META_DATA</ref>,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a873513e5806cc78de2e9a39f8ed2bf6d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a873513e5806cc78de2e9a39f8ed2bf6d" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_COUNTER_ID</ref>,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a96b07984af0d260412b78f0dc71badc2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a96b07984af0d260412b78f0dc71badc2" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_INDEX</ref>,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a8f616179db4b3507ae3c16bb205d37b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a8f616179db4b3507ae3c16bb205d37b8" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_IMPOSE_INDEX</ref>,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a0e03a35f2d495f3bfc9cdf447716c6be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a0e03a35f2d495f3bfc9cdf447716c6be" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_IS_LOCAL</ref>,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78aea6d60a91234154b8b485722913df063" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78aea6d60a91234154b8b485722913df063" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_IP_ADDR_FAMILY</ref>,</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78ae51e0a1467436480e82e07ff7728b7ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78ae51e0a1467436480e82e07ff7728b7ef" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a33ae4a8d986c3be6b1e87b3eb332b6fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a33ae4a8d986c3be6b1e87b3eb332b6fa" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a298c495a6735b31a56c396bb6b919968" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a298c495a6735b31a56c396bb6b919968" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1gaa14d5df2be1a3ac18c297677fbfdba31" kindref="member">sai_neighbor_entry_attr_t</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="struct__sai__neighbor__entry__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__neighbor__entry__t" kindref="compound">_sai_neighbor_entry_t</ref></highlight></codeline>
+<codeline lineno="184"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="190" refid="struct__sai__neighbor__entry__t_1a8d6331df88854e594efc0626ddb53d13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__neighbor__entry__t_1a8d6331df88854e594efc0626ddb53d13" kindref="member">switch_id</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="struct__sai__neighbor__entry__t_1adf7a6d41fe8f4047e5c29514f124c1d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__neighbor__entry__t_1adf7a6d41fe8f4047e5c29514f124c1d0" kindref="member">rif_id</ref>;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="struct__sai__neighbor__entry__t_1a9517b25cc65bc359b4d5610052802179" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct__sai__ip__address__t" kindref="compound">sai_ip_address_t</ref><sp/><ref refid="struct__sai__neighbor__entry__t_1a9517b25cc65bc359b4d5610052802179" kindref="member">ip_address</ref>;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga62e3c2b5fefd7c5716927e6759911f9c" kindref="member">sai_neighbor_entry_t</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga8e179b3fad2059f9edecab19e82583d8" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga8e179b3fad2059f9edecab19e82583d8" kindref="member">sai_create_neighbor_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__neighbor__entry__t" kindref="compound">sai_neighbor_entry_t</ref><sp/>*neighbor_entry,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga920277ac5c74cc1f7d3759688dd678a4" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga920277ac5c74cc1f7d3759688dd678a4" kindref="member">sai_remove_neighbor_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__neighbor__entry__t" kindref="compound">sai_neighbor_entry_t</ref><sp/>*neighbor_entry);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242" refid="group___s_a_i_n_e_i_g_h_b_o_r_1gadb84f46515359209d22ce4bfd6e49266" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1gadb84f46515359209d22ce4bfd6e49266" kindref="member">sai_set_neighbor_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__neighbor__entry__t" kindref="compound">sai_neighbor_entry_t</ref><sp/>*neighbor_entry,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga33896dfb5183f3fdc6d0746c5433b684" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga33896dfb5183f3fdc6d0746c5433b684" kindref="member">sai_get_neighbor_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__neighbor__entry__t" kindref="compound">sai_neighbor_entry_t</ref><sp/>*neighbor_entry,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga67f0ac85a18c7e93e19e69f10ac4da9c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga67f0ac85a18c7e93e19e69f10ac4da9c" kindref="member">sai_remove_all_neighbor_entries_fn</ref>)(</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/><ref refid="struct__sai__neighbor__entry__t_1a8d6331df88854e594efc0626ddb53d13" kindref="member">switch_id</ref>);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="struct__sai__neighbor__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__neighbor__api__t" kindref="compound">_sai_neighbor_api_t</ref></highlight></codeline>
+<codeline lineno="274"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga8e179b3fad2059f9edecab19e82583d8" kindref="member">sai_create_neighbor_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_neighbor_entry;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga920277ac5c74cc1f7d3759688dd678a4" kindref="member">sai_remove_neighbor_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_neighbor_entry;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1gadb84f46515359209d22ce4bfd6e49266" kindref="member">sai_set_neighbor_entry_attribute_fn</ref><sp/>set_neighbor_entry_attribute;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga33896dfb5183f3fdc6d0746c5433b684" kindref="member">sai_get_neighbor_entry_attribute_fn</ref><sp/>get_neighbor_entry_attribute;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga67f0ac85a18c7e93e19e69f10ac4da9c" kindref="member">sai_remove_all_neighbor_entries_fn</ref><sp/><sp/>remove_all_neighbor_entries;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ga975ea3652317969327b4b8a990e9eb89" kindref="member">sai_neighbor_api_t</ref>;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saineighbor.h"/>
+  </compounddef>
+</doxygen>

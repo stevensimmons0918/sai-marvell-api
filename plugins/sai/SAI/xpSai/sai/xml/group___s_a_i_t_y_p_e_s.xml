@@ -1,0 +1,2719 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="group___s_a_i_t_y_p_e_s" kind="group">
+    <compoundname>SAITYPES</compoundname>
+    <title>SAI - Types definitions</title>
+    <innerclass refid="struct__sai__timespec__t" prot="public">_sai_timespec_t</innerclass>
+    <innerclass refid="struct__sai__object__list__t" prot="public">_sai_object_list_t</innerclass>
+    <innerclass refid="struct__sai__u8__list__t" prot="public">_sai_u8_list_t</innerclass>
+    <innerclass refid="struct__sai__s8__list__t" prot="public">_sai_s8_list_t</innerclass>
+    <innerclass refid="struct__sai__u16__list__t" prot="public">_sai_u16_list_t</innerclass>
+    <innerclass refid="struct__sai__s16__list__t" prot="public">_sai_s16_list_t</innerclass>
+    <innerclass refid="struct__sai__u32__list__t" prot="public">_sai_u32_list_t</innerclass>
+    <innerclass refid="struct__sai__s32__list__t" prot="public">_sai_s32_list_t</innerclass>
+    <innerclass refid="struct__sai__u32__range__t" prot="public">_sai_u32_range_t</innerclass>
+    <innerclass refid="struct__sai__s32__range__t" prot="public">_sai_s32_range_t</innerclass>
+    <innerclass refid="struct__sai__vlan__list__t" prot="public">_sai_vlan_list_t</innerclass>
+    <innerclass refid="union__sai__ip__addr__t" prot="public">_sai_ip_addr_t</innerclass>
+    <innerclass refid="struct__sai__ip__address__t" prot="public">_sai_ip_address_t</innerclass>
+    <innerclass refid="struct__sai__ip__address__list__t" prot="public">_sai_ip_address_list_t</innerclass>
+    <innerclass refid="struct__sai__ip__prefix__t" prot="public">_sai_ip_prefix_t</innerclass>
+    <innerclass refid="union__sai__acl__field__data__mask__t" prot="public">_sai_acl_field_data_mask_t</innerclass>
+    <innerclass refid="union__sai__acl__field__data__data__t" prot="public">_sai_acl_field_data_data_t</innerclass>
+    <innerclass refid="struct__sai__acl__field__data__t" prot="public">_sai_acl_field_data_t</innerclass>
+    <innerclass refid="union__sai__acl__action__parameter__t" prot="public">_sai_acl_action_parameter_t</innerclass>
+    <innerclass refid="struct__sai__acl__action__data__t" prot="public">_sai_acl_action_data_t</innerclass>
+    <innerclass refid="struct__sai__qos__map__params__t" prot="public">_sai_qos_map_params_t</innerclass>
+    <innerclass refid="struct__sai__qos__map__t" prot="public">_sai_qos_map_t</innerclass>
+    <innerclass refid="struct__sai__qos__map__list__t" prot="public">_sai_qos_map_list_t</innerclass>
+    <innerclass refid="struct__sai__map__t" prot="public">_sai_map_t</innerclass>
+    <innerclass refid="struct__sai__map__list__t" prot="public">_sai_map_list_t</innerclass>
+    <innerclass refid="struct__sai__acl__capability__t" prot="public">_sai_acl_capability_t</innerclass>
+    <innerclass refid="struct__sai__acl__resource__t" prot="public">_sai_acl_resource_t</innerclass>
+    <innerclass refid="struct__sai__acl__resource__list__t" prot="public">_sai_acl_resource_list_t</innerclass>
+    <innerclass refid="struct__sai__hmac__t" prot="public">_sai_hmac_t</innerclass>
+    <innerclass refid="union__sai__tlv__entry__t" prot="public">_sai_tlv_entry_t</innerclass>
+    <innerclass refid="struct__sai__tlv__t" prot="public">_sai_tlv_t</innerclass>
+    <innerclass refid="struct__sai__tlv__list__t" prot="public">_sai_tlv_list_t</innerclass>
+    <innerclass refid="struct__sai__segment__list__t" prot="public">_sai_segment_list_t</innerclass>
+    <innerclass refid="struct__sai__port__lane__eye__values__t" prot="public">_sai_port_lane_eye_values_t</innerclass>
+    <innerclass refid="struct__sai__port__eye__values__list__t" prot="public">_sai_port_eye_values_list_t</innerclass>
+    <innerclass refid="struct__sai__system__port__config__t" prot="public">_sai_system_port_config_t</innerclass>
+    <innerclass refid="struct__sai__system__port__config__list__t" prot="public">_sai_system_port_config_list_t</innerclass>
+    <innerclass refid="struct__sai__fabric__port__reachability__t" prot="public">_sai_fabric_port_reachability_t</innerclass>
+    <innerclass refid="struct__sai__port__err__status__list__t" prot="public">_sai_port_err_status_list_t</innerclass>
+    <innerclass refid="union__sai__attribute__value__t" prot="public">_sai_attribute_value_t</innerclass>
+    <innerclass refid="struct__sai__attribute__t" prot="public">_sai_attribute_t</innerclass>
+    <innerclass refid="struct__sai__stat__capability__t" prot="public">_sai_stat_capability_t</innerclass>
+    <innerclass refid="struct__sai__stat__capability__list__t" prot="public">_sai_stat_capability_list_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga43383ec9df06a44f114025813af8962e" prot="public" static="no">
+        <name>_sai_common_api_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962ea51749a589d00b2ba1eec04c118e98037" prot="public">
+          <name>SAI_COMMON_API_CREATE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962ea916b1036deb49cffb7cd734a89609166" prot="public">
+          <name>SAI_COMMON_API_REMOVE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962ea23b843999a794bf3eb915cac22816724" prot="public">
+          <name>SAI_COMMON_API_SET</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962eaae4bea801f40a251135013a6d9582e82" prot="public">
+          <name>SAI_COMMON_API_GET</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962eac0c330a9e9ba8045459e9607d089a9eb" prot="public">
+          <name>SAI_COMMON_API_BULK_CREATE</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962ea8d0a43f1a4b999c65e424bd9e0c8b22e" prot="public">
+          <name>SAI_COMMON_API_BULK_REMOVE</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962eaf8e2e91fe8f5723da43661b2441be0c3" prot="public">
+          <name>SAI_COMMON_API_BULK_SET</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962ea89d7c9f1f299d557a4371844e5195942" prot="public">
+          <name>SAI_COMMON_API_BULK_GET</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43383ec9df06a44f114025813af8962eadb39eea0737e67d45ce91bcbba9d2d0f" prot="public">
+          <name>SAI_COMMON_API_MAX</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI common API type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="168" column="1" bodyfile="inc/saitypes.h" bodystart="167" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga4450320ede120f84efcd17a09c58e29f" prot="public" static="no">
+        <name>_sai_object_type_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9927bcfefba0a9880de9a54c5b4e0b3a" prot="public">
+          <name>SAI_OBJECT_TYPE_NULL</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>invalid object type </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa1b097296bebd2e4547419356d7893bbb" prot="public">
+          <name>SAI_OBJECT_TYPE_PORT</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa001bda07e7097ae210992af3aeef84f7" prot="public">
+          <name>SAI_OBJECT_TYPE_LAG</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa5b23d34aee0adb906d609238208ae393" prot="public">
+          <name>SAI_OBJECT_TYPE_VIRTUAL_ROUTER</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fafb1ed5e1382a3981f18abbe836892584" prot="public">
+          <name>SAI_OBJECT_TYPE_NEXT_HOP</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faac11c779cad51d8156455e1e29883546" prot="public">
+          <name>SAI_OBJECT_TYPE_NEXT_HOP_GROUP</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa03fece9600e713f0221a10ac0e57829f" prot="public">
+          <name>SAI_OBJECT_TYPE_ROUTER_INTERFACE</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa8221354a4efe9ac4645166b4a9528cc2" prot="public">
+          <name>SAI_OBJECT_TYPE_ACL_TABLE</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa18ad7490f9d1ac2fb4a319432dea9463" prot="public">
+          <name>SAI_OBJECT_TYPE_ACL_ENTRY</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa787c78af26b3e364f8999cc7ced6738e" prot="public">
+          <name>SAI_OBJECT_TYPE_ACL_COUNTER</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fab7ec81de42aa67868dd4dc9c2a24f77c" prot="public">
+          <name>SAI_OBJECT_TYPE_ACL_RANGE</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9527112315cef21445b5c8f20ab91368" prot="public">
+          <name>SAI_OBJECT_TYPE_ACL_TABLE_GROUP</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa44d58812909c73650fc4ab28e9769791" prot="public">
+          <name>SAI_OBJECT_TYPE_ACL_TABLE_GROUP_MEMBER</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa119c131b70e9e1e2a62bc4b9b1b8eed6" prot="public">
+          <name>SAI_OBJECT_TYPE_HOSTIF</name>
+          <initializer>= 13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faf2cd68c282fb41bb87f1878543863657" prot="public">
+          <name>SAI_OBJECT_TYPE_MIRROR_SESSION</name>
+          <initializer>= 14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa8747223f6f47f882604e8d010854ad33" prot="public">
+          <name>SAI_OBJECT_TYPE_SAMPLEPACKET</name>
+          <initializer>= 15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fab331068086af6c4fe377de7f8a56f92e" prot="public">
+          <name>SAI_OBJECT_TYPE_STP</name>
+          <initializer>= 16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fac7b010d52a571dd90b98710993bff111" prot="public">
+          <name>SAI_OBJECT_TYPE_HOSTIF_TRAP_GROUP</name>
+          <initializer>= 17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9f66db6e5e8a0a6f98bbcad2c667adb2" prot="public">
+          <name>SAI_OBJECT_TYPE_POLICER</name>
+          <initializer>= 18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fab4f6abe95a95dbee669170aa883f0505" prot="public">
+          <name>SAI_OBJECT_TYPE_WRED</name>
+          <initializer>= 19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faa71a0e51fb53f69900130a26c90d07f2" prot="public">
+          <name>SAI_OBJECT_TYPE_QOS_MAP</name>
+          <initializer>= 20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa6fa80dc989478f9fc34ee63881a0fff0" prot="public">
+          <name>SAI_OBJECT_TYPE_QUEUE</name>
+          <initializer>= 21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faa648e15b08e989db7f6e4792fe9523c6" prot="public">
+          <name>SAI_OBJECT_TYPE_SCHEDULER</name>
+          <initializer>= 22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faafef7a1ba48d63ddb7df1708cea12a44" prot="public">
+          <name>SAI_OBJECT_TYPE_SCHEDULER_GROUP</name>
+          <initializer>= 23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa60eaa21203596b0ba9c74e96b66a0d15" prot="public">
+          <name>SAI_OBJECT_TYPE_BUFFER_POOL</name>
+          <initializer>= 24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faa59b9aaa8e85c8d96cda135d1002e1f0" prot="public">
+          <name>SAI_OBJECT_TYPE_BUFFER_PROFILE</name>
+          <initializer>= 25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fad6cac4e45b84f190d1e1afb44f325687" prot="public">
+          <name>SAI_OBJECT_TYPE_INGRESS_PRIORITY_GROUP</name>
+          <initializer>= 26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa2e54999788df479f86367f2865055872" prot="public">
+          <name>SAI_OBJECT_TYPE_LAG_MEMBER</name>
+          <initializer>= 27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa444638d07b437cf7aa7ac8251003c2dc" prot="public">
+          <name>SAI_OBJECT_TYPE_HASH</name>
+          <initializer>= 28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9627585b9ff054deb02efa29c91cd286" prot="public">
+          <name>SAI_OBJECT_TYPE_UDF</name>
+          <initializer>= 29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa5fab4d87cd98f507b0f417cc19a9da15" prot="public">
+          <name>SAI_OBJECT_TYPE_UDF_MATCH</name>
+          <initializer>= 30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa40fdf13c0fce5871e140ba64581a666d" prot="public">
+          <name>SAI_OBJECT_TYPE_UDF_GROUP</name>
+          <initializer>= 31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fada809336f249622e53127feadd72d94b" prot="public">
+          <name>SAI_OBJECT_TYPE_FDB_ENTRY</name>
+          <initializer>= 32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa5a9c78bdbe9e32d3e63c8ef015be15a6" prot="public">
+          <name>SAI_OBJECT_TYPE_SWITCH</name>
+          <initializer>= 33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa38c7faf56cbdac4c9c4fcd64afb2e85e" prot="public">
+          <name>SAI_OBJECT_TYPE_HOSTIF_TRAP</name>
+          <initializer>= 34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faa0f97014be9cae63e2bbcded5f827daa" prot="public">
+          <name>SAI_OBJECT_TYPE_HOSTIF_TABLE_ENTRY</name>
+          <initializer>= 35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fad2de64dde0b9973f90d4f0c75998f41f" prot="public">
+          <name>SAI_OBJECT_TYPE_NEIGHBOR_ENTRY</name>
+          <initializer>= 36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9bc9ab60eee499bbd44ded28f79319e3" prot="public">
+          <name>SAI_OBJECT_TYPE_ROUTE_ENTRY</name>
+          <initializer>= 37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa85f1388640e913a4c350bafb017c787a" prot="public">
+          <name>SAI_OBJECT_TYPE_VLAN</name>
+          <initializer>= 38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9a1b25e350304c5e84bdeef59b86ff88" prot="public">
+          <name>SAI_OBJECT_TYPE_VLAN_MEMBER</name>
+          <initializer>= 39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa986f692b6e9b95f4e668bdae74a0a11c" prot="public">
+          <name>SAI_OBJECT_TYPE_HOSTIF_PACKET</name>
+          <initializer>= 40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faff2445db2f3a8c4fe790d9b83a0ffd7b" prot="public">
+          <name>SAI_OBJECT_TYPE_TUNNEL_MAP</name>
+          <initializer>= 41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa02488fb6abae17322522dbf2425b1a31" prot="public">
+          <name>SAI_OBJECT_TYPE_TUNNEL</name>
+          <initializer>= 42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa68f1f468143f8214a767bdabe63671ed" prot="public">
+          <name>SAI_OBJECT_TYPE_TUNNEL_TERM_TABLE_ENTRY</name>
+          <initializer>= 43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fab469c274634f591389db9d2ab1980438" prot="public">
+          <name>SAI_OBJECT_TYPE_FDB_FLUSH</name>
+          <initializer>= 44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa78cf28a068405ffd0eee367c3eaaf88d" prot="public">
+          <name>SAI_OBJECT_TYPE_NEXT_HOP_GROUP_MEMBER</name>
+          <initializer>= 45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fac950f699e9294e187b29c72c350c51f8" prot="public">
+          <name>SAI_OBJECT_TYPE_STP_PORT</name>
+          <initializer>= 46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa2105d8638db0995958d7f8650fd17671" prot="public">
+          <name>SAI_OBJECT_TYPE_RPF_GROUP</name>
+          <initializer>= 47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9d3aea499c3923f7ad137b4c8a9aab96" prot="public">
+          <name>SAI_OBJECT_TYPE_RPF_GROUP_MEMBER</name>
+          <initializer>= 48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa5a00146987d6c48f24862217a9acb733" prot="public">
+          <name>SAI_OBJECT_TYPE_L2MC_GROUP</name>
+          <initializer>= 49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa794aa75a6e51a92d57ab3fcea60af237" prot="public">
+          <name>SAI_OBJECT_TYPE_L2MC_GROUP_MEMBER</name>
+          <initializer>= 50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa1597ff39e2ad9e7bb683748216766010" prot="public">
+          <name>SAI_OBJECT_TYPE_IPMC_GROUP</name>
+          <initializer>= 51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa3d6a3bb3b03733325bfc4b29dd420c7f" prot="public">
+          <name>SAI_OBJECT_TYPE_IPMC_GROUP_MEMBER</name>
+          <initializer>= 52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faec5d6b53a0dd7e744cc2375673858836" prot="public">
+          <name>SAI_OBJECT_TYPE_L2MC_ENTRY</name>
+          <initializer>= 53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa8c1a5606b849818864050e3002739704" prot="public">
+          <name>SAI_OBJECT_TYPE_IPMC_ENTRY</name>
+          <initializer>= 54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa4422ec8eea3ea49acd86fd0ea3a75db3" prot="public">
+          <name>SAI_OBJECT_TYPE_MCAST_FDB_ENTRY</name>
+          <initializer>= 55</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fab51bb1abec2b025d66ba148f0278effd" prot="public">
+          <name>SAI_OBJECT_TYPE_HOSTIF_USER_DEFINED_TRAP</name>
+          <initializer>= 56</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa87aa7b27ff17f9227a88aba31c87ff7c" prot="public">
+          <name>SAI_OBJECT_TYPE_BRIDGE</name>
+          <initializer>= 57</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9d134088b3e2a62c6ae3cff751769672" prot="public">
+          <name>SAI_OBJECT_TYPE_BRIDGE_PORT</name>
+          <initializer>= 58</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa67a0361e093f8daa3f5aafbfdf448666" prot="public">
+          <name>SAI_OBJECT_TYPE_TUNNEL_MAP_ENTRY</name>
+          <initializer>= 59</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa75ea34a1c0e885a9e6947365e60f7ea4" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM</name>
+          <initializer>= 60</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fab974c7ecd3038c748d6d99beca43d831" prot="public">
+          <name>SAI_OBJECT_TYPE_SEGMENTROUTE_SIDLIST</name>
+          <initializer>= 61</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faf0f280c6e55b2c0c7efdce3941ba9eb0" prot="public">
+          <name>SAI_OBJECT_TYPE_PORT_POOL</name>
+          <initializer>= 62</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faec4ce2ab000afcf3d8ff8b7799ae222c" prot="public">
+          <name>SAI_OBJECT_TYPE_INSEG_ENTRY</name>
+          <initializer>= 63</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa0b14e3858ace477989bc4fefc3a583ef" prot="public">
+          <name>SAI_OBJECT_TYPE_DTEL</name>
+          <initializer>= 64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>experimental </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa14d64a22f19d4b3dce4ea80cfd9c4889" prot="public">
+          <name>SAI_OBJECT_TYPE_DTEL_QUEUE_REPORT</name>
+          <initializer>= 65</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>experimental </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa96275b6912d34221e698c4a80cbbc531" prot="public">
+          <name>SAI_OBJECT_TYPE_DTEL_INT_SESSION</name>
+          <initializer>= 66</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>experimental </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fabbdee329761bbdce361eb8b0d3471c9a" prot="public">
+          <name>SAI_OBJECT_TYPE_DTEL_REPORT_SESSION</name>
+          <initializer>= 67</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>experimental </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fad665f60eee297cfe6d1c348b753cdf62" prot="public">
+          <name>SAI_OBJECT_TYPE_DTEL_EVENT</name>
+          <initializer>= 68</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>experimental </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faa031f577d15f26f0c7eab41634cb5a93" prot="public">
+          <name>SAI_OBJECT_TYPE_BFD_SESSION</name>
+          <initializer>= 69</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa579408e83d463864d3854b9634f55227" prot="public">
+          <name>SAI_OBJECT_TYPE_ISOLATION_GROUP</name>
+          <initializer>= 70</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faae3bb35f6be229957868c674f1da6e1e" prot="public">
+          <name>SAI_OBJECT_TYPE_ISOLATION_GROUP_MEMBER</name>
+          <initializer>= 71</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9df9c7666b685bcb2db345c4d8dd6857" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_MATH_FUNC</name>
+          <initializer>= 72</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa7fc6fca087eef25e0f1a2323752dd486" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_REPORT</name>
+          <initializer>= 73</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa67253ecea9acb7e3670128e12246206c" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_EVENT_THRESHOLD</name>
+          <initializer>= 74</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa4e0d8ee2300977fee384ab8b5b1f3aed" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_TEL_TYPE</name>
+          <initializer>= 75</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa6768164b3952708fa3fbeb77e7613f7e" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_TRANSPORT</name>
+          <initializer>= 76</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fad1fc9da67aad5a06baf1ce3d33e0acd5" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_TELEMETRY</name>
+          <initializer>= 77</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fac8feee4166906d4e362ddd4a462bdc2b" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_COLLECTOR</name>
+          <initializer>= 78</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa6fed9c7c89f382fc2f9dc229b9c471d8" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_EVENT_ACTION</name>
+          <initializer>= 79</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faa873339aec34f713ac90cf5d9b603fc4" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_EVENT</name>
+          <initializer>= 80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa426c07a7bf81cdc566f81296bc6e1101" prot="public">
+          <name>SAI_OBJECT_TYPE_NAT_ZONE_COUNTER</name>
+          <initializer>= 81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa6df700f0f0cd4da8fc8becad7d3dc42b" prot="public">
+          <name>SAI_OBJECT_TYPE_NAT_ENTRY</name>
+          <initializer>= 82</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa9585d3141a62f9d23f8fbc43feb83301" prot="public">
+          <name>SAI_OBJECT_TYPE_TAM_INT</name>
+          <initializer>= 83</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa2915311fc387321f68d631bf285b0198" prot="public">
+          <name>SAI_OBJECT_TYPE_COUNTER</name>
+          <initializer>= 84</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa89961aa6290b10c2054f47fe627759c8" prot="public">
+          <name>SAI_OBJECT_TYPE_DEBUG_COUNTER</name>
+          <initializer>= 85</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa97838d92f01622784feeb2ffec6863ae" prot="public">
+          <name>SAI_OBJECT_TYPE_PORT_CONNECTOR</name>
+          <initializer>= 86</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa0bd606c069b41e18b63e7a6c905708b8" prot="public">
+          <name>SAI_OBJECT_TYPE_PORT_SERDES</name>
+          <initializer>= 87</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa732edd2af426dbbf72281d82bdb746fe" prot="public">
+          <name>SAI_OBJECT_TYPE_MACSEC</name>
+          <initializer>= 88</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29face80f4e9c821384261b0c9f4f95deb44" prot="public">
+          <name>SAI_OBJECT_TYPE_MACSEC_PORT</name>
+          <initializer>= 89</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29faa82b77e3837661150f2f3fb9434cb9d6" prot="public">
+          <name>SAI_OBJECT_TYPE_MACSEC_FLOW</name>
+          <initializer>= 90</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fac5f76461c1d253c6934e0814daf02cf1" prot="public">
+          <name>SAI_OBJECT_TYPE_MACSEC_SC</name>
+          <initializer>= 91</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa742871921e95b82d754a8fbc55d9795b" prot="public">
+          <name>SAI_OBJECT_TYPE_MACSEC_SA</name>
+          <initializer>= 92</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fad40f7c331719e4ea32a9b469c361759d" prot="public">
+          <name>SAI_OBJECT_TYPE_SYSTEM_PORT</name>
+          <initializer>= 93</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fab1dd90ebbda4e60f3f39171caa0e5459" prot="public">
+          <name>SAI_OBJECT_TYPE_FINE_GRAINED_HASH_FIELD</name>
+          <initializer>= 94</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4450320ede120f84efcd17a09c58e29fa4bc7b3137e533a8be62ee0d9a62606c7" prot="public">
+          <name>SAI_OBJECT_TYPE_MAX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI object type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="184" column="1" bodyfile="inc/saitypes.h" bodystart="183" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga4b064fb312f83f7371fb44c277880273" prot="public" static="no">
+        <name>_sai_ip_addr_family_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4b064fb312f83f7371fb44c277880273a7f4586b257c663a69b3d8223981ad149" prot="public">
+          <name>SAI_IP_ADDR_FAMILY_IPV4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga4b064fb312f83f7371fb44c277880273a5960207215cb4e8dd322eb4a935b6742" prot="public">
+          <name>SAI_IP_ADDR_FAMILY_IPV6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="350" column="1" bodyfile="inc/saitypes.h" bodystart="349" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1gaf12aeae877b4c8dfbcd487a2d0a7f392" prot="public" static="no">
+        <name>_sai_packet_color_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf12aeae877b4c8dfbcd487a2d0a7f392ae2b7d7e629d4583f78747d2be843bc8b" prot="public">
+          <name>SAI_PACKET_COLOR_GREEN</name>
+          <briefdescription>
+<para>Color Green. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf12aeae877b4c8dfbcd487a2d0a7f392a474a01ca28d321f3ce11848a62d7b7db" prot="public">
+          <name>SAI_PACKET_COLOR_YELLOW</name>
+          <briefdescription>
+<para>Color Yellow. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf12aeae877b4c8dfbcd487a2d0a7f392ad5468c963b61fd3789d0dac239768868" prot="public">
+          <name>SAI_PACKET_COLOR_RED</name>
+          <briefdescription>
+<para>Color Red. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Packet Color. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="601" column="1" bodyfile="inc/saitypes.h" bodystart="600" bodyend="617"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga69c57d2058c849c456476f49cdb3711d" prot="public" static="no">
+        <name>_sai_acl_stage_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga69c57d2058c849c456476f49cdb3711da51978502c606402aa0269ddddc6cc1c0" prot="public">
+          <name>SAI_ACL_STAGE_INGRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ingress Stage </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga69c57d2058c849c456476f49cdb3711daf0182706e98f98811441d43e8371afe2" prot="public">
+          <name>SAI_ACL_STAGE_EGRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Egress Stage </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga69c57d2058c849c456476f49cdb3711dabb1dac807bde851684510b45b9a874b0" prot="public">
+          <name>SAI_ACL_STAGE_INGRESS_MACSEC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ingress Stage </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga69c57d2058c849c456476f49cdb3711da883785f6e5d7407a88a9d41794030383" prot="public">
+          <name>SAI_ACL_STAGE_EGRESS_MACSEC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Egress Stage </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute data for SAI_ACL_TABLE_ATTR_STAGE. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="732" column="1" bodyfile="inc/saitypes.h" bodystart="731" bodyend="745"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1gaf1c9cd2f03b010c76d32e7913a10a275" prot="public" static="no">
+        <name>_sai_acl_bind_point_type_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf1c9cd2f03b010c76d32e7913a10a275aae68beecbe54eab993f4dbe0e9d03ce7" prot="public">
+          <name>SAI_ACL_BIND_POINT_TYPE_PORT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type Port </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf1c9cd2f03b010c76d32e7913a10a275ac1c54916b72802d08589b16403b0a76c" prot="public">
+          <name>SAI_ACL_BIND_POINT_TYPE_LAG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type LAG </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf1c9cd2f03b010c76d32e7913a10a275a6b2527c703056f026d0657ef490e116b" prot="public">
+          <name>SAI_ACL_BIND_POINT_TYPE_VLAN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type VLAN </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf1c9cd2f03b010c76d32e7913a10a275a12315abc77139a7c23933c218aabc930" prot="public">
+          <name>SAI_ACL_BIND_POINT_TYPE_ROUTER_INTERFACE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type RIF </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf1c9cd2f03b010c76d32e7913a10a275a9bb19fb51fb15738c92fea3707543b53" prot="public">
+          <name>SAI_ACL_BIND_POINT_TYPE_ROUTER_INTF</name>
+          <initializer>= SAI_ACL_BIND_POINT_TYPE_ROUTER_INTERFACE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Ignored:</title><para> @@ignore         - for backward compatibility </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaf1c9cd2f03b010c76d32e7913a10a275a974acf389c692329a8f91b0bc0dd5473" prot="public">
+          <name>SAI_ACL_BIND_POINT_TYPE_SWITCH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type Switch </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute data for SAI_ACL_TABLE_ATTR_BIND_POINT. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="751" column="1" bodyfile="inc/saitypes.h" bodystart="750" bodyend="770"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga29bbe6efbac3dca0d48dced474b10fc1" prot="public" static="no">
+        <name>_sai_tam_bind_point_type_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga29bbe6efbac3dca0d48dced474b10fc1a99c5a9c1d4fa58feea0d68f95313b37c" prot="public">
+          <name>SAI_TAM_BIND_POINT_TYPE_QUEUE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type Queue </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga29bbe6efbac3dca0d48dced474b10fc1a01bb0609d388bbcfec891ac7ddf7011c" prot="public">
+          <name>SAI_TAM_BIND_POINT_TYPE_PORT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type Port </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga29bbe6efbac3dca0d48dced474b10fc1ae7671549ec08db64e1277c2568e81bc5" prot="public">
+          <name>SAI_TAM_BIND_POINT_TYPE_LAG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type LAG </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga29bbe6efbac3dca0d48dced474b10fc1a4c5ddb553a85ec8d18f1c5de2632cf40" prot="public">
+          <name>SAI_TAM_BIND_POINT_TYPE_VLAN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type VLAN </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga29bbe6efbac3dca0d48dced474b10fc1aa28dea5d7d6ca4dbb98219745d47fbb5" prot="public">
+          <name>SAI_TAM_BIND_POINT_TYPE_SWITCH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type Switch </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga29bbe6efbac3dca0d48dced474b10fc1a26daa154fa31d8e37b35fab6f7a3fffb" prot="public">
+          <name>SAI_TAM_BIND_POINT_TYPE_IPG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type Ingress Priority Group </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga29bbe6efbac3dca0d48dced474b10fc1ab114f6fd7ec9d71d71b50bef0e5bde2d" prot="public">
+          <name>SAI_TAM_BIND_POINT_TYPE_BSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bind Point Type Buffer Service Pool </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute data for SAI_TAM_TABLE_ATTR_BIND_POINT. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="776" column="1" bodyfile="inc/saitypes.h" bodystart="775" bodyend="798"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1gaaed172f2b1308b82f94e8d55afd5ad8c" prot="public" static="no">
+        <name>_sai_tlv_type_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaaed172f2b1308b82f94e8d55afd5ad8ca4d3f1ee97d4f866a2556d5fbe22106e0" prot="public">
+          <name>SAI_TLV_TYPE_INGRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ingress Tag Length Value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaaed172f2b1308b82f94e8d55afd5ad8cac6a753099618f922e1c7a3a155bb7339" prot="public">
+          <name>SAI_TLV_TYPE_EGRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Egress Tag Length Value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaaed172f2b1308b82f94e8d55afd5ad8ca220982dca052173bc017874a7bb5262b" prot="public">
+          <name>SAI_TLV_TYPE_OPAQUE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Opaque Tag Length Value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaaed172f2b1308b82f94e8d55afd5ad8caebd179afe22a068b8bf7e4772a752848" prot="public">
+          <name>SAI_TLV_TYPE_HMAC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Hash-based Message Authentication Code Tag Length Value </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Segment Routing Tag Length Value Types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="836" column="1" bodyfile="inc/saitypes.h" bodystart="835" bodyend="848"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga3d5c5beb5bba4ae8d3ee80c0bd58bd31" prot="public" static="no">
+        <name>_sai_outseg_type_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga3d5c5beb5bba4ae8d3ee80c0bd58bd31ae77f5cef9e23f13bf210547f7945173d" prot="public">
+          <name>SAI_OUTSEG_TYPE_PUSH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Out segment of ingress node, label stack depth is at least one </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga3d5c5beb5bba4ae8d3ee80c0bd58bd31a98460862567a45656ee1a16d9585dcd1" prot="public">
+          <name>SAI_OUTSEG_TYPE_SWAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Out segment of intermediate node, label stack depth is one </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining MPLS out segment type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="952" column="1" bodyfile="inc/saitypes.h" bodystart="951" bodyend="959"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga504a81cb1909935d465417a6304a77f2" prot="public" static="no">
+        <name>_sai_outseg_ttl_mode_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga504a81cb1909935d465417a6304a77f2a48888fc0ad68fa3ffd3a3b5a26e75809" prot="public">
+          <name>SAI_OUTSEG_TTL_MODE_UNIFORM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga504a81cb1909935d465417a6304a77f2a78659945a4590387e391960554565dff" prot="public">
+          <name>SAI_OUTSEG_TTL_MODE_PIPE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining TTL mode for MPLS out segment. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="965" column="1" bodyfile="inc/saitypes.h" bodystart="964" bodyend="970"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga43af4b4ee6d50627651fb2f75867a375" prot="public" static="no">
+        <name>_sai_outseg_exp_mode_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43af4b4ee6d50627651fb2f75867a375aae3da59b67e160e05f51848dec1d4e72" prot="public">
+          <name>SAI_OUTSEG_EXP_MODE_UNIFORM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga43af4b4ee6d50627651fb2f75867a375a96f592af60c7f6af5a4500162624ea43" prot="public">
+          <name>SAI_OUTSEG_EXP_MODE_PIPE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining MPLS EXP mode for MPLS out segment. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="976" column="1" bodyfile="inc/saitypes.h" bodystart="975" bodyend="981"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga86eea4ad27f46d90e72d28c4d7c17b6f" prot="public" static="no">
+        <name>_sai_port_err_status_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fa708a0aae42c8c744b62f372e47893fc2" prot="public">
+          <name>SAI_PORT_ERR_STATUS_DATA_UNIT_CRC_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Data Unit CRC Error </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fa6a629311ae3768596361daa2fd2da69e" prot="public">
+          <name>SAI_PORT_ERR_STATUS_DATA_UNIT_SIZE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Data Unit Size Error </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fa9d7381e83dc70e79fe527fab31d755b5" prot="public">
+          <name>SAI_PORT_ERR_STATUS_DATA_UNIT_MISALIGNMENT_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Data Unit Misalignment Error </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fac882b591f385be583b74d53aa11a1057" prot="public">
+          <name>SAI_PORT_ERR_STATUS_CODE_GROUP_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Uncorrectable RS-FEC code word error </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fab92cdab749de9af8a524c3302d13d9b6" prot="public">
+          <name>SAI_PORT_ERR_STATUS_SIGNAL_LOCAL_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SerDes Signal is out of sync </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fae83383917664dc2f4a9b08a873fafaaf" prot="public">
+          <name>SAI_PORT_ERR_STATUS_NO_RX_REACHABILITY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Port is not accepting reachability data units </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fabc38beafa9e5e2c4fb759d6871a6c3de" prot="public">
+          <name>SAI_PORT_ERR_STATUS_CRC_RATE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Rate of data units with CRC errors passed its threshold </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fae2e92236e2ab51913add1ac2f8ed51f1" prot="public">
+          <name>SAI_PORT_ERR_STATUS_REMOTE_FAULT_STATUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Error remote fault indication </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga86eea4ad27f46d90e72d28c4d7c17b6fa187adfe73ea14088334d436cdb03c24a" prot="public">
+          <name>SAI_PORT_ERR_STATUS_MAX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Error status max </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Port error status. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1040" column="1" bodyfile="inc/saitypes.h" bodystart="1039" bodyend="1067"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1ga8719e09f6bf0f5a06813e32731699374" prot="public" static="no">
+        <name>_sai_bulk_op_error_mode_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga8719e09f6bf0f5a06813e32731699374adaaff7b522d650eaee7f85f8628abca5" prot="public">
+          <name>SAI_BULK_OP_ERROR_MODE_STOP_ON_ERROR</name>
+          <briefdescription>
+<para>Bulk operation error handling mode where operation stops on the first failed creation. </para>          </briefdescription>
+          <detaileddescription>
+<para>Rest of objects will use SAI_STATUS_NON_EXECUTED return status value. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1gga8719e09f6bf0f5a06813e32731699374a6281059ae8304058cbd869621401aa2b" prot="public">
+          <name>SAI_BULK_OP_ERROR_MODE_IGNORE_ERROR</name>
+          <briefdescription>
+<para>Bulk operation error handling mode where operation ignores the failures and continues to create other objects. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1255" column="1" bodyfile="inc/saitypes.h" bodystart="1254" bodyend="1267"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_t_y_p_e_s_1gaa7e10e19a1ac78d115740f2c7b3fe97b" prot="public" static="no">
+        <name>_sai_stats_mode_t</name>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaa7e10e19a1ac78d115740f2c7b3fe97ba62de655a2512436df36881e3251e1d54" prot="public">
+          <name>SAI_STATS_MODE_READ</name>
+          <initializer>= 1 &lt;&lt; 0</initializer>
+          <briefdescription>
+<para>Read statistics. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_t_y_p_e_s_1ggaa7e10e19a1ac78d115740f2c7b3fe97ba59d89d953a1784dc80897bc2f825e4c2" prot="public">
+          <name>SAI_STATS_MODE_READ_AND_CLEAR</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Read and clear after reading. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI statistics modes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used in get statistics extended or query statistics capabilities Note enum values must be powers of 2 to be used as bit mask for query statistics capabilities</para><para><simplesect kind="par"><title>Flags:</title><para> @@flags          Contains flags </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1367" column="1" bodyfile="inc/saitypes.h" bodystart="1366" bodyend="1377"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gac7a28b557aa0fa2fe889f824dd73f673" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>typedef int32_t sai_status_t</definition>
+        <argsstring></argsstring>
+        <name>sai_status_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="90" column="1" bodyfile="inc/saitypes.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6538a9a54eccef091e997c446f6aa6fd" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t sai_switch_profile_id_t</definition>
+        <argsstring></argsstring>
+        <name>sai_switch_profile_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="91" column="1" bodyfile="inc/saitypes.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gabac430b9cf2346d0cbe41bf6ec139f17" prot="public" static="no">
+        <type>uint16_t</type>
+        <definition>typedef uint16_t sai_vlan_id_t</definition>
+        <argsstring></argsstring>
+        <name>sai_vlan_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="92" column="1" bodyfile="inc/saitypes.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga73b4cfe4261b8c980ac123c2d2442c8f" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t sai_attr_id_t</definition>
+        <argsstring></argsstring>
+        <name>sai_attr_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="93" column="1" bodyfile="inc/saitypes.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga11ffe64b80068402a5a4cf137a0424cc" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_cos_t</definition>
+        <argsstring></argsstring>
+        <name>sai_cos_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="94" column="1" bodyfile="inc/saitypes.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga7d3f137aff7502a5326e21fefaf77734" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_queue_index_t</definition>
+        <argsstring></argsstring>
+        <name>sai_queue_index_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="95" column="1" bodyfile="inc/saitypes.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gafd2c510de88a5bdb2a040c5087582910" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_mac_t[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>sai_mac_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="96" column="1" bodyfile="inc/saitypes.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga4ce283516b3e7b57b7b65aa8438a8f53" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t sai_ip4_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ip4_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="97" column="1" bodyfile="inc/saitypes.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga696564e9a423016b4a0407bca9cfaed7" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_ip6_t[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>sai_ip6_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="98" column="1" bodyfile="inc/saitypes.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga964a4a7a31a36583c17899cda88e70dc" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t sai_switch_hash_seed_t</definition>
+        <argsstring></argsstring>
+        <name>sai_switch_hash_seed_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="99" column="1" bodyfile="inc/saitypes.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga192e0b111514ee756ae87e91a77ebf94" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t sai_label_id_t</definition>
+        <argsstring></argsstring>
+        <name>sai_label_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="100" column="1" bodyfile="inc/saitypes.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gafa8f96058afb44ba1f980429499d7750" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t sai_stat_id_t</definition>
+        <argsstring></argsstring>
+        <name>sai_stat_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="101" column="1" bodyfile="inc/saitypes.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga73cec4a4ba1c51523b60f47571bc4dd4" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_macsec_sak_t[32]</definition>
+        <argsstring>[32]</argsstring>
+        <name>sai_macsec_sak_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="102" column="1" bodyfile="inc/saitypes.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga81d5755c24f14f939cfc3eb18c7d9c4d" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_macsec_auth_key_t[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>sai_macsec_auth_key_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="103" column="1" bodyfile="inc/saitypes.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gab11714f1b32efbf198bbfd0a32c8c181" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_macsec_salt_t[12]</definition>
+        <argsstring>[12]</argsstring>
+        <name>sai_macsec_salt_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="104" column="1" bodyfile="inc/saitypes.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga668224f0696ab5e53f9678040ee2ded0" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>typedef uint64_t sai_uint64_t</definition>
+        <argsstring></argsstring>
+        <name>sai_uint64_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="118" column="1" bodyfile="inc/saitypes.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga53885d5c76942bb311d3c20b580ebd84" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>typedef int64_t sai_int64_t</definition>
+        <argsstring></argsstring>
+        <name>sai_int64_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="119" column="1" bodyfile="inc/saitypes.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga9b2c1c86923109a12504416c7dd6b767" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>typedef uint32_t sai_uint32_t</definition>
+        <argsstring></argsstring>
+        <name>sai_uint32_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="120" column="1" bodyfile="inc/saitypes.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaeba0c6a74fe507adc2f450d9aabba287" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>typedef int32_t sai_int32_t</definition>
+        <argsstring></argsstring>
+        <name>sai_int32_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="121" column="1" bodyfile="inc/saitypes.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga60a09da18c5a15296dcb69ed064a1332" prot="public" static="no">
+        <type>uint16_t</type>
+        <definition>typedef uint16_t sai_uint16_t</definition>
+        <argsstring></argsstring>
+        <name>sai_uint16_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="122" column="1" bodyfile="inc/saitypes.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga94f2149c30e91884669dc579fb8b031d" prot="public" static="no">
+        <type>int16_t</type>
+        <definition>typedef int16_t sai_int16_t</definition>
+        <argsstring></argsstring>
+        <name>sai_int16_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="123" column="1" bodyfile="inc/saitypes.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga7a2231370a0961cd6d199d7c303d19b4" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>typedef uint8_t sai_uint8_t</definition>
+        <argsstring></argsstring>
+        <name>sai_uint8_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="124" column="1" bodyfile="inc/saitypes.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga40d7422e7c97412f94a62472be0a3cfb" prot="public" static="no">
+        <type>int8_t</type>
+        <definition>typedef int8_t sai_int8_t</definition>
+        <argsstring></argsstring>
+        <name>sai_int8_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="125" column="1" bodyfile="inc/saitypes.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga58d1faa28d39260fb438668f559bd5c0" prot="public" static="no">
+        <type>size_t</type>
+        <definition>typedef size_t sai_size_t</definition>
+        <argsstring></argsstring>
+        <name>sai_size_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="126" column="1" bodyfile="inc/saitypes.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6b6df71f912df59c008f752a179a8893" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>typedef uint64_t sai_object_id_t</definition>
+        <argsstring></argsstring>
+        <name>sai_object_id_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="127" column="1" bodyfile="inc/saitypes.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga63ae23d6aadeb8cd04db479910eb8b9b" prot="public" static="no">
+        <type>void *</type>
+        <definition>typedef void* sai_pointer_t</definition>
+        <argsstring></argsstring>
+        <name>sai_pointer_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="128" column="1" bodyfile="inc/saitypes.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gad8e95b7be268fd7c548db917101a7460" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__timespec__t" kindref="compound">_sai_timespec_t</ref></type>
+        <definition>typedef struct _sai_timespec_t  sai_timespec_t</definition>
+        <argsstring></argsstring>
+        <name>sai_timespec_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="134" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga09a84cab5ddc6a01414a2b14822eb137" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__object__list__t" kindref="compound">_sai_object_list_t</ref></type>
+        <definition>typedef struct _sai_object_list_t  sai_object_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_object_list_t</name>
+        <briefdescription>
+<para>Defines a list of SAI object ids used as SAI attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para>In set attribute function call, the count member defines the number of objects.</para><para>In get attribute function call, the function call returns a list of objects to the caller in the list member. The caller is responsible for allocating the buffer for the list member and set the count member to the size of allocated object list. If the size is large enough to accommodate the list of object id, the callee will then fill the list member and set the count member to the actual number of objects. If the list size is not large enough, the callee will set the count member to the actual number of object id and return <ref refid="group___s_a_i_s_t_a_t_u_s_1ga7255b9d60f461644acd8459627a43288" kindref="member">SAI_STATUS_BUFFER_OVERFLOW</ref>. Once the caller gets such return code, it should use the returned count member to re-allocate list and retry. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="162" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6c4c55b213bc9f296977c38ba3a57773" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga43383ec9df06a44f114025813af8962e" kindref="member">_sai_common_api_t</ref></type>
+        <definition>typedef enum _sai_common_api_t  sai_common_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_common_api_t</name>
+        <briefdescription>
+<para>SAI common API type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="178" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga64c6eb85a684a78a7ce6d53890005d18" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga4450320ede120f84efcd17a09c58e29f" kindref="member">_sai_object_type_t</ref></type>
+        <definition>typedef enum _sai_object_type_t  sai_object_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_object_type_t</name>
+        <briefdescription>
+<para>SAI object type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="281" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga9c09ec0d8901bc9736d7d5a24e2a6d82" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__u8__list__t" kindref="compound">_sai_u8_list_t</ref></type>
+        <definition>typedef struct _sai_u8_list_t  sai_u8_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_u8_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="287" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gab19a0e7b3349a0c4adaac7314cc5a4ef" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__s8__list__t" kindref="compound">_sai_s8_list_t</ref></type>
+        <definition>typedef struct _sai_s8_list_t  sai_s8_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_s8_list_t</name>
+        <briefdescription>
+<para>Defines a s8 list or string. </para>        </briefdescription>
+        <detaileddescription>
+<para>String should be null terminated and count should include &apos;\0&apos;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="298" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga4db80b6e84ebfb2d52045333a5d0e53a" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__u16__list__t" kindref="compound">_sai_u16_list_t</ref></type>
+        <definition>typedef struct _sai_u16_list_t  sai_u16_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_u16_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="304" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gafd50973a2e2c4cb1e3d1ab9f84a8cae4" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__s16__list__t" kindref="compound">_sai_s16_list_t</ref></type>
+        <definition>typedef struct _sai_s16_list_t  sai_s16_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_s16_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="310" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga0f5a338092c1e2c55ecca2990de334d0" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__u32__list__t" kindref="compound">_sai_u32_list_t</ref></type>
+        <definition>typedef struct _sai_u32_list_t  sai_u32_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_u32_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="316" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga565e8940db44c31c952db983f66f3c55" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__s32__list__t" kindref="compound">_sai_s32_list_t</ref></type>
+        <definition>typedef struct _sai_s32_list_t  sai_s32_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_s32_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="322" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga9e13c3273acb1d1d80370459b5c95f83" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__u32__range__t" kindref="compound">_sai_u32_range_t</ref></type>
+        <definition>typedef struct _sai_u32_range_t  sai_u32_range_t</definition>
+        <argsstring></argsstring>
+        <name>sai_u32_range_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="328" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaeed3db85203cb5a759421ee2452a4d91" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__s32__range__t" kindref="compound">_sai_s32_range_t</ref></type>
+        <definition>typedef struct _sai_s32_range_t  sai_s32_range_t</definition>
+        <argsstring></argsstring>
+        <name>sai_s32_range_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="334" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga84257e8adc86b258d069eefab6cd7265" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__vlan__list__t" kindref="compound">_sai_vlan_list_t</ref></type>
+        <definition>typedef struct _sai_vlan_list_t  sai_vlan_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_vlan_list_t</name>
+        <briefdescription>
+<para>Defines a vlan list data structure. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="347" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gab7ef509a3f70696ff632229ed7bd56e6" prot="public" static="no">
+        <type>enum _sai_ip_addr_family_t</type>
+        <definition>typedef enum _sai_ip_addr_family_t  sai_ip_addr_family_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ip_addr_family_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="355" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga2c8154041ca84e67918574e4d12d9319" prot="public" static="no">
+        <type>union <ref refid="union__sai__ip__addr__t" kindref="compound">_sai_ip_addr_t</ref></type>
+        <definition>typedef union _sai_ip_addr_t  sai_ip_addr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ip_addr_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sai_ip_addr_family_t addr_family </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="367" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga1d89355cfd5ed5e05fda524570d418e4" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__ip__address__t" kindref="compound">_sai_ip_address_t</ref></type>
+        <definition>typedef struct _sai_ip_address_t  sai_ip_address_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ip_address_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="375" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga95f4d0e4118b4a2f3dc0478a425aff3a" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__ip__address__list__t" kindref="compound">_sai_ip_address_list_t</ref></type>
+        <definition>typedef struct _sai_ip_address_list_t  sai_ip_address_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ip_address_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="381" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga430926ba5f36d1be32aeed4ca3a684ed" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__ip__prefix__t" kindref="compound">_sai_ip_prefix_t</ref></type>
+        <definition>typedef struct _sai_ip_prefix_t  sai_ip_prefix_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ip_prefix_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="392" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga509657c4c3a088899d3a60ef44c70083" prot="public" static="no">
+        <type>union <ref refid="union__sai__acl__field__data__mask__t" kindref="compound">_sai_acl_field_data_mask_t</ref></type>
+        <definition>typedef union _sai_acl_field_data_mask_t  sai_acl_field_data_mask_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_field_data_mask_t</name>
+        <briefdescription>
+<para>Field match mask. </para>        </briefdescription>
+        <detaileddescription>
+<para>const sai_attr_metadata_t *meta </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="433" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga8878e98d53105feea56828cbf8c3af2c" prot="public" static="no">
+        <type>union <ref refid="union__sai__acl__field__data__data__t" kindref="compound">_sai_acl_field_data_data_t</ref></type>
+        <definition>typedef union _sai_acl_field_data_data_t  sai_acl_field_data_data_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_field_data_data_t</name>
+        <briefdescription>
+<para>ACL field data union. </para>        </briefdescription>
+        <detaileddescription>
+<para>const sai_attr_metadata_t *meta </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="487" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6235b13ab1ce9ca76d1396f27c8ad85d" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__acl__field__data__t" kindref="compound">_sai_acl_field_data_t</ref></type>
+        <definition>typedef struct _sai_acl_field_data_t  sai_acl_field_data_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_field_data_t</name>
+        <briefdescription>
+<para>Defines a single ACL filter. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>IPv4 and IPv6 Address expected in Network Byte Order</para></simplesect>
+const sai_attr_metadata_t *meta </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="522" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gae54f1186fac104c9f23dfe521e6c409d" prot="public" static="no">
+        <type>union <ref refid="union__sai__acl__action__parameter__t" kindref="compound">_sai_acl_action_parameter_t</ref></type>
+        <definition>typedef union _sai_acl_action_parameter_t  sai_acl_action_parameter_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_action_parameter_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>const sai_attr_metadata_t *meta </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="571" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga405519adff3cbc7fd408c1860ab697ca" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__acl__action__data__t" kindref="compound">_sai_acl_action_data_t</ref></type>
+        <definition>typedef struct _sai_acl_action_data_t  sai_acl_action_data_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_action_data_t</name>
+        <briefdescription>
+<para>Defines a single ACL action. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>IPv4 and IPv6 Address expected in Network Byte Order</para></simplesect>
+const sai_attr_metadata_t *meta </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="595" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaabad284c25fa8ac4822afc40991b56df" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1gaf12aeae877b4c8dfbcd487a2d0a7f392" kindref="member">_sai_packet_color_t</ref></type>
+        <definition>typedef enum _sai_packet_color_t  sai_packet_color_t</definition>
+        <argsstring></argsstring>
+        <name>sai_packet_color_t</name>
+        <briefdescription>
+<para>Packet Color. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="617" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gad16958fc7b1616e72b894c07fe8e3927" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__qos__map__params__t" kindref="compound">_sai_qos_map_params_t</ref></type>
+        <definition>typedef struct _sai_qos_map_params_t  sai_qos_map_params_t</definition>
+        <argsstring></argsstring>
+        <name>sai_qos_map_params_t</name>
+        <briefdescription>
+<para>Defines QOS map types. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Examples:</title><para></para></simplesect>
+dot1p/DSCP/MPLS_EXP <ndash/>&gt; TC dot1p/DSCP/MPLS_EXP <ndash/>&gt; Color dot1p/DSCP/MPLS_EXP <ndash/>&gt; TC + Color TC <ndash/>&gt; dot1p/DSCP/MPLS_EXP. TC + color <ndash/>&gt; dot1p/DSCP/MPLS_EXP. TC <ndash/>&gt; Egress Queue. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="660" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga13adcc83f3a308eb09e48b58f931174b" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__qos__map__t" kindref="compound">_sai_qos_map_t</ref></type>
+        <definition>typedef struct _sai_qos_map_t  sai_qos_map_t</definition>
+        <argsstring></argsstring>
+        <name>sai_qos_map_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="670" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaf1ee3085a2c436678f2973a2152d6d1e" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__qos__map__list__t" kindref="compound">_sai_qos_map_list_t</ref></type>
+        <definition>typedef struct _sai_qos_map_list_t  sai_qos_map_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_qos_map_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="680" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaa5220f9e64bc70e3cce24af41a93c473" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__map__t" kindref="compound">_sai_map_t</ref></type>
+        <definition>typedef struct _sai_map_t  sai_map_t</definition>
+        <argsstring></argsstring>
+        <name>sai_map_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="690" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gae553d17a7c8f2b886b1dc2b0f133bc2d" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__map__list__t" kindref="compound">_sai_map_list_t</ref></type>
+        <definition>typedef struct _sai_map_list_t  sai_map_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_map_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="700" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga1889498ba0c30d344db5e60d4230034e" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__acl__capability__t" kindref="compound">_sai_acl_capability_t</ref></type>
+        <definition>typedef struct _sai_acl_capability_t  sai_acl_capability_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_capability_t</name>
+        <briefdescription>
+<para>Structure for ACL attributes supported at each stage. action_list alone is added now. Qualifier list can also be added when needed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="726" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6d66d4bdbc4c4b5c93ba1fa5c736c69a" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga69c57d2058c849c456476f49cdb3711d" kindref="member">_sai_acl_stage_t</ref></type>
+        <definition>typedef enum _sai_acl_stage_t  sai_acl_stage_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_stage_t</name>
+        <briefdescription>
+<para>Attribute data for SAI_ACL_TABLE_ATTR_STAGE. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="745" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga8ce03cdb905352a24472c8550adcd9d1" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1gaf1c9cd2f03b010c76d32e7913a10a275" kindref="member">_sai_acl_bind_point_type_t</ref></type>
+        <definition>typedef enum _sai_acl_bind_point_type_t  sai_acl_bind_point_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_bind_point_type_t</name>
+        <briefdescription>
+<para>Attribute data for SAI_ACL_TABLE_ATTR_BIND_POINT. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="770" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaf9e0975602c810c62e5770856f2bff26" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga29bbe6efbac3dca0d48dced474b10fc1" kindref="member">_sai_tam_bind_point_type_t</ref></type>
+        <definition>typedef enum _sai_tam_bind_point_type_t  sai_tam_bind_point_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_tam_bind_point_type_t</name>
+        <briefdescription>
+<para>Attribute data for SAI_TAM_TABLE_ATTR_BIND_POINT. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="798" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga9e953c143b4bdf01c5b13e41bf2bb843" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__acl__resource__t" kindref="compound">_sai_acl_resource_t</ref></type>
+        <definition>typedef struct _sai_acl_resource_t  sai_acl_resource_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_resource_t</name>
+        <briefdescription>
+<para>Structure for ACL Resource Count. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="814" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaa4f4790237b69835c5ac977bea62a491" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__acl__resource__list__t" kindref="compound">_sai_acl_resource_list_t</ref></type>
+        <definition>typedef struct _sai_acl_resource_list_t  sai_acl_resource_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_acl_resource_list_t</name>
+        <briefdescription>
+<para>List of available ACL resources at each stage and each binding point. This shall be returned when queried for SAI_SWITCH_ATTR_AVAILABLE_ACL_TABLE or SAI_SWITCH_ATTR_AVAILABLE_ACL_TABLE_GROUP. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="830" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaf9b07b195061a90867da54aec056be11" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1gaaed172f2b1308b82f94e8d55afd5ad8c" kindref="member">_sai_tlv_type_t</ref></type>
+        <definition>typedef enum _sai_tlv_type_t  sai_tlv_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_tlv_type_t</name>
+        <briefdescription>
+<para>Segment Routing Tag Length Value Types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="848" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga1e094423523cca3121566e4f061956a6" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__hmac__t" kindref="compound">_sai_hmac_t</ref></type>
+        <definition>typedef struct _sai_hmac_t  sai_hmac_t</definition>
+        <argsstring></argsstring>
+        <name>sai_hmac_t</name>
+        <briefdescription>
+<para>Segment Routing Hash-based Message Authentication Code Tag Length Value Format. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="858" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga8097e12477eb980704007abb3e19cec6" prot="public" static="no">
+        <type>union <ref refid="union__sai__tlv__entry__t" kindref="compound">_sai_tlv_entry_t</ref></type>
+        <definition>typedef union _sai_tlv_entry_t  sai_tlv_entry_t</definition>
+        <argsstring></argsstring>
+        <name>sai_tlv_entry_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sai_tlv_type_t tlv_type </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="876" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga111b4cd49d324074861169bb66d6721d" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__tlv__t" kindref="compound">_sai_tlv_t</ref></type>
+        <definition>typedef struct _sai_tlv_t  sai_tlv_t</definition>
+        <argsstring></argsstring>
+        <name>sai_tlv_t</name>
+        <briefdescription>
+<para>Segment Routing Tag Length Value entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="887" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga5e7c1b502a4c96b8efb278d297b46e84" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__tlv__list__t" kindref="compound">_sai_tlv_list_t</ref></type>
+        <definition>typedef struct _sai_tlv_list_t  sai_tlv_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_tlv_list_t</name>
+        <briefdescription>
+<para>List of Segment Routing Tag Length Value entries. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="899" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga4e2d32994321c85b02096e83588d8ed6" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__segment__list__t" kindref="compound">_sai_segment_list_t</ref></type>
+        <definition>typedef struct _sai_segment_list_t  sai_segment_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_segment_list_t</name>
+        <briefdescription>
+<para>List of Segment Routing segment entries. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="911" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga927067b7f82a92ac19a7f72fee0ca0f7" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__port__lane__eye__values__t" kindref="compound">_sai_port_lane_eye_values_t</ref></type>
+        <definition>typedef struct _sai_port_lane_eye_values_t  sai_port_lane_eye_values_t</definition>
+        <argsstring></argsstring>
+        <name>sai_port_lane_eye_values_t</name>
+        <briefdescription>
+<para>Defines a lane with its eye values with the up and down values being in mV and left and right being in mUI. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="924" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga97e751dc0977f85e7ce94a89a20c5cc0" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__port__eye__values__list__t" kindref="compound">_sai_port_eye_values_list_t</ref></type>
+        <definition>typedef struct _sai_port_eye_values_list_t  sai_port_eye_values_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_port_eye_values_list_t</name>
+        <briefdescription>
+<para>Defines a port&apos;s lanes eye values list. </para>        </briefdescription>
+        <detaileddescription>
+<para>In get_port_attribute function call, the count member defines the number of objects which will be returned to the caller in the list member. The caller must allocate the buffer for the list member and set the count member to the size of the allocated objects in the list member.</para><para>If the size is large enough to accommodate the list of objects, the callee must fill the list member and set the count member to the actual number of objects filled. If the size is not large enough, the callee must set the count member to the actual number of objects filled in the list member and return <ref refid="group___s_a_i_s_t_a_t_u_s_1ga7255b9d60f461644acd8459627a43288" kindref="member">SAI_STATUS_BUFFER_OVERFLOW</ref>. Once the caller gets such a return code, it may use the returned count member to re-allocate the list and retry. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="946" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gad35b9c77d242e5cd55abfcd91ce0412e" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga3d5c5beb5bba4ae8d3ee80c0bd58bd31" kindref="member">_sai_outseg_type_t</ref></type>
+        <definition>typedef enum _sai_outseg_type_t  sai_outseg_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_outseg_type_t</name>
+        <briefdescription>
+<para>Enum defining MPLS out segment type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="959" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6267d5b38fdb671b1332eb0212a9c083" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga504a81cb1909935d465417a6304a77f2" kindref="member">_sai_outseg_ttl_mode_t</ref></type>
+        <definition>typedef enum _sai_outseg_ttl_mode_t  sai_outseg_ttl_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_outseg_ttl_mode_t</name>
+        <briefdescription>
+<para>Enum defining TTL mode for MPLS out segment. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="970" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga87adc840541e8fdbf81fbea4d7cdf51f" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga43af4b4ee6d50627651fb2f75867a375" kindref="member">_sai_outseg_exp_mode_t</ref></type>
+        <definition>typedef enum _sai_outseg_exp_mode_t  sai_outseg_exp_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_outseg_exp_mode_t</name>
+        <briefdescription>
+<para>Enum defining MPLS EXP mode for MPLS out segment. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="981" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6d418d8c5717fbe457c2dbd7a3cfc36e" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__system__port__config__t" kindref="compound">_sai_system_port_config_t</ref></type>
+        <definition>typedef struct _sai_system_port_config_t  sai_system_port_config_t</definition>
+        <argsstring></argsstring>
+        <name>sai_system_port_config_t</name>
+        <briefdescription>
+<para>System port configuration attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Speed parameter should be the same value as SAI_PORT_ATTR_SPEED. This is used for VOQ scheduling.</para><para>All elements are mandatory </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1010" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga7bf05c63ba6af00baf9c04b19d30a2f1" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__system__port__config__list__t" kindref="compound">_sai_system_port_config_list_t</ref></type>
+        <definition>typedef struct _sai_system_port_config_list_t  sai_system_port_config_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_system_port_config_list_t</name>
+        <briefdescription>
+<para>System port configuration list. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1022" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga38cb7243d8c9ce8eece466709de9eed4" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__fabric__port__reachability__t" kindref="compound">_sai_fabric_port_reachability_t</ref></type>
+        <definition>typedef struct _sai_fabric_port_reachability_t  sai_fabric_port_reachability_t</definition>
+        <argsstring></argsstring>
+        <name>sai_fabric_port_reachability_t</name>
+        <briefdescription>
+<para>Fabric port reachability. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1034" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga2f73c4bfaafd3bd4dec8b458c97ad066" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga86eea4ad27f46d90e72d28c4d7c17b6f" kindref="member">_sai_port_err_status_t</ref></type>
+        <definition>typedef enum _sai_port_err_status_t  sai_port_err_status_t</definition>
+        <argsstring></argsstring>
+        <name>sai_port_err_status_t</name>
+        <briefdescription>
+<para>Port error status. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1067" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gae4608f4f6410dd9d5befc49f467a2ef1" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__port__err__status__list__t" kindref="compound">_sai_port_err_status_list_t</ref></type>
+        <definition>typedef struct _sai_port_err_status_list_t  sai_port_err_status_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_port_err_status_list_t</name>
+        <briefdescription>
+<para>Attribute data for <ref refid="group___s_a_i_p_o_r_t_1ggaf6a4c24bfa563ea78247c935714eff4ba1ef088fb58a0b03479517aa3e2787ec8" kindref="member">SAI_PORT_ATTR_ERR_STATUS_LIST</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1079" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gab581918e88de635a872513ca3f5274eb" prot="public" static="no">
+        <type>union <ref refid="union__sai__attribute__value__t" kindref="compound">_sai_attribute_value_t</ref></type>
+        <definition>typedef union _sai_attribute_value_t  sai_attribute_value_t</definition>
+        <argsstring></argsstring>
+        <name>sai_attribute_value_t</name>
+        <briefdescription>
+<para>Data Type. </para>        </briefdescription>
+        <detaileddescription>
+<para>To use enum values as attribute value is sai_int32_t s32</para><para>const sai_attr_metadata_t *meta </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1240" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga8a965131a7ec1419f3e7c816c3ea40ca" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__attribute__t" kindref="compound">_sai_attribute_t</ref></type>
+        <definition>typedef struct _sai_attribute_t  sai_attribute_t</definition>
+        <argsstring></argsstring>
+        <name>sai_attribute_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>const sai_attr_metadata_t *meta </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1252" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga6dbdee6fba6e6149b7ebaf3999f7ce46" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1ga8719e09f6bf0f5a06813e32731699374" kindref="member">_sai_bulk_op_error_mode_t</ref></type>
+        <definition>typedef enum _sai_bulk_op_error_mode_t  sai_bulk_op_error_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bulk_op_error_mode_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1267" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga4610f346b1ad7a6272ba9d9bf933da94" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_object_create_fn) (_In_ sai_object_id_t switch_id, _In_ uint32_t object_count, _In_ const uint32_t *attr_count, _In_ const sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_object_id_t *object_id, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ sai_object_id_t switch_id, _In_ uint32_t object_count, _In_ const uint32_t *attr_count, _In_ const sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_object_id_t *object_id, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_object_create_fn</name>
+        <briefdescription>
+<para>Bulk objects creation. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SAI Switch object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to create </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attr_count. Caller passes the number of attribute for each object to create. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes for every object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of object ids returned </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are created or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to create. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1286" column="1" bodyfile="inc/saitypes.h" bodystart="1286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga4bbefb281d59e3e5c25ad8b9868d35c7" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_object_remove_fn) (_In_ uint32_t object_count, _In_ const sai_object_id_t *object_id, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_object_id_t *object_id, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_object_remove_fn</name>
+        <briefdescription>
+<para>Bulk objects removal. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to create </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">object_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of object ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are removed or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to remove. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1307" column="1" bodyfile="inc/saitypes.h" bodystart="1307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gac70ee7964e1bbe312df8efa023fd9c09" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_object_set_attribute_fn) (_In_ uint32_t object_count, _In_ const sai_object_id_t *object_id, _In_ const sai_attribute_t *attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_object_id_t *object_id, _In_ const sai_attribute_t *attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_object_set_attribute_fn</name>
+        <briefdescription>
+<para>Bulk objects set attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to set on attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">object_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of object ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes for every object, one per object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> when set attributes on all objects succeeded or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to set attribute. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1327" column="1" bodyfile="inc/saitypes.h" bodystart="1327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga2ab56d3f0d9cfe8964f3cbfd32a6e5ea" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_object_get_attribute_fn) (_In_ uint32_t object_count, _In_ const sai_object_id_t *object_id, _In_ const uint32_t *attr_count, _Inout_ sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_object_id_t *object_id, _In_ const uint32_t *attr_count, _Inout_ sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_object_get_attribute_fn</name>
+        <briefdescription>
+<para>Bulk objects get attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to get on attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">object_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of object ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attr_count. Caller passes the number of attribute for each object to get. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes for every object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> when get attributes on all objects succeeded or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to get attribute. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1350" column="1" bodyfile="inc/saitypes.h" bodystart="1350" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gaaa38e5614c3b5d2346a843be35e5d0b5" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_t_y_p_e_s_1gaa7e10e19a1ac78d115740f2c7b3fe97b" kindref="member">_sai_stats_mode_t</ref></type>
+        <definition>typedef enum _sai_stats_mode_t  sai_stats_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_stats_mode_t</name>
+        <briefdescription>
+<para>SAI statistics modes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used in get statistics extended or query statistics capabilities Note enum values must be powers of 2 to be used as bit mask for query statistics capabilities</para><para><simplesect kind="par"><title>Flags:</title><para> @@flags          Contains flags </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1377" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1ga1593db6c97cc170761abab3f3b8c624f" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__stat__capability__t" kindref="compound">_sai_stat_capability_t</ref></type>
+        <definition>typedef struct _sai_stat_capability_t  sai_stat_capability_t</definition>
+        <argsstring></argsstring>
+        <name>sai_stat_capability_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1392" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_t_y_p_e_s_1gad9f13b3c6a0d7b688175a6b4cc1102df" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__stat__capability__list__t" kindref="compound">_sai_stat_capability_list_t</ref></type>
+        <definition>typedef struct _sai_stat_capability_list_t  sai_stat_capability_list_t</definition>
+        <argsstring></argsstring>
+        <name>sai_stat_capability_list_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1399" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___s_a_i_t_y_p_e_s_1gaa74f89aa7d942f4a79ea12d7c9b763ef" prot="public" static="no">
+        <name>_In_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="106" column="9" bodyfile="inc/saitypes.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_t_y_p_e_s_1ga9c50bd6a6ca6e0be76a0f3a79379b90e" prot="public" static="no">
+        <name>_Out_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="107" column="9" bodyfile="inc/saitypes.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_t_y_p_e_s_1ga198d136b8176ee5824b09c7bd8b7beb0" prot="public" static="no">
+        <name>_Inout_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="108" column="9" bodyfile="inc/saitypes.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_t_y_p_e_s_1gab360cbf5d564aa4e668eac35c51f9f23" prot="public" static="no">
+        <name>_In_reads_z_</name>
+        <param><defname>_LEN_</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="109" column="9" bodyfile="inc/saitypes.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_t_y_p_e_s_1ga51681e44fdd568a1a2a24c78e273763e" prot="public" static="no">
+        <name>_In_reads_opt_z_</name>
+        <param><defname>_LEN_</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="110" column="9" bodyfile="inc/saitypes.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___s_a_i_t_y_p_e_s_1ga05f6bb4ef9f7ddf0ceb2056dc6ac8c6c" prot="public" static="no">
+        <name>SAI_NULL_OBJECT_ID</name>
+        <initializer>0L</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SAI NULL object ID </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="140" column="9" bodyfile="inc/saitypes.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

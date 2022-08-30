@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__acl__resource__list__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_acl_resource_list_t</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__acl__resource__list__t_1a00276d416194abcf9e6c5e0c85ea8f02" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t _sai_acl_resource_list_t::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of entries </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="825" column="1" bodyfile="inc/saitypes.h" bodystart="825" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__acl__resource__list__t_1a86f8c5e15c2060183c75621212b0e65a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga9e953c143b4bdf01c5b13e41bf2bb843" kindref="member">sai_acl_resource_t</ref> *</type>
+        <definition>sai_acl_resource_t* _sai_acl_resource_list_t::list</definition>
+        <argsstring></argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resource list </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="828" column="1" bodyfile="inc/saitypes.h" bodystart="828" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>List of available ACL resources at each stage and each binding point. This shall be returned when queried for SAI_SWITCH_ATTR_AVAILABLE_ACL_TABLE or SAI_SWITCH_ATTR_AVAILABLE_ACL_TABLE_GROUP. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="72">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="71">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="72" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitypes.h" line="823" column="1" bodyfile="inc/saitypes.h" bodystart="822" bodyend="830"/>
+    <listofallmembers>
+      <member refid="struct__sai__acl__resource__list__t_1a00276d416194abcf9e6c5e0c85ea8f02" prot="public" virt="non-virtual"><scope>_sai_acl_resource_list_t</scope><name>count</name></member>
+      <member refid="struct__sai__acl__resource__list__t_1a86f8c5e15c2060183c75621212b0e65a" prot="public" virt="non-virtual"><scope>_sai_acl_resource_list_t</scope><name>list</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

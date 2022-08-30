@@ -1,0 +1,9 @@
+To build xpApp and xpSim with a crosscompiler.
+1. export CROSS_COMPILE set to the cross compiler prefex upto and including the final dash. E.g export CROSS_COMPILE=powerpc64-xpliant-linux-gnu-
+
+2. export SYSROOT set to the sysroot of your toolchain. E.g. export SYSROOT=/usr/local/powerpc64-xpliant-linux-gnu/usr/powerpc64-xpliant-linux-gnu/sysroot
+
+3. Set your path to include the path to your toolchain commands. E.g. PATH=${PATH}:/usr/local/powerpc64-xpliant-linux-gnu/usr/bin
+
+4. From the xdk directory just make xpApp as normal. I.e.,  ./maker -j33 xpApp
+

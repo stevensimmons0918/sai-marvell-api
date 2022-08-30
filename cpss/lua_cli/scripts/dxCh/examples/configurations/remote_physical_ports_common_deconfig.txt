@@ -1,0 +1,82 @@
+// TAG:               deconfig; Remote physical ports; cpssInitSystem 36,1
+// Short Description: Unset trunk and TPIDs on remote physical ports , and remove Cascade to other Sip5 device.
+// Description:       Unset trunk and TPIDs on remote physical ports , and remove Cascade to other Sip5 device.
+//                    in system of BC3 + 2 PIPEs set as 'Remote physical ports' system
+//                    Using special 'appDemo' functions for TPID synch between DX and PX config.
+//                    Using special 'appDemo' functions for Trunk synch for 'stacking' WA with other Sip5 device.
+//		      
+end 
+//disable tag1 removal if zero on ingress
+do cpss-api call cpssDxChBrgVlanRemoveVlanTag1IfZeroModeSet devNum ${dev} mode CPSS_DXCH_BRG_VLAN_REMOVE_TAG1_IF_ZERO_DISABLE_E
+
+config
+
+tpid device ${dev} direction ingress index 0 etherType 0x8100  tag-type 4-bytes-tag
+tpid device ${dev} direction ingress index 1 etherType 0x8100  tag-type 4-bytes-tag
+tpid device ${dev} direction ingress index 2 etherType 0x8100  tag-type 4-bytes-tag
+tpid device ${dev} direction ingress index 3 etherType 0x8100  tag-type 4-bytes-tag
+
+tpid device ${dev} direction egress index 0 etherType 0x8100  tag-type 4-bytes-tag
+tpid device ${dev} direction egress index 1 etherType 0x8100  tag-type 4-bytes-tag
+tpid device ${dev} direction egress index 2 etherType 0x8100  tag-type 4-bytes-tag
+tpid device ${dev} direction egress index 3 etherType 0x8100  tag-type 4-bytes-tag
+
+
+tpid ingress profile 2 device ${dev} ether_type_index 0 tpid-range 0,1,2,3,4,5,6,7 
+tpid ingress profile 2 device ${dev} ether_type_index 1 tpid-range 0,1,2,3,4,5,6,7 
+
+tpid ingress profile 3 device ${dev} ether_type_index 0 tpid-range 0,1,2,3,4,5,6,7 
+tpid ingress profile 3 device ${dev} ether_type_index 1 tpid-range 0,1,2,3,4,5,6,7 
+
+
+interface ethernet ${dev}/${port[2]}
+tpid ingress profile 0 ether_type_index 0 is_default true
+tpid ingress profile 0 ether_type_index 1 is_default true
+exit
+
+//Using special 'appDemo' functions for TPID synch between DX and PX config.
+do shell-execute     gtDbDxPxBc3PipesPipeTpidUpdate
+
+interface range ethernet ${dev}/${port[2]},${port[5]}
+no channel-group 15
+exit
+
+// unset port from cascade to network
+interface ethernet ${dev}/${port[6]}
+no cascade dsa
+
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet  devNum ${dev} portNum ${port[6]} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${port[6]} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[6]} ethMode CPSS_VLAN_ETHERTYPE0_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[6]} ethMode CPSS_VLAN_ETHERTYPE1_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+
+exit
+
+// update the port isolation after the members removed from trunk 15
+// Using special 'appDemo' functions for Trunk synch for 'stacking' WA with other Sip5 device.
+do shell-execute gtDbDxPxBc3Pipes_cpssDxChTrunkCatchUp_WA_srcFilter 0,15
+
+//set egress ports ${port[2]} 
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet  devNum ${dev} portNum ${port[2]} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${port[2]} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+//set egress ports ${port[3]} 
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet  devNum ${dev} portNum ${port[3]} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${port[3]} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+//set egress port ${port[4]} as egress untagged
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet  devNum ${dev} portNum ${port[4]} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${port[4]} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+//set egress port ${port[5]} as egress untagged
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet  devNum ${dev} portNum ${port[5]} tagCmd CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${port[5]} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EVLAN_MODE_E
+
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[1]} ethMode CPSS_VLAN_ETHERTYPE0_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[1]} ethMode CPSS_VLAN_ETHERTYPE1_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[2]} ethMode CPSS_VLAN_ETHERTYPE0_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[2]} ethMode CPSS_VLAN_ETHERTYPE1_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[3]} ethMode CPSS_VLAN_ETHERTYPE0_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[3]} ethMode CPSS_VLAN_ETHERTYPE1_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[4]} ethMode CPSS_VLAN_ETHERTYPE0_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[4]} ethMode CPSS_VLAN_ETHERTYPE1_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[5]} ethMode CPSS_VLAN_ETHERTYPE0_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressTagTpidSelectModeSet devNum ${dev} portNum ${port[5]} ethMode CPSS_VLAN_ETHERTYPE1_E mode CPSS_DXCH_BRG_VLAN_EGRESS_TAG_TPID_SELECT_MODE_E

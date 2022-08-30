@@ -1,0 +1,9 @@
+#! /usr/bin/bash
+
+#when this script is xdk/dist/foobar_py (possibly a link),
+#it starts Python and imports everything from xdk/dist/foobar.py Python module
+
+SRC=${BASH_SOURCE[0]}
+export PYTHONPATH=$(dirname $SRC) 
+BASENAME=$(basename $SRC)
+python -i -c "from ${BASENAME%_py} import *"

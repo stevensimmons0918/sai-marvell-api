@@ -1,0 +1,12 @@
+diff --git a/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/drivers/intDriver.c b/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/drivers/intDriver.c
+index 66cad94b89..9400eb58b2 100644
+--- a/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/drivers/intDriver.c
++++ b/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/drivers/intDriver.c
+@@ -174,6 +174,7 @@ static void free_interrupt_slot(int slot)
+ 	struct interrupt_slot *sl = &(mvIntDrv_slots[slot]);
+ 
+ 	down(&sl->close_sem);
++	disable_irq(sl->irq);
+ 	enable_irq(sl->irq);
+ 	up(&sl->close_sem);
+ 	free_irq(sl->irq, (void*)&(sl->tasklet));

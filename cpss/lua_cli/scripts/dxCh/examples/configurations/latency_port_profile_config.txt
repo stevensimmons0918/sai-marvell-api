@@ -1,0 +1,9 @@
+//TAG:               latency-monitor queue mode
+//Short Description: Configure test type for latency port profile
+//Description:       Configure test type for latency port profile
+end
+configure
+interface ethernet ${dev}/${@@lmu_env.port2}
+latency-monitor-profile device ${dev} egress-port ${@@lmu_env.port2} latency-profile ${@@lmu_env.latencyProfile}
+end
+

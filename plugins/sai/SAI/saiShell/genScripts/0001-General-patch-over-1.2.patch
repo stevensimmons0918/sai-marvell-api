@@ -1,0 +1,48 @@
+From 4353d4e14176a3a1d934e4eca6a9a48f3a6b972d Mon Sep 17 00:00:00 2001
+From: Ashok Daparthi <Ashok_Daparthi@Dell.com>
+Date: Sun, 25 Mar 2018 20:50:46 -0700
+Subject: [PATCH] General patch over 1.2
+
+---
+ saibuffer.h |  6 ++++++
+ saiport.h   |  8 ++++++++
+ sairoute.h  |  1 +
+ 4 files changed, 59 insertions(+), 1 deletion(-)
+diff --git a/saibuffer.h b/saibuffer.h
+index 703e215..894276e 100644
+--- a/saibuffer.h
++++ b/saibuffer.h
+@@ -379,6 +379,12 @@ typedef enum _sai_buffer_pool_stat_t
+     /** Get/set WRED marked bytes count [uint64_t] */
+     SAI_BUFFER_POOL_STAT_WRED_ECN_MARKED_BYTES = 0x00000012,
+ 
++    /** Get current Shared headroom pool occupancy in bytes [uint64_t] */
++    SAI_BUFFER_POOL_STAT_XOFF_ROOM_CURR_OCCUPANCY_BYTES = 0x00000013,
++
++    /** Get watermark current Shared headroom pool occupancy in bytes [uint64_t] */
++    SAI_BUFFER_POOL_STAT_XOFF_ROOM_WATERMARK_BYTES = 0x00000014,
++
+     /** Custom range base value */
+     SAI_BUFFER_POOL_STAT_CUSTOM_RANGE_BASE = 0x10000000
+ 
+diff --git a/saiport.h b/saiport.h
+index 960691e..369a361 100644
+--- a/saiport.h
++++ b/saiport.h
+@@ -1035,6 +1035,14 @@ typedef enum _sai_port_attr_t
+     /** Custom range base value */
+     SAI_PORT_ATTR_CUSTOM_RANGE_START = 0x10000000,
+ 
++    /**
++     * @brief Enable or disable port level location LED
++     *
++     * @type bool
++     * @flags CREATE_AND_SET
++     */
++    SAI_PORT_ATTR_LOCATION_LED,
++
+     /** End of custom range base */
+     SAI_PORT_ATTR_CUSTOM_RANGE_END
+ 
+1.9.1
+

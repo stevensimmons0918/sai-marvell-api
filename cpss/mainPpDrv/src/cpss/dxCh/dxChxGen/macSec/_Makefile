@@ -1,0 +1,32 @@
+# $(warning "Started")
+#LIB_NAME = cpssDxChMacSec.lib
+
+
+
+#List of subfolders to include in build
+MODULES := \
+ driver
+
+#List of files to include in list
+FILES := \
+cpssDxChMacSec.c \
+prvCpssDxChMacSecUtils.c \
+prvCpssDxChMacSecLog.c
+
+ifneq (y, $(CONFIG_LOG_ENABLE))
+        FILES := \
+         prvCpssDxChMacSecUtils.c \
+         cpssDxChMacSec.c
+endif
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINPPDRV_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))

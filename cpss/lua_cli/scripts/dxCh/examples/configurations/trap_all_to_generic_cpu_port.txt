@@ -1,0 +1,10 @@
+// TAG:               network; interface; cpu; mg;
+// Short Description: Configures of cpu traffic to go trap to 'generic' CPU port 
+// Description:       using the 'cpu code table' to send all trapped traffic to 'generic' CPU port
+//
+
+end
+traffic
+//generic CPU port ('index' nil)
+cpu code bind device ${dev} cpu-code all port ${@@physicalCpuSdmaPortGet()}
+end

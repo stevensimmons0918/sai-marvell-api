@@ -1,0 +1,113 @@
+/*!**************************************************RND Template version 4.1
+ *!                   M A C R O   D E F I N I T I O N S
+ *!==========================================================================
+ *$ TITLE: HOST->SIMULATION interfaces.
+ *!--------------------------------------------------------------------------
+ *$ FILENAME:
+ *!--------------------------------------------------------------------------
+ *$ SYSTEM, SUBSYSTEM: AP5000, SIMULATION, GENERAL
+ *!--------------------------------------------------------------------------
+ *$ AUTHORS: AlexV     
+ *!--------------------------------------------------------------------------
+ *$ LATEST UPDATE: 29-Jun-98  17:47:00         CREATION DATE: 29-Jun-98
+ *!**************************************************************************
+ *!
+ *!**************************************************************************
+ *!
+ *$ MACRO: <MacroName>
+ *!
+ *$ GENERAL DESCRIPTION:
+ *!
+ *$ RETURNS:
+ *!
+ *$ ALGORITHM: (local)
+ *!                      
+ *$ ASSUMPTIONS:
+ *!
+ *$ REMARKS:   (local)
+ *!
+ *!**************************************************************************
+ *!*/
+
+//------------------------------- F L A S H ---------------------------------------
+
+#define SHOSTG_flash_read ( offset, size, dest_addr_PTR )(   \
+
+    SHOSTG_flash_read( offset, size, dest_addr_PTR );                 \
+)
+
+#define SHOSTG_flash_write   ( offset, size, src_addr_PTR )(   \
+
+    SHOSTG_flash_write( offset, size, src_addr_PTR );                 \
+)
+
+#define SHOSTG_flash_erase   ( offset )(   \
+
+    SHOSTG_flash_erase( offset );                 \
+)
+
+#define SHOSTG_flash_init   ( page_size_PTR, flash_size_PTR )(   \
+
+    SHOSTG_flash_init( page_size_PTR, flash_size_PTR );                 \
+)
+
+//------------------------------- N V R A M ---------------------------------------
+
+#define SHOSTG_nvram_init   ( nvram_start_addr_ptr_PTR, nvram_size_PTR )(   \
+
+   SHOSTG_nvram_init ( nvram_start_addr_ptr_PTR, nvram_size_PTR );		\
+)
+
+//------------------------------ D R A M ------------------------------------------
+
+#define SHOSTG_dram_init   ( dram_start_addr_ptr_PTR, dram_size_PTR )(   \
+
+   SHOSTG_dram_init ( dram_start_addr_ptr_PTR, dram_size_PTR );		\
+)
+
+//------------------------------ T I M E R ---------------------------------------
+
+#define SHOSTC_timer_init   ( frequency )(   \
+
+   SHOSTC_timer_init ( frequency );		\
+)
+
+//------------------------------ U A R T ------------------------------------------
+
+#define SHOSTG_uart_putchar   ( ch )(   \
+
+    SHOSTC_io_putchar ( ch );			\
+)
+
+#define SHOSTG_io_set_input   ( input_fnc_PTR )(   \
+
+    SHOSTG_io_set_input ( input_fnc_PTR );			\
+)
+
+#define SHOSTG_io_set_output   ( output_fnc_PTR )(   \
+
+    SHOSTG_io_set_output ( output_fnc_PTR );			\
+)
+
+//------------------------------ I N T E R R U P T --------------------------------
+
+#define SHOSTG_check_if_into_interrupt   ()(   \
+
+    SHOSTG_check_if_into_interrupt ();			\
+)
+
+#define SHOSTG_interrupt_disable   ()(   \
+
+    SHOSTG_interrupt_disable ();			\
+)
+
+#define SHOSTG_interrupt_enable   ( new_val )(   \
+
+    SHOSTG_interrupt_enable ( new_val );			\
+)
+
+#define SHOSTC_set_interrupt_func   ( id, fun_PTR, priority )(   \
+
+    SHOSTC_set_interrupt_func ( id, fun_PTR, priority );			\
+)
+

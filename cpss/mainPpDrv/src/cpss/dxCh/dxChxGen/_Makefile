@@ -1,0 +1,80 @@
+# $(warning "Started")
+
+
+#List of subfolders to include in build
+MODULES := \
+ bootChannel \
+ bridge \
+ bridgeFdbManager \
+ cnc \
+ config \
+ cos \
+ cpssHwInit \
+ cscd \
+ cuckoo \
+ cutThrough \
+ diag \
+ exactMatch \
+ exactMatchManager \
+ fabric \
+ flowManager \
+ ipfixManager \
+ hsrPrp \
+ ip \
+ ipLpmEngine \
+ ipfix \
+ l2mll \
+ log \
+ logicalTarget \
+ lpm \
+ mirror \
+ multiPortGroup \
+ networkIf \
+ nst \
+ oam \
+ packetAnalyzer \
+ pcl \
+ pha \
+ phy \
+ policer \
+ port \
+ ppu \
+ private \
+ protection \
+ ptp \
+ ptpManager \
+ resourceManager \
+ stream \
+ systemRecovery \
+ tam \
+ tcam \
+ trunk \
+ tti \
+ tunnel \
+ txq \
+ version \
+ virtualTcam \
+ latencyMonitoring \
+ vnt \
+ macSec
+
+
+ifeq (y, $(CONFIG_INCLUDE_TM))
+    MODULES += tmGlue
+endif
+
+#List of files to include in list
+FILES :=
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINPPDRV_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

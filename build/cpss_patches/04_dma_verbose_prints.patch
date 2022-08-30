@@ -1,0 +1,22 @@
+diff --git a/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c b/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c
+index 6ef8e7a441..2c0599e897 100755
+--- a/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c
++++ b/cpssEnabler/mainOs/src/gtOs/linux/osLinuxMem.c
+@@ -899,7 +899,7 @@ static GT_VOID *internal_osCacheDmaMallocByWindow
+         }
+         if (freePtr)
+         {
+-fprintf(stderr,"Reuse from 'free' chain : Allocating %d bytes for DMA\n", size);
++            /* fprintf(stderr,"Reuse from 'free' chain : Allocating %d bytes for DMA\n", size); */
+             /* remove from chain */
+             *prev = freePtr->next_elem;
+             hdrPtr = (OSMEM_NOPOOLS_HDR_STC*)freePtr;
+@@ -934,7 +934,7 @@ fprintf(stderr,"Reuse from 'free' chain : Allocating %d bytes for DMA\n", size);
+         if (hdrPtr == NULL)
+         {
+ fprintf(stderr,"Failed to allocate %d bytes, exiting\n", size);
+-exit(1);
++            /* exit(1); */
+             return NULL;
+         }
+ 

@@ -1,0 +1,36 @@
+# $(warning "Started") 
+#LIB_NAME = cpssDrvPpHwSmi.lib
+
+#List of subfolders to include in build
+MODULES := 
+
+ifeq (y, $(CONFIG_ASIC_SIMULATION))
+    simUsed=1
+endif
+#check if we forbid the use of the simulation files ! even if the ASIC_SIMULATION is used !
+ifeq (y, $(CONFIG_ASIC_SIMULATION_ENV_FORBIDDEN))
+    simUsed=0
+endif
+
+
+#List of files to include in list
+ifeq (1, $(simUsed))
+FILES := \
+ cpssDrvPpHwSmiCntlSim.c
+else
+FILES := \
+ cpssDrvPpHwSmiCntl.c
+endif
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+COMMON_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

@@ -1,0 +1,139 @@
+# New Makefile for IDBG_PDL (Ez bringup)
+#
+SHELL := /bin/bash
+
+MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+MKFILE_DIR := $(dir $(MKFILE_PATH))
+CURR_DIR := $(notdir $(patsubst %/,%,$(dir $(MKFILE_PATH))))
+ROOT_DIR := $(CURR_DIR)
+
+ECHO = echo
+MKDIR = mkdir -p
+CP = cp
+RM = rm -rf
+
+CROSS_COMPILE ?= /usr/bin/
+
+CC = $(CROSS_COMPILE)gcc
+LD = $(CROSS_COMPILE)ld
+AR = $(CROSS_COMPILE)ar
+
+GNU_CC := $(CC)
+
+ifneq ("$(GREY_MODE)", "yes")
+	BUILD_DIR_NAME = build_dir_bm
+else
+	BUILD_DIR_NAME = build_dir_gm
+endif
+
+ifneq ($(strip $(BUILD_DIR_TARGET)),)
+BUILD_DIR_NAME := $(BUILD_DIR_NAME)/$(BUILD_DIR_TARGET)
+endif
+
+OBJ_EXTENSION=o
+DEP_EXTENSION=d
+LIB_EXTENSION=a
+
+IDBG_PDL_DIR := iDbgPdl
+BUILD_DIR := $(IDBG_PDL_DIR)/$(BUILD_DIR_NAME)
+OUT_DIR := $(BUILD_DIR)
+OBJ_OUT_DIR = $(BUILD_DIR)/obj
+
+IDBG_PDL_LIB := $(OUT_DIR)/libiDbgPdl.a
+
+# Name of makefile to include in each sub-module
+MAKEFILE := Makefile
+
+.PHONY: all
+all: $(IDBG_PDL_LIB)
+
+lib: $(IDBG_PDL_LIB)
+
+clean:
+	$(RM) $(IDBG_PDL_DIR)/build_dir_bm
+	$(RM) $(IDBG_PDL_DIR)/build_dir_gm
+
+#######################################################
+
+MODULES := \
+	src
+
+export BUILD_MODE = DEBUG
+ifeq ($(BUILD_MODE),DEBUG)
+    DEBUG_CFLAGS = -g -O0
+else
+    DEBUG_CFLAGS = -O2
+endif
+
+
+BASE_CFLAGS = $(DEBUG_CFLAGS) -Wall -pthread -Wextra -Werror -Wno-error=cpp  -ansi -fno-builtin -funroll-loops
+override CFLAGS += $(BASE_CFLAGS)
+override CFLAGS += -I$(MKFILE_DIR)/pdl/h -I$(MKFILE_DIR)/iDbgPdl/h
+ifneq ("$(GREY_MODE)", "yes")
+	override CFLAGS += -DLINUX 
+endif
+
+# Function compile(flags, output_folder)
+#
+# Compile a .c file into .o file using the defined toolchain, including dependecy .d file.
+# Object and dependency files will be located together in output_folder,
+# under the relative path to the source.
+#
+# Example: $(call compile $(CFLAGS),/local/objects)
+# Source file: foo/bar/baz.c
+# Targets: /local/objects/foo/bar/baz.o
+#          /local/objects/foo/bar/baz.d
+
+define make_depend
+@# Create output folder
+	@ $(MKDIR) $(dir $@)
+@# print make_depend command
+	@ echo MD $<
+@# create dependency file
+	@ $(GNU_CC) -MM -c $1 $< -o $2/$*.$(DEP_EXTENSION)
+@# Duplicate it
+	@ cp $2/$*.$(DEP_EXTENSION) $2/$*.tmp
+@# Create empty rule per file in dependency rule to avoid "No rule to make target ..." Errors 
+	@ sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' -e '/^$$/d' -e 's/$$/ :/' < $2/$*.$(DEP_EXTENSION) >> $2/$*.tmp
+@# Change object filename to include full path
+	@ sed -e 's/$(subst .,\.,$(notdir $*.o))/$(subst /,\/,$2/$*.$(OBJ_EXTENSION))/'  < $2/$*.tmp > $2/$*.$(DEP_EXTENSION)
+@# Remove temporary file
+	@ $(RM) $2/$*.tmp
+endef
+
+define compile
+@#	update dependency file
+	$(call make_depend,$1,$2)
+@# print compilation msg
+	@ $(ECHO) $(CC) $<
+@# compile
+	@ $(ECHO) $(CC) -c $1 $< -o $@
+	@ $(CC) -c $1 $< -o $@
+endef
+
+define make_lib
+	@ $(MKDIR) $(dir $@)
+	@ $(ECHO) $(AR) $@
+	@ $(AR) crus $@ $^
+endef
+
+IDBG_PDL_SRC := 
+DEP := 
+include $(patsubst %,$(IDBG_PDL_DIR)/%/$(MAKEFILE),$(MODULES))
+
+IDBG_PDL_OBJ := $(patsubst $(IDBG_PDL_DIR)%.c,$(OBJ_OUT_DIR)%.$(OBJ_EXTENSION),$(IDBG_PDL_SRC))
+DEP += $(patsubst %.o,%.d,$(IDBG_PDL_OBJ))
+
+# linker options
+LDFLAGS = -rdynamic -Wl,-Map=$(OUT_DIR)/$@/link.map
+
+# %.o - compile .c files to objects 
+$(OBJ_OUT_DIR)/%.o:  $(IDBG_PDL_DIR)/%.c
+	$(call compile,$(CFLAGS),$(OBJ_OUT_DIR))
+
+$(IDBG_PDL_LIB): $(IDBG_PDL_OBJ)
+	$(call make_lib)
+
+ifneq ($(MAKECMDGOALS),clean)
+-include $(DEP)
+endif

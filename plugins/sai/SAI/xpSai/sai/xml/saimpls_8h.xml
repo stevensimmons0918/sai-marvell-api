@@ -1,0 +1,584 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saimpls_8h" kind="file" language="C++">
+    <compoundname>saimpls.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <includedby refid="saiobject_8h" local="no">inc/saiobject.h</includedby>
+    <incdepgraph>
+      <node id="192">
+        <label>stdbool.h</label>
+      </node>
+      <node id="189">
+        <label>inc/saimpls.h</label>
+        <link refid="saimpls.h"/>
+        <childnode refid="190" relation="include">
+        </childnode>
+      </node>
+      <node id="191">
+        <label>stdint.h</label>
+      </node>
+      <node id="193">
+        <label>sys/types.h</label>
+      </node>
+      <node id="190">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+        <childnode refid="193" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="194">
+        <label>inc/saimpls.h</label>
+        <link refid="saimpls.h"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+      </node>
+      <node id="196">
+        <label>inc/saiobject.h</label>
+        <link refid="saiobject_8h"/>
+        <childnode refid="195" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__inseg__entry__t" prot="public">_sai_inseg_entry_t</innerclass>
+    <innerclass refid="struct__sai__mpls__api__t" prot="public">_sai_mpls_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_m_p_l_s_1ga1ae340414d9ca6df1da91d596a7c790b" prot="public" static="no">
+        <name>_sai_inseg_entry_psc_type_t</name>
+        <enumvalue id="group___s_a_i_m_p_l_s_1gga1ae340414d9ca6df1da91d596a7c790bacc55152ab0d4b85ed083ac395b346d80" prot="public">
+          <name>SAI_INSEG_ENTRY_PSC_TYPE_ELSP</name>
+          <briefdescription>
+<para>EXP of MPLS label infers both TC and COLOR. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1gga1ae340414d9ca6df1da91d596a7c790baa9eeff029bdb9e9b948891c2baeb5ab6" prot="public">
+          <name>SAI_INSEG_ENTRY_PSC_TYPE_LLSP</name>
+          <briefdescription>
+<para>MPLS label infers TC and EXP of MPLS label infers COLOR. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="36" column="1" bodyfile="inc/saimpls.h" bodystart="35" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_m_p_l_s_1ga2930a9273cdb4bc4a2a28473ca2829f1" prot="public" static="no">
+        <name>_sai_inseg_entry_pop_ttl_mode_t</name>
+        <enumvalue id="group___s_a_i_m_p_l_s_1gga2930a9273cdb4bc4a2a28473ca2829f1adac79e8af616a1e3fc99a275f3d79245" prot="public">
+          <name>SAI_INSEG_ENTRY_POP_TTL_MODE_UNIFORM</name>
+          <briefdescription>
+<para>Uniform mode. </para>          </briefdescription>
+          <detaileddescription>
+<para>TTL of inner header is computed based on TTL of outer header on pop. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1gga2930a9273cdb4bc4a2a28473ca2829f1a5c7fd30dcd7315903c8e180b70237d9d" prot="public">
+          <name>SAI_INSEG_ENTRY_POP_TTL_MODE_PIPE</name>
+          <briefdescription>
+<para>Pipe mode. </para>          </briefdescription>
+          <detaileddescription>
+<para>TTL of inner header is left unchanged on pop. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="49" column="1" bodyfile="inc/saimpls.h" bodystart="48" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_m_p_l_s_1ga0eea598c11839415cfa35bcc86d4195a" prot="public" static="no">
+        <name>_sai_inseg_entry_pop_qos_mode_t</name>
+        <enumvalue id="group___s_a_i_m_p_l_s_1gga0eea598c11839415cfa35bcc86d4195aa2f70dbb46561be7b9ba5e77f4ab3ec2c" prot="public">
+          <name>SAI_INSEG_ENTRY_POP_QOS_MODE_UNIFORM</name>
+          <briefdescription>
+<para>Uniform mode. </para>          </briefdescription>
+          <detaileddescription>
+<para>DSCP or EXP of inner header is computed based on TC AND COLOR of outer header on pop. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1gga0eea598c11839415cfa35bcc86d4195aa81e5ce6738c380b86e2c8a8a0527a995" prot="public">
+          <name>SAI_INSEG_ENTRY_POP_QOS_MODE_PIPE</name>
+          <briefdescription>
+<para>Uniform mode. </para>          </briefdescription>
+          <detaileddescription>
+<para>DSCP or EXP of inner header is left unchanged on pop. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="66" column="1" bodyfile="inc/saimpls.h" bodystart="65" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_m_p_l_s_1gade8e49bf0aac569fcf7cd64cb9c152f7" prot="public" static="no">
+        <name>_sai_inseg_entry_attr_t</name>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a2619feecf6a664af074e93cc1f185044" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7ad1aee8a3ca07938d8d2a3ea96e05b84f" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_NUM_OF_POP</name>
+          <initializer>= SAI_INSEG_ENTRY_ATTR_START</initializer>
+          <briefdescription>
+<para>Number of pops. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a38401a5927513b231bb023ec6a91a60c" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_PACKET_ACTION</name>
+          <briefdescription>
+<para>Packet action. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_packet_action_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_PACKET_ACTION_FORWARD </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a46e3fc21002ac81f5204a868c3a18668" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_TRAP_PRIORITY</name>
+          <briefdescription>
+<para>Packet priority for trap/log actions. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a5fe738e9c27473b4681e85a1f6dd7817" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_NEXT_HOP_ID</name>
+          <briefdescription>
+<para>The next hop id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_NEXT_HOP, SAI_OBJECT_TYPE_NEXT_HOP_GROUP, SAI_OBJECT_TYPE_ROUTER_INTERFACE </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a6d931b58dac1b0d43fe04f45fc839950" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_PSC_TYPE</name>
+          <briefdescription>
+<para>Define PSC type for a label. </para>          </briefdescription>
+          <detaileddescription>
+<para>Defines how to infer both TC and COLOR</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_inseg_entry_psc_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_INSEG_ENTRY_PSC_TYPE_ELSP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7adda19607eb2ed499623d88c4072454e1" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_QOS_TC</name>
+          <briefdescription>
+<para>TC for a label. </para>          </briefdescription>
+          <detaileddescription>
+<para>Associate TC by a label (override TC provided by QOS MAP) Mainly used for L-LSP tunnels, where label infers TC and EXP infers COLOR</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_INSEG_ENTRY_ATTR_PSC_TYPE == SAI_INSEG_ENTRY_PSC_TYPE_LLSP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a04e3b7adf27770134e6cae038e7ce161" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_MPLS_EXP_TO_TC_MAP</name>
+          <briefdescription>
+<para>Enable EXP -&gt; TC MAP on label. </para>          </briefdescription>
+          <detaileddescription>
+<para>Associate TC by a QOS MAP Mainly used for E-LSP tunnels, where EXP infers both TC and COLOR Overrides SAI_SWITCH_ATTR_QOS_MPLS_EXP_TO_TC_MAP and SAI_PORT_ATTR_QOS_MPLS_EXP_TO_TC_MAP</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_QOS_MAP </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_INSEG_ENTRY_ATTR_PSC_TYPE == SAI_INSEG_ENTRY_PSC_TYPE_ELSP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a22653511eaea75c6deaf20f10f9f49e1" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_MPLS_EXP_TO_COLOR_MAP</name>
+          <briefdescription>
+<para>Enable EXP -&gt; COLOR MAP on label. </para>          </briefdescription>
+          <detaileddescription>
+<para>Associate COLOR by a QOS MAP Overrides SAI_SWITCH_ATTR_QOS_MPLS_EXP_TO_COLOR_MAP and SAI_PORT_ATTR_QOS_MPLS_EXP_TO_COLOR_MAP</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_QOS_MAP </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a69aa7ea95a92c4e8462211f71a9a5fcd" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_POP_TTL_MODE</name>
+          <briefdescription>
+<para>Define TTL setting for PHP or POP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_inseg_entry_pop_ttl_mode_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_INSEG_ENTRY_POP_TTL_MODE_UNIFORM </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7aa39a3546aaf6e63f892f87b1a31b27db" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_POP_QOS_MODE</name>
+          <briefdescription>
+<para>Define QOS setting for PHP or POP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_inseg_entry_pop_qos_mode_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_INSEG_ENTRY_POP_QOS_MODE_UNIFORM </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7ae8d4ee06b3fe49e011fa5dc5d2d5b040" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a079c23efa2c491e844b2575dba6cc2d6" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a51ddfa1fbfaed6263e95f495a1b1ed39" prot="public">
+          <name>SAI_INSEG_ENTRY_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute Id for SAI in segment. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="86" column="1" bodyfile="inc/saimpls.h" bodystart="85" bodyend="213"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1gaacc88b807bf306c84af28c1a310551c3" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_p_l_s_1ga1ae340414d9ca6df1da91d596a7c790b" kindref="member">_sai_inseg_entry_psc_type_t</ref></type>
+        <definition>typedef enum _sai_inseg_entry_psc_type_t  sai_inseg_entry_psc_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_inseg_entry_psc_type_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1ga5875634ea403f0324a2790be0904676d" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_p_l_s_1ga2930a9273cdb4bc4a2a28473ca2829f1" kindref="member">_sai_inseg_entry_pop_ttl_mode_t</ref></type>
+        <definition>typedef enum _sai_inseg_entry_pop_ttl_mode_t  sai_inseg_entry_pop_ttl_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_inseg_entry_pop_ttl_mode_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="63" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1ga81d38092967f07575390f1c31a6f352c" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_p_l_s_1ga0eea598c11839415cfa35bcc86d4195a" kindref="member">_sai_inseg_entry_pop_qos_mode_t</ref></type>
+        <definition>typedef enum _sai_inseg_entry_pop_qos_mode_t  sai_inseg_entry_pop_qos_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_inseg_entry_pop_qos_mode_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="80" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1ga14acb11db94f7dfc6f34d125ce5c1e26" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_p_l_s_1gade8e49bf0aac569fcf7cd64cb9c152f7" kindref="member">_sai_inseg_entry_attr_t</ref></type>
+        <definition>typedef enum _sai_inseg_entry_attr_t  sai_inseg_entry_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_inseg_entry_attr_t</name>
+        <briefdescription>
+<para>Attribute Id for SAI in segment. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="213" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1gaf53983fcc125a09f213ab5603551d0d4" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__inseg__entry__t" kindref="compound">_sai_inseg_entry_t</ref></type>
+        <definition>typedef struct _sai_inseg_entry_t  sai_inseg_entry_t</definition>
+        <argsstring></argsstring>
+        <name>sai_inseg_entry_t</name>
+        <briefdescription>
+<para>In segment entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="232" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1ga55332db5eeaab7d247ddb49902c5950f" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_inseg_entry_fn) (_In_ const sai_inseg_entry_t *inseg_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_inseg_entry_t *inseg_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_inseg_entry_fn</name>
+        <briefdescription>
+<para>Create In Segment entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">inseg_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>InSegment entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="243" column="1" bodyfile="inc/saimpls.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1ga8b7a2ebe4adc6b0b571fa9d5a455f891" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_inseg_entry_fn) (_In_ const sai_inseg_entry_t *inseg_entry)</definition>
+        <argsstring>)(_In_ const sai_inseg_entry_t *inseg_entry)</argsstring>
+        <name>sai_remove_inseg_entry_fn</name>
+        <briefdescription>
+<para>Remove In Segment entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">inseg_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>InSegment entry</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="255" column="1" bodyfile="inc/saimpls.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1ga3a67e1195b01233e074cd26298dafe8c" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_inseg_entry_attribute_fn) (_In_ const sai_inseg_entry_t *inseg_entry, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ const sai_inseg_entry_t *inseg_entry, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_inseg_entry_attribute_fn</name>
+        <briefdescription>
+<para>Set In Segment attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">inseg_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>InSegment entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="266" column="1" bodyfile="inc/saimpls.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1ga4e2aeb2e139b959d054d5efd254497f6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_inseg_entry_attribute_fn) (_In_ const sai_inseg_entry_t *inseg_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_inseg_entry_t *inseg_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_inseg_entry_attribute_fn</name>
+        <briefdescription>
+<para>Get In Segment attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">inseg_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>InSegment entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="279" column="1" bodyfile="inc/saimpls.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_p_l_s_1gab8aaa176643e1c99138d768e182930a2" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__mpls__api__t" kindref="compound">_sai_mpls_api_t</ref></type>
+        <definition>typedef struct _sai_mpls_api_t  sai_mpls_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mpls_api_t</name>
+        <briefdescription>
+<para>MPLS methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimpls.h" line="294" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI MPLS interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIMPLS_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIMPLS_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="group___s_a_i_m_p_l_s_1ga1ae340414d9ca6df1da91d596a7c790b" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_p_l_s_1ga1ae340414d9ca6df1da91d596a7c790b" kindref="member">_sai_inseg_entry_psc_type_t</ref></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40" refid="group___s_a_i_m_p_l_s_1gga1ae340414d9ca6df1da91d596a7c790bacc55152ab0d4b85ed083ac395b346d80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1gga1ae340414d9ca6df1da91d596a7c790bacc55152ab0d4b85ed083ac395b346d80" kindref="member">SAI_INSEG_ENTRY_PSC_TYPE_ELSP</ref>,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_m_p_l_s_1gga1ae340414d9ca6df1da91d596a7c790baa9eeff029bdb9e9b948891c2baeb5ab6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1gga1ae340414d9ca6df1da91d596a7c790baa9eeff029bdb9e9b948891c2baeb5ab6" kindref="member">SAI_INSEG_ENTRY_PSC_TYPE_LLSP</ref></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/>sai_inseg_entry_psc_type_t;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_m_p_l_s_1ga2930a9273cdb4bc4a2a28473ca2829f1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_p_l_s_1ga2930a9273cdb4bc4a2a28473ca2829f1" kindref="member">_sai_inseg_entry_pop_ttl_mode_t</ref></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55" refid="group___s_a_i_m_p_l_s_1gga2930a9273cdb4bc4a2a28473ca2829f1adac79e8af616a1e3fc99a275f3d79245" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1gga2930a9273cdb4bc4a2a28473ca2829f1adac79e8af616a1e3fc99a275f3d79245" kindref="member">SAI_INSEG_ENTRY_POP_TTL_MODE_UNIFORM</ref>,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="group___s_a_i_m_p_l_s_1gga2930a9273cdb4bc4a2a28473ca2829f1a5c7fd30dcd7315903c8e180b70237d9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1gga2930a9273cdb4bc4a2a28473ca2829f1a5c7fd30dcd7315903c8e180b70237d9d" kindref="member">SAI_INSEG_ENTRY_POP_TTL_MODE_PIPE</ref></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}<sp/>sai_inseg_entry_pop_ttl_mode_t;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="group___s_a_i_m_p_l_s_1ga0eea598c11839415cfa35bcc86d4195a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_p_l_s_1ga0eea598c11839415cfa35bcc86d4195a" kindref="member">_sai_inseg_entry_pop_qos_mode_t</ref></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72" refid="group___s_a_i_m_p_l_s_1gga0eea598c11839415cfa35bcc86d4195aa2f70dbb46561be7b9ba5e77f4ab3ec2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1gga0eea598c11839415cfa35bcc86d4195aa2f70dbb46561be7b9ba5e77f4ab3ec2c" kindref="member">SAI_INSEG_ENTRY_POP_QOS_MODE_UNIFORM</ref>,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="group___s_a_i_m_p_l_s_1gga0eea598c11839415cfa35bcc86d4195aa81e5ce6738c380b86e2c8a8a0527a995" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1gga0eea598c11839415cfa35bcc86d4195aa81e5ce6738c380b86e2c8a8a0527a995" kindref="member">SAI_INSEG_ENTRY_POP_QOS_MODE_PIPE</ref></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}<sp/>sai_inseg_entry_pop_qos_mode_t;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="group___s_a_i_m_p_l_s_1gade8e49bf0aac569fcf7cd64cb9c152f7" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_p_l_s_1gade8e49bf0aac569fcf7cd64cb9c152f7" kindref="member">_sai_inseg_entry_attr_t</ref></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a2619feecf6a664af074e93cc1f185044" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a2619feecf6a664af074e93cc1f185044" kindref="member">SAI_INSEG_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7ad1aee8a3ca07938d8d2a3ea96e05b84f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7ad1aee8a3ca07938d8d2a3ea96e05b84f" kindref="member">SAI_INSEG_ENTRY_ATTR_NUM_OF_POP</ref><sp/>=<sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a2619feecf6a664af074e93cc1f185044" kindref="member">SAI_INSEG_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a38401a5927513b231bb023ec6a91a60c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a38401a5927513b231bb023ec6a91a60c" kindref="member">SAI_INSEG_ENTRY_ATTR_PACKET_ACTION</ref>,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a46e3fc21002ac81f5204a868c3a18668" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a46e3fc21002ac81f5204a868c3a18668" kindref="member">SAI_INSEG_ENTRY_ATTR_TRAP_PRIORITY</ref>,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a5fe738e9c27473b4681e85a1f6dd7817" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a5fe738e9c27473b4681e85a1f6dd7817" kindref="member">SAI_INSEG_ENTRY_ATTR_NEXT_HOP_ID</ref>,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a6d931b58dac1b0d43fe04f45fc839950" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a6d931b58dac1b0d43fe04f45fc839950" kindref="member">SAI_INSEG_ENTRY_ATTR_PSC_TYPE</ref>,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7adda19607eb2ed499623d88c4072454e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7adda19607eb2ed499623d88c4072454e1" kindref="member">SAI_INSEG_ENTRY_ATTR_QOS_TC</ref>,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a04e3b7adf27770134e6cae038e7ce161" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a04e3b7adf27770134e6cae038e7ce161" kindref="member">SAI_INSEG_ENTRY_ATTR_MPLS_EXP_TO_TC_MAP</ref>,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a22653511eaea75c6deaf20f10f9f49e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a22653511eaea75c6deaf20f10f9f49e1" kindref="member">SAI_INSEG_ENTRY_ATTR_MPLS_EXP_TO_COLOR_MAP</ref>,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a69aa7ea95a92c4e8462211f71a9a5fcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a69aa7ea95a92c4e8462211f71a9a5fcd" kindref="member">SAI_INSEG_ENTRY_ATTR_POP_TTL_MODE</ref>,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7aa39a3546aaf6e63f892f87b1a31b27db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7aa39a3546aaf6e63f892f87b1a31b27db" kindref="member">SAI_INSEG_ENTRY_ATTR_POP_QOS_MODE</ref>,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7ae8d4ee06b3fe49e011fa5dc5d2d5b040" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7ae8d4ee06b3fe49e011fa5dc5d2d5b040" kindref="member">SAI_INSEG_ENTRY_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a079c23efa2c491e844b2575dba6cc2d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a079c23efa2c491e844b2575dba6cc2d6" kindref="member">SAI_INSEG_ENTRY_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a51ddfa1fbfaed6263e95f495a1b1ed39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ggade8e49bf0aac569fcf7cd64cb9c152f7a51ddfa1fbfaed6263e95f495a1b1ed39" kindref="member">SAI_INSEG_ENTRY_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_p_l_s_1ga14acb11db94f7dfc6f34d125ce5c1e26" kindref="member">sai_inseg_entry_attr_t</ref>;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="struct__sai__inseg__entry__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__inseg__entry__t" kindref="compound">_sai_inseg_entry_t</ref></highlight></codeline>
+<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225" refid="struct__sai__inseg__entry__t_1a24eb5fad7edef586db8bee257718d769" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__inseg__entry__t_1a24eb5fad7edef586db8bee257718d769" kindref="member">switch_id</ref>;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="struct__sai__inseg__entry__t_1ab1a9e44ab5ec2f7405d86a095c78ccae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_label_id_t<sp/><ref refid="struct__sai__inseg__entry__t_1ab1a9e44ab5ec2f7405d86a095c78ccae" kindref="member">label</ref>;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_p_l_s_1gaf53983fcc125a09f213ab5603551d0d4" kindref="member">sai_inseg_entry_t</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="group___s_a_i_m_p_l_s_1ga55332db5eeaab7d247ddb49902c5950f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_p_l_s_1ga55332db5eeaab7d247ddb49902c5950f" kindref="member">sai_create_inseg_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__inseg__entry__t" kindref="compound">sai_inseg_entry_t</ref><sp/>*inseg_entry,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="group___s_a_i_m_p_l_s_1ga8b7a2ebe4adc6b0b571fa9d5a455f891" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_p_l_s_1ga8b7a2ebe4adc6b0b571fa9d5a455f891" kindref="member">sai_remove_inseg_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__inseg__entry__t" kindref="compound">sai_inseg_entry_t</ref><sp/>*inseg_entry);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="group___s_a_i_m_p_l_s_1ga3a67e1195b01233e074cd26298dafe8c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_p_l_s_1ga3a67e1195b01233e074cd26298dafe8c" kindref="member">sai_set_inseg_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__inseg__entry__t" kindref="compound">sai_inseg_entry_t</ref><sp/>*inseg_entry,</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279" refid="group___s_a_i_m_p_l_s_1ga4e2aeb2e139b959d054d5efd254497f6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_p_l_s_1ga4e2aeb2e139b959d054d5efd254497f6" kindref="member">sai_get_inseg_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__inseg__entry__t" kindref="compound">sai_inseg_entry_t</ref><sp/>*inseg_entry,</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="struct__sai__mpls__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__mpls__api__t" kindref="compound">_sai_mpls_api_t</ref></highlight></codeline>
+<codeline lineno="288"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ga55332db5eeaab7d247ddb49902c5950f" kindref="member">sai_create_inseg_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_inseg_entry;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ga8b7a2ebe4adc6b0b571fa9d5a455f891" kindref="member">sai_remove_inseg_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_inseg_entry;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ga3a67e1195b01233e074cd26298dafe8c" kindref="member">sai_set_inseg_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_inseg_entry_attribute;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_p_l_s_1ga4e2aeb2e139b959d054d5efd254497f6" kindref="member">sai_get_inseg_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_inseg_entry_attribute;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_p_l_s_1gab8aaa176643e1c99138d768e182930a2" kindref="member">sai_mpls_api_t</ref>;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saimpls.h"/>
+  </compounddef>
+</doxygen>

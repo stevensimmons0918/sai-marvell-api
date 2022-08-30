@@ -1,0 +1,13 @@
+//TAG:               latency-monitor profile mode;
+//Short Description: Deconfigure latency monitoring test triggering
+//Description:       Deconfigure latency monitoring test triggeting
+end
+configure
+do clear bridge interface ${dev} all
+latency-monitor profile-mode device ${dev} mode port
+interface ethernet ${dev}/${@@lmu_env.port2}
+no latency-monitor config egress-port ${@@lmu_env.port2}
+no latency-monitor enable
+end
+
+

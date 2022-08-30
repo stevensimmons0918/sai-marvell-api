@@ -1,0 +1,4071 @@
+From c000ad71af6d97d840f679f46fd959541ac54b65 Mon Sep 17 00:00:00 2001
+From: Radharani Danda <rdanda@marvell.com>
+Date: Thu, 24 Feb 2022 09:00:05 +0530
+Subject: [PATCH] lua_cmds
+
+---
+ lua_cli/scripts/cmdLuaCLIDefs.lua             |    4 +
+ .../scripts/dxCh/exec/show_ip_ecmp_info.lua   |  723 +++++++
+ .../scripts/dxCh/exec/show_ip_route_fdb.lua   |  445 ++++
+ .../scripts/dxCh/exec/show_ipv6_ecmp_info.lua |   45 +
+ .../scripts/dxCh/exec/show_ipv6_route_fdb.lua |   42 +
+ .../scripts/dxCh/generic/command_patterns.lua |  259 ++-
+ .../dxCh/generic/system_capabilities.lua      |   99 +-
+ mainLuaWrapper/h/dxCh/wraplCpssDxChBrgFdb.h   |  232 +++
+ mainLuaWrapper/src/dxCh/wraplCpssDxChIp.c     | 1839 +++++++++++++++--
+ 9 files changed, 3477 insertions(+), 211 deletions(-)
+ create mode 100644 lua_cli/scripts/dxCh/exec/show_ip_ecmp_info.lua
+ create mode 100644 lua_cli/scripts/dxCh/exec/show_ip_route_fdb.lua
+ create mode 100644 lua_cli/scripts/dxCh/exec/show_ipv6_ecmp_info.lua
+ create mode 100644 lua_cli/scripts/dxCh/exec/show_ipv6_route_fdb.lua
+
+diff --git a/lua_cli/scripts/cmdLuaCLIDefs.lua b/lua_cli/scripts/cmdLuaCLIDefs.lua
+index f2819d6de6..2630864e5a 100755
+--- a/lua_cli/scripts/cmdLuaCLIDefs.lua
++++ b/lua_cli/scripts/cmdLuaCLIDefs.lua
+@@ -1230,10 +1230,14 @@ end
+ require_safe_dx("exec/show_port_monitor")
+ require_safe_dx("exec/show_ip_arp")
+ require_safe_dx("exec/show_ip_arp_inspection")
++require_safe_dx("exec/show_ip_ecmp_info")
+ require_safe_dx("exec/show_ip_next_hop")
+ require_safe_dx("exec/show_ip_route")
++require_safe_dx("exec/show_ip_route_fdb")
+ require_safe_dx("exec/show_ip_prefixes")
+ require_safe_dx("exec/show_ipv6_route")
++require_safe_dx("exec/show_ipv6_route_fdb")
++require_safe_dx("exec/show_ipv6_ecmp_info")
+ require_safe_dx("exec/show_interfaces_switchport")
+ require_safe_dx("exec/show_mac_address_table")
+ require_safe_dx("exec/show_mac_address_table_aging")
+diff --git a/lua_cli/scripts/dxCh/exec/show_ip_ecmp_info.lua b/lua_cli/scripts/dxCh/exec/show_ip_ecmp_info.lua
+new file mode 100644
+index 0000000000..d548f73be0
+--- /dev/null
++++ b/lua_cli/scripts/dxCh/exec/show_ip_ecmp_info.lua
+@@ -0,0 +1,723 @@
++--********************************************************************************
++--*              (c), Copyright 2011, Marvell International Ltd.                 *
++--* THIS CODE CONTAINS CONFIDENTIAL INFORMATION OF MARVELL SEMICONDUCTOR, INC.   *
++--* NO RIGHTS ARE GRANTED HEREIN UNDER ANY PATENT, MASK WORK RIGHT OR COPYRIGHT  *
++--* OF MARVELL OR ANY THIRD PARTY. MARVELL RESERVES THE RIGHT AT ITS SOLE        *
++--* DISCRETION TO REQUEST THAT THIS CODE BE IMMEDIATELY RETURNED TO MARVELL.     *
++--* THIS CODE IS PROVIDED "AS IS". MARVELL MAKES NO WARRANTIES, EXPRESSED,       *
++--* IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.   *
++--********************************************************************************
++--* show_ip_ecmp_info.lua
++--*
++--* DESCRIPTION:
++--*       showing of the ECMP configuration for configured IP v4 Routes
++--*
++--* FILE REVISION NUMBER:
++--*       $Revision: 1 $
++--*
++--********************************************************************************
++
++--includes
++
++--constants
++
++function inTable(tbl, item)
++    for key, value in pairs(tbl) do
++        if value == item then return true end
++    end
++    return false
++end
++
++-- ************************************************************************
++---
++--  show_ip_ecmp_info_func
++--        @description  show's the ECMP configuration for configured IP Routes
++--
++--        @param params             - params["all_device"]: all or given
++--                                    devices iterating property, could be
++--                                    irrelevant
++--
++--        @return       true on success, otherwise false and error message
++--
++function show_ip_ecmp_info_func(params)
++    -- Common variables declaration
++    local result, values
++    local devNum
++    local command_data = Command_Data()
++    -- Command specific variables declaration
++    local enable_routing, enable_routing_string
++    local routing_enabling_first_string_prefix
++    local routing_enabling_second_string_prefix
++    local routing_enabling_third_string_prefix, routing_enabling_string_suffix
++    local text_block_header_string, text_block_footer_string
++    local ip_protocol, prefix_ip_address, prefix_length, vrId
++    local prefix_string, prefix_output_string, prefix_showing, vrId_string
++    local next_hop_id, next_hop_id_string, next_hop_id_output_string
++    local is_ecmp, base_ecmp_index, num_ecmp_paths, num_next_hops
++    local ecmp_index_output_string
++    local next_hop_entry, next_hop_entry_showing, next_hop_entries
++    local vlanId, vlanId_string
++    local entry_interface, entry_interface_string
++    local router_arp_index, mac_address, mac_address_string
++    local table_header_string, table_footer_string
++    local configured_ip_routs_table_string
++	local distinct
++	local router_arp_index_array={}
++	local is_arpInTheArray
++	local ecmp_id_to_filer
++
++    -- Common variables initialization
++    command_data:clearResultArray()
++    command_data:initAllDeviceRange(params)
++    command_data:initIpPrefixEntries(params)
++
++    -- Command specific variables initialization
++    text_block_header_string                = ""
++    routing_enabling_first_string_prefix    = "ip routing"
++    routing_enabling_third_string_prefix    = ":\t"
++    text_block_footer_string                = "\n\n"
++    ip_protocol                             = params["ip_protocol"]
++	distinct								= params["distinct"]
++	ecmp_id_to_filer						= params["ecmp_id"]
++    is_ipv4_protocol                        =
++        isEquivalent(ip_protocol, "CPSS_IP_PROTOCOL_IPV4_E")
++    routing_enabling_string_suffix          = ""
++    table_header_string                     =
++        valueIfConditionTrue(
++            is_ipv4_protocol,
++            " Location  vrId     prefix/mask    ECMP Ind   vid     interface           mac        \n" ..
++            "                                                                                      \n" ..
++            "---------  -----  ----------------  --------  -----  -------------  ------------------ \n",
++            " Location  vrId                   prefix/mask                  ECMP Ind   vid     interface              mac          \n" .. -- IPv6 TO ADD
++            "                                                                                                                      \n" ..
++            "---------  ------  -------------------------------------------  --------  -----  --------------  --------------------- \n")
++    table_footer_string                       = "\n"
++
++    -- System specific data initialization.
++    command_data:enablePausedPrinting()
++    command_data:setEmergencyPrintingHeaderAndFooter(table_header_string,
++                                                     table_footer_string)
++
++    -- Main device handling cycle
++    if true == command_data["status"] then
++        local iterator
++        for iterator, devNum in  command_data:getDevicesIterator() do
++            command_data:clearDeviceStatus()
++
++            command_data:clearLocalStatus()
++
++            -- Routing enabling getting and its string forming.
++            if true  == command_data["local_status"] then
++                result, values =
++                    cpssPerDeviceParamGet("cpssDxChIpRoutingEnableGet", devNum,
++                                          "enableRouting", "GT_BOOL")
++
++                if        0 == result then
++                    enable_routing  = values["enableRouting"]
++                elseif 0x10 == result then
++                    command_data:setFailDeviceStatus()
++                    command_data:addWarning("Routing enabling getting is " ..
++                                            "not allowed on device %d.", devNum)
++                elseif    0 ~= result then
++                    command_data:setFailDeviceAndLocalStatus()
++                    command_data:addError("Error at routing enabling getting " ..
++                                          "on device %d: %s.",
++                                          devNum, returnCodes[result])
++                end
++
++                if        0 == result then
++                    enable_routing_string   = boolEnabledLowerStrGet(enable_routing)
++                else
++                    enable_routing_string   = "n/a"
++                end
++            end
++
++            -- Routing enabling second prefix forming.
++            if true  == command_data["local_status"] then
++                    routing_enabling_second_string_prefix =
++                        stringValueIfConditionTrue(multiply_device_presence,
++                                                   " on device " ..
++                                                   tostring(devNum))
++            end
++
++            -- Routing enabling string formatting.
++            --command_data:setResultStr(routing_enabling_first_string_prefix,
++              --                        routing_enabling_second_string_prefix,
++                --                      routing_enabling_third_string_prefix)
++            --command_data:setResultStr(command_data["result"],
++              --                        enable_routing_string,
++                --                      routing_enabling_string_suffix)
++            command_data:addResultToResultArray()
++
++            command_data:updateStatus()
++
++            command_data:updateDevices()
++        end
++    end
++
++    -- Resulting routing enabling string forming.
++    enable_routing_string       = command_data:getResultArrayStr()
++    enable_routing_string       =
++        command_data:getStrOnDevicesCount(text_block_header_string,
++                                          enable_routing_string,
++                                          text_block_footer_string,
++                                          "There is no routing enabling information to show.\n")
++
++    -- Common variables initialization
++    command_data:clearResultArray()
++    command_data:addToEmergencyPrintingHeader(enable_routing_string)
++
++    -- Main ip prefix handling cycle in LPM
++    if true == command_data["status"] then
++        local iterator
++        for iterator, prefix_ip_address, prefix_length, vrId in
++                                        command_data:getIpPrefixEcmpIterator() do
++            command_data:clearEntryStatus()
++
++            command_data:clearLocalStatus()
++
++            -- Prefix and next-hop id string forming.
++            if true == command_data["local_status"]     then
++                prefix_string       = ipPrefixStrGet(ip_protocol,
++                                                     prefix_ip_address,
++													 prefix_length)
++                next_hop_id         = command_data["ip-unicast-entry-index"]
++                is_ecmp             = command_data["is-ecmp"]
++                base_ecmp_index     = command_data["base-ecmp-index"]
++                num_ecmp_paths      = command_data["num-ecmp-paths"]
++                next_hop_id_string  = tostring(next_hop_id)
++                ecmp_index_output_string = tostring(base_ecmp_index)
++                vrId_string = tostring(vrId)
++            end
++
++            if 1 == is_ecmp then
++                num_next_hops = num_ecmp_paths
++            else
++                num_next_hops = 1
++            end
++
++            -- Device handling cycle
++            next_hop_entries    = {}
++            if true == command_data["local_status"] then
++                local device_iterator
++                for device_iterator, devNum in
++                                            command_data:getDevicesIterator() do
++                  command_data:clearDeviceStatus()
++
++                  local next_hop_iterator
++                  for next_hop_iterator = next_hop_id,next_hop_id+num_next_hops-1,1 do
++
++                    command_data:clearLocalStatus()
++
++                    -- Next-hop entry vlan id and its interface getting.
++                    if true  == command_data["local_status"] then
++                        result, values, next_hop_entry =wrLogWrapper("wrlCpssDxChNextIpUcRouteEntryGet", "(devNum, next_hop_id)",
++                                                                     devNum, next_hop_iterator)
++                        if  0 == result then
++							if((values~=nil)and(next_hop_entry~=nil))then
++								if next_hop_entry["type"] == "CPSS_DXCH_IP_UC_ROUTE_ENTRY_E" then
++									vlanId              =
++										next_hop_entry["entry"]["regularEntry"]["nextHopVlanId"]
++									entry_interface     =
++										next_hop_entry["entry"]["regularEntry"]["nextHopInterface"]
++									router_arp_index    =
++										next_hop_entry["entry"]["regularEntry"]["nextHopARPPointer"]
++								else
++									command_data:addError("next-hop entry %s is %s",
++														tostring(next_hop_entry["type"]),
++														to_string(next_hop_iterator))
++								end
++							else
++								command_data:setFailDeviceAndLocalStatus()
++								command_data:addError("Error: the next hop is not defined " ..
++													  "on device %d: %s.",
++													  devNum, returnCodes[result])
++							end
++                        elseif 0x10 == result then
++                            command_data:setFailDeviceStatus()
++                            command_data:addWarning("Next-hop entry getting " ..
++                                                    "is not  allowed on " ..
++                                                    "device %d.", devNum)
++                        elseif    0 ~= result then
++                            command_data:setFailDeviceAndLocalStatus()
++                            command_data:addError("Error at next-hop entry " ..
++                                                  "getting on device %d: %s.",
++                                                  devNum, returnCodes[result])
++                        end
++                    end
++
++                    -- Next-hop entry vlan id and its interface string forming.
++					if((vlanId~=nil)and(next_hop_iterator~=nil))then
++						if true  == command_data["local_status"] then
++							vlanId_string           = tostring(vlanId)
++							next_hop_id_string      = tostring(next_hop_iterator)
++							entry_interface_string  =
++								interfaceInfoStrGet(entry_interface)
++						end
++					else
++						command_data:setFailDeviceAndLocalStatus()
++						command_data:addError("Error: vlanId and next_hop_iterator are not defined " ..
++													  "on device %d: %s.",
++													  devNum, returnCodes[result])
++					end
++
++                    -- Mac-address getting.
++                    if true  == command_data["local_status"] then
++                        result, values =
++                            myGenWrapper("cpssDxChIpRouterArpAddrRead",
++                                         {{ "IN",  "GT_U8",        "devNum", devNum },
++                                          { "IN",  "GT_U32",       "routerArpIndex",
++                                                                   router_arp_index },
++                                          { "OUT", "GT_ETHERADDR", "arpMacAddr"     }})
++                        if        0 == result then
++                            mac_address         = values["arpMacAddr"]
++                        elseif 0x10 == result then
++                            command_data:setFailDeviceStatus()
++                            command_data:addWarning("Arp mac-address getting " ..
++                                                    "is not allowed on " ..
++                                                    "device %d.", devNum)
++                        elseif    0 ~= result then
++                            command_data:setFailDeviceAndLocalStatus()
++                            command_data:addError("Error at arp mac-address " ..
++                                                  "getting on device %d: %s.",
++                                                  devNum, returnCodes[result])
++                        end
++                    end
++
++                    -- Mac-address string forming.
++                    if true  == command_data["local_status"] then
++                        mac_address_string = replaceStr(tostring(mac_address),
++                                                        ":", "-")
++                    end
++
++                    -- Detecting of output properties and storing output data.
++                    if true  == command_data["local_status"] then
++                        next_hop_entry =
++                            {vlanId, entry_interface_string, mac_address_string}
++						if (distinct=="distinct")then
++							if (ecmp_id_to_filer)then
++								-- need to filter also according to the ECMP index
++								-- the next_hop_id hold the ecmp_index
++								if(ecmp_id_to_filer==base_ecmp_index)then
++									next_hop_entry_showing =
++										isItemNotInTable(next_hop_entry, next_hop_entries)
++								else
++									next_hop_entry_showing=false
++								end
++							else
++								next_hop_entry_showing =
++									isItemNotInTable(next_hop_entry, next_hop_entries)
++							end
++
++						else
++							if (ecmp_id_to_filer)then
++								-- need to filter also according to the ECMP index
++								-- the next_hop_id hold the ecmp_index
++								if(ecmp_id_to_filer==base_ecmp_index)then
++									next_hop_entry_showing=true
++								else
++									next_hop_entry_showing=false
++								end
++							else
++								next_hop_entry_showing=true
++							end
++						end
++                        prefix_showing = isEmptyTable(next_hop_entries)
++                        next_hop_entries[devNum] = next_hop_entry
++                    end
++
++                    -- Prefix output data updating.
++                    if true  == command_data["local_status"] then
++                        prefix_output_string        =
++                            stringValueIfConditionTrue(prefix_showing, prefix_string)
++                        next_hop_id_output_string   =
++                            stringValueIfConditionTrue(prefix_showing, next_hop_id_string)
++                    end
++
++                    command_data:updateStatus()
++
++                    -- Resulting string formatting and adding.
++                    if 1 == is_ecmp and next_hop_iterator == next_hop_id then
++                        command_data["result"] =
++                            valueIfConditionTrue(
++                                is_ipv4_protocol,
++                                string.format(
++									"  %-10s%-4s%-18s%-10s%-7s%-15s%-24s",
++									alignLeftToCenterStr("LPM", 3),
++                                    alignLeftToCenterStr(vrId_string, 2),
++                                    alignLeftToCenterStr(prefix_output_string, 18),
++                                    alignLeftToCenterStr(ecmp_index_output_string, 8),
++                                    alignLeftToCenterStr("", 5),
++                                    alignLeftToCenterStr("ECMP", 13),
++                                    alignLeftToCenterStr("", 22)),
++                                string.format(
++                                    "%-10s%-5s%-45s%-11s%-7s%-16s%-24s",
++									alignLeftToCenterStr("LPM", 3),
++                                    alignLeftToCenterStr(vrId_string, 2),
++                                    alignLeftToCenterStr(prefix_output_string, 43),
++                                    alignLeftToCenterStr(ecmp_index_output_string, 8),
++                                    alignLeftToCenterStr("", 5),
++                                    alignLeftToCenterStr("ECMP", 14),
++                                    alignLeftToCenterStr("", 22)
++                                    ))
++                        command_data:addResultToResultArrayOnCondition(
++                            next_hop_entry_showing)
++                    end
++
++                    if 1 == is_ecmp then
++                        vrId_string = ""
++                        prefix_output_string = ""
++                        next_hop_id_output_string = next_hop_id_string
++                    end
++
++                    command_data["result"] =
++                        valueIfConditionTrue(
++                            is_ipv4_protocol,
++                            string.format(
++                                "  %-4s%-28s%-10s%-7s%-15s%-24s",
++                                alignLeftToCenterStr(vrId_string, 2),
++                                alignLeftToCenterStr(prefix_output_string, 18),
++                                alignLeftToCenterStr(next_hop_id_output_string, 8),
++                                alignLeftToCenterStr(vlanId_string, 5),
++                                alignLeftToCenterStr(entry_interface_string, 13),
++                                alignLeftToCenterStr(mac_address_string, 22)),
++                            string.format(
++                                "%-5s%-55s%-11s%-7s%-16s%-24s",
++                                alignLeftToCenterStr(vrId_string, 2),
++                                alignLeftToCenterStr(prefix_output_string, 43),
++                                alignLeftToCenterStr(next_hop_id_output_string, 8),
++                                alignLeftToCenterStr(vlanId_string, 5),
++                                alignLeftToCenterStr(entry_interface_string, 14),
++                                alignLeftToCenterStr(mac_address_string, 22)
++                                ))
++                    command_data:addResultToResultArrayOnCondition(
++                        next_hop_entry_showing)
++                  end
++                    command_data:updateDevices()
++                end
++            end
++
++            command_data:updateStatus()
++
++            command_data:updateEntries()
++        end
++    end
++
++	-- Resulting configured ip routs string forming.
++    configured_ip_routs_table_string    = command_data["result_array"]
++    configured_ip_routs_table_string    =
++        command_data:getStrOnEntriesCount(table_header_string,
++                                          configured_ip_routs_table_string,
++                                          table_footer_string,
++                                          "There is no configured LPM ip routs to show.\n")
++
++    -- Resulting table string formatting
++    command_data:setResultStr(enable_routing_string,
++                              configured_ip_routs_table_string)
++
++    command_data:analyzeCommandExecution()
++
++    command_data:printCommandExecutionResults()
++
++    -- Main ip prefix handling cycle in FDB
++
++	local table_info = {
++        { head="Index",len=5,align="c",path="mac_entry_index",type="number" },
++        { head="Address",len=22,align="c",path="addr_s"},
++        { head="Vlan",len=5,align="c",path="mac_entry.key.key.macVlan.vlanId" },
++        { head="VID1",len=5,align="c",path="mac_entry.key.vid1" },
++        { head="Skip",len=4,align="c",path="skip_valid_aged.skip",type="boolYN" },
++        { head="Interface",len=14,path="mac_entry.dstInterface",type=interfaceInfoStrGet },
++        { head="Static",len=7,path="mac_entry.isStatic",type="bool" },
++        { head="DA Route",len=8,path="mac_entry.daRoute",type="boolYN" },
++        { head="saCommand",len=9,path="mac_entry.saCommand",type=mac_table_cmd_view },
++        { head="daCommand",len=9,path="mac_entry.daCommand",type=mac_table_cmd_view },
++        { head="sp",len=7,path="mac_entry.spUnknown",type="boolYN" }
++    }
++	command_data:clearResultArray()
++	command_data:initAllDeviceMacEntryIterator(
++        params, { ["dstInterface"] =
++                    {["type"]    = { "CPSS_INTERFACE_PORT_E",
++                                     "CPSS_INTERFACE_TRUNK_E",
++                                     "CPSS_INTERFACE_VIDX_E",
++                                     "CPSS_INTERFACE_VID_E"    }}})
++
++	command_data:initTable(table_info)
++    if true == command_data["status"] then
++        local iterator
++        for iterator, devNum, entry_index, prefix_ip_address, prefix_length, vrId in
++										  command_data:getValidFdbIpEcmpEntryIterator() do
++            command_data:clearEntryStatus()
++
++            command_data:clearLocalStatus()
++
++            -- Prefix and next-hop id string forming.
++			if((prefix_ip_address~=nil)and (prefix_length~=nil)and (vrId~=nil))then
++				if true == command_data["local_status"]     then
++					prefix_string       = ipPrefixStrGet(ip_protocol,
++														 prefix_ip_address,
++														 prefix_length)
++					next_hop_id         = command_data["ip-unicast-entry-index"]
++					is_ecmp             = command_data["is-ecmp"]
++					base_ecmp_index     = command_data["base-ecmp-index"]
++					num_ecmp_paths      = command_data["num-ecmp-paths"]
++					next_hop_id_string  = tostring(next_hop_id)
++					ecmp_index_output_string = tostring(base_ecmp_index)
++					vrId_string = tostring(vrId)
++				end
++
++				if 1 == is_ecmp then
++					num_next_hops = num_ecmp_paths
++				else
++					num_next_hops = 1
++				end
++
++				-- Device handling cycle
++				next_hop_entries    = {}
++				if true == command_data["local_status"] then
++					local device_iterator
++					for device_iterator, devNum in
++												command_data:getDevicesIterator() do
++					  command_data:clearDeviceStatus()
++
++					  local next_hop_iterator
++					  for next_hop_iterator = next_hop_id,next_hop_id+num_next_hops-1,1 do
++
++						command_data:clearLocalStatus()
++
++						-- Next-hop entry vlan id and its interface getting.
++						if true  == command_data["local_status"] then
++							result, values, next_hop_entry =wrLogWrapper("wrlCpssDxChNextIpUcRouteEntryGet", "(devNum, next_hop_id)",
++																		 devNum, next_hop_iterator)
++							if((values~=nil)and(next_hop_entry~=nil))then
++								if  0 == result then
++									if next_hop_entry["type"] == "CPSS_DXCH_IP_UC_ROUTE_ENTRY_E" then
++										vlanId              =
++											next_hop_entry["entry"]["regularEntry"]["nextHopVlanId"]
++										entry_interface     =
++											next_hop_entry["entry"]["regularEntry"]["nextHopInterface"]
++										router_arp_index    =
++											next_hop_entry["entry"]["regularEntry"]["nextHopARPPointer"]
++									else
++										command_data:addError("next-hop entry %s is %s",
++															tostring(next_hop_entry["type"]),
++															to_string(next_hop_iterator))
++									end
++								elseif 0x10 == result then
++									command_data:setFailDeviceStatus()
++									command_data:addWarning("Next-hop entry getting " ..
++															"is not  allowed on " ..
++															"device %d.", devNum)
++								elseif    0 ~= result then
++									command_data:setFailDeviceAndLocalStatus()
++									command_data:addError("Error at next-hop entry " ..
++														  "getting on device %d: %s.",
++														  devNum, returnCodes[result])
++								end
++
++
++								-- Next-hop entry vlan id and its interface string forming.
++								if((vlanId~=nil)and(next_hop_iterator~=nil))then
++									if true  == command_data["local_status"] then
++										vlanId_string           = tostring(vlanId)
++										next_hop_id_string      = tostring(next_hop_iterator)
++										entry_interface_string  =
++											interfaceInfoStrGet(entry_interface)
++									end
++								else
++									command_data:setFailDeviceAndLocalStatus()
++									command_data:addError("Error: vlanId and next_hop_iterator not defined " ..
++															  "on device %d: %s.",
++															  devNum, returnCodes[result])
++								end
++
++								-- Mac-address getting.
++								if true  == command_data["local_status"] then
++									result, values =
++										myGenWrapper("cpssDxChIpRouterArpAddrRead",
++													 {{ "IN",  "GT_U8",        "devNum", devNum },
++													  { "IN",  "GT_U32",       "routerArpIndex",
++																			   router_arp_index },
++													  { "OUT", "GT_ETHERADDR", "arpMacAddr"     }})
++									if        0 == result then
++										mac_address         = values["arpMacAddr"]
++									elseif 0x10 == result then
++										command_data:setFailDeviceStatus()
++										command_data:addWarning("Arp mac-address getting " ..
++																"is not allowed on " ..
++																"device %d.", devNum)
++									elseif    0 ~= result then
++										command_data:setFailDeviceAndLocalStatus()
++										command_data:addError("Error at arp mac-address " ..
++															  "getting on device %d: %s.",
++															  devNum, returnCodes[result])
++									end
++								end
++
++								-- Mac-address string forming.
++								if true  == command_data["local_status"] then
++									mac_address_string = replaceStr(tostring(mac_address),
++																	":", "-")
++								end
++
++								-- Detecting of output properties and storing output data.
++								if true  == command_data["local_status"] then
++									next_hop_entry =
++										{vlanId, entry_interface_string, mac_address_string}
++									if (distinct=="distinct")then
++										if (ecmp_id_to_filer)then
++											-- need to filter also according to the ECMP index
++											-- the next_hop_id hold the ecmp_index
++											if(ecmp_id_to_filer==base_ecmp_index)then
++												next_hop_entry_showing =
++													isItemNotInTable(next_hop_entry, next_hop_entries)
++											else
++												next_hop_entry_showing=false
++											end
++										else
++											next_hop_entry_showing =
++												isItemNotInTable(next_hop_entry, next_hop_entries)
++										end
++
++									else
++										if (ecmp_id_to_filer)then
++											-- need to filter also according to the ECMP index
++											-- the next_hop_id hold the ecmp_index
++											if(ecmp_id_to_filer==base_ecmp_index)then
++												next_hop_entry_showing=true
++											else
++												next_hop_entry_showing=false
++											end
++										else
++											next_hop_entry_showing=true
++										end
++									end
++									prefix_showing = isEmptyTable(next_hop_entries)
++									next_hop_entries[devNum] = next_hop_entry
++								end
++
++								-- Prefix output data updating.
++								if true  == command_data["local_status"] then
++									prefix_output_string        =
++										stringValueIfConditionTrue(prefix_showing, prefix_string)
++									next_hop_id_output_string   =
++										stringValueIfConditionTrue(prefix_showing, next_hop_id_string)
++								end
++
++								command_data:updateStatus()
++
++								-- Resulting string formatting and adding.
++								if 1 == is_ecmp and next_hop_iterator == next_hop_id then
++									command_data["result"] =
++										valueIfConditionTrue(
++											is_ipv4_protocol,
++											string.format(
++												"  %-10s%-4s%-18s%-10s%-7s%-15s%-24s",
++												alignLeftToCenterStr("FDB", 3),
++												alignLeftToCenterStr(vrId_string, 2),
++												alignLeftToCenterStr(prefix_output_string, 18),
++												alignLeftToCenterStr(ecmp_index_output_string, 8),
++												alignLeftToCenterStr("", 5),
++												alignLeftToCenterStr("ECMP", 13),
++												alignLeftToCenterStr("", 22)),
++											string.format(
++												"%-10s%-5s%-45s%-11s%-7s%-16s%-24s",
++												alignLeftToCenterStr("FDB", 3),
++												alignLeftToCenterStr(vrId_string, 2),
++												alignLeftToCenterStr(prefix_output_string, 43),
++												alignLeftToCenterStr(ecmp_index_output_string, 8),
++												alignLeftToCenterStr("", 5),
++												alignLeftToCenterStr("ECMP", 14),
++												alignLeftToCenterStr("", 22)
++												))
++									command_data:addResultToResultArrayOnCondition(
++										next_hop_entry_showing)
++								end
++
++								if 1 == is_ecmp then
++									vrId_string = ""
++									prefix_output_string = ""
++									next_hop_id_output_string = next_hop_id_string
++								end
++
++								command_data["result"] =
++									valueIfConditionTrue(
++										is_ipv4_protocol,
++										string.format(
++											"  %-4s%-28s%-10s%-7s%-15s%-24s",
++											alignLeftToCenterStr(vrId_string, 2),
++											alignLeftToCenterStr(prefix_output_string, 18),
++											alignLeftToCenterStr(next_hop_id_output_string, 8),
++											alignLeftToCenterStr(vlanId_string, 5),
++											alignLeftToCenterStr(entry_interface_string, 13),
++											alignLeftToCenterStr(mac_address_string, 22)),
++										string.format(
++											"%-5s%-55s%-11s%-7s%-16s%-24s",
++											alignLeftToCenterStr(vrId_string, 2),
++											alignLeftToCenterStr(prefix_output_string, 43),
++											alignLeftToCenterStr(next_hop_id_output_string, 8),
++											alignLeftToCenterStr(vlanId_string, 5),
++											alignLeftToCenterStr(entry_interface_string, 14),
++											alignLeftToCenterStr(mac_address_string, 22)
++											))
++								command_data:addResultToResultArrayOnCondition(
++									next_hop_entry_showing)
++								else
++									command_data:setFailDeviceAndLocalStatus()
++									command_data:addError("FDB Error : NH entry is not defined " ..
++														  "on device %d: %s.",
++														  devNum, returnCodes[result])
++								end
++							end
++					  end
++						command_data:updateDevices()
++					end
++				end
++			end
++
++            command_data:updateStatus()
++
++            command_data:updateEntries()
++        end
++    end
++
++	-- Resulting configured ip routs string forming.
++    configured_ip_routs_table_string    = command_data["result_array"]
++    configured_ip_routs_table_string    =
++        command_data:getStrOnEntriesCount(table_header_string,
++                                          configured_ip_routs_table_string,
++                                          table_footer_string,
++                                          "There is no configured FDB ip hosts to show.\n")
++
++    -- Resulting table string formatting
++    command_data:setResultStr(enable_routing_string,
++                              configured_ip_routs_table_string)
++
++    command_data:analyzeCommandExecution()
++
++    command_data:printCommandExecutionResults()
++
++	return command_data:getCommandExecutionResults()
++end
++
++
++--------------------------------------------------------------------------------
++-- command registration: show ip ecmp info
++--------------------------------------------------------------------------------
++CLI_addHelp("exec", "show ip ecmp_info", "ipv4 ECMP Information")
++CLI_addCommand("exec", "show ip ecmp_info", {
++  func   = function(params)
++               params.ip_protocol = "CPSS_IP_PROTOCOL_IPV4_E"
++               return show_ip_ecmp_info_func(params)
++           end,
++  help   = "Current information of the ipv4 ECMP entries in LPM and FDB prefixes ",
++  params = {
++        {
++            type = "named",
++             "#all_device",
++			mandatory = { "all_device" },
++			{ format = "ecmp_id  %GT_U32", name = "ecmp_id", help = "Show all the LPM entries and FDB entries with ecmp_id" },
++            { format = "distinct", name = "distinct", help = "Filter ECMP NH duplication" },
++        }
++    }
++})
+diff --git a/lua_cli/scripts/dxCh/exec/show_ip_route_fdb.lua b/lua_cli/scripts/dxCh/exec/show_ip_route_fdb.lua
+new file mode 100644
+index 0000000000..7c33e85876
+--- /dev/null
++++ b/lua_cli/scripts/dxCh/exec/show_ip_route_fdb.lua
+@@ -0,0 +1,445 @@
++--********************************************************************************
++--*              (c), Copyright 2011, Marvell International Ltd.                 *
++--* THIS CODE CONTAINS CONFIDENTIAL INFORMATION OF MARVELL SEMICONDUCTOR, INC.   *
++--* NO RIGHTS ARE GRANTED HEREIN UNDER ANY PATENT, MASK WORK RIGHT OR COPYRIGHT  *
++--* OF MARVELL OR ANY THIRD PARTY. MARVELL RESERVES THE RIGHT AT ITS SOLE        *
++--* DISCRETION TO REQUEST THAT THIS CODE BE IMMEDIATELY RETURNED TO MARVELL.     *
++--* THIS CODE IS PROVIDED "AS IS". MARVELL MAKES NO WARRANTIES, EXPRESSED,       *
++--* IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.   *
++--********************************************************************************
++--* show_ip_route_fdb.lua
++--*
++--* DESCRIPTION:
++--*       showing of the global status of IP routing and the configured IP Routes
++--*       in FDB
++--*
++--* FILE REVISION NUMBER:
++--*       $Revision: 1 $
++--*
++--********************************************************************************
++
++--includes
++
++--constants
++
++
++-- ************************************************************************
++---
++--  show_ip_route_func
++--        @description  show's the global status of IP routing and the
++--                      configured IP Routes
++--
++--        @param params             - params["all_device"]: all or given
++--                                    devices iterating property, could be
++--                                    irrelevant
++--
++--        @return       true on success, otherwise false and error message
++--
++function show_ip_route_fdb_func(params)
++    -- Common variables declaration
++    local result, values
++    local devNum
++    local command_data = Command_Data()
++    -- Command specific variables declaration
++    local enable_routing, enable_routing_string
++    local routing_enabling_first_string_prefix
++    local routing_enabling_second_string_prefix
++    local routing_enabling_third_string_prefix, routing_enabling_string_suffix
++    local text_block_header_string, text_block_footer_string
++    local ip_protocol, prefix_ip_address, prefix_length, vrId
++    local prefix_string, prefix_output_string, prefix_showing, vrId_string
++    local next_hop_id, next_hop_id_string, next_hop_id_output_string
++    local is_ecmp, base_ecmp_index, num_ecmp_paths, num_next_hops
++    local ecmp_index_output_string
++    local next_hop_entry, next_hop_entry_showing, next_hop_entries
++    local vlanId, vlanId_string
++    local entry_interface, entry_interface_string
++    local router_arp_index, mac_address, mac_address_string
++    local table_header_string, table_footer_string
++    local configured_ip_routs_table_string
++
++    -- Common variables initialization
++    command_data:clearResultArray()
++    command_data:initAllDeviceRange(params)
++    command_data:initIpPrefixEntries(params)
++
++    -- Command specific variables initialization
++    text_block_header_string                = ""
++    routing_enabling_first_string_prefix    = "ip routing"
++    routing_enabling_third_string_prefix    = ":\t"
++    text_block_footer_string                = "\n\n"
++    ip_protocol                             = params["ip_protocol"]
++    is_ipv4_protocol                        =
++        isEquivalent(ip_protocol, "CPSS_IP_PROTOCOL_IPV4_E")
++    routing_enabling_string_suffix          = ""
++    table_header_string                     =
++        valueIfConditionTrue(
++            is_ipv4_protocol,
++            " vrId     prefix/mask   ecmp/nh/arp   vid     interface           mac        \n" ..
++            "                            ID                                             \n" ..
++            "-----  ----------------  --------  -----  -------------  ------------------\n",
++            " vrId                   prefix/mask                ecmp/nh/arp   vid     interface              mac          \n" .. -- IPv6 TO ADD
++            "                                                        ID                                                  \n" ..
++            "------  -------------------------------------------  --------    -----  --------------  ----------------------\n")
++    table_footer_string                       = "\n"
++
++    -- System specific data initialization.
++    command_data:enablePausedPrinting()
++    command_data:setEmergencyPrintingHeaderAndFooter(table_header_string,
++                                                     table_footer_string)
++
++    -- Main device handling cycle
++    if true == command_data["status"] then
++        local iterator
++        for iterator, devNum in  command_data:getDevicesIterator() do
++            command_data:clearDeviceStatus()
++
++            command_data:clearLocalStatus()
++
++            -- Routing enabling getting and its string forming.
++            if true  == command_data["local_status"] then
++                result, values =
++                    cpssPerDeviceParamGet("cpssDxChIpRoutingEnableGet", devNum,
++                                          "enableRouting", "GT_BOOL")
++
++                if        0 == result then
++                    enable_routing  = values["enableRouting"]
++                elseif 0x10 == result then
++                    command_data:setFailDeviceStatus()
++                    command_data:addWarning("Routing enabling getting is " ..
++                                            "not allowed on device %d.", devNum)
++                elseif    0 ~= result then
++                    command_data:setFailDeviceAndLocalStatus()
++                    command_data:addError("Error at routing enabling getting " ..
++                                          "on device %d: %s.",
++                                          devNum, returnCodes[result])
++                end
++
++                if        0 == result then
++                    enable_routing_string   = boolEnabledLowerStrGet(enable_routing)
++                else
++                    enable_routing_string   = "n/a"
++                end
++            end
++
++            -- Routing enabling second prefix forming.
++            if true  == command_data["local_status"] then
++                    routing_enabling_second_string_prefix =
++                        stringValueIfConditionTrue(multiply_device_presence,
++                                                   " on device " ..
++                                                   tostring(devNum))
++            end
++
++            -- Routing enabling string formatting.
++            command_data:setResultStr(routing_enabling_first_string_prefix,
++                                      routing_enabling_second_string_prefix,
++                                      routing_enabling_third_string_prefix)
++            command_data:setResultStr(command_data["result"],
++                                      enable_routing_string,
++                                      routing_enabling_string_suffix)
++            command_data:addResultToResultArray()
++
++            command_data:updateStatus()
++
++            command_data:updateDevices()
++        end
++    end
++
++    -- Resulting routing enabling string forming.
++    enable_routing_string       = command_data:getResultArrayStr()
++    enable_routing_string       =
++        command_data:getStrOnDevicesCount(text_block_header_string,
++                                          enable_routing_string,
++                                          text_block_footer_string,
++                                          "There is no routing enabling information to show.\n")
++
++    -- Common variables initialization
++    command_data:clearResultArray()
++    command_data:addToEmergencyPrintingHeader(enable_routing_string)
++
++    -- Main ip prefix handling cycle
++   	local table_info = {
++        { head="Index",len=5,align="c",path="mac_entry_index",type="number" },
++        { head="Address",len=22,align="c",path="addr_s"},
++        { head="Vlan",len=5,align="c",path="mac_entry.key.key.macVlan.vlanId" },
++        { head="VID1",len=5,align="c",path="mac_entry.key.vid1" },
++        { head="Skip",len=4,align="c",path="skip_valid_aged.skip",type="boolYN" },
++        { head="Interface",len=14,path="mac_entry.dstInterface",type=interfaceInfoStrGet },
++        { head="Static",len=7,path="mac_entry.isStatic",type="bool" },
++        { head="DA Route",len=8,path="mac_entry.daRoute",type="boolYN" },
++        { head="saCommand",len=9,path="mac_entry.saCommand",type=mac_table_cmd_view },
++        { head="daCommand",len=9,path="mac_entry.daCommand",type=mac_table_cmd_view },
++        { head="sp",len=7,path="mac_entry.spUnknown",type="boolYN" }
++    }
++	command_data:clearResultArray()
++	command_data:initAllDeviceMacEntryIterator(
++        params, { ["dstInterface"] =
++                    {["type"]    = { "CPSS_INTERFACE_PORT_E",
++                                     "CPSS_INTERFACE_TRUNK_E",
++                                     "CPSS_INTERFACE_VIDX_E",
++                                     "CPSS_INTERFACE_VID_E"    }}})
++
++	command_data:initTable(table_info)
++    if true == command_data["status"] then
++        local iterator
++        for iterator, devNum, entry_index, prefix_ip_address, prefix_length, vrId, next_hop_entry in
++										  command_data:getValidFdbIpEntryIterator() do
++            command_data:clearEntryStatus()
++
++            command_data:clearLocalStatus()
++
++            -- Prefix and next-hop id string forming.
++			if((prefix_ip_address~=nil)and (prefix_length~=nil)and (vrId~=nil))then
++				if true == command_data["local_status"]     then
++					prefix_string       = ipPrefixStrGet(ip_protocol,
++														 prefix_ip_address,
++														 prefix_length)
++					next_hop_id         = command_data["ip-unicast-entry-index"]
++					is_ecmp             = command_data["is-ecmp"]
++					base_ecmp_index     = command_data["base-ecmp-index"]
++					num_ecmp_paths      = command_data["num-ecmp-paths"]
++					next_hop_id_string  = tostring(next_hop_id)
++					ecmp_index_output_string = tostring(base_ecmp_index)
++					vrId_string = tostring(vrId)
++				end
++
++				if 1 == is_ecmp then
++					num_next_hops = num_ecmp_paths
++				else
++					num_next_hops = 1
++				end
++
++				-- Device handling cycle
++				next_hop_entries    = {}
++				if true == command_data["local_status"] then
++					local device_iterator
++					for device_iterator, devNum in
++												command_data:getDevicesIterator() do
++					  command_data:clearDeviceStatus()
++
++					  local next_hop_iterator
++					  for next_hop_iterator = next_hop_id,next_hop_id+num_next_hops-1,1 do
++
++						command_data:clearLocalStatus()
++
++						-- Next-hop entry vlan id and its interface getting.
++						if true  == command_data["local_status"] then
++
++							if ((1 == is_ecmp)or((0 == is_ecmp)and(num_ecmp_paths==1))) then
++								--need to read the nextHop interface parameters from the nextHop table
++								result, values, next_hop_entry =wrLogWrapper("wrlCpssDxChNextIpUcRouteEntryGet", "(devNum, next_hop_id)",
++																		 devNum, next_hop_iterator)
++								if(1 == is_ecmp)then
++									ecmp_index_output_string = "ecmp:"..ecmp_index_output_string
++								end
++
++							else
++								-- the nextHop interface is takken from the FDB entry
++								-- set values to be different from nil
++								values=0;
++							end
++
++							if((values~=nil)and(next_hop_entry~=nil))then
++								if  0 == result then
++									if next_hop_entry["type"] == "CPSS_DXCH_IP_UC_ROUTE_ENTRY_E" then
++										vlanId              =
++											next_hop_entry["entry"]["regularEntry"]["nextHopVlanId"]
++										entry_interface     =
++											next_hop_entry["entry"]["regularEntry"]["nextHopInterface"]
++										router_arp_index    =
++											next_hop_entry["entry"]["regularEntry"]["nextHopARPPointer"]
++									else
++										command_data:addError("next-hop entry %s is %s",
++															tostring(next_hop_entry["type"]),
++															to_string(next_hop_iterator))
++									end
++								elseif 0x10 == result then
++									command_data:setFailDeviceStatus()
++									command_data:addWarning("Next-hop entry getting " ..
++															"is not  allowed on " ..
++															"device %d.", devNum)
++								elseif    0 ~= result then
++									command_data:setFailDeviceAndLocalStatus()
++									command_data:addError("Error at next-hop entry " ..
++														  "getting on device %d: %s.",
++														  devNum, returnCodes[result])
++								end
++
++
++								-- Next-hop entry vlan id and its interface string forming.
++								if((vlanId~=nil)and(next_hop_iterator~=nil))then
++									if true  == command_data["local_status"] then
++										vlanId_string           = tostring(vlanId)
++										next_hop_id_string      = tostring(next_hop_iterator)
++										entry_interface_string  =
++											interfaceInfoStrGet(entry_interface)
++									end
++								else
++									command_data:setFailDeviceAndLocalStatus()
++									command_data:addError("Error: vlanId and next_hop_iterator not defined " ..
++															  "on device %d: %s.",
++															  devNum, returnCodes[result])
++								end
++
++								-- Mac-address getting.
++								if true  == command_data["local_status"] then
++									result, values =
++										myGenWrapper("cpssDxChIpRouterArpAddrRead",
++													 {{ "IN",  "GT_U8",        "devNum", devNum },
++													  { "IN",  "GT_U32",       "routerArpIndex",
++																			   router_arp_index },
++													  { "OUT", "GT_ETHERADDR", "arpMacAddr"     }})
++									if        0 == result then
++										mac_address         = values["arpMacAddr"]
++									elseif 0x10 == result then
++										command_data:setFailDeviceStatus()
++										command_data:addWarning("Arp mac-address getting " ..
++																"is not allowed on " ..
++																"device %d.", devNum)
++									elseif    0 ~= result then
++										command_data:setFailDeviceAndLocalStatus()
++										command_data:addError("Error at arp mac-address " ..
++															  "getting on device %d: %s.",
++															  devNum, returnCodes[result])
++									end
++								end
++
++								-- Mac-address string forming.
++								if true  == command_data["local_status"] then
++									mac_address_string = replaceStr(tostring(mac_address),
++																	":", "-")
++								end
++
++								-- Detecting of output properties and storing output data.
++								if true  == command_data["local_status"] then
++									next_hop_entry =
++										{vlanId, entry_interface_string, mac_address_string}
++									next_hop_entry_showing=true
++									prefix_showing = isEmptyTable(next_hop_entries)
++									next_hop_entries[devNum] = next_hop_entry
++								end
++
++								-- Prefix output data updating.
++								if true  == command_data["local_status"] then
++									prefix_output_string        =
++										stringValueIfConditionTrue(prefix_showing, prefix_string)
++									next_hop_id_output_string   =
++										stringValueIfConditionTrue(prefix_showing, next_hop_id_string)
++								end
++
++								command_data:updateStatus()
++
++								-- Resulting string formatting and adding.
++								if 1 == is_ecmp and next_hop_iterator == next_hop_id then
++									command_data["result"] =
++										valueIfConditionTrue(
++											is_ipv4_protocol,
++											string.format(
++												"  %-4s%-18s%-10s%-7s%-15s%-24s",
++												alignLeftToCenterStr(vrId_string, 2),
++												alignLeftToCenterStr(prefix_output_string, 18),
++												alignLeftToCenterStr(ecmp_index_output_string, 8),
++												alignLeftToCenterStr("", 5),
++												alignLeftToCenterStr("", 13),
++												alignLeftToCenterStr("", 22)),
++											string.format(
++												 "%-5s%-48s%-11s%-7s%-16s%-24s",
++												alignLeftToCenterStr(vrId_string, 2),
++												alignLeftToCenterStr(prefix_output_string, 43),
++												alignLeftToCenterStr(ecmp_index_output_string, 8),
++												alignLeftToCenterStr("", 5),
++												alignLeftToCenterStr("", 14),
++												alignLeftToCenterStr("", 22)
++												))
++									command_data:addResultToResultArrayOnCondition(
++										next_hop_entry_showing)
++								end
++
++								if 1 == is_ecmp then
++									vrId_string = ""
++									prefix_output_string = ""
++									next_hop_id_output_string = next_hop_id_string
++								else
++									if(num_ecmp_paths==1)then
++										next_hop_id_output_string = "nh:"..next_hop_id_string
++									else
++										next_hop_id_output_string = "arp:"..router_arp_index
++									end
++								end
++
++								command_data["result"] =
++									valueIfConditionTrue(
++										is_ipv4_protocol,
++										string.format(
++											"  %-4s%-18s%-10s%-7s%-15s%-24s",
++											alignLeftToCenterStr(vrId_string, 2),
++											alignLeftToCenterStr(prefix_output_string, 18),
++											alignLeftToCenterStr(next_hop_id_output_string, 8),
++											alignLeftToCenterStr(vlanId_string, 5),
++											alignLeftToCenterStr(entry_interface_string, 13),
++											alignLeftToCenterStr(mac_address_string, 22)),
++										string.format(
++											"%-5s%-48s%-11s%-7s%-16s%-24s",
++											alignLeftToCenterStr(vrId_string, 2),
++											alignLeftToCenterStr(prefix_output_string, 43),
++											alignLeftToCenterStr(next_hop_id_output_string, 8),
++											alignLeftToCenterStr(vlanId_string, 5),
++											alignLeftToCenterStr(entry_interface_string, 14),
++											alignLeftToCenterStr(mac_address_string, 22)
++											))
++								command_data:addResultToResultArrayOnCondition(
++									next_hop_entry_showing)
++								else
++									command_data:setFailDeviceAndLocalStatus()
++									command_data:addError("FDB Error : NH entry is not defined " ..
++														  "on device %d: %s.",
++														  devNum, returnCodes[result])
++								end
++							end
++					  end
++						command_data:updateDevices()
++					end
++				end
++			end
++
++            command_data:updateStatus()
++
++            command_data:updateEntries()
++        end
++    end
++    -- Resulting configured ip routs string forming.
++    configured_ip_routs_table_string    = command_data["result_array"]
++    configured_ip_routs_table_string    =
++        command_data:getStrOnEntriesCount(table_header_string,
++                                          configured_ip_routs_table_string,
++                                          table_footer_string,
++                                          "There is no configured ip routs to show.\n")
++
++    -- Resulting table string formatting
++    command_data:setResultStr(enable_routing_string,
++                              configured_ip_routs_table_string)
++
++    command_data:analyzeCommandExecution()
++
++    command_data:printCommandExecutionResults()
++
++    return command_data:getCommandExecutionResults()
++end
++
++
++--------------------------------------------------------------------------------
++-- command registration: show ip route
++--------------------------------------------------------------------------------
++CLI_addHelp("exec", "show ip", "IP Information")
++CLI_addCommand("exec", "show ip route_fdb", {
++  func   = function(params)
++               params.ip_protocol = "CPSS_IP_PROTOCOL_IPV4_E"
++               return show_ip_route_fdb_func(params)
++           end,
++  help   = "Current information of the ipv6 entries in FDB table ",
++  params = {
++      { type = "named",
++          "#all_device",
++      }
++  }
++})
+diff --git a/lua_cli/scripts/dxCh/exec/show_ipv6_ecmp_info.lua b/lua_cli/scripts/dxCh/exec/show_ipv6_ecmp_info.lua
+new file mode 100644
+index 0000000000..36e644ef2a
+--- /dev/null
++++ b/lua_cli/scripts/dxCh/exec/show_ipv6_ecmp_info.lua
+@@ -0,0 +1,45 @@
++--********************************************************************************
++--*              (c), Copyright 2011, Marvell International Ltd.                 *
++--* THIS CODE CONTAINS CONFIDENTIAL INFORMATION OF MARVELL SEMICONDUCTOR, INC.   *
++--* NO RIGHTS ARE GRANTED HEREIN UNDER ANY PATENT, MASK WORK RIGHT OR COPYRIGHT  *
++--* OF MARVELL OR ANY THIRD PARTY. MARVELL RESERVES THE RIGHT AT ITS SOLE        *
++--* DISCRETION TO REQUEST THAT THIS CODE BE IMMEDIATELY RETURNED TO MARVELL.     *
++--* THIS CODE IS PROVIDED "AS IS". MARVELL MAKES NO WARRANTIES, EXPRESSED,       *
++--* IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.   *
++--********************************************************************************
++--* show_ipv6_ecmp_info.lua
++--*
++--* DESCRIPTION:
++--*       showing of the ECMP configuration for configured IP v6 Routes
++--*
++--* FILE REVISION NUMBER:
++--*       $Revision: 1 $
++--*
++--********************************************************************************
++
++--includes
++require("dxCh/exec/show_ip_ecmp_info")
++
++--constants
++
++
++--------------------------------------------------------------------------------
++-- command registration: show ipv6 ecmp info
++--------------------------------------------------------------------------------
++CLI_addHelp("exec", "show ipv6 ecmp_info", "Ipv6 ECMP Information")
++CLI_addCommand("exec", "show ipv6 ecmp_info", {
++  func   = function(params)
++               params.ip_protocol = "CPSS_IP_PROTOCOL_IPV6_E"
++               return show_ip_ecmp_info_func(params)
++           end,
++  help   = "Current information of the ipv6 ECMP entries in LPM and FDB prefixes ",
++  params = {
++        {
++            type = "named",
++             "#all_device",
++			mandatory = { "all_device" },
++			{ format = "ecmp_id  %GT_U32", name = "ecmp_id", help = "Show all the LPM entries and FDB entries with ecmp_id" },
++            { format = "distinct", name = "distinct", help = "Filter ECMP NH duplication" },          
++        }
++    }
++})
+\ No newline at end of file
+diff --git a/lua_cli/scripts/dxCh/exec/show_ipv6_route_fdb.lua b/lua_cli/scripts/dxCh/exec/show_ipv6_route_fdb.lua
+new file mode 100644
+index 0000000000..9904dd8e34
+--- /dev/null
++++ b/lua_cli/scripts/dxCh/exec/show_ipv6_route_fdb.lua
+@@ -0,0 +1,42 @@
++--********************************************************************************
++--*              (c), Copyright 2011, Marvell International Ltd.                 *
++--* THIS CODE CONTAINS CONFIDENTIAL INFORMATION OF MARVELL SEMICONDUCTOR, INC.   *
++--* NO RIGHTS ARE GRANTED HEREIN UNDER ANY PATENT, MASK WORK RIGHT OR COPYRIGHT  *
++--* OF MARVELL OR ANY THIRD PARTY. MARVELL RESERVES THE RIGHT AT ITS SOLE        *
++--* DISCRETION TO REQUEST THAT THIS CODE BE IMMEDIATELY RETURNED TO MARVELL.     *
++--* THIS CODE IS PROVIDED "AS IS". MARVELL MAKES NO WARRANTIES, EXPRESSED,       *
++--* IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.   *
++--********************************************************************************
++--* show_ipv6_route_fdb.lua
++--*
++--* DESCRIPTION:
++--*       showing of the global status of IP routing and the configured IPv6 Routes
++--*       in FDB
++--*
++--* FILE REVISION NUMBER:
++--*       $Revision: 1 $
++--*
++--********************************************************************************
++
++--includes
++require("dxCh/exec/show_ip_route_fdb")
++
++--constants
++
++
++--------------------------------------------------------------------------------
++-- command registration: show ipv6 ecmp info
++--------------------------------------------------------------------------------
++CLI_addHelp("exec", "show ipv6 route_fdb", "Ipv6 FDB Information")
++CLI_addCommand("exec", "show ipv6 route_fdb", {
++  func   = function(params)
++               params.ip_protocol = "CPSS_IP_PROTOCOL_IPV6_E"
++               return show_ip_route_fdb_func(params)
++           end,
++  help   = "Current information of the ipv6 entries in FDB table ",
++  params = {
++      { type = "named",
++          "#all_device",
++      }
++  }
++})
+\ No newline at end of file
+diff --git a/lua_cli/scripts/dxCh/generic/command_patterns.lua b/lua_cli/scripts/dxCh/generic/command_patterns.lua
+index 80c168cd07..bc6fd57021 100755
+--- a/lua_cli/scripts/dxCh/generic/command_patterns.lua
++++ b/lua_cli/scripts/dxCh/generic/command_patterns.lua
+@@ -25,10 +25,13 @@ cmdLuaCLI_registerCfunction("wrlCpssDxChNextBrgPortVlanGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChBrgFdbTableSizeGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChBrgFdbNextEntryGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChBrgFdbNextValidEntryGet")
++cmdLuaCLI_registerCfunction("wrlCpssDxChBrgFdbIpNextValidEntryGet")
++cmdLuaCLI_registerCfunction("wrlCpssDxChBrgFdbIpEcmpNextValidEntryGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChBrgFdbEntryGreateOrGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChNextRouterArpEntryGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChNextIpUcRouteEntryGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChNextValidIpPrefixDataGet")
++cmdLuaCLI_registerCfunction("wrlCpssDxChNextValidIpPrefixEcmpDataGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChBrgFirstEmptyVidxGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChNextUnusedMRUIndexGet")
+ cmdLuaCLI_registerCfunction("wrlCpssDxChBrgMcEntryRead")
+@@ -2550,7 +2553,7 @@ function Command_Data:getInterfaceVlanUnsafeIterator()
+     return iterator
+ end
+ 
+--- the itrators that call this function already got the list of ONLY valid vlans from : 
++-- the itrators that call this function already got the list of ONLY valid vlans from :
+ -- command_data:initInterfaceDevVlanRange() or
+ -- command_data:initInterfaceVlanIterator()
+ -- so do not wait time in callig the 'cpssDxChBrgVlanEntryRead'
+@@ -3036,6 +3039,210 @@ function Command_Data:getValidMacEntryIterator()
+     return iterator
+ end
+ 
++-- ************************************************************************
++---
++--  Command_Data:getValidFdbIpEntryIterator
++--        @description  iterating over the valid ip entries in Hardware IP
++--                      entries located in FDB MAC table
++--                      command_data:initAllDeviceMacEntryIterator(params)
++--                      for iterator, devNum, index in
++--                                  command_data:getValidMacEntryIterator()
++--                      do
++--                          print(devNum, entry_index,
++--                                self["skip_valid_aged"],
++--                                self["mac_entry"])
++--                      end
++--
++--        @return       interator over MAC address records
++--
++function Command_Data:getValidFdbIpEntryIterator()
++    if fdb_use_shadow == true then
++        print("-- use FDB shadow -- \n")
++
++        --printCallStack()
++    end
++
++    function iterator_error(values)
++		-- if the values is nil it means we got a status of GT_NO_MORE with no legal values output
++		if(values==nil)then
++			return nil, nil, nil, nil, nil, nil, nil
++		end
++
++        if fdb_use_shadow == true and values == 0xFFFFFFFF then
++            -- this is not error.
++            -- the FDB shadow holds no more entries
++            return nil, nil, nil, nil, nil, nil, nil
++        end
++        self:addError("Error in mac entry iterator. " .. values)
++        self:setFailStatus()
++        return nil, nil, nil, nil, nil, nil, nil
++    end
++
++    function iterator(v, i)
++        local result, values
++        local dev, dev_mac_entry
++		local new_ipPrefix,new_prefix_length
++        if nil == i then i = 0 end
++        if true ~= self["stop_execution"] then  return nil, nil, nil, nil, nil, nil,nil end
++
++        i = i + 1
++        v = i
++
++        for dev, dev_mac_entry in pairs(self["dev_mac_entries"]) do
++            if v > dev_mac_entry['count'] then
++                v = v - dev_mac_entry['count']
++            else
++				result, values, self["skip_valid_aged"], self["mac_entry"],
++				new_ipPrefix, new_prefix_length, self["ip-unicast-entry-index"], vrId,
++				self["is-ecmp"], self["base-ecmp-index"], self["num-ecmp-paths"],next_hop_entry =
++                    next_valid_fdb_ip_entry_get(dev, v - 1, self["ip_prefix_entries"]["ip_protocol"],self["mac_aged"],self["mac_filter"])
++
++                if 0 ~= result then
++                    return iterator_error(values)
++                end
++
++                if nil ~= values then
++                    return i - v + values + 1, dev, values, new_ipPrefix, new_prefix_length, vrId, next_hop_entry
++				else
++                    v = dev_mac_entry['count']
++                    --[[i = v   -- fix the iteration for more than 2 devices (like 6 BC2 devices)
++                                -- now it is same logic as 'getMacEntryIterator']]
++                end
++
++                v = v + 1
++                i = i + 1
++                while v <= dev_mac_entry['count'] do
++                    result, values, self["skip_valid_aged"], self["mac_entry"],
++					new_ipPrefix, new_prefix_length, self["ip-unicast-entry-index"], vrId,
++					self["is-ecmp"], self["base-ecmp-index"], self["num-ecmp-paths"], next_hop_entry =
++                        next_valid_fdb_ip_entry_get(dev, v - 1,self["ip_prefix_entries"]["ip_protocol"], prefix["ip_address"],
++				prefix["length"], prefix["vrId"],self["mac_aged"],self["mac_filter"])
++
++					print("vrId=",vrId)
++                    if 0 ~= result then
++                        return iterator_error(values)
++                    end
++
++                    if nil ~= values then
++                        return i - v + values + 1, dev, values ,new_ipPrefix, new_prefix_length, vrId, next_hop_entry
++                    else
++                        v = dev_mac_entry['count']
++                    end
++
++                    v = v + 1
++                    i = i + 1
++                end
++                v = v - dev_mac_entry['count']
++            end
++        end
++        return nil, nil, nil, nil, nil, nil,nil
++    end
++
++    return iterator
++end
++
++-- ************************************************************************
++---
++--  Command_Data:getValidFdbIpEcmpEntryIterator
++--        @description  iterating over the valid ip ECMP entries in Hardware IP
++--                      entries located in FDB MAC table
++--                      command_data:initAllDeviceMacEntryIterator(params)
++--                      for iterator, devNum, index in
++--                                  command_data:getValidMacEntryIterator()
++--                      do
++--                          print(devNum, entry_index,
++--                                self["skip_valid_aged"],
++--                                self["mac_entry"])
++--                      end
++--
++--        @return       interator over MAC address records
++--
++function Command_Data:getValidFdbIpEcmpEntryIterator()
++    if fdb_use_shadow == true then
++        print("-- use FDB shadow -- \n")
++
++        --printCallStack()
++    end
++
++    function iterator_error(values)
++		-- if the values is nil it means we got a status of GT_NO_MORE with no legal values output
++		if(values==nil)then
++			return nil, nil, nil, nil, nil, nil
++		end
++
++        if fdb_use_shadow == true and values == 0xFFFFFFFF then
++            -- this is not error.
++            -- the FDB shadow holds no more entries
++            return nil, nil, nil, nil, nil, nil
++        end
++        self:addError("Error in mac entry iterator. " .. values)
++        self:setFailStatus()
++        return nil, nil, nil, nil, nil, nil
++    end
++
++    function iterator(v, i)
++        local result, values
++        local dev, dev_mac_entry
++		local new_ipPrefix,new_prefix_length
++        if nil == i then i = 0 end
++        if true ~= self["stop_execution"] then  return nil, nil, nil, nil, nil, nil end
++
++        i = i + 1
++        v = i
++
++        for dev, dev_mac_entry in pairs(self["dev_mac_entries"]) do
++            if v > dev_mac_entry['count'] then
++                v = v - dev_mac_entry['count']
++            else
++				result, values, self["skip_valid_aged"], self["mac_entry"],
++				new_ipPrefix, new_prefix_length, self["ip-unicast-entry-index"], vrId,
++				self["is-ecmp"], self["base-ecmp-index"], self["num-ecmp-paths"] =
++                    next_valid_fdb_ip_ecmp_entry_get(dev, v - 1, self["ip_prefix_entries"]["ip_protocol"],self["mac_aged"],self["mac_filter"])
++
++                if 0 ~= result then
++                    return iterator_error(values)
++                end
++
++                if nil ~= values then
++                    return i - v + values + 1, dev, values, new_ipPrefix, new_prefix_length, vrId
++				else
++                    v = dev_mac_entry['count']
++                    --[[i = v   -- fix the iteration for more than 2 devices (like 6 BC2 devices)
++                                -- now it is same logic as 'getMacEntryIterator']]
++                end
++
++                v = v + 1
++                i = i + 1
++                while v <= dev_mac_entry['count'] do
++                    result, values, self["skip_valid_aged"], self["mac_entry"],
++					new_ipPrefix, new_prefix_length, self["ip-unicast-entry-index"], vrId,
++					self["is-ecmp"], self["base-ecmp-index"], self["num-ecmp-paths"] =
++                        next_valid_fdb_ip_ecmp_entry_get(dev, v - 1,self["ip_prefix_entries"]["ip_protocol"], prefix["ip_address"],
++				prefix["length"], prefix["vrId"],self["mac_aged"],self["mac_filter"])
++
++					print("vrId=",vrId)
++                    if 0 ~= result then
++                        return iterator_error(values)
++                    end
++
++                    if nil ~= values then
++                        return i - v + values + 1, dev, values ,new_ipPrefix, new_prefix_length, vrId
++                    else
++                        v = dev_mac_entry['count']
++                    end
++
++                    v = v + 1
++                    i = i + 1
++                end
++                v = v - dev_mac_entry['count']
++            end
++        end
++        return nil, nil, nil, nil, nil, nil
++    end
++
++    return iterator
++end
++
+ -- ************************************************************************
+ ---
+ --  Command_Data:getMirroredPortsIterator
+@@ -3374,6 +3581,56 @@ function Command_Data:getIpPrefixIterator()
+     return iterator
+ end
+ 
++-- ************************************************************************
++---
++--  Command_Data:getIpPrefixEcmpIterator
++--        @description  iterating over the ip v4 or v6 prefix entries
++--                      command_data:initIpPrefixEntries(params)
++--                      for iterator, prefix_ip_address, prefix_length, vrId in
++--                                		  command_data:getIpPrefixEcmpIterator()
++--                      do
++--                          print()
++--                      end
++--
++--        @return       iterator over ip unicast route entry indexes
++--
++function Command_Data:getIpPrefixEcmpIterator()
++	function iterator_error(values)
++		self:addError("Error in ip prefix iterator" .. values)
++		self:setFailStatus()
++		return nil, nil, nil, nil
++	end
++
++	function iterator(v, prefix)
++		local result, values, vrId
++		local new_prefix_length
++		if nil == prefix then
++			prefix  = { ["length"] = 0 }
++			prefix["vrId"] = 0
++			if "CPSS_IP_PROTOCOL_IPV4_E" ==
++								self["ip_prefix_entries"]["ip_protocol"]    then
++				prefix["ip_address"]    = "0.0.0.0"
++			else
++				prefix["ip_address"]    = "0::0"
++			end
++		end
++		if true ~= self["stop_execution"] then  return nil, nil, nil, nil end
++
++		result, values, new_prefix_length, self["ip-unicast-entry-index"], vrId,
++		self["is-ecmp"], self["base-ecmp-index"], self["num-ecmp-paths"] =
++			wrlCpssDxChNextValidIpPrefixEcmpDataGet(
++				self["ip_prefix_entries"]["ip_protocol"], prefix["ip_address"],
++				prefix["length"], prefix["vrId"])
++		if nil ~= values then
++			return { ["ip_address"] = values, ["length"] = new_prefix_length, ["vrId"] = vrId },
++				   values, new_prefix_length, vrId
++		else
++			return nil, nil, nil, nil
++		end
++	end
++
++	return iterator
++end
+ 
+ -- ************************************************************************
+ ---
+diff --git a/lua_cli/scripts/dxCh/generic/system_capabilities.lua b/lua_cli/scripts/dxCh/generic/system_capabilities.lua
+index 4db4db0e50..18dd6c7a79 100755
+--- a/lua_cli/scripts/dxCh/generic/system_capabilities.lua
++++ b/lua_cli/scripts/dxCh/generic/system_capabilities.lua
+@@ -660,7 +660,7 @@ function numOfCpuSdmaPortsGet(devNum)
+     if(status ~= 0--[[GT_OK]]) then
+         return 1
+     end
+-    
++
+     return numOfCpuSdmaPorts
+ end
+ -- ************************************************************************
+@@ -1993,6 +1993,103 @@ function next_valid_mac_entry_get(devNum, mac_entry_index, mac_aged, mac_filter)
+     return result, values, skip_valid_aged, mac_entry
+ end
+ 
++-- ************************************************************************
++---
++--  next_valid_fdb_ip_entry_get
++--        @description  get's next fdb ip valid entry index
++--
++--        @param devNum             - device number
++--        @param mac_entry_index    - max entry address
++--        @param mac_aged           - mac-entry aged property
++--        @param mac_filter         - mac entry with filled fields used as
++--                                    filter
++--
++--        @return       GT_OK or error code and error message
++--
++function next_valid_fdb_ip_entry_get(devNum, mac_entry_index, ipProtocolStack, mac_aged, mac_filter)
++    local result, values, skip_valid_aged, mac_entry
++    local mac_entry_type_array, vlan_filter_array, interface_type_filter_array
++	local new_ipPrefix, new_prefix_length,ip_unicast_entry_index,vrId,is_ecmp,base_ecmp_index,num_ecmp_paths,next_hop_entry
++
++    if "table" == type(mac_filter)      then
++        if "table" == type(mac_filter["key"])   then
++
++            if "table" == type((mac_filter["key"]["key"] or {})["entryType"]) then
++                mac_entry_type_array = mac_filter["key"]["key"]["entryType"]
++            end
++
++            if "table" == type(((mac_filter["key"]["key"] or {})["macVlan"] or {})["vlanId"]) then
++                vlan_filter_array = mac_filter["key"]["key"]["macVlan"]["vlanId"]
++            end
++        end
++
++        if "table" == type(mac_filter["dstInterface"])  then
++            if "table" == type(mac_filter["dstInterface"]["type"])  then
++                interface_type_filter_array = mac_filter["dstInterface"]["type"]
++            end
++        end
++    end
++
++    result, values, skip_valid_aged, mac_entry, new_ipPrefix, new_prefix_length,ip_unicast_entry_index,vrId,is_ecmp,base_ecmp_index,num_ecmp_paths,next_hop_entry=
++        wrlCpssDxChBrgFdbIpNextValidEntryGet(devNum, mac_entry_index,ipProtocolStack, mac_aged, mac_filter);
++
++	if 0 == result then
++        mac_entry_index = values
++    else
++        return result, values
++    end
++
++	return result, values, skip_valid_aged, mac_entry,new_ipPrefix, new_prefix_length,ip_unicast_entry_index,vrId,is_ecmp,base_ecmp_index,num_ecmp_paths,next_hop_entry
++end
++
++-- ************************************************************************
++---
++--  next_valid_fdb_ip_ecmp_entry_get
++--        @description  get's next fdb ip ecmp valid entry index
++--
++--        @param devNum             - device number
++--        @param mac_entry_index    - max entry address
++--        @param mac_aged           - mac-entry aged property
++--        @param mac_filter         - mac entry with filled fields used as
++--                                    filter
++--
++--        @return       GT_OK or error code and error message
++--
++function next_valid_fdb_ip_ecmp_entry_get(devNum, mac_entry_index, ipProtocolStack, mac_aged, mac_filter)
++    local result, values, skip_valid_aged, mac_entry
++    local mac_entry_type_array, vlan_filter_array, interface_type_filter_array
++	local new_ipPrefix, new_prefix_length,ip_unicast_entry_index,vrId,is_ecmp,base_ecmp_index,num_ecmp_paths
++
++    if "table" == type(mac_filter)      then
++        if "table" == type(mac_filter["key"])   then
++
++            if "table" == type((mac_filter["key"]["key"] or {})["entryType"]) then
++                mac_entry_type_array = mac_filter["key"]["key"]["entryType"]
++            end
++
++            if "table" == type(((mac_filter["key"]["key"] or {})["macVlan"] or {})["vlanId"]) then
++                vlan_filter_array = mac_filter["key"]["key"]["macVlan"]["vlanId"]
++            end
++        end
++
++        if "table" == type(mac_filter["dstInterface"])  then
++            if "table" == type(mac_filter["dstInterface"]["type"])  then
++                interface_type_filter_array = mac_filter["dstInterface"]["type"]
++            end
++        end
++    end
++
++    result, values, skip_valid_aged, mac_entry, new_ipPrefix, new_prefix_length,ip_unicast_entry_index,vrId,is_ecmp,base_ecmp_index,num_ecmp_paths=
++        wrlCpssDxChBrgFdbIpEcmpNextValidEntryGet(devNum, mac_entry_index,ipProtocolStack, mac_aged, mac_filter);
++
++	if 0 == result then
++        mac_entry_index = values
++    else
++        return result, values
++    end
++
++	return result, values, skip_valid_aged, mac_entry,new_ipPrefix, new_prefix_length,ip_unicast_entry_index,vrId,is_ecmp,base_ecmp_index,num_ecmp_paths
++end
+ 
+ -- ************************************************************************
+ ---
+diff --git a/mainLuaWrapper/h/dxCh/wraplCpssDxChBrgFdb.h b/mainLuaWrapper/h/dxCh/wraplCpssDxChBrgFdb.h
+index 63b91325b5..cbcc1f454d 100644
+--- a/mainLuaWrapper/h/dxCh/wraplCpssDxChBrgFdb.h
++++ b/mainLuaWrapper/h/dxCh/wraplCpssDxChBrgFdb.h
+@@ -46,5 +46,237 @@ GT_STATUS pvrCpssFdbActionModeFromLuaGet
+     OUT GT_CHAR_PTR                 *errorMessagePtr
+ );
+ 
++/*******************************************************************************
++* prvCpssDxChBrgFdbTableSizeGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of FDB tables facility size.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       devNum              - device number
++*       fdbTableSizePrt     - pointer to FDB tables facility size
++*
++* OUTPUTS:
++*       GT_OK
++*
++* RETURNS:
++*
++* COMMENTS:
++*
++*******************************************************************************/
++GT_STATUS prvCpssDxChBrgFdbTableSizeGet
++(
++    IN  GT_U8               devNum,
++    OUT GT_U32_PTR          fdbTableSizePrt,
++    OUT GT_CHAR_PTR         *error_message
++);
++
++/*******************************************************************************
++* prvCpssDxChBrgNextEntryIndexAndAgedAndMacEntryFromLuaGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of next entry index and aged property and mac-entry from lua
++*       stack.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       L                         - lua state
++*       L_index                   - entry lua stack index
++*       devNum                    - device number
++*       searchOnlyValid           - property of searching only valid entries
++*       macEntryIndexPtr          - next mac entry index
++*       P_CALLING_FORMAL_DATA     - general debug information (environment
++*                                   variables etc); could be empty
++*
++* OUTPUTS:
++*       indexWasFoundPtr          - propety, that next mac entry was found
++*       isSearchedAgedPropertyTakenPtr
++*                                 - property, that searched pattern and mask of
++*                                   aged property was found
++*       patternAgedPtr            - searched pattern of aged property
++*       isSearchedMacEntryTakenPtr
++*                                 - property, that searched pattern and mask of
++*                                   mac entry was found
++*       patternMacEtnryPtr        - searched pattern of mac entry
++*       maskMacEtnryPtr           - searched mask of mac entry
++*       error_message             - error message
++*
++* RETURNS:
++*       status and FDB entry index, if exists, to lua stack
++*
++* COMMENTS:
++*
++*******************************************************************************/
++GT_STATUS prvCpssDxChBrgNextEntryIndexAndAgedAndMacEntryFromLuaGet
++(
++    IN    lua_State                 *L,
++    IN    GT_32                     L_index,
++    IN    GT_U8                     devNum,
++    IN    GT_BOOL                   searchOnlyValid,
++    INOUT GT_U32_PTR                macEntryIndexPtr,
++    OUT   GT_BOOL                   *indexWasFoundPtr,
++    OUT   GT_BOOL                   *isSearchedAgedPropertyTakenPtr,
++    OUT   GT_BOOL                   *patternAgedPtr,
++    OUT   GT_BOOL                   *maskAgedPtr,
++    OUT   GT_BOOL                   *isSearchedMacEntryTakenPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *patternMacEtnryPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *maskMacEtnryPtr,
++    OUT   GT_CHAR_PTR               *error_message
++    P_CALLING_FORMAL_DATA
++);
++
++
++/*******************************************************************************
++* prvCpssDxChBrgFdbNextEntryGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of next fdb entry index. Founded entry and its aged property
++*       is masked and compared with pattern.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       devNum                      - device number
++*       maskedSearch                - search with mask
++*       searchOnlyValid             - property of searching only valid entries
++*       patternAged                 - pattern of aged property
++*       maskAged                    - mask of aged property
++*       patternMacEntry             - pattern fdb mac entry
++*       maskMacEntryPtr             - mask fdb mac entry
++*       macEntryIndexPtr            - current FDB entry index
++*       searchedValidPtr            - searched valid property
++*       searchedSkipPtr             - searched skip property
++*       searchedAgedSkipPtr         - searched aged property
++*       searchedMacEntryPtr         - searched mac entry
++*       entryWasFoundPtr            - mac entry founding property
++*       error_message               - error message
++*       P_CALLING_FORMAL_DATA       - general debug information (environment
++*                                     variables etc); could be empty
++*
++* OUTPUTS:
++*       status and FDB entry index, if exists, to lua stack
++*
++* RETURNS:
++*
++* COMMENTS:
++*
++*******************************************************************************/
++GT_STATUS prvCpssDxChBrgFdbNextEntryGet
++(
++    IN    GT_U8                     devNum,
++    IN    GT_BOOL                   maskedSearch,
++    IN    GT_BOOL                   searchOnlyValid,
++    IN    GT_BOOL                   patternAged,
++    IN    GT_BOOL                   maskAged,
++    IN    CPSS_MAC_ENTRY_EXT_STC    *patternMacEntryPtr,
++    IN    CPSS_MAC_ENTRY_EXT_STC    *maskMacEntryPtr,
++    INOUT GT_U32_PTR                macEntryIndexPtr,
++    OUT   GT_BOOL                   *searchedValidPtr,
++    OUT   GT_BOOL                   *searchedSkipPtr,
++    OUT   GT_BOOL                   *searchedAgedPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *searchedMacEntryPtr,
++    OUT   GT_BOOL                   *entryWasFoundPtr,
++    OUT   GT_CHAR_PTR               *error_message
++    P_CALLING_FORMAL_DATA
++);
++
++/*******************************************************************************
++* pvrCpssValidSkipAgedToLuaOnConditionPush
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       CPSS wrapper of conditional pushing valid skip and aged values
++*       to lua stack.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       status              - caller status
++*       L                   - lua state
++*       valid               - valid property
++*       skip                - skipped property
++*       aged                - aged property
++*       condition           - pushing condition
++*
++* OUTPUTS:
++*
++* RETURNS:
++*       1 if data was pushed to stack otherwise 0
++*
++* COMMENTS:
++*
++*******************************************************************************/
++int pvrCpssValidSkipAgedToLuaOnConditionPush
++(
++    IN GT_STATUS                status,
++    IN lua_State                *L,
++    IN GT_BOOL                  valid,
++    IN GT_BOOL                  skip,
++    IN GT_BOOL                  aged,
++    IN GT_BOOL                  condition
++);
++
++
++/*******************************************************************************
++* pvrCpssMacEntryToLuaOnConditionPush
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       CPSS wrapper of conditional pushing CPSS_MAC_ENTRY_EXT_STC to lua stack.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       status              - caller status
++*       L                   - lua state
++*       macEntryPtr         - pushed mac entry
++*       condition           - pushing condition
++*
++* OUTPUTS:
++*
++* RETURNS:
++*       1 if data was pushed to stack otherwise 0
++*
++* COMMENTS:
++*
++*******************************************************************************/
++int pvrCpssMacEntryToLuaOnConditionPush
++(
++    IN GT_STATUS                status,
++    IN lua_State                *L,
++    IN CPSS_MAC_ENTRY_EXT_STC   *macEntryPtr,
++    IN GT_BOOL                  condition
++);
+ 
+ #endif /* __wraplCpssDxChBrgFdb_h__ */
+diff --git a/mainLuaWrapper/src/dxCh/wraplCpssDxChIp.c b/mainLuaWrapper/src/dxCh/wraplCpssDxChIp.c
+index db0f6c0105..143d009421 100644
+--- a/mainLuaWrapper/src/dxCh/wraplCpssDxChIp.c
++++ b/mainLuaWrapper/src/dxCh/wraplCpssDxChIp.c
+@@ -26,6 +26,7 @@
+ #include <cpss/dxCh/dxChxGen/ip/cpssDxChIp.h>
+ #include <cpss/dxCh/dxChxGen/ipLpmEngine/cpssDxChIpLpm.h>
+ #include <dxCh/wraplCpssDxChDeviceInfo.h>
++#include <dxCh/wraplCpssDxChBrgFdb.h>
+ #include <cpssCommon/wraplCpssDeviceInfo.h>
+ #include <cpssCommon/wrapCpssDebugInfo.h>
+ #include <cpss/dxCh/dxChxGen/private/lpm/prvCpssDxChLpmTypes.h>
+@@ -1094,6 +1095,976 @@ GT_STATUS prvCpssDxChNextValidIpPrefixDataGet
+     return status;
+ }
+ 
++/*******************************************************************************
++* prvCpssDxChNextValidIpPrefixEcmpDataGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of next valid ip prefix its length its ip route entry index and
++*       its ecmp info.
++*
++* APPLICABLE DEVICES:
++*       DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*       None.
++*
++* INPUTS:
++*       ipProtocolStack               - ip protocol typ
++*       ipAddrPtr                     - starting ip v4 or v6 address
++*                                       (recomended 0.0.0.0 for v4 or 0::0
++*                                       for v6)
++*       vrId                          - virtual router ID
++*       prefixLenPtr                  - starting prefix length (recomended 0)
++*       P_CALLING_FORMAL_DATA         - general debug information (environment
++*                                       variables etc); could be empty
++*
++* OUTPUTS:
++*       ipAddrPtr                     - founded prefix ip v4 or v6 address
++*       prefixLenPtr                  - founded prefix length
++*       vrId                          - founded virtual router ID related to the prefix
++*       isIpPrefixFoundPtr            - ip prefix founding property
++*       ipUcRouteEntryIndexPtr        - ip unicast route entry index
++*       errorMessagePtr               - error message
++*       isEcmpPtr                     - is route entry Multipath entry
++*       baseEcmpIndexPtr              - ECMP base index
++*       numEcmpPathsPtr               - ECMP base index
++*
++* RETURNS:
++*       execution status
++*
++* COMMENTS:
++*
++*******************************************************************************/
++
++
++GT_STATUS prvCpssDxChNextValidIpPrefixEcmpDataGet
++(
++    IN    CPSS_IP_PROTOCOL_STACK_ENT    ipProtocolStack,
++    INOUT GT_IP_ADDR_TYPE_UNT           *ipAddrPtr,
++    INOUT GT_U32_PTR                    prefixLenPtr,
++    OUT   GT_BOOL                       *isIpPrefixFoundPtr,
++    OUT   GT_U32_PTR                    ipUcRouteEntryIndexPtr,
++    OUT   GT_CHAR_PTR                   *errorMessagePtr,
++    INOUT GT_U32_PTR                    vrId,
++    OUT   GT_U32_PTR                    isEcmpPtr,
++    OUT   GT_U32_PTR                    baseEcmpIndexPtr,
++    OUT   GT_U32_PTR                    numEcmpPathsPtr
++    P_CALLING_FORMAL_DATA
++)
++{
++    CPSS_DXCH_IP_TCAM_ROUTE_ENTRY_INFO_UNT
++                                        nextHopInfo;
++    GT_U32                              nextHopIndex;/* the index of the next hop in the NH table*/
++    GT_BOOL                             isIpV4PrefixChecked = GT_FALSE;
++    GT_U32                              tcamRowIndex        = 0;
++    GT_U32                              tcamColumnIndex     = 0;
++    static GT_U32                       counter             = 0;
++    GT_STATUS                           status              = GT_OK;
++    CPSS_DXCH_IP_ECMP_ENTRY_STC         ecmpEntry;
++    GT_U8                               devNum              = 0xFF;
++    GT_U32                              ecmpEntryIndex      = 0;
++    GT_U32                              i;
++    GT_U32                              ipUcRouteEntryIndex = 0;
++
++    *isIpPrefixFoundPtr = GT_TRUE;
++    *isEcmpPtr          = 0;
++
++    cpssOsMemSet(&ecmpEntry, 0 , sizeof(ecmpEntry));
++    cpssOsMemSet(&nextHopInfo, 0, sizeof(nextHopInfo));
++
++    while (*vrId < (GT_U32)MAX_VRID) {
++        *isIpPrefixFoundPtr = GT_TRUE;
++        cpssOsMemSet(&nextHopInfo, 0, sizeof(nextHopInfo));
++        while ((GT_TRUE == *isIpPrefixFoundPtr) &&
++               (GT_FALSE == isIpV4PrefixChecked))
++        {
++            switch (ipProtocolStack)
++            {
++            case CPSS_IP_PROTOCOL_IPV4_E:
++                if ((*prefixLenPtr == 0) && (counter == 0))
++                {
++                    status = cpssDxChIpLpmIpv4UcPrefixSearch(0, *vrId,
++                                                              &(ipAddrPtr->ipv4Addr),
++                                                              *prefixLenPtr,
++                                                              &nextHopInfo,
++                                                              &tcamRowIndex,
++                                                              &tcamColumnIndex);
++                    /*deal only with ECMP prefixes */
++                    if ((status==GT_OK)&&
++                        ((nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E) ||
++                        (nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E)))
++                    {
++                        P_CALLING_API(
++                            cpssDxChIpLpmIpv4UcPrefixSearch,
++                            PC_NUMBER(0,                        lpmDBId,            GT_U32,
++                            PC_NUMBER(*vrId,                        vrId,               GT_U32,
++                            PC_STRUCT(&(ipAddrPtr->ipv4Addr),   ipAddr,          GT_IPADDR,
++                            PC_NUMBER(*prefixLenPtr,            prefixLen,          GT_U32,
++                            PC_STRUCT(&nextHopInfo,             nextHopInfo,
++                                                    CPSS_DXCH_IP_TCAM_ROUTE_ENTRY_INFO_UNT,
++                            PC_NUMBER(tcamRowIndex,             tcamRowIndex,       GT_U32,
++                            PC_NUMBER(tcamColumnIndex,          tcamColumnIndex,    GT_U32,
++                            PC_LAST_PARAM))))))),
++                            PC_STATUS);
++                    }
++					counter++;
++                }
++                else
++                {
++                    status = cpssDxChIpLpmIpv4UcPrefixGetNext(0, *vrId,
++                                                              &(ipAddrPtr->ipv4Addr),
++                                                              prefixLenPtr,
++                                                              &nextHopInfo,
++                                                              &tcamRowIndex,
++                                                              &tcamColumnIndex);
++                    /*deal only with ECMP prefixes */
++                    if ((status==GT_OK)&&
++                        ((nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E) ||
++                        (nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E)))
++                    {
++                        P_CALLING_API(
++                            cpssDxChIpLpmIpv4UcPrefixGetNext,
++                            PC_NUMBER(0,                        lpmDBId,            GT_U32,
++                            PC_NUMBER(*vrId,                        vrId,               GT_U32,
++                            PC_STRUCT(&(ipAddrPtr->ipv4Addr),   ipAddr,          GT_IPADDR,
++                            PC_NUMBER(*prefixLenPtr,            prefixLen,          GT_U32,
++                            PC_STRUCT(&nextHopInfo,             nextHopInfo,
++                                                    CPSS_DXCH_IP_TCAM_ROUTE_ENTRY_INFO_UNT,
++                            PC_NUMBER(tcamRowIndex,             tcamRowIndex,       GT_U32,
++                            PC_NUMBER(tcamColumnIndex,          tcamColumnIndex,    GT_U32,
++                            PC_LAST_PARAM))))))),
++                            PC_STATUS);
++                    }
++                }
++                break;
++
++            case CPSS_IP_PROTOCOL_IPV6_E:
++                if ((*prefixLenPtr == 0) && (counter == 0))
++                {
++                    status = cpssDxChIpLpmIpv6UcPrefixSearch(0, *vrId,
++                                                              &(ipAddrPtr->ipv6Addr),
++                                                              *prefixLenPtr,
++                                                              &nextHopInfo,
++                                                              &tcamRowIndex,
++                                                              &tcamColumnIndex);
++                    /*deal only with ECMP prefixes */
++                    if ((status==GT_OK)&&
++                        ((nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E) ||
++                        (nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E)))
++                    {
++                        P_CALLING_API(
++                            cpssDxChIpLpmIpv6UcPrefixSearch,
++                            PC_NUMBER(0,                        lpmDBId,            GT_U32,
++                            PC_NUMBER(*vrId,                        vrId,               GT_U32,
++                            PC_STRUCT(&(ipAddrPtr->ipv4Addr),   ipAddr,          GT_IPADDR,
++                            PC_NUMBER(*prefixLenPtr,            prefixLen,          GT_U32,
++                            PC_STRUCT(&nextHopInfo,             nextHopInfo,
++                                                    CPSS_DXCH_IP_TCAM_ROUTE_ENTRY_INFO_UNT,
++                            PC_NUMBER(tcamRowIndex,             tcamRowIndex,       GT_U32,
++                            PC_NUMBER(tcamColumnIndex,          tcamColumnIndex,    GT_U32,
++                            PC_LAST_PARAM))))))),
++                            PC_STATUS);
++                    }
++					counter++;
++                }
++                else
++                {
++                    status = cpssDxChIpLpmIpv6UcPrefixGetNext(0, *vrId,
++                                                              &(ipAddrPtr->ipv6Addr),
++                                                              prefixLenPtr,
++                                                              &nextHopInfo,
++                                                              &tcamRowIndex,
++                                                              &tcamColumnIndex);
++                    /*deal only with ECMP prefixes */
++                    if ((status==GT_OK)&&
++                        ((nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E) ||
++                        (nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E)))
++                    {
++                        P_CALLING_API(
++                            cpssDxChIpLpmIpv6UcPrefixGetNext,
++                            PC_NUMBER(0,                        lpmDBId,            GT_U32,
++                            PC_NUMBER(*vrId,                        vrId,               GT_U32,
++                            PC_STRUCT(&(ipAddrPtr->ipv6Addr),   ipAddr,        GT_IPV6ADDR,
++                            PC_NUMBER(*prefixLenPtr,            prefixLen,          GT_U32,
++                            PC_STRUCT(&nextHopInfo,             nextHopInfo,
++                                                    CPSS_DXCH_IP_TCAM_ROUTE_ENTRY_INFO_UNT,
++                            PC_NUMBER(tcamRowIndex,             tcamRowIndex,       GT_U32,
++                            PC_NUMBER(tcamColumnIndex,          tcamColumnIndex,    GT_U32,
++                            PC_LAST_PARAM))))))),
++                            PC_STATUS);
++                    }
++                }
++                break;
++
++            default:
++                status              = GT_BAD_PARAM;
++                *errorMessagePtr    = wrongIpProtocolDefinitionErrorMessage;
++                break;
++            }
++
++            if ((GT_OK == status) || (GT_NOT_FOUND == status))
++            {
++                *isIpPrefixFoundPtr   = GT_NOT_FOUND != status;
++                *ipUcRouteEntryIndexPtr =
++                    nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                status                  = GT_OK;
++            }
++
++            if ((GT_OK == status) && (GT_TRUE == *isIpPrefixFoundPtr))
++            {
++                if ((nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E) ||
++                    (nextHopInfo.ipLttEntry.routeType == CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E))
++                {
++
++                    ecmpEntryIndex    = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                    while (GT_OK == prvWrlDevFilterNextDevGet(devNum, &devNum))
++                    {
++                        P_CALLING_API(
++                            prvWrlDevFilterNextDevGet,
++                            PC_NUMBER(devNum,                   devNum,                  GT_U8,
++                            PC_LAST_PARAM),
++                            PC_STATUS);
++
++                        if (prvCpssIsDevExists(devNum))
++                        {
++                            status = cpssDxChIpEcmpEntryRead(devNum, ecmpEntryIndex, &ecmpEntry);
++                            if (GT_OK != status)
++                            {
++                                return status;
++                            }
++
++                            if ((PRV_CPSS_SIP_6_CHECK_MAC(devNum) == GT_TRUE)||
++                                (PRV_CPSS_SIP_5_25_CHECK_MAC(devNum)== GT_TRUE))
++                            {
++                                /* take the ecmpEntry data and fetch with it the correct entry in the ECMP indirect table */
++                                status = cpssDxChIpEcmpIndirectNextHopEntryGet(devNum,ecmpEntry.routeEntryBaseIndex,&nextHopIndex);
++                                if (GT_OK != status)
++                                {
++                                    return status;
++                                }
++                                for (i=0; i<ecmpEntry.numOfPaths; i++)
++                                {
++                                    ipUcRouteEntryIndex = nextHopIndex + i;
++                                    status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                                                ipUcRouteEntryIndex, &isIpV4PrefixChecked, errorMessagePtr
++                                                P_CALLING_ACTUAL_DATA);
++                                    if (GT_OK != status)
++                                    {
++                                        return status;
++                                    }
++                                }
++                                *ipUcRouteEntryIndexPtr = nextHopIndex;
++                            }
++                            else
++                            {
++                                /*for SIP5 devices  ECMP table point directly to the NH table */
++                                for (i=0; i<ecmpEntry.numOfPaths; i++)
++                                {
++                                    ipUcRouteEntryIndex = ecmpEntry.routeEntryBaseIndex + i;
++                                    status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                                                ipUcRouteEntryIndex, &isIpV4PrefixChecked, errorMessagePtr
++                                                P_CALLING_ACTUAL_DATA);
++                                    if (GT_OK != status)
++                                    {
++                                        return status;
++                                    }
++                                }
++                                *ipUcRouteEntryIndexPtr = ecmpEntry.routeEntryBaseIndex;
++                            }
++
++
++                            *isEcmpPtr = 1;
++                            *baseEcmpIndexPtr = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                            *numEcmpPathsPtr  = ecmpEntry.numOfPaths;
++                            break;
++                        }
++                    }
++                }
++                else
++                {/* do not show non ECMP entries
++                    status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                                            nextHopInfo.ipLttEntry.routeEntryBaseIndex,
++                                            &isIpV4PrefixChecked,
++                                            errorMessagePtr
++                                            P_CALLING_ACTUAL_DATA);*/
++                }
++            }
++        }
++        if (GT_TRUE == *isIpPrefixFoundPtr) {
++            break;
++        }
++        else {
++            *vrId = *vrId + 1;
++            cpssOsMemSet(ipAddrPtr, 0, sizeof(GT_IP_ADDR_TYPE_UNT));
++            counter = 0;
++            *prefixLenPtr = 0;
++        }
++    }
++    if (*vrId == MAX_VRID)
++    {
++        counter = 0;
++    }
++    return status;
++}
++/*******************************************************************************
++* prvCpssDxChNextValidFdbIpPrefixDataGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of FDB next valid ip prefix its length its ip route entry index and
++*       its ecmp info.
++*
++* APPLICABLE DEVICES:
++*       DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*       None.
++*
++* INPUTS:
++*       L                         - lua state
++*       L_index                   - entry lua stack index
++*       ipProtocolStack           - ip protocol typ
++*       ipAddrPtr                 - starting ip v4 or v6 address
++*                                   (recomended 0.0.0.0 for v4 or 0::0
++*                                   for v6)
++*       prefixLenPtr              - starting prefix length (recomended 0)*
++*       vrId                      - virtual router ID
++*       searchOnlyValid           - property of searching only valid entries
++*       macEntryIndexPtr          - next mac entry index
++*       P_CALLING_FORMAL_DATA     - general debug information (environment
++*                                   variables etc); could be empty
++*
++* OUTPUTS:
++*       ipAddrPtr                 - founded prefix ip v4 or v6 address
++*       prefixLenPtr              - founded prefix length
++*       isIpPrefixFoundPtr        - ip prefix founding property
++*       ipUcRouteEntryIndexPtr    - ip unicast route entry index
++*       vrId                      - founded virtual router ID related to the prefix
++*       errorMessagePtr           - error message
++*       isEcmpPtr                 - is route entry Multipath entry
++*       baseEcmpIndexPtr          - ECMP base index
++*       numEcmpPathsPtr           - ECMP base index
++*       macEntryIndexPtr          - next mac entry index
++*       indexWasFoundPtr          - propety, that next mac entry index was found
++*       entryWasFoundPtr          - propety, that next mac entry was found
++*       searchedValidPtr          - searched valid property
++*       searchedSkipPtr           - searched skip property
++*       searchedAgedPtr           - searched aged property
++*       patternMacEtnryPtr        - pattern mac entry from lua stack
++*       maskMacEtnryPtr           - mask mac entry from lua stack
++*       searchedMacEtnryPtr       - searched mac entry
++*       errorMessagePtr           - error message
++*
++* RETURNS:
++*       execution status
++*
++* COMMENTS:
++*
++*******************************************************************************/
++GT_STATUS prvCpssDxChNextValidFdbIpPrefixDataGet
++(
++    IN lua_State                        *L,
++    IN  GT_32                           L_index,
++    IN    GT_U8                         devNum,
++    IN    CPSS_IP_PROTOCOL_STACK_ENT    ipProtocolStack,
++    INOUT GT_IP_ADDR_TYPE_UNT           *ipAddrPtr,
++    INOUT GT_U32_PTR                    prefixLenPtr,
++    OUT   GT_BOOL                       *isIpPrefixFoundPtr,
++    OUT   GT_U32_PTR                    ipUcRouteEntryIndexPtr,
++    INOUT GT_U32_PTR                    vrId,
++    OUT   GT_U32_PTR                    isEcmpPtr,
++    OUT   GT_U32_PTR                    baseEcmpIndexPtr,
++    OUT   GT_U32_PTR                    numEcmpPathsPtr,
++    IN    GT_BOOL                   searchOnlyValid,
++    INOUT GT_U32_PTR                macEntryIndexPtr,
++    OUT   GT_BOOL                   *indexWasFoundPtr,
++    OUT   GT_BOOL                   *entryWasFoundPtr,
++    OUT   GT_BOOL                   *searchedValidPtr,
++    OUT   GT_BOOL                   *searchedSkipPtr,
++    OUT   GT_BOOL                   *searchedAgedPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *patternMacEtnryPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *maskMacEtnryPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *searchedMacEntryPtr,
++    OUT   CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC     *ipUcRouteEntryPtr,
++    OUT   GT_CHAR_PTR               *errorMessagePtr
++    P_CALLING_FORMAL_DATA
++)
++{
++    CPSS_DXCH_IP_TCAM_ROUTE_ENTRY_INFO_UNT nextHopInfo;
++    GT_U32                              nextHopIndex;/* the index of the next hop in the NH table*/
++    GT_BOOL                             isIpV4PrefixChecked = GT_FALSE;
++    static GT_U32                       counter             = 0;
++    GT_STATUS                           status              = GT_OK;
++    CPSS_DXCH_IP_ECMP_ENTRY_STC         ecmpEntry;
++    GT_U32                              ecmpEntryIndex      = 0;
++    GT_U32                              i;
++    GT_U32                              ipUcRouteEntryIndex = 0;
++
++    GT_BOOL                 isSearchedAgedPropertyTaken = GT_FALSE;
++    GT_BOOL                 patternAged                 = GT_FALSE;
++    GT_BOOL                 maskAged                    = (GT_BOOL) - 1;
++    GT_BOOL                 isSearchedMacEntryTaken     = GT_FALSE;
++    GT_U32                  fdbTableSize    = 0;
++
++    searchOnlyValid = searchOnlyValid;
++
++    *isIpPrefixFoundPtr = GT_FALSE;
++    *isEcmpPtr          = 0;
++
++    cpssOsMemSet(&ecmpEntry, 0 , sizeof(ecmpEntry));
++    cpssOsMemSet(&nextHopInfo, 0, sizeof(nextHopInfo));
++    cpssOsMemSet(ipUcRouteEntryPtr, 0, sizeof(CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC));
++
++    cpssOsMemSet(searchedMacEntryPtr, 0xFF, sizeof(CPSS_MAC_ENTRY_EXT_STC));
++
++    if (prvCpssIsDevExists(devNum))
++    {
++        status = prvCpssDxChBrgFdbTableSizeGet(devNum, &fdbTableSize, errorMessagePtr);
++        /* if the index is bigger then the FDB table size we should finish*/
++        if (*macEntryIndexPtr >= fdbTableSize)
++        {
++            status=GT_NO_MORE;
++            *indexWasFoundPtr = GT_FALSE;
++            *entryWasFoundPtr = GT_FALSE;
++            return status;
++        }
++        status = prvCpssDxChBrgNextEntryIndexAndAgedAndMacEntryFromLuaGet
++                        (L, L_index, devNum, GT_TRUE, macEntryIndexPtr,
++                         indexWasFoundPtr, &isSearchedAgedPropertyTaken,
++                         &patternAged, &maskAged, &isSearchedMacEntryTaken,
++                         patternMacEtnryPtr, maskMacEtnryPtr, errorMessagePtr
++                         P_CALLING_ACTUAL_DATA);
++
++        if ((GT_OK == status) && (GT_TRUE == *indexWasFoundPtr))
++        {
++            status = prvCpssDxChBrgFdbNextEntryGet(devNum,
++                                                   isSearchedAgedPropertyTaken || isSearchedMacEntryTaken,
++                                                   GT_TRUE,
++                                                   patternAged,
++                                                   maskAged,
++                                                   patternMacEtnryPtr,
++                                                   maskMacEtnryPtr,
++                                                   macEntryIndexPtr,
++                                                   searchedValidPtr,
++                                                   searchedSkipPtr,
++                                                   searchedAgedPtr,
++                                                   searchedMacEntryPtr,
++                                                   entryWasFoundPtr,
++                                                   errorMessagePtr
++                                                   P_CALLING_ACTUAL_DATA);
++            *indexWasFoundPtr = *entryWasFoundPtr;
++        }
++
++        /*deal only with ip uc prefixes */
++        if ((*entryWasFoundPtr==GT_TRUE)&&
++            (((ipProtocolStack==CPSS_IP_PROTOCOL_IPV4_E)&&
++             (searchedMacEntryPtr->key.entryType==CPSS_MAC_ENTRY_EXT_TYPE_IPV4_UC_E)) ||
++             ((ipProtocolStack==CPSS_IP_PROTOCOL_IPV6_E)&&
++              (searchedMacEntryPtr->key.entryType==CPSS_MAC_ENTRY_EXT_TYPE_IPV6_UC_ADDR_ENTRY_E))))
++        {
++            if (PRV_CPSS_SIP_6_CHECK_MAC(devNum) == GT_TRUE)
++            {
++                status = cpssDxChIpFdbRoutePrefixLenGet(devNum, ipProtocolStack, prefixLenPtr);
++                if (status!=GT_OK)
++                {
++                     *indexWasFoundPtr=GT_TRUE;
++                     *entryWasFoundPtr=GT_FALSE;
++                     return status;
++                }
++            }
++            else
++            {
++                if (ipProtocolStack==CPSS_IP_PROTOCOL_IPV4_E)
++                    *prefixLenPtr=32;
++                else
++                    *prefixLenPtr=128;
++
++            }
++            if (ipProtocolStack==CPSS_IP_PROTOCOL_IPV4_E)
++            {
++                 *vrId = searchedMacEntryPtr->key.key.ipv4Unicast.vrfId;
++                 cpssOsMemCpy(&(ipAddrPtr->ipv4Addr.arIP[0]), &(searchedMacEntryPtr->key.key.ipv4Unicast.dip[0]), sizeof(ipAddrPtr->ipv4Addr.arIP));
++            }
++            else /* ipv6 key*/
++            {
++                 *vrId = searchedMacEntryPtr->key.key.ipv6Unicast.vrfId;
++                 /* only after readding the data we have the full key
++                    bits 0-21 is taken from the data entry
++                    bits 22-127 is taken from the key entry */
++                 ipAddrPtr->ipv6Addr.arIP[2]=(searchedMacEntryPtr->key.key.ipv6Unicast.dip[2]&0x3);
++                 cpssOsMemCpy(&(ipAddrPtr->ipv6Addr.arIP[3]), &(searchedMacEntryPtr->key.key.ipv6Unicast.dip[3]), 13*sizeof(GT_U8));
++
++                /* read ipv6 data */
++                if (PRV_CPSS_SIP_6_CHECK_MAC(devNum) == GT_TRUE)
++                {    /* On SIP-6, IPV6 UC Address entry must be in even bank, and Data entry immediately follows */
++                    *macEntryIndexPtr = *macEntryIndexPtr + 1;
++
++                    status = prvCpssDxChBrgFdbNextEntryGet(devNum,
++                                                       isSearchedAgedPropertyTaken || isSearchedMacEntryTaken,
++                                                       GT_TRUE,
++                                                       patternAged,
++                                                       maskAged,
++                                                       patternMacEtnryPtr,
++                                                       maskMacEtnryPtr,
++                                                       macEntryIndexPtr,
++                                                       searchedValidPtr,
++                                                       searchedSkipPtr,
++                                                       searchedAgedPtr,
++                                                       searchedMacEntryPtr,
++                                                       entryWasFoundPtr,
++                                                       errorMessagePtr
++                                                       P_CALLING_ACTUAL_DATA);
++                    *indexWasFoundPtr = *entryWasFoundPtr;
++
++                    if ((*entryWasFoundPtr!=GT_TRUE)||
++                        (ipProtocolStack!=CPSS_IP_PROTOCOL_IPV6_E)||
++                        (searchedMacEntryPtr->key.entryType!=CPSS_MAC_ENTRY_EXT_TYPE_IPV6_UC_DATA_ENTRY_E))
++                    {
++                        /* the entry is not an ipv6 entry data - should not be treated */
++                        /* the index was found but it does not fit to an ipv6 data entry */
++                        *indexWasFoundPtr=GT_TRUE;
++                        *entryWasFoundPtr=GT_FALSE;
++                    }
++
++                    /* only after readding the data we have the full key
++                    bits 0-21 is taken from the data entry
++                    bits 22-127 is taken from the key entry */
++                    ipAddrPtr->ipv6Addr.arIP[0]=searchedMacEntryPtr->key.key.ipv6Unicast.dip[0];
++                    ipAddrPtr->ipv6Addr.arIP[1]=searchedMacEntryPtr->key.key.ipv6Unicast.dip[1];
++                    ipAddrPtr->ipv6Addr.arIP[2]|=((searchedMacEntryPtr->key.key.ipv6Unicast.dip[2]>>2)&0x3F)<<2;
++                }
++                else
++                {
++                    /* ipv6 show is not supported for non sip6 - due to lack of capability to know where the data is located */
++                     *indexWasFoundPtr=GT_TRUE;
++                     *entryWasFoundPtr=GT_FALSE;
++                }
++            }
++
++
++            if (*entryWasFoundPtr==GT_TRUE)
++            {
++                switch (searchedMacEntryPtr->fdbRoutingInfo.routingType)
++                {
++                case CPSS_FDB_UC_ROUTING_TYPE_NH_FDB_E:
++                    nextHopInfo.ipLttEntry.routeType=CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_REGULAR_E;
++
++                     /* keep in the routeEntryBaseIndex the pointer of the arp */
++                    if (searchedMacEntryPtr->fdbRoutingInfo.isTunnelStart==GT_TRUE)
++                    {
++                          *indexWasFoundPtr=GT_TRUE;
++                          *entryWasFoundPtr=GT_FALSE;
++                          break;
++                    }
++
++                    *ipUcRouteEntryIndexPtr = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++
++                    *isEcmpPtr = 0;
++                    *baseEcmpIndexPtr = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                    *numEcmpPathsPtr  = 0;
++
++                    /* set ipUcRouteEntryPtr values */
++                    ipUcRouteEntryPtr->type=CPSS_DXCH_IP_UC_ROUTE_ENTRY_E;
++                    ipUcRouteEntryPtr->entry.regularEntry.isTunnelStart = GT_FALSE;
++                    ipUcRouteEntryPtr->entry.regularEntry.nextHopVlanId = searchedMacEntryPtr->fdbRoutingInfo.nextHopVlanId;
++                    ipUcRouteEntryPtr->entry.regularEntry.nextHopARPPointer = searchedMacEntryPtr->fdbRoutingInfo.nextHopARPPointer;
++                    cpssOsMemCpy(&ipUcRouteEntryPtr->entry.regularEntry.nextHopInterface, &searchedMacEntryPtr->dstInterface, sizeof(CPSS_INTERFACE_INFO_STC));
++                    *isIpPrefixFoundPtr = GT_TRUE;
++                    counter++;
++                    break;
++                case CPSS_FDB_UC_ROUTING_TYPE_MULTIPATH_ROUTER_E:
++                    nextHopInfo.ipLttEntry.routeType=CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E;
++
++                    nextHopInfo.ipLttEntry.routeEntryBaseIndex = searchedMacEntryPtr->fdbRoutingInfo.multipathPointer;
++                    ecmpEntryIndex = searchedMacEntryPtr->fdbRoutingInfo.multipathPointer;
++
++                    status = cpssDxChIpEcmpEntryRead(devNum, ecmpEntryIndex, &ecmpEntry);
++                    if (GT_OK != status)
++                    {
++                        return status;
++                    }
++                    nextHopInfo.ipLttEntry.numOfPaths = ecmpEntry.numOfPaths;
++
++                    if ((PRV_CPSS_SIP_6_CHECK_MAC(devNum) == GT_TRUE)||
++                        (PRV_CPSS_SIP_5_25_CHECK_MAC(devNum)== GT_TRUE))
++                    {
++                        /* take the ecmpEntry data and fetch with it the correct entry in the ECMP indirect table */
++                        status = cpssDxChIpEcmpIndirectNextHopEntryGet(devNum,ecmpEntry.routeEntryBaseIndex,&nextHopIndex);
++                        if (GT_OK != status)
++                        {
++                            return status;
++                        }
++                        for (i=0; i<ecmpEntry.numOfPaths; i++)
++                        {
++                            ipUcRouteEntryIndex = nextHopIndex + i;
++                            status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                                        ipUcRouteEntryIndex, &isIpV4PrefixChecked, errorMessagePtr
++                                        P_CALLING_ACTUAL_DATA);
++                            if (GT_OK != status)
++                            {
++                                return status;
++                            }
++                        }
++                        *ipUcRouteEntryIndexPtr = nextHopIndex;
++                    }
++                    else
++                    {
++                        /*for SIP5 devices  ECMP table point directly to the NH table */
++                        for (i=0; i<ecmpEntry.numOfPaths; i++)
++                        {
++                            ipUcRouteEntryIndex = ecmpEntry.routeEntryBaseIndex + i;
++                            status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                                        ipUcRouteEntryIndex, &isIpV4PrefixChecked, errorMessagePtr
++                                        P_CALLING_ACTUAL_DATA);
++                            if (GT_OK != status)
++                            {
++                                return status;
++                            }
++                        }
++                        *ipUcRouteEntryIndexPtr = ecmpEntry.routeEntryBaseIndex;
++                    }
++
++                    *isEcmpPtr = 1;
++                    *baseEcmpIndexPtr = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                    *numEcmpPathsPtr  = ecmpEntry.numOfPaths;
++                    *isIpPrefixFoundPtr = GT_TRUE;
++                    counter++;
++                    break;
++                case CPSS_FDB_UC_ROUTING_TYPE_MULTICAST_NH_ENTRY_E:
++                    nextHopInfo.ipLttEntry.routeType=CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_REGULAR_E;
++                    nextHopInfo.ipLttEntry.routeEntryBaseIndex = searchedMacEntryPtr->fdbRoutingInfo.nextHopMcPointer;
++                    *isEcmpPtr = 0;
++                    *baseEcmpIndexPtr = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                    *numEcmpPathsPtr  = 1;/* indication that we have a nextHop pointer */
++                    *isIpPrefixFoundPtr = GT_TRUE;
++                    *ipUcRouteEntryIndexPtr = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                    counter++;
++                    break;
++                default:
++                     *indexWasFoundPtr=GT_TRUE;
++                     *entryWasFoundPtr=GT_FALSE;
++                }
++            }
++        }
++        else
++        {
++            /* the entry is not an ip entry - should not be treated */
++            /* the index was found but it does not fit to an ipv4 entry */
++            *indexWasFoundPtr=GT_TRUE;
++            *entryWasFoundPtr=GT_FALSE;
++        }
++    }
++    return status;
++}
++
++/*******************************************************************************
++* prvCpssDxChNextValidFdbIpPrefixEcmpDataGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of FDB next valid ip prefix its length its ip route entry index and
++*       its ecmp info.
++*
++* APPLICABLE DEVICES:
++*       DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*       None.
++*
++* INPUTS:
++*       L                         - lua state
++*       L_index                   - entry lua stack index
++*       ipProtocolStack           - ip protocol typ
++*       ipAddrPtr                 - starting ip v4 or v6 address
++*                                   (recomended 0.0.0.0 for v4 or 0::0
++*                                   for v6)
++*       prefixLenPtr              - starting prefix length (recomended 0)*
++*       vrId                      - virtual router ID
++*       searchOnlyValid           - property of searching only valid entries
++*       macEntryIndexPtr          - next mac entry index
++*       P_CALLING_FORMAL_DATA     - general debug information (environment
++*                                   variables etc); could be empty
++*
++* OUTPUTS:
++*       ipAddrPtr                 - founded prefix ip v4 or v6 address
++*       prefixLenPtr              - founded prefix length
++*       isIpPrefixFoundPtr        - ip prefix founding property
++*       ipUcRouteEntryIndexPtr    - ip unicast route entry index
++*       vrId                      - founded virtual router ID related to the prefix
++*       errorMessagePtr           - error message
++*       isEcmpPtr                 - is route entry Multipath entry
++*       baseEcmpIndexPtr          - ECMP base index
++*       numEcmpPathsPtr           - ECMP base index
++*       macEntryIndexPtr          - next mac entry index
++*       indexWasFoundPtr          - propety, that next mac entry index was found
++*       entryWasFoundPtr          - propety, that next mac entry was found
++*       searchedValidPtr          - searched valid property
++*       searchedSkipPtr           - searched skip property
++*       searchedAgedPtr           - searched aged property
++*       patternMacEtnryPtr        - pattern mac entry from lua stack
++*       maskMacEtnryPtr           - mask mac entry from lua stack
++*       searchedMacEtnryPtr       - searched mac entry
++*       errorMessagePtr           - error message
++*
++* RETURNS:
++*       execution status
++*
++* COMMENTS:
++*
++*******************************************************************************/
++GT_STATUS prvCpssDxChNextValidFdbIpPrefixEcmpDataGet
++(
++    IN lua_State                        *L,
++    IN  GT_32                           L_index,
++    IN    GT_U8                         devNum,
++    IN    CPSS_IP_PROTOCOL_STACK_ENT    ipProtocolStack,
++    INOUT GT_IP_ADDR_TYPE_UNT           *ipAddrPtr,
++    INOUT GT_U32_PTR                    prefixLenPtr,
++    OUT   GT_BOOL                       *isIpPrefixFoundPtr,
++    OUT   GT_U32_PTR                    ipUcRouteEntryIndexPtr,
++    INOUT GT_U32_PTR                    vrId,
++    OUT   GT_U32_PTR                    isEcmpPtr,
++    OUT   GT_U32_PTR                    baseEcmpIndexPtr,
++    OUT   GT_U32_PTR                    numEcmpPathsPtr,
++    IN    GT_BOOL                   searchOnlyValid,
++    INOUT GT_U32_PTR                macEntryIndexPtr,
++    OUT   GT_BOOL                   *indexWasFoundPtr,
++    OUT   GT_BOOL                   *entryWasFoundPtr,
++    OUT   GT_BOOL                   *searchedValidPtr,
++    OUT   GT_BOOL                   *searchedSkipPtr,
++    OUT   GT_BOOL                   *searchedAgedPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *patternMacEtnryPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *maskMacEtnryPtr,
++    OUT   CPSS_MAC_ENTRY_EXT_STC    *searchedMacEntryPtr,
++    OUT   GT_CHAR_PTR               *errorMessagePtr
++    P_CALLING_FORMAL_DATA
++)
++{
++    CPSS_DXCH_IP_TCAM_ROUTE_ENTRY_INFO_UNT nextHopInfo;
++    GT_U32                              nextHopIndex;/* the index of the next hop in the NH table*/
++    GT_BOOL                             isIpV4PrefixChecked = GT_FALSE;
++    static GT_U32                       counter             = 0;
++    GT_STATUS                           status              = GT_OK;
++    CPSS_DXCH_IP_ECMP_ENTRY_STC         ecmpEntry;
++    GT_U32                              ecmpEntryIndex      = 0;
++    GT_U32                              i;
++    GT_U32                              ipUcRouteEntryIndex = 0;
++
++    GT_BOOL                 isSearchedAgedPropertyTaken = GT_FALSE;
++    GT_BOOL                 patternAged                 = GT_FALSE;
++    GT_BOOL                 maskAged                    = (GT_BOOL) - 1;
++    GT_BOOL                 isSearchedMacEntryTaken     = GT_FALSE;
++    GT_U32                  fdbTableSize    = 0;
++
++    searchOnlyValid = searchOnlyValid;
++
++    *isIpPrefixFoundPtr = GT_FALSE;
++    *isEcmpPtr          = 0;
++
++    cpssOsMemSet(&ecmpEntry, 0 , sizeof(ecmpEntry));
++    cpssOsMemSet(&nextHopInfo, 0, sizeof(nextHopInfo));
++
++    cpssOsMemSet(searchedMacEntryPtr, 0xFF, sizeof(CPSS_MAC_ENTRY_EXT_STC));
++
++    if (prvCpssIsDevExists(devNum))
++    {
++        status = prvCpssDxChBrgFdbTableSizeGet(devNum, &fdbTableSize, errorMessagePtr);
++        /* if the index is bigger then the FDB table size we should finish*/
++        if (*macEntryIndexPtr >= fdbTableSize)
++        {
++            status=GT_NO_MORE;
++            *indexWasFoundPtr = GT_FALSE;
++            *entryWasFoundPtr = GT_FALSE;
++            return status;
++        }
++        status = prvCpssDxChBrgNextEntryIndexAndAgedAndMacEntryFromLuaGet
++                        (L, L_index, devNum, GT_TRUE, macEntryIndexPtr,
++                         indexWasFoundPtr, &isSearchedAgedPropertyTaken,
++                         &patternAged, &maskAged, &isSearchedMacEntryTaken,
++                         patternMacEtnryPtr, maskMacEtnryPtr, errorMessagePtr
++                         P_CALLING_ACTUAL_DATA);
++
++        if ((GT_OK == status) && (GT_TRUE == *indexWasFoundPtr))
++        {
++            status = prvCpssDxChBrgFdbNextEntryGet(devNum,
++                                                   isSearchedAgedPropertyTaken || isSearchedMacEntryTaken,
++                                                   GT_TRUE,
++                                                   patternAged,
++                                                   maskAged,
++                                                   patternMacEtnryPtr,
++                                                   maskMacEtnryPtr,
++                                                   macEntryIndexPtr,
++                                                   searchedValidPtr,
++                                                   searchedSkipPtr,
++                                                   searchedAgedPtr,
++                                                   searchedMacEntryPtr,
++                                                   entryWasFoundPtr,
++                                                   errorMessagePtr
++                                                   P_CALLING_ACTUAL_DATA);
++            *indexWasFoundPtr = *entryWasFoundPtr;
++        }
++
++        /*deal only with ip uc prefixes */
++        if ((*entryWasFoundPtr==GT_TRUE)&&
++            (((ipProtocolStack==CPSS_IP_PROTOCOL_IPV4_E)&&
++             (searchedMacEntryPtr->key.entryType==CPSS_MAC_ENTRY_EXT_TYPE_IPV4_UC_E)&&
++             (searchedMacEntryPtr->fdbRoutingInfo.routingType==CPSS_FDB_UC_ROUTING_TYPE_MULTIPATH_ROUTER_E)) ||    /*deal only with ECMP prefixes */
++             ((ipProtocolStack==CPSS_IP_PROTOCOL_IPV6_E)&&
++              (searchedMacEntryPtr->key.entryType==CPSS_MAC_ENTRY_EXT_TYPE_IPV6_UC_ADDR_ENTRY_E))))
++        {
++            if (PRV_CPSS_SIP_6_CHECK_MAC(devNum) == GT_TRUE)
++            {
++                status = cpssDxChIpFdbRoutePrefixLenGet(devNum, ipProtocolStack, prefixLenPtr);
++                if (status!=GT_OK)
++                {
++                     *indexWasFoundPtr=GT_TRUE;
++                     *entryWasFoundPtr=GT_FALSE;
++                     return status;
++                }
++            }
++            else
++            {
++                if (ipProtocolStack==CPSS_IP_PROTOCOL_IPV4_E)
++                    *prefixLenPtr=32;
++                else
++                    *prefixLenPtr=128;
++
++            }
++            if (ipProtocolStack==CPSS_IP_PROTOCOL_IPV4_E)
++            {
++                 *vrId = searchedMacEntryPtr->key.key.ipv4Unicast.vrfId;
++                 cpssOsMemCpy(&(ipAddrPtr->ipv4Addr.arIP[0]), &(searchedMacEntryPtr->key.key.ipv4Unicast.dip[0]), sizeof(ipAddrPtr->ipv4Addr.arIP));
++            }
++            else /* ipv6 key*/
++            {
++                 *vrId = searchedMacEntryPtr->key.key.ipv6Unicast.vrfId;
++                 /* only after readding the data we have the full key
++                    bits 0-21 is taken from the data entry
++                    bits 22-127 is taken from the key entry */
++                 ipAddrPtr->ipv6Addr.arIP[2]=(searchedMacEntryPtr->key.key.ipv6Unicast.dip[2]&0x3);
++                 cpssOsMemCpy(&(ipAddrPtr->ipv6Addr.arIP[3]), &(searchedMacEntryPtr->key.key.ipv6Unicast.dip[3]), 13*sizeof(GT_U8));
++
++                /* read ipv6 data */
++                if (PRV_CPSS_SIP_6_CHECK_MAC(devNum) == GT_TRUE)
++                {    /* On SIP-6, IPV6 UC Address entry must be in even bank, and Data entry immediately follows */
++                    *macEntryIndexPtr = *macEntryIndexPtr + 1;
++
++                    status = prvCpssDxChBrgFdbNextEntryGet(devNum,
++                                                       isSearchedAgedPropertyTaken || isSearchedMacEntryTaken,
++                                                       GT_TRUE,
++                                                       patternAged,
++                                                       maskAged,
++                                                       patternMacEtnryPtr,
++                                                       maskMacEtnryPtr,
++                                                       macEntryIndexPtr,
++                                                       searchedValidPtr,
++                                                       searchedSkipPtr,
++                                                       searchedAgedPtr,
++                                                       searchedMacEntryPtr,
++                                                       entryWasFoundPtr,
++                                                       errorMessagePtr
++                                                       P_CALLING_ACTUAL_DATA);
++                    *indexWasFoundPtr = *entryWasFoundPtr;
++
++                    if ((*entryWasFoundPtr!=GT_TRUE)||
++                        (ipProtocolStack!=CPSS_IP_PROTOCOL_IPV6_E)||
++                        (searchedMacEntryPtr->key.entryType!=CPSS_MAC_ENTRY_EXT_TYPE_IPV6_UC_DATA_ENTRY_E)||
++                        (searchedMacEntryPtr->fdbRoutingInfo.routingType!=CPSS_FDB_UC_ROUTING_TYPE_MULTIPATH_ROUTER_E))
++                    {
++                        /* the entry is not an ipv6 entry data - should not be treated */
++                        /* the index was found but it does not fit to an ipv6 data entry */
++                        *indexWasFoundPtr=GT_TRUE;
++                        *entryWasFoundPtr=GT_FALSE;
++                    }
++
++                    /* only after readding the data we have the full key
++                    bits 0-21 is taken from the data entry
++                    bits 22-127 is taken from the key entry */
++                    ipAddrPtr->ipv6Addr.arIP[0]=searchedMacEntryPtr->key.key.ipv6Unicast.dip[0];
++                    ipAddrPtr->ipv6Addr.arIP[1]=searchedMacEntryPtr->key.key.ipv6Unicast.dip[1];
++                    ipAddrPtr->ipv6Addr.arIP[2]|=((searchedMacEntryPtr->key.key.ipv6Unicast.dip[2]>>2)&0x3F)<<2;
++                }
++                else
++                {
++                    /* ipv6 show is not supported for non sip6 - due to lack of capability to know where the data is located */
++                     *indexWasFoundPtr=GT_TRUE;
++                     *entryWasFoundPtr=GT_FALSE;
++                }
++            }
++
++            if (*entryWasFoundPtr==GT_TRUE)
++            {
++                *isIpPrefixFoundPtr = GT_TRUE;
++                nextHopInfo.ipLttEntry.routeEntryBaseIndex = searchedMacEntryPtr->fdbRoutingInfo.multipathPointer;
++                nextHopInfo.ipLttEntry.routeType=CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E;
++                ecmpEntryIndex = searchedMacEntryPtr->fdbRoutingInfo.multipathPointer;
++                counter++;
++
++                status = cpssDxChIpEcmpEntryRead(devNum, ecmpEntryIndex, &ecmpEntry);
++                if (GT_OK != status)
++                {
++                    return status;
++                }
++                nextHopInfo.ipLttEntry.numOfPaths = ecmpEntry.numOfPaths;
++
++                if ((PRV_CPSS_SIP_6_CHECK_MAC(devNum) == GT_TRUE)||
++                    (PRV_CPSS_SIP_5_25_CHECK_MAC(devNum)== GT_TRUE))
++                {
++                    /* take the ecmpEntry data and fetch with it the correct entry in the ECMP indirect table */
++                    status = cpssDxChIpEcmpIndirectNextHopEntryGet(devNum,ecmpEntry.routeEntryBaseIndex,&nextHopIndex);
++                    if (GT_OK != status)
++                    {
++                        return status;
++                    }
++                    for (i=0; i<ecmpEntry.numOfPaths; i++)
++                    {
++                        ipUcRouteEntryIndex = nextHopIndex + i;
++                        status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                                    ipUcRouteEntryIndex, &isIpV4PrefixChecked, errorMessagePtr
++                                    P_CALLING_ACTUAL_DATA);
++                        if (GT_OK != status)
++                        {
++                            return status;
++                        }
++                    }
++                    *ipUcRouteEntryIndexPtr = nextHopIndex;
++                }
++                else
++                {
++                    /*for SIP5 devices  ECMP table point directly to the NH table */
++                    for (i=0; i<ecmpEntry.numOfPaths; i++)
++                    {
++                        ipUcRouteEntryIndex = ecmpEntry.routeEntryBaseIndex + i;
++                        status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                                    ipUcRouteEntryIndex, &isIpV4PrefixChecked, errorMessagePtr
++                                    P_CALLING_ACTUAL_DATA);
++                        if (GT_OK != status)
++                        {
++                            return status;
++                        }
++                    }
++                    *ipUcRouteEntryIndexPtr = ecmpEntry.routeEntryBaseIndex;
++                }
++
++                *isEcmpPtr = 1;
++                *baseEcmpIndexPtr = nextHopInfo.ipLttEntry.routeEntryBaseIndex;
++                *numEcmpPathsPtr  = ecmpEntry.numOfPaths;
++            }
++        }
++        else
++        {
++            /* the entry is not an ip entry - should not be treated */
++            /* the index was found but it does not fit to an ipv4 entry */
++            *indexWasFoundPtr=GT_TRUE;
++            *entryWasFoundPtr=GT_FALSE;
++        }
++    }
++    return status;
++}
+ 
+ /*******************************************************************************
+ * wrlCpssDxChIsRoutingPolicyBased
+@@ -1646,19 +2617,230 @@ int wrlCpssDxChIpUcRouteEntryRead
+     returned_param_count    +=
+         prvWrlCpssStatusToLuaPush(status, L, error_message);
+     returned_param_count    +=
+-        pvrCpssDxChIpUnicastEntryOnConditionPush(status, L, &routeEntry,
+-                                                 GT_TRUE);
++        pvrCpssDxChIpUnicastEntryOnConditionPush(status, L, &routeEntry,
++                                                 GT_TRUE);
++    return returned_param_count;
++}
++
++
++/*******************************************************************************
++* wrlCpssDxChIpUcRouteEntryWrite
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Writing of ip unicast entry.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*        L                - lua state (device number and route entry index
++*                           pushed to lua stack)
++*
++* OUTPUTS:
++*
++* RETURNS:
++*       1; GT_OK if operation succed
++*       2; error code and error message, if error occures
++*
++* COMMENTS:
++*
++*******************************************************************************/
++int wrlCpssDxChIpUcRouteEntryWrite
++(
++    IN lua_State            *L
++)
++{
++    GT_U8                   devNum          = (GT_U8)  lua_tonumber(L, 1);
++                                                                    /* devId */
++    GT_U32                  routeEntryIndex = (GT_U32) lua_tonumber(L, 2);
++                                                        /* route entry index */
++    GT_BOOL                 isRouteEntryTaken
++                                            = GT_FALSE;
++    CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC
++                            routeEntry;
++    GT_STATUS               status          = GT_OK;
++    GT_CHAR_PTR             error_message   = NULL;
++    GT_U32                  tmpHWDevNum;
++    P_CALLING_CHECKING;
++
++    status = pvrCpssDxChIpUnicastEntryFromLuaGet(L, 3, &isRouteEntryTaken,
++                                                 &routeEntry, &error_message);
++
++    tmpHWDevNum = PRV_CPSS_HW_DEV_NUM_MAC(devNum);
++    routeEntry.entry.regularEntry.nextHopInterface.devPort.hwDevNum = tmpHWDevNum;
++    if (GT_FALSE == isRouteEntryTaken)
++    {
++        error_message   = ipUcRouteEntryFromLuaGettingErrorMessage;
++    }
++
++    if (GT_OK == status)
++    {
++        status = cpssDxChIpUcRouteEntriesWrite(devNum, routeEntryIndex,
++                                               &routeEntry, 1);
++        P_CALLING_API(
++            cpssDxChIpUcRouteEntriesWrite,
++            PC_NUMBER(devNum,           devNum,                          GT_U8,
++            PC_NUMBER(routeEntryIndex,  baseRouteEntryIndex,            GT_U32,
++            PC_STRUCT(&routeEntry,      routeEntriesArray,
++                                               CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC,
++            PC_NUMBER(1,                numOfRouteEntries,              GT_U32,
++            PC_LAST_PARAM)))),
++            PC_STATUS);
++        if (GT_OK != status)
++        {
++            error_message = ipUcRouteEntryWriteErrorMessage;
++        }
++    }
++
++    return prvWrlCpssStatusToLuaPush(status, L, error_message);
++}
++
++
++/*******************************************************************************
++* wrlCpssDxChIpUcRouteEntryValidityCheck
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Ip unicast route entry validity check under all devices.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       L                 - lua state (ip unicast entry index pushed to lua
++*                           stack)
++*
++* OUTPUTS:
++*
++* RETURNS:
++*       2; GT_OK and ip unicast entry validity is pused to lua stack if no
++*       errors occurs
++*       2; error code and error message, if error occures
++*
++* COMMENTS:
++*
++*******************************************************************************/
++GT_STATUS wrlCpssDxChIpUcRouteEntryValidityCheck
++(
++    IN lua_State            *L
++)
++{
++    GT_U32                  ipUcRouteEntryIndex     =
++                                                    (GT_U32) lua_tonumber(L, 1);
++                                                /* ip uc route entry index */
++    GT_BOOL                 isValidIpUcRouteEntry   = GT_FALSE;
++    GT_STATUS               status                  = GT_OK;
++    GT_CHAR_PTR             error_message           = NULL;
++    int                     returned_param_count    = 0;
++    P_CALLING_CHECKING;
++
++    status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
++                 ipUcRouteEntryIndex, &isValidIpUcRouteEntry, &error_message
++                 P_CALLING_ACTUAL_DATA);
++
++    returned_param_count    +=
++        prvWrlCpssStatusToLuaPush(status, L, error_message);
++    returned_param_count    +=
++        pvrCpssBooleanToLuaPush(status, L, isValidIpUcRouteEntry);
++    return returned_param_count;
++}
++
++
++/*******************************************************************************
++* wrlCpssDxChNextIpUcRouteEntryGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of next arp entry.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*        L                   - lua state (device number and entry index should
++*                              be pushed to lua stack)
++*
++* OUTPUTS:
++*
++* RETURNS:
++*       2; GT_OK and next ip unicast route entry is pused to lua stack if no
++*       errors occurs and such entry exists
++*       1; GT_OK is pused to lua stack if no errors occurs and such entry is not
++*       exists
++*       2; error code and error message, if error occures
++*
++* COMMENTS:
++*
++*******************************************************************************/
++int wrlCpssDxChNextIpUcRouteEntryGet
++(
++    IN lua_State            *L
++)
++{
++    GT_U8                               devNum                  =
++                                                    (GT_U8)  lua_tonumber(L, 1);
++                                                                    /* devId */
++    GT_U32                              ipUcRouteEntryIndex     =
++                                                    (GT_U32) lua_tonumber(L, 2);
++                                                        /* arp entry index */
++    GT_U32                              maximumRouterArpIndex   = 0;
++    GT_BOOL                             ipUcRouteEntryWasFound  = GT_FALSE;
++    CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC     ipUcRouteEntry;
++    GT_STATUS                           status                  = GT_OK;
++    GT_CHAR_PTR                         error_message           = NULL;
++    int                                 returned_param_count    = 0;
++    P_CALLING_CHECKING;
++
++    cpssOsMemSet(&ipUcRouteEntry, 0, sizeof(ipUcRouteEntry));
++
++    status = prvCpssDxChMaximumRouterNextHopEntryIndex(devNum, &maximumRouterArpIndex,
++                                              &error_message);
++
++    while ((GT_OK == status) && (GT_FALSE == ipUcRouteEntryWasFound) &&
++           (ipUcRouteEntryIndex < maximumRouterArpIndex))
++    {
++        status = prvCpssDxChIpUcRouteEntryGetAndItsValidityCheck(
++                     devNum, ipUcRouteEntryIndex++, &ipUcRouteEntryWasFound,
++                     &ipUcRouteEntry, &error_message P_CALLING_ACTUAL_DATA);
++    }
++
++    if (GT_TRUE == ipUcRouteEntryWasFound)
++    {
++        ipUcRouteEntryIndex--;
++    }
++
++    returned_param_count    +=
++        prvWrlCpssStatusToLuaPush(status, L, error_message);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, ipUcRouteEntryIndex,
++                                          ipUcRouteEntryWasFound);
++    returned_param_count    +=
++        pvrCpssDxChIpUnicastEntryOnConditionPush(status, L, &ipUcRouteEntry,
++                                                 ipUcRouteEntryWasFound);
+     return returned_param_count;
+ }
+ 
+ 
+ /*******************************************************************************
+-* wrlCpssDxChIpUcRouteEntryWrite
++* wrlCpssDxChIpLpmIpUcPrefixExist
+ *
+ * DESCRIPTION:
+ *       Function Relevant mode : All modes
+ *
+-*       Writing of ip unicast entry.
++*       Checks if ip v4 or v6 prefix exists.
+ *
+ * APPLICABLE DEVICES:
+ *        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
+@@ -1667,76 +2849,98 @@ int wrlCpssDxChIpUcRouteEntryRead
+ *        None.
+ *
+ * INPUTS:
+-*        L                - lua state (device number and route entry index
+-*                           pushed to lua stack)
++*        L                   - lua state (vrfId, ip protocol, ip address and
++*                              its length pushed to lua stack)
+ *
+ * OUTPUTS:
+ *
+ * RETURNS:
+-*       1; GT_OK if operation succed
++*       2; GT_OK and ip unicast entry validity is pused to lua stack if no
++*       errors occurs
+ *       2; error code and error message, if error occures
+ *
+ * COMMENTS:
+ *
+ *******************************************************************************/
+-int wrlCpssDxChIpUcRouteEntryWrite
++int wrlCpssDxChIpLpmIpUcPrefixExist
+ (
+     IN lua_State            *L
+ )
+ {
+-    GT_U8                   devNum          = (GT_U8)  lua_tonumber(L, 1);
+-                                                                    /* devId */
+-    GT_U32                  routeEntryIndex = (GT_U32) lua_tonumber(L, 2);
+-                                                        /* route entry index */
+-    GT_BOOL                 isRouteEntryTaken
+-                                            = GT_FALSE;
+-    CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC
+-                            routeEntry;
+-    GT_STATUS               status          = GT_OK;
+-    GT_CHAR_PTR             error_message   = NULL;
+-    GT_U32                  tmpHWDevNum;
++    CPSS_IP_PROTOCOL_STACK_ENT  ipProtocolStack = CPSS_IP_PROTOCOL_IPV4_E;
++    GT_IP_ADDR_TYPE_UNT     ipAddress;
++    GT_U32                  vrfId               = (GT_U32) lua_tonumber(L, 1);
++    GT_U32                  prefixLen           = (GT_U8)  lua_tonumber(L, 4);
++                                                           /* prefix length */
++    GT_BOOL                 isIpV4PrefixExist       = GT_FALSE;
++    GT_U32                  ipUcRouteEntryIndex     = 0;
++    CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ENT             routeType=CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_REGULAR_E;
++    GT_STATUS               status                  = GT_OK;
++    GT_CHAR_PTR             error_message           = NULL;
++    GT_CHAR_PTR             routeTypeStr            = NULL;
++    int                     returned_param_count    = 0;
+     P_CALLING_CHECKING;
+ 
+-    status = pvrCpssDxChIpUnicastEntryFromLuaGet(L, 3, &isRouteEntryTaken,
+-                                                 &routeEntry, &error_message);
+-
+-    tmpHWDevNum = PRV_CPSS_HW_DEV_NUM_MAC(devNum);
+-    routeEntry.entry.regularEntry.nextHopInterface.devPort.hwDevNum = tmpHWDevNum;
+-    if (GT_FALSE == isRouteEntryTaken)
++    status = pvrCpssIpProtocolFromLuaGet(L, 2, &ipProtocolStack,
++                                         &error_message);
++    if (GT_OK == status)
+     {
+-        error_message   = ipUcRouteEntryFromLuaGettingErrorMessage;
++        status = pvrCpssIpAddrFromLuaGet(L, 3, ipProtocolStack, &ipAddress,
++                                         &error_message);
++    }
++    else
++    {
++        cpssOsMemSet(&ipAddress, 0, sizeof(ipAddress));
+     }
+ 
+     if (GT_OK == status)
+     {
+-        status = cpssDxChIpUcRouteEntriesWrite(devNum, routeEntryIndex,
+-                                               &routeEntry, 1);
+-        P_CALLING_API(
+-            cpssDxChIpUcRouteEntriesWrite,
+-            PC_NUMBER(devNum,           devNum,                          GT_U8,
+-            PC_NUMBER(routeEntryIndex,  baseRouteEntryIndex,            GT_U32,
+-            PC_STRUCT(&routeEntry,      routeEntriesArray,
+-                                               CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC,
+-            PC_NUMBER(1,                numOfRouteEntries,              GT_U32,
+-            PC_LAST_PARAM)))),
+-            PC_STATUS);
+-        if (GT_OK != status)
+-        {
+-            error_message = ipUcRouteEntryWriteErrorMessage;
+-        }
++        status = prvCpssDxChIpPrefixIpUcRouteEntryGet(vrfId,
++                                                      ipProtocolStack,
++                                                      &ipAddress, prefixLen,
++                                                      &isIpV4PrefixExist,
++                                                      &ipUcRouteEntryIndex,
++                                                      &routeType,
++                                                      &error_message
++                                                      P_CALLING_ACTUAL_DATA);
+     }
+ 
+-    return prvWrlCpssStatusToLuaPush(status, L, error_message);
++    switch(routeType){
++    case CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E:
++        routeTypeStr = "ECMP";
++        break;
++    case CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_QOS_E:
++        routeTypeStr = "QOS";
++        break;
++    case CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_REGULAR_E:
++        routeTypeStr = "REGULAR";
++        break;
++    default:
++        break;
++    }
++
++    returned_param_count    +=
++        prvWrlCpssStatusToLuaPush(status, L, error_message);
++    returned_param_count    +=
++        pvrCpssBooleanToLuaPush(status, L, isIpV4PrefixExist);
++    returned_param_count    +=
++        pvrCpssStringToLuaOnConditionPush(status, L, routeTypeStr,
++                                          isIpV4PrefixExist);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, ipUcRouteEntryIndex,
++                                          isIpV4PrefixExist);
++    return returned_param_count;
+ }
+ 
+ 
+ /*******************************************************************************
+-* wrlCpssDxChIpUcRouteEntryValidityCheck
++* wrlCpssDxChNextValidIpPrefixDataGet
+ *
+ * DESCRIPTION:
+ *       Function Relevant mode : All modes
+ *
+-*       Ip unicast route entry validity check under all devices.
++*       Getting of next valid ip v4 or v6 prefix its length and its ip unicats
++*       route entry index.
+ *
+ * APPLICABLE DEVICES:
+ *        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
+@@ -1745,52 +2949,105 @@ int wrlCpssDxChIpUcRouteEntryWrite
+ *        None.
+ *
+ * INPUTS:
+-*       L                 - lua state (ip unicast entry index pushed to lua
+-*                           stack)
++*        L                   - lua state (ip protocol, prefix ip address and
++*                              prefix length should be pushed to lua stack)
+ *
+ * OUTPUTS:
+ *
+ * RETURNS:
+-*       2; GT_OK and ip unicast entry validity is pused to lua stack if no
+-*       errors occurs
++*       2; GT_OK and prefix ip address, prefix length, prefix next-hop entry
++*       index
++*       1; GT_OK if next valid ip prefix not found and no error occures
+ *       2; error code and error message, if error occures
+ *
+ * COMMENTS:
+ *
+ *******************************************************************************/
+-GT_STATUS wrlCpssDxChIpUcRouteEntryValidityCheck
++int wrlCpssDxChNextValidIpPrefixDataGet
+ (
+     IN lua_State            *L
+ )
+ {
+-    GT_U32                  ipUcRouteEntryIndex     =
+-                                                    (GT_U32) lua_tonumber(L, 1);
+-                                                /* ip uc route entry index */
+-    GT_BOOL                 isValidIpUcRouteEntry   = GT_FALSE;
+-    GT_STATUS               status                  = GT_OK;
+-    GT_CHAR_PTR             error_message           = NULL;
+-    int                     returned_param_count    = 0;
++    CPSS_IP_PROTOCOL_STACK_ENT  ipProtocolStack         =
++                                                        CPSS_IP_PROTOCOL_IPV4_E;
++    GT_IP_ADDR_TYPE_UNT         ipAddress;
++    GT_U32                      prefixLen               =
++                                                    (GT_U32) lua_tonumber(L, 3);
++                                                            /* prefix length */
++    GT_BOOL                     isIpV4PrefixFound       = GT_FALSE;
++    GT_U32                      ipUcRouteEntryIndex     = 0;
++    GT_STATUS                   status                  = GT_OK;
++    GT_CHAR_PTR                 error_message           = NULL;
++    GT_U32                      vrId                    = (GT_U32) lua_tonumber(L, 4);
++    int                         returned_param_count    = 0;
++    GT_U32                      isEcmp                  = 0;
++    GT_U32                      baseEcmpIndex           = 0;
++    GT_U32                      numEcmpPaths            = 0;
+     P_CALLING_CHECKING;
+ 
+-    status = prvCpssDxChIpUcRouteEntryValidityCheckOnAllDevices(
+-                 ipUcRouteEntryIndex, &isValidIpUcRouteEntry, &error_message
+-                 P_CALLING_ACTUAL_DATA);
++    status = pvrCpssIpProtocolFromLuaGet(L, 1, &ipProtocolStack,
++                                         &error_message);
++
++    if (GT_OK == status)
++    {
++        status = pvrCpssIpAddrFromLuaGet(L, 2, ipProtocolStack, &ipAddress,
++                                         &error_message);
++    }
++    else
++    {
++        cpssOsMemSet(&ipAddress, 0, sizeof(ipAddress));
++    }
++
++    if (GT_OK == status)
++    {
++        status = prvCpssDxChNextValidIpPrefixDataGet(ipProtocolStack, &ipAddress,
++                                                     &prefixLen,
++                                                     &isIpV4PrefixFound,
++                                                     &ipUcRouteEntryIndex,
++                                                     &error_message,
++                                                     &vrId,
++                                                     &isEcmp,
++                                                     &baseEcmpIndex,
++                                                     &numEcmpPaths
++                                                     P_CALLING_ACTUAL_DATA);
++    }
+ 
+     returned_param_count    +=
+         prvWrlCpssStatusToLuaPush(status, L, error_message);
++
+     returned_param_count    +=
+-        pvrCpssBooleanToLuaPush(status, L, isValidIpUcRouteEntry);
++        pvrCpssIpAddrToLuaOnConditionPush(status, L, ipProtocolStack,
++                                          &ipAddress, isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, prefixLen,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, ipUcRouteEntryIndex,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, vrId,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, isEcmp,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, baseEcmpIndex,
++                                          isIpV4PrefixFound);
++
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, numEcmpPaths,
++                                          isIpV4PrefixFound);
+     return returned_param_count;
+ }
+ 
+-
+ /*******************************************************************************
+-* wrlCpssDxChNextIpUcRouteEntryGet
++* wrlCpssDxChNextValidIpPrefixEcmpDataGet
+ *
+ * DESCRIPTION:
+ *       Function Relevant mode : All modes
+ *
+-*       Getting of next arp entry.
++*       Getting of next valid ip v4 or v6 prefix its length its ip route entry index
++*       and its ecmp info.
+ *
+ * APPLICABLE DEVICES:
+ *        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
+@@ -1799,250 +3056,337 @@ GT_STATUS wrlCpssDxChIpUcRouteEntryValidityCheck
+ *        None.
+ *
+ * INPUTS:
+-*        L                   - lua state (device number and entry index should
+-*                              be pushed to lua stack)
++*        L                   - lua state (ip protocol, prefix ip address and
++*                              prefix length should be pushed to lua stack)
+ *
+ * OUTPUTS:
+ *
+ * RETURNS:
+-*       2; GT_OK and next ip unicast route entry is pused to lua stack if no
+-*       errors occurs and such entry exists
+-*       1; GT_OK is pused to lua stack if no errors occurs and such entry is not
+-*       exists
++*       2; GT_OK and prefix ip address, prefix length, prefix next-hop entry
++*       index and ecmp info
++*       1; GT_OK if next valid ip prefix not found and no error occures
+ *       2; error code and error message, if error occures
+ *
+ * COMMENTS:
+ *
+ *******************************************************************************/
+-int wrlCpssDxChNextIpUcRouteEntryGet
++int wrlCpssDxChNextValidIpPrefixEcmpDataGet
+ (
+     IN lua_State            *L
+ )
+ {
+-    GT_U8                               devNum                  =
+-                                                    (GT_U8)  lua_tonumber(L, 1);
+-                                                                    /* devId */
+-    GT_U32                              ipUcRouteEntryIndex     =
+-                                                    (GT_U32) lua_tonumber(L, 2);
+-                                                        /* arp entry index */
+-    GT_U32                              maximumRouterArpIndex   = 0;
+-    GT_BOOL                             ipUcRouteEntryWasFound  = GT_FALSE;
+-    CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC     ipUcRouteEntry;
+-    GT_STATUS                           status                  = GT_OK;
+-    GT_CHAR_PTR                         error_message           = NULL;
+-    int                                 returned_param_count    = 0;
++    CPSS_IP_PROTOCOL_STACK_ENT  ipProtocolStack         =
++                                                        CPSS_IP_PROTOCOL_IPV4_E;
++    GT_IP_ADDR_TYPE_UNT         ipAddress;
++    GT_U32                      prefixLen               =
++                                                    (GT_U32) lua_tonumber(L, 3);
++                                                            /* prefix length */
++    GT_BOOL                     isIpV4PrefixFound       = GT_FALSE;
++    GT_U32                      ipUcRouteEntryIndex     = 0;
++    GT_STATUS                   status                  = GT_OK;
++    GT_CHAR_PTR                 error_message           = NULL;
++    GT_U32                      vrId                    = (GT_U32) lua_tonumber(L, 4);
++    int                         returned_param_count    = 0;
++    GT_U32                      isEcmp                  = 0;
++    GT_U32                      baseEcmpIndex           = 0;
++    GT_U32                      numEcmpPaths            = 0;
+     P_CALLING_CHECKING;
+ 
+-    cpssOsMemSet(&ipUcRouteEntry, 0, sizeof(ipUcRouteEntry));
+-
+-    status = prvCpssDxChMaximumRouterNextHopEntryIndex(devNum, &maximumRouterArpIndex,
+-                                              &error_message);
++    status = pvrCpssIpProtocolFromLuaGet(L, 1, &ipProtocolStack,
++                                         &error_message);
+ 
+-    while ((GT_OK == status) && (GT_FALSE == ipUcRouteEntryWasFound) &&
+-           (ipUcRouteEntryIndex < maximumRouterArpIndex))
++    if (GT_OK == status)
+     {
+-        status = prvCpssDxChIpUcRouteEntryGetAndItsValidityCheck(
+-                     devNum, ipUcRouteEntryIndex++, &ipUcRouteEntryWasFound,
+-                     &ipUcRouteEntry, &error_message P_CALLING_ACTUAL_DATA);
++        status = pvrCpssIpAddrFromLuaGet(L, 2, ipProtocolStack, &ipAddress,
++                                         &error_message);
++    }
++    else
++    {
++        cpssOsMemSet(&ipAddress, 0, sizeof(ipAddress));
+     }
+ 
+-    if (GT_TRUE == ipUcRouteEntryWasFound)
++    if (GT_OK == status)
+     {
+-        ipUcRouteEntryIndex--;
++        status = prvCpssDxChNextValidIpPrefixEcmpDataGet(ipProtocolStack, &ipAddress,
++                                                     &prefixLen,
++                                                     &isIpV4PrefixFound,
++                                                     &ipUcRouteEntryIndex,
++                                                     &error_message,
++                                                     &vrId,
++                                                     &isEcmp,
++                                                     &baseEcmpIndex,
++                                                     &numEcmpPaths
++                                                     P_CALLING_ACTUAL_DATA);
+     }
+ 
+     returned_param_count    +=
+         prvWrlCpssStatusToLuaPush(status, L, error_message);
++
++    returned_param_count    +=
++        pvrCpssIpAddrToLuaOnConditionPush(status, L, ipProtocolStack,
++                                          &ipAddress, isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, prefixLen,
++                                          isIpV4PrefixFound);
+     returned_param_count    +=
+         pvrCpssNumberToLuaOnConditionPush(status, L, ipUcRouteEntryIndex,
+-                                          ipUcRouteEntryWasFound);
++                                          isIpV4PrefixFound);
+     returned_param_count    +=
+-        pvrCpssDxChIpUnicastEntryOnConditionPush(status, L, &ipUcRouteEntry,
+-                                                 ipUcRouteEntryWasFound);
++        pvrCpssNumberToLuaOnConditionPush(status, L, vrId,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, isEcmp,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, baseEcmpIndex,
++                                          isIpV4PrefixFound);
++
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, numEcmpPaths,
++                                          isIpV4PrefixFound);
+     return returned_param_count;
+ }
+ 
+-
+ /*******************************************************************************
+-* wrlCpssDxChIpLpmIpUcPrefixExist
++* prvCpssDxChBrgFdbIpNextEntryAndItsIndexPushToLua
+ *
+ * DESCRIPTION:
+ *       Function Relevant mode : All modes
+ *
+-*       Checks if ip v4 or v6 prefix exists.
++*       Getting of next ip fdb entry and its index with getting data from lua,
++*       pushing result to lua stack.
+ *
+ * APPLICABLE DEVICES:
+-*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*       DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
+ *
+ * NOT APPLICABLE DEVICES:
+-*        None.
++*       None.
+ *
+ * INPUTS:
+-*        L                   - lua state (vrfId, ip protocol, ip address and
+-*                              its length pushed to lua stack)
++*       L                   - lua state (in stack should be device number,
++*                             starting index, optional parrenrs and masks)
++*       searchOnlyValid     - property of searching only valid entries
++*       P_CALLING_FORMAL_DATA
++*                           - general debug information (environment variables
++*                             etc); could be empty
+ *
+ * OUTPUTS:
++*       status and FDB entry index, if exists, to lua stack
+ *
+ * RETURNS:
+-*       2; GT_OK and ip unicast entry validity is pused to lua stack if no
+-*       errors occurs
+-*       2; error code and error message, if error occures
+ *
+ * COMMENTS:
+ *
+ *******************************************************************************/
+-int wrlCpssDxChIpLpmIpUcPrefixExist
++int prvCpssDxChBrgFdbIpNextEntryAndItsIndexPushToLua
+ (
+-    IN lua_State            *L
++    IN  lua_State           *L,
++    IN GT_BOOL              searchOnlyValid
++    P_CALLING_FORMAL_DATA
+ )
+ {
+-    CPSS_IP_PROTOCOL_STACK_ENT  ipProtocolStack = CPSS_IP_PROTOCOL_IPV4_E;
+-    GT_IP_ADDR_TYPE_UNT     ipAddress;
+-    GT_U32                  vrfId               = (GT_U32) lua_tonumber(L, 1);
+-    GT_U32                  prefixLen           = (GT_U8)  lua_tonumber(L, 4);
+-                                                           /* prefix length */
+-    GT_BOOL                 isIpV4PrefixExist       = GT_FALSE;
+-    GT_U32                  ipUcRouteEntryIndex     = 0;
+-    CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ENT             routeType=CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_REGULAR_E;
+     GT_STATUS               status                  = GT_OK;
+     GT_CHAR_PTR             error_message           = NULL;
+-    GT_CHAR_PTR             routeTypeStr            = NULL;
+     int                     returned_param_count    = 0;
+-    P_CALLING_CHECKING;
+ 
+-    status = pvrCpssIpProtocolFromLuaGet(L, 2, &ipProtocolStack,
+-                                         &error_message);
+-    if (GT_OK == status)
+-    {
+-        status = pvrCpssIpAddrFromLuaGet(L, 3, ipProtocolStack, &ipAddress,
+-                                         &error_message);
+-    }
+-    else
+-    {
+-        cpssOsMemSet(&ipAddress, 0, sizeof(ipAddress));
+-    }
++    GT_U8                   devNum                  =(GT_U8)  lua_tonumber(L, 1);
++                                                                    /* devId */
++    GT_U32                  index                   =(GT_U32) lua_tonumber(L, 2);
++                                                                    /* index */
++    GT_U32                  prefixLen;
++    GT_U32                  vrId;
++    CPSS_IP_PROTOCOL_STACK_ENT   ipProtocolStack      = CPSS_IP_PROTOCOL_IPV4_E;
++    GT_IP_ADDR_TYPE_UNT         ipAddress;
++    GT_BOOL                     isIpV4PrefixFound       = GT_FALSE;
++    GT_U32                      ipUcRouteEntryIndex     = 0;
++    CPSS_DXCH_IP_UC_ROUTE_ENTRY_STC     ipUcRouteEntry;
++    GT_U32                      isEcmp                  = 0;
++    GT_U32                      baseEcmpIndex           = 0;
++    GT_U32                      numEcmpPaths            = 0;
++
++    GT_BOOL                 indexWasFound           = GT_FALSE;
++    GT_BOOL                 searchedValid           = GT_FALSE;
++    GT_BOOL                 searchedSkip            = GT_TRUE;
++    GT_BOOL                 searchedAged            = GT_FALSE;
++    CPSS_MAC_ENTRY_EXT_STC  patternMacEtnry, maskMacEtnry;
++    CPSS_MAC_ENTRY_EXT_STC  searchedMacEntry;
++    GT_BOOL                 entryWasFound           = GT_FALSE;
++
++    status = pvrCpssIpProtocolFromLuaGet(L, 3, &ipProtocolStack, &error_message);
++
++    cpssOsMemSet(&ipAddress, 0, sizeof(ipAddress));
+ 
+     if (GT_OK == status)
+     {
+-        status = prvCpssDxChIpPrefixIpUcRouteEntryGet(vrfId,
+-                                                      ipProtocolStack,
+-                                                      &ipAddress, prefixLen,
+-                                                      &isIpV4PrefixExist,
+-                                                      &ipUcRouteEntryIndex,
+-                                                      &routeType,
+-                                                      &error_message
+-                                                      P_CALLING_ACTUAL_DATA);
+-    }
+-
+-    switch(routeType){
+-    case CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E:
+-        routeTypeStr = "ECMP";
+-        break;
+-    case CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_QOS_E:
+-        routeTypeStr = "QOS";
+-        break;
+-    case CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_REGULAR_E:
+-        routeTypeStr = "REGULAR";
+-        break;
+-    default:
+-        break;
++       status = prvCpssDxChNextValidFdbIpPrefixDataGet(L,4,devNum,
++                                                            ipProtocolStack,
++                                                            &ipAddress,
++                                                            &prefixLen,
++                                                            &isIpV4PrefixFound,
++                                                            &ipUcRouteEntryIndex,
++                                                            &vrId,
++                                                            &isEcmp,
++                                                            &baseEcmpIndex,
++                                                            &numEcmpPaths,
++                                                            searchOnlyValid,
++                                                            &index,
++                                                            &indexWasFound,
++                                                            &entryWasFound,
++                                                            &searchedValid,
++                                                            &searchedSkip,
++                                                            &searchedAged,
++                                                            &patternMacEtnry,
++                                                            &maskMacEtnry,
++                                                            &searchedMacEntry,
++                                                            &ipUcRouteEntry,
++                                                            &error_message
++                                                            P_CALLING_ACTUAL_DATA);
+     }
+-
+     returned_param_count    +=
+         prvWrlCpssStatusToLuaPush(status, L, error_message);
+     returned_param_count    +=
+-        pvrCpssBooleanToLuaPush(status, L, isIpV4PrefixExist);
++        pvrCpssNumberToLuaOnConditionPush(status, L, index, indexWasFound);
+     returned_param_count    +=
+-        pvrCpssStringToLuaOnConditionPush(status, L, routeTypeStr,
+-                                          isIpV4PrefixExist);
++        pvrCpssValidSkipAgedToLuaOnConditionPush(status, L, searchedValid,
++                                                 searchedSkip, searchedAged,
++                                                 entryWasFound);
++    returned_param_count    +=
++        pvrCpssMacEntryToLuaOnConditionPush(status, L, &searchedMacEntry,
++                                            entryWasFound);
++
++    returned_param_count    +=
++        pvrCpssIpAddrToLuaOnConditionPush(status, L, ipProtocolStack,
++                                          &ipAddress, isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, prefixLen,
++                                          isIpV4PrefixFound);
+     returned_param_count    +=
+         pvrCpssNumberToLuaOnConditionPush(status, L, ipUcRouteEntryIndex,
+-                                          isIpV4PrefixExist);
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, vrId,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, isEcmp,
++                                          isIpV4PrefixFound);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, baseEcmpIndex,
++                                          isIpV4PrefixFound);
++
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, numEcmpPaths,
++                                          isIpV4PrefixFound);
++
++    returned_param_count    +=
++        pvrCpssDxChIpUnicastEntryOnConditionPush(status, L, &ipUcRouteEntry,
++                                          isIpV4PrefixFound);
+     return returned_param_count;
+ }
+ 
+-
+ /*******************************************************************************
+-* wrlCpssDxChNextValidIpPrefixDataGet
++* prvCpssDxChBrgFdbIpEcmpNextEntryAndItsIndexPushToLua
+ *
+ * DESCRIPTION:
+ *       Function Relevant mode : All modes
+ *
+-*       Getting of next valid ip v4 or v6 prefix its length and its ip unicats
+-*       route entry index.
++*       Getting of next ip ecmp fdb entry and its index with getting data from lua,
++*       pushing result to lua stack.
+ *
+ * APPLICABLE DEVICES:
+-*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*       DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
+ *
+ * NOT APPLICABLE DEVICES:
+-*        None.
++*       None.
+ *
+ * INPUTS:
+-*        L                   - lua state (ip protocol, prefix ip address and
+-*                              prefix length should be pushed to lua stack)
++*       L                   - lua state (in stack should be device number,
++*                             starting index, optional parrenrs and masks)
++*       searchOnlyValid     - property of searching only valid entries
++*       P_CALLING_FORMAL_DATA
++*                           - general debug information (environment variables
++*                             etc); could be empty
+ *
+ * OUTPUTS:
++*       status and FDB entry index, if exists, to lua stack
+ *
+ * RETURNS:
+-*       2; GT_OK and prefix ip address, prefix length, prefix next-hop entry
+-*       index
+-*       1; GT_OK if next valid ip prefix not found and no error occures
+-*       2; error code and error message, if error occures
+ *
+ * COMMENTS:
+ *
+ *******************************************************************************/
+-int wrlCpssDxChNextValidIpPrefixDataGet
++int prvCpssDxChBrgFdbIpEcmpNextEntryAndItsIndexPushToLua
+ (
+-    IN lua_State            *L
++    IN  lua_State           *L,
++    IN GT_BOOL              searchOnlyValid
++    P_CALLING_FORMAL_DATA
+ )
+ {
+-    CPSS_IP_PROTOCOL_STACK_ENT  ipProtocolStack         =
+-                                                        CPSS_IP_PROTOCOL_IPV4_E;
++    GT_STATUS               status                  = GT_OK;
++    GT_CHAR_PTR             error_message           = NULL;
++    int                     returned_param_count    = 0;
++
++    GT_U8                   devNum                  =(GT_U8)  lua_tonumber(L, 1);
++                                                                    /* devId */
++    GT_U32                  index                   =(GT_U32) lua_tonumber(L, 2);
++                                                                    /* index */
++    GT_U32                  prefixLen;
++    GT_U32                  vrId;
++    CPSS_IP_PROTOCOL_STACK_ENT   ipProtocolStack      = CPSS_IP_PROTOCOL_IPV4_E;
+     GT_IP_ADDR_TYPE_UNT         ipAddress;
+-    GT_U32                      prefixLen               =
+-                                                    (GT_U32) lua_tonumber(L, 3);
+-                                                            /* prefix length */
+     GT_BOOL                     isIpV4PrefixFound       = GT_FALSE;
+     GT_U32                      ipUcRouteEntryIndex     = 0;
+-    GT_STATUS                   status                  = GT_OK;
+-    GT_CHAR_PTR                 error_message           = NULL;
+-    GT_U32                      vrId                    = (GT_U32) lua_tonumber(L, 4);
+-    int                         returned_param_count    = 0;
+     GT_U32                      isEcmp                  = 0;
+     GT_U32                      baseEcmpIndex           = 0;
+     GT_U32                      numEcmpPaths            = 0;
+-    P_CALLING_CHECKING;
+ 
+-    status = pvrCpssIpProtocolFromLuaGet(L, 1, &ipProtocolStack,
+-                                         &error_message);
++    GT_BOOL                 indexWasFound           = GT_FALSE;
++    GT_BOOL                 searchedValid           = GT_FALSE;
++    GT_BOOL                 searchedSkip            = GT_TRUE;
++    GT_BOOL                 searchedAged            = GT_FALSE;
++    CPSS_MAC_ENTRY_EXT_STC  patternMacEtnry, maskMacEtnry;
++    CPSS_MAC_ENTRY_EXT_STC  searchedMacEntry;
++    GT_BOOL                 entryWasFound           = GT_FALSE;
+ 
+-    if (GT_OK == status)
+-    {
+-        status = pvrCpssIpAddrFromLuaGet(L, 2, ipProtocolStack, &ipAddress,
+-                                         &error_message);
+-    }
+-    else
+-    {
+-        cpssOsMemSet(&ipAddress, 0, sizeof(ipAddress));
+-    }
++    status = pvrCpssIpProtocolFromLuaGet(L, 3, &ipProtocolStack, &error_message);
++
++    cpssOsMemSet(&ipAddress, 0, sizeof(ipAddress));
+ 
+     if (GT_OK == status)
+     {
+-        status = prvCpssDxChNextValidIpPrefixDataGet(ipProtocolStack, &ipAddress,
+-                                                     &prefixLen,
+-                                                     &isIpV4PrefixFound,
+-                                                     &ipUcRouteEntryIndex,
+-                                                     &error_message,
+-                                                     &vrId,
+-                                                     &isEcmp,
+-                                                     &baseEcmpIndex,
+-                                                     &numEcmpPaths
+-                                                     P_CALLING_ACTUAL_DATA);
++       status = prvCpssDxChNextValidFdbIpPrefixEcmpDataGet(L,4,devNum,
++                                                            ipProtocolStack,
++                                                            &ipAddress,
++                                                            &prefixLen,
++                                                            &isIpV4PrefixFound,
++                                                            &ipUcRouteEntryIndex,
++                                                            &vrId,
++                                                            &isEcmp,
++                                                            &baseEcmpIndex,
++                                                            &numEcmpPaths,
++                                                            searchOnlyValid,
++                                                            &index,
++                                                            &indexWasFound,
++                                                            &entryWasFound,
++                                                            &searchedValid,
++                                                            &searchedSkip,
++                                                            &searchedAged,
++                                                            &patternMacEtnry,
++                                                            &maskMacEtnry,
++                                                            &searchedMacEntry,
++                                                            &error_message
++                                                            P_CALLING_ACTUAL_DATA);
+     }
+-
+     returned_param_count    +=
+         prvWrlCpssStatusToLuaPush(status, L, error_message);
++    returned_param_count    +=
++        pvrCpssNumberToLuaOnConditionPush(status, L, index, indexWasFound);
++    returned_param_count    +=
++        pvrCpssValidSkipAgedToLuaOnConditionPush(status, L, searchedValid,
++                                                 searchedSkip, searchedAged,
++                                                 entryWasFound);
++    returned_param_count    +=
++        pvrCpssMacEntryToLuaOnConditionPush(status, L, &searchedMacEntry,
++                                            entryWasFound);
+ 
+     returned_param_count    +=
+         pvrCpssIpAddrToLuaOnConditionPush(status, L, ipProtocolStack,
+@@ -2070,7 +3414,83 @@ int wrlCpssDxChNextValidIpPrefixDataGet
+ }
+ 
+ 
++/*******************************************************************************
++* wrlCpssDxChBrgFdbIpNextValidEntryGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of next fdb valid entry index.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       L                   - lua state (in stack should be device number,
++*                             starting index, optional parrenrs and masks)
++*
++* OUTPUTS:
++*       number of returned to lua elements, status FDB entry index,
++*       valid/skip/aged struct and mac-entry to lua stack, if exists,
++*       otherwise 0
++*
++* RETURNS:
++*
++* COMMENTS:
++*
++*******************************************************************************/
++int wrlCpssDxChBrgFdbIpNextValidEntryGet
++(
++    IN lua_State            *L
++)
++{
++    P_CALLING_CHECKING;
++
++    return prvCpssDxChBrgFdbIpNextEntryAndItsIndexPushToLua(
++               L, GT_TRUE P_CALLING_ACTUAL_DATA);
++}
++
++/*******************************************************************************
++* wrlCpssDxChBrgFdbIpEcmpNextValidEntryGet
++*
++* DESCRIPTION:
++*       Function Relevant mode : All modes
++*
++*       Getting of next ip ecmp fdb valid entry index.
++*
++* APPLICABLE DEVICES:
++*        DxCh1; DxCh1_Diamond; DxCh2; DxCh3; xCat; xCat3; AC5; Lion; xCat2; Lion2.
++*
++* NOT APPLICABLE DEVICES:
++*        None.
++*
++* INPUTS:
++*       L                   - lua state (in stack should be device number,
++*                             starting index, optional parrenrs and masks)
++*
++* OUTPUTS:
++*       number of returned to lua elements, status FDB entry index,
++*       valid/skip/aged struct and mac-entry to lua stack, if exists,
++*       otherwise 0
++*
++* RETURNS:
++*
++* COMMENTS:
++*
++*******************************************************************************/
++int wrlCpssDxChBrgFdbIpEcmpNextValidEntryGet
++(
++    IN lua_State            *L
++)
++{
++    P_CALLING_CHECKING;
+ 
++    return prvCpssDxChBrgFdbIpEcmpNextEntryAndItsIndexPushToLua(
++               L, GT_TRUE P_CALLING_ACTUAL_DATA);
++}
+ 
+ /**
+ * @internal wrlCpssDxChIpLpmVirtualRouterAdd function
+@@ -2098,6 +3518,7 @@ int wrlCpssDxChNextValidIpPrefixDataGet
+ *       virtual router is used.
+ *
+ */
++
+ int wrlCpssDxChIpLpmVirtualRouterAdd
+ (
+     IN lua_State                *L
+@@ -2441,11 +3862,11 @@ int wrlCpssDxChIpLpmIpUcPrefixAddEcmpRange
+         }
+     }
+ 
+-    /* keep all value of ucNextHop.ipLttEntry = 0 set the rout index        */    
+-    nextHopEntry.ipLttEntry.routeType           = CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E;  
+-    
++    /* keep all value of ucNextHop.ipLttEntry = 0 set the rout index        */
++    nextHopEntry.ipLttEntry.routeType           = CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_ECMP_E;
++
+     status = cpssDxChIpLpmDBConfigGet(0,&shadowType, &protocolStack, &memoryCfg);
+-    if (GT_OK != status) 
++    if (GT_OK != status)
+     {
+         error_message = invalidIpLpmDbGetErrorMessage;
+     }
+@@ -2453,8 +3874,8 @@ int wrlCpssDxChIpLpmIpUcPrefixAddEcmpRange
+     {
+         if(shadowType==CPSS_DXCH_IP_LPM_RAM_SIP6_SHADOW_E)
+         {
+-            nextHopEntry.ipLttEntry.routeType   = CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E; 
+-        }  
++            nextHopEntry.ipLttEntry.routeType   = CPSS_DXCH_IP_ROUTE_ENTRY_METHOD_MULTIPATH_E;
++        }
+     }
+ 
+     nextHopEntry.ipLttEntry.numOfPaths          = numOfPaths;
+@@ -2472,7 +3893,7 @@ int wrlCpssDxChIpLpmIpUcPrefixAddEcmpRange
+             status = cpssDxChIpEcmpEntryWrite(
+                 devNum, ecmpIpEntryIndex, &ecmpEntry);
+         }
+-        
++
+         switch (ipProtocolStack)
+         {
+             case CPSS_IP_PROTOCOL_IPV4_E:
+-- 
+2.22.0
+

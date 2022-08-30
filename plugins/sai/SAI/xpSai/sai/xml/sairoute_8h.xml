@@ -1,0 +1,646 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="sairoute_8h" kind="file" language="C++">
+    <compoundname>sairoute.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="saiobject_8h" local="no">inc/saiobject.h</includedby>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="273">
+        <label>stdbool.h</label>
+      </node>
+      <node id="270">
+        <label>inc/sairoute.h</label>
+        <link refid="sairoute.h"/>
+        <childnode refid="271" relation="include">
+        </childnode>
+      </node>
+      <node id="272">
+        <label>stdint.h</label>
+      </node>
+      <node id="274">
+        <label>sys/types.h</label>
+      </node>
+      <node id="271">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="272" relation="include">
+        </childnode>
+        <childnode refid="273" relation="include">
+        </childnode>
+        <childnode refid="274" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="275">
+        <label>inc/sairoute.h</label>
+        <link refid="sairoute.h"/>
+        <childnode refid="276" relation="include">
+        </childnode>
+        <childnode refid="277" relation="include">
+        </childnode>
+      </node>
+      <node id="276">
+        <label>inc/saiobject.h</label>
+        <link refid="saiobject_8h"/>
+        <childnode refid="277" relation="include">
+        </childnode>
+      </node>
+      <node id="277">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__route__entry__t" prot="public">_sai_route_entry_t</innerclass>
+    <innerclass refid="struct__sai__route__api__t" prot="public">_sai_route_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_r_o_u_t_e_1ga3c594db3cf069b24b966654ed0947712" prot="public" static="no">
+        <name>_sai_route_entry_attr_t</name>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae65e49cc33abb46c2cb20ddf3f91959b" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712add13cefac0dab757b27b085bfde0c00f" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_PACKET_ACTION</name>
+          <initializer>= SAI_ROUTE_ENTRY_ATTR_START</initializer>
+          <briefdescription>
+<para>Packet action. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_packet_action_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_PACKET_ACTION_FORWARD </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae29d4c3b1a5b8b202618e76d2475267a" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_USER_TRAP_ID</name>
+          <briefdescription>
+<para>Generate User Defined Trap ID for trap/log actions. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is SAI_NULL_OBJECT_ID, then packet will not be trapped.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_HOSTIF_USER_DEFINED_TRAP </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ad57480d442547be7ed774bae14a16a53" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_NEXT_HOP_ID</name>
+          <briefdescription>
+<para>Next hop or next hop group id for the packet, or a router interface in case of directly reachable route, or the CPU port in case of IP2ME route. </para>          </briefdescription>
+          <detaileddescription>
+<para>The next hop id is only effective when the packet action is one of the following: FORWARD, COPY, LOG, TRANSIT.</para><para>The next hop id can be a generic next hop object, such as next hop, next hop group. Directly reachable routes are the IP subnets that are directly attached to the router. For such routes, fill the router interface id to which the subnet is attached. IP2ME route adds a local router IP address. For such routes, fill the CPU port (<ref refid="group___s_a_i_s_w_i_t_c_h_1gga96df0871b3925f973f4a9079ffb3e634a55aefdaaa8394c330bbb579243b8b728" kindref="member">SAI_SWITCH_ATTR_CPU_PORT</ref>). When pointing to a next hop group which is empty, the effective routing action will be DROP.</para><para>When it is SAI_NULL_OBJECT_ID, then packet will be dropped.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_NEXT_HOP, SAI_OBJECT_TYPE_NEXT_HOP_GROUP, SAI_OBJECT_TYPE_ROUTER_INTERFACE, SAI_OBJECT_TYPE_PORT </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712acd36ac60ff8576aace6aa877c2ca8429" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_META_DATA</name>
+          <briefdescription>
+<para>User based Meta Data. </para>          </briefdescription>
+          <detaileddescription>
+<para>Value Range <ref refid="group___s_a_i_s_w_i_t_c_h_1gga96df0871b3925f973f4a9079ffb3e634a3f147a371fb1c112a95c2e6db0589b50" kindref="member">SAI_SWITCH_ATTR_ROUTE_DST_USER_META_DATA_RANGE</ref></para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae07df2d2c2feec2360e0e88512aff0b1" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_IP_ADDR_FAMILY</name>
+          <briefdescription>
+<para>Route entry IP address family. </para>          </briefdescription>
+          <detaileddescription>
+<para>READ-ONLY <simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_addr_family_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY  true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712a809b732869a771189be98c7a5c961fb5" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_COUNTER_ID</name>
+          <briefdescription>
+<para>Attach a counter. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is empty, then packet hits won&apos;t be counted</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_COUNTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712a7a4499bd6fcf6372f672e3c625b55fd7" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712aa57ca150d6589f259ccff0419f886e9b" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ab5495206eed9163206133bf2235add81" prot="public">
+          <name>SAI_ROUTE_ENTRY_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute Id for SAI route object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="40" column="1" bodyfile="inc/sairoute.h" bodystart="39" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1ga35c60f94c9ba2d59615cfe2afcad941b" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_r_o_u_t_e_1ga3c594db3cf069b24b966654ed0947712" kindref="member">_sai_route_entry_attr_t</ref></type>
+        <definition>typedef enum _sai_route_entry_attr_t  sai_route_entry_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_route_entry_attr_t</name>
+        <briefdescription>
+<para>Attribute Id for SAI route object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="142" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1gab4422ab86d408a35359297b83726ed78" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__route__entry__t" kindref="compound">_sai_route_entry_t</ref></type>
+        <definition>typedef struct _sai_route_entry_t  sai_route_entry_t</definition>
+        <argsstring></argsstring>
+        <name>sai_route_entry_t</name>
+        <briefdescription>
+<para>Unicast route entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="168" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1ga5dba12fb352d5df7a97b355838a64dc3" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_route_entry_fn) (_In_ const sai_route_entry_t *route_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_route_entry_t *route_entry, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_route_entry_fn</name>
+        <briefdescription>
+<para>Create Route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: IP prefix/mask expected in Network Byte Order.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Route entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="181" column="1" bodyfile="inc/sairoute.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1ga480a37fce392b1872da5e09b206ff0c5" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_route_entry_fn) (_In_ const sai_route_entry_t *route_entry)</definition>
+        <argsstring>)(_In_ const sai_route_entry_t *route_entry)</argsstring>
+        <name>sai_remove_route_entry_fn</name>
+        <briefdescription>
+<para>Remove Route. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: IP prefix/mask expected in Network Byte Order.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Route entry</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="195" column="1" bodyfile="inc/sairoute.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1ga4998aecda49966187d0badd1a5860793" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_route_entry_attribute_fn) (_In_ const sai_route_entry_t *route_entry, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ const sai_route_entry_t *route_entry, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_route_entry_attribute_fn</name>
+        <briefdescription>
+<para>Set route attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Route entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="206" column="1" bodyfile="inc/sairoute.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1gae28e7ad532d020512bdddf73fdb77d55" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_route_entry_attribute_fn) (_In_ const sai_route_entry_t *route_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ const sai_route_entry_t *route_entry, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_route_entry_attribute_fn</name>
+        <briefdescription>
+<para>Get route attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Route entry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="219" column="1" bodyfile="inc/sairoute.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1ga04f4d858e72c98b102de1f40a1861a37" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_create_route_entry_fn) (_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ const uint32_t *attr_count, _In_ const sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ const uint32_t *attr_count, _In_ const sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_create_route_entry_fn</name>
+        <briefdescription>
+<para>Bulk create route entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to create </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of object to create </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attr_count. Caller passes the number of attribute for each object to create. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes for every object. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are created or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to create. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="241" column="1" bodyfile="inc/sairoute.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1gaa6b1eac4218c14eec66efa2710e2fba7" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_remove_route_entry_fn) (_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_remove_route_entry_fn</name>
+        <briefdescription>
+<para>Bulk remove route entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to remove </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of objects to remove </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are removed or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to remove. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="263" column="1" bodyfile="inc/sairoute.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1gacb11438936d35c5948ffb534c19e5f6f" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_set_route_entry_attribute_fn) (_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ const sai_attribute_t *attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ const sai_attribute_t *attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_set_route_entry_attribute_fn</name>
+        <briefdescription>
+<para>Bulk set attribute on route entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes to set on objects, one attribute per object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are removed or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to remove. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="284" column="1" bodyfile="inc/sairoute.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1gad70167aad9410f4a6ddf4dfa8963ce9c" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_bulk_get_route_entry_attribute_fn) (_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ const uint32_t *attr_count, _Inout_ sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</definition>
+        <argsstring>)(_In_ uint32_t object_count, _In_ const sai_route_entry_t *route_entry, _In_ const uint32_t *attr_count, _Inout_ sai_attribute_t **attr_list, _In_ sai_bulk_op_error_mode_t mode, _Out_ sai_status_t *object_statuses)</argsstring>
+        <name>sai_bulk_get_route_entry_attribute_fn</name>
+        <briefdescription>
+<para>Bulk get attribute on route entry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">object_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">route_entry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of objects to set attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attr_count. Caller passes the number of attribute for each object to get </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes to set on objects, one attribute per object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bulk operation error handling mode </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">object_statuses</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of status for every object. Caller needs to allocate the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success when all objects are removed or <ref refid="group___s_a_i_s_t_a_t_u_s_1ga033ca99724e17bca3e17f86df3f80490" kindref="member">SAI_STATUS_FAILURE</ref> when any of the objects fails to remove. When there is failure, Caller is expected to go through the list of returned statuses to find out which fails and which succeeds. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="308" column="1" bodyfile="inc/sairoute.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_r_o_u_t_e_1ga96de9a359ff82fe0338ec215f1cb2e61" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__route__api__t" kindref="compound">_sai_route_api_t</ref></type>
+        <definition>typedef struct _sai_route_api_t  sai_route_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_route_api_t</name>
+        <briefdescription>
+<para>Router entry methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairoute.h" line="331" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Route Entry interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIROUTE_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIROUTE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_r_o_u_t_e_1ga3c594db3cf069b24b966654ed0947712" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_r_o_u_t_e_1ga3c594db3cf069b24b966654ed0947712" kindref="member">_sai_route_entry_attr_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae65e49cc33abb46c2cb20ddf3f91959b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae65e49cc33abb46c2cb20ddf3f91959b" kindref="member">SAI_ROUTE_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>READ-WRITE<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712add13cefac0dab757b27b085bfde0c00f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712add13cefac0dab757b27b085bfde0c00f" kindref="member">SAI_ROUTE_ENTRY_ATTR_PACKET_ACTION</ref><sp/>=<sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae65e49cc33abb46c2cb20ddf3f91959b" kindref="member">SAI_ROUTE_ENTRY_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae29d4c3b1a5b8b202618e76d2475267a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae29d4c3b1a5b8b202618e76d2475267a" kindref="member">SAI_ROUTE_ENTRY_ATTR_USER_TRAP_ID</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ad57480d442547be7ed774bae14a16a53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ad57480d442547be7ed774bae14a16a53" kindref="member">SAI_ROUTE_ENTRY_ATTR_NEXT_HOP_ID</ref>,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712acd36ac60ff8576aace6aa877c2ca8429" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712acd36ac60ff8576aace6aa877c2ca8429" kindref="member">SAI_ROUTE_ENTRY_ATTR_META_DATA</ref>,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae07df2d2c2feec2360e0e88512aff0b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ae07df2d2c2feec2360e0e88512aff0b1" kindref="member">SAI_ROUTE_ENTRY_ATTR_IP_ADDR_FAMILY</ref>,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712a809b732869a771189be98c7a5c961fb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712a809b732869a771189be98c7a5c961fb5" kindref="member">SAI_ROUTE_ENTRY_ATTR_COUNTER_ID</ref>,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712a7a4499bd6fcf6372f672e3c625b55fd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712a7a4499bd6fcf6372f672e3c625b55fd7" kindref="member">SAI_ROUTE_ENTRY_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712aa57ca150d6589f259ccff0419f886e9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712aa57ca150d6589f259ccff0419f886e9b" kindref="member">SAI_ROUTE_ENTRY_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ab5495206eed9163206133bf2235add81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gga3c594db3cf069b24b966654ed0947712ab5495206eed9163206133bf2235add81" kindref="member">SAI_ROUTE_ENTRY_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}<sp/><ref refid="group___s_a_i_r_o_u_t_e_1ga35c60f94c9ba2d59615cfe2afcad941b" kindref="member">sai_route_entry_attr_t</ref>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="struct__sai__route__entry__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__route__entry__t" kindref="compound">_sai_route_entry_t</ref></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154" refid="struct__sai__route__entry__t_1a97ec03fc70222dec7c6bd742e732be95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__route__entry__t_1a97ec03fc70222dec7c6bd742e732be95" kindref="member">switch_id</ref>;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="struct__sai__route__entry__t_1a40970bf07741216d1fa36a0f62ee1ea6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__route__entry__t_1a40970bf07741216d1fa36a0f62ee1ea6" kindref="member">vr_id</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="struct__sai__route__entry__t_1a3cdbb52970015b53c99929e1d13184ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct__sai__ip__prefix__t" kindref="compound">sai_ip_prefix_t</ref><sp/><ref refid="struct__sai__route__entry__t_1a3cdbb52970015b53c99929e1d13184ed" kindref="member">destination</ref>;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}<sp/><ref refid="group___s_a_i_r_o_u_t_e_1gab4422ab86d408a35359297b83726ed78" kindref="member">sai_route_entry_t</ref>;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="group___s_a_i_r_o_u_t_e_1ga5dba12fb352d5df7a97b355838a64dc3" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1ga5dba12fb352d5df7a97b355838a64dc3" kindref="member">sai_create_route_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="group___s_a_i_r_o_u_t_e_1ga480a37fce392b1872da5e09b206ff0c5" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1ga480a37fce392b1872da5e09b206ff0c5" kindref="member">sai_remove_route_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="group___s_a_i_r_o_u_t_e_1ga4998aecda49966187d0badd1a5860793" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1ga4998aecda49966187d0badd1a5860793" kindref="member">sai_set_route_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry,</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="group___s_a_i_r_o_u_t_e_1gae28e7ad532d020512bdddf73fdb77d55" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1gae28e7ad532d020512bdddf73fdb77d55" kindref="member">sai_get_route_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry,</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="group___s_a_i_r_o_u_t_e_1ga04f4d858e72c98b102de1f40a1861a37" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1ga04f4d858e72c98b102de1f40a1861a37" kindref="member">sai_bulk_create_route_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>*attr_count,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>**attr_list,</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263" refid="group___s_a_i_r_o_u_t_e_1gaa6b1eac4218c14eec66efa2710e2fba7" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1gaa6b1eac4218c14eec66efa2710e2fba7" kindref="member">sai_bulk_remove_route_entry_fn</ref>)(</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="group___s_a_i_r_o_u_t_e_1gacb11438936d35c5948ffb534c19e5f6f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1gacb11438936d35c5948ffb534c19e5f6f" kindref="member">sai_bulk_set_route_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list,</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="group___s_a_i_r_o_u_t_e_1gad70167aad9410f4a6ddf4dfa8963ce9c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_r_o_u_t_e_1gad70167aad9410f4a6ddf4dfa8963ce9c" kindref="member">sai_bulk_get_route_entry_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>object_count,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__route__entry__t" kindref="compound">sai_route_entry_t</ref><sp/>*route_entry,</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>*attr_count,</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>**attr_list,</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_bulk_op_error_mode_t<sp/>mode,</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_status_t<sp/>*object_statuses);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319" refid="struct__sai__route__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__route__api__t" kindref="compound">_sai_route_api_t</ref></highlight></codeline>
+<codeline lineno="320"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1ga5dba12fb352d5df7a97b355838a64dc3" kindref="member">sai_create_route_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_route_entry;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1ga480a37fce392b1872da5e09b206ff0c5" kindref="member">sai_remove_route_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_route_entry;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1ga4998aecda49966187d0badd1a5860793" kindref="member">sai_set_route_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_route_entry_attribute;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gae28e7ad532d020512bdddf73fdb77d55" kindref="member">sai_get_route_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_route_entry_attribute;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1ga04f4d858e72c98b102de1f40a1861a37" kindref="member">sai_bulk_create_route_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_route_entries;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gaa6b1eac4218c14eec66efa2710e2fba7" kindref="member">sai_bulk_remove_route_entry_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_route_entries;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gacb11438936d35c5948ffb534c19e5f6f" kindref="member">sai_bulk_set_route_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_route_entries_attribute;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_r_o_u_t_e_1gad70167aad9410f4a6ddf4dfa8963ce9c" kindref="member">sai_bulk_get_route_entry_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_route_entries_attribute;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}<sp/><ref refid="group___s_a_i_r_o_u_t_e_1ga96de9a359ff82fe0338ec215f1cb2e61" kindref="member">sai_route_api_t</ref>;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/sairoute.h"/>
+  </compounddef>
+</doxygen>

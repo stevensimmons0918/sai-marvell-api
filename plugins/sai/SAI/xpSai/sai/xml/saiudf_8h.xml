@@ -1,0 +1,999 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saiudf_8h" kind="file" language="C++">
+    <compoundname>saiudf.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="412">
+        <label>stdbool.h</label>
+      </node>
+      <node id="411">
+        <label>stdint.h</label>
+      </node>
+      <node id="409">
+        <label>inc/saiudf.h</label>
+        <link refid="saiudf.h"/>
+        <childnode refid="410" relation="include">
+        </childnode>
+      </node>
+      <node id="413">
+        <label>sys/types.h</label>
+      </node>
+      <node id="410">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="411" relation="include">
+        </childnode>
+        <childnode refid="412" relation="include">
+        </childnode>
+        <childnode refid="413" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="414">
+        <label>inc/saiudf.h</label>
+        <link refid="saiudf.h"/>
+        <childnode refid="415" relation="include">
+        </childnode>
+      </node>
+      <node id="415">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__udf__api__t" prot="public">_sai_udf_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_u_d_f_1ga155d73d44d256d3c4a95ff36e1c8e026" prot="public" static="no">
+        <name>_sai_udf_base_t</name>
+        <enumvalue id="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026ae4e15b7f0a081b63ca763b6e022db484" prot="public">
+          <name>SAI_UDF_BASE_L2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>UDF offset base from the start of L2 header </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026abfb39bc0efa11bad9ec64567518740e2" prot="public">
+          <name>SAI_UDF_BASE_L3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>UDF offset base from the start of L3 header </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026a335c42b612f33d0cd21cfe5c8c34a86f" prot="public">
+          <name>SAI_UDF_BASE_L4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>UDF offset base from the start of L4 header </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>UDF base enum. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="40" column="1" bodyfile="inc/saiudf.h" bodystart="39" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_u_d_f_1gaf3e2eab146e97c14c8af92c0b3a1f340" prot="public" static="no">
+        <name>_sai_udf_attr_t</name>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a32412cc0a21b9292add4334d87b0d132" prot="public">
+          <name>SAI_UDF_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340af59bbfcbd4a66a47eb21cf07c37c7b43" prot="public">
+          <name>SAI_UDF_ATTR_MATCH_ID</name>
+          <initializer>= SAI_UDF_ATTR_START</initializer>
+          <briefdescription>
+<para>UDF match ID. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_UDF_MATCH </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a5314d738deeb4f83e38ed645756e4a4b" prot="public">
+          <name>SAI_UDF_ATTR_GROUP_ID</name>
+          <briefdescription>
+<para>UDF group id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_UDF_GROUP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340ab341da29479997acceb102f1749d054c" prot="public">
+          <name>SAI_UDF_ATTR_BASE</name>
+          <briefdescription>
+<para>UDF base. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_udf_base_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_UDF_BASE_L2 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a0cd4632f3639ec3a782f819e6649b165" prot="public">
+          <name>SAI_UDF_ATTR_OFFSET</name>
+          <briefdescription>
+<para>UDF byte offset. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a400d22f216dd77464b04801616042a7d" prot="public">
+          <name>SAI_UDF_ATTR_HASH_MASK</name>
+          <briefdescription>
+<para>UDF Mask. </para>          </briefdescription>
+          <detaileddescription>
+<para>Default to 2 bytes, value 0xFF, 0xFF</para><para>The count in the list must be equal to the UDF byte length. The mask only applies to extracted UDF when it is used for hash, it does not apply to the extracted UDF when it is used for ACL.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_u8_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        const </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340ad7c511cf8bc19bf87aec865726c33f89" prot="public">
+          <name>SAI_UDF_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a79e3444193fea2ec2f3a20fd78ef22d0" prot="public">
+          <name>SAI_UDF_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a6b00810c5e69f6da794fa578543b1914" prot="public">
+          <name>SAI_UDF_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute id for UDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="56" column="1" bodyfile="inc/saiudf.h" bodystart="55" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_u_d_f_1ga78e81c0451f0e47c785e2f4e4b8d4226" prot="public" static="no">
+        <name>_sai_udf_match_attr_t</name>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a2f6e856342f4b198f0d71f062b6c73e4" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a6c0d7c3e8c4abad00f4d0dd65987365d" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_L2_TYPE</name>
+          <initializer>= SAI_UDF_MATCH_ATTR_START</initializer>
+          <briefdescription>
+<para>UDF L2 match rule. </para>          </briefdescription>
+          <detaileddescription>
+<para>Default to None</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_acl_field_data_t sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a3f7aad5b9dbaf84d8ee67d29c1e4d9f5" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_L3_TYPE</name>
+          <briefdescription>
+<para>UDF L3 match rule. </para>          </briefdescription>
+          <detaileddescription>
+<para>Default to None</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_acl_field_data_t sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a1199d7b666a0cb7d8973825d04562821" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_GRE_TYPE</name>
+          <briefdescription>
+<para>UDF GRE match rule. </para>          </briefdescription>
+          <detaileddescription>
+<para>Default to None</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_acl_field_data_t sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226ac1d3a12f4acf3b762ddb36ff84de3df7" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_PRIORITY</name>
+          <briefdescription>
+<para>UDF match priority. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a7f6fcf82b607887df255b68eb7cfb55c" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226af0124b5c16fecdf02b54262c4ae1502d" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a8e12dc5e8237d33e1fb34a966feee882" prot="public">
+          <name>SAI_UDF_MATCH_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute id for UDF match. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="130" column="1" bodyfile="inc/saiudf.h" bodystart="129" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_u_d_f_1gab8c0d6a1c2237d12492ab7770a777e2a" prot="public" static="no">
+        <name>_sai_udf_group_type_t</name>
+        <enumvalue id="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa2ce001755c5d3e92cda173eb5a6a7e72" prot="public">
+          <name>SAI_UDF_GROUP_TYPE_START</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Start of group type </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa07cd3e166d99a5be5f254c7e30c7e7d7" prot="public">
+          <name>SAI_UDF_GROUP_TYPE_GENERIC</name>
+          <initializer>= SAI_UDF_GROUP_TYPE_START</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Generic UDF group </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa9380270f1518cc0ca54b8d47c513a071" prot="public">
+          <name>SAI_UDF_GROUP_TYPE_HASH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>UDF group for hash </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa26c2de85f945fcd61a8ac5e7b2382263" prot="public">
+          <name>SAI_UDF_GROUP_TYPE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of group type </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>UDF group type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="197" column="1" bodyfile="inc/saiudf.h" bodystart="196" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_u_d_f_1ga36a0e72a1cb059bdc407096aac81c900" prot="public" static="no">
+        <name>_sai_udf_group_attr_t</name>
+        <enumvalue id="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a343e7550cb120afb5dfdf85bc47663d3" prot="public">
+          <name>SAI_UDF_GROUP_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a92456ddc6a00e94bc5105a290b489deb" prot="public">
+          <name>SAI_UDF_GROUP_ATTR_UDF_LIST</name>
+          <initializer>= SAI_UDF_GROUP_ATTR_START</initializer>
+          <briefdescription>
+<para>UDF list. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_UDF </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a2700609bb411c5a6da09eec2c8c16897" prot="public">
+          <name>SAI_UDF_GROUP_ATTR_TYPE</name>
+          <briefdescription>
+<para>UDF group type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_udf_group_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_UDF_GROUP_TYPE_GENERIC </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a53e8f5e2f2bf080fa76e948865bd853d" prot="public">
+          <name>SAI_UDF_GROUP_ATTR_LENGTH</name>
+          <briefdescription>
+<para>UDF byte length. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a447bdb3230d126b9ed334934dccf0bca" prot="public">
+          <name>SAI_UDF_GROUP_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a18126e67d1a72c764ecb7a908a889808" prot="public">
+          <name>SAI_UDF_GROUP_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a0dfd773df3ec81e9016b4f58d358dfc0" prot="public">
+          <name>SAI_UDF_GROUP_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute id for UDF group. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="216" column="1" bodyfile="inc/saiudf.h" bodystart="215" bodyend="260"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1gaa137777c913504e91b9d0a6d515137cf" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_u_d_f_1ga155d73d44d256d3c4a95ff36e1c8e026" kindref="member">_sai_udf_base_t</ref></type>
+        <definition>typedef enum _sai_udf_base_t  sai_udf_base_t</definition>
+        <argsstring></argsstring>
+        <name>sai_udf_base_t</name>
+        <briefdescription>
+<para>UDF base enum. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="50" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1gafee90a8068301928dc8afccd9b9cff73" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_u_d_f_1gaf3e2eab146e97c14c8af92c0b3a1f340" kindref="member">_sai_udf_attr_t</ref></type>
+        <definition>typedef enum _sai_udf_attr_t  sai_udf_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_udf_attr_t</name>
+        <briefdescription>
+<para>Attribute id for UDF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="124" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1gac2e6085828db6dc6fbc7a5e47dcfbc90" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_u_d_f_1ga78e81c0451f0e47c785e2f4e4b8d4226" kindref="member">_sai_udf_match_attr_t</ref></type>
+        <definition>typedef enum _sai_udf_match_attr_t  sai_udf_match_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_udf_match_attr_t</name>
+        <briefdescription>
+<para>Attribute id for UDF match. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="191" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga4bdf6ef427541f05a1f15fc3aec33614" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_u_d_f_1gab8c0d6a1c2237d12492ab7770a777e2a" kindref="member">_sai_udf_group_type_t</ref></type>
+        <definition>typedef enum _sai_udf_group_type_t  sai_udf_group_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_udf_group_type_t</name>
+        <briefdescription>
+<para>UDF group type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="210" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga86b77f0aca3d6f2feeff1b4fb21bffad" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_u_d_f_1ga36a0e72a1cb059bdc407096aac81c900" kindref="member">_sai_udf_group_attr_t</ref></type>
+        <definition>typedef enum _sai_udf_group_attr_t  sai_udf_group_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_udf_group_attr_t</name>
+        <briefdescription>
+<para>Attribute id for UDF group. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="260" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1gad8ec31f23255e4212eb56dc918e86289" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_udf_fn) (_Out_ sai_object_id_t *udf_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *udf_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_udf_fn</name>
+        <briefdescription>
+<para>Create UDF. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">udf_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="272" column="1" bodyfile="inc/saiudf.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1gac4681ea0cf78a59f30f46efe6f086f07" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_udf_fn) (_In_ sai_object_id_t udf_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_id)</argsstring>
+        <name>sai_remove_udf_fn</name>
+        <briefdescription>
+<para>Remove UDF. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="285" column="1" bodyfile="inc/saiudf.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga0ee35983bd670f465521a87d0b4eb1b9" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_udf_attribute_fn) (_In_ sai_object_id_t udf_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_udf_attribute_fn</name>
+        <briefdescription>
+<para>Set UDF attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="296" column="1" bodyfile="inc/saiudf.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga7c161a4453b519179a2da5c90772669b" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_udf_attribute_fn) (_In_ sai_object_id_t udf_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_udf_attribute_fn</name>
+        <briefdescription>
+<para>Get UDF attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="309" column="1" bodyfile="inc/saiudf.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1gaa9864eeaded4ff8b80cf040b35b8143c" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_udf_match_fn) (_Out_ sai_object_id_t *udf_match_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *udf_match_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_udf_match_fn</name>
+        <briefdescription>
+<para>Create UDF match. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">udf_match_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF match id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="324" column="1" bodyfile="inc/saiudf.h" bodystart="324" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga9c30145aad41b16f94fb58214112ca08" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_udf_match_fn) (_In_ sai_object_id_t udf_match_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_match_id)</argsstring>
+        <name>sai_remove_udf_match_fn</name>
+        <briefdescription>
+<para>Remove UDF match. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_match_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF match id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="337" column="1" bodyfile="inc/saiudf.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga4ca3493ad2debc6a281896d1ed89e0cc" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_udf_match_attribute_fn) (_In_ sai_object_id_t udf_match_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_match_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_udf_match_attribute_fn</name>
+        <briefdescription>
+<para>Set UDF match attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_match_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF match id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="348" column="1" bodyfile="inc/saiudf.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga04d63f8b34e3717919fefba6a3f069dd" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_udf_match_attribute_fn) (_In_ sai_object_id_t udf_match_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_match_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_udf_match_attribute_fn</name>
+        <briefdescription>
+<para>Get UDF match attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_match_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF match id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="361" column="1" bodyfile="inc/saiudf.h" bodystart="361" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga3cc1f94a6dc866381fac7c79101fe57d" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_udf_group_fn) (_Out_ sai_object_id_t *udf_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *udf_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_udf_group_fn</name>
+        <briefdescription>
+<para>Create UDF group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">udf_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="376" column="1" bodyfile="inc/saiudf.h" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga5fe00b240ef1334ac637be7c3097b423" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_udf_group_fn) (_In_ sai_object_id_t udf_group_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_group_id)</argsstring>
+        <name>sai_remove_udf_group_fn</name>
+        <briefdescription>
+<para>Remove UDF group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF group id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="389" column="1" bodyfile="inc/saiudf.h" bodystart="389" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga34e708e68a0d439297777447a4e3ac8a" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_udf_group_attribute_fn) (_In_ sai_object_id_t udf_group_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_group_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_udf_group_attribute_fn</name>
+        <briefdescription>
+<para>Set UDF group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="400" column="1" bodyfile="inc/saiudf.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga2c93099a1a3a6283cce46ce59b6a2176" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_udf_group_attribute_fn) (_In_ sai_object_id_t udf_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t udf_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_udf_group_attribute_fn</name>
+        <briefdescription>
+<para>Get UDF group attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">udf_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UDF group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="413" column="1" bodyfile="inc/saiudf.h" bodystart="413" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_u_d_f_1ga442d80c2e9f94d78ebf4ac92ae316649" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__udf__api__t" kindref="compound">_sai_udf_api_t</ref></type>
+        <definition>typedef struct _sai_udf_api_t  sai_udf_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_udf_api_t</name>
+        <briefdescription>
+<para>UDF methods, retrieved via <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiudf.h" line="436" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI UDF (User Defined Field) interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIUDF_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIUDF_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_u_d_f_1ga155d73d44d256d3c4a95ff36e1c8e026" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_u_d_f_1ga155d73d44d256d3c4a95ff36e1c8e026" kindref="member">_sai_udf_base_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026ae4e15b7f0a081b63ca763b6e022db484" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026ae4e15b7f0a081b63ca763b6e022db484" kindref="member">SAI_UDF_BASE_L2</ref>,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026abfb39bc0efa11bad9ec64567518740e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026abfb39bc0efa11bad9ec64567518740e2" kindref="member">SAI_UDF_BASE_L3</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026a335c42b612f33d0cd21cfe5c8c34a86f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga155d73d44d256d3c4a95ff36e1c8e026a335c42b612f33d0cd21cfe5c8c34a86f" kindref="member">SAI_UDF_BASE_L4</ref>,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="group___s_a_i_u_d_f_1gaa137777c913504e91b9d0a6d515137cf" kindref="member">sai_udf_base_t</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="group___s_a_i_u_d_f_1gaf3e2eab146e97c14c8af92c0b3a1f340" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_u_d_f_1gaf3e2eab146e97c14c8af92c0b3a1f340" kindref="member">_sai_udf_attr_t</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a32412cc0a21b9292add4334d87b0d132" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a32412cc0a21b9292add4334d87b0d132" kindref="member">SAI_UDF_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340af59bbfcbd4a66a47eb21cf07c37c7b43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340af59bbfcbd4a66a47eb21cf07c37c7b43" kindref="member">SAI_UDF_ATTR_MATCH_ID</ref><sp/>=<sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a32412cc0a21b9292add4334d87b0d132" kindref="member">SAI_UDF_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a5314d738deeb4f83e38ed645756e4a4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a5314d738deeb4f83e38ed645756e4a4b" kindref="member">SAI_UDF_ATTR_GROUP_ID</ref>,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340ab341da29479997acceb102f1749d054c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340ab341da29479997acceb102f1749d054c" kindref="member">SAI_UDF_ATTR_BASE</ref>,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a0cd4632f3639ec3a782f819e6649b165" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a0cd4632f3639ec3a782f819e6649b165" kindref="member">SAI_UDF_ATTR_OFFSET</ref>,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a400d22f216dd77464b04801616042a7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a400d22f216dd77464b04801616042a7d" kindref="member">SAI_UDF_ATTR_HASH_MASK</ref>,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340ad7c511cf8bc19bf87aec865726c33f89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340ad7c511cf8bc19bf87aec865726c33f89" kindref="member">SAI_UDF_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a79e3444193fea2ec2f3a20fd78ef22d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a79e3444193fea2ec2f3a20fd78ef22d0" kindref="member">SAI_UDF_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a6b00810c5e69f6da794fa578543b1914" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggaf3e2eab146e97c14c8af92c0b3a1f340a6b00810c5e69f6da794fa578543b1914" kindref="member">SAI_UDF_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}<sp/><ref refid="group___s_a_i_u_d_f_1gafee90a8068301928dc8afccd9b9cff73" kindref="member">sai_udf_attr_t</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="group___s_a_i_u_d_f_1ga78e81c0451f0e47c785e2f4e4b8d4226" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_u_d_f_1ga78e81c0451f0e47c785e2f4e4b8d4226" kindref="member">_sai_udf_match_attr_t</ref></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a2f6e856342f4b198f0d71f062b6c73e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a2f6e856342f4b198f0d71f062b6c73e4" kindref="member">SAI_UDF_MATCH_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a6c0d7c3e8c4abad00f4d0dd65987365d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a6c0d7c3e8c4abad00f4d0dd65987365d" kindref="member">SAI_UDF_MATCH_ATTR_L2_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a2f6e856342f4b198f0d71f062b6c73e4" kindref="member">SAI_UDF_MATCH_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a3f7aad5b9dbaf84d8ee67d29c1e4d9f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a3f7aad5b9dbaf84d8ee67d29c1e4d9f5" kindref="member">SAI_UDF_MATCH_ATTR_L3_TYPE</ref>,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a1199d7b666a0cb7d8973825d04562821" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a1199d7b666a0cb7d8973825d04562821" kindref="member">SAI_UDF_MATCH_ATTR_GRE_TYPE</ref>,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226ac1d3a12f4acf3b762ddb36ff84de3df7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226ac1d3a12f4acf3b762ddb36ff84de3df7" kindref="member">SAI_UDF_MATCH_ATTR_PRIORITY</ref>,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a7f6fcf82b607887df255b68eb7cfb55c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a7f6fcf82b607887df255b68eb7cfb55c" kindref="member">SAI_UDF_MATCH_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226af0124b5c16fecdf02b54262c4ae1502d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226af0124b5c16fecdf02b54262c4ae1502d" kindref="member">SAI_UDF_MATCH_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a8e12dc5e8237d33e1fb34a966feee882" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga78e81c0451f0e47c785e2f4e4b8d4226a8e12dc5e8237d33e1fb34a966feee882" kindref="member">SAI_UDF_MATCH_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}<sp/><ref refid="group___s_a_i_u_d_f_1gac2e6085828db6dc6fbc7a5e47dcfbc90" kindref="member">sai_udf_match_attr_t</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="group___s_a_i_u_d_f_1gab8c0d6a1c2237d12492ab7770a777e2a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_u_d_f_1gab8c0d6a1c2237d12492ab7770a777e2a" kindref="member">_sai_udf_group_type_t</ref></highlight></codeline>
+<codeline lineno="197"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="199" refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa2ce001755c5d3e92cda173eb5a6a7e72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa2ce001755c5d3e92cda173eb5a6a7e72" kindref="member">SAI_UDF_GROUP_TYPE_START</ref>,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa07cd3e166d99a5be5f254c7e30c7e7d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa07cd3e166d99a5be5f254c7e30c7e7d7" kindref="member">SAI_UDF_GROUP_TYPE_GENERIC</ref><sp/>=<sp/><ref refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa2ce001755c5d3e92cda173eb5a6a7e72" kindref="member">SAI_UDF_GROUP_TYPE_START</ref>,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa9380270f1518cc0ca54b8d47c513a071" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa9380270f1518cc0ca54b8d47c513a071" kindref="member">SAI_UDF_GROUP_TYPE_HASH</ref>,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa26c2de85f945fcd61a8ac5e7b2382263" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ggab8c0d6a1c2237d12492ab7770a777e2aa26c2de85f945fcd61a8ac5e7b2382263" kindref="member">SAI_UDF_GROUP_TYPE_END</ref></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}<sp/><ref refid="group___s_a_i_u_d_f_1ga4bdf6ef427541f05a1f15fc3aec33614" kindref="member">sai_udf_group_type_t</ref>;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="group___s_a_i_u_d_f_1ga36a0e72a1cb059bdc407096aac81c900" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_u_d_f_1ga36a0e72a1cb059bdc407096aac81c900" kindref="member">_sai_udf_group_attr_t</ref></highlight></codeline>
+<codeline lineno="216"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220" refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a343e7550cb120afb5dfdf85bc47663d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a343e7550cb120afb5dfdf85bc47663d3" kindref="member">SAI_UDF_GROUP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a92456ddc6a00e94bc5105a290b489deb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a92456ddc6a00e94bc5105a290b489deb" kindref="member">SAI_UDF_GROUP_ATTR_UDF_LIST</ref><sp/>=<sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a343e7550cb120afb5dfdf85bc47663d3" kindref="member">SAI_UDF_GROUP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a2700609bb411c5a6da09eec2c8c16897" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a2700609bb411c5a6da09eec2c8c16897" kindref="member">SAI_UDF_GROUP_ATTR_TYPE</ref>,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a53e8f5e2f2bf080fa76e948865bd853d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a53e8f5e2f2bf080fa76e948865bd853d" kindref="member">SAI_UDF_GROUP_ATTR_LENGTH</ref>,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a447bdb3230d126b9ed334934dccf0bca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a447bdb3230d126b9ed334934dccf0bca" kindref="member">SAI_UDF_GROUP_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a18126e67d1a72c764ecb7a908a889808" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a18126e67d1a72c764ecb7a908a889808" kindref="member">SAI_UDF_GROUP_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a0dfd773df3ec81e9016b4f58d358dfc0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gga36a0e72a1cb059bdc407096aac81c900a0dfd773df3ec81e9016b4f58d358dfc0" kindref="member">SAI_UDF_GROUP_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}<sp/><ref refid="group___s_a_i_u_d_f_1ga86b77f0aca3d6f2feeff1b4fb21bffad" kindref="member">sai_udf_group_attr_t</ref>;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="group___s_a_i_u_d_f_1gad8ec31f23255e4212eb56dc918e86289" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1gad8ec31f23255e4212eb56dc918e86289" kindref="member">sai_create_udf_fn</ref>)(</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*udf_id,</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285" refid="group___s_a_i_u_d_f_1gac4681ea0cf78a59f30f46efe6f086f07" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1gac4681ea0cf78a59f30f46efe6f086f07" kindref="member">sai_remove_udf_fn</ref>)(</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_id);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296" refid="group___s_a_i_u_d_f_1ga0ee35983bd670f465521a87d0b4eb1b9" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga0ee35983bd670f465521a87d0b4eb1b9" kindref="member">sai_set_udf_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_id,</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="group___s_a_i_u_d_f_1ga7c161a4453b519179a2da5c90772669b" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga7c161a4453b519179a2da5c90772669b" kindref="member">sai_get_udf_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_id,</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324" refid="group___s_a_i_u_d_f_1gaa9864eeaded4ff8b80cf040b35b8143c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1gaa9864eeaded4ff8b80cf040b35b8143c" kindref="member">sai_create_udf_match_fn</ref>)(</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*udf_match_id,</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337" refid="group___s_a_i_u_d_f_1ga9c30145aad41b16f94fb58214112ca08" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga9c30145aad41b16f94fb58214112ca08" kindref="member">sai_remove_udf_match_fn</ref>)(</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_match_id);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348" refid="group___s_a_i_u_d_f_1ga4ca3493ad2debc6a281896d1ed89e0cc" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga4ca3493ad2debc6a281896d1ed89e0cc" kindref="member">sai_set_udf_match_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_match_id,</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361" refid="group___s_a_i_u_d_f_1ga04d63f8b34e3717919fefba6a3f069dd" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga04d63f8b34e3717919fefba6a3f069dd" kindref="member">sai_get_udf_match_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_match_id,</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376" refid="group___s_a_i_u_d_f_1ga3cc1f94a6dc866381fac7c79101fe57d" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga3cc1f94a6dc866381fac7c79101fe57d" kindref="member">sai_create_udf_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*udf_group_id,</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389" refid="group___s_a_i_u_d_f_1ga5fe00b240ef1334ac637be7c3097b423" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga5fe00b240ef1334ac637be7c3097b423" kindref="member">sai_remove_udf_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_group_id);</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="400" refid="group___s_a_i_u_d_f_1ga34e708e68a0d439297777447a4e3ac8a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga34e708e68a0d439297777447a4e3ac8a" kindref="member">sai_set_udf_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_group_id,</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight></codeline>
+<codeline lineno="413" refid="group___s_a_i_u_d_f_1ga2c93099a1a3a6283cce46ce59b6a2176" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_u_d_f_1ga2c93099a1a3a6283cce46ce59b6a2176" kindref="member">sai_get_udf_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>udf_group_id,</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="421" refid="struct__sai__udf__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__udf__api__t" kindref="compound">_sai_udf_api_t</ref></highlight></codeline>
+<codeline lineno="422"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gad8ec31f23255e4212eb56dc918e86289" kindref="member">sai_create_udf_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_udf;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gac4681ea0cf78a59f30f46efe6f086f07" kindref="member">sai_remove_udf_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_udf;</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga0ee35983bd670f465521a87d0b4eb1b9" kindref="member">sai_set_udf_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_udf_attribute;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga7c161a4453b519179a2da5c90772669b" kindref="member">sai_get_udf_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_udf_attribute;</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1gaa9864eeaded4ff8b80cf040b35b8143c" kindref="member">sai_create_udf_match_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_udf_match;</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga9c30145aad41b16f94fb58214112ca08" kindref="member">sai_remove_udf_match_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_udf_match;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga4ca3493ad2debc6a281896d1ed89e0cc" kindref="member">sai_set_udf_match_attribute_fn</ref><sp/><sp/>set_udf_match_attribute;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga04d63f8b34e3717919fefba6a3f069dd" kindref="member">sai_get_udf_match_attribute_fn</ref><sp/><sp/>get_udf_match_attribute;</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga3cc1f94a6dc866381fac7c79101fe57d" kindref="member">sai_create_udf_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_udf_group;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga5fe00b240ef1334ac637be7c3097b423" kindref="member">sai_remove_udf_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_udf_group;</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga34e708e68a0d439297777447a4e3ac8a" kindref="member">sai_set_udf_group_attribute_fn</ref><sp/><sp/>set_udf_group_attribute;</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_u_d_f_1ga2c93099a1a3a6283cce46ce59b6a2176" kindref="member">sai_get_udf_group_attribute_fn</ref><sp/><sp/>get_udf_group_attribute;</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal">}<sp/><ref refid="group___s_a_i_u_d_f_1ga442d80c2e9f94d78ebf4ac92ae316649" kindref="member">sai_udf_api_t</ref>;</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saiudf.h"/>
+  </compounddef>
+</doxygen>

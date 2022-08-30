@@ -1,0 +1,45 @@
+# $(warning "Started") 
+
+ifneq (EXISTS,$(RTOS_ON_SIM))
+	#C_EXCLUDE_FILE_LIST = simOsLinuxIniFileEmu.c
+	#List of files to include in list
+	FILES := \
+	 simOsLinuxConsole.c \
+	 simOsLinuxIniFile.c \
+	 simOsLinuxIntr.c \
+	 simOsLinuxProcess.c \
+	 simOsLinuxSlan.c \
+	 simOsLinuxSync.c \
+	 simOsLinuxTask.c \
+	 slanLib.c 
+else
+	#C_EXCLUDE_FILE_LIST = simOsLinuxIniFile.c
+	#List of files to include in list
+	FILES := \
+	 simOsLinuxConsole.c \
+	 simOsLinuxIniFileEmu.c \
+	 simOsLinuxIntr.c \
+	 simOsLinuxProcess.c \
+	 simOsLinuxSlan.c \
+	 simOsLinuxSync.c \
+	 simOsLinuxTask.c \
+	 slanLib.c 
+endif
+
+#List of subfolders to include in build
+MODULES := 
+
+
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+SIMULATION_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

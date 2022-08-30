@@ -1,0 +1,50 @@
+/*!**************************************************RND Template version 4.1
+ *!                   M A C R O   D E F I N I T I O N S
+ *!==========================================================================
+ *$ TITLE:
+ *!--------------------------------------------------------------------------
+ *$ FILENAME:
+ *!--------------------------------------------------------------------------
+ *$ SYSTEM, SUBSYSTEM: <SysName>
+ *!--------------------------------------------------------------------------
+ *$ AUTHORS: LiranP,ArikK
+ *!--------------------------------------------------------------------------
+ *$ LATEST UPDATE: 14-Dec-2008, 10:42 AM CREATION DATE: 10-Apr-2008
+ *!**************************************************************************
+ *!
+ *!**************************************************************************
+ *!
+ *$ MACRO: <MacroName>
+ *!
+ *$ GENERAL DESCRIPTION:
+ *!
+ *$ RETURNS:
+ *!
+ *$ ALGORITHM: (local)
+ *!
+ *$ ASSUMPTIONS:
+ *!
+ *$ REMARKS:   (local)
+ *!
+ *!**************************************************************************
+ *!*/
+
+extern void scibAccessLock(void);
+extern void scibAccessUnlock(void);
+
+#ifndef PROTECT_TASK_DOING_READ_WRITE_START_MAC
+#define PROTECT_TASK_DOING_READ_WRITE_START_MAC scibAccessLock()
+#endif
+
+#ifndef PROTECT_TASK_DOING_READ_WRITE_END_MAC
+#define PROTECT_TASK_DOING_READ_WRITE_END_MAC scibAccessUnlock()
+#endif
+
+#ifndef SHOST_DB_PROTECT_TAKE
+#define SHOST_DB_PROTECT_TAKE scibAccessLock()
+#endif
+
+#ifndef SHOST_DB_PROTECT_GIVE
+#define SHOST_DB_PROTECT_GIVE scibAccessUnlock()
+#endif
+

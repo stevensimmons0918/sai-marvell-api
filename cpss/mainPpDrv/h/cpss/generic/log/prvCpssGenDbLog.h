@@ -1,0 +1,312 @@
+/*******************************************************************************
+*              (c), Copyright 2001, Marvell International Ltd.                 *
+* THIS CODE CONTAINS CONFIDENTIAL INFORMATION OF MARVELL SEMICONDUCTOR, INC.   *
+* NO RIGHTS ARE GRANTED HEREIN UNDER ANY PATENT, MASK WORK RIGHT OR COPYRIGHT  *
+* OF MARVELL OR ANY THIRD PARTY. MARVELL RESERVES THE RIGHT AT ITS SOLE        *
+* DISCRETION TO REQUEST THAT THIS CODE BE IMMEDIATELY RETURNED TO MARVELL.     *
+* THIS CODE IS PROVIDED "AS IS". MARVELL MAKES NO WARRANTIES, EXPRESSED,       *
+* IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.   *
+********************************************************************************
+* prvCpssGenDbLog.h
+*       WARNING!!! this is a generated file, please don't edit it manually
+* COMMENTS:
+*
+* FILE REVISION NUMBER:
+*       $Revision: 1 $
+*******************************************************************************/
+#ifndef __prvCpssGenDbLogh
+#define __prvCpssGenDbLogh
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+#include <cpss/generic/log/cpssLog.h>
+#include <cpss/generic/log/prvCpssLog.h>
+
+
+/********* API fields DB *********/
+
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_INOUT_GT_U32_PTR_hsuBlockMemSizePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_INOUT_GT_U32_PTR_maxRatePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_INOUT_GT_U32_PTR_numOfDevicesPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_INOUT_GT_UINTPTR_PTR_iteratorPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DIRECTION_ENT_direction;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DP_LEVEL_ENT_color;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DP_LEVEL_ENT_dp;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DP_LEVEL_ENT_dpLevel;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_FDB_LEARN_PRIORITY_ENT_learnPriority;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_MEMBER_SELECTION_MODE_ENT_selectionMode;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_MIRROR_EGRESS_MODE_ENT_egressMirroringMode;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PAIR_READ_WRITE_FORM_ENT_mllPairReadForm;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PAIR_READ_WRITE_FORM_ENT_mllPairWriteForm;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PCL_PACKET_TYPE_ENT_packetType;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_POLICER_STAGE_TYPE_ENT_stage;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PORT_HOL_FC_ENT_modeFcHol;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PTP_TAI_NUMBER_ENT_taiNumber;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PTP_TOD_COUNTER_FUNC_ENT_function;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PTP_TOD_COUNT_STC_PTR_todValuePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_PTP_TS_TAG_PORT_CFG_STC_PTR_tsTagPortCfgPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_TTI_KEY_TYPE_ENT_keyType;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_DXCH_TTI_RULE_TYPE_ENT_ruleType;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_IP_PROTOCOL_STACK_ENT_ipVer;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_IP_PROTOCOL_STACK_ENT_protocol;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_IP_PROTOCOL_STACK_ENT_protocolStack;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_NET_RX_CPU_CODE_ENT_cpuCode;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_NET_RX_CPU_CODE_ENT_dropCode;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PACKET_CMD_ENT_cmd;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PACKET_CMD_ENT_command;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PACKET_CMD_ENT_packetCmd;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PCL_DIRECTION_ENT_direction;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PORTS_BMP_STC_PTR_portsMembersPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PORT_DIRECTION_ENT_direction;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PORT_SPEED_ENT_portSpeed;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PORT_SPEED_ENT_speed;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PORT_TX_DROP_MCAST_PRIORITY_ENT_mcastPriority;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_PORT_TX_DROP_PROFILE_SET_ENT_profileSet;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_CPSS_UNICAST_MULTICAST_ENT_prefixType;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_PTR_enablePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_enable;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_getFirst;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_isMember;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_isPhysicalPort;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_override;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_overrideEnable;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_reset;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_startStopStatistics;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_state;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_status;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_syncEnable;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_BOOL_valid;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_ETHERADDR_PTR_macPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_HW_DEV_NUM_hwDevNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_PHYSICAL_PORT_NUM_port;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_PHYSICAL_PORT_NUM_portNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_PHYSICAL_PORT_NUM_srcPortNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_PORT_GROUPS_BMP_portGroupsBmp;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_PORT_NUM_port;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_PORT_NUM_portNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_TRUNK_ID_trunkId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U16_HEX_etherType;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U16_vid;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U16_vidx;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U16_vlan;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U16_vlanId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_HEX_etherType;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_HEX_mask;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_PTR_buffLenArr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_PTR_entriesIndexesArray;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_accessLevel;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_analyzerIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_baseAddr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_baseFlowId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_baseline;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_cos;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_counter;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_domainIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_entriesIndexesNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_entryIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_exp;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_expandedActionIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_extPulseWidth;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_flowId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_gracefulStep;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_group;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_hitNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_index;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_laneNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_limit;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_meshIdOffset;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_meshIdSize;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_mllCntSet;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_mllPairEntryIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_mruSize;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_nanoSeconds;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_numOfBanks;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_numOfBits;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_numOfBuff;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_numOfDevs;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_numOfEntries;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_offset;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_opcode;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_prefixLen;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_priority;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_profile;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_profileId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_profileIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_profileNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_queueNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_ruleId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_ruleIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_seconds;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_serdesNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_size;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_sourceId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_startBit;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_startIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_tc;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_tcBitmap;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_tcamProfileId;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_threshold;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_timeout;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_tmPort;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_tpidEntryIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_udbIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_up;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_userGroup;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_value;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_windowSize;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_xOffThreshold;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U32_xOnThreshold;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_PTR_PTR_packetBuffsArrPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_PTR_devListArr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_PTR_hsuBlockMemPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_dev;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_devNum;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_entryIndex;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_offset;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_protocol;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_tc;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_tcQueue;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_IN_GT_U8_up;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_DP_LEVEL_ENT_PTR_dpLevelPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_DXCH_FDB_LEARN_PRIORITY_ENT_PTR_learnPriorityPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_DXCH_MEMBER_SELECTION_MODE_ENT_PTR_selectionModePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_DXCH_PORT_HOL_FC_ENT_PTR_modeFcHolPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_NET_RX_CPU_CODE_ENT_PTR_cpuCodePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_NET_RX_CPU_CODE_ENT_PTR_dropCodePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_PACKET_CMD_ENT_PTR_cmdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_PACKET_CMD_ENT_PTR_commandPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_PACKET_CMD_ENT_PTR_packetCmdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_PORTS_BMP_STC_PTR_portsMembersPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_PORT_SPEED_ENT_PTR_speedPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_CPSS_PORT_TX_DROP_PROFILE_SET_ENT_PTR_profileSetPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_32_PTR_temperaturePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_actFinishedPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_enablePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_enabledPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_exportCompletePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_importCompletePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_isMemberPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_isReadyPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_isValidPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_maskPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_overrideEnablePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_statePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_statusPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_BOOL_PTR_validPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_ETHERADDR_PTR_macPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_PHYSICAL_PORT_NUM_PTR_portNumPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_PTR_PTR_cookiePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_TRUNK_ID_PTR_trunkIdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U16_HEX_PTR_etherTypePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U16_PTR_vidPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U16_PTR_vlanIdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U16_PTR_vlanPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_HEX_PTR_etherTypePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_HEX_PTR_maskPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_accessLevelPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_baseFlowIdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_baselinePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_cntrPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_cosPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_countValuePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_counterPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_counterValuePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_crcMultiHashArr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_expPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_flowIdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_indexPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_indexesArr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_lengthPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_limitPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_maxRatePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_meshIdOffsetPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_meshIdSizePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_mllOutMCPktsPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_mruSizePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_numEntriesPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_numOfBitsPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_offsetPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_opcodePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_prefixLenPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_priorityPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_profileIdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_profileIndexPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_profileNumPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_profilePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_silentDropPktsPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_sizePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_sourceIdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_startBitPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_tcBitmapPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_tcamProfileIdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_thresholdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_timerPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_tpidEntryIndexPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_upPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_userGroupPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_valuePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_voltagePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_windowSizePtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_xOffThresholdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U32_PTR_xOnThresholdPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U64_PTR_counterPtr;
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC DX_OUT_GT_U8_PTR_offsetPtr;
+
+
+/********* API prototypes DB *********/
+
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumSelectionMode_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumStageEnable_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumStageEnablePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumProtocolStackEnable_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumProtocolStackEnablePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumCpuCode_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumCommand_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEnable_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEnableIndex_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEnableMeshIdOffsetMeshIdSize_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumMacPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortEnable_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortEnablePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNum_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumTsTagPortCfgPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumDirectionEnable_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumDirectionEnablePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumSpeed_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumEnable_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumSpeedPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumEnablePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortGroupsBmpIndex_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortGroupsBmpIndexValid_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortGroupsBmpIndexValidPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortGroupsBmpMllCntSetMllOutMCPktsPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortGroupsBmpSilentDropPktsPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumEnable2_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumTpidEntryIndex_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumEnablePtr2_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumPortNumTpidEntryIndexPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumBaseline_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumCounter_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumIndex_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumIndexEnable_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumIndexValue_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumIndexEnablePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumIndexValuePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumMllCntSetMllOutMCPktsPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEtherType_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumSelectionModePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumCpuCodePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumCommandPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEnablePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEnablePtrIndexPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEnablePtrMeshIdOffsetPtrMeshIdSizePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumMacPtr2_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumBaselinePtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumCounterPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumSilentDropPktsPtr_PARAMS[];
+extern const PRV_CPSS_LOG_FUNC_PARAM_STC * const prvCpssLogGenDevNumEtherTypePtr_PARAMS[];
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+#endif /* __prvCpssGenDbLogh */

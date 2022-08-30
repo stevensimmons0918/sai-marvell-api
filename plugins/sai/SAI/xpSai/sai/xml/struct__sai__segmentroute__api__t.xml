@@ -1,0 +1,425 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__segmentroute__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_segmentroute_api_t</compoundname>
+    <includes refid="saisegmentroute_8h" local="no">saisegmentroute.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__segmentroute__api__t_1a88fbd32c7c2b45ba35572e791a1bfe27" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga809223c3853c186c1fbb85072174975e" kindref="member">sai_create_segmentroute_sidlist_fn</ref></type>
+        <definition>sai_create_segmentroute_sidlist_fn _sai_segmentroute_api_t::create_segmentroute_sidlist</definition>
+        <argsstring></argsstring>
+        <name>create_segmentroute_sidlist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="157" column="1" bodyfile="inc/saisegmentroute.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__segmentroute__api__t_1ac7204b9c2b351cce23d09fdad7e1615b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga2100da05e23f1aee43ff94e8bbcf35ab" kindref="member">sai_remove_segmentroute_sidlist_fn</ref></type>
+        <definition>sai_remove_segmentroute_sidlist_fn _sai_segmentroute_api_t::remove_segmentroute_sidlist</definition>
+        <argsstring></argsstring>
+        <name>remove_segmentroute_sidlist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="158" column="1" bodyfile="inc/saisegmentroute.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__segmentroute__api__t_1a4c4d446d7640f19ae04bacc422c838e5" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga94c4662309e02c0258105215c8046306" kindref="member">sai_set_segmentroute_sidlist_attribute_fn</ref></type>
+        <definition>sai_set_segmentroute_sidlist_attribute_fn _sai_segmentroute_api_t::set_segmentroute_sidlist_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_segmentroute_sidlist_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="159" column="1" bodyfile="inc/saisegmentroute.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__segmentroute__api__t_1aacef92963702089cbcad2dfe4bf7e227" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga0a20ca91c30cd9a6d11aab3f08661926" kindref="member">sai_get_segmentroute_sidlist_attribute_fn</ref></type>
+        <definition>sai_get_segmentroute_sidlist_attribute_fn _sai_segmentroute_api_t::get_segmentroute_sidlist_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_segmentroute_sidlist_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="160" column="1" bodyfile="inc/saisegmentroute.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__segmentroute__api__t_1a35bdd7745989f755419a284a505e3a74" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga4610f346b1ad7a6272ba9d9bf933da94" kindref="member">sai_bulk_object_create_fn</ref></type>
+        <definition>sai_bulk_object_create_fn _sai_segmentroute_api_t::create_segmentroute_sidlists</definition>
+        <argsstring></argsstring>
+        <name>create_segmentroute_sidlists</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="161" column="1" bodyfile="inc/saisegmentroute.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__segmentroute__api__t_1a6dc2e4b1f90d9903cae417659baf007a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga4bbefb281d59e3e5c25ad8b9868d35c7" kindref="member">sai_bulk_object_remove_fn</ref></type>
+        <definition>sai_bulk_object_remove_fn _sai_segmentroute_api_t::remove_segmentroute_sidlists</definition>
+        <argsstring></argsstring>
+        <name>remove_segmentroute_sidlists</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="162" column="1" bodyfile="inc/saisegmentroute.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Segment Route methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1543">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="1544" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1529">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="1530">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="1531" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1546">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="1550">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="1551" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="1544">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="1538">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="1531">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="1532" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1532">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="1554">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="1536">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="1537" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="1540" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1557">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="1558" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1525">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="1526" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1524">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="1525" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1547">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="1523">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="1545">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="1556">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="1522">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="1523" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="1524" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="1528" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="1530" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="1533" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="1536" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="1541" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="1542" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="1543" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="1545" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="1546" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="1544" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="1547" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="1548" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="1538" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1549" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="1550" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="1552" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="1534" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="1539" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="1553" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="1554" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="1555" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="1556" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="1557" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="1559" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="1561" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="1537">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="1538" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1539" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1521">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="1522" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1542">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1535" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1520">
+        <label>_sai_segmentroute_api_t</label>
+        <link refid="struct__sai__segmentroute__api__t"/>
+        <childnode refid="1521" relation="usage">
+          <edgelabel>create_segmentroute_sidlist</edgelabel>
+          <edgelabel>get_segmentroute_sidlist_attribute</edgelabel>
+          <edgelabel>create_segmentroute_sidlists</edgelabel>
+          <edgelabel>set_segmentroute_sidlist_attribute</edgelabel>
+        </childnode>
+      </node>
+      <node id="1553">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="1552">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="1526">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1527" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1559">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="1560" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1561">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="1527">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="1540">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="1539" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1549">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="1560">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="1558">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="1528">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="1529" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1534">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1535" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1548">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="1533">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="1534" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1535">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="1539">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="1541">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="1551">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="1538" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1534" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1555">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="1548" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saisegmentroute.h" line="156" column="1" bodyfile="inc/saisegmentroute.h" bodystart="155" bodyend="163"/>
+    <listofallmembers>
+      <member refid="struct__sai__segmentroute__api__t_1a88fbd32c7c2b45ba35572e791a1bfe27" prot="public" virt="non-virtual"><scope>_sai_segmentroute_api_t</scope><name>create_segmentroute_sidlist</name></member>
+      <member refid="struct__sai__segmentroute__api__t_1a35bdd7745989f755419a284a505e3a74" prot="public" virt="non-virtual"><scope>_sai_segmentroute_api_t</scope><name>create_segmentroute_sidlists</name></member>
+      <member refid="struct__sai__segmentroute__api__t_1aacef92963702089cbcad2dfe4bf7e227" prot="public" virt="non-virtual"><scope>_sai_segmentroute_api_t</scope><name>get_segmentroute_sidlist_attribute</name></member>
+      <member refid="struct__sai__segmentroute__api__t_1ac7204b9c2b351cce23d09fdad7e1615b" prot="public" virt="non-virtual"><scope>_sai_segmentroute_api_t</scope><name>remove_segmentroute_sidlist</name></member>
+      <member refid="struct__sai__segmentroute__api__t_1a6dc2e4b1f90d9903cae417659baf007a" prot="public" virt="non-virtual"><scope>_sai_segmentroute_api_t</scope><name>remove_segmentroute_sidlists</name></member>
+      <member refid="struct__sai__segmentroute__api__t_1a4c4d446d7640f19ae04bacc422c838e5" prot="public" virt="non-virtual"><scope>_sai_segmentroute_api_t</scope><name>set_segmentroute_sidlist_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

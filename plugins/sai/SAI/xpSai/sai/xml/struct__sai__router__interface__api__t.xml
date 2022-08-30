@@ -1,0 +1,438 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__router__interface__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_router_interface_api_t</compoundname>
+    <includes refid="sairouterinterface_8h" local="no">sairouterinterface.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__router__interface__api__t_1a85c50aff14c4b345efb899ed5af4448b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_r_i_n_t_f_1gab4f0dce2c64d37e8b3ef522a8cb431d2" kindref="member">sai_create_router_interface_fn</ref></type>
+        <definition>sai_create_router_interface_fn _sai_router_interface_api_t::create_router_interface</definition>
+        <argsstring></argsstring>
+        <name>create_router_interface</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairouterinterface.h" line="437" column="1" bodyfile="inc/sairouterinterface.h" bodystart="437" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__router__interface__api__t_1ae7599b7addd3d79557daa8f339207154" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_r_i_n_t_f_1gafc68ff524128637deef0a5d0e24f732b" kindref="member">sai_remove_router_interface_fn</ref></type>
+        <definition>sai_remove_router_interface_fn _sai_router_interface_api_t::remove_router_interface</definition>
+        <argsstring></argsstring>
+        <name>remove_router_interface</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairouterinterface.h" line="438" column="1" bodyfile="inc/sairouterinterface.h" bodystart="438" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__router__interface__api__t_1a57a799bba89f880a7cf36cebb0ce7eb0" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_r_i_n_t_f_1ga6d91abbb10639a25746de38a119c8516" kindref="member">sai_set_router_interface_attribute_fn</ref></type>
+        <definition>sai_set_router_interface_attribute_fn _sai_router_interface_api_t::set_router_interface_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_router_interface_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairouterinterface.h" line="439" column="1" bodyfile="inc/sairouterinterface.h" bodystart="439" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__router__interface__api__t_1adf45e92f511c5cf2c08b6ba32105cc7e" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_r_i_n_t_f_1gacb9b0a66dcc85b35de75551227a84fd8" kindref="member">sai_get_router_interface_attribute_fn</ref></type>
+        <definition>sai_get_router_interface_attribute_fn _sai_router_interface_api_t::get_router_interface_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_router_interface_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairouterinterface.h" line="440" column="1" bodyfile="inc/sairouterinterface.h" bodystart="440" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__router__interface__api__t_1aa5d4ea26a472fe6deaf595cd529dc750" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_r_i_n_t_f_1gaeb3345395fb8aec892d23b9e3d0b8347" kindref="member">sai_get_router_interface_stats_fn</ref></type>
+        <definition>sai_get_router_interface_stats_fn _sai_router_interface_api_t::get_router_interface_stats</definition>
+        <argsstring></argsstring>
+        <name>get_router_interface_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairouterinterface.h" line="441" column="1" bodyfile="inc/sairouterinterface.h" bodystart="441" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__router__interface__api__t_1a961639cf06ad3ea1db8a3031109e45d2" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_r_i_n_t_f_1ga06fc530893a3552b3b98fdc9c9456b17" kindref="member">sai_get_router_interface_stats_ext_fn</ref></type>
+        <definition>sai_get_router_interface_stats_ext_fn _sai_router_interface_api_t::get_router_interface_stats_ext</definition>
+        <argsstring></argsstring>
+        <name>get_router_interface_stats_ext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairouterinterface.h" line="442" column="1" bodyfile="inc/sairouterinterface.h" bodystart="442" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__router__interface__api__t_1a67babfed05cf2fdeb8315e599a03c1df" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_r_o_u_t_e_r_i_n_t_f_1ga914dc6bac58eab7b5c7a9237dc18f2cc" kindref="member">sai_clear_router_interface_stats_fn</ref></type>
+        <definition>sai_clear_router_interface_stats_fn _sai_router_interface_api_t::clear_router_interface_stats</definition>
+        <argsstring></argsstring>
+        <name>clear_router_interface_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sairouterinterface.h" line="443" column="1" bodyfile="inc/sairouterinterface.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Routing interface methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1318">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="1319" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1304">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="1305">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="1306" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1321">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="1325">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="1326" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="1319">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="1313">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="1306">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="1307" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1307">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="1329">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="1311">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="1312" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="1315" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1332">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="1333" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1300">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="1301" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1299">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="1300" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1322">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="1298">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="1320">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="1331">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="1297">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="1298" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="1299" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="1303" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="1305" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="1308" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="1311" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="1316" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="1317" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="1318" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="1320" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="1321" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="1319" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="1322" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="1323" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="1313" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1324" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="1325" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="1327" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="1309" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="1314" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="1328" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="1329" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="1330" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="1331" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="1332" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="1334" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="1336" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="1312">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="1313" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1314" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1296">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="1297" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1317">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1310" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1328">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="1327">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="1301">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1302" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1334">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="1335" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1336">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="1302">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="1315">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="1314" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1324">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="1335">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="1333">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="1303">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="1304" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1309">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1310" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1323">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="1308">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="1309" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1310">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="1314">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="1316">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="1326">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="1313" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1309" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1295">
+        <label>_sai_router_interface_api_t</label>
+        <link refid="struct__sai__router__interface__api__t"/>
+        <childnode refid="1296" relation="usage">
+          <edgelabel>set_router_interface_attribute</edgelabel>
+          <edgelabel>get_router_interface_attribute</edgelabel>
+          <edgelabel>create_router_interface</edgelabel>
+        </childnode>
+      </node>
+      <node id="1330">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="1323" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/sairouterinterface.h" line="436" column="1" bodyfile="inc/sairouterinterface.h" bodystart="435" bodyend="445"/>
+    <listofallmembers>
+      <member refid="struct__sai__router__interface__api__t_1a67babfed05cf2fdeb8315e599a03c1df" prot="public" virt="non-virtual"><scope>_sai_router_interface_api_t</scope><name>clear_router_interface_stats</name></member>
+      <member refid="struct__sai__router__interface__api__t_1a85c50aff14c4b345efb899ed5af4448b" prot="public" virt="non-virtual"><scope>_sai_router_interface_api_t</scope><name>create_router_interface</name></member>
+      <member refid="struct__sai__router__interface__api__t_1adf45e92f511c5cf2c08b6ba32105cc7e" prot="public" virt="non-virtual"><scope>_sai_router_interface_api_t</scope><name>get_router_interface_attribute</name></member>
+      <member refid="struct__sai__router__interface__api__t_1aa5d4ea26a472fe6deaf595cd529dc750" prot="public" virt="non-virtual"><scope>_sai_router_interface_api_t</scope><name>get_router_interface_stats</name></member>
+      <member refid="struct__sai__router__interface__api__t_1a961639cf06ad3ea1db8a3031109e45d2" prot="public" virt="non-virtual"><scope>_sai_router_interface_api_t</scope><name>get_router_interface_stats_ext</name></member>
+      <member refid="struct__sai__router__interface__api__t_1ae7599b7addd3d79557daa8f339207154" prot="public" virt="non-virtual"><scope>_sai_router_interface_api_t</scope><name>remove_router_interface</name></member>
+      <member refid="struct__sai__router__interface__api__t_1a57a799bba89f880a7cf36cebb0ce7eb0" prot="public" virt="non-virtual"><scope>_sai_router_interface_api_t</scope><name>set_router_interface_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

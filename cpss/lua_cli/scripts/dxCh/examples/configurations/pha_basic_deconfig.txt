@@ -1,0 +1,31 @@
+// TAG:               PHA; firmware; ioam
+// Short Description: de-configures PHA ioam commands
+// Description:       de-configures PHA ioam commands
+//
+end
+config
+no pha thread-id-info device ${dev} thread-id 100
+no pha thread-id-info device ${dev} thread-id 101
+no pha thread-id-info device ${dev} thread-id 111
+no pha thread-id-info device ${dev} thread-id 200
+no pha thread-id-info device ${dev} thread-id 201
+no pha thread-id-info device ${dev} thread-id 211
+no pha thread-id-info device ${dev} thread-id 6
+no pha thread-id-info device ${dev} thread-id 7
+no pha thread-id-info device ${dev} thread-id 8
+no pha thread-id-info device ${dev} thread-id 9
+no pha thread-id-info device ${dev} thread-id 11
+no pha thread-id-info device ${dev} thread-id 48
+no pha thread-id-info device ${dev} thread-id 49
+no pha thread-id-info device ${dev} thread-id 50
+no pha thread-id-info device ${dev} thread-id 51
+no pha thread-id-info device ${dev} thread-id 52
+no pha thread-id-info device ${dev} thread-id 53
+no pha thread-id-info device ${dev} thread-id 54
+no pha thread-id-info device ${dev} thread-id 55
+no pha thread-id-info device ${dev} thread-id 56
+//
+//
+do show  pha-info common device ${dev}
+do show  pha-info ioam   device ${dev}
+

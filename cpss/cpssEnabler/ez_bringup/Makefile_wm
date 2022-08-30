@@ -1,0 +1,44 @@
+# New Makefile for iDbgPdl linux WM
+#
+SHELL := /bin/bash
+
+MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+MKFILE_DIR := $(dir $(MKFILE_PATH))
+CURR_DIR := $(notdir $(patsubst %/,%,$(dir $(MKFILE_PATH))))
+ROOT_DIR := $(CURR_DIR)
+
+TARGET_HOST=WIN32_WM
+
+IDBG_PDL_DIR := iDbgPdl
+PDL_DIR := pdl
+IDBG_PDL_BUILD_DIR := $(IDBG_PDL_DIR)/build_dir_wm
+PDL_BUILD_DIR := $(PDL_DIR)/build_dir_wm
+
+ifneq ($(strip $(BUILD_DIR_TARGET)),)
+IDBG_PDL_BUILD_DIR := $(IDBG_PDL_BUILD_DIR)/$(BUILD_DIR_TARGET)
+PDL_BUILD_DIR := $(PDL_BUILD_DIR)/$(BUILD_DIR_TARGET)
+endif
+
+IDBG_PDL_OUT_DIR := $(IDBG_PDL_BUILD_DIR)
+IDBG_PDL_OBJ_OUT_DIR := $(IDBG_PDL_BUILD_DIR)/obj
+PDL_OUT_DIR := $(PDL_BUILD_DIR)
+PDL_OBJ_OUT_DIR := $(PDL_BUILD_DIR)/obj
+
+export FAST_COMPILATION_FLAG := -j$(shell awk '/^processor/{n+=1}END{print n}' /proc/cpuinfo)
+
+OBJ_EXTENSION=obj
+DEP_EXTENSION=dep
+LIB_EXTENSION=lib
+
+IDBG_PDL_LIB := $(IDBG_PDL_OUT_DIR)/iDbgPdl.$(LIB_EXTENSION)
+PDL_LIB := $(PDL_OUT_DIR)/pdl.$(LIB_EXTENSION)
+
+ifneq ($(strip $(WM_COMPILER)),)
+export WM_COMPILER
+$(info "WM_COMPILER is : $(WM_COMPILER)")
+else
+export WM_COMPILER=MSVSC
+$(info "Setting WM_COMPILER to $(WM_COMPILER)")
+endif
+
+include $(WM_COMPILER).mk

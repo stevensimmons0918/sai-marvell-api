@@ -1,0 +1,1792 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saibuffer_8h" kind="file" language="C++">
+    <compoundname>saibuffer.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="76">
+        <label>stdbool.h</label>
+      </node>
+      <node id="75">
+        <label>stdint.h</label>
+      </node>
+      <node id="77">
+        <label>sys/types.h</label>
+      </node>
+      <node id="73">
+        <label>inc/saibuffer.h</label>
+        <link refid="saibuffer.h"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="78">
+        <label>inc/saibuffer.h</label>
+        <link refid="saibuffer.h"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__buffer__api__t" prot="public">_sai_buffer_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1ga1a14ec66911278253011aed84dcdef20" prot="public" static="no">
+        <name>_sai_ingress_priority_group_attr_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a649910a12dc9d3d162b81d7ae6fc041c" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a04999da223aaa260ff519f41c2bad2cd" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_BUFFER_PROFILE</name>
+          <initializer>= SAI_INGRESS_PRIORITY_GROUP_ATTR_START</initializer>
+          <briefdescription>
+<para>Buffer profile pointer. </para>          </briefdescription>
+          <detaileddescription>
+<para>Default no profile</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_BUFFER_PROFILE </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20aceb82469669f05f9f5fc9bd41c54db59" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_PORT</name>
+          <briefdescription>
+<para>Port id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY | KEY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ac5b6966772f75467a4b93b3aafebe5d0" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_TAM</name>
+          <briefdescription>
+<para>TAM id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_TAM </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ad93b193e04a3465ec5781c03570cf5a1" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_INDEX</name>
+          <briefdescription>
+<para>PG index. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY | KEY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ab2aa18f37b1e1f20d94623be9c407ef5" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ad16a67cc8deab0b5a66ddcfbbc040dc8" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a8fe315ff0da44d0e05072bce0b74a6e7" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining ingress priority group attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="40" column="1" bodyfile="inc/saibuffer.h" bodystart="39" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1gac49fccd1891e003fc0ef6d57d65fd149" prot="public" static="no">
+        <name>_sai_ingress_priority_group_stat_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ad5f8ecb2a53724ce8420f6c788464653" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_PACKETS</name>
+          <initializer>= 0x00000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get rx packets count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ad238e9e58d9d89e3e91b84e2f2491234" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_BYTES</name>
+          <initializer>= 0x00000001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get rx bytes count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ab1e6baa82147ee3a51ad96d30c4cf290" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_CURR_OCCUPANCY_BYTES</name>
+          <initializer>= 0x00000002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get current pg occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ae67ee07b12e499c8612503333fbefcd5" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_WATERMARK_BYTES</name>
+          <initializer>= 0x00000003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get watermark pg occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a3fa7a5ed0ea78881d920744b6ed6303d" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_SHARED_CURR_OCCUPANCY_BYTES</name>
+          <initializer>= 0x00000004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get current pg shared occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a2e4a5ace9acb4983c8b516e50242dbc3" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_SHARED_WATERMARK_BYTES</name>
+          <initializer>= 0x00000005</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get watermark pg shared occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149aa0c830ffa32ab5f383063324706cfe0e" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_XOFF_ROOM_CURR_OCCUPANCY_BYTES</name>
+          <initializer>= 0x00000006</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get current pg XOFF room occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149af8ef9eccbe39d706170dac571e957709" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_XOFF_ROOM_WATERMARK_BYTES</name>
+          <initializer>= 0x00000007</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get watermark pg XOFF room occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a287cd9e16f5f82460b23c470039ebabe" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_DROPPED_PACKETS</name>
+          <initializer>= 0x00000008</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get dropped packets count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a9984aa56fa4212fd95ab860fcf91a285" prot="public">
+          <name>SAI_INGRESS_PRIORITY_GROUP_STAT_CUSTOM_RANGE_BASE</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining statistics for ingress priority group. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="103" column="1" bodyfile="inc/saibuffer.h" bodystart="102" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1ga5d6d1d0c41f68362600d6c9221a9552a" prot="public" static="no">
+        <name>_sai_buffer_pool_type_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aada7040b2573fc85c6a06a3ee8d49332f" prot="public">
+          <name>SAI_BUFFER_POOL_TYPE_INGRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ingress buffer pool </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aafa28b707de445016fead873c4025ecd6" prot="public">
+          <name>SAI_BUFFER_POOL_TYPE_EGRESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Egress buffer pool </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aa7ef853cc06c9b6f00fdbd69e45ce54de" prot="public">
+          <name>SAI_BUFFER_POOL_TYPE_BOTH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Buffer pool used by both ingress and egress </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining buffer pool types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="240" column="1" bodyfile="inc/saibuffer.h" bodystart="239" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1ga72cb36529c57e91f01c9a67e104aae83" prot="public" static="no">
+        <name>_sai_buffer_pool_threshold_mode_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga72cb36529c57e91f01c9a67e104aae83ac68bb49c250b7e005a4d171af1b11f16" prot="public">
+          <name>SAI_BUFFER_POOL_THRESHOLD_MODE_STATIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Static maximum </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga72cb36529c57e91f01c9a67e104aae83a6cb1a653480ab8d47b32a4ac1cd765a7" prot="public">
+          <name>SAI_BUFFER_POOL_THRESHOLD_MODE_DYNAMIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Dynamic maximum (relative) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining buffer pool threshold modes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="256" column="1" bodyfile="inc/saibuffer.h" bodystart="255" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1ga36125eda3f6856ac850a068087141ffd" prot="public" static="no">
+        <name>_sai_buffer_pool_attr_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda13cb5252d8a90954db2e599973a59eed" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdab2780f4ad046f8180e3016159b358662" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_SHARED_SIZE</name>
+          <initializer>= SAI_BUFFER_POOL_ATTR_START</initializer>
+          <briefdescription>
+<para>Shared buffer size in bytes. </para>          </briefdescription>
+          <detaileddescription>
+<para>This is derived from subtracting all reversed buffers of queue/port from the total pool size.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda891780c2ecf532cfce189b9bcaa0c3f9" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_TYPE</name>
+          <briefdescription>
+<para>Buffer pool type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_buffer_pool_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdae0505247163996372760c6e2886f800b" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_SIZE</name>
+          <briefdescription>
+<para>Buffer pool size in bytes. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda6ef91932a49b5eac15d9f07d4c26554e" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_THRESHOLD_MODE</name>
+          <briefdescription>
+<para>Shared threshold mode for the buffer. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_buffer_pool_threshold_mode_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_BUFFER_POOL_THRESHOLD_MODE_DYNAMIC </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda51737f94efdc2d833596c733cf7af077" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_TAM</name>
+          <briefdescription>
+<para>TAM id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_TAM </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdaf07d5f4498cb498564cd86b232c8f792" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_XOFF_SIZE</name>
+          <briefdescription>
+<para>Shared headroom pool size in bytes for lossless traffic. </para>          </briefdescription>
+          <detaileddescription>
+<para>Only valid for the ingress buffer pool. If shared headroom pool size is not zero, its size is included in the corresponding ingress buffer pool size SAI_BUFFER_POOL_ATTR_SIZE</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda1b0fed66139022d0dfd37d6d2a7418be" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_WRED_PROFILE_ID</name>
+          <briefdescription>
+<para>Attach WRED ID to pool. </para>          </briefdescription>
+          <detaileddescription>
+<para>WRED Drop/ECN marking based on pool thresholds will happen only when one of queue referring to this buffer pool configured with non default value for SAI_QUEUE_ATTR_WRED_PROFILE_ID. ID = <ref refid="group___s_a_i_t_y_p_e_s_1ga05f6bb4ef9f7ddf0ceb2056dc6ac8c6c" kindref="member">SAI_NULL_OBJECT_ID</ref> to disable WRED</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_WRED </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda8142ef73acc21ab94d61751d075d0c01" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdabdc0240e437a1cbb185ddd51d791e983" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda8169ec1b7d51ea6c057db8b4713a1e69" prot="public">
+          <name>SAI_BUFFER_POOL_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining buffer pool attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="269" column="1" bodyfile="inc/saibuffer.h" bodystart="268" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1gaefd81c32886250ddd760ee43dc153d59" prot="public" static="no">
+        <name>_sai_buffer_pool_stat_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ab6bcc6d06234286ecc387ed19acd6b7b" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_CURR_OCCUPANCY_BYTES</name>
+          <initializer>= 0x00000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get current pool occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a90fed4da7868b42eaf6205321c6080e0" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_WATERMARK_BYTES</name>
+          <initializer>= 0x00000001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get watermark pool occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a31b5ed01897039a73c89a0e3ed98122f" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_DROPPED_PACKETS</name>
+          <initializer>= 0x00000002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get count of packets dropped in this pool [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a380fae9718f9b7f2e9013852ab285837" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_GREEN_WRED_DROPPED_PACKETS</name>
+          <initializer>= 0x00000003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED green dropped packet count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a77d4559bd2b38a60869f5f57291975d3" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_GREEN_WRED_DROPPED_BYTES</name>
+          <initializer>= 0x00000004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED green dropped byte count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ad4dfd1883fa7bd2a2c1af07f017da1fe" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_YELLOW_WRED_DROPPED_PACKETS</name>
+          <initializer>= 0x00000005</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED yellow dropped packet count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aaaeb8799a67d4e1abfcc45398b7d33e3" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_YELLOW_WRED_DROPPED_BYTES</name>
+          <initializer>= 0x00000006</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED yellow dropped byte count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a3a3f8017ea4c64445a743d1446ec52ad" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_RED_WRED_DROPPED_PACKETS</name>
+          <initializer>= 0x00000007</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED red dropped packet count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ae38cda9e31543ca1ce254f8232218c34" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_RED_WRED_DROPPED_BYTES</name>
+          <initializer>= 0x00000008</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED red dropped byte count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ad3cb5608f2fa86cbc97612f6a34f406d" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_WRED_DROPPED_PACKETS</name>
+          <initializer>= 0x00000009</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED dropped packets count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a83c3a00926991a850861472c7a7db1f2" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_WRED_DROPPED_BYTES</name>
+          <initializer>= 0x0000000a</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED dropped bytes count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aeb1f1a42829f58de7e0437a88180ddfc" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_GREEN_WRED_ECN_MARKED_PACKETS</name>
+          <initializer>= 0x0000000b</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED green marked packet count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a52a783788845e2f50a4107b22d69fa23" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_GREEN_WRED_ECN_MARKED_BYTES</name>
+          <initializer>= 0x0000000c</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED green marked byte count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a8a4bc64d6aa8597624b13a9cb7bf3554" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_YELLOW_WRED_ECN_MARKED_PACKETS</name>
+          <initializer>= 0x0000000d</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED yellow marked packet count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a38739cb926d47e0414436fa501b814f3" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_YELLOW_WRED_ECN_MARKED_BYTES</name>
+          <initializer>= 0x0000000e</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED yellow marked byte count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a8b505b080a61f40234f84333e4ffe3ce" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_RED_WRED_ECN_MARKED_PACKETS</name>
+          <initializer>= 0x0000000f</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED red marked packet count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a205087fd39054fd7e6f5c0b5d39ce6d0" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_RED_WRED_ECN_MARKED_BYTES</name>
+          <initializer>= 0x00000010</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED red marked byte count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a32134f61c3b33c931d7a98ada8f90c7a" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_WRED_ECN_MARKED_PACKETS</name>
+          <initializer>= 0x00000011</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED marked packets count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ae020ef3a0e284d23765785afa384b85e" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_WRED_ECN_MARKED_BYTES</name>
+          <initializer>= 0x00000012</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get/set WRED marked bytes count [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aea02c13e35e116941e579c91006776f3" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_XOFF_ROOM_CURR_OCCUPANCY_BYTES</name>
+          <initializer>= 0x00000013</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get current headroom pool occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59abdc709d7d4b44b459be6c00e318ad560" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_XOFF_ROOM_WATERMARK_BYTES</name>
+          <initializer>= 0x00000014</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Get headroom pool occupancy in bytes [uint64_t] </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a6b56d294703a3c2992d216ed76b4ff60" prot="public">
+          <name>SAI_BUFFER_POOL_STAT_CUSTOM_RANGE_BASE</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining statistics for buffer pool. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="367" column="1" bodyfile="inc/saibuffer.h" bodystart="366" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1gafd0175ecbeeb8e9d0cda32f1fe2e68b2" prot="public" static="no">
+        <name>_sai_buffer_profile_threshold_mode_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggafd0175ecbeeb8e9d0cda32f1fe2e68b2a788dd21def9b2cd538ddcc71a1ba83a8" prot="public">
+          <name>SAI_BUFFER_PROFILE_THRESHOLD_MODE_STATIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Static maximum </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggafd0175ecbeeb8e9d0cda32f1fe2e68b2a8c318b122b462462a71cdc4ca434b0c9" prot="public">
+          <name>SAI_BUFFER_PROFILE_THRESHOLD_MODE_DYNAMIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Dynamic maximum (relative) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining buffer profile threshold modes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="540" column="1" bodyfile="inc/saibuffer.h" bodystart="539" bodyend="547"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_u_f_f_e_r_1gaf21c473ccd38a4603e0751631a5177fe" prot="public" static="no">
+        <name>_sai_buffer_profile_attr_t</name>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fea8831dd7f0cafaa6df0ea40fe93c05b1a" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feabb1ae1486d87ff1b196b08c18b99ca47" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_POOL_ID</name>
+          <initializer>= SAI_BUFFER_PROFILE_ATTR_START</initializer>
+          <briefdescription>
+<para>Pointer to buffer pool object id. </para>          </briefdescription>
+          <detaileddescription>
+<para>Pool id = <ref refid="group___s_a_i_t_y_p_e_s_1ga05f6bb4ef9f7ddf0ceb2056dc6ac8c6c" kindref="member">SAI_NULL_OBJECT_ID</ref> can be used when profile is not associated with specific pool, for example for global port buffer. Not applicable to priority group or queue buffer profile.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_BUFFER_POOL </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaae26877325644d6ad9df7e2d033831b3" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_RESERVED_BUFFER_SIZE</name>
+          <briefdescription>
+<para>Reserved buffer size in bytes. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fead63c29bca43784b2f73929d76fef5a89" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_BUFFER_SIZE</name>
+          <initializer>= SAI_BUFFER_PROFILE_ATTR_RESERVED_BUFFER_SIZE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Ignored:</title><para> @@ignore         - for backward compatibility </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feada4906106d6d1638f9f9ffe4c374a638" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_THRESHOLD_MODE</name>
+          <briefdescription>
+<para>Shared threshold mode for the buffer profile. </para>          </briefdescription>
+          <detaileddescription>
+<para>If set, this overrides <ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda6ef91932a49b5eac15d9f07d4c26554e" kindref="member">SAI_BUFFER_POOL_ATTR_THRESHOLD_MODE</ref>.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_buffer_profile_threshold_mode_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feab1ef880d8269f02053e3ce26b7ef3ae2" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_SHARED_DYNAMIC_TH</name>
+          <briefdescription>
+<para>Dynamic threshold for the shared usage. </para>          </briefdescription>
+          <detaileddescription>
+<para>The threshold is set to the 2^n of available buffer of the pool.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_int8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BUFFER_PROFILE_ATTR_THRESHOLD_MODE == SAI_BUFFER_PROFILE_THRESHOLD_MODE_DYNAMIC </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feac93a34d7a55388686f3711c622cbfe37" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_SHARED_STATIC_TH</name>
+          <briefdescription>
+<para>Static threshold for the shared usage in bytes. </para>          </briefdescription>
+          <detaileddescription>
+<para>When set to zero there is no limit for the shared usage.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BUFFER_PROFILE_ATTR_THRESHOLD_MODE == SAI_BUFFER_PROFILE_THRESHOLD_MODE_STATIC </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feab79b8a59b046325dce6a456dedcb3b48" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_XOFF_TH</name>
+          <briefdescription>
+<para>Set the buffer profile XOFF threshold in bytes. </para>          </briefdescription>
+          <detaileddescription>
+<para>Valid only for ingress PG.</para><para>Specifies the maximum available buffer for a PG after XOFF is generated (i.e. headroom buffer). Note that the available headroom buffer is dependent on SAI_BUFFER_POOL_ATTR_XOFF_SIZE. If the user has set SAI_BUFFER_POOL_ATTR_XOFF_SIZE = 0, the PG headroom buffer is equal to XOFF_TH and it is not shared. If the user has set SAI_BUFFER_POOL_ATTR_XOFF_SIZE &gt; 0, the total headroom pool buffer for all PGs is equal to SAI_BUFFER_POOL_ATTR_XOFF_SIZE and XOFF_TH specifies the maximum amount of headroom pool buffer one PG can use.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feac50a2a6eff5f91e254cfb724e8157586" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_XON_TH</name>
+          <briefdescription>
+<para>Set the buffer profile XON non-hysteresis threshold in byte. </para>          </briefdescription>
+          <detaileddescription>
+<para>Valid only for ingress PG.</para><para>Generate XON when the total buffer usage of this PG is less than the maximum of XON_TH and the total buffer limit minus XON_OFFSET_TH, and available buffer in the PG buffer is larger than the XOFF_TH. The XON trigger condition is governed by: total buffer usage &lt;= max(XON_TH, total buffer limit - XON_OFFSET_TH)</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fea5d53c6ba2fde9a217240d0288e5c9119" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_XON_OFFSET_TH</name>
+          <briefdescription>
+<para>Set the buffer profile XON hysteresis threshold in byte. </para>          </briefdescription>
+          <detaileddescription>
+<para>Valid only for ingress PG</para><para>Generate XON when the total buffer usage of this PG is less than the maximum of XON_TH and the total buffer limit minus XON_OFFSET_TH, and available buffer in the PG buffer is larger than the XOFF_TH. The XON trigger condition is governed by: total buffer usage &lt;= max(XON_TH, total buffer limit - XON_OFFSET_TH)</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint64_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feadd35c35458167cbe5a2487fa397d3ea1" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaa448f1e5b4b14037768526f19b0baf21" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaade2fd0e3cbd500198a7862734703318" prot="public">
+          <name>SAI_BUFFER_PROFILE_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining buffer profile attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="553" column="1" bodyfile="inc/saibuffer.h" bodystart="552" bodyend="681"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga322e72aae3f29078c124eba2d29cffcc" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1ga1a14ec66911278253011aed84dcdef20" kindref="member">_sai_ingress_priority_group_attr_t</ref></type>
+        <definition>typedef enum _sai_ingress_priority_group_attr_t  sai_ingress_priority_group_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ingress_priority_group_attr_t</name>
+        <briefdescription>
+<para>Enum defining ingress priority group attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="97" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga85e29358cb8b166b365cd4e341c66025" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1gac49fccd1891e003fc0ef6d57d65fd149" kindref="member">_sai_ingress_priority_group_stat_t</ref></type>
+        <definition>typedef enum _sai_ingress_priority_group_stat_t  sai_ingress_priority_group_stat_t</definition>
+        <argsstring></argsstring>
+        <name>sai_ingress_priority_group_stat_t</name>
+        <briefdescription>
+<para>Enum defining statistics for ingress priority group. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="134" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gaeb26c8cfee0cc0e3caf0f7f698f5f18c" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_ingress_priority_group_fn) (_Out_ sai_object_id_t *ingress_priority_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *ingress_priority_group_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_ingress_priority_group_fn</name>
+        <briefdescription>
+<para>Create ingress priority group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">ingress_priority_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ingress priority group </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="146" column="1" bodyfile="inc/saibuffer.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga595321014af379d3047937dbe4096b3d" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_ingress_priority_group_fn) (_In_ sai_object_id_t ingress_priority_group_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t ingress_priority_group_id)</argsstring>
+        <name>sai_remove_ingress_priority_group_fn</name>
+        <briefdescription>
+<para>Remove ingress priority group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ingress_priority_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ingress priority group id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="159" column="1" bodyfile="inc/saibuffer.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gae1e01be012479a1c9929da0e998bb742" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_ingress_priority_group_attribute_fn) (_In_ sai_object_id_t ingress_priority_group_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t ingress_priority_group_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_ingress_priority_group_attribute_fn</name>
+        <briefdescription>
+<para>Set ingress priority group attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ingress_priority_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ingress priority group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute to set</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="170" column="1" bodyfile="inc/saibuffer.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gaa27459f1bb728b0adc2f4f9481b484f6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_ingress_priority_group_attribute_fn) (_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_ingress_priority_group_attribute_fn</name>
+        <briefdescription>
+<para>Get ingress priority group attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ingress_priority_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ingress priority group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="183" column="1" bodyfile="inc/saibuffer.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gabd3e3cccfdc3ff25d6ea58f33d5e0688" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_ingress_priority_group_stats_fn) (_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _Out_ uint64_t *counters)</definition>
+        <argsstring>)(_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _Out_ uint64_t *counters)</argsstring>
+        <name>sai_get_ingress_priority_group_stats_fn</name>
+        <briefdescription>
+<para>Get ingress priority group statistics counters. Deprecated for backward compatibility. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ingress_priority_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ingress priority group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of resulting counter values.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="198" column="1" bodyfile="inc/saibuffer.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gad893539adc8f877b3a538457bc698b1d" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_ingress_priority_group_stats_ext_fn) (_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _In_ sai_stats_mode_t mode, _Out_ uint64_t *counters)</definition>
+        <argsstring>)(_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _In_ sai_stats_mode_t mode, _Out_ uint64_t *counters)</argsstring>
+        <name>sai_get_ingress_priority_group_stats_ext_fn</name>
+        <briefdescription>
+<para>Get ingress priority group statistics counters extended. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ingress_priority_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ingress priority group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Statistics mode </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of resulting counter values.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="215" column="1" bodyfile="inc/saibuffer.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga3c3be4d27a9c1ef7b88352bd48477a84" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_clear_ingress_priority_group_stats_fn) (_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids)</definition>
+        <argsstring>)(_In_ sai_object_id_t ingress_priority_group_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids)</argsstring>
+        <name>sai_clear_ingress_priority_group_stats_fn</name>
+        <briefdescription>
+<para>Clear ingress priority group statistics counters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ingress_priority_group_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ingress priority group id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="231" column="1" bodyfile="inc/saibuffer.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga174dac94c76c4fe51b1f645aa33fe418" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1ga5d6d1d0c41f68362600d6c9221a9552a" kindref="member">_sai_buffer_pool_type_t</ref></type>
+        <definition>typedef enum _sai_buffer_pool_type_t  sai_buffer_pool_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_buffer_pool_type_t</name>
+        <briefdescription>
+<para>Enum defining buffer pool types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="250" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga8a91ba5916ce830c947c7d173ecf00e1" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1ga72cb36529c57e91f01c9a67e104aae83" kindref="member">_sai_buffer_pool_threshold_mode_t</ref></type>
+        <definition>typedef enum _sai_buffer_pool_threshold_mode_t  sai_buffer_pool_threshold_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_buffer_pool_threshold_mode_t</name>
+        <briefdescription>
+<para>Enum defining buffer pool threshold modes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="263" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga8e5dd2be5de28a6f4072a49274653f02" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1ga36125eda3f6856ac850a068087141ffd" kindref="member">_sai_buffer_pool_attr_t</ref></type>
+        <definition>typedef enum _sai_buffer_pool_attr_t  sai_buffer_pool_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_buffer_pool_attr_t</name>
+        <briefdescription>
+<para>Enum defining buffer pool attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="361" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga75cd706da2ecb3a9082742b34ed4a0a0" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1gaefd81c32886250ddd760ee43dc153d59" kindref="member">_sai_buffer_pool_stat_t</ref></type>
+        <definition>typedef enum _sai_buffer_pool_stat_t  sai_buffer_pool_stat_t</definition>
+        <argsstring></argsstring>
+        <name>sai_buffer_pool_stat_t</name>
+        <briefdescription>
+<para>Enum defining statistics for buffer pool. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="434" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gae64750ee68725a87f1237634d1947c30" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_buffer_pool_fn) (_Out_ sai_object_id_t *buffer_pool_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *buffer_pool_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_buffer_pool_fn</name>
+        <briefdescription>
+<para>Create buffer pool. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">buffer_pool_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer pool id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="446" column="1" bodyfile="inc/saibuffer.h" bodystart="446" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga4a5f09863c52c3eaf0a212e1a8d3bfa2" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_buffer_pool_fn) (_In_ sai_object_id_t buffer_pool_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_pool_id)</argsstring>
+        <name>sai_remove_buffer_pool_fn</name>
+        <briefdescription>
+<para>Remove buffer pool. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_pool_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer pool id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="459" column="1" bodyfile="inc/saibuffer.h" bodystart="459" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga1f2d097b27cc12b8e2a538ab552ba4af" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_buffer_pool_attribute_fn) (_In_ sai_object_id_t buffer_pool_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_pool_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_buffer_pool_attribute_fn</name>
+        <briefdescription>
+<para>Set buffer pool attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_pool_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer pool id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="470" column="1" bodyfile="inc/saibuffer.h" bodystart="470" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga04a384a8fc97d28dff41ec8f62bc2ff2" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_buffer_pool_attribute_fn) (_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_buffer_pool_attribute_fn</name>
+        <briefdescription>
+<para>Get buffer pool attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_pool_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer pool id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="483" column="1" bodyfile="inc/saibuffer.h" bodystart="483" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga9a39bf03bbdc87cf7f99a2ca3724bece" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_buffer_pool_stats_fn) (_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _Out_ uint64_t *counters)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _Out_ uint64_t *counters)</argsstring>
+        <name>sai_get_buffer_pool_stats_fn</name>
+        <briefdescription>
+<para>Get buffer pool statistics counters. Deprecated for backward compatibility. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_pool_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer pool id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of resulting counter values.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="498" column="1" bodyfile="inc/saibuffer.h" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga6bd30fc5090a5ac01700b89bf3ea4aba" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_buffer_pool_stats_ext_fn) (_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _In_ sai_stats_mode_t mode, _Out_ uint64_t *counters)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _In_ sai_stats_mode_t mode, _Out_ uint64_t *counters)</argsstring>
+        <name>sai_get_buffer_pool_stats_ext_fn</name>
+        <briefdescription>
+<para>Get buffer pool statistics counters extended. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_pool_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer pool id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Statistics mode </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of resulting counter values.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="515" column="1" bodyfile="inc/saibuffer.h" bodystart="515" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga2b28f0e2981ac5c50ac4e2c95e2142d5" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_clear_buffer_pool_stats_fn) (_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_pool_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids)</argsstring>
+        <name>sai_clear_buffer_pool_stats_fn</name>
+        <briefdescription>
+<para>Clear buffer pool statistics counters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_pool_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer pool id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="531" column="1" bodyfile="inc/saibuffer.h" bodystart="531" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gac3882d8f9c072308cc0bb458bec83fb3" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1gafd0175ecbeeb8e9d0cda32f1fe2e68b2" kindref="member">_sai_buffer_profile_threshold_mode_t</ref></type>
+        <definition>typedef enum _sai_buffer_profile_threshold_mode_t  sai_buffer_profile_threshold_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_buffer_profile_threshold_mode_t</name>
+        <briefdescription>
+<para>Enum defining buffer profile threshold modes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="547" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga3edf8691071f63063f20407b77f9446e" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_u_f_f_e_r_1gaf21c473ccd38a4603e0751631a5177fe" kindref="member">_sai_buffer_profile_attr_t</ref></type>
+        <definition>typedef enum _sai_buffer_profile_attr_t  sai_buffer_profile_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_buffer_profile_attr_t</name>
+        <briefdescription>
+<para>Enum defining buffer profile attributes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="681" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga12459b95f226e0de5bfea8b623b43ca0" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_buffer_profile_fn) (_Out_ sai_object_id_t *buffer_profile_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *buffer_profile_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_buffer_profile_fn</name>
+        <briefdescription>
+<para>Create buffer profile. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">buffer_profile_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer profile id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="693" column="1" bodyfile="inc/saibuffer.h" bodystart="693" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga2a73ceaa1ec70abce8f1a068afeb3b89" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_buffer_profile_fn) (_In_ sai_object_id_t buffer_profile_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_profile_id)</argsstring>
+        <name>sai_remove_buffer_profile_fn</name>
+        <briefdescription>
+<para>Remove buffer profile. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_profile_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer profile id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="706" column="1" bodyfile="inc/saibuffer.h" bodystart="706" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga9e4c7760935141f4dace123efece3575" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_buffer_profile_attribute_fn) (_In_ sai_object_id_t buffer_profile_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_profile_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_buffer_profile_attribute_fn</name>
+        <briefdescription>
+<para>Set buffer profile attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_profile_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer profile id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="717" column="1" bodyfile="inc/saibuffer.h" bodystart="717" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1ga53141523ce29287dca64944c4b576581" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_buffer_profile_attribute_fn) (_In_ sai_object_id_t buffer_profile_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t buffer_profile_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_buffer_profile_attribute_fn</name>
+        <briefdescription>
+<para>Get buffer profile attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">buffer_profile_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer profile id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="730" column="1" bodyfile="inc/saibuffer.h" bodystart="730" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_u_f_f_e_r_1gabbc3768d1f98eeacf98e761ca87a705a" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__buffer__api__t" kindref="compound">_sai_buffer_api_t</ref></type>
+        <definition>typedef struct _sai_buffer_api_t  sai_buffer_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_buffer_api_t</name>
+        <briefdescription>
+<para>Buffer methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibuffer.h" line="758" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Buffer interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIBUFFER_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIBUFFER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_b_u_f_f_e_r_1ga1a14ec66911278253011aed84dcdef20" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga1a14ec66911278253011aed84dcdef20" kindref="member">_sai_ingress_priority_group_attr_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a649910a12dc9d3d162b81d7ae6fc041c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a649910a12dc9d3d162b81d7ae6fc041c" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a04999da223aaa260ff519f41c2bad2cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a04999da223aaa260ff519f41c2bad2cd" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_BUFFER_PROFILE</ref><sp/>=<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a649910a12dc9d3d162b81d7ae6fc041c" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20aceb82469669f05f9f5fc9bd41c54db59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20aceb82469669f05f9f5fc9bd41c54db59" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_PORT</ref>,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ac5b6966772f75467a4b93b3aafebe5d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ac5b6966772f75467a4b93b3aafebe5d0" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_TAM</ref>,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ad93b193e04a3465ec5781c03570cf5a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ad93b193e04a3465ec5781c03570cf5a1" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_INDEX</ref>,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ab2aa18f37b1e1f20d94623be9c407ef5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ab2aa18f37b1e1f20d94623be9c407ef5" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ad16a67cc8deab0b5a66ddcfbbc040dc8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20ad16a67cc8deab0b5a66ddcfbbc040dc8" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a8fe315ff0da44d0e05072bce0b74a6e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga1a14ec66911278253011aed84dcdef20a8fe315ff0da44d0e05072bce0b74a6e7" kindref="member">SAI_INGRESS_PRIORITY_GROUP_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga322e72aae3f29078c124eba2d29cffcc" kindref="member">sai_ingress_priority_group_attr_t</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="group___s_a_i_b_u_f_f_e_r_1gac49fccd1891e003fc0ef6d57d65fd149" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gac49fccd1891e003fc0ef6d57d65fd149" kindref="member">_sai_ingress_priority_group_stat_t</ref></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="105" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ad5f8ecb2a53724ce8420f6c788464653" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ad5f8ecb2a53724ce8420f6c788464653" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_PACKETS</ref><sp/>=<sp/>0x00000000,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ad238e9e58d9d89e3e91b84e2f2491234" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ad238e9e58d9d89e3e91b84e2f2491234" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_BYTES</ref><sp/>=<sp/>0x00000001,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ab1e6baa82147ee3a51ad96d30c4cf290" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ab1e6baa82147ee3a51ad96d30c4cf290" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_CURR_OCCUPANCY_BYTES</ref><sp/>=<sp/>0x00000002,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ae67ee07b12e499c8612503333fbefcd5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149ae67ee07b12e499c8612503333fbefcd5" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_WATERMARK_BYTES</ref><sp/>=<sp/>0x00000003,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a3fa7a5ed0ea78881d920744b6ed6303d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a3fa7a5ed0ea78881d920744b6ed6303d" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_SHARED_CURR_OCCUPANCY_BYTES</ref><sp/>=<sp/>0x00000004,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a2e4a5ace9acb4983c8b516e50242dbc3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a2e4a5ace9acb4983c8b516e50242dbc3" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_SHARED_WATERMARK_BYTES</ref><sp/>=<sp/>0x00000005,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149aa0c830ffa32ab5f383063324706cfe0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149aa0c830ffa32ab5f383063324706cfe0e" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_XOFF_ROOM_CURR_OCCUPANCY_BYTES</ref><sp/>=<sp/>0x00000006,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149af8ef9eccbe39d706170dac571e957709" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149af8ef9eccbe39d706170dac571e957709" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_XOFF_ROOM_WATERMARK_BYTES</ref><sp/>=<sp/>0x00000007,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a287cd9e16f5f82460b23c470039ebabe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a287cd9e16f5f82460b23c470039ebabe" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_DROPPED_PACKETS</ref><sp/>=<sp/>0x00000008,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a9984aa56fa4212fd95ab860fcf91a285" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggac49fccd1891e003fc0ef6d57d65fd149a9984aa56fa4212fd95ab860fcf91a285" kindref="member">SAI_INGRESS_PRIORITY_GROUP_STAT_CUSTOM_RANGE_BASE</ref><sp/>=<sp/>0x10000000</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga85e29358cb8b166b365cd4e341c66025" kindref="member">sai_ingress_priority_group_stat_t</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="group___s_a_i_b_u_f_f_e_r_1gaeb26c8cfee0cc0e3caf0f7f698f5f18c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1gaeb26c8cfee0cc0e3caf0f7f698f5f18c" kindref="member">sai_create_ingress_priority_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*ingress_priority_group_id,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="group___s_a_i_b_u_f_f_e_r_1ga595321014af379d3047937dbe4096b3d" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga595321014af379d3047937dbe4096b3d" kindref="member">sai_remove_ingress_priority_group_fn</ref>)(</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>ingress_priority_group_id);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="group___s_a_i_b_u_f_f_e_r_1gae1e01be012479a1c9929da0e998bb742" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1gae1e01be012479a1c9929da0e998bb742" kindref="member">sai_set_ingress_priority_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>ingress_priority_group_id,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="group___s_a_i_b_u_f_f_e_r_1gaa27459f1bb728b0adc2f4f9481b484f6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1gaa27459f1bb728b0adc2f4f9481b484f6" kindref="member">sai_get_ingress_priority_group_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>ingress_priority_group_id,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="group___s_a_i_b_u_f_f_e_r_1gabd3e3cccfdc3ff25d6ea58f33d5e0688" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1gabd3e3cccfdc3ff25d6ea58f33d5e0688" kindref="member">sai_get_ingress_priority_group_stats_fn</ref>)(</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>ingress_priority_group_id,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>uint64_t<sp/>*counters);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="group___s_a_i_b_u_f_f_e_r_1gad893539adc8f877b3a538457bc698b1d" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1gad893539adc8f877b3a538457bc698b1d" kindref="member">sai_get_ingress_priority_group_stats_ext_fn</ref>)(</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>ingress_priority_group_id,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/><ref refid="group___s_a_i_t_y_p_e_s_1gaaa38e5614c3b5d2346a843be35e5d0b5" kindref="member">sai_stats_mode_t</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>uint64_t<sp/>*counters);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="group___s_a_i_b_u_f_f_e_r_1ga3c3be4d27a9c1ef7b88352bd48477a84" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga3c3be4d27a9c1ef7b88352bd48477a84" kindref="member">sai_clear_ingress_priority_group_stats_fn</ref>)(</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>ingress_priority_group_id,</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="group___s_a_i_b_u_f_f_e_r_1ga5d6d1d0c41f68362600d6c9221a9552a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga5d6d1d0c41f68362600d6c9221a9552a" kindref="member">_sai_buffer_pool_type_t</ref></highlight></codeline>
+<codeline lineno="240"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="242" refid="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aada7040b2573fc85c6a06a3ee8d49332f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aada7040b2573fc85c6a06a3ee8d49332f" kindref="member">SAI_BUFFER_POOL_TYPE_INGRESS</ref>,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aafa28b707de445016fead873c4025ecd6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aafa28b707de445016fead873c4025ecd6" kindref="member">SAI_BUFFER_POOL_TYPE_EGRESS</ref>,</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aa7ef853cc06c9b6f00fdbd69e45ce54de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga5d6d1d0c41f68362600d6c9221a9552aa7ef853cc06c9b6f00fdbd69e45ce54de" kindref="member">SAI_BUFFER_POOL_TYPE_BOTH</ref></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga174dac94c76c4fe51b1f645aa33fe418" kindref="member">sai_buffer_pool_type_t</ref>;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="group___s_a_i_b_u_f_f_e_r_1ga72cb36529c57e91f01c9a67e104aae83" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga72cb36529c57e91f01c9a67e104aae83" kindref="member">_sai_buffer_pool_threshold_mode_t</ref></highlight></codeline>
+<codeline lineno="256"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="258" refid="group___s_a_i_b_u_f_f_e_r_1gga72cb36529c57e91f01c9a67e104aae83ac68bb49c250b7e005a4d171af1b11f16" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga72cb36529c57e91f01c9a67e104aae83ac68bb49c250b7e005a4d171af1b11f16" kindref="member">SAI_BUFFER_POOL_THRESHOLD_MODE_STATIC</ref>,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="group___s_a_i_b_u_f_f_e_r_1gga72cb36529c57e91f01c9a67e104aae83a6cb1a653480ab8d47b32a4ac1cd765a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga72cb36529c57e91f01c9a67e104aae83a6cb1a653480ab8d47b32a4ac1cd765a7" kindref="member">SAI_BUFFER_POOL_THRESHOLD_MODE_DYNAMIC</ref>,</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga8a91ba5916ce830c947c7d173ecf00e1" kindref="member">sai_buffer_pool_threshold_mode_t</ref>;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268" refid="group___s_a_i_b_u_f_f_e_r_1ga36125eda3f6856ac850a068087141ffd" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga36125eda3f6856ac850a068087141ffd" kindref="member">_sai_buffer_pool_attr_t</ref></highlight></codeline>
+<codeline lineno="269"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="273" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda13cb5252d8a90954db2e599973a59eed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda13cb5252d8a90954db2e599973a59eed" kindref="member">SAI_BUFFER_POOL_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdab2780f4ad046f8180e3016159b358662" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdab2780f4ad046f8180e3016159b358662" kindref="member">SAI_BUFFER_POOL_ATTR_SHARED_SIZE</ref><sp/>=<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda13cb5252d8a90954db2e599973a59eed" kindref="member">SAI_BUFFER_POOL_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda891780c2ecf532cfce189b9bcaa0c3f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda891780c2ecf532cfce189b9bcaa0c3f9" kindref="member">SAI_BUFFER_POOL_ATTR_TYPE</ref>,</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdae0505247163996372760c6e2886f800b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdae0505247163996372760c6e2886f800b" kindref="member">SAI_BUFFER_POOL_ATTR_SIZE</ref>,</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda6ef91932a49b5eac15d9f07d4c26554e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda6ef91932a49b5eac15d9f07d4c26554e" kindref="member">SAI_BUFFER_POOL_ATTR_THRESHOLD_MODE</ref>,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda51737f94efdc2d833596c733cf7af077" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda51737f94efdc2d833596c733cf7af077" kindref="member">SAI_BUFFER_POOL_ATTR_TAM</ref>,</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdaf07d5f4498cb498564cd86b232c8f792" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdaf07d5f4498cb498564cd86b232c8f792" kindref="member">SAI_BUFFER_POOL_ATTR_XOFF_SIZE</ref>,</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda1b0fed66139022d0dfd37d6d2a7418be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda1b0fed66139022d0dfd37d6d2a7418be" kindref="member">SAI_BUFFER_POOL_ATTR_WRED_PROFILE_ID</ref>,</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda8142ef73acc21ab94d61751d075d0c01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda8142ef73acc21ab94d61751d075d0c01" kindref="member">SAI_BUFFER_POOL_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdabdc0240e437a1cbb185ddd51d791e983" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffdabdc0240e437a1cbb185ddd51d791e983" kindref="member">SAI_BUFFER_POOL_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359" refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda8169ec1b7d51ea6c057db8b4713a1e69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gga36125eda3f6856ac850a068087141ffda8169ec1b7d51ea6c057db8b4713a1e69" kindref="member">SAI_BUFFER_POOL_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga8e5dd2be5de28a6f4072a49274653f02" kindref="member">sai_buffer_pool_attr_t</ref>;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366" refid="group___s_a_i_b_u_f_f_e_r_1gaefd81c32886250ddd760ee43dc153d59" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gaefd81c32886250ddd760ee43dc153d59" kindref="member">_sai_buffer_pool_stat_t</ref></highlight></codeline>
+<codeline lineno="367"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="369" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ab6bcc6d06234286ecc387ed19acd6b7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ab6bcc6d06234286ecc387ed19acd6b7b" kindref="member">SAI_BUFFER_POOL_STAT_CURR_OCCUPANCY_BYTES</ref><sp/>=<sp/>0x00000000,</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a90fed4da7868b42eaf6205321c6080e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a90fed4da7868b42eaf6205321c6080e0" kindref="member">SAI_BUFFER_POOL_STAT_WATERMARK_BYTES</ref><sp/>=<sp/>0x00000001,</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a31b5ed01897039a73c89a0e3ed98122f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a31b5ed01897039a73c89a0e3ed98122f" kindref="member">SAI_BUFFER_POOL_STAT_DROPPED_PACKETS</ref><sp/>=<sp/>0x00000002,</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a380fae9718f9b7f2e9013852ab285837" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a380fae9718f9b7f2e9013852ab285837" kindref="member">SAI_BUFFER_POOL_STAT_GREEN_WRED_DROPPED_PACKETS</ref><sp/>=<sp/>0x00000003,</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a77d4559bd2b38a60869f5f57291975d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a77d4559bd2b38a60869f5f57291975d3" kindref="member">SAI_BUFFER_POOL_STAT_GREEN_WRED_DROPPED_BYTES</ref><sp/>=<sp/>0x00000004,</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ad4dfd1883fa7bd2a2c1af07f017da1fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ad4dfd1883fa7bd2a2c1af07f017da1fe" kindref="member">SAI_BUFFER_POOL_STAT_YELLOW_WRED_DROPPED_PACKETS</ref><sp/>=<sp/>0x00000005,</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aaaeb8799a67d4e1abfcc45398b7d33e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aaaeb8799a67d4e1abfcc45398b7d33e3" kindref="member">SAI_BUFFER_POOL_STAT_YELLOW_WRED_DROPPED_BYTES</ref><sp/>=<sp/>0x00000006,</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a3a3f8017ea4c64445a743d1446ec52ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a3a3f8017ea4c64445a743d1446ec52ad" kindref="member">SAI_BUFFER_POOL_STAT_RED_WRED_DROPPED_PACKETS</ref><sp/>=<sp/>0x00000007,</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ae38cda9e31543ca1ce254f8232218c34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ae38cda9e31543ca1ce254f8232218c34" kindref="member">SAI_BUFFER_POOL_STAT_RED_WRED_DROPPED_BYTES</ref><sp/>=<sp/>0x00000008,</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="396" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ad3cb5608f2fa86cbc97612f6a34f406d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ad3cb5608f2fa86cbc97612f6a34f406d" kindref="member">SAI_BUFFER_POOL_STAT_WRED_DROPPED_PACKETS</ref><sp/>=<sp/>0x00000009,</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a83c3a00926991a850861472c7a7db1f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a83c3a00926991a850861472c7a7db1f2" kindref="member">SAI_BUFFER_POOL_STAT_WRED_DROPPED_BYTES</ref><sp/>=<sp/>0x0000000a,</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aeb1f1a42829f58de7e0437a88180ddfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aeb1f1a42829f58de7e0437a88180ddfc" kindref="member">SAI_BUFFER_POOL_STAT_GREEN_WRED_ECN_MARKED_PACKETS</ref><sp/>=<sp/>0x0000000b,</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a52a783788845e2f50a4107b22d69fa23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a52a783788845e2f50a4107b22d69fa23" kindref="member">SAI_BUFFER_POOL_STAT_GREEN_WRED_ECN_MARKED_BYTES</ref><sp/>=<sp/>0x0000000c,</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a8a4bc64d6aa8597624b13a9cb7bf3554" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a8a4bc64d6aa8597624b13a9cb7bf3554" kindref="member">SAI_BUFFER_POOL_STAT_YELLOW_WRED_ECN_MARKED_PACKETS</ref><sp/>=<sp/>0x0000000d,</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a38739cb926d47e0414436fa501b814f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a38739cb926d47e0414436fa501b814f3" kindref="member">SAI_BUFFER_POOL_STAT_YELLOW_WRED_ECN_MARKED_BYTES</ref><sp/>=<sp/>0x0000000e,</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="414" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a8b505b080a61f40234f84333e4ffe3ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a8b505b080a61f40234f84333e4ffe3ce" kindref="member">SAI_BUFFER_POOL_STAT_RED_WRED_ECN_MARKED_PACKETS</ref><sp/>=<sp/>0x0000000f,</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a205087fd39054fd7e6f5c0b5d39ce6d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a205087fd39054fd7e6f5c0b5d39ce6d0" kindref="member">SAI_BUFFER_POOL_STAT_RED_WRED_ECN_MARKED_BYTES</ref><sp/>=<sp/>0x00000010,</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a32134f61c3b33c931d7a98ada8f90c7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a32134f61c3b33c931d7a98ada8f90c7a" kindref="member">SAI_BUFFER_POOL_STAT_WRED_ECN_MARKED_PACKETS</ref><sp/>=<sp/>0x00000011,</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ae020ef3a0e284d23765785afa384b85e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59ae020ef3a0e284d23765785afa384b85e" kindref="member">SAI_BUFFER_POOL_STAT_WRED_ECN_MARKED_BYTES</ref><sp/>=<sp/>0x00000012,</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aea02c13e35e116941e579c91006776f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59aea02c13e35e116941e579c91006776f3" kindref="member">SAI_BUFFER_POOL_STAT_XOFF_ROOM_CURR_OCCUPANCY_BYTES</ref><sp/>=<sp/>0x00000013,</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight></codeline>
+<codeline lineno="429" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59abdc709d7d4b44b459be6c00e318ad560" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59abdc709d7d4b44b459be6c00e318ad560" kindref="member">SAI_BUFFER_POOL_STAT_XOFF_ROOM_WATERMARK_BYTES</ref><sp/>=<sp/>0x00000014,</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432" refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a6b56d294703a3c2992d216ed76b4ff60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaefd81c32886250ddd760ee43dc153d59a6b56d294703a3c2992d216ed76b4ff60" kindref="member">SAI_BUFFER_POOL_STAT_CUSTOM_RANGE_BASE</ref><sp/>=<sp/>0x10000000</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight></codeline>
+<codeline lineno="434"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga75cd706da2ecb3a9082742b34ed4a0a0" kindref="member">sai_buffer_pool_stat_t</ref>;</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446" refid="group___s_a_i_b_u_f_f_e_r_1gae64750ee68725a87f1237634d1947c30" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1gae64750ee68725a87f1237634d1947c30" kindref="member">sai_create_buffer_pool_fn</ref>)(</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*buffer_pool_id,</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight></codeline>
+<codeline lineno="459" refid="group___s_a_i_b_u_f_f_e_r_1ga4a5f09863c52c3eaf0a212e1a8d3bfa2" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga4a5f09863c52c3eaf0a212e1a8d3bfa2" kindref="member">sai_remove_buffer_pool_fn</ref>)(</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_pool_id);</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470" refid="group___s_a_i_b_u_f_f_e_r_1ga1f2d097b27cc12b8e2a538ab552ba4af" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga1f2d097b27cc12b8e2a538ab552ba4af" kindref="member">sai_set_buffer_pool_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_pool_id,</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="473"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483" refid="group___s_a_i_b_u_f_f_e_r_1ga04a384a8fc97d28dff41ec8f62bc2ff2" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga04a384a8fc97d28dff41ec8f62bc2ff2" kindref="member">sai_get_buffer_pool_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_pool_id,</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="487"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498" refid="group___s_a_i_b_u_f_f_e_r_1ga9a39bf03bbdc87cf7f99a2ca3724bece" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga9a39bf03bbdc87cf7f99a2ca3724bece" kindref="member">sai_get_buffer_pool_stats_fn</ref>)(</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_pool_id,</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids,</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>uint64_t<sp/>*counters);</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"></highlight></codeline>
+<codeline lineno="515" refid="group___s_a_i_b_u_f_f_e_r_1ga6bd30fc5090a5ac01700b89bf3ea4aba" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga6bd30fc5090a5ac01700b89bf3ea4aba" kindref="member">sai_get_buffer_pool_stats_ext_fn</ref>)(</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_pool_id,</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids,</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/><ref refid="group___s_a_i_t_y_p_e_s_1gaaa38e5614c3b5d2346a843be35e5d0b5" kindref="member">sai_stats_mode_t</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>uint64_t<sp/>*counters);</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="531" refid="group___s_a_i_b_u_f_f_e_r_1ga2b28f0e2981ac5c50ac4e2c95e2142d5" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga2b28f0e2981ac5c50ac4e2c95e2142d5" kindref="member">sai_clear_buffer_pool_stats_fn</ref>)(</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_pool_id,</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids);</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"></highlight></codeline>
+<codeline lineno="539" refid="group___s_a_i_b_u_f_f_e_r_1gafd0175ecbeeb8e9d0cda32f1fe2e68b2" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gafd0175ecbeeb8e9d0cda32f1fe2e68b2" kindref="member">_sai_buffer_profile_threshold_mode_t</ref></highlight></codeline>
+<codeline lineno="540"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="542" refid="group___s_a_i_b_u_f_f_e_r_1ggafd0175ecbeeb8e9d0cda32f1fe2e68b2a788dd21def9b2cd538ddcc71a1ba83a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggafd0175ecbeeb8e9d0cda32f1fe2e68b2a788dd21def9b2cd538ddcc71a1ba83a8" kindref="member">SAI_BUFFER_PROFILE_THRESHOLD_MODE_STATIC</ref>,</highlight></codeline>
+<codeline lineno="543"><highlight class="normal"></highlight></codeline>
+<codeline lineno="545" refid="group___s_a_i_b_u_f_f_e_r_1ggafd0175ecbeeb8e9d0cda32f1fe2e68b2a8c318b122b462462a71cdc4ca434b0c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggafd0175ecbeeb8e9d0cda32f1fe2e68b2a8c318b122b462462a71cdc4ca434b0c9" kindref="member">SAI_BUFFER_PROFILE_THRESHOLD_MODE_DYNAMIC</ref>,</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gac3882d8f9c072308cc0bb458bec83fb3" kindref="member">sai_buffer_profile_threshold_mode_t</ref>;</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"></highlight></codeline>
+<codeline lineno="552" refid="group___s_a_i_b_u_f_f_e_r_1gaf21c473ccd38a4603e0751631a5177fe" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gaf21c473ccd38a4603e0751631a5177fe" kindref="member">_sai_buffer_profile_attr_t</ref></highlight></codeline>
+<codeline lineno="553"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="557" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fea8831dd7f0cafaa6df0ea40fe93c05b1a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fea8831dd7f0cafaa6df0ea40fe93c05b1a" kindref="member">SAI_BUFFER_PROFILE_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"></highlight></codeline>
+<codeline lineno="571" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feabb1ae1486d87ff1b196b08c18b99ca47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feabb1ae1486d87ff1b196b08c18b99ca47" kindref="member">SAI_BUFFER_PROFILE_ATTR_POOL_ID</ref><sp/>=<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fea8831dd7f0cafaa6df0ea40fe93c05b1a" kindref="member">SAI_BUFFER_PROFILE_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="572"><highlight class="normal"></highlight></codeline>
+<codeline lineno="579" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaae26877325644d6ad9df7e2d033831b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaae26877325644d6ad9df7e2d033831b3" kindref="member">SAI_BUFFER_PROFILE_ATTR_RESERVED_BUFFER_SIZE</ref>,</highlight></codeline>
+<codeline lineno="580"><highlight class="normal"></highlight></codeline>
+<codeline lineno="582" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fead63c29bca43784b2f73929d76fef5a89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fead63c29bca43784b2f73929d76fef5a89" kindref="member">SAI_BUFFER_PROFILE_ATTR_BUFFER_SIZE</ref><sp/>=<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaae26877325644d6ad9df7e2d033831b3" kindref="member">SAI_BUFFER_PROFILE_ATTR_RESERVED_BUFFER_SIZE</ref>,</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"></highlight></codeline>
+<codeline lineno="592" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feada4906106d6d1638f9f9ffe4c374a638" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feada4906106d6d1638f9f9ffe4c374a638" kindref="member">SAI_BUFFER_PROFILE_ATTR_THRESHOLD_MODE</ref>,</highlight></codeline>
+<codeline lineno="593"><highlight class="normal"></highlight></codeline>
+<codeline lineno="603" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feab1ef880d8269f02053e3ce26b7ef3ae2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feab1ef880d8269f02053e3ce26b7ef3ae2" kindref="member">SAI_BUFFER_PROFILE_ATTR_SHARED_DYNAMIC_TH</ref>,</highlight></codeline>
+<codeline lineno="604"><highlight class="normal"></highlight></codeline>
+<codeline lineno="614" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feac93a34d7a55388686f3711c622cbfe37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feac93a34d7a55388686f3711c622cbfe37" kindref="member">SAI_BUFFER_PROFILE_ATTR_SHARED_STATIC_TH</ref>,</highlight></codeline>
+<codeline lineno="615"><highlight class="normal"></highlight></codeline>
+<codeline lineno="634" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feab79b8a59b046325dce6a456dedcb3b48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feab79b8a59b046325dce6a456dedcb3b48" kindref="member">SAI_BUFFER_PROFILE_ATTR_XOFF_TH</ref>,</highlight></codeline>
+<codeline lineno="635"><highlight class="normal"></highlight></codeline>
+<codeline lineno="651" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feac50a2a6eff5f91e254cfb724e8157586" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feac50a2a6eff5f91e254cfb724e8157586" kindref="member">SAI_BUFFER_PROFILE_ATTR_XON_TH</ref>,</highlight></codeline>
+<codeline lineno="652"><highlight class="normal"></highlight></codeline>
+<codeline lineno="668" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fea5d53c6ba2fde9a217240d0288e5c9119" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177fea5d53c6ba2fde9a217240d0288e5c9119" kindref="member">SAI_BUFFER_PROFILE_ATTR_XON_OFFSET_TH</ref>,</highlight></codeline>
+<codeline lineno="669"><highlight class="normal"></highlight></codeline>
+<codeline lineno="673" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feadd35c35458167cbe5a2487fa397d3ea1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feadd35c35458167cbe5a2487fa397d3ea1" kindref="member">SAI_BUFFER_PROFILE_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="674"><highlight class="normal"></highlight></codeline>
+<codeline lineno="676" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaa448f1e5b4b14037768526f19b0baf21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaa448f1e5b4b14037768526f19b0baf21" kindref="member">SAI_BUFFER_PROFILE_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="677"><highlight class="normal"></highlight></codeline>
+<codeline lineno="679" refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaade2fd0e3cbd500198a7862734703318" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ggaf21c473ccd38a4603e0751631a5177feaade2fd0e3cbd500198a7862734703318" kindref="member">SAI_BUFFER_PROFILE_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="680"><highlight class="normal"></highlight></codeline>
+<codeline lineno="681"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga3edf8691071f63063f20407b77f9446e" kindref="member">sai_buffer_profile_attr_t</ref>;</highlight></codeline>
+<codeline lineno="682"><highlight class="normal"></highlight></codeline>
+<codeline lineno="693" refid="group___s_a_i_b_u_f_f_e_r_1ga12459b95f226e0de5bfea8b623b43ca0" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga12459b95f226e0de5bfea8b623b43ca0" kindref="member">sai_create_buffer_profile_fn</ref>)(</highlight></codeline>
+<codeline lineno="694"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*buffer_profile_id,</highlight></codeline>
+<codeline lineno="695"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="696"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="697"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="698"><highlight class="normal"></highlight></codeline>
+<codeline lineno="706" refid="group___s_a_i_b_u_f_f_e_r_1ga2a73ceaa1ec70abce8f1a068afeb3b89" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga2a73ceaa1ec70abce8f1a068afeb3b89" kindref="member">sai_remove_buffer_profile_fn</ref>)(</highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_profile_id);</highlight></codeline>
+<codeline lineno="708"><highlight class="normal"></highlight></codeline>
+<codeline lineno="717" refid="group___s_a_i_b_u_f_f_e_r_1ga9e4c7760935141f4dace123efece3575" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga9e4c7760935141f4dace123efece3575" kindref="member">sai_set_buffer_profile_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="718"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_profile_id,</highlight></codeline>
+<codeline lineno="719"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="720"><highlight class="normal"></highlight></codeline>
+<codeline lineno="730" refid="group___s_a_i_b_u_f_f_e_r_1ga53141523ce29287dca64944c4b576581" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_u_f_f_e_r_1ga53141523ce29287dca64944c4b576581" kindref="member">sai_get_buffer_profile_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="731"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>buffer_profile_id,</highlight></codeline>
+<codeline lineno="732"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="733"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="734"><highlight class="normal"></highlight></codeline>
+<codeline lineno="738" refid="struct__sai__buffer__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__buffer__api__t" kindref="compound">_sai_buffer_api_t</ref></highlight></codeline>
+<codeline lineno="739"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="740"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gae64750ee68725a87f1237634d1947c30" kindref="member">sai_create_buffer_pool_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_buffer_pool;</highlight></codeline>
+<codeline lineno="741"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga4a5f09863c52c3eaf0a212e1a8d3bfa2" kindref="member">sai_remove_buffer_pool_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_buffer_pool;</highlight></codeline>
+<codeline lineno="742"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga1f2d097b27cc12b8e2a538ab552ba4af" kindref="member">sai_set_buffer_pool_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_buffer_pool_attribute;</highlight></codeline>
+<codeline lineno="743"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga04a384a8fc97d28dff41ec8f62bc2ff2" kindref="member">sai_get_buffer_pool_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_buffer_pool_attribute;</highlight></codeline>
+<codeline lineno="744"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga9a39bf03bbdc87cf7f99a2ca3724bece" kindref="member">sai_get_buffer_pool_stats_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_buffer_pool_stats;</highlight></codeline>
+<codeline lineno="745"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga6bd30fc5090a5ac01700b89bf3ea4aba" kindref="member">sai_get_buffer_pool_stats_ext_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_buffer_pool_stats_ext;</highlight></codeline>
+<codeline lineno="746"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga2b28f0e2981ac5c50ac4e2c95e2142d5" kindref="member">sai_clear_buffer_pool_stats_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clear_buffer_pool_stats;</highlight></codeline>
+<codeline lineno="747"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gaeb26c8cfee0cc0e3caf0f7f698f5f18c" kindref="member">sai_create_ingress_priority_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_ingress_priority_group;</highlight></codeline>
+<codeline lineno="748"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga595321014af379d3047937dbe4096b3d" kindref="member">sai_remove_ingress_priority_group_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_ingress_priority_group;</highlight></codeline>
+<codeline lineno="749"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gae1e01be012479a1c9929da0e998bb742" kindref="member">sai_set_ingress_priority_group_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>set_ingress_priority_group_attribute;</highlight></codeline>
+<codeline lineno="750"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gaa27459f1bb728b0adc2f4f9481b484f6" kindref="member">sai_get_ingress_priority_group_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>get_ingress_priority_group_attribute;</highlight></codeline>
+<codeline lineno="751"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gabd3e3cccfdc3ff25d6ea58f33d5e0688" kindref="member">sai_get_ingress_priority_group_stats_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_ingress_priority_group_stats;</highlight></codeline>
+<codeline lineno="752"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gad893539adc8f877b3a538457bc698b1d" kindref="member">sai_get_ingress_priority_group_stats_ext_fn</ref><sp/><sp/><sp/><sp/><sp/>get_ingress_priority_group_stats_ext;</highlight></codeline>
+<codeline lineno="753"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga3c3be4d27a9c1ef7b88352bd48477a84" kindref="member">sai_clear_ingress_priority_group_stats_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clear_ingress_priority_group_stats;</highlight></codeline>
+<codeline lineno="754"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga12459b95f226e0de5bfea8b623b43ca0" kindref="member">sai_create_buffer_profile_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_buffer_profile;</highlight></codeline>
+<codeline lineno="755"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga2a73ceaa1ec70abce8f1a068afeb3b89" kindref="member">sai_remove_buffer_profile_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_buffer_profile;</highlight></codeline>
+<codeline lineno="756"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga9e4c7760935141f4dace123efece3575" kindref="member">sai_set_buffer_profile_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_buffer_profile_attribute;</highlight></codeline>
+<codeline lineno="757"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1ga53141523ce29287dca64944c4b576581" kindref="member">sai_get_buffer_profile_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_buffer_profile_attribute;</highlight></codeline>
+<codeline lineno="758"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_u_f_f_e_r_1gabbc3768d1f98eeacf98e761ca87a705a" kindref="member">sai_buffer_api_t</ref>;</highlight></codeline>
+<codeline lineno="759"><highlight class="normal"></highlight></codeline>
+<codeline lineno="763"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saibuffer.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,30 @@
+// TAG:               PRP-SAN-CPU
+// Short Description: restore 'default' configures CPU port in PRP-SAN switch
+// Description:       restore 'default' configures CPU port in PRP-SAN , in addition to other prp/interlink ports.
+end
+configure
+
+
+access-list device ${dev} pcl-ID 10
+delete rule-id 60 
+delete rule-id 66 
+exit 
+
+access-list device ${dev} pcl-ID 11
+delete rule-id 72 
+delete rule-id 78 
+exit 
+
+access-list device ${dev} egress pcl-ID 99
+delete rule-id 84 
+exit 
+
+interface ethernet ${dev}/${interlink}
+no service-acl pcl-ID 99 egress
+exit 
+
+delete access-list device ${dev} pcl-id 99
+
+// delete the DDE entry for MAC-B with seqNum = 5003
+do cpss-api call cpssDxChHsrPrpDdeEntryInvalidate devNum ${dev} index 5504 
+

@@ -1,0 +1,9 @@
+// TAG:               network; interface; cpu; mg;
+// Short Description: restore configures of cpu traffic to go trap to 'primary' CPU port (63)
+// Description:       restore configures of cpu traffic to go trap to 'primary' CPU port (63)
+//                    
+
+end
+traffic
+cpu code bind device ${dev} cpu-code all port 63
+end

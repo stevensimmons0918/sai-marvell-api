@@ -1,0 +1,11 @@
+//TAG:               latency-monitor;
+//Short Description: Configure latency monitoring test port-triggering
+//Description:       Configure latency monitoring test port-triggering
+end
+configure
+interface ethernet ${dev}/${port[1]}
+latency-monitor config egress-port ${@@lmu_env.port2} latency-profile ${@@lmu_env.latencyProfile}
+exit
+interface ethernet ${dev}/${@@lmu_env.port2}
+latency-monitor enable
+end

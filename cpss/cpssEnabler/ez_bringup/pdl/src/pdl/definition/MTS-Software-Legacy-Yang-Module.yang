@@ -1,0 +1,378 @@
+module MTS-Software-Legacy-Yang-Module {
+	yang-version "1.1";
+	namespace "urn:marvell:mts:sw:yang";
+	prefix "mtsplt";
+	import ietf-yang-metadata {
+		prefix "md";
+	}
+	import mts-metadata {
+		prefix "mtsmd";
+	}
+	organization
+		"Marvell Technology Group Ltd.";
+	contact
+		"WG Web: <https:// ???/>
+		WG List: <???>
+		WG Chair: ???
+	mailto:???";
+	description
+		"This YANG module defines the essential components for the management
+		of a routing subsystem.Platform Model supported by Marvell MTS.
+		Copyright (c)???.	All rights reserved.";
+	revision 2019-08-22 {
+		description "3.6
+			added IPv6 NDP flow";
+	}
+	revision 2019-05-20 {
+		description "3.6
+			added stack supported 
+			added specific list to stack traffic
+			added undefined traffic setting";
+	}
+	revision 2019-05-13 {
+		description "3.5
+			cpu-rate-limit-rate-type max rnage from 1024 to 2048 to replace NA SCT rate";
+	}
+	revision 2019-04-01 {
+		description "3.4
+			cpu-schedule - added must only q7 can be sp, set default value WRR
+			cpu-traffic-flow-type - added voip and bpe ";
+	}
+
+	revision 2019-03-20 {
+		description "3.3";
+	}
+
+	// annotations 
+	md:annotation type {
+		type mtsmd:typedef-type;
+		description "This annotation contains the type of the node whose value is passed
+			         allows to define for each value a type meta-data.";
+	}
+
+	feature Stack-feature {
+		description "Stack is supported";
+	}
+	feature Traffic-To-CPU-feature {
+		description "Traffic to CPU info is supported";
+	}
+	
+	// root
+	container MTS-Software {
+		description "MTS Software Yang";
+		leaf Stack-feature-is-supported {
+			if-feature Stack-feature;
+			type boolean;
+			default false;
+			description "The node with value true is present only if Stack is supported.";
+		}
+		leaf Traffic-To-CPU-feature-is-supported {
+			if-feature Traffic-To-CPU-feature;
+			type boolean;
+			default false;
+			description "The node with value true is present only if Traffic to CPU is supported.";
+		}
+		
+ 		// traffic to cpu 
+		typedef cpu-queue-id-type {
+			type uint8 {
+				range "0..7";
+			}
+			description "Traffic to CPU queue";
+		}
+		typedef cpu-packets-weight-type {
+			type uint8 {
+				range "0..8";
+			}
+			description "Max number of packets to process in a single round";	
+		}		
+		typedef cpu-dma-buffers-type {
+			type uint16 {
+				range "1..512";
+			}
+			description "Number of DMA buffers";	
+		}
+		typedef cpu-rate-limit-index-type {
+			type uint8 {
+				range "1..31";
+			}
+			description "Rate limit index. 0 indicate unused";
+		}
+		typedef cpu-rate-limit-rate-type {
+			type uint16 {
+				range "1..2048";
+			}
+			description "Rate limit Rate in PPS";
+		}
+		typedef cpu-drop-precedence-type {
+			type enumeration {
+				enum green{
+					description "DP(0)";
+					value 1;
+				}
+				enum yellow{
+					description "DP(1)";
+					value 2;
+				}
+			}
+			description "Drop precedence 0 or 1  ";
+		}
+		typedef cpu-traffic-flow-type {
+			type enumeration {
+				enum httpTome{
+					description "HTTP/s TO ME";
+					value 1;
+				}
+				enum sshTome{
+					description "secure session TO ME";
+					value 2;
+				}
+				enum telnetTome{
+					description "TELNET session TO ME";
+					value 3;
+				}
+				enum snmpTome{
+					description "simple network management protocol";
+					value 4;
+				}
+				enum pvst{
+					description "PVST - Cisco per VLAN spanning tree";
+					value 5;
+				}
+				enum stp{
+					description "spanning tree BPDU";
+					value 6;
+				}
+				enum udld{
+					description "UDLD Cisco link protocol";
+					value 7;
+				}
+				enum ieeeLacp{
+					description "IEEELACP - dynamic LAG protocol";
+					value 8;
+				}
+				enum ieeeOther{
+					description "IEEE GVRP and LLDP protocols";
+					value 9;
+				}
+				enum cdp{
+					description "Cisco discovery protocol";
+					value 10;
+				}
+				enum ieee1x{
+					description "IEEE-1X EAPOL";
+					value 11;
+				}
+				enum dhcpSnooping{
+					description "DHCPSNOOPING";
+					value 12;
+				}
+				enum arpInspection{
+					description "ARP INSPECTION";
+					value 13;
+				}
+				enum ipv6FhsNdp{
+					description "IPv6FHS-NDP";
+					value 14;
+				}
+				enum ipv6FhsDhcpv6{
+					description "IPv6FHS-DHCPv6";
+					value 15;
+				}
+				enum ipv6FhsData{
+					description "IPv6FHS-DATA";
+					value 16;
+				}
+				enum htttpWebAuth{
+					description "web based authentication";
+					value 17;
+				}
+				enum ucIpTome{
+					description "ip mac to me";
+					value 18;
+				}
+				enum ucMacTome{
+					description "mac to me unicast";
+					value 19;
+				}
+				enum ipv4UcUk{
+					description "ipv4 unknown unicast";
+					value 20;
+				}
+				enum arpTome{
+					description "ARP to me";
+					value 21;
+				}
+				enum arpBc{
+					description "ARP broadcast";
+					value 22;
+				}
+				enum ipRoutPort{
+					description "link local and broadcast";
+					value 23;
+				}
+				enum ipv4McTome{
+					description "IPv4 multicast to me";
+					value 24;
+				}
+				enum ipv6McTome{
+					description "IPv6MCTOME";
+					value 25;
+				}
+				enum ipm2cpu{
+					description "IP multicast to CPU (multicast router)";
+					value 26;
+				}
+				enum mldSnoopng{
+					description "MLDSNOOPING";
+					value 27;
+				}
+				enum igmpSnooping{
+					description "IGMPSNOOPING";
+					value 28;
+				}
+				enum iscsiSnooping{
+					description "ISCSISNOOPING";
+					value 29;
+				}
+				enum sflow{
+					description "sFLOW";
+					value 30;
+				}
+				enum ipHopbyhop{
+					description "IPHopByHop";
+					value 31;
+				}
+				enum ipMtu{
+					description "IP MTU exceeded error";
+					value 32;
+				}
+				enum ipErr{
+					description "IP error";
+					value 33;
+				}
+				enum l2ProtTunnel{
+					description "L2 protocol tunning";
+					value 34;
+				}
+				enum aclLog{
+					description "ACLLOG";
+					value 35;
+				}
+				enum voip{
+					description "Voice over IP";
+					value 36;
+				}
+				enum other{
+					description "OTHER - ptp & unknown";
+					value 37;
+				}
+				enum bpe{
+					description "Bridge Port Extender";
+					value 38;
+				}			
+				enum ipv6Ndp{
+					description "IPv6-NDP";
+					value 39;
+				}
+			}
+			description "Specifies traffic queue Types.";
+		}
+		grouping cpu-traffic-group {
+			description "This describe the cpu traffic settings";
+			leaf cpu-queue-id {
+				must "/MTS-Software/Traffic-To-CPU/cpu-queue-info-list[ cpu-queue-id  = current()] and ( current() < 7 or /MTS-Software/Stack-feature-is-supported = 'false') " { 
+					error-message "Queue 7 is reserved for stack control and cannot be used";
+				}
+				type cpu-queue-id-type;
+				description "The queue traffic is mapped to, id tack is supported than queue 7 is reserved for stack traffic only.";
+				mandatory true;
+			}
+			leaf cpu-drop-precedence {
+				type cpu-drop-precedence-type;
+				description "The drop precedence traffic is mapped to";
+				mandatory true;
+			}
+			leaf cpu-rate-limit-index {
+				must '/MTS-Software/Traffic-To-CPU/cpu-rate-limit-list[ cpu-rate-limit-index = current()] or current() = 0' { 
+					error-message "The Rate limit is not defined";
+				}
+				type cpu-rate-limit-index-type;
+				description "The rate limit mapped to";
+				mandatory true;
+			}
+		}			
+		
+		// Section CPU traffic profile
+		container Traffic-To-CPU {
+			presence "CPU Profiles";
+			when "/MTS-Software/Traffic-To-CPU-feature-is-supported = 'true' ";
+			description "Specify the CPU Profile information";
+			list cpu-queue-info-list {
+				key "cpu-queue-id";
+				min-elements 8;
+				max-elements 9;
+				ordered-by system;
+				leaf cpu-queue-id {
+					type cpu-queue-id-type;
+					description "Queue information";
+				}
+				leaf cpu-packets-weight {
+					must "((current() > 0 and current()/../cpu-queue-id < 7) or
+					       (current() > 0 and current()/../cpu-queue-id = 7 and /MTS-Software/Stack-feature-is-supported = 'false') or
+					       (current() = 0 and current()/../cpu-queue-id = 7 and /MTS-Software/Stack-feature-is-supported = 'true') )" {
+						error-message "weigth must be non zero, execpt for stack enabled on queue #7";
+					}					
+					type cpu-packets-weight-type;
+					description "The number of packet to handle in this queue per round. Relevant to WWR scheduling";
+					mandatory true;
+				}
+				leaf cpu-dma-buffers {
+					type cpu-dma-buffers-type;
+					description "The number DMA buffers";
+					default 128;
+				}
+			}
+			list cpu-rate-limit-list {
+				key "cpu-rate-limit-index";
+				max-elements 31;
+				ordered-by system;
+				leaf cpu-rate-limit-index {
+					type cpu-rate-limit-index-type;
+					description "Rate limit index";
+				}
+				leaf cpu-rate-limit-rate {
+					type cpu-rate-limit-rate-type;
+					description "Rate limit rate pps";
+					mandatory true;
+				}
+				leaf cpu-rate-limit-description {
+					type string;
+					description "This can be used to describe this rate limit index";
+					default "";
+				}
+			}	
+			
+			list cpu-traffic-flow-list {
+				description "This describes the Flows queue and rate limit.";
+				key "cpu-traffic-flow";
+				ordered-by user;
+				leaf cpu-traffic-flow {
+					type cpu-traffic-flow-type;
+					description "The traffic type and setting";
+				}
+				uses cpu-traffic-group;
+			}
+			
+			leaf cpu-undefined-traffic-flow-cpu-rate-limit-index {
+				must '/MTS-Software/Traffic-To-CPU/cpu-rate-limit-list[ cpu-rate-limit-index = current()] ' { 
+					error-message "The Rate limit is not defined";
+				}
+				type cpu-rate-limit-index-type;
+				description "The rate limit mapped to";
+				mandatory true;
+			}
+		}
+	}
+}
+

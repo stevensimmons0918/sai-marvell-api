@@ -1,0 +1,765 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saimirror_8h" kind="file" language="C++">
+    <compoundname>saimirror.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="185">
+        <label>stdbool.h</label>
+      </node>
+      <node id="184">
+        <label>stdint.h</label>
+      </node>
+      <node id="186">
+        <label>sys/types.h</label>
+      </node>
+      <node id="183">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+      </node>
+      <node id="182">
+        <label>inc/saimirror.h</label>
+        <link refid="saimirror.h"/>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="187">
+        <label>inc/saimirror.h</label>
+        <link refid="saimirror.h"/>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="188">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__mirror__api__t" prot="public">_sai_mirror_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_m_i_r_r_o_r_1gabdc98f10a0da23a7e8ed9761d9a88d35" prot="public" static="no">
+        <name>_sai_mirror_session_type_t</name>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a234fd80eebf9397ae7566936e7dce6a5" prot="public">
+          <name>SAI_MIRROR_SESSION_TYPE_LOCAL</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Local SPAN </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35ad630030f87874439b1ca92df3a96becb" prot="public">
+          <name>SAI_MIRROR_SESSION_TYPE_REMOTE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Remote SPAN </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a077864286dda8f586aa58c54afb47fd7" prot="public">
+          <name>SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Enhanced Remote SPAN </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a47a3ac38b54421478ae751c927ea068b" prot="public">
+          <name>SAI_MIRROR_SESSION_TYPE_SFLOW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>SFLOW tunnel SPAN </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI type of mirroring. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="40" column="1" bodyfile="inc/saimirror.h" bodystart="39" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_m_i_r_r_o_r_1ga67b6ca919b1ea4871156a1abcef19e6f" prot="public" static="no">
+        <name>_sai_erspan_encapsulation_type_t</name>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga67b6ca919b1ea4871156a1abcef19e6facb4abc44bc3e8be754c81550b28cda72" prot="public">
+          <name>SAI_ERSPAN_ENCAPSULATION_TYPE_MIRROR_L3_GRE_TUNNEL</name>
+          <briefdescription>
+<para>L3 GRE Tunnel Encapsulation | L2 Ethernet header | IP header | GRE header | Original mirrored packet. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI type of encapsulation for RSPAN and ERSPAN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="59" column="1" bodyfile="inc/saimirror.h" bodystart="58" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_m_i_r_r_o_r_1ga510eb3a8a95f7d55bdcea9f00fc6d961" prot="public" static="no">
+        <name>_sai_mirror_session_congestion_mode_t</name>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga510eb3a8a95f7d55bdcea9f00fc6d961afe03beafad174e25ff398fed7cd83748" prot="public">
+          <name>SAI_MIRROR_SESSION_CONGESTION_MODE_INDEPENDENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Mirroring traffic is independent from original traffic, original traffic not affected by congestion of mirroring traffic </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga510eb3a8a95f7d55bdcea9f00fc6d961a595dda8e7c6a5bfc9b63a77e77e9d97f" prot="public">
+          <name>SAI_MIRROR_SESSION_CONGESTION_MODE_CORRELATED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Mirroring traffic is correlated with original traffic, and can cause back pressure and discards of original traffic if there is congestion </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Mirror session congestion mode. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="71" column="1" bodyfile="inc/saimirror.h" bodystart="70" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_m_i_r_r_o_r_1ga1744423f16efcb37a507a6a31834975c" prot="public" static="no">
+        <name>_sai_mirror_session_attr_t</name>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca24bbf8b91f473a860c5560ac4d863e8d" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca4e0b20e3c5c769cc77e9e6decafd0b99" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_TYPE</name>
+          <initializer>= SAI_MIRROR_SESSION_ATTR_START</initializer>
+          <briefdescription>
+<para>Mirror type SPAN/RSPAN/ERSPAN. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mirror_session_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca4095429f82cd2cec64543ccc517bd1c2" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_MONITOR_PORT</name>
+          <briefdescription>
+<para>Destination/Analyzer/Monitor Port. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT, SAI_OBJECT_TYPE_LAG, SAI_OBJECT_TYPE_SYSTEM_PORT </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST_VALID == false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae0a173b626c4883917f654b31714f1d0" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_TRUNCATE_SIZE</name>
+          <briefdescription>
+<para>Truncate size. Truncate mirrored packets to this size to reduce SPAN traffic bandwidth. </para>          </briefdescription>
+          <detaileddescription>
+<para>Value 0 to no truncation</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab2495715589168e46af2a357fbbd0abd" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_SAMPLE_RATE</name>
+          <briefdescription>
+<para>Mirror sample rate. Every 1/sample_rate the packets will be mirrored. </para>          </briefdescription>
+          <detaileddescription>
+<para>Value 0 to no sampling Value 1 to every packet sampling (normal mirror)</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        1 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca3decda43ac5a5a3582ad9db3c8ffa13f" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_CONGESTION_MODE</name>
+          <briefdescription>
+<para>Controls whether mirroring traffic can cause back pressure and packet drop of the original traffic. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mirror_session_congestion_mode_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_MIRROR_SESSION_CONGESTION_MODE_INDEPENDENT </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cacc0192f7959c5336c0594aed9c215370" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_TC</name>
+          <briefdescription>
+<para>Class-of-Service (Traffic Class) </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab879af41f07f57134ed2d31a8178e202" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_VLAN_TPID</name>
+          <briefdescription>
+<para>L2 header TPID. </para>          </briefdescription>
+          <detaileddescription>
+<para>Valid for RSPAN or ERSPAN with valid Vlan header.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0x8100 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MIRROR_SESSION_ATTR_VLAN_HEADER_VALID == true or SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca43d531805487dbfb49b9405b1b006de2" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_VLAN_ID</name>
+          <briefdescription>
+<para>L2 header VLAN Id. </para>          </briefdescription>
+          <detaileddescription>
+<para>Valid for RSPAN or ERSPAN with valid Vlan header.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MIRROR_SESSION_ATTR_VLAN_HEADER_VALID == true or SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cabcb1f3410993095fc283f4f05433057d" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_VLAN_PRI</name>
+          <briefdescription>
+<para>L2 header packet priority (3 bits). </para>          </briefdescription>
+          <detaileddescription>
+<para>Valid for RSPAN or ERSPAN with valid Vlan header.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MIRROR_SESSION_ATTR_VLAN_HEADER_VALID == true or SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca071f2cb0f27c781eabb67f476ad9c158" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_VLAN_CFI</name>
+          <briefdescription>
+<para>L2 header Vlan CFI (1 bit). </para>          </briefdescription>
+          <detaileddescription>
+<para>Valid for RSPAN or ERSPAN with valid Vlan header.</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MIRROR_SESSION_ATTR_VLAN_HEADER_VALID == true or SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca46e58ee1596a3722580105e2e23586b8" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_VLAN_HEADER_VALID</name>
+          <briefdescription>
+<para>Vlan header valid. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca9a2dd88307243d472884e86909379bb1" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_ERSPAN_ENCAPSULATION_TYPE</name>
+          <briefdescription>
+<para>Encapsulation type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_erspan_encapsulation_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae3ca92cdb73472ef07706bcd9e9f6874" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_IPHDR_VERSION</name>
+          <briefdescription>
+<para>Tunnel IP header version. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca3dc67d6f28917f10da446e0aecd994fe" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_TOS</name>
+          <briefdescription>
+<para>Tunnel header TOS. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca6fe85a65faa5c69901f679d3278758e1" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_TTL</name>
+          <briefdescription>
+<para>Tunnel header TTL. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        255 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cabcfea663aa946f56deea680189978e90" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_SRC_IP_ADDRESS</name>
+          <briefdescription>
+<para>Tunnel source IP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975caa5d751768e91c2d2d83940a825856223" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_DST_IP_ADDRESS</name>
+          <briefdescription>
+<para>Tunnel destination IP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae249b3ed6f47b0e40f3d085c3844163e" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_SRC_MAC_ADDRESS</name>
+          <briefdescription>
+<para>L2 source MAC address. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mac_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae64a83e4e8eb6978a4fbe5e3a2c21a8c" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_DST_MAC_ADDRESS</name>
+          <briefdescription>
+<para>L2 destination MAC address. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mac_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca0575d519f0ba20ff4f4cfad9b46461dd" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_GRE_PROTOCOL_TYPE</name>
+          <briefdescription>
+<para>Valid for ERSPAN, GRE protocol Id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cadc43c4c8bca9625d2fd78eebc6abd67e" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST_VALID</name>
+          <briefdescription>
+<para>Monitor port list is valid. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975caabf53df3387cb1939bc67da66c66fe8e" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST</name>
+          <briefdescription>
+<para>Destination/Analyzer/Monitor Port List. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT, SAI_OBJECT_TYPE_LAG, SAI_OBJECT_TYPE_SYSTEM_PORT </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST_VALID == true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab30164f098f9bb2828627d3f84f48bf0" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_POLICER</name>
+          <briefdescription>
+<para>Mirror session policer object ID. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_POLICER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca5bc73d595bdb7b6f9d14a0843948c03a" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_UDP_SRC_PORT</name>
+          <briefdescription>
+<para>UDP source port. UDP source port to encapsulate SFLOW packets. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_SFLOW </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca6d37f343935dc9a576d4022f38fb7d07" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_UDP_DST_PORT</name>
+          <briefdescription>
+<para>UDP destination port. UDP destination port to encapsulate SFLOW packets. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_MIRROR_SESSION_ATTR_TYPE == SAI_MIRROR_SESSION_TYPE_SFLOW </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cac41eb223eff37cf81d81b698835c29e6" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cac33024355fc5347eca524341ab6034e2" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca21043b278ecf7d102b6c78d8d630774e" prot="public">
+          <name>SAI_MIRROR_SESSION_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI attributes for mirror session. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="84" column="1" bodyfile="inc/saimirror.h" bodystart="83" bodyend="360"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga569cc89331086396230054089d51ead6" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_i_r_r_o_r_1gabdc98f10a0da23a7e8ed9761d9a88d35" kindref="member">_sai_mirror_session_type_t</ref></type>
+        <definition>typedef enum _sai_mirror_session_type_t  sai_mirror_session_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mirror_session_type_t</name>
+        <briefdescription>
+<para>SAI type of mirroring. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga374e7689ec6b689a1d6dd8f6fcd60926" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_i_r_r_o_r_1ga67b6ca919b1ea4871156a1abcef19e6f" kindref="member">_sai_erspan_encapsulation_type_t</ref></type>
+        <definition>typedef enum _sai_erspan_encapsulation_type_t  sai_erspan_encapsulation_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_erspan_encapsulation_type_t</name>
+        <briefdescription>
+<para>SAI type of encapsulation for RSPAN and ERSPAN. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga389dcd22368a7b15089bf0c837f1c557" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_i_r_r_o_r_1ga510eb3a8a95f7d55bdcea9f00fc6d961" kindref="member">_sai_mirror_session_congestion_mode_t</ref></type>
+        <definition>typedef enum _sai_mirror_session_congestion_mode_t  sai_mirror_session_congestion_mode_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mirror_session_congestion_mode_t</name>
+        <briefdescription>
+<para>Mirror session congestion mode. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga8bc17f212cb765f9b1bd4d14dd91427d" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_m_i_r_r_o_r_1ga1744423f16efcb37a507a6a31834975c" kindref="member">_sai_mirror_session_attr_t</ref></type>
+        <definition>typedef enum _sai_mirror_session_attr_t  sai_mirror_session_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mirror_session_attr_t</name>
+        <briefdescription>
+<para>SAI attributes for mirror session. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="360" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga1058e406dcdbfcad8f41f8bb168d49d5" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_mirror_session_fn) (_Out_ sai_object_id_t *mirror_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *mirror_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_mirror_session_fn</name>
+        <briefdescription>
+<para>Create mirror session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">mirror_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Port mirror session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="373" column="1" bodyfile="inc/saimirror.h" bodystart="373" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga78e222fc1f3acd342f00f30e76b4a196" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_mirror_session_fn) (_In_ sai_object_id_t mirror_session_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t mirror_session_id)</argsstring>
+        <name>sai_remove_mirror_session_fn</name>
+        <briefdescription>
+<para>Remove mirror session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mirror_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Port mirror session id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="387" column="1" bodyfile="inc/saimirror.h" bodystart="387" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga21e2a618c6f512f80b42699c49190f91" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_mirror_session_attribute_fn) (_In_ sai_object_id_t mirror_session_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t mirror_session_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_mirror_session_attribute_fn</name>
+        <briefdescription>
+<para>Set mirror session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mirror_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Port mirror session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="399" column="1" bodyfile="inc/saimirror.h" bodystart="399" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga20e6dde106fda495d83b657f024e6707" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_mirror_session_attribute_fn) (_In_ sai_object_id_t mirror_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t mirror_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_mirror_session_attribute_fn</name>
+        <briefdescription>
+<para>Get mirror session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mirror_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Port mirror session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="413" column="1" bodyfile="inc/saimirror.h" bodystart="413" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_m_i_r_r_o_r_1ga48d9e5e9c1e04347d3207d3aaca7afb9" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__mirror__api__t" kindref="compound">_sai_mirror_api_t</ref></type>
+        <definition>typedef struct _sai_mirror_api_t  sai_mirror_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_mirror_api_t</name>
+        <briefdescription>
+<para>MIRROR method table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saimirror.h" line="428" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Port Mirror interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIMIRROR_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIMIRROR_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_m_i_r_r_o_r_1gabdc98f10a0da23a7e8ed9761d9a88d35" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gabdc98f10a0da23a7e8ed9761d9a88d35" kindref="member">_sai_mirror_session_type_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a234fd80eebf9397ae7566936e7dce6a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a234fd80eebf9397ae7566936e7dce6a5" kindref="member">SAI_MIRROR_SESSION_TYPE_LOCAL</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35ad630030f87874439b1ca92df3a96becb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35ad630030f87874439b1ca92df3a96becb" kindref="member">SAI_MIRROR_SESSION_TYPE_REMOTE</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a077864286dda8f586aa58c54afb47fd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a077864286dda8f586aa58c54afb47fd7" kindref="member">SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE</ref>,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a47a3ac38b54421478ae751c927ea068b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ggabdc98f10a0da23a7e8ed9761d9a88d35a47a3ac38b54421478ae751c927ea068b" kindref="member">SAI_MIRROR_SESSION_TYPE_SFLOW</ref></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga569cc89331086396230054089d51ead6" kindref="member">sai_mirror_session_type_t</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="group___s_a_i_m_i_r_r_o_r_1ga67b6ca919b1ea4871156a1abcef19e6f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga67b6ca919b1ea4871156a1abcef19e6f" kindref="member">_sai_erspan_encapsulation_type_t</ref></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63" refid="group___s_a_i_m_i_r_r_o_r_1gga67b6ca919b1ea4871156a1abcef19e6facb4abc44bc3e8be754c81550b28cda72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga67b6ca919b1ea4871156a1abcef19e6facb4abc44bc3e8be754c81550b28cda72" kindref="member">SAI_ERSPAN_ENCAPSULATION_TYPE_MIRROR_L3_GRE_TUNNEL</ref>,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga374e7689ec6b689a1d6dd8f6fcd60926" kindref="member">sai_erspan_encapsulation_type_t</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="group___s_a_i_m_i_r_r_o_r_1ga510eb3a8a95f7d55bdcea9f00fc6d961" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga510eb3a8a95f7d55bdcea9f00fc6d961" kindref="member">_sai_mirror_session_congestion_mode_t</ref></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73" refid="group___s_a_i_m_i_r_r_o_r_1gga510eb3a8a95f7d55bdcea9f00fc6d961afe03beafad174e25ff398fed7cd83748" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga510eb3a8a95f7d55bdcea9f00fc6d961afe03beafad174e25ff398fed7cd83748" kindref="member">SAI_MIRROR_SESSION_CONGESTION_MODE_INDEPENDENT</ref>,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="group___s_a_i_m_i_r_r_o_r_1gga510eb3a8a95f7d55bdcea9f00fc6d961a595dda8e7c6a5bfc9b63a77e77e9d97f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga510eb3a8a95f7d55bdcea9f00fc6d961a595dda8e7c6a5bfc9b63a77e77e9d97f" kindref="member">SAI_MIRROR_SESSION_CONGESTION_MODE_CORRELATED</ref>,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga389dcd22368a7b15089bf0c837f1c557" kindref="member">sai_mirror_session_congestion_mode_t</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="group___s_a_i_m_i_r_r_o_r_1ga1744423f16efcb37a507a6a31834975c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga1744423f16efcb37a507a6a31834975c" kindref="member">_sai_mirror_session_attr_t</ref></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca24bbf8b91f473a860c5560ac4d863e8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca24bbf8b91f473a860c5560ac4d863e8d" kindref="member">SAI_MIRROR_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca4e0b20e3c5c769cc77e9e6decafd0b99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca4e0b20e3c5c769cc77e9e6decafd0b99" kindref="member">SAI_MIRROR_SESSION_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca24bbf8b91f473a860c5560ac4d863e8d" kindref="member">SAI_MIRROR_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca4095429f82cd2cec64543ccc517bd1c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca4095429f82cd2cec64543ccc517bd1c2" kindref="member">SAI_MIRROR_SESSION_ATTR_MONITOR_PORT</ref>,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae0a173b626c4883917f654b31714f1d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae0a173b626c4883917f654b31714f1d0" kindref="member">SAI_MIRROR_SESSION_ATTR_TRUNCATE_SIZE</ref>,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab2495715589168e46af2a357fbbd0abd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab2495715589168e46af2a357fbbd0abd" kindref="member">SAI_MIRROR_SESSION_ATTR_SAMPLE_RATE</ref>,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca3decda43ac5a5a3582ad9db3c8ffa13f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca3decda43ac5a5a3582ad9db3c8ffa13f" kindref="member">SAI_MIRROR_SESSION_ATTR_CONGESTION_MODE</ref>,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cacc0192f7959c5336c0594aed9c215370" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cacc0192f7959c5336c0594aed9c215370" kindref="member">SAI_MIRROR_SESSION_ATTR_TC</ref>,</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab879af41f07f57134ed2d31a8178e202" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab879af41f07f57134ed2d31a8178e202" kindref="member">SAI_MIRROR_SESSION_ATTR_VLAN_TPID</ref>,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca43d531805487dbfb49b9405b1b006de2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca43d531805487dbfb49b9405b1b006de2" kindref="member">SAI_MIRROR_SESSION_ATTR_VLAN_ID</ref>,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cabcb1f3410993095fc283f4f05433057d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cabcb1f3410993095fc283f4f05433057d" kindref="member">SAI_MIRROR_SESSION_ATTR_VLAN_PRI</ref>,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca071f2cb0f27c781eabb67f476ad9c158" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca071f2cb0f27c781eabb67f476ad9c158" kindref="member">SAI_MIRROR_SESSION_ATTR_VLAN_CFI</ref>,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>All<sp/>attributes<sp/>below<sp/>are<sp/>valid<sp/>only<sp/>for<sp/>ERSPAN</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>SAI_MIRROR_SESSION_TYPE_ENHANCED_REMOTE.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca46e58ee1596a3722580105e2e23586b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca46e58ee1596a3722580105e2e23586b8" kindref="member">SAI_MIRROR_SESSION_ATTR_VLAN_HEADER_VALID</ref>,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca9a2dd88307243d472884e86909379bb1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca9a2dd88307243d472884e86909379bb1" kindref="member">SAI_MIRROR_SESSION_ATTR_ERSPAN_ENCAPSULATION_TYPE</ref>,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae3ca92cdb73472ef07706bcd9e9f6874" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae3ca92cdb73472ef07706bcd9e9f6874" kindref="member">SAI_MIRROR_SESSION_ATTR_IPHDR_VERSION</ref>,</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca3dc67d6f28917f10da446e0aecd994fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca3dc67d6f28917f10da446e0aecd994fe" kindref="member">SAI_MIRROR_SESSION_ATTR_TOS</ref>,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca6fe85a65faa5c69901f679d3278758e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca6fe85a65faa5c69901f679d3278758e1" kindref="member">SAI_MIRROR_SESSION_ATTR_TTL</ref>,</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cabcfea663aa946f56deea680189978e90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cabcfea663aa946f56deea680189978e90" kindref="member">SAI_MIRROR_SESSION_ATTR_SRC_IP_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975caa5d751768e91c2d2d83940a825856223" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975caa5d751768e91c2d2d83940a825856223" kindref="member">SAI_MIRROR_SESSION_ATTR_DST_IP_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae249b3ed6f47b0e40f3d085c3844163e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae249b3ed6f47b0e40f3d085c3844163e" kindref="member">SAI_MIRROR_SESSION_ATTR_SRC_MAC_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae64a83e4e8eb6978a4fbe5e3a2c21a8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cae64a83e4e8eb6978a4fbe5e3a2c21a8c" kindref="member">SAI_MIRROR_SESSION_ATTR_DST_MAC_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca0575d519f0ba20ff4f4cfad9b46461dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca0575d519f0ba20ff4f4cfad9b46461dd" kindref="member">SAI_MIRROR_SESSION_ATTR_GRE_PROTOCOL_TYPE</ref>,</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cadc43c4c8bca9625d2fd78eebc6abd67e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cadc43c4c8bca9625d2fd78eebc6abd67e" kindref="member">SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST_VALID</ref>,</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975caabf53df3387cb1939bc67da66c66fe8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975caabf53df3387cb1939bc67da66c66fe8e" kindref="member">SAI_MIRROR_SESSION_ATTR_MONITOR_PORTLIST</ref>,</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab30164f098f9bb2828627d3f84f48bf0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cab30164f098f9bb2828627d3f84f48bf0" kindref="member">SAI_MIRROR_SESSION_ATTR_POLICER</ref>,</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca5bc73d595bdb7b6f9d14a0843948c03a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca5bc73d595bdb7b6f9d14a0843948c03a" kindref="member">SAI_MIRROR_SESSION_ATTR_UDP_SRC_PORT</ref>,</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca6d37f343935dc9a576d4022f38fb7d07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca6d37f343935dc9a576d4022f38fb7d07" kindref="member">SAI_MIRROR_SESSION_ATTR_UDP_DST_PORT</ref>,</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cac41eb223eff37cf81d81b698835c29e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cac41eb223eff37cf81d81b698835c29e6" kindref="member">SAI_MIRROR_SESSION_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cac33024355fc5347eca524341ab6034e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975cac33024355fc5347eca524341ab6034e2" kindref="member">SAI_MIRROR_SESSION_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358" refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca21043b278ecf7d102b6c78d8d630774e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1gga1744423f16efcb37a507a6a31834975ca21043b278ecf7d102b6c78d8d630774e" kindref="member">SAI_MIRROR_SESSION_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga8bc17f212cb765f9b1bd4d14dd91427d" kindref="member">sai_mirror_session_attr_t</ref>;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373" refid="group___s_a_i_m_i_r_r_o_r_1ga1058e406dcdbfcad8f41f8bb168d49d5" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_i_r_r_o_r_1ga1058e406dcdbfcad8f41f8bb168d49d5" kindref="member">sai_create_mirror_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*mirror_session_id,</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387" refid="group___s_a_i_m_i_r_r_o_r_1ga78e222fc1f3acd342f00f30e76b4a196" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_i_r_r_o_r_1ga78e222fc1f3acd342f00f30e76b4a196" kindref="member">sai_remove_mirror_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>mirror_session_id);</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399" refid="group___s_a_i_m_i_r_r_o_r_1ga21e2a618c6f512f80b42699c49190f91" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_i_r_r_o_r_1ga21e2a618c6f512f80b42699c49190f91" kindref="member">sai_set_mirror_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>mirror_session_id,</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="413" refid="group___s_a_i_m_i_r_r_o_r_1ga20e6dde106fda495d83b657f024e6707" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_m_i_r_r_o_r_1ga20e6dde106fda495d83b657f024e6707" kindref="member">sai_get_mirror_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>mirror_session_id,</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="421" refid="struct__sai__mirror__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__mirror__api__t" kindref="compound">_sai_mirror_api_t</ref></highlight></codeline>
+<codeline lineno="422"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga1058e406dcdbfcad8f41f8bb168d49d5" kindref="member">sai_create_mirror_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_mirror_session;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga78e222fc1f3acd342f00f30e76b4a196" kindref="member">sai_remove_mirror_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_mirror_session;</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga21e2a618c6f512f80b42699c49190f91" kindref="member">sai_set_mirror_session_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>set_mirror_session_attribute;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga20e6dde106fda495d83b657f024e6707" kindref="member">sai_get_mirror_session_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>get_mirror_session_attribute;</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal">}<sp/><ref refid="group___s_a_i_m_i_r_r_o_r_1ga48d9e5e9c1e04347d3207d3aaca7afb9" kindref="member">sai_mirror_api_t</ref>;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saimirror.h"/>
+  </compounddef>
+</doxygen>

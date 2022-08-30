@@ -1,0 +1,202 @@
+# $(warning "Started")
+
+#List of subfolders to include in build
+MODULES := \
+        mainCmd \
+        mainExtDrv \
+        mainExtMac \
+        mainOs \
+        demo \
+        utfWrappers \
+        mainPhy \
+        cpssAppUtils
+ifneq (,$(filter $(FAMILY), DX DXPX))
+        MODULES += \
+             ezMpdCommon
+endif
+
+ifneq (,$(filter $(BUILD_CPSS_APP_PLAT), EXE EXE_SHARED))
+    MODULES += \
+      cpssAppPlatform
+else
+    ifeq (LIB, $(BUILD_CPSS_APP_PLAT))
+        MODULES += \
+          cpssAppPlatform
+    else
+        MODULES += \
+          mainSysConfig
+    endif
+endif
+
+
+#List of files to include in list
+FILES :=
+
+ifeq ($(CONFIG_INCLUDE_EZ_BRINGUP), y)
+    FILES +=                                                        \
+        ez_bringup/iDbgPdl/src/iDbgPdl/B2b/iDbgPdlB2b.c             \
+        ez_bringup/iDbgPdl/src/iDbgPdl/button/iDbgPdlBtn.c          \
+        ez_bringup/iDbgPdl/src/iDbgPdl/cpu/iDbgPdlCpu.c             \
+        ez_bringup/iDbgPdl/src/iDbgPdl/fan/iDbgPdlFan.c             \
+        ez_bringup/iDbgPdl/src/iDbgPdl/inband/iDbgPdlInband.c       \
+        ez_bringup/iDbgPdl/src/iDbgPdl/init/iDbgPdlInit.c           \
+        ez_bringup/iDbgPdl/src/iDbgPdl/interface/iDbgPdlInterface.c \
+        ez_bringup/iDbgPdl/src/iDbgPdl/led/iDbgPdlLed.c             \
+        ez_bringup/iDbgPdl/src/iDbgPdl/logger/iDbgPdlLogger.c       \
+        ez_bringup/iDbgPdl/src/iDbgPdl/oob/iDbgPdlOob.c             \
+        ez_bringup/iDbgPdl/src/iDbgPdl/packetProcessor/iDbgPdlPp.c  \
+        ez_bringup/iDbgPdl/src/iDbgPdl/phy/iDbgPdlPhy.c             \
+        ez_bringup/iDbgPdl/src/iDbgPdl/power/iDbgPdlPower.c         \
+        ez_bringup/iDbgPdl/src/iDbgPdl/sensor/iDbgPdlSensor.c       \
+        ez_bringup/iDbgPdl/src/iDbgPdl/serdes/iDbgPdlSerdes.c       \
+        ez_bringup/iDbgPdl/src/iDbgPdl/sfp/iDbgPdlSfp.c             \
+        ez_bringup/iDbgPdl/src/iDbgPdl/utils/iDbgPdlUtils.c         \
+        ez_bringup/pdl/src/pdl/button/pdlBtn.c                      \
+        ez_bringup/pdl/src/pdl/cpu/pdlCpu.c                         \
+        ez_bringup/pdl/src/pdl/fan/pdlFan.c                         \
+        ez_bringup/pdl/src/pdl/fan/pdlFanAdt7476.c                  \
+        ez_bringup/pdl/src/pdl/fan/pdlFanTc654.c                    \
+        ez_bringup/pdl/src/pdl/fan/pdlFanEMC2305.c                  \
+        ez_bringup/pdl/src/pdl/fan/pdlFanPWM.c                      \
+        ez_bringup/pdl/src/pdl/init/pdlInit.c                       \
+        ez_bringup/pdl/src/pdl/interface/pdlGpio.c                  \
+        ez_bringup/pdl/src/pdl/interface/pdlI2c.c                   \
+        ez_bringup/pdl/src/pdl/interface/pdlInterface.c             \
+        ez_bringup/pdl/src/pdl/interface/pdlSmiXsmi.c               \
+        ez_bringup/pdl/src/pdl/led/pdlLed.c                         \
+        ez_bringup/pdl/src/pdl/lib/pdlLib.c                         \
+        ez_bringup/pdl/src/pdl/lib/pdlLibLinkedList.c               \
+        ez_bringup/pdl/src/pdl/lib/pdlLibArray.c                    \
+        ez_bringup/pdl/src/pdl/oob_port/pdlOobPort.c                \
+        ez_bringup/pdl/src/pdl/packet_processor/pdlPacketProcessor.c \
+        ez_bringup/pdl/src/pdl/phy/pdlPhy.c                         \
+        ez_bringup/pdl/src/pdl/power/pdlPower.c                     \
+        ez_bringup/pdl/src/pdl/sensor/pdlSensor.c                   \
+        ez_bringup/pdl/src/pdl/serdes/pdlSerdes.c                   \
+        ez_bringup/pdl/src/pdl/sfp/pdlSfp.c                         \
+        ez_bringup/pdl/src/pdl/xml/xmlParserAppIntf.c               \
+        ez_bringup/pdl/src/pdl/xml/private/prvXmlParserBuilder.c
+
+endif
+
+ifeq ($(CONFIG_INCLUDE_MPD), y)
+        mpd_path = mainPhy/MPD/src
+    FILES +=                                                        \
+                $(mpd_path)/mpd.c \
+                $(mpd_path)/mpdInit.c \
+                $(mpd_path)/mpdUtils.c \
+                $(mpd_path)/mpdmyd.c \
+                $(mpd_path)/mpdmtd.c \
+				$(mpd_path)/mpdDebug.c
+
+        mpd_external_phy_path = mainPhy/MPD/external_phy/mtd/src
+    FILES +=                                                        \
+                $(mpd_external_phy_path)/mtdDiagnosticsRegDumpData.c \
+                $(mpd_external_phy_path)/mtdEEE.c \
+                $(mpd_external_phy_path)/mtdHwSerdesCntl.c \
+                $(mpd_external_phy_path)/TuPtp/mtdTuPtp.c \
+                $(mpd_external_phy_path)/TuPtp/mtdTuPtpInternal.c \
+                $(mpd_external_phy_path)/mtdHXunit.c \
+                $(mpd_external_phy_path)/mtdHwCntl.c \
+                $(mpd_external_phy_path)/mtdAPIInternal.c \
+                $(mpd_external_phy_path)/mtdCunit.c \
+                $(mpd_external_phy_path)/mtdUtils.c \
+                $(mpd_external_phy_path)/mtdHunit.c \
+                $(mpd_external_phy_path)/mtdXgFastRetrain.c \
+                $(mpd_external_phy_path)/mtdInitialization.c \
+                $(mpd_external_phy_path)/mtdIntr.c \
+                $(mpd_external_phy_path)/mtdXunit.c \
+                $(mpd_external_phy_path)/mtdFwDownload.c \
+                $(mpd_external_phy_path)/fwimages/mtdFwDlSlave.c \
+                $(mpd_external_phy_path)/fwimages/mtdFwImage.c \
+                $(mpd_external_phy_path)/serdes/mcesd/mcesdInitialization.c \
+                $(mpd_external_phy_path)/serdes/mcesd/mcesdUtils.c \
+                $(mpd_external_phy_path)/serdes/mcesd/C28GP4X2/mcesdC28GP4X2_HwCntl.c \
+                $(mpd_external_phy_path)/serdes/mcesd/C28GP4X2/mcesdC28GP4X2_API.c \
+                $(mpd_external_phy_path)/serdes/mcesd/C28GP4X2/mcesdC28GP4X2_RegRW.c \
+                $(mpd_external_phy_path)/serdes/mcesd/C28GP4X2/mcesdC28GP4X2_DeviceInit.c \
+                $(mpd_external_phy_path)/serdes/mcesd/C28GP4X2/mcesdC28GP4X2_FwDownload.c \
+                $(mpd_external_phy_path)/mtdDiagnostics.c \
+                $(mpd_external_phy_path)/mtdAPI.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdPtpInternal.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdHwMsecPtpCntl.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdPtpInit.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/aeskey.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdPtpApi.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdPtpConst.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/aescrypt.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdMsecApi.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdPtpUtils.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdMsecInternal.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/aestab.c \
+                $(mpd_external_phy_path)/LinkCryptPtp/mtdMsecEEE.c
+
+        mpd_external_phy_path_2 = mainPhy/MPD/external_phy/alaska_c/src
+    FILES +=                                                        \
+                $(mpd_external_phy_path_2)/mydAPI.c                                                     \
+                $(mpd_external_phy_path_2)/mydAPIInternal.c                 \
+                $(mpd_external_phy_path_2)/mydDiagnostics.c                 \
+                $(mpd_external_phy_path_2)/mydFEC.c                         \
+                $(mpd_external_phy_path_2)/mydFwDownload.c                  \
+                $(mpd_external_phy_path_2)/mydHwCntl.c                      \
+                $(mpd_external_phy_path_2)/mydHwSerdesCntl.c                \
+                $(mpd_external_phy_path_2)/mydInitialization.c              \
+                $(mpd_external_phy_path_2)/mydIntrIOConfig.c                \
+                $(mpd_external_phy_path_2)/mydUtils.c
+
+ ifneq (y, $(CONFIG_ASIC_SIMULATION))
+     FILES +=                                                         \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/aacs.c         \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/aacs_server.c  \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/aapl_core.c    \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/avsp_5410.c    \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/avsp.c         \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/dfe.c          \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/diag_core.c    \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/eye.c          \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/eye_math.c     \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/gpio_mdio.c    \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/i2c.c          \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/library.c      \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/logging.c      \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/mdio.c         \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/meas.c         \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/pmd.c          \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/pmro.c         \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/sbm.c          \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/sbus.c         \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/sensor.c       \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/serdes_core.c  \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/spico.c        \
+                $(mpd_external_phy_path_2)/serdes/avago/aapl/spico_diag.c
+ endif
+endif
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+CPSSENABLER_SRC := $(patsubst %,$(CWD)%,$(FILES))
+cpssEnabler_gtOs_SRC1 :=
+cpssEnabler_gtStack_SRC1 :=
+cpssEnabler_gtUtil_SRC1 :=
+cpssEnabler_mainExtDrv_SRC1 :=
+cpssEnabler_shrMemIntraCPSSdata_SRC1 :=
+cpssEnabler_confi_SRC1 :=
+cpssEnabler_dragonite_SRC1 :=
+cpssEnabler_extPhyM_SRC1 :=
+cpssEnabler_luaCLI_SRC1 :=
+cpssEnabler_mainCmd_SRC1 :=
+cpssEnabler_mainExtDrvShared_SRC1 :=
+cpssEnabler_mainPhy_SRC1 :=
+cpssEnabler_mainSysConfig_SRC1 :=
+cpssEnabler_cpssAppRef_SRC1 :=
+cpssEnabler_utfWrappers_SRC1 :=
+cpssEnabler_demo_SRC1 :=
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

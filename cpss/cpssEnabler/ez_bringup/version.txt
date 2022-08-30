@@ -1,0 +1,41 @@
+Tag  : EZ_BRINGUP_V20_64BIT_001
+Date : Fri Mar  6 13:16:15 2020
+
+BRIEF DESCRIPTION
+
+pt-gen-jenk : change files
+mati : Fix deadlock in I2c
+
+DETAILED DESCRIPTION
+
+- Author   :  pt-gen-jenk
+- Owner    :  pt-gen-jenk (Felix Kaushansky)
+- Name     :  change files
+- Date     :  2020-03-06 13:21:25 +0200
+- Comments :  Reviewed-on: http://vgitil10.il.marvell.com:8080/c/NPS/ez_bringup/+/62398
+Tested-by: Felix Kaushansky <felixka@marvell.com>
+Reviewed-by: Felix Kaushansky <felixka@marvell.com>
+
+- Files    :
+         	.\.gitreview
+         	.\.mgpconfig
+-----------------------------------------------------
+- Author   :  mati
+- Owner    :  mati (Mati Alfaro)
+- Name     :  Fix deadlock in I2c
+- Date     :  2020-03-04 10:42:55 +0200
+- Comments :  Fixed Problems/New Changes:
+
+fix case of deadlock in I2C in any case of read error
+
+Should be Tested:
+
+~
+
+Reviewed-on: http://vgitil10.il.marvell.com:8080/c/NPS/ez_bringup/+/62183
+Tested-by: Jenkins 2 <pt-gen-jenk@marvell.com>
+Reviewed-on: http://vgitil10.il.marvell.com:8080/c/NPS/ez_bringup/+/62260
+
+- Files    :
+         	.\pdl\src\pdl\interface\pdlI2c.c
+-----------------------------------------------------

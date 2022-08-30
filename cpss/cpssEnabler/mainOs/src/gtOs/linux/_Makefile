@@ -1,0 +1,65 @@
+# $(warning "Started")
+export USE_KERNEL_EXT
+#SUBDIRS=stubs
+MODULES := \
+ stubs \
+ pthreads 
+
+#List of subfolders to include in build
+
+cpssEnabler_CFLAGS_CL += -DV2L_PTHREADS
+
+ifeq (1,$(CPSS_SPLIT_LIBRARIES))
+    LIB_NAME = gtOs.lib
+endif
+ifneq (yes, $(MV_KERNEL_EXT_MUTEXES))
+    cpssEnabler_CFLAGS_CL += -DOS_USERSPACE_MUTEXES=512
+endif
+ifeq (yes, $(USE_VALGRIND))
+    cpssEnabler_CFLAGS_CL += -DUSE_VALGRIND
+endif
+ifeq (1, $(LINUX_SIM))
+    #SUBDIRS += linuxSim
+    MODULES += linuxSim
+endif
+
+#MODULES := \
+# linuxSim \
+# pthreads \
+# stubs 
+
+#List of files to include in list
+FILES := \
+ osLinuxExc.c \
+ osLinuxGen.c \
+ osLinuxInet.c \
+ osLinuxIntr.c \
+ osLinuxIo.c \
+ osLinuxMem.c \
+ osLinuxMsgQ.c \
+ osLinuxRand.c \
+ osLinuxSem.c \
+ osLinuxStdLib.c \
+ osLinuxStr.c \
+ osLinuxTimer.c \
+ osObjIdLib.c \
+ osGlobalDb.c
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+CPSSENABLER_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+ifeq (1,$(CPSS_SPLIT_LIBRARIES))                          
+    LIB_NAME := gtOs.lib
+    cpssEnabler_gtOs_SRC1 += $(patsubst %,$(CWD)%,$(FILES)) 
+endif                                                     
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+
+

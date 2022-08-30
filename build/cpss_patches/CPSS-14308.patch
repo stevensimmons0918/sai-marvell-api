@@ -1,0 +1,453 @@
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c
+index 211a9357b3..3cb0d2a8f2 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c
+@@ -4592,6 +4592,8 @@ GT_STATUS prvCpssDxChFdbManagerHwAgedOutVerify
+     GT_U32                                           tileId;
+     GT_U32                                           numOfTiles;
+     GT_U32                                           hwData[FDB_ENTRY_WORDS_SIZE_CNS]; /* use SIP_5 size for common code */
++    GT_U32                                           hwIndex;
++    CPSS_DXCH_TABLE_ENT                              updatedTableType;
+
+     /* check if there are registered devices on the manager */
+     *agedOutPtr = GT_TRUE;
+@@ -4605,10 +4607,15 @@ GT_STATUS prvCpssDxChFdbManagerHwAgedOutVerify
+         /* Use AAC method to access data from HW */
+         if(PRV_CPSS_PP_MAC(devNum)->multiPipe.numOfTiles > 1)
+         {
++            /* convert the HW index if needed */
++            prvCpssDxChIndexAsPortNumConvert(devNum, CPSS_DXCH_TABLE_FDB_E, dbEntryPtr->hwIndex,
++                                     &portGroupId , &hwIndex, &updatedTableType);
++
++
+             /* Keep checking age-bit refresh in all device - Till the first device detected */
+             if(*agedOutPtr == GT_TRUE)
+             {
+-                rc = prvCpssDxChFdbManagerAacHwAgeBitCheck(devNum, dbEntryPtr->hwIndex, agedOutPtr, &hwData[0]);
++                rc = prvCpssDxChFdbManagerAacHwAgeBitCheck(devNum, hwIndex, agedOutPtr, &hwData[0]);
+                 if(rc != GT_OK)
+                 {
+                     UNLOCK_DEV_NUM(devNum);
+@@ -4619,7 +4626,7 @@ GT_STATUS prvCpssDxChFdbManagerHwAgedOutVerify
+             /* clear the age-bit for all devices - from the age-bit refresh detected device till end */
+             if(*agedOutPtr == GT_FALSE)
+             {
+-                rc = prvCpssDxChFdbManagerAacHwWriteEntry(devNum, dbEntryPtr->hwIndex, &hwData[0]);
++                rc = prvCpssDxChFdbManagerAacHwWriteEntry(devNum, hwIndex, &hwData[0]);
+                 if(rc != GT_OK)
+                 {
+                     UNLOCK_DEV_NUM(devNum);
+diff --git a/mainUT/utfTraffic/src/bridgeFdbManager/prvTgfCommonFdbManager.c b/mainUT/utfTraffic/src/bridgeFdbManager/prvTgfCommonFdbManager.c
+index 9aacbf4e60..ddc2f18e72 100644
+--- a/mainUT/utfTraffic/src/bridgeFdbManager/prvTgfCommonFdbManager.c
++++ b/mainUT/utfTraffic/src/bridgeFdbManager/prvTgfCommonFdbManager.c
+@@ -119,6 +119,14 @@ static GT_BOOL  userDefinedShadowType               = GT_FALSE;
+ static CPSS_DXCH_BRG_FDB_MANAGER_SHADOW_TYPE_ENT    globalShadowType  = CPSS_DXCH_BRG_FDB_MANAGER_SHADOW_TYPE_SIP6_E;
+ void prvTgf_testsFDB(void);
+
++/* Global cusomized params for tests used different hash values */
++static GT_BOOL hash_test_enable           = GT_FALSE; 
++static GT_U32  hash_max_capacity          = _16K;
++static GT_U32  hash_stream_entries        = 0x800 /* 0x0 - 0x7FF */;
++static GT_U32  hash_number_of_hash        = 16;
++static GT_U32  hash_fdbManagerId          = 10;
++static CPSS_DXCH_BRG_FDB_MANAGER_COUNTERS_STC counters;
++
+ typedef struct
+ {
+     GT_BOOL enableLearningLimits;
+@@ -562,6 +570,16 @@ static void fdbManagerEntryAdd_macAddr(
+     static GT_BOOL                                          isFirstTime = GT_TRUE;
+     CPSS_DXCH_BRG_FDB_MANAGER_ENTRY_MAC_ADDR_FORMAT_STC     *fdbEntryMacAddrFormatPtr;
+     GT_U32                                                  rand32Bits; /* random value in 32 bits (random 30 bits + 2 bits from iterationNum) */
++    PRV_CPSS_DXCH_FDB_MANAGER_DB_INSTANCE_INFO_STC          *fdbManagerPtr;
++    GT_U32                                                  banksRange;
++
++    fdbManagerPtr = MANAGER_GET_MAC(fdbManagerId);
++    if(fdbManagerPtr == NULL)
++    {
++        UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, GT_FAIL,
++        "fdbManagerEntryAdd_macAddr: unexpected error in manager [%d]",
++        fdbManagerId);
++    }
+
+     fdbEntryMacAddrFormatPtr = &entry.format.fdbEntryMacAddrFormat;
+
+@@ -579,8 +597,10 @@ static void fdbManagerEntryAdd_macAddr(
+                  (cpssOsRand() & 0x7FFF)       |
+                  iterationNum << 30;
+
++    banksRange = fdbManagerPtr->capacityInfo.hwCapacity.numOfHashes - 1;
++
+     fdbEntryAddInfo.tempEntryExist  = (rand32Bits & BIT_7) ? GT_TRUE : GT_FALSE;
+-    fdbEntryAddInfo.tempEntryOffset = BANK_AS_PER_DEVICE((rand32Bits >> 15) & 0xF);/*bankId*/
++    fdbEntryAddInfo.tempEntryOffset = BANK_AS_PER_DEVICE((rand32Bits >> 15) & banksRange); /*bankId*/
+     if(prvTgfFdbManagerMacBuildMode == PRV_TGF_FDB_MANAGER_MAC_INCREMENTAL_MODE_E)
+     {
+         /* In case of incremental mode start, XX: XX: 0X00: 0X00: 0X00: 0x00 */
+@@ -2214,17 +2234,36 @@ GT_VOID prvTgfBrgFdbManagerAgingScan_config
+ )
+ {
+     GT_STATUS                                   rc;
+-
++    CPSS_DXCH_BRG_FDB_MANAGER_CAPACITY_STC      capacity;
++    
+     FDB_SIZE_FULL_INIT();
+     rc = prvTgfBrgDefVlanEntryWrite(PRV_TGF_VLANID_2_CNS);
+     UTF_VERIFY_EQUAL2_STRING_MAC(GT_OK, rc, "prvTgfBrgVlanEntryWrite: %d, %d",
+             prvTgfDevNum, PRV_TGF_VLANID_2_CNS);
+
+-    /* create single valid manager */
+-    rc = createFdbManagerWithDevice(fdbManagerId, PRV_TGF_MAX_TOTAL_ENTRIES, NULL, GT_FALSE);
+-    UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+-            "createFdbManager: expected to GT_OK on manager [%d]",
+-            fdbManagerId);
++    if(hash_test_enable == GT_TRUE)
++    {
++        /* Customize HW capacity */
++        cpssOsMemSet(&capacity, 0, sizeof(capacity));
++        capacity.hwCapacity.numOfHwIndexes   = hash_max_capacity;
++        capacity.hwCapacity.numOfHashes      = HASH_AS_PER_DEVICE(hash_number_of_hash);
++        capacity.maxEntriesPerLearningScan   = PRV_TGF_MAX_ENTRIES_PER_LEARNING_SCAN;
++        capacity.maxEntriesPerAgingScan      = NUM_ENTRIES_STEPS_CNS;
++
++        /* create single valid manager */
++        rc = createFdbManagerWithDevice(fdbManagerId, hash_max_capacity, &capacity, GT_FALSE);
++        UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
++                "createFdbManager: expected to GT_OK on manager [%d]",
++                fdbManagerId);
++    }
++    else
++    {
++        /* create single valid manager */
++        rc = createFdbManagerWithDevice(fdbManagerId, PRV_TGF_MAX_TOTAL_ENTRIES, NULL, GT_FALSE);
++        UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
++                "createFdbManager: expected to GT_OK on manager [%d]",
++                fdbManagerId);
++    }
+
+     /* Set FDB manager ID for appDemo */
+     rc = prvWrAppDemoFdbManagerGlobalIDSet(fdbManagerId);
+@@ -2375,6 +2414,20 @@ GT_VOID prvTgfBrgFdbManagerAgingScan_traffic_and_verify
+     GT_U32                                                  errorNumItr;
+     CPSS_DXCH_BRG_FDB_MANAGER_STATISTICS_STC                statistics;
+     GT_U32                                                  numOfStaticEntries = 0;
++    CPSS_DXCH_BRG_FDB_MANAGER_CAPACITY_STC                  capacity;
++    GT_U32                                                  numOfHwIndexes = PRV_TGF_MAX_TOTAL_ENTRIES;
++
++    if(hash_test_enable == GT_TRUE)
++    {
++        /* Customize HW capacity */
++        cpssOsMemSet(&capacity, 0, sizeof(capacity));
++        capacity.hwCapacity.numOfHwIndexes   = hash_max_capacity;
++        capacity.hwCapacity.numOfHashes      = HASH_AS_PER_DEVICE(hash_number_of_hash);
++        capacity.maxEntriesPerLearningScan   = PRV_TGF_MAX_ENTRIES_PER_LEARNING_SCAN;
++        capacity.maxEntriesPerAgingScan      = NUM_ENTRIES_STEPS_CNS;
++        numOfHwIndexes = hash_max_capacity;
++    }
++
+
+     /* reset counters */
+     for (portIter = 0; portIter < prvTgfPortsNum; portIter++)
+@@ -2398,7 +2451,7 @@ GT_VOID prvTgfBrgFdbManagerAgingScan_traffic_and_verify
+     prvIsStatic = GT_TRUE;
+
+     /*** CASE_1: Age scan verify - with delete ***/
+-    for(packetCnt = 0; packetCnt < PRV_TGF_MAX_TOTAL_ENTRIES; packetCnt++)
++    for(packetCnt = 0; packetCnt < numOfHwIndexes; packetCnt++)
+     {
+         entryAdded = GT_FALSE;
+         /* Add first 100 static entries to make sure there is no aging on them */
+@@ -2500,7 +2553,7 @@ GT_VOID prvTgfBrgFdbManagerAgingScan_traffic_and_verify
+      */
+     prvSpecificFidFilterValue = 3;
+     numEntriesAdded = 0;
+-    for(packetCnt = 0; packetCnt < PRV_TGF_MAX_TOTAL_ENTRIES; packetCnt++)
++    for(packetCnt = 0; packetCnt < numOfHwIndexes; packetCnt++)
+     {
+         entryAdded = GT_FALSE;
+         fdbManagerEntryAdd_macAddr(fdbManagerId, packetCnt, &entryAdded);
+@@ -2586,7 +2639,7 @@ GT_VOID prvTgfBrgFdbManagerAgingScan_traffic_and_verify
+     /*** CASE_3: Age scan verify - with out delete ***/
+     numEntriesAdded = 0;
+
+-    for(packetCnt = 0; packetCnt < PRV_TGF_MAX_TOTAL_ENTRIES; packetCnt++)
++    for(packetCnt = 0; packetCnt < numOfHwIndexes; packetCnt++)
+     {
+         entryAdded = GT_FALSE;
+         fdbManagerEntryAdd_macAddr(fdbManagerId, packetCnt, &entryAdded);
+@@ -2668,11 +2721,20 @@ GT_VOID prvTgfBrgFdbManagerAgingScan_traffic_and_verify
+     /*** CASE_4: Update entry update the age-bit ***/
+     CLEANUP_MANAGER(fdbManagerId);
+
+-    /* create single valid manager */
+-    rc = createFdbManagerWithDevice(fdbManagerId, PRV_TGF_MAX_TOTAL_ENTRIES, NULL, GT_FALSE);
+-    UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+-            "createFdbManager: expected to GT_OK on manager [%d]",
+-            fdbManagerId);
++    if(hash_test_enable == GT_TRUE)
++    {
++        /* create single valid manager */
++        rc = createFdbManagerWithDevice(fdbManagerId, numOfHwIndexes, &capacity, GT_FALSE);
++        UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
++                "createFdbManager: expected to GT_OK on manager[%d]", fdbManagerId);
++    }
++    else
++    {
++        /* create single valid manager */
++        rc = createFdbManagerWithDevice(fdbManagerId, PRV_TGF_MAX_TOTAL_ENTRIES, NULL, GT_FALSE);
++        UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
++                "createFdbManager: expected to GT_OK on manager[%d]", fdbManagerId);
++    }
+
+     prvTgfPacketL2Part.saMac[4]=1;
+     prvTgfPacketL2Part.saMac[5]=1;
+@@ -4123,13 +4185,6 @@ GT_VOID prvTgfBrgFdbManagerAddEntry_cuckoo_traffic
+                                   "ERROR: cpssDxChBrgFdbManagerStatisticsGet", prvTgfDevNum);
+ }
+
+-/* Global cusomized params for Hashing test case 1 */
+-static GT_U32  hash_test1_max_capacity          = _16K;
+-static GT_U32  hash_test1_stream_entries        = 0x800 /* 0x0 - 0x7FF */;
+-static GT_U32  hash_test1_Number_of_hash        = 16;
+-static GT_U32  hash_test1_fdbManagerId          = 10;
+-static CPSS_DXCH_BRG_FDB_MANAGER_COUNTERS_STC counters;
+-
+ static GT_VOID prvTgfBrgFdbManagerHashTest1_restore(GT_VOID)
+ {
+     GT_STATUS               rc;
+@@ -4139,7 +4194,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_restore(GT_VOID)
+     rc = prvWrAppDemoFdbManagerControlSet(APP_DEMO_AU_MESSAGE_HANDLER_LOW_LEVEL_E, GT_FALSE, 0);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+             "prvWrAppDemoFdbManagerControlSet: expected to GT_OK on manager [%d]",
+-            hash_test1_fdbManagerId);
++            hash_fdbManagerId);
+
+     /* Invalidate VLANs 100-107 - */
+     for(vlanId = 100; vlanId<=107; vlanId++)
+@@ -4154,12 +4209,12 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_restore(GT_VOID)
+     prvSpecificFidFilterValue    = 1;
+
+     /* Clear Statistics */
+-    rc = cpssDxChBrgFdbManagerStatisticsClear(hash_test1_fdbManagerId);
++    rc = cpssDxChBrgFdbManagerStatisticsClear(hash_fdbManagerId);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+             "cpssDxChBrgFdbManagerStatisticsClear: expected to GT_OK on manager [%d]",
+-            hash_test1_fdbManagerId);
++            hash_fdbManagerId);
+
+-    CLEANUP_MANAGER(hash_test1_fdbManagerId);
++    CLEANUP_MANAGER(hash_fdbManagerId);
+ }
+
+ static GT_VOID prvTgfBrgFdbManagerHashTest1_stream_verify(GT_VOID)
+@@ -4183,33 +4238,33 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_stream_verify(GT_VOID)
+     {
+         /* vlan ID - individual Learning */
+         prvSpecificFidFilterValue = vlanId;
+-        for(numEntriesAdded = 0, entiesCnt = 0; entiesCnt < hash_test1_stream_entries; entiesCnt++)
++        for(numEntriesAdded = 0, entiesCnt = 0; entiesCnt < hash_stream_entries; entiesCnt++)
+         {
+             entryAdded = GT_FALSE;
+-            fdbManagerEntryAdd_macAddr(hash_test1_fdbManagerId, entiesCnt, &entryAdded);
++            fdbManagerEntryAdd_macAddr(hash_fdbManagerId, entiesCnt, &entryAdded);
+             if(entryAdded == GT_TRUE)
+             {
+                 numEntriesAdded+=1;
+             }
+         }
+         PRV_UTF_LOG4_MAC("Stream Case Vlan %d: ended - out of [%d] entries , succeeded [%d] entries (%d%%)\n",
+-                vlanId, hash_test1_stream_entries, numEntriesAdded, (100*numEntriesAdded)/hash_test1_stream_entries);
++                vlanId, hash_stream_entries, numEntriesAdded, (100*numEntriesAdded)/hash_stream_entries);
+
+         /* In case of SIP6 all the entries should have learnt
+          * In case of AC5, counters should match with the numbers of entries learnt */
+-        numEntriesAdded = (PRV_CPSS_SIP_5_CHECK_MAC(prvTgfDevNum))?hash_test1_stream_entries:numEntriesAdded;
++        numEntriesAdded = (PRV_CPSS_SIP_5_CHECK_MAC(prvTgfDevNum))?hash_stream_entries:numEntriesAdded;
+
+         /* Verify Counter - After MAC entry addition */
+         counters.macUnicastDynamic      += numEntriesAdded;
+         counters.usedEntries            += numEntriesAdded;
+         counters.freeEntries            -= numEntriesAdded;
+-        prvCpssDxChBrgFdbManagerCounterVerify(hash_test1_fdbManagerId, &counters);
++        prvCpssDxChBrgFdbManagerCounterVerify(hash_fdbManagerId, &counters);
+     }
+
+     prvTgfFdbManagerMacBuildMode = PRV_TGF_FDB_MANAGER_MAC_RANDOM_MODE_E;
+
+     /* Verify Statistics counter */
+-    rc = cpssDxChBrgFdbManagerStatisticsGet(hash_test1_fdbManagerId, &statistics);
++    rc = cpssDxChBrgFdbManagerStatisticsGet(hash_fdbManagerId, &statistics);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc, "ERROR: cpssDxChBrgFdbManagerStatisticsGet", prvTgfDevNum);
+     UTF_VERIFY_EQUAL1_STRING_MAC(0,
+             statistics.scanLearningErrorInputInvalid,
+@@ -4230,7 +4285,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_stream_verify(GT_VOID)
+     /* set to enable all the checkers */
+     CPSS_DXCH_BRG_FDB_MANAGER_DB_CHECKS_DO_ALL_MAC(dbCheckParam);
+     /* Verify DB */
+-    rc = cpssDxChBrgFdbManagerDatabaseCheck(hash_test1_fdbManagerId,
++    rc = cpssDxChBrgFdbManagerDatabaseCheck(hash_fdbManagerId,
+             &dbCheckParam,
+             testResultArray,
+             &errorNum);
+@@ -4270,7 +4325,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_non_stream_verify(GT_VOID)
+     for(entiesCnt = 0; entiesCnt < entriesToAdd; entiesCnt++)
+     {
+         entryAdded = GT_FALSE;
+-        fdbManagerEntryAdd_macAddr(hash_test1_fdbManagerId, entiesCnt, &entryAdded);
++        fdbManagerEntryAdd_macAddr(hash_fdbManagerId, entiesCnt, &entryAdded);
+         if(entryAdded == GT_TRUE)
+         {
+             numEntriesAdded+=1;
+@@ -4284,7 +4339,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_non_stream_verify(GT_VOID)
+     counters.macUnicastStatic       += entriesToAdd;
+     counters.usedEntries            += entriesToAdd;
+     counters.freeEntries            -= entriesToAdd;
+-    prvCpssDxChBrgFdbManagerCounterVerify(hash_test1_fdbManagerId, &counters);
++    prvCpssDxChBrgFdbManagerCounterVerify(hash_fdbManagerId, &counters);
+
+     /***** SET 2 : 1024 Random dynamic entries(vid 104-107) *****/
+     entriesToAdd = 1024;
+@@ -4292,7 +4347,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_non_stream_verify(GT_VOID)
+     for(numEntriesAdded = 0, entiesCnt = 0; entiesCnt < entriesToAdd; entiesCnt++)
+     {
+         entryAdded = GT_FALSE;
+-        fdbManagerEntryAdd_macAddr(hash_test1_fdbManagerId, entiesCnt, &entryAdded);
++        fdbManagerEntryAdd_macAddr(hash_fdbManagerId, entiesCnt, &entryAdded);
+         if(entryAdded == GT_TRUE)
+         {
+             numEntriesAdded+=1;
+@@ -4305,10 +4360,10 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_non_stream_verify(GT_VOID)
+     counters.macUnicastDynamic      += entriesToAdd;
+     counters.usedEntries            += entriesToAdd;
+     counters.freeEntries            -= entriesToAdd;
+-    prvCpssDxChBrgFdbManagerCounterVerify(hash_test1_fdbManagerId, &counters);
++    prvCpssDxChBrgFdbManagerCounterVerify(hash_fdbManagerId, &counters);
+
+     /* Verify Statistics counter */
+-    rc = cpssDxChBrgFdbManagerStatisticsGet(hash_test1_fdbManagerId, &statistics);
++    rc = cpssDxChBrgFdbManagerStatisticsGet(hash_fdbManagerId, &statistics);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc, "ERROR: cpssDxChBrgFdbManagerStatisticsGet", prvTgfDevNum);
+     UTF_VERIFY_EQUAL1_STRING_MAC(0,
+             statistics.scanLearningErrorInputInvalid,
+@@ -4329,7 +4384,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_non_stream_verify(GT_VOID)
+     /* set to enable all the checkers */
+     CPSS_DXCH_BRG_FDB_MANAGER_DB_CHECKS_DO_ALL_MAC(dbCheckParam);
+     /* Verify DB */
+-    rc = cpssDxChBrgFdbManagerDatabaseCheck(hash_test1_fdbManagerId,
++    rc = cpssDxChBrgFdbManagerDatabaseCheck(hash_fdbManagerId,
+             &dbCheckParam,
+             testResultArray,
+             &errorNum);
+@@ -4363,27 +4418,27 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_first_miss_verify(GT_VOID)
+     prvTgfFdbManagerMacBuildMode = PRV_TGF_FDB_MANAGER_MAC_INCREMENTAL_MODE_E;
+     startAddr[4] = 0x44;
+     startAddr[5] = 0x44;
+-    for(numEntriesAdded = counters.usedEntries; numEntriesAdded < hash_test1_max_capacity; numEntriesAdded++)
++    for(numEntriesAdded = counters.usedEntries; numEntriesAdded < hash_max_capacity; numEntriesAdded++)
+     {
+         /* Random vlan ID - individual Learning */
+         prvSpecificFidFilterValue = 100 + (cpssOsRand() & 3);
+
+         entryAdded = GT_FALSE;
+-        fdbManagerEntryAdd_macAddr(hash_test1_fdbManagerId, currentAddedEntries, &entryAdded);
++        fdbManagerEntryAdd_macAddr(hash_fdbManagerId, currentAddedEntries, &entryAdded);
+         if(entryAdded == GT_FALSE)
+         {
+             if(prvTgfFdbManagerRehashEnable == GT_TRUE)
+             {
+                 /* First Miss with Cuckoo */
+                 PRV_UTF_LOG3_MAC("First miss detected(With Cuckoo): Total Entry [%d], Entries beyond given set (%d), Filling %d%% \n",
+-                        numEntriesAdded, currentAddedEntries, (100*numEntriesAdded)/hash_test1_max_capacity);
++                        numEntriesAdded, currentAddedEntries, (100*numEntriesAdded)/hash_max_capacity);
+                 break;
+             }
+             else
+             {
+                 /* First Miss */
+                 PRV_UTF_LOG3_MAC("First miss detected(Without Cuckoo): Total Entry [%d], Entries beyond given set (%d), Filling %d%% \n",
+-                        numEntriesAdded, currentAddedEntries, (100*numEntriesAdded)/hash_test1_max_capacity);
++                        numEntriesAdded, currentAddedEntries, (100*numEntriesAdded)/hash_max_capacity);
+
+                 /* Set FDB manager AU Message handler methord as FDB_MANAGER for appDemo */
+                 rc = prvWrAppDemoFdbManagerControlSet(
+@@ -4391,7 +4446,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_first_miss_verify(GT_VOID)
+                         GT_FALSE, 0);
+                 UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+                         "prvWrAppDemoFdbManagerControlSet: expected to GT_OK on manager [%d]",
+-                        hash_test1_fdbManagerId);
++                        hash_fdbManagerId);
+
+                 if(PRV_CPSS_SIP_5_CHECK_MAC(prvTgfDevNum))
+                 {
+@@ -4416,10 +4471,10 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_first_miss_verify(GT_VOID)
+     counters.macUnicastDynamic += currentAddedEntries;
+     counters.usedEntries       += currentAddedEntries;
+     counters.freeEntries       -= currentAddedEntries;
+-    prvCpssDxChBrgFdbManagerCounterVerify(hash_test1_fdbManagerId, &counters);
++    prvCpssDxChBrgFdbManagerCounterVerify(hash_fdbManagerId, &counters);
+
+     /* Verify Statistics counter */
+-    rc = cpssDxChBrgFdbManagerStatisticsGet(hash_test1_fdbManagerId, &statistics);
++    rc = cpssDxChBrgFdbManagerStatisticsGet(hash_fdbManagerId, &statistics);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc, "ERROR: cpssDxChBrgFdbManagerStatisticsGet", prvTgfDevNum);
+     UTF_VERIFY_EQUAL1_STRING_MAC(0,
+             statistics.scanLearningErrorInputInvalid,
+@@ -4454,7 +4509,7 @@ static GT_VOID prvTgfBrgFdbManagerHashTest1_first_miss_verify(GT_VOID)
+     /* set to enable all the checkers */
+     CPSS_DXCH_BRG_FDB_MANAGER_DB_CHECKS_DO_ALL_MAC(dbCheckParam);
+     /* Verify DB */
+-    rc = cpssDxChBrgFdbManagerDatabaseCheck(hash_test1_fdbManagerId,
++    rc = cpssDxChBrgFdbManagerDatabaseCheck(hash_fdbManagerId,
+             &dbCheckParam,
+             testResultArray,
+             &errorNum);
+@@ -4510,31 +4565,31 @@ GT_VOID prvTgfBrgFdbManagerHashTest1_test(GT_VOID)
+
+     /* Customize HW capacity */
+     cpssOsMemSet(&capacity, 0, sizeof(capacity));
+-    capacity.hwCapacity.numOfHwIndexes   = hash_test1_max_capacity;
+-    capacity.hwCapacity.numOfHashes      = HASH_AS_PER_DEVICE(hash_test1_Number_of_hash);
++    capacity.hwCapacity.numOfHwIndexes   = hash_max_capacity;
++    capacity.hwCapacity.numOfHashes      = HASH_AS_PER_DEVICE(hash_number_of_hash);
+     capacity.maxEntriesPerLearningScan   = PRV_TGF_MAX_ENTRIES_PER_LEARNING_SCAN;
+     capacity.maxEntriesPerAgingScan      = NUM_ENTRIES_STEPS_CNS;
+
+     /* create single valid manager */
+-    rc = createFdbManagerWithDevice(hash_test1_fdbManagerId,
+-            hash_test1_max_capacity/* SW Limit */,
++    rc = createFdbManagerWithDevice(hash_fdbManagerId,
++            hash_max_capacity/* SW Limit */,
+             &capacity,
+             GT_TRUE);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+             "createFdbManager: expected to GT_OK on manager [%d]",
+-            hash_test1_fdbManagerId);
++            hash_fdbManagerId);
+
+     /* Set FDB manager ID for appDemo */
+-    rc = prvWrAppDemoFdbManagerGlobalIDSet(hash_test1_fdbManagerId);
++    rc = prvWrAppDemoFdbManagerGlobalIDSet(hash_fdbManagerId);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+             "prvWrAppDemoFdbManagerGlobalIDSet: expected to GT_OK on manager [%d]",
+-            hash_test1_fdbManagerId);
++            hash_fdbManagerId);
+
+     /* Set FDB manager AU Message handler methord as FDB_MANAGER for appDemo */
+     rc = prvWrAppDemoFdbManagerControlSet(APP_DEMO_AU_MESSAGE_HANDLER_FDB_MANAGER_E, GT_FALSE, 0);
+     UTF_VERIFY_EQUAL1_STRING_MAC(GT_OK, rc,
+             "prvWrAppDemoFdbManagerControlSet: expected to GT_OK on manager [%d]",
+-            hash_test1_fdbManagerId);
++            hash_fdbManagerId);
+
+     /* Global OUI */
+     cpssOsMemSet(&startAddr, 0, sizeof(startAddr));
+@@ -4544,7 +4599,7 @@ GT_VOID prvTgfBrgFdbManagerHashTest1_test(GT_VOID)
+
+     /* Reset Global counters */
+     cpssOsMemSet(&counters, 0, sizeof(counters));
+-    counters.freeEntries = hash_test1_max_capacity;
++    counters.freeEntries = hash_max_capacity;
+
+     /* Cases with non-stream(Learning Via API call) -
+      * Total Entries = (2048*4 + 128 + 1024) = 9344 */

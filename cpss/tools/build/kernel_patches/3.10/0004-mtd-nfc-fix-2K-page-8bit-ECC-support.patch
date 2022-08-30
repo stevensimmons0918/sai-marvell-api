@@ -1,0 +1,49 @@
+From fc07f2589e9ec90f6f1a82ccf793e83117dd3675 Mon Sep 17 00:00:00 2001
+From: blueh <blueh@marvell.com>
+Date: Tue, 30 Oct 2018 13:30:26 +0800
+Subject: [PATCH 09/11] mtd: nfc: fix 2K page 8bit ECC support
+
+    the commit fixes the 2K 8bit ECC use case by enlargine the OOB from
+    32B to 64B. When using 32B the second chunk would get a 0xFE byte
+    after nand erase, enlarging the OOB size fixed this issue.
+---
+ drivers/mtd/nand/mvebu_nfc/nand_nfc.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mtd/nand/mvebu_nfc/nand_nfc.c b/drivers/mtd/nand/mvebu_nfc/nand_nfc.c
+index bdeca7e..4890471 100644
+--- a/drivers/mtd/nand/mvebu_nfc/nand_nfc.c
++++ b/drivers/mtd/nand/mvebu_nfc/nand_nfc.c
+@@ -196,6 +196,20 @@ static struct nand_ecclayout ecc_layout_2KB_bch4bit = {
+ 	.oobfree = { {2, 30} }
+ };
+ 
++static struct nand_ecclayout ecc_layout_2KB_bch8bit = {
++        .eccbytes = 64,
++        .eccpos = {
++                64,  65,  66,  67,  68,  69,  70,  71,
++                72,  73,  74,  75,  76,  77,  78,  79,
++                80,  81,  82,  83,  84,  85,  86,  87,
++                88,  89,  90,  91,  92,  93,  94,  95,
++                96,  97,  98,  99,  100, 101, 102, 103,
++                104, 105, 106, 107, 108, 109, 110, 111,
++                112, 113, 114, 115, 116, 117, 118, 119,
++                120, 121, 122, 123, 124, 125, 126, 127},
++        .oobfree = { {1, 4}, {6, 26} }
++};
++
+ static struct nand_ecclayout ecc_layout_4KB_bch4bit = {
+ 	.eccbytes = 64,
+ 	.eccpos = {
+@@ -332,7 +346,7 @@ static struct orion_nfc_naked_info orion_nfc_naked_info_lkup[NFC_PAGE_SIZE_MAX_C
+ 	}, {	/* BCH 4bit */
+ 		&ecc_layout_2KB_bch4bit, &mv_lp_bb, 2048, 2048, 32, 1, 0, 0
+ 	}, {	/* BCH 8bit */
+-		NULL, NULL, 2018, 1024, 0, 1, 1024, 32
++                &ecc_layout_2KB_bch8bit, &mv_lp_bb, 2018, 1024, 0, 1, 1024, 64
+ 	}, {	/* BCH 12bit */
+ 		NULL, NULL, 1988, 704, 0, 2, 640, 0
+ 	}, {	/* BCH 16bit */
+-- 
+1.9.1
+

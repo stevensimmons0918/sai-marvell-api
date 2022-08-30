@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="deprecated" kind="page">
+    <compoundname>deprecated</compoundname>
+    <title>Deprecated List</title>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><anchor id="deprecated_1_deprecated000003"/>Member <ref refid="group___s_a_i_m_a_c_s_e_c_1gga6428fa378b2f8d2a47ec437b28e2bf3aaecf42c7b4661455191ba1cb499fb3c26" kindref="member">SAI_MACSEC_ATTR_GCM_AES128_SUPPORTED</ref>  </term></varlistentry>
+<listitem><para>true  </para></listitem>
+<varlistentry><term><anchor id="deprecated_1_deprecated000004"/>Member <ref refid="group___s_a_i_m_a_c_s_e_c_1gga6428fa378b2f8d2a47ec437b28e2bf3aa775618c1c68b7c68fe5bc0a3fad4db08" kindref="member">SAI_MACSEC_ATTR_GCM_AES256_SUPPORTED</ref>  </term></varlistentry>
+<listitem><para>true  </para></listitem>
+<varlistentry><term><anchor id="deprecated_1_deprecated000001"/>Member <ref refid="group___s_a_i_m_a_c_s_e_c_1gga6428fa378b2f8d2a47ec437b28e2bf3aae487fa649d783c73c33dc9b630f40839" kindref="member">SAI_MACSEC_ATTR_PN_32BIT_SUPPORTED</ref>  </term></varlistentry>
+<listitem><para>true  </para></listitem>
+<varlistentry><term><anchor id="deprecated_1_deprecated000002"/>Member <ref refid="group___s_a_i_m_a_c_s_e_c_1gga6428fa378b2f8d2a47ec437b28e2bf3aa621c6c1aeb7206679af97071a4990031" kindref="member">SAI_MACSEC_ATTR_XPN_64BIT_SUPPORTED</ref>  </term></varlistentry>
+<listitem><para>true  </para></listitem>
+<varlistentry><term><anchor id="deprecated_1_deprecated000005"/>Member <ref refid="group___s_a_i_n_e_i_g_h_b_o_r_1ggaae5e1a835bf95e5dab9f146c57b07e78a8f616179db4b3507ae3c16bb205d37b8" kindref="member">SAI_NEIGHBOR_ENTRY_ATTR_ENCAP_IMPOSE_INDEX</ref>  </term></varlistentry>
+<listitem><para>true </para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

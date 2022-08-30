@@ -1,0 +1,22 @@
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c
+index 0a63c8f86f..211a9357b3 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/bridgeFdbManager/prvCpssDxChBrgFdbManager_hw.c
+@@ -263,7 +263,7 @@ static GT_STATUS prvCpssDxChFdbManagerAacHwAgeBitCheck
+     for(tileId = 0; tileId < PRV_CPSS_PP_MAC(devNum)->multiPipe.numOfTiles; tileId++)
+     {
+         portGroupId = tileId * PRV_CPSS_PP_MAC(devNum)->multiPipe.numOfPipesPerTile;
+-        rc = prvCpssDrvHwPpPortGroupReadRegister(devNum, portGroupId, regAddr, &hwData);
++        rc = prvCpssHwPpPortGroupReadRegister(devNum, portGroupId, regAddr, &hwData);
+         if (rc != GT_OK)
+         {
+             return rc;
+@@ -272,7 +272,7 @@ static GT_STATUS prvCpssDxChFdbManagerAacHwAgeBitCheck
+         if(U32_GET_FIELD_MAC(hwData, 2, 1))
+         {
+             /* Read current FDB entry */
+-            rc = prvCpssDrvHwPpPortGroupReadRam(devNum, portGroupId, regAddr, 4, hwDataPtr);
++            rc = prvCpssHwPpPortGroupReadRam(devNum, portGroupId, regAddr, 4, hwDataPtr);
+             if(rc != GT_OK)
+             {
+                 return rc;

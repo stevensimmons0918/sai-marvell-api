@@ -1,0 +1,69 @@
+# $(warning "Started")
+
+
+#List of subfolders to include in build
+MODULES :=
+
+#List of files to include in list
+FILES := \
+ snet.c \
+ snetCheetah2EPcl.c \
+ snetCheetah2Pcl.c \
+ snetCheetah2Routing.c \
+ snetCheetah2TStart.c \
+ snetCheetah2TTermination.c \
+ snetCheetah3.c \
+ snetCheetah3CentralizedCnt.c \
+ snetCheetah3EPcl.c \
+ snetCheetah3MacLookup.c \
+ snetCheetah3Pcl.c \
+ snetCheetah3Policer.c \
+ snetCheetah3Reassembly.c \
+ snetCheetah3Routing.c \
+ snetCheetah3TTermination.c \
+ snetCheetahDoInterrupts.c \
+ snetCheetahEgress.c \
+ snetCheetahEq.c \
+ snetCheetahHa.c \
+ snetCheetahIngress.c \
+ snetCheetahL2.c \
+ snetCheetahPcl.c \
+ snetCheetahPclSrv.c \
+ snetCheetahPolicer.c \
+ snetCheetahTxQ.c \
+ snetCheetahUcRoute.c \
+ snetFalconEgress.c \
+ snetFalconPreQ.c \
+ snetFalconTxQ.c \
+ snetLion.c \
+ snetLion2Oam.c \
+ snetLion2TrafficGenerator.c \
+ snetLion3Lpm.c \
+ snetFalconLpm.c \
+ snetFalconTcam.c \
+ snetLion3Tcam.c \
+ snetPipeEgress.c \
+ snetPipeIngress.c \
+ snetSoho.c \
+ snetSohoEgress.c \
+ snetXCat.c \
+ snetXCatPcl.c \
+ snetXCatPolicer.c \
+ snetFalconExactMatch.c \
+ snetHawkExactMatch.c \
+ snetGm.c \
+ snetHawkPpu.c \
+ snetSip6_30Smu.c
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+SIMULATION_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

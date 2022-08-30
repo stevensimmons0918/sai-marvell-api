@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__port__err__status__list__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_port_err_status_list_t</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__port__err__status__list__t_1a73c851f9c6ca245bc1f03de340c1588e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t _sai_port_err_status_list_t::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of entries in the list </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1075" column="1" bodyfile="inc/saitypes.h" bodystart="1075" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__port__err__status__list__t_1a023771a9efde7f35022dbb5c4247f4ec" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga2f73c4bfaafd3bd4dec8b458c97ad066" kindref="member">sai_port_err_status_t</ref> *</type>
+        <definition>sai_port_err_status_t* _sai_port_err_status_list_t::list</definition>
+        <argsstring></argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Port error list </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="1078" column="1" bodyfile="inc/saitypes.h" bodystart="1078" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Attribute data for <ref refid="group___s_a_i_p_o_r_t_1ggaf6a4c24bfa563ea78247c935714eff4ba1ef088fb58a0b03479517aa3e2787ec8" kindref="member">SAI_PORT_ATTR_ERR_STATUS_LIST</ref>. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/saitypes.h" line="1073" column="1" bodyfile="inc/saitypes.h" bodystart="1072" bodyend="1079"/>
+    <listofallmembers>
+      <member refid="struct__sai__port__err__status__list__t_1a73c851f9c6ca245bc1f03de340c1588e" prot="public" virt="non-virtual"><scope>_sai_port_err_status_list_t</scope><name>count</name></member>
+      <member refid="struct__sai__port__err__status__list__t_1a023771a9efde7f35022dbb5c4247f4ec" prot="public" virt="non-virtual"><scope>_sai_port_err_status_list_t</scope><name>list</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

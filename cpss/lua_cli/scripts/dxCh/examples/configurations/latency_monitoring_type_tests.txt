@@ -1,0 +1,9 @@
+//TAG:               latency-monitor;
+//Short Description: Configure test type for latency monitoring
+//Description:       Configure test type for latency monitoring
+end
+configure
+latency-monitor profile-configuration device ${dev} latency-profile ${@@lmu_env.latencyProfile} range-min ${@@lmu_env.rangeMin} range-max ${@@lmu_env.rangeMax} threshold ${@@lmu_env.notifThresh}
+latency-monitor profile-sampling-assignment device ${dev} latency-profile ${@@lmu_env.latencyProfile} sampling-profile 1 mode ${@@lmu_env.samplMode} threshold ${@@lmu_env.samplThresh}
+latency-monitor profile-sampling-assignment device ${dev} latency-profile ${@@lmu_env.latencyProfile} sampling-profile ${@@lmu_env.samplingProfile} mode ${@@lmu_env.samplMode}
+end

@@ -1,0 +1,273 @@
+// TAG:               PRP-SAN
+// Short Description: Configures PRP-SAN switch
+// Description:       Configures PRP-SAN (Parallel Redundancy Protocol  , for single attached network devices).
+end
+configure
+
+do cpss-api call cpssDxChHsrPrpPortPrpEnableSet devNum ${dev} portNum ${PRP_port_A} enable true
+do cpss-api call cpssDxChHsrPrpPortPrpLanIdSet  devNum ${dev} portNum ${PRP_port_A} direction CPSS_DIRECTION_BOTH_E lanId 0xA
+
+do cpss-api call cpssDxChHsrPrpPortPrpEnableSet devNum ${dev} portNum ${PRP_port_B} enable true
+do cpss-api call cpssDxChHsrPrpPortPrpLanIdSet  devNum ${dev} portNum ${PRP_port_B} direction CPSS_DIRECTION_BOTH_E lanId 0xB
+
+//  MUST not allow PCL to modify bit 5 of 'RCT exist'
+do cpss-api call cpssDxChPclSourceIdMaskSet devNum ${dev} lookupNum CPSS_PCL_LOOKUP_NUMBER_0_E mask 0xFDF
+
+
+//102 divided by 6
+access-list device ${dev} pcl-ID 10
+rule-id 102 action permit eport-assign ${ePort_PRP_port_A} src-id ${remove_rct_src_id_PRP_port_A} bypass-ingress-pipe
+exit
+
+//108 divided by 6
+access-list device ${dev} pcl-ID 11
+rule-id 108 action permit eport-assign ${ePort_PRP_port_B} src-id ${remove_rct_src_id_PRP_port_B} bypass-ingress-pipe
+exit
+
+//114 divided by 6
+access-list device ${dev} pcl-ID 12
+rule-id 114 action permit eport-assign ${ePort_interlink} bypass-ingress-pipe
+exit
+
+interface ethernet ${dev}/${PRP_port_A}
+service-acl pcl-ID 10 lookup 0
+exit
+interface ethernet ${dev}/${PRP_port_B}
+service-acl pcl-ID 11 lookup 0
+exit 
+
+interface ethernet ${dev}/${interlink}
+service-acl pcl-ID 12 lookup 0
+exit 
+
+do cpss-api call cpssDxChHsrPrpFdbPartitionModeSet devNum ${dev} mode CPSS_DXCH_HSR_PRP_FDB_PARTITION_MODE_DDE_3_4_E
+do cpss-api call cpssDxChHsrPrpHPortSrcEPortBaseSet devNum ${dev} baseEport ${ePortBase}
+
+callCpssAPI cpssDxChHsrPrpHPortEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "hport",      0 },
+    { "IN", "CPSS_DXCH_HSR_PRP_HPORT_ENTRY_STC", "infoPtr",
+        { pntLookupMode = "CPSS_DXCH_HSR_PRP_PNT_LOOKUP_MODE_SKIP_E" ,
+          fdbDdlMode = "CPSS_DXCH_HSR_PRP_FDB_DDL_MODE_DDL_E",
+          lreInstance = 0,
+          defaultForwardingBmp = 0x4,
+          acceptSamePort = true
+        }
+    }
+}
+>>>
+
+
+callCpssAPI cpssDxChHsrPrpHPortEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "hport",      1 },
+    { "IN", "CPSS_DXCH_HSR_PRP_HPORT_ENTRY_STC", "infoPtr",
+        { pntLookupMode = "CPSS_DXCH_HSR_PRP_PNT_LOOKUP_MODE_SKIP_E" ,
+          fdbDdlMode = "CPSS_DXCH_HSR_PRP_FDB_DDL_MODE_DDL_E",
+          lreInstance = 0,
+          defaultForwardingBmp = 0x4,
+          acceptSamePort = true
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChHsrPrpHPortEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "hport",      2 },
+    { "IN", "CPSS_DXCH_HSR_PRP_HPORT_ENTRY_STC", "infoPtr",
+        { pntLookupMode = "CPSS_DXCH_HSR_PRP_PNT_LOOKUP_MODE_SRC_AND_LEARN_E" ,
+          fdbDdlMode = "CPSS_DXCH_HSR_PRP_FDB_DDL_MODE_SKIP_E",
+          lreInstance = 0,
+          defaultForwardingBmp = 0x3,
+          pntLearnTaggedPackets = true
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChHsrPrpPntEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",    105 },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_OPER_ENT", "operation",      "CPSS_DXCH_HSR_PRP_PNT_OPER_SET_INVALID_E" },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_ENTRY_STC", "infoPtr",
+        { 
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChHsrPrpPntEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",    105 },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_OPER_ENT", "operation",      "CPSS_DXCH_HSR_PRP_PNT_OPER_SET_READY_E" },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_ENTRY_STC", "infoPtr",
+        { streamId = 0x106
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChHsrPrpLreInstanceEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",      0 },
+    { "IN", "CPSS_DXCH_HSR_PRP_LRE_INSTANCE_ENTRY_STC", "infoPtr",
+        { numOfPorts = 3,
+          lowestHPort = 0,
+          eVidxMappingBase = 1024
+        }
+    }
+}
+>>>
+
+do cpss-api call cpssDxChStreamSngEnableSet devNum 0 enable true
+
+// use resetSeqNum = true , to reset the counter from any previous run
+callCpssAPI cpssDxChStreamEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",  0x106 },
+    { "IN", "CPSS_DXCH_STREAM_SNG_IRF_ENTRY_STC", "sngIrfInfoPtr",
+        { seqNumAssignmentEnable = true,
+          resetSeqNum = true
+        }
+    }
+}
+>>>
+
+do cpss-api call cpssDxChBrgVlanPortRemoveTag0IfRxWithoutTag0EnableSet devNum ${dev} portNum ${PRP_port_A} enable true
+do cpss-api call cpssDxChBrgVlanPortRemoveTag0IfRxWithoutTag0EnableSet devNum ${dev} portNum ${PRP_port_B} enable true
+do cpss-api call cpssDxChBrgVlanPortRemoveTag0IfRxWithoutTag0EnableSet devNum ${dev} portNum ${interlink} enable true
+
+
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${PRP_port_A} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EPORT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${PRP_port_B} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EPORT_MODE_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${interlink} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EPORT_MODE_E
+
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet devNum ${dev} portNum ${PRP_port_A} tagCmd CPSS_DXCH_BRG_VLAN_PORT_TAG0_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet devNum ${dev} portNum ${PRP_port_B} tagCmd CPSS_DXCH_BRG_VLAN_PORT_TAG0_CMD_E
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet devNum ${dev} portNum ${interlink} tagCmd CPSS_DXCH_BRG_VLAN_PORT_TAG0_CMD_E
+
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1024 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1024)}}
+        }
+    }
+}
+>>>
+
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1025 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1025)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1026 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1026)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1027 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1027)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1028 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1028)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1029 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1029)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1030 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1030)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1031 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@prpTest1VidxToTargetPortsBmp(1031)}}
+        }
+    }
+}
+>>>
+
+do cpss-api call cpssDxChHsrPrpPortPrpTrailerActionSet devNum ${dev} portNum ${PRP_port_A} action CPSS_DXCH_HSR_PRP_PRP_TRAILER_ACTION_ADD_PRP_E
+do cpss-api call cpssDxChHsrPrpPortPrpTrailerActionSet devNum ${dev} portNum ${PRP_port_B} action CPSS_DXCH_HSR_PRP_PRP_TRAILER_ACTION_ADD_PRP_E
+do cpss-api call cpssDxChHsrPrpPortPrpTrailerActionSet devNum ${dev} portNum ${interlink} action CPSS_DXCH_HSR_PRP_PRP_TRAILER_ACTION_REMOVE_PRP_E
+

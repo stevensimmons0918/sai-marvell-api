@@ -1,0 +1,55 @@
+/*!**************************************************RND Template version 4.1
+ *!                 D A T A   T Y P E   D E F I N I T I O N
+ *!==========================================================================
+ *$ TITLE: Router Server - General definitions for MIPS
+ *!--------------------------------------------------------------------------
+ *$ FILENAME:
+ *!--------------------------------------------------------------------------
+ *$ SYSTEM, SUBSYSTEM: Router Server, General definitions
+ *!--------------------------------------------------------------------------
+ *$ AUTHORS: Michael,MickeyR
+ *!--------------------------------------------------------------------------
+ *$ LATEST UPDATE: 25-Aug-99  05:15:06         CREATION DATE: 29-Dec-94
+ *! 31/Jan/2006, MickeyR: Replacing the PKD definition to PKDT, PKDR & PKDB
+ *!**************************************************************************
+ *!
+ *!**************************************************************************
+ *!
+ *$ GENERAL DESCRIPTION:
+ *!
+ *$ REMARKS:
+ *!
+ *!**************************************************************************
+ *!*/
+
+#define BYTE_ORDER  BIG_ENDIAN_MEM_FORMAT
+#define STACK_ORDER STACK_FROM_LOW_TO_HIGH
+
+/*! Processor type definitions. */
+typedef char            INT_8;
+typedef short           INT_16;
+typedef int             INT_32;
+
+typedef unsigned char   UINT_8;
+typedef unsigned short  UINT_16;
+typedef unsigned long   UINT_32;
+
+/* Pointers typedef for arithmetic & logic operations */
+typedef INT_32          INT_ARCH_PTR;
+typedef UINT_32         UINT_ARCH_PTR;
+
+#define FILE_HANDLE FILE *
+
+/* #define PKD */
+#define PKDT
+#define PKDB
+#define PKDR
+
+#define ALIGNMENT_BOUNDARY  4L
+
+#define PRAGMA_NOALIGN  #pragma pack(1,1,0)
+#define PRAGMA_ALIGN    #pragma pack(0,0,0)
+
+#define PRAGMA_NOALIGN_COND
+#define PRAGMA_ALIGN_COND
+

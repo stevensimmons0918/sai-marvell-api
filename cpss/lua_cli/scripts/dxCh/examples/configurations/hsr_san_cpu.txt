@@ -1,0 +1,209 @@
+// TAG:               HSR-SAN-CPU
+// Short Description: Configures CPU port in HSR-SAN switch
+// Description:       Configures CPU port in HSR-SAN , in addition to other ring/interlink ports.
+end
+configure
+
+access-list device ${dev} pcl-ID 10
+rule-id 60 action trap-to-cpu mac-destination   ${macB1} /48 eport-assign ${ePort_ringA} nested-vlan bypass-ingress-pipe
+rule-id 66 action mirror-to-cpu mac-destination ${macC1} /48 eport-assign ${ePort_ringA} nested-vlan bypass-ingress-pipe
+exit 
+
+access-list device ${dev} pcl-ID 11
+rule-id 72 action trap-to-cpu mac-destination   ${macB1} /48 eport-assign ${ePort_ringB} nested-vlan bypass-ingress-pipe
+rule-id 78 action mirror-to-cpu mac-destination ${macC1} /48 eport-assign ${ePort_ringB} nested-vlan bypass-ingress-pipe
+exit 
+
+
+interface ethernet ${dev}/${CPU}
+service-acl pcl-ID 13 lookup 0
+exit  
+
+access-list device ${dev} pcl-ID 13
+rule-id 84 action permit mac-source ${macA2} /48 flow-id 10
+exit 
+// direction = ingress , allow mac stream ID
+do cpss-api call cpssDxChPclNumberOfStreamIdsSet devNum ${dev} direction CPSS_PCL_DIRECTION_INGRESS_E maxNum 0xFFFF
+
+
+callCpssAPI cpssDxChHsrPrpPntEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",    127 },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_OPER_ENT",    "operation","CPSS_DXCH_HSR_PRP_PNT_OPER_SET_VALID_E"},
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_ENTRY_STC", "infoPtr",
+        { streamId = 10 , macAddr = "${macA2}" , untagged = true , destBmp = 0x8}
+    }
+}
+>>>
+
+callCpssAPI cpssDxChHsrPrpPntEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",    126 },
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_OPER_ENT",    "operation","CPSS_DXCH_HSR_PRP_PNT_OPER_SET_VALID_E"},
+    { "IN", "CPSS_DXCH_HSR_PRP_PNT_ENTRY_STC", "infoPtr",
+        { streamId = 0 , macAddr = "${MC1}" , destBmp = 0xF}
+    }
+}
+>>>
+
+
+callCpssAPI cpssDxChHsrPrpLreInstanceEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",      0 },
+    { "IN", "CPSS_DXCH_HSR_PRP_LRE_INSTANCE_ENTRY_STC", "infoPtr",
+        { numOfPorts = 4,
+          lowestHPort = 0,
+          eVidxMappingBase = 1024
+        }
+    }
+}
+>>>
+
+// use resetSeqNum = true , to reset the counter from any previous run
+callCpssAPI cpssDxChStreamEntrySet
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U32", "index",     10 },
+    { "IN", "CPSS_DXCH_STREAM_SNG_IRF_ENTRY_STC", "sngIrfInfoPtr",
+        { seqNumAssignmentEnable = true,
+          resetSeqNum = true
+        }
+    }
+}
+>>>
+
+
+
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateModeSet devNum ${dev} portNum ${CPU} stateMode CPSS_DXCH_BRG_VLAN_EPORT_TAG_STATE_EPORT_MODE_E
+
+do cpss-api call cpssDxChBrgVlanEgressPortTagStateSet devNum ${dev} portNum ${CPU} tagCmd CPSS_DXCH_BRG_VLAN_PORT_TAG0_CMD_E
+
+
+//disable vlan filter on CPU port in the VIDX
+do cpss-api call cpssDxChBrgEgrFltVlanPortFilteringEnableSet devNum ${dev} portNum ${CPU} enable false
+
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1032 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1032,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1032,1)}}
+        }
+    }
+}
+>>>
+
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1033 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1033,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1033,1)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1034 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1034,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1034,1)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1035 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1035,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1035,1)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1036 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1036,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1036,1)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1037 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1037,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1037,1)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1038 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1038,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1038,1)}}
+        }
+    }
+}
+>>>
+
+callCpssAPI cpssDxChBrgMcEntryWrite
+<<<PARAMS
+{
+    { "IN", "GT_U8", "devNum", ${dev} },
+    { "IN", "GT_U16", "vidx",   1039 },
+    { "IN", "CPSS_PORTS_BMP_STC", "portBitmapPtr",
+        { ports = {
+            [0] = ${@@hsrTest1VidxToTargetPortsBmp(1039,0)} ,
+            [1] = ${@@hsrTest1VidxToTargetPortsBmp(1039,1)}}
+        }
+    }
+}
+>>>
+
+do cpss-api call cpssDxChBrgNestVlanPortTargetUseIngressModeSet devNum ${dev} portNum ${CPU} mode CPSS_DXCH_BRG_NEST_VLAN_TARGET_USE_INGRESS_MODE_IGNORE_E
+
+do cpss-api call cpssDxChHsrPrpPortSrcHsrBaseLsduOffsetSet devNum ${dev} portNum ${CPU} lsduOffset 30
+

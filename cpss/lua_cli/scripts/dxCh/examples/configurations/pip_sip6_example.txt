@@ -1,0 +1,26 @@
+// TAG:               PIP; Pre-Ingress Prioritization ; sip6 additions
+// Short Description: Additional sip6 Configuration for device with PIP support.
+// Description:       Additional sip6 Configuration for device with PIP support.
+//
+end
+//
+// enter the config context
+config
+//
+//Global set 2 (out of 4) 'latency-sensitive' ethertypes
+// index 0
+pip latency-sensitive-ethertype "pfc" device ${dev} etherType aaaa
+// index 1
+pip latency-sensitive-ethertype "qcn" device ${dev} etherType bbbb
+//thresholds
+//set the threshold for latency-sensitive
+pip threshold-types device ${dev} type latency-sensitive threshold 65535
+//
+
+// set TPID global config to recognize 0x893f (BPE 802.1br ethertype)  - for ingress
+// indexes 0..3 are set in the TTI and the RxDma units
+// indexes 4..7 are set in the TTI (only)
+tpid device ${dev} direction ingress index 3 etherType 0x893f  tag-type 8-bytes-tag
+// set also egress for 'normal bridging'
+tpid device ${dev} direction egress  index 3 etherType 0x893f  tag-type 8-bytes-tag 
+

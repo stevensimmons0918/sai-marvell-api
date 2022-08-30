@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="sainexthop_8h" kind="file" language="C++">
+    <compoundname>sainexthop.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="216">
+        <label>stdbool.h</label>
+      </node>
+      <node id="215">
+        <label>stdint.h</label>
+      </node>
+      <node id="217">
+        <label>sys/types.h</label>
+      </node>
+      <node id="214">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="215" relation="include">
+        </childnode>
+        <childnode refid="216" relation="include">
+        </childnode>
+        <childnode refid="217" relation="include">
+        </childnode>
+      </node>
+      <node id="213">
+        <label>inc/sainexthop.h</label>
+        <link refid="sainexthop.h"/>
+        <childnode refid="214" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="219">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+      <node id="218">
+        <label>inc/sainexthop.h</label>
+        <link refid="sainexthop.h"/>
+        <childnode refid="219" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__next__hop__api__t" prot="public">_sai_next_hop_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_1ga88fc4a34fc14ea69cdf7565f01f5dee0" prot="public" static="no">
+        <name>_sai_next_hop_type_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ad352013b8754bd3cbc51fb44cfcac837" prot="public">
+          <name>SAI_NEXT_HOP_TYPE_IP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>IP next hop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ada24af382930ed3e7db2f5dcc5ae27e3" prot="public">
+          <name>SAI_NEXT_HOP_TYPE_MPLS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>MPLS(outsegment) next hop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ae9eee04709856495f8b480b5a58f28c3" prot="public">
+          <name>SAI_NEXT_HOP_TYPE_TUNNEL_ENCAP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Tunnel next hop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0a4433d2bbf56f38a81a79b5f644b3206a" prot="public">
+          <name>SAI_NEXT_HOP_TYPE_SEGMENTROUTE_SIDLIST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>IPv6 Segment Route SID List </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0a353dbc72a8e3d2f3b401b73e0dd0b891" prot="public">
+          <name>SAI_NEXT_HOP_TYPE_SEGMENTROUTE_ENDPOINT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>IPv6 Segment Route Endpoint Function </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Next hop type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="40" column="1" bodyfile="inc/sainexthop.h" bodystart="39" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_1gab8c7660b508ffcc9bbab9e4c81e0fef3" prot="public" static="no">
+        <name>_sai_next_hop_endpoint_type_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a74319ee30cfb565f6dd26e780ed99c21" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_E</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Basic Endpoint </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a736fa43d81e1b1c07b1a463f30715771" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.X Endpoint with Layer-3 Cross-connect </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a822f110061509356be1ccb445fe9280a" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_T</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End.T Endpoint with specific IPv6 Table </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a18ad38cfab9f7f0444b843cd42587eca" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_DX2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and Layer 2 Cross-connect </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a98990c0c6c8b00d9a845250fbbd9edf9" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_DX6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and IPv6 Cross-connect </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a9b774cc3e799bf4a1f91aeb73b0cbe05" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_DX4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and IPv4 Cross-connect </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a0c6598398d3b0c8b7d03293ca9fa9dfc" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_DT6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and specific IPv6 </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a3bc209d9fdcbfae7c0c67b0f3999f955" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_DT4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Endpoint with decapsulation and specific IPv6 </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a19aab5dacc247b7f035fb87932a92e8d" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_TYPE_CUSTOM_RANGE_BASE</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining Endpoint Action types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="62" column="1" bodyfile="inc/sainexthop.h" bodystart="61" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_1ga99b62af292278e7ef1a7ca99b7a0bab3" prot="public" static="no">
+        <name>_sai_next_hop_endpoint_pop_type_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1gga99b62af292278e7ef1a7ca99b7a0bab3a839675d4e6abd27d8d3968690453d051" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_POP_TYPE_PSP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Penultimate segment pop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1gga99b62af292278e7ef1a7ca99b7a0bab3ac209c91d7c61ba717f6886444b8356f7" prot="public">
+          <name>SAI_NEXT_HOP_ENDPOINT_POP_TYPE_USP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ultimate Segment pop </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining Endpoint Segment Pop types for End, End.X and End.T. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="96" column="1" bodyfile="inc/sainexthop.h" bodystart="95" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_n_e_x_t_h_o_p_1gae3ae8aa0eadbc0759dc68009f267dd4c" prot="public" static="no">
+        <name>_sai_next_hop_attr_t</name>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca5d389c10b963429a2234d63d7b149b4b" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caca65d446a371d6ebb498a02d94817654" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_TYPE</name>
+          <initializer>= SAI_NEXT_HOP_ATTR_START</initializer>
+          <briefdescription>
+<para>Next hop entry type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_next_hop_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY  true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caec952816333fd2afa86b67dab9b21995" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_IP</name>
+          <briefdescription>
+<para>Next hop entry IPv4 address. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_IP or SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS or SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_TUNNEL_ENCAP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caac038c2fda9cf4587a018a85c200b1e7" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_ROUTER_INTERFACE_ID</name>
+          <briefdescription>
+<para>Next hop entry router interface id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_ROUTER_INTERFACE </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_IP or SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca258a0ab3a4b85ee4a5c5b992735af19f" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_TUNNEL_ID</name>
+          <briefdescription>
+<para>Next hop entry tunnel-id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_TUNNEL </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_TUNNEL_ENCAP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca0bf7e9b2010d74a2ebb0a208bf9bdd1d" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_TUNNEL_VNI</name>
+          <briefdescription>
+<para>Next hop entry VNI (override tunnel mapper) </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_TUNNEL_ENCAP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca88ca8a406dced7de7da55fef5d5c3279" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_TUNNEL_MAC</name>
+          <briefdescription>
+<para>Inner destination MAC address. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mac_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        attrvalue SAI_SWITCH_ATTR_VXLAN_DEFAULT_ROUTER_MAC </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_TUNNEL_ENCAP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca1b9e5199ed61d2fa5d7293334f56b031" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_SEGMENTROUTE_SIDLIST_ID</name>
+          <briefdescription>
+<para>Next hop entry Segment Route SID List. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_SEGMENTROUTE_SIDLIST </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_SEGMENTROUTE_SIDLIST </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca8c6255cda90120bd39729324f558d63b" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_SEGMENTROUTE_ENDPOINT_TYPE</name>
+          <briefdescription>
+<para>Next hop entry Segment Route Endpoint Function. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_next_hop_endpoint_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_SEGMENTROUTE_ENDPOINT </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca2c4382dfed3c51a173be2bc210e6bbd6" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_SEGMENTROUTE_ENDPOINT_POP_TYPE</name>
+          <briefdescription>
+<para>Next hop entry Segment Route Endpoint Pop Option. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_next_hop_endpoint_pop_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_SEGMENTROUTE_ENDPOINT </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf0a8d53e30e7b428e89ec4f583899bc1" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_LABELSTACK</name>
+          <briefdescription>
+<para>Push label. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_u32_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca2bc50f5f2915aa354a7a792154cafe94" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_COUNTER_ID</name>
+          <briefdescription>
+<para>Attach a counter. </para>          </briefdescription>
+          <detaileddescription>
+<para>When it is empty, then packet hits won&apos;t be counted</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_COUNTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca312942e5d99a5aa19f990a47e4a61ea4" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_DISABLE_DECREMENT_TTL</name>
+          <briefdescription>
+<para>To enable/disable Decrement TTL. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caffae4df1fd4094c5db4de36954d6b7e1" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_OUTSEG_TYPE</name>
+          <briefdescription>
+<para>MPLS Outsegment type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_outseg_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_OUTSEG_TYPE_SWAP </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cab0cb403d663788090bacbb7a31b099a5" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE</name>
+          <briefdescription>
+<para>MPLS Outsegment TTL mode. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_outseg_ttl_mode_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_OUTSEG_TTL_MODE_UNIFORM </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS and SAI_NEXT_HOP_ATTR_OUTSEG_TYPE == SAI_OUTSEG_TYPE_PUSH </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf661ef56b2db9b162da89e8acdd700c4" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_OUTSEG_TTL_VALUE</name>
+          <briefdescription>
+<para>MPLS Outsegment TTL value for pipe mode. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        255 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS and SAI_NEXT_HOP_ATTR_OUTSEG_TYPE == SAI_OUTSEG_TYPE_PUSH and SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE == SAI_OUTSEG_TTL_MODE_PIPE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca83aac2cb9b5e2699130192e56226701b" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_OUTSEG_EXP_MODE</name>
+          <briefdescription>
+<para>MPLS Outsegment MPLS EXP mode. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_outseg_exp_mode_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_OUTSEG_EXP_MODE_UNIFORM </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS and SAI_NEXT_HOP_ATTR_OUTSEG_TYPE == SAI_OUTSEG_TYPE_PUSH </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca310e40dfaa69bd9631af5d7eaeb30eb5" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_OUTSEG_EXP_VALUE</name>
+          <briefdescription>
+<para>MPLS Outsegment EXP value for pipe mode. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS and SAI_NEXT_HOP_ATTR_OUTSEG_TYPE == SAI_OUTSEG_TYPE_PUSH and SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE == SAI_OUTSEG_TTL_MODE_PIPE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca1961c97455f4756fdf2759ed254afc73" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_QOS_TC_AND_COLOR_TO_MPLS_EXP_MAP</name>
+          <briefdescription>
+<para>TC AND COLOR -&gt; MPLS EXP MAP for Uniform Mode. </para>          </briefdescription>
+          <detaileddescription>
+<para>If present overrides SAI_SWITCH_ATTR_QOS_TC_AND_COLOR_TO_MPLS_EXP_MAP and SAI_PORT_ATTR_QOS_TC_AND_COLOR_TO_MPLS_EXP_MAP</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_QOS_MAP </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS and SAI_NEXT_HOP_ATTR_OUTSEG_TYPE == SAI_OUTSEG_TYPE_PUSH and SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE == SAI_OUTSEG_TTL_MODE_UNIFORM </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf93bb2e08f3138b3ca882f982f0a0c7b" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cac1065922d01dd4465461adb8e1a99677" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cab067a898a72c1bdf199b7faa05a7d790" prot="public">
+          <name>SAI_NEXT_HOP_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute id for next hop. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="109" column="1" bodyfile="inc/sainexthop.h" bodystart="108" bodyend="307"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1gad890b92658fe438999f066067d7d41fd" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga88fc4a34fc14ea69cdf7565f01f5dee0" kindref="member">_sai_next_hop_type_t</ref></type>
+        <definition>typedef enum _sai_next_hop_type_t  sai_next_hop_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_type_t</name>
+        <briefdescription>
+<para>Next hop type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="56" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1ga928f9d5ee5d66087b13e10cc8956a688" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_1gab8c7660b508ffcc9bbab9e4c81e0fef3" kindref="member">_sai_next_hop_endpoint_type_t</ref></type>
+        <definition>typedef enum _sai_next_hop_endpoint_type_t  sai_next_hop_endpoint_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_endpoint_type_t</name>
+        <briefdescription>
+<para>Enum defining Endpoint Action types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1gaba266a599f2a69e383516082b66b9f10" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga99b62af292278e7ef1a7ca99b7a0bab3" kindref="member">_sai_next_hop_endpoint_pop_type_t</ref></type>
+        <definition>typedef enum _sai_next_hop_endpoint_pop_type_t  sai_next_hop_endpoint_pop_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_endpoint_pop_type_t</name>
+        <briefdescription>
+<para>Enum defining Endpoint Segment Pop types for End, End.X and End.T. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="103" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1gac9c01a74505ee97cf79a6cd29cd3ca5d" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_n_e_x_t_h_o_p_1gae3ae8aa0eadbc0759dc68009f267dd4c" kindref="member">_sai_next_hop_attr_t</ref></type>
+        <definition>typedef enum _sai_next_hop_attr_t  sai_next_hop_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_attr_t</name>
+        <briefdescription>
+<para>Attribute id for next hop. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="307" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1ga09e80358a43b20f699b10d4f58c3109f" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_next_hop_fn) (_Out_ sai_object_id_t *next_hop_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *next_hop_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_next_hop_fn</name>
+        <briefdescription>
+<para>Create next hop. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note: IP address expected in Network Byte Order.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">next_hop_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="321" column="1" bodyfile="inc/sainexthop.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1ga4426819485b91f86c57d44845fe68830" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_next_hop_fn) (_In_ sai_object_id_t next_hop_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_id)</argsstring>
+        <name>sai_remove_next_hop_fn</name>
+        <briefdescription>
+<para>Remove next hop. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="334" column="1" bodyfile="inc/sainexthop.h" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1ga218cb404eb8b6b6c1614112e6dbe6ad9" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_next_hop_attribute_fn) (_In_ sai_object_id_t next_hop_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_next_hop_attribute_fn</name>
+        <briefdescription>
+<para>Set Next Hop attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="345" column="1" bodyfile="inc/sainexthop.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1ga188d6759549f1040095bfa03524b91ff" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_next_hop_attribute_fn) (_In_ sai_object_id_t next_hop_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t next_hop_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_next_hop_attribute_fn</name>
+        <briefdescription>
+<para>Get Next Hop attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">next_hop_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next hop id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="358" column="1" bodyfile="inc/sainexthop.h" bodystart="358" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_n_e_x_t_h_o_p_1ga4f0da6669d7e3465b72001aa2b99cc28" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__next__hop__api__t" kindref="compound">_sai_next_hop_api_t</ref></type>
+        <definition>typedef struct _sai_next_hop_api_t  sai_next_hop_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_next_hop_api_t</name>
+        <briefdescription>
+<para>Next Hop methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainexthop.h" line="373" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Next Hop interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAINEXTHOP_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAINEXTHOP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_n_e_x_t_h_o_p_1ga88fc4a34fc14ea69cdf7565f01f5dee0" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga88fc4a34fc14ea69cdf7565f01f5dee0" kindref="member">_sai_next_hop_type_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ad352013b8754bd3cbc51fb44cfcac837" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ad352013b8754bd3cbc51fb44cfcac837" kindref="member">SAI_NEXT_HOP_TYPE_IP</ref>,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ada24af382930ed3e7db2f5dcc5ae27e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ada24af382930ed3e7db2f5dcc5ae27e3" kindref="member">SAI_NEXT_HOP_TYPE_MPLS</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ae9eee04709856495f8b480b5a58f28c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0ae9eee04709856495f8b480b5a58f28c3" kindref="member">SAI_NEXT_HOP_TYPE_TUNNEL_ENCAP</ref>,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0a4433d2bbf56f38a81a79b5f644b3206a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0a4433d2bbf56f38a81a79b5f644b3206a" kindref="member">SAI_NEXT_HOP_TYPE_SEGMENTROUTE_SIDLIST</ref>,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0a353dbc72a8e3d2f3b401b73e0dd0b891" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gga88fc4a34fc14ea69cdf7565f01f5dee0a353dbc72a8e3d2f3b401b73e0dd0b891" kindref="member">SAI_NEXT_HOP_TYPE_SEGMENTROUTE_ENDPOINT</ref>,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gad890b92658fe438999f066067d7d41fd" kindref="member">sai_next_hop_type_t</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="group___s_a_i_n_e_x_t_h_o_p_1gab8c7660b508ffcc9bbab9e4c81e0fef3" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gab8c7660b508ffcc9bbab9e4c81e0fef3" kindref="member">_sai_next_hop_endpoint_type_t</ref></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a74319ee30cfb565f6dd26e780ed99c21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a74319ee30cfb565f6dd26e780ed99c21" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_E</ref>,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a736fa43d81e1b1c07b1a463f30715771" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a736fa43d81e1b1c07b1a463f30715771" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_X</ref>,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a822f110061509356be1ccb445fe9280a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a822f110061509356be1ccb445fe9280a" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_T</ref>,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a18ad38cfab9f7f0444b843cd42587eca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a18ad38cfab9f7f0444b843cd42587eca" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_DX2</ref>,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a98990c0c6c8b00d9a845250fbbd9edf9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a98990c0c6c8b00d9a845250fbbd9edf9" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_DX6</ref>,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a9b774cc3e799bf4a1f91aeb73b0cbe05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a9b774cc3e799bf4a1f91aeb73b0cbe05" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_DX4</ref>,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a0c6598398d3b0c8b7d03293ca9fa9dfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a0c6598398d3b0c8b7d03293ca9fa9dfc" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_DT6</ref>,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a3bc209d9fdcbfae7c0c67b0f3999f955" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a3bc209d9fdcbfae7c0c67b0f3999f955" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_DT4</ref>,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a19aab5dacc247b7f035fb87932a92e8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggab8c7660b508ffcc9bbab9e4c81e0fef3a19aab5dacc247b7f035fb87932a92e8d" kindref="member">SAI_NEXT_HOP_ENDPOINT_TYPE_CUSTOM_RANGE_BASE</ref><sp/>=<sp/>0x10000000</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga928f9d5ee5d66087b13e10cc8956a688" kindref="member">sai_next_hop_endpoint_type_t</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="group___s_a_i_n_e_x_t_h_o_p_1ga99b62af292278e7ef1a7ca99b7a0bab3" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga99b62af292278e7ef1a7ca99b7a0bab3" kindref="member">_sai_next_hop_endpoint_pop_type_t</ref></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98" refid="group___s_a_i_n_e_x_t_h_o_p_1gga99b62af292278e7ef1a7ca99b7a0bab3a839675d4e6abd27d8d3968690453d051" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gga99b62af292278e7ef1a7ca99b7a0bab3a839675d4e6abd27d8d3968690453d051" kindref="member">SAI_NEXT_HOP_ENDPOINT_POP_TYPE_PSP</ref>,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="group___s_a_i_n_e_x_t_h_o_p_1gga99b62af292278e7ef1a7ca99b7a0bab3ac209c91d7c61ba717f6886444b8356f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gga99b62af292278e7ef1a7ca99b7a0bab3ac209c91d7c61ba717f6886444b8356f7" kindref="member">SAI_NEXT_HOP_ENDPOINT_POP_TYPE_USP</ref>,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gaba266a599f2a69e383516082b66b9f10" kindref="member">sai_next_hop_endpoint_pop_type_t</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group___s_a_i_n_e_x_t_h_o_p_1gae3ae8aa0eadbc0759dc68009f267dd4c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gae3ae8aa0eadbc0759dc68009f267dd4c" kindref="member">_sai_next_hop_attr_t</ref></highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca5d389c10b963429a2234d63d7b149b4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca5d389c10b963429a2234d63d7b149b4b" kindref="member">SAI_NEXT_HOP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caca65d446a371d6ebb498a02d94817654" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caca65d446a371d6ebb498a02d94817654" kindref="member">SAI_NEXT_HOP_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca5d389c10b963429a2234d63d7b149b4b" kindref="member">SAI_NEXT_HOP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caec952816333fd2afa86b67dab9b21995" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caec952816333fd2afa86b67dab9b21995" kindref="member">SAI_NEXT_HOP_ATTR_IP</ref>,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caac038c2fda9cf4587a018a85c200b1e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caac038c2fda9cf4587a018a85c200b1e7" kindref="member">SAI_NEXT_HOP_ATTR_ROUTER_INTERFACE_ID</ref>,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca258a0ab3a4b85ee4a5c5b992735af19f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca258a0ab3a4b85ee4a5c5b992735af19f" kindref="member">SAI_NEXT_HOP_ATTR_TUNNEL_ID</ref>,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca0bf7e9b2010d74a2ebb0a208bf9bdd1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca0bf7e9b2010d74a2ebb0a208bf9bdd1d" kindref="member">SAI_NEXT_HOP_ATTR_TUNNEL_VNI</ref>,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca88ca8a406dced7de7da55fef5d5c3279" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca88ca8a406dced7de7da55fef5d5c3279" kindref="member">SAI_NEXT_HOP_ATTR_TUNNEL_MAC</ref>,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca1b9e5199ed61d2fa5d7293334f56b031" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca1b9e5199ed61d2fa5d7293334f56b031" kindref="member">SAI_NEXT_HOP_ATTR_SEGMENTROUTE_SIDLIST_ID</ref>,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca8c6255cda90120bd39729324f558d63b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca8c6255cda90120bd39729324f558d63b" kindref="member">SAI_NEXT_HOP_ATTR_SEGMENTROUTE_ENDPOINT_TYPE</ref>,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca2c4382dfed3c51a173be2bc210e6bbd6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca2c4382dfed3c51a173be2bc210e6bbd6" kindref="member">SAI_NEXT_HOP_ATTR_SEGMENTROUTE_ENDPOINT_POP_TYPE</ref>,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf0a8d53e30e7b428e89ec4f583899bc1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf0a8d53e30e7b428e89ec4f583899bc1" kindref="member">SAI_NEXT_HOP_ATTR_LABELSTACK</ref>,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca2bc50f5f2915aa354a7a792154cafe94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca2bc50f5f2915aa354a7a792154cafe94" kindref="member">SAI_NEXT_HOP_ATTR_COUNTER_ID</ref>,</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca312942e5d99a5aa19f990a47e4a61ea4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca312942e5d99a5aa19f990a47e4a61ea4" kindref="member">SAI_NEXT_HOP_ATTR_DISABLE_DECREMENT_TTL</ref>,</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caffae4df1fd4094c5db4de36954d6b7e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caffae4df1fd4094c5db4de36954d6b7e1" kindref="member">SAI_NEXT_HOP_ATTR_OUTSEG_TYPE</ref>,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cab0cb403d663788090bacbb7a31b099a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cab0cb403d663788090bacbb7a31b099a5" kindref="member">SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE</ref>,</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf661ef56b2db9b162da89e8acdd700c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf661ef56b2db9b162da89e8acdd700c4" kindref="member">SAI_NEXT_HOP_ATTR_OUTSEG_TTL_VALUE</ref>,</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca83aac2cb9b5e2699130192e56226701b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca83aac2cb9b5e2699130192e56226701b" kindref="member">SAI_NEXT_HOP_ATTR_OUTSEG_EXP_MODE</ref>,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca310e40dfaa69bd9631af5d7eaeb30eb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca310e40dfaa69bd9631af5d7eaeb30eb5" kindref="member">SAI_NEXT_HOP_ATTR_OUTSEG_EXP_VALUE</ref>,</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca1961c97455f4756fdf2759ed254afc73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4ca1961c97455f4756fdf2759ed254afc73" kindref="member">SAI_NEXT_HOP_ATTR_QOS_TC_AND_COLOR_TO_MPLS_EXP_MAP</ref>,</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf93bb2e08f3138b3ca882f982f0a0c7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4caf93bb2e08f3138b3ca882f982f0a0c7b" kindref="member">SAI_NEXT_HOP_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cac1065922d01dd4465461adb8e1a99677" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cac1065922d01dd4465461adb8e1a99677" kindref="member">SAI_NEXT_HOP_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cab067a898a72c1bdf199b7faa05a7d790" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ggae3ae8aa0eadbc0759dc68009f267dd4cab067a898a72c1bdf199b7faa05a7d790" kindref="member">SAI_NEXT_HOP_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1gac9c01a74505ee97cf79a6cd29cd3ca5d" kindref="member">sai_next_hop_attr_t</ref>;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="group___s_a_i_n_e_x_t_h_o_p_1ga09e80358a43b20f699b10d4f58c3109f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga09e80358a43b20f699b10d4f58c3109f" kindref="member">sai_create_next_hop_fn</ref>)(</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*next_hop_id,</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334" refid="group___s_a_i_n_e_x_t_h_o_p_1ga4426819485b91f86c57d44845fe68830" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga4426819485b91f86c57d44845fe68830" kindref="member">sai_remove_next_hop_fn</ref>)(</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>next_hop_id);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="group___s_a_i_n_e_x_t_h_o_p_1ga218cb404eb8b6b6c1614112e6dbe6ad9" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga218cb404eb8b6b6c1614112e6dbe6ad9" kindref="member">sai_set_next_hop_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>next_hop_id,</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358" refid="group___s_a_i_n_e_x_t_h_o_p_1ga188d6759549f1040095bfa03524b91ff" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga188d6759549f1040095bfa03524b91ff" kindref="member">sai_get_next_hop_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>next_hop_id,</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366" refid="struct__sai__next__hop__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__next__hop__api__t" kindref="compound">_sai_next_hop_api_t</ref></highlight></codeline>
+<codeline lineno="367"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga09e80358a43b20f699b10d4f58c3109f" kindref="member">sai_create_next_hop_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_next_hop;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga4426819485b91f86c57d44845fe68830" kindref="member">sai_remove_next_hop_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_next_hop;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga218cb404eb8b6b6c1614112e6dbe6ad9" kindref="member">sai_set_next_hop_attribute_fn</ref><sp/>set_next_hop_attribute;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga188d6759549f1040095bfa03524b91ff" kindref="member">sai_get_next_hop_attribute_fn</ref><sp/>get_next_hop_attribute;</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal">}<sp/><ref refid="group___s_a_i_n_e_x_t_h_o_p_1ga4f0da6669d7e3465b72001aa2b99cc28" kindref="member">sai_next_hop_api_t</ref>;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/sainexthop.h"/>
+  </compounddef>
+</doxygen>

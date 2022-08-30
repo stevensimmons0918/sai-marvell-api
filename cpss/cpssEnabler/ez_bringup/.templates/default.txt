@@ -1,0 +1,13 @@
+<Your Headline>
+
+Module:
+Packages:
+Fixed Problems:
+Memory Consumption:
+R&D Tested:
+QA Should Test:
+Laboratory scenario: 
+Affected features:
+Affected API:
+Notes:
+Unit Test:

@@ -1,0 +1,456 @@
+
+
+TRACE: make_xdk_cust_tar.py 
+['-v', '01']
+TRACE: Create distribution workspace
+
+TRACE: COMMAND: mkdir -p /home/rpennadamram/dev/rel/xps/sai_cpss/build/../../sonic-src-rel-01_08Mar2022-mrvl OUTPUT CAPTURED
+
+
+TRACE: Created /home/rpennadamram/dev/rel/xps/sai_cpss/build/../../sonic-src-rel-01_08Mar2022-mrvl
+
+TRACE: COMMAND: git clean -fd OUTPUT CAPTURED
+
+Removing 117.patch
+Removing apptest/TestResults/
+Removing apptest/acl_egr.log
+Removing apptest/acl_erspan.log
+Removing apptest/acl_erspan_1.log
+Removing apptest/acl_ing.log
+Removing apptest/all.log
+Removing apptest/b_all.log
+Removing apptest/c_all.log
+Removing apptest/d.log
+Removing apptest/d_all.log
+Removing apptest/e.log
+Removing apptest/e_all.log
+Removing apptest/f_all.log
+Removing build/pkg_build.log
+TRACE: COMMAND: git submodule foreach --recursive git clean -fd OUTPUT CAPTURED
+
+Entering 'cpss'
+error: unknown switch `f'
+usage: git submodule--helper foreach [--quiet] [--recursive] [--] <command>
+
+    -q, --quiet           Suppress output of entering each submodule command
+    --recursive           Recurse into nested submodules
+
+fatal: run_command returned non-zero status while recursing in the nested submodules of cpss
+.
+TRACE: COMMAND: git clean -fx OUTPUT CAPTURED
+
+Removing include/openXpsAcm.gen.i
+Removing include/openXpsAging.gen.i
+Removing include/openXpsCopp.gen.i
+Removing include/openXpsEnums.gen.i
+Removing include/openXpsFdb.gen.i
+Removing include/openXpsInit.gen.i
+Removing include/openXpsInterface.gen.i
+Removing include/openXpsL3.gen.i
+Removing include/openXpsLag.gen.i
+Removing include/openXpsMac.gen.i
+Removing include/openXpsOpenflow.gen.i
+Removing include/openXpsPacketDrv.gen.i
+Removing include/openXpsPolicer.gen.i
+Removing include/openXpsPort.gen.i
+Removing include/openXpsQos.gen.i
+Removing include/openXpsReasonCodeTable.gen.i
+Removing include/openXpsStp.gen.i
+Removing include/openXpsTypes.gen.i
+Removing include/openXpsVlan.gen.i
+Removing include/xpEnums.gen.i
+Removing include/xpTypes.gen.i
+Removing include/xps8021Br.gen.i
+Removing include/xpsAc.gen.i
+Removing include/xpsAcl.gen.i
+Removing include/xpsAcm.gen.i
+Removing include/xpsAging.gen.i
+Removing include/xpsAllocator.gen.i
+Removing include/xpsCommon.gen.i
+Removing include/xpsCopp.gen.i
+Removing include/xpsEgressFilter.gen.i
+Removing include/xpsEnums.gen.i
+Removing include/xpsErspanGre.gen.i
+Removing include/xpsFdb.gen.i
+Removing include/xpsFdbMgr.gen.i
+Removing include/xpsGeneve.gen.i
+Removing include/xpsGlobalSwitchControl.gen.i
+Removing include/xpsInit.gen.i
+Removing include/xpsInt.gen.i
+Removing include/xpsInterface.gen.i
+Removing include/xpsInternal.gen.i
+Removing include/xpsIpGre.gen.i
+Removing include/xpsIpinIp.gen.i
+Removing include/xpsL3.gen.i
+Removing include/xpsLag.gen.i
+Removing include/xpsLink.gen.i
+Removing include/xpsLock.gen.i
+Removing include/xpsMac.gen.i
+Removing include/xpsMirror.gen.i
+Removing include/xpsMpls.gen.i
+Removing include/xpsMtuProfile.gen.i
+Removing include/xpsMulticast.gen.i
+Removing include/xpsNat.gen.i
+Removing include/xpsNhGrp.gen.i
+Removing include/xpsNvgre.gen.i
+Removing include/xpsOpenflow.gen.i
+Removing include/xpsPacketDrv.gen.i
+Removing include/xpsPacketTrakker.gen.i
+Removing include/xpsPbb.gen.i
+Removing include/xpsPolicer.gen.i
+Removing include/xpsPort.gen.i
+Removing include/xpsPtp.gen.i
+Removing include/xpsQos.gen.i
+Removing include/xpsReasonCodeTable.gen.i
+Removing include/xpsScope.gen.i
+Removing include/xpsSerdes.gen.i
+Removing include/xpsSflow.gen.i
+Removing include/xpsSr.gen.i
+Removing include/xpsStp.gen.i
+Removing include/xpsTunnel.gen.i
+Removing include/xpsUmac.gen.i
+Removing include/xpsUtil.gen.i
+Removing include/xpsVlan.gen.i
+Removing include/xpsVpnGre.gen.i
+Removing include/xpsVsi.gen.i
+Removing include/xpsVxlan.gen.i
+Removing include/xpsXpImports.gen.i
+TRACE: COMMAND: git clean -fx OUTPUT CAPTURED
+
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sai.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShell.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShell.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellAcl.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellAcl.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellBfd.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellBridge.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellBridge.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellBuffer.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellBuffer.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellCounter.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellDebugcounter.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellDtel.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellFdb.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellFdb.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellHash.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellHash.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellHostif.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellHostif.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIpmc.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIpmc.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIpmcgroup.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIpmcgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIpsec.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellIsolationgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellL2mc.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellL2mc.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellL2mcgroup.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellL2mcgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellLag.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellLag.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMacsec.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMcastfdb.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMcastfdb.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMirror.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMirror.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMpls.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellMymac.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNat.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNeighbor.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNeighbor.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNexthop.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNexthop.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNexthopgroup.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellNexthopgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellObject.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellPolicer.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellPolicer.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellPort.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellPort.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellQosmap.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellQosmap.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellQueue.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellQueue.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRoute.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRoute.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRouterinterface.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRouterinterface.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRpfgroup.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellRpfgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSamplepacket.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSamplepacket.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellScheduler.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellScheduler.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSchedulergroup.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSchedulergroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSegmentroute.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSrv6.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellStatus.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellStp.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellStp.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSwitch.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSwitch.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellSystemport.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellTam.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellTunnel.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellTunnel.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellTypes.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellUdf.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellUdf.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellVersion.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellVirtualrouter.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellVirtualrouter.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellVlan.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellVlan.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellWred.gen.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiShellWred.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiacl.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saibfd.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saibridge.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saibuffer.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saicounter.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saidebugcounter.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saidtel.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saifdb.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saihash.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saihostif.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiipmc.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiipmcgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiipsec.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiisolationgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sail2mc.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sail2mcgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sailag.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saimacsec.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saimcastfdb.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saimirror.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saimpls.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saimymac.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sainat.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saineighbor.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sainexthop.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sainexthopgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiobject.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saipolicer.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiport.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiqosmap.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiqueue.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sairoute.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sairouterinterface.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/sairpfgroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saisamplepacket.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saischeduler.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saischedulergroup.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saisegmentroute.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saisrv6.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saistatus.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saistp.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiswitch.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saisystemport.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saitam.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saitunnel.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saitypes.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiudf.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiversion.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saivirtualrouter.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saivlan.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/include/saiwred.h
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShell.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShell.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellAcl.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellAcl.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellBfd.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellBridge.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellBridge.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellBuffer.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellBuffer.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellCounter.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellCounter.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellDebugcounter.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellDtel.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellFdb.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellFdb.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellHash.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellHash.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellHostif.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellHostif.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellIpmc.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellIpmc.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellIpmcgroup.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellIpmcgroup.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellIpsec.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellIsolationgroup.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellL2mc.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellL2mc.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellL2mcgroup.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellL2mcgroup.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellLag.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellLag.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellMacsec.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellMcastfdb.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellMcastfdb.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellMirror.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellMirror.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellMpls.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellMymac.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellNat.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellNeighbor.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellNeighbor.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellNexthop.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellNexthop.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellNexthopgroup.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellNexthopgroup.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellObject.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellPolicer.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellPolicer.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellPort.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellPort.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellQosmap.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellQosmap.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellQueue.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellQueue.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellRoute.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellRoute.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellRouterinterface.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellRouterinterface.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellRpfgroup.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellRpfgroup.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSamplepacket.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSamplepacket.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellScheduler.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellScheduler.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSchedulergroup.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSchedulergroup.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSegmentroute.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSrv6.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellStatus.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellStp.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellStp.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSwitch.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSwitch.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellSystemport.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellTam.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellTunnel.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellTunnel.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellTypes.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellUdf.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellUdf.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellVersion.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellVirtualrouter.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellVirtualrouter.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellVlan.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellVlan.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellWred.c
+Removing SAI/saiShell/genScripts/saiShellCWrappers/saiShellWred.i
+Removing SAI/saiShell/genScripts/saiShellCWrappers/shellprinting.i
+Removing SAI/xpSai/include/xpSai.gen.i
+Removing SAI/xpSai/include/xpSaiAcl.gen.i
+Removing SAI/xpSai/include/xpSaiBuffer.gen.i
+Removing SAI/xpSai/include/xpSaiFdb.gen.i
+Removing SAI/xpSai/include/xpSaiHash.gen.i
+Removing SAI/xpSai/include/xpSaiHostInterface.gen.i
+Removing SAI/xpSai/include/xpSaiIpmc.gen.i
+Removing SAI/xpSai/include/xpSaiIpmcGroup.gen.i
+Removing SAI/xpSai/include/xpSaiL2Mc.gen.i
+Removing SAI/xpSai/include/xpSaiL2McGroup.gen.i
+Removing SAI/xpSai/include/xpSaiLag.gen.i
+Removing SAI/xpSai/include/xpSaiMcastFdb.gen.i
+Removing SAI/xpSai/include/xpSaiMirror.gen.i
+Removing SAI/xpSai/include/xpSaiNeighbor.gen.i
+Removing SAI/xpSai/include/xpSaiNextHop.gen.i
+Removing SAI/xpSai/include/xpSaiNextHopGroup.gen.i
+Removing SAI/xpSai/include/xpSaiPolicer.gen.i
+Removing SAI/xpSai/include/xpSaiPort.gen.i
+Removing SAI/xpSai/include/xpSaiQosMap.gen.i
+Removing SAI/xpSai/include/xpSaiQueue.gen.i
+Removing SAI/xpSai/include/xpSaiRoute.gen.i
+Removing SAI/xpSai/include/xpSaiRouterInterface.gen.i
+Removing SAI/xpSai/include/xpSaiRpfGroup.gen.i
+Removing SAI/xpSai/include/xpSaiSamplePacket.gen.i
+Removing SAI/xpSai/include/xpSaiScheduler.gen.i
+Removing SAI/xpSai/include/xpSaiSchedulerGroup.gen.i
+Removing SAI/xpSai/include/xpSaiStp.gen.i
+Removing SAI/xpSai/include/xpSaiSwitch.gen.i
+Removing SAI/xpSai/include/xpSaiTunnel.gen.i
+Removing SAI/xpSai/include/xpSaiUdf.gen.i
+Removing SAI/xpSai/include/xpSaiVirtualRouter.gen.i
+Removing SAI/xpSai/include/xpSaiVlan.gen.i
+Removing SAI/xpSai/include/xpSaiWred.gen.i
+Removing SAI/xpSai/util/include/xpSaiUtil.gen.i
+Removing SAI/xpSai/util/include/xpSaiValidationArrays.gen.i
+Removing sai-src
+TRACE: COMMAND: git clean -fx OUTPUT CAPTURED
+
+Removing inc/sai.gen.i
+Removing inc/saiacl.gen.i
+Removing inc/saibridge.gen.i
+Removing inc/saibuffer.gen.i
+Removing inc/saifdb.gen.i
+Removing inc/saihash.gen.i
+Removing inc/saihostif.gen.i
+Removing inc/saiipmc.gen.i
+Removing inc/saiipmcgroup.gen.i
+Removing inc/sail2mc.gen.i
+Removing inc/sail2mcgroup.gen.i
+Removing inc/sailag.gen.i
+Removing inc/saimcastfdb.gen.i
+Removing inc/saimirror.gen.i
+Removing inc/saineighbor.gen.i
+Removing inc/sainexthop.gen.i
+Removing inc/sainexthopgroup.gen.i
+Removing inc/saipolicer.gen.i
+Removing inc/saiport.gen.i
+Removing inc/saiqosmap.gen.i
+Removing inc/saiqueue.gen.i
+Removing inc/sairoute.gen.i
+Removing inc/sairouterinterface.gen.i
+Removing inc/sairpfgroup.gen.i
+Removing inc/saisamplepacket.gen.i
+Removing inc/saischeduler.gen.i
+Removing inc/saischedulergroup.gen.i
+Removing inc/saistatus.gen.i
+Removing inc/saistp.gen.i
+Removing inc/saiswitch.gen.i
+Removing inc/saitunnel.gen.i
+Removing inc/saitypes.gen.i
+Removing inc/saiudf.gen.i
+Removing inc/saivirtualrouter.gen.i
+Removing inc/saivlan.gen.i
+Removing inc/saiwred.gen.i
+TRACE: COMMAND: git clean -fx OUTPUT CAPTURED
+
+Removing cpssHalLinkMgr/include/cpssHalPort.gen.i
+Removing cpssHalUtil/include/cpssHalUtil.gen.i
+TRACE: COMMAND: git clean -fx OUTPUT CAPTURED
+
+Removing common/py/xpPyEmbed.gen.i
+Removing config/include/xpDevTypes.gen.i
+TRACE: COMMAND: git clean -fx OUTPUT CAPTURED
+
+Removing allocator/include/xpsGeneric.gen.i
+Removing sal/include/xpsSal.gen.i
+Removing state/include/xpsRBTree.gen.i
+Removing state/include/xpsState.gen.i
+TRACE: COMMAND: git rev-parse --short HEAD OUTPUT CAPTURED
+
+e87e77f
+TRACE: COMMAND: git show --summary  --pretty=oneline --abbrev-commit OUTPUT CAPTURED
+
+e87e77f SONIC-000: AF to xps porting PR #117-#140
+ create mode 100755 apptest/testCases/saiPortStatsIpv4_I.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv4_II.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv4_III.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv6_I.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv6_II.py
+ create mode 100755 apptest/testCases/saiPortStatsIpv6_III.py
+ create mode 100644 build/cpss_patches/CPSS-13588.patch
+ create mode 100644 build/cpss_patches/CPSS-14628.patch
+ create mode 100644 build/cpss_patches/CPSS-14664.patch
+TRACE: COMMAND: git rev-parse --short HEAD OUTPUT CAPTURED
+
+1ec8453a
+TRACE: COMMAND: git rev-parse --short HEAD OUTPUT CAPTURED
+
+dfef27e0c0
+TRACE: Copy code in workspace
+

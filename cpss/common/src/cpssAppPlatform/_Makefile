@@ -1,0 +1,34 @@
+# $(warning "Started")
+LIB_NAME = cpssAppPlatform.lib
+
+#List of subfolders to include in build
+MODULES :=
+
+#List of files to include in list
+FILES := \
+ cpssAppPlatformPciConfig.c \
+ cpssAppPlatformSysConfig.c \
+ cpssAppPlatformBoardConfig.c \
+ cpssAppPlatformPpConfig.c \
+ cpssAppPlatformRunTimeConfig.c \
+ cpssAppPlatformPpUtils.c \
+ cpssAppPlatformPortInit.c \
+ cpssAppPlatformPpPortMaps.c \
+ cpssAppPlatformLogLib.c \
+ cpssAppPlatformExtPhyConfig.c \
+ cpssAppPlatformProfileMgr.c \
+ cpssAppPlatformSip6.c
+
+# cpssAppPlatformAuEventHandle.c
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+COMMON_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

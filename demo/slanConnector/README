@@ -1,0 +1,17 @@
+Running the slanConnector_Linux is mandatory to have the AppDemoSim execute correctly, irrespective of whether the user intends to use the packet generator simulation or not.
+
+This utility redirects the simulation ports to the virtual or physical ports. slanConnector is a part of the packet generator simulation tool files.
+
+The SLAN Connector (slanConnector_Linux) must already be running before executing the packet generator Simulator server.
+
+The daemon, slanTunTapLinux together with the daemon slanConnector_Linux help achieve TUN/TAP connections to the ASIC simulator.
+
+pss_unix_utils folder contains all important files to generate slanConnector_Linux.
+
+########################################################################################## Compilation command: gmake all
+
+Product : slanConnector_Linux slanEthPortLinux slanTunTapLinux
+
+Command to run (in background) : ./slanConnector_Linux &
+
+#########################################################################################

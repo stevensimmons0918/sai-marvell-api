@@ -1,0 +1,4 @@
+// TAG:               FDB; show
+// Short Description: flush all the FDB entries in the device
+// Description:       show all the FDB entries in the device
+do show mac address-table device ${dev}

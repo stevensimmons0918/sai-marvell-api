@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__port__oper__status__notification__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_port_oper_status_notification_t</compoundname>
+    <includes refid="saiport_8h" local="no">saiport.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__port__oper__status__notification__t_1a50250b869337bb086352f49595d87db9" prot="public" static="no" mutable="no">
+        <type>sai_object_id_t</type>
+        <definition>sai_object_id_t _sai_port_oper_status_notification_t::port_id</definition>
+        <argsstring></argsstring>
+        <name>port_id</name>
+        <briefdescription>
+<para>Port id. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT, SAI_OBJECT_TYPE_BRIDGE_PORT, SAI_OBJECT_TYPE_LAG </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiport.h" line="84" column="1" bodyfile="inc/saiport.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__port__oper__status__notification__t_1a60245f307d4dd240335a6380a7610c9a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_p_o_r_t_1gabdeb4b754c05e4678e5cd0bb55fde798" kindref="member">sai_port_oper_status_t</ref></type>
+        <definition>sai_port_oper_status_t _sai_port_oper_status_notification_t::port_state</definition>
+        <argsstring></argsstring>
+        <name>port_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Port operational status </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiport.h" line="87" column="1" bodyfile="inc/saiport.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Defines the operational status of the port. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/saiport.h" line="78" column="1" bodyfile="inc/saiport.h" bodystart="77" bodyend="89"/>
+    <listofallmembers>
+      <member refid="struct__sai__port__oper__status__notification__t_1a50250b869337bb086352f49595d87db9" prot="public" virt="non-virtual"><scope>_sai_port_oper_status_notification_t</scope><name>port_id</name></member>
+      <member refid="struct__sai__port__oper__status__notification__t_1a60245f307d4dd240335a6380a7610c9a" prot="public" virt="non-virtual"><scope>_sai_port_oper_status_notification_t</scope><name>port_state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

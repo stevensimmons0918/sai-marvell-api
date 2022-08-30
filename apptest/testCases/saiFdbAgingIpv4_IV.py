@@ -1,0 +1,70 @@
+#
+#tcParams: This dictionary contains parameters to be used, in order to configure specific
+#          networking scenario, in future it can be used to auto generate spirent streams.
+
+tcParams = {
+    'ingressPacket' : '',
+    'tcName' : 'saiFdbAgingIpv4_IV.py',
+    'description' : 'TC to verify the aging with ipv4 entries already present',
+    'ingressPort' : [''],
+    'egressPort' : [''],
+    'count' : 1,             # expected data count
+    'sleep_time' : 120
+}
+
+
+#
+#tcProgramStr: This string contains chain of xpShell commands to be used, in order to configure
+#              specific networking scenario.
+
+tcProgramStr = '''
+home
+xps
+fdb
+fdb_get_table_depth 0 > max_fdb_cnt
+home
+sai
+switch
+sai_get_switch_attribute 9288674231451648 SAI_SWITCH_ATTR_AVAILABLE_FDB_ENTRY 0
+'''
+
+
+#
+#tcFlushStr: This string contains chain of xpShell commands to be used, in order to remove
+#            specific networking scenario.
+
+tcFlushStr = '''
+home
+sai
+vlan
+sai_remove_vlan_member $memtap0
+sai_remove_vlan_member $memtap1
+sai_remove_vlan_member $memtap3
+sai_remove_vlan $vlan75
+home
+sai
+route
+sai_remove_route_entry 9288674231451648 $vr_id 0 192.168.2.10 [255.255.255.0]
+back
+nexthop
+sai_remove_next_hop $nh0
+back
+neighbor
+sai_remove_neighbor_entry 9288674231451648 $rif_i_prt_01 0 192.168.2.100
+back
+routerinterface
+sai_remove_router_interface $rif_i_prt_01
+back
+virtualrouter
+sai_remove_virtual_router $vr_id
+'''
+
+#
+#expectedData: This dictionary expected egress stream for each egress port.
+#
+
+#still 1 Rif + 1 V4 nbr exist
+expectedData = {
+       'expect1':'$max_fdb_cnt - 2',
+}
+

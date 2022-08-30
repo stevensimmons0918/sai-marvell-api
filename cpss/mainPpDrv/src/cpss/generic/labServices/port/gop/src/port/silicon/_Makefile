@@ -1,0 +1,36 @@
+# $(warning "Started")
+
+#List of subfolders to include in build
+MODULES := \
+ aldrin \
+ aldrin2 \
+ alleycat3 \
+ bobcat2 \
+ bobcat3 \
+ bobk \
+ hooper \
+ lion2 \
+ raven \
+ falcon \
+ ac5p \
+ alleycat5 \
+ ac5x \
+ harrier \
+ ironman
+
+LIB_NAME = cpssGenPortHwConfig.lib
+
+#List of files to include in list
+FILES :=
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINPPDRV_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

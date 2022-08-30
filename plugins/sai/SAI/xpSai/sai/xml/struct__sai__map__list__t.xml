@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__map__list__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_map_list_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__map__list__t_1a51990afaff9e733678acd222ebd3377e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t _sai_map_list_t::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of entries in the map </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="695" column="1" bodyfile="inc/saitypes.h" bodystart="695" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__map__list__t_1aeb4ff2d0f7316d3a0a3b18f3e06b5da9" prot="public" static="no" mutable="no">
+        <type><ref refid="struct__sai__map__t" kindref="compound">sai_map_t</ref> *</type>
+        <definition>sai_map_t* _sai_map_list_t::list</definition>
+        <argsstring></argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Map list </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="698" column="1" bodyfile="inc/saitypes.h" bodystart="698" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="848">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="849" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="849">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitypes.h" line="693" column="1" bodyfile="inc/saitypes.h" bodystart="692" bodyend="700"/>
+    <listofallmembers>
+      <member refid="struct__sai__map__list__t_1a51990afaff9e733678acd222ebd3377e" prot="public" virt="non-virtual"><scope>_sai_map_list_t</scope><name>count</name></member>
+      <member refid="struct__sai__map__list__t_1aeb4ff2d0f7316d3a0a3b18f3e06b5da9" prot="public" virt="non-virtual"><scope>_sai_map_list_t</scope><name>list</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

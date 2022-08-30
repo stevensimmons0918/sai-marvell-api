@@ -1,0 +1,13 @@
+diff --git a/simulation/simDevices/src/asicSimulation/SKernel/suserframes/snetXCatPcl.c b/simulation/simDevices/src/asicSimulation/SKernel/suserframes/snetXCatPcl.c
+index 311a50dae5..800c31e302 100755
+--- a/simulation/simDevices/src/asicSimulation/SKernel/suserframes/snetXCatPcl.c
++++ b/simulation/simDevices/src/asicSimulation/SKernel/suserframes/snetXCatPcl.c
+@@ -6034,7 +6034,7 @@ static void snetLion3IpclUdbMetaDataBuild
+         SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_TCP_UDP_PORT_COMPARATORS_55_32_E,tcporudp_port_comparators_ext.l[1]>>8);
+         SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_IPV6_EH_DETECTION_BITMAP_E,sip6_10IpclIpv6EHDetectionBmp(devObjPtr,descrPtr));
+         SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_TTL_E, descrPtr->ttl);
+-        SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_L4_OFFSET_E,(descrPtr->l4Valid ? *descrPtr->l4StartOffsetPtr: 0));
++        SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_L4_OFFSET_E,(descrPtr->l4Valid));
+         SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_PTP_OFFSET_E,descrPtr->ptpCfOffset);
+         SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_INNER_HEADER_OFFSET_E,(descrPtr->tunnelTerminated) ? *descrPtr->l3StartOfPassenger:0);
+         SMEM_LION3_IPCL_METADATA_FIELD_SET(devObjPtr,descrPtr,SMEM_SIP6_10_IPCL_META_DATA_FIELDS_INNER_L3_OFFSET_E,(descrPtr->tunnelTerminated && descrPtr->l2Valid)?*descrPtr->l3StartOffsetPtr:0);

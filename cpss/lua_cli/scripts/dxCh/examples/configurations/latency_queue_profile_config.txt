@@ -1,0 +1,9 @@
+//TAG:               latency-monitor queue mode
+//Short Description: Configure test type for latency profile queue mode
+//Description:       Configure test type for latency profile queue mode
+end
+configure
+latency-monitor queue-profile device ${dev} tc all latency-profile ${@@lmu_env.latencyProfile}
+do show queue-profile device ${dev}
+end
+

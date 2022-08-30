@@ -1,0 +1,1266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saibfd_8h" kind="file" language="C++">
+    <compoundname>saibfd.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="62">
+        <label>stdbool.h</label>
+      </node>
+      <node id="61">
+        <label>stdint.h</label>
+      </node>
+      <node id="63">
+        <label>sys/types.h</label>
+      </node>
+      <node id="60">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>inc/saibfd.h</label>
+        <link refid="saibfd.h"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="65">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+      <node id="64">
+        <label>inc/saibfd.h</label>
+        <link refid="saibfd.h"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__bfd__session__state__notification__t" prot="public">_sai_bfd_session_state_notification_t</innerclass>
+    <innerclass refid="struct__sai__bfd__api__t" prot="public">_sai_bfd_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_b_f_d_1gaac05472c9336ff0646119db1ecb4dba8" prot="public" static="no">
+        <name>_sai_bfd_session_type_t</name>
+        <enumvalue id="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8ae2124442bd9d3c31812f28814ad555a0" prot="public">
+          <name>SAI_BFD_SESSION_TYPE_DEMAND_ACTIVE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Demand Active Mode </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8aec1de46722817e8b0569fbe7b7ee68fa" prot="public">
+          <name>SAI_BFD_SESSION_TYPE_DEMAND_PASSIVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Demand Passive Mode </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8a4e4dd11812733aa1daecf03713a70fdd" prot="public">
+          <name>SAI_BFD_SESSION_TYPE_ASYNC_ACTIVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Asynchronous Active Mode </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8ad5d22c01dc28b8695943e90132637c80" prot="public">
+          <name>SAI_BFD_SESSION_TYPE_ASYNC_PASSIVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Asynchronous Passive Mode </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI session type of BFD. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="40" column="1" bodyfile="inc/saibfd.h" bodystart="39" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_f_d_1gaf07d62c319a36c1d5f120155dcc5471c" prot="public" static="no">
+        <name>_sai_bfd_session_offload_type_t</name>
+        <enumvalue id="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471caba7c6f50e3ffa380781957ba5d9f4a73" prot="public">
+          <name>SAI_BFD_SESSION_OFFLOAD_TYPE_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>No Offload: No offload supported </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471ca4abecf7ca83b53499d30caf6414449ad" prot="public">
+          <name>SAI_BFD_SESSION_OFFLOAD_TYPE_FULL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Full Offload: both session establishment and sustenance </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471ca47afc075b9ff9e90713a94126990791a" prot="public">
+          <name>SAI_BFD_SESSION_OFFLOAD_TYPE_SUSTENANCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Sustenance Offload: Session Sustenance only. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI offload type of BFD session. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="59" column="1" bodyfile="inc/saibfd.h" bodystart="58" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_f_d_1gae8ef375385103b39492a9a5e2798c838" prot="public" static="no">
+        <name>_sai_bfd_encapsulation_type_t</name>
+        <enumvalue id="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a8c27ab6b494f5d498ac398e20574df38" prot="public">
+          <name>SAI_BFD_ENCAPSULATION_TYPE_IP_IN_IP</name>
+          <briefdescription>
+<para>IP in IP Encapsulation | L2 Ethernet header | IP header | Inner IP header | Original BFD packet. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a4c5ba5637b70fda64947798c6b842713" prot="public">
+          <name>SAI_BFD_ENCAPSULATION_TYPE_L3_GRE_TUNNEL</name>
+          <briefdescription>
+<para>L3 GRE Tunnel Encapsulation | L2 Ethernet header | IP header | GRE header | Original BFD packet. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a7fce34475a92d9009301093b229f4d37" prot="public">
+          <name>SAI_BFD_ENCAPSULATION_TYPE_NONE</name>
+          <briefdescription>
+<para>No Encapsulation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI type of encapsulation for BFD. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="75" column="1" bodyfile="inc/saibfd.h" bodystart="74" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_f_d_1gadb5fd6b5bfef90ad18a26b62e501ec34" prot="public" static="no">
+        <name>_sai_bfd_session_state_t</name>
+        <enumvalue id="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34ac0cabaa2732570554281264b3ec330cf" prot="public">
+          <name>SAI_BFD_SESSION_STATE_ADMIN_DOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>BFD Session is in Admin down </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a919322af2b9e319b078df558fab63b52" prot="public">
+          <name>SAI_BFD_SESSION_STATE_DOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>BFD Session is Down </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a85616f18adbf5bea4b1607b4c824eeaf" prot="public">
+          <name>SAI_BFD_SESSION_STATE_INIT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>BFD Session is in Initialization </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a86dd31bf524eaf71854691e20b789119" prot="public">
+          <name>SAI_BFD_SESSION_STATE_UP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>BFD Session is Up </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI BFD session state. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="97" column="1" bodyfile="inc/saibfd.h" bodystart="96" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_f_d_1ga447e86ac278a7a786dba33d606901763" prot="public" static="no">
+        <name>_sai_bfd_session_attr_t</name>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac70803c81dee2268d34c992cb59f6e85" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a41b5e3d108e9d6d7c6cd822f5e70c095" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TYPE</name>
+          <initializer>= SAI_BFD_SESSION_ATTR_START</initializer>
+          <briefdescription>
+<para>BFD Session type DEMAND/ASYNCHRONOUS. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_bfd_session_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a33d5226bc4210383692442040d8e70d0" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_HW_LOOKUP_VALID</name>
+          <briefdescription>
+<para>Hardware lookup valid. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3e69e93b0cdc6fc673814af502ead706" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_VIRTUAL_ROUTER</name>
+          <briefdescription>
+<para>Virtual Router. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_VIRTUAL_ROUTER </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BFD_SESSION_ATTR_HW_LOOKUP_VALID == true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa369864ed24c06ff4c03830b2054cb24" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_PORT</name>
+          <briefdescription>
+<para>Destination Port. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BFD_SESSION_ATTR_HW_LOOKUP_VALID == false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a67af49a6600c51838a8c2ce7ac3d4d2b" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_LOCAL_DISCRIMINATOR</name>
+          <briefdescription>
+<para>Local discriminator. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9d3a14640066a4ac89ce520aa8320ac4" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_REMOTE_DISCRIMINATOR</name>
+          <briefdescription>
+<para>Remote discriminator. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a0fb7e390d6ab87946c891432eb65897e" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_UDP_SRC_PORT</name>
+          <briefdescription>
+<para>UDP Source port. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ae3d6fa44a955004e357b247e360dcce8" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TC</name>
+          <briefdescription>
+<para>Class-of-Service (Traffic Class) </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a44893ea12d1cfd24b77bcff2ef7f0ffb" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_VLAN_TPID</name>
+          <briefdescription>
+<para>L2 header TPID. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0x8100 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_BFD_SESSION_ATTR_VLAN_HEADER_VALID == true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a89d8e9a3b6fffbb5cf1bec08082819d0" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_VLAN_ID</name>
+          <briefdescription>
+<para>L2 header VLAN Id. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         true </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BFD_SESSION_ATTR_VLAN_HEADER_VALID == true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a4bae147c6da318b6dd44eb65e47e8568" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_VLAN_PRI</name>
+          <briefdescription>
+<para>L2 header packet priority (3 bits). </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_BFD_SESSION_ATTR_VLAN_HEADER_VALID == true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9fbe981e663b2717078a5364f5b3f50f" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_VLAN_CFI</name>
+          <briefdescription>
+<para>L2 header Vlan CFI (1 bit). </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_BFD_SESSION_ATTR_VLAN_HEADER_VALID == true </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8cad4495745e68d24744abfd40f65bee" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_VLAN_HEADER_VALID</name>
+          <briefdescription>
+<para>Vlan header valid. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a7c7af05f9b41c8307ec53cfdc22e07f9" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE</name>
+          <briefdescription>
+<para>Encapsulation type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_bfd_encapsulation_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a62e3a39cbff30f44b15dd53b1cbeabc0" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_IPHDR_VERSION</name>
+          <briefdescription>
+<para>IP header version. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a191c395569da64d50dfc6adae300572d" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TOS</name>
+          <briefdescription>
+<para>IP header TOS. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3884abbe8343180c539277abef3a525c" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TTL</name>
+          <briefdescription>
+<para>IP header TTL. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        255 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5c43723454b4eeaff58c21fb48cbea3e" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_SRC_IP_ADDRESS</name>
+          <briefdescription>
+<para>Source IP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8235937319a3e4fe21936f1fce765606" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_DST_IP_ADDRESS</name>
+          <briefdescription>
+<para>Destination IP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3fc1feb9a769e93c7f57e9624969896e" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TUNNEL_TOS</name>
+          <briefdescription>
+<para>Tunnel IP header TOS. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_IP_IN_IP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a6b1eccf83a7dd99212a9afb480c18686" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TUNNEL_TTL</name>
+          <briefdescription>
+<para>Tunnel IP header TTL. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        255 </para></simplesect>
+<simplesect kind="par"><title>Valid only when:</title><para> @@validonly      SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_IP_IN_IP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a94eb701c3ab9b37ab4dd8f1b0b3c5c5a" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TUNNEL_SRC_IP_ADDRESS</name>
+          <briefdescription>
+<para>Tunnel source IP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_IP_IN_IP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9606d38e2748811574fcd1f6cb461fa6" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_TUNNEL_DST_IP_ADDRESS</name>
+          <briefdescription>
+<para>Tunnel destination IP. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_IP_IN_IP </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aba41e5b3d32dfb8cdd70863901373caa" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_SRC_MAC_ADDRESS</name>
+          <briefdescription>
+<para>L2 source MAC address. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mac_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BFD_SESSION_ATTR_HW_LOOKUP_VALID == false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5b3ad695d871c4c3789f6fa5ae951a8c" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_DST_MAC_ADDRESS</name>
+          <briefdescription>
+<para>L2 destination MAC address. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_mac_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Condition:</title><para> @@condition      SAI_BFD_SESSION_ATTR_HW_LOOKUP_VALID == false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a7c71e93f1e85834829faac2b23f71374" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_ECHO_ENABLE</name>
+          <briefdescription>
+<para>To enable echo function on BFD session. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a18a91b58acb85415ae2c5a0881789525" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_MULTIHOP</name>
+          <briefdescription>
+<para>Multi hop BFD session. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac7a3ef67dcec96736c09d0da9a3cd709" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_CBIT</name>
+          <briefdescription>
+<para>Control Plane Independent. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a156399a702bfeace9adbb681d6066ab8" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_MIN_TX</name>
+          <briefdescription>
+<para>Minimum Transmit interval in microseconds. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a77babc3daab08ed839b242b332a7e297" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_MIN_RX</name>
+          <briefdescription>
+<para>Minimum Receive interval in microseconds. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a2a19b640c72d5931b0a7c98d030f93f4" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_MULTIPLIER</name>
+          <briefdescription>
+<para>Detect time Multiplier. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8256c5b4623fb138bfbac7e7e65ad24b" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_REMOTE_MIN_TX</name>
+          <briefdescription>
+<para>Minimum Remote Transmit interval in microseconds. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5dde7403863336bcfdc4d86453f34cf5" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_REMOTE_MIN_RX</name>
+          <briefdescription>
+<para>Minimum Remote Receive interval in microseconds. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa2972936ba499dc8ea4af03f589b990d" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_STATE</name>
+          <briefdescription>
+<para>BFD Session state. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_bfd_session_state_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a1bab7ef2521b4be5ca8ec1fd707480a3" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_OFFLOAD_TYPE</name>
+          <briefdescription>
+<para>Offload type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_bfd_session_offload_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_BFD_SESSION_OFFLOAD_TYPE_NONE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a32accaabc25652cdfff6ab15c97cddb2" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_NEGOTIATED_TX</name>
+          <briefdescription>
+<para>Negotiated Transmit interval in microseconds. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa926bc5df1dab918ca1c9f5f61478f6b" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_NEGOTIATED_RX</name>
+          <briefdescription>
+<para>Negotiated Receive interval in microseconds. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac6bdc4b5e11a2bacb7a49802645c030f" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_LOCAL_DIAG</name>
+          <briefdescription>
+<para>Local Diagnostic code field as specified by RFC. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ad2cb70c4997c97a62ced2200c8f93f39" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_REMOTE_DIAG</name>
+          <briefdescription>
+<para>Remote Diagnostic code field. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a845e7426bc2bb1752f5ae88383503730" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_REMOTE_MULTIPLIER</name>
+          <briefdescription>
+<para>Remote time Multiplier. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          READ_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763afa0ce7981f01760283377f564e67251b" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763adc357d53055434bf6579d2967bde5270" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa32d5bf022d0b889007f91d59a757c67" prot="public">
+          <name>SAI_BFD_SESSION_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SAI attributes for BFD session. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="133" column="1" bodyfile="inc/saibfd.h" bodystart="132" bodyend="500"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_b_f_d_1gabd788e55b3b0b247a7bd268edc2760ac" prot="public" static="no">
+        <name>_sai_bfd_session_stat_t</name>
+        <enumvalue id="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca4a9b63d783757b637e93da73957b4435" prot="public">
+          <name>SAI_BFD_SESSION_STAT_IN_PACKETS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ingress packet stat count </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca97636fb54194a0ca730eea99380884ee" prot="public">
+          <name>SAI_BFD_SESSION_STAT_OUT_PACKETS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Egress packet stat count </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca5c1b7f38e73f9cb9b128f72116eba78c" prot="public">
+          <name>SAI_BFD_SESSION_STAT_DROP_PACKETS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Packet Drop stat count </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>BFD Session counter IDs in sai_get_bfd_session_stats() call. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="506" column="1" bodyfile="inc/saibfd.h" bodystart="505" bodyend="516"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1gaf8591400850656ebca30989a658292cd" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_f_d_1gaac05472c9336ff0646119db1ecb4dba8" kindref="member">_sai_bfd_session_type_t</ref></type>
+        <definition>typedef enum _sai_bfd_session_type_t  sai_bfd_session_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_session_type_t</name>
+        <briefdescription>
+<para>SAI session type of BFD. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga1bc98a250e1169746b29976c1365c2ac" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_f_d_1gaf07d62c319a36c1d5f120155dcc5471c" kindref="member">_sai_bfd_session_offload_type_t</ref></type>
+        <definition>typedef enum _sai_bfd_session_offload_type_t  sai_bfd_session_offload_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_session_offload_type_t</name>
+        <briefdescription>
+<para>SAI offload type of BFD session. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="69" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga6ff87ff3a5ca523a98cf2e64b16fb04f" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_f_d_1gae8ef375385103b39492a9a5e2798c838" kindref="member">_sai_bfd_encapsulation_type_t</ref></type>
+        <definition>typedef enum _sai_bfd_encapsulation_type_t  sai_bfd_encapsulation_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_encapsulation_type_t</name>
+        <briefdescription>
+<para>SAI type of encapsulation for BFD. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga1e7840c83ac06f496df3b0181bc73e04" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_f_d_1gadb5fd6b5bfef90ad18a26b62e501ec34" kindref="member">_sai_bfd_session_state_t</ref></type>
+        <definition>typedef enum _sai_bfd_session_state_t  sai_bfd_session_state_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_session_state_t</name>
+        <briefdescription>
+<para>SAI BFD session state. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="110" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga8a50ebb6b26312d6e84ed0fd2982533f" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__bfd__session__state__notification__t" kindref="compound">_sai_bfd_session_state_notification_t</ref></type>
+        <definition>typedef struct _sai_bfd_session_state_notification_t  sai_bfd_session_state_notification_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_session_state_notification_t</name>
+        <briefdescription>
+<para>Defines the operational status of the BFD session. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="127" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga999cb239dfe634965e07381abca0991e" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_f_d_1ga447e86ac278a7a786dba33d606901763" kindref="member">_sai_bfd_session_attr_t</ref></type>
+        <definition>typedef enum _sai_bfd_session_attr_t  sai_bfd_session_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_session_attr_t</name>
+        <briefdescription>
+<para>SAI attributes for BFD session. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="500" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga00f7a4cd525a83294da78c55cb728e56" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_b_f_d_1gabd788e55b3b0b247a7bd268edc2760ac" kindref="member">_sai_bfd_session_stat_t</ref></type>
+        <definition>typedef enum _sai_bfd_session_stat_t  sai_bfd_session_stat_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_session_stat_t</name>
+        <briefdescription>
+<para>BFD Session counter IDs in sai_get_bfd_session_stats() call. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="516" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga3c6b7da2eb42ebdcba06c73d1903aea6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_bfd_session_fn) (_Out_ sai_object_id_t *bfd_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *bfd_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_bfd_session_fn</name>
+        <briefdescription>
+<para>Create BFD session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">bfd_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BFD session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="529" column="1" bodyfile="inc/saibfd.h" bodystart="529" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga6689ad900356ea584dcf41fe59d335f6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_bfd_session_fn) (_In_ sai_object_id_t bfd_session_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t bfd_session_id)</argsstring>
+        <name>sai_remove_bfd_session_fn</name>
+        <briefdescription>
+<para>Remove BFD session. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bfd_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BFD session id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="543" column="1" bodyfile="inc/saibfd.h" bodystart="543" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1gaa102192b0ec67e5029d7634f9a16f6cd" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_bfd_session_attribute_fn) (_In_ sai_object_id_t bfd_session_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t bfd_session_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_bfd_session_attribute_fn</name>
+        <briefdescription>
+<para>Set BFD session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bfd_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BFD session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="555" column="1" bodyfile="inc/saibfd.h" bodystart="555" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga8f9aaddfa3c6febbe75aee39a9098f2b" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_bfd_session_attribute_fn) (_In_ sai_object_id_t bfd_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t bfd_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_bfd_session_attribute_fn</name>
+        <briefdescription>
+<para>Get BFD session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bfd_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BFD session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value of attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> if operation is successful otherwise a different error code is returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="569" column="1" bodyfile="inc/saibfd.h" bodystart="569" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga052a27992d9674bbcc61328910761ca6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_bfd_session_stats_fn) (_In_ sai_object_id_t bfd_session_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _Out_ uint64_t *counters)</definition>
+        <argsstring>)(_In_ sai_object_id_t bfd_session_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _Out_ uint64_t *counters)</argsstring>
+        <name>sai_get_bfd_session_stats_fn</name>
+        <briefdescription>
+<para>Get BFD session statistics counters. Deprecated for backward compatibility. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bfd_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BFD session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of resulting counter values.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="584" column="1" bodyfile="inc/saibfd.h" bodystart="584" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga91836d6460ee11d52221d5d711c48e98" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_bfd_session_stats_ext_fn) (_In_ sai_object_id_t bfd_session_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _In_ sai_stats_mode_t mode, _Out_ uint64_t *counters)</definition>
+        <argsstring>)(_In_ sai_object_id_t bfd_session_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids, _In_ sai_stats_mode_t mode, _Out_ uint64_t *counters)</argsstring>
+        <name>sai_get_bfd_session_stats_ext_fn</name>
+        <briefdescription>
+<para>Get BFD session statistics counters extended. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bfd_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BFD session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Statistics mode </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of resulting counter values.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="601" column="1" bodyfile="inc/saibfd.h" bodystart="601" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1gab3e7eef2c32716e7de10010808cf5a00" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_clear_bfd_session_stats_fn) (_In_ sai_object_id_t bfd_session_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids)</definition>
+        <argsstring>)(_In_ sai_object_id_t bfd_session_id, _In_ uint32_t number_of_counters, _In_ const sai_stat_id_t *counter_ids)</argsstring>
+        <name>sai_clear_bfd_session_stats_fn</name>
+        <briefdescription>
+<para>Clear BFD session statistics counters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">bfd_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BFD session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">number_of_counters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of counters in the array </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">counter_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the array of counter ids</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="617" column="1" bodyfile="inc/saibfd.h" bodystart="617" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1ga6b899898b97610adcf78c12f1d3922ce" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* sai_bfd_session_state_change_notification_fn) (_In_ uint32_t count, _In_ const sai_bfd_session_state_notification_t *data)</definition>
+        <argsstring>)(_In_ uint32_t count, _In_ const sai_bfd_session_state_notification_t *data)</argsstring>
+        <name>sai_bfd_session_state_change_notification_fn</name>
+        <briefdescription>
+<para>BFD session state change notification. </para>        </briefdescription>
+        <detaileddescription>
+<para>Passed as a parameter into sai_initialize_switch()</para><para><simplesect kind="par"><title>Count:</title><para> @@count          data[count]</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of notifications </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of BFD session state </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="632" column="1" bodyfile="inc/saibfd.h" bodystart="632" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_b_f_d_1gaf00476e514218112e799ce4b5e26b5ca" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__bfd__api__t" kindref="compound">_sai_bfd_api_t</ref></type>
+        <definition>typedef struct _sai_bfd_api_t  sai_bfd_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_bfd_api_t</name>
+        <briefdescription>
+<para>BFD method table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saibfd.h" line="649" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI BFD interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIBFD_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIBFD_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_b_f_d_1gaac05472c9336ff0646119db1ecb4dba8" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_f_d_1gaac05472c9336ff0646119db1ecb4dba8" kindref="member">_sai_bfd_session_type_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8ae2124442bd9d3c31812f28814ad555a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8ae2124442bd9d3c31812f28814ad555a0" kindref="member">SAI_BFD_SESSION_TYPE_DEMAND_ACTIVE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8aec1de46722817e8b0569fbe7b7ee68fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8aec1de46722817e8b0569fbe7b7ee68fa" kindref="member">SAI_BFD_SESSION_TYPE_DEMAND_PASSIVE</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8a4e4dd11812733aa1daecf03713a70fdd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8a4e4dd11812733aa1daecf03713a70fdd" kindref="member">SAI_BFD_SESSION_TYPE_ASYNC_ACTIVE</ref>,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8ad5d22c01dc28b8695943e90132637c80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggaac05472c9336ff0646119db1ecb4dba8ad5d22c01dc28b8695943e90132637c80" kindref="member">SAI_BFD_SESSION_TYPE_ASYNC_PASSIVE</ref>,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1gaf8591400850656ebca30989a658292cd" kindref="member">sai_bfd_session_type_t</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="group___s_a_i_b_f_d_1gaf07d62c319a36c1d5f120155dcc5471c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_f_d_1gaf07d62c319a36c1d5f120155dcc5471c" kindref="member">_sai_bfd_session_offload_type_t</ref></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61" refid="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471caba7c6f50e3ffa380781957ba5d9f4a73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471caba7c6f50e3ffa380781957ba5d9f4a73" kindref="member">SAI_BFD_SESSION_OFFLOAD_TYPE_NONE</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471ca4abecf7ca83b53499d30caf6414449ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471ca4abecf7ca83b53499d30caf6414449ad" kindref="member">SAI_BFD_SESSION_OFFLOAD_TYPE_FULL</ref>,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471ca47afc075b9ff9e90713a94126990791a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggaf07d62c319a36c1d5f120155dcc5471ca47afc075b9ff9e90713a94126990791a" kindref="member">SAI_BFD_SESSION_OFFLOAD_TYPE_SUSTENANCE</ref>,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1ga1bc98a250e1169746b29976c1365c2ac" kindref="member">sai_bfd_session_offload_type_t</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="group___s_a_i_b_f_d_1gae8ef375385103b39492a9a5e2798c838" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_f_d_1gae8ef375385103b39492a9a5e2798c838" kindref="member">_sai_bfd_encapsulation_type_t</ref></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79" refid="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a8c27ab6b494f5d498ac398e20574df38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a8c27ab6b494f5d498ac398e20574df38" kindref="member">SAI_BFD_ENCAPSULATION_TYPE_IP_IN_IP</ref>,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a4c5ba5637b70fda64947798c6b842713" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a4c5ba5637b70fda64947798c6b842713" kindref="member">SAI_BFD_ENCAPSULATION_TYPE_L3_GRE_TUNNEL</ref>,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a7fce34475a92d9009301093b229f4d37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggae8ef375385103b39492a9a5e2798c838a7fce34475a92d9009301093b229f4d37" kindref="member">SAI_BFD_ENCAPSULATION_TYPE_NONE</ref>,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1ga6ff87ff3a5ca523a98cf2e64b16fb04f" kindref="member">sai_bfd_encapsulation_type_t</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="group___s_a_i_b_f_d_1gadb5fd6b5bfef90ad18a26b62e501ec34" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_f_d_1gadb5fd6b5bfef90ad18a26b62e501ec34" kindref="member">_sai_bfd_session_state_t</ref></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99" refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34ac0cabaa2732570554281264b3ec330cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34ac0cabaa2732570554281264b3ec330cf" kindref="member">SAI_BFD_SESSION_STATE_ADMIN_DOWN</ref>,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a919322af2b9e319b078df558fab63b52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a919322af2b9e319b078df558fab63b52" kindref="member">SAI_BFD_SESSION_STATE_DOWN</ref>,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a85616f18adbf5bea4b1607b4c824eeaf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a85616f18adbf5bea4b1607b4c824eeaf" kindref="member">SAI_BFD_SESSION_STATE_INIT</ref>,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a86dd31bf524eaf71854691e20b789119" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggadb5fd6b5bfef90ad18a26b62e501ec34a86dd31bf524eaf71854691e20b789119" kindref="member">SAI_BFD_SESSION_STATE_UP</ref>,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1ga1e7840c83ac06f496df3b0181bc73e04" kindref="member">sai_bfd_session_state_t</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="struct__sai__bfd__session__state__notification__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__bfd__session__state__notification__t" kindref="compound">_sai_bfd_session_state_notification_t</ref></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122" refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sai_object_id_t<sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="struct__sai__bfd__session__state__notification__t_1a7f93a72ec4302928a305e7148a3b81f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ga1e7840c83ac06f496df3b0181bc73e04" kindref="member">sai_bfd_session_state_t</ref><sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a7f93a72ec4302928a305e7148a3b81f3" kindref="member">session_state</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1ga8a50ebb6b26312d6e84ed0fd2982533f" kindref="member">sai_bfd_session_state_notification_t</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="group___s_a_i_b_f_d_1ga447e86ac278a7a786dba33d606901763" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_f_d_1ga447e86ac278a7a786dba33d606901763" kindref="member">_sai_bfd_session_attr_t</ref></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac70803c81dee2268d34c992cb59f6e85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac70803c81dee2268d34c992cb59f6e85" kindref="member">SAI_BFD_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a41b5e3d108e9d6d7c6cd822f5e70c095" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a41b5e3d108e9d6d7c6cd822f5e70c095" kindref="member">SAI_BFD_SESSION_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac70803c81dee2268d34c992cb59f6e85" kindref="member">SAI_BFD_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a33d5226bc4210383692442040d8e70d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a33d5226bc4210383692442040d8e70d0" kindref="member">SAI_BFD_SESSION_ATTR_HW_LOOKUP_VALID</ref>,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3e69e93b0cdc6fc673814af502ead706" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3e69e93b0cdc6fc673814af502ead706" kindref="member">SAI_BFD_SESSION_ATTR_VIRTUAL_ROUTER</ref>,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa369864ed24c06ff4c03830b2054cb24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa369864ed24c06ff4c03830b2054cb24" kindref="member">SAI_BFD_SESSION_ATTR_PORT</ref>,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a67af49a6600c51838a8c2ce7ac3d4d2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a67af49a6600c51838a8c2ce7ac3d4d2b" kindref="member">SAI_BFD_SESSION_ATTR_LOCAL_DISCRIMINATOR</ref>,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9d3a14640066a4ac89ce520aa8320ac4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9d3a14640066a4ac89ce520aa8320ac4" kindref="member">SAI_BFD_SESSION_ATTR_REMOTE_DISCRIMINATOR</ref>,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a0fb7e390d6ab87946c891432eb65897e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a0fb7e390d6ab87946c891432eb65897e" kindref="member">SAI_BFD_SESSION_ATTR_UDP_SRC_PORT</ref>,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ae3d6fa44a955004e357b247e360dcce8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ae3d6fa44a955004e357b247e360dcce8" kindref="member">SAI_BFD_SESSION_ATTR_TC</ref>,</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a44893ea12d1cfd24b77bcff2ef7f0ffb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a44893ea12d1cfd24b77bcff2ef7f0ffb" kindref="member">SAI_BFD_SESSION_ATTR_VLAN_TPID</ref>,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a89d8e9a3b6fffbb5cf1bec08082819d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a89d8e9a3b6fffbb5cf1bec08082819d0" kindref="member">SAI_BFD_SESSION_ATTR_VLAN_ID</ref>,</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a4bae147c6da318b6dd44eb65e47e8568" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a4bae147c6da318b6dd44eb65e47e8568" kindref="member">SAI_BFD_SESSION_ATTR_VLAN_PRI</ref>,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9fbe981e663b2717078a5364f5b3f50f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9fbe981e663b2717078a5364f5b3f50f" kindref="member">SAI_BFD_SESSION_ATTR_VLAN_CFI</ref>,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8cad4495745e68d24744abfd40f65bee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8cad4495745e68d24744abfd40f65bee" kindref="member">SAI_BFD_SESSION_ATTR_VLAN_HEADER_VALID</ref>,</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a7c7af05f9b41c8307ec53cfdc22e07f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a7c7af05f9b41c8307ec53cfdc22e07f9" kindref="member">SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE</ref>,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a62e3a39cbff30f44b15dd53b1cbeabc0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a62e3a39cbff30f44b15dd53b1cbeabc0" kindref="member">SAI_BFD_SESSION_ATTR_IPHDR_VERSION</ref>,</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a191c395569da64d50dfc6adae300572d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a191c395569da64d50dfc6adae300572d" kindref="member">SAI_BFD_SESSION_ATTR_TOS</ref>,</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3884abbe8343180c539277abef3a525c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3884abbe8343180c539277abef3a525c" kindref="member">SAI_BFD_SESSION_ATTR_TTL</ref>,</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5c43723454b4eeaff58c21fb48cbea3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5c43723454b4eeaff58c21fb48cbea3e" kindref="member">SAI_BFD_SESSION_ATTR_SRC_IP_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8235937319a3e4fe21936f1fce765606" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8235937319a3e4fe21936f1fce765606" kindref="member">SAI_BFD_SESSION_ATTR_DST_IP_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3fc1feb9a769e93c7f57e9624969896e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a3fc1feb9a769e93c7f57e9624969896e" kindref="member">SAI_BFD_SESSION_ATTR_TUNNEL_TOS</ref>,</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a6b1eccf83a7dd99212a9afb480c18686" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a6b1eccf83a7dd99212a9afb480c18686" kindref="member">SAI_BFD_SESSION_ATTR_TUNNEL_TTL</ref>,</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a94eb701c3ab9b37ab4dd8f1b0b3c5c5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a94eb701c3ab9b37ab4dd8f1b0b3c5c5a" kindref="member">SAI_BFD_SESSION_ATTR_TUNNEL_SRC_IP_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9606d38e2748811574fcd1f6cb461fa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a9606d38e2748811574fcd1f6cb461fa6" kindref="member">SAI_BFD_SESSION_ATTR_TUNNEL_DST_IP_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aba41e5b3d32dfb8cdd70863901373caa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aba41e5b3d32dfb8cdd70863901373caa" kindref="member">SAI_BFD_SESSION_ATTR_SRC_MAC_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5b3ad695d871c4c3789f6fa5ae951a8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5b3ad695d871c4c3789f6fa5ae951a8c" kindref="member">SAI_BFD_SESSION_ATTR_DST_MAC_ADDRESS</ref>,</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a7c71e93f1e85834829faac2b23f71374" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a7c71e93f1e85834829faac2b23f71374" kindref="member">SAI_BFD_SESSION_ATTR_ECHO_ENABLE</ref>,</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a18a91b58acb85415ae2c5a0881789525" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a18a91b58acb85415ae2c5a0881789525" kindref="member">SAI_BFD_SESSION_ATTR_MULTIHOP</ref>,</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac7a3ef67dcec96736c09d0da9a3cd709" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac7a3ef67dcec96736c09d0da9a3cd709" kindref="member">SAI_BFD_SESSION_ATTR_CBIT</ref>,</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="398" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a156399a702bfeace9adbb681d6066ab8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a156399a702bfeace9adbb681d6066ab8" kindref="member">SAI_BFD_SESSION_ATTR_MIN_TX</ref>,</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a77babc3daab08ed839b242b332a7e297" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a77babc3daab08ed839b242b332a7e297" kindref="member">SAI_BFD_SESSION_ATTR_MIN_RX</ref>,</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="414" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a2a19b640c72d5931b0a7c98d030f93f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a2a19b640c72d5931b0a7c98d030f93f4" kindref="member">SAI_BFD_SESSION_ATTR_MULTIPLIER</ref>,</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="422" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8256c5b4623fb138bfbac7e7e65ad24b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a8256c5b4623fb138bfbac7e7e65ad24b" kindref="member">SAI_BFD_SESSION_ATTR_REMOTE_MIN_TX</ref>,</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5dde7403863336bcfdc4d86453f34cf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a5dde7403863336bcfdc4d86453f34cf5" kindref="member">SAI_BFD_SESSION_ATTR_REMOTE_MIN_RX</ref>,</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="438" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa2972936ba499dc8ea4af03f589b990d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa2972936ba499dc8ea4af03f589b990d" kindref="member">SAI_BFD_SESSION_ATTR_STATE</ref>,</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="447" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a1bab7ef2521b4be5ca8ec1fd707480a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a1bab7ef2521b4be5ca8ec1fd707480a3" kindref="member">SAI_BFD_SESSION_ATTR_OFFLOAD_TYPE</ref>,</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a32accaabc25652cdfff6ab15c97cddb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a32accaabc25652cdfff6ab15c97cddb2" kindref="member">SAI_BFD_SESSION_ATTR_NEGOTIATED_TX</ref>,</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa926bc5df1dab918ca1c9f5f61478f6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa926bc5df1dab918ca1c9f5f61478f6b" kindref="member">SAI_BFD_SESSION_ATTR_NEGOTIATED_RX</ref>,</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac6bdc4b5e11a2bacb7a49802645c030f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ac6bdc4b5e11a2bacb7a49802645c030f" kindref="member">SAI_BFD_SESSION_ATTR_LOCAL_DIAG</ref>,</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="479" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ad2cb70c4997c97a62ced2200c8f93f39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763ad2cb70c4997c97a62ced2200c8f93f39" kindref="member">SAI_BFD_SESSION_ATTR_REMOTE_DIAG</ref>,</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight></codeline>
+<codeline lineno="487" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a845e7426bc2bb1752f5ae88383503730" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763a845e7426bc2bb1752f5ae88383503730" kindref="member">SAI_BFD_SESSION_ATTR_REMOTE_MULTIPLIER</ref>,</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763afa0ce7981f01760283377f564e67251b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763afa0ce7981f01760283377f564e67251b" kindref="member">SAI_BFD_SESSION_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763adc357d53055434bf6579d2967bde5270" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763adc357d53055434bf6579d2967bde5270" kindref="member">SAI_BFD_SESSION_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498" refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa32d5bf022d0b889007f91d59a757c67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gga447e86ac278a7a786dba33d606901763aa32d5bf022d0b889007f91d59a757c67" kindref="member">SAI_BFD_SESSION_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1ga999cb239dfe634965e07381abca0991e" kindref="member">sai_bfd_session_attr_t</ref>;</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight></codeline>
+<codeline lineno="505" refid="group___s_a_i_b_f_d_1gabd788e55b3b0b247a7bd268edc2760ac" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_b_f_d_1gabd788e55b3b0b247a7bd268edc2760ac" kindref="member">_sai_bfd_session_stat_t</ref></highlight></codeline>
+<codeline lineno="506"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="508" refid="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca4a9b63d783757b637e93da73957b4435" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca4a9b63d783757b637e93da73957b4435" kindref="member">SAI_BFD_SESSION_STAT_IN_PACKETS</ref>,</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"></highlight></codeline>
+<codeline lineno="511" refid="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca97636fb54194a0ca730eea99380884ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca97636fb54194a0ca730eea99380884ee" kindref="member">SAI_BFD_SESSION_STAT_OUT_PACKETS</ref>,</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"></highlight></codeline>
+<codeline lineno="514" refid="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca5c1b7f38e73f9cb9b128f72116eba78c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ggabd788e55b3b0b247a7bd268edc2760aca5c1b7f38e73f9cb9b128f72116eba78c" kindref="member">SAI_BFD_SESSION_STAT_DROP_PACKETS</ref></highlight></codeline>
+<codeline lineno="515"><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1ga00f7a4cd525a83294da78c55cb728e56" kindref="member">sai_bfd_session_stat_t</ref>;</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"></highlight></codeline>
+<codeline lineno="529" refid="group___s_a_i_b_f_d_1ga3c6b7da2eb42ebdcba06c73d1903aea6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_f_d_1ga3c6b7da2eb42ebdcba06c73d1903aea6" kindref="member">sai_create_bfd_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*<ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>,</highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"></highlight></codeline>
+<codeline lineno="543" refid="group___s_a_i_b_f_d_1ga6689ad900356ea584dcf41fe59d335f6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_f_d_1ga6689ad900356ea584dcf41fe59d335f6" kindref="member">sai_remove_bfd_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>);</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"></highlight></codeline>
+<codeline lineno="555" refid="group___s_a_i_b_f_d_1gaa102192b0ec67e5029d7634f9a16f6cd" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_f_d_1gaa102192b0ec67e5029d7634f9a16f6cd" kindref="member">sai_set_bfd_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>,</highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"></highlight></codeline>
+<codeline lineno="569" refid="group___s_a_i_b_f_d_1ga8f9aaddfa3c6febbe75aee39a9098f2b" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_f_d_1ga8f9aaddfa3c6febbe75aee39a9098f2b" kindref="member">sai_get_bfd_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>,</highlight></codeline>
+<codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="572"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="573"><highlight class="normal"></highlight></codeline>
+<codeline lineno="584" refid="group___s_a_i_b_f_d_1ga052a27992d9674bbcc61328910761ca6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_f_d_1ga052a27992d9674bbcc61328910761ca6" kindref="member">sai_get_bfd_session_stats_fn</ref>)(</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>,</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids,</highlight></codeline>
+<codeline lineno="588"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>uint64_t<sp/>*counters);</highlight></codeline>
+<codeline lineno="589"><highlight class="normal"></highlight></codeline>
+<codeline lineno="601" refid="group___s_a_i_b_f_d_1ga91836d6460ee11d52221d5d711c48e98" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_f_d_1ga91836d6460ee11d52221d5d711c48e98" kindref="member">sai_get_bfd_session_stats_ext_fn</ref>)(</highlight></codeline>
+<codeline lineno="602"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>,</highlight></codeline>
+<codeline lineno="603"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="604"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids,</highlight></codeline>
+<codeline lineno="605"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/><ref refid="group___s_a_i_t_y_p_e_s_1gaaa38e5614c3b5d2346a843be35e5d0b5" kindref="member">sai_stats_mode_t</ref><sp/>mode,</highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>uint64_t<sp/>*counters);</highlight></codeline>
+<codeline lineno="607"><highlight class="normal"></highlight></codeline>
+<codeline lineno="617" refid="group___s_a_i_b_f_d_1gab3e7eef2c32716e7de10010808cf5a00" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_b_f_d_1gab3e7eef2c32716e7de10010808cf5a00" kindref="member">sai_clear_bfd_session_stats_fn</ref>)(</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/><ref refid="struct__sai__bfd__session__state__notification__t_1a5b7170a52d89224e896e37913c2ab945" kindref="member">bfd_session_id</ref>,</highlight></codeline>
+<codeline lineno="619"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>number_of_counters,</highlight></codeline>
+<codeline lineno="620"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>sai_stat_id_t<sp/>*counter_ids);</highlight></codeline>
+<codeline lineno="621"><highlight class="normal"></highlight></codeline>
+<codeline lineno="632" refid="group___s_a_i_b_f_d_1ga6b899898b97610adcf78c12f1d3922ce" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>void<sp/>(*<ref refid="group___s_a_i_b_f_d_1ga6b899898b97610adcf78c12f1d3922ce" kindref="member">sai_bfd_session_state_change_notification_fn</ref>)(</highlight></codeline>
+<codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>count,</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__bfd__session__state__notification__t" kindref="compound">sai_bfd_session_state_notification_t</ref><sp/>*data);</highlight></codeline>
+<codeline lineno="635"><highlight class="normal"></highlight></codeline>
+<codeline lineno="639" refid="struct__sai__bfd__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__bfd__api__t" kindref="compound">_sai_bfd_api_t</ref></highlight></codeline>
+<codeline lineno="640"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ga3c6b7da2eb42ebdcba06c73d1903aea6" kindref="member">sai_create_bfd_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_bfd_session;</highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ga6689ad900356ea584dcf41fe59d335f6" kindref="member">sai_remove_bfd_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_bfd_session;</highlight></codeline>
+<codeline lineno="643"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gaa102192b0ec67e5029d7634f9a16f6cd" kindref="member">sai_set_bfd_session_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>set_bfd_session_attribute;</highlight></codeline>
+<codeline lineno="644"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ga8f9aaddfa3c6febbe75aee39a9098f2b" kindref="member">sai_get_bfd_session_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>get_bfd_session_attribute;</highlight></codeline>
+<codeline lineno="645"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ga052a27992d9674bbcc61328910761ca6" kindref="member">sai_get_bfd_session_stats_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_bfd_session_stats;</highlight></codeline>
+<codeline lineno="646"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1ga91836d6460ee11d52221d5d711c48e98" kindref="member">sai_get_bfd_session_stats_ext_fn</ref><sp/><sp/><sp/><sp/><sp/>get_bfd_session_stats_ext;</highlight></codeline>
+<codeline lineno="647"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_b_f_d_1gab3e7eef2c32716e7de10010808cf5a00" kindref="member">sai_clear_bfd_session_stats_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clear_bfd_session_stats;</highlight></codeline>
+<codeline lineno="648"><highlight class="normal"></highlight></codeline>
+<codeline lineno="649"><highlight class="normal">}<sp/><ref refid="group___s_a_i_b_f_d_1gaf00476e514218112e799ce4b5e26b5ca" kindref="member">sai_bfd_api_t</ref>;</highlight></codeline>
+<codeline lineno="650"><highlight class="normal"></highlight></codeline>
+<codeline lineno="654"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saibfd.h"/>
+  </compounddef>
+</doxygen>

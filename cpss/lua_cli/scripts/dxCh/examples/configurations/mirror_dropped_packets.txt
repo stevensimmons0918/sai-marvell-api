@@ -1,0 +1,17 @@
+// TAG:               mirror-to-analyzer ; egress acl; pcl-ID; access-list;
+// Short Description: set EPCL drops (soft-drop) and check that mirror-to-analyzer will not mirror the traffic
+// Description:       EPCL drops on egress port 1
+//                    Egress mirror from egress port 6 to analyzer port 2 (use the analyzer index for the EPCL rule)
+//                    send traffic from port 3 to egress on port 1 (check traffic egress port 2 only as 'forward' and not as 'to-analyzer')  
+//                    NOTE : the 'legacy' means that the sip6.10 feature of 'mirror-on-drop' is NOT used.
+end
+configure
+interface ethernet ${dev}/${port[6]}
+port monitor ${dev}/${port[2]} tx
+exit
+access-list device ${dev} egress pcl-ID 1
+rule-id 2100 action deny-soft analyzer-index 2
+exit
+interface ethernet ${dev}/${port[1]}
+service-acl pcl-ID 1 egress lookup 0
+exit

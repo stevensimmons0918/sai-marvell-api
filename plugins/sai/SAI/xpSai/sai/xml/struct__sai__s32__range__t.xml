@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__s32__range__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_s32_range_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__s32__range__t_1a20b0c03d521d2840ce107352df485136" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t _sai_s32_range_t::min</definition>
+        <argsstring></argsstring>
+        <name>min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="332" column="1" bodyfile="inc/saitypes.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__s32__range__t_1aa53c5ce3ef4fa3fe33155d581ef49491" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t _sai_s32_range_t::max</definition>
+        <argsstring></argsstring>
+        <name>max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="333" column="1" bodyfile="inc/saitypes.h" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/saitypes.h" line="331" column="1" bodyfile="inc/saitypes.h" bodystart="330" bodyend="334"/>
+    <listofallmembers>
+      <member refid="struct__sai__s32__range__t_1aa53c5ce3ef4fa3fe33155d581ef49491" prot="public" virt="non-virtual"><scope>_sai_s32_range_t</scope><name>max</name></member>
+      <member refid="struct__sai__s32__range__t_1a20b0c03d521d2840ce107352df485136" prot="public" virt="non-virtual"><scope>_sai_s32_range_t</scope><name>min</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

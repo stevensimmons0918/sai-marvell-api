@@ -1,0 +1,44 @@
+// TAG:               wirespeed; storm-control; storm-control rate-limit-mode; traffic_generator_emulated
+// Short Description: De-configures storm-control and generate wirespeed traffic commands
+// Description:       De-configure forth ingress port with storm-control command,
+//                    De-configure storm-control rate-limit-mode (set it to default value of byte mode)
+//                    stop generate wirespeed traffic from forth port
+end
+configure
+
+// set rate limit mode to default value of byte based
+// set all time window types to default values
+no storm-control rate-limit-mode device ${dev}
+//
+interface ethernet ${dev}/${port[4]}
+no storm-control
+exit
+//
+end
+// show no storm-control rate-limit-mode. Should be set to default byte based mode.
+show storm-control rate-limit-mode device ${dev}
+//
+// show no storm-control. Rate limit for all packet types should be disabled.
+show storm-control ethernet ${dev}/${port[4]}
+//
+traffic
+//
+// stop the generate continuous wirespeed
+//
+no traffic-generator emulate port ${dev}/${port[4]}
+//
+exit
+end
+configure
+do clear bridge type ${dev} all
+end
+//
+// show which ports are generating wirespeed
+//
+show traffic traffic-generator emulate all
+//
+// show rates on the ports
+//
+show traffic rates ethernet ${dev}/${port[1]},${port[2]},${port[3]},${port[4]},${port[5]},${port[6]}
+//
+

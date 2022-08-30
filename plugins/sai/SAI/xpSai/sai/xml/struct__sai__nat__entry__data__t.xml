@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__nat__entry__data__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_nat_entry_data_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__nat__entry__data__t_1a8e7e6d7bc1db1005e1e18073570a433f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_a_t_1ga71b7acc68320f15f55a24f77ab91c4ad" kindref="member">sai_nat_entry_key_t</ref></type>
+        <definition>sai_nat_entry_key_t _sai_nat_entry_data_t::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <briefdescription>
+<para>NAT entry keys. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainat.h" line="297" column="1" bodyfile="inc/sainat.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__nat__entry__data__t_1afb4a7ff81d3cf17de653220c73fc5326" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_n_a_t_1ga38f5f7f2bc68db204f132507bebad98a" kindref="member">sai_nat_entry_mask_t</ref></type>
+        <definition>sai_nat_entry_mask_t _sai_nat_entry_data_t::mask</definition>
+        <argsstring></argsstring>
+        <name>mask</name>
+        <briefdescription>
+<para>NAT entry keys. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/sainat.h" line="302" column="1" bodyfile="inc/sainat.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="953">
+        <label>_sai_nat_entry_key_t</label>
+        <link refid="struct__sai__nat__entry__key__t"/>
+      </node>
+      <node id="952">
+        <label>_sai_nat_entry_mask_t</label>
+        <link refid="struct__sai__nat__entry__mask__t"/>
+      </node>
+      <node id="951">
+        <label>_sai_nat_entry_data_t</label>
+        <link refid="struct__sai__nat__entry__data__t"/>
+        <childnode refid="952" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+        <childnode refid="953" relation="usage">
+          <edgelabel>key</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/sainat.h" line="293" column="1" bodyfile="inc/sainat.h" bodystart="292" bodyend="304"/>
+    <listofallmembers>
+      <member refid="struct__sai__nat__entry__data__t_1a8e7e6d7bc1db1005e1e18073570a433f" prot="public" virt="non-virtual"><scope>_sai_nat_entry_data_t</scope><name>key</name></member>
+      <member refid="struct__sai__nat__entry__data__t_1afb4a7ff81d3cf17de653220c73fc5326" prot="public" virt="non-virtual"><scope>_sai_nat_entry_data_t</scope><name>mask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

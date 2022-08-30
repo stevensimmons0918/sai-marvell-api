@@ -1,0 +1,21 @@
+// TAG:               Port monitoring
+// Short Description: configure port interface for Tx mirroring.
+// Description:       Send packets to mirroring port and check packets bridging on port[2]
+//                    packets egress on port[3] - Tx analyzer for port[2] that truncate the frame 
+//                    set analyzer to truncate (max length of 128B)
+end
+configure
+
+//configure static MAC entry on port[2]
+mac address-table static 00:00:00:00:00:22 device ${dev} vlan 1 ethernet ${dev}/${port[2]}
+
+//configure port[2] to be Tx mirrored with analyzer port[3] 
+interface ethernet ${dev}/${port[2]}
+port monitor ${dev}/${port[3]} tx
+exit
+
+interface ethernet ${dev}/${port[3]}
+switchport allowed vlan remove 1
+exit
+// call CPSS to state that the analyzer traffic should be truncated (max length of 128B)
+do cpss-api call cpssDxChMirrorToAnalyzerTruncateSet devNum ${dev} index 2 truncate true

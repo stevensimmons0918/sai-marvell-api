@@ -1,0 +1,16 @@
+Yedidia Falk <yedidiaf@marvell.com>
+Irina Rossovsky <irinar@marvell.com>
+GR-MISL-EnterpriseSW-PSS_department <GR-MISL-EnterpriseSW-PSS_department@marvell.com>; 
+Igor Patrik <igorp@marvell.com>
+Margarita Lapidos <rital@marvell.com>
+Felix Kaufman <felixk@marvell.com>
+Itzik Ovadia <itziko@marvell.com>
+Marvell-Networking@globallogic.com
+Roman Ronin <romanr@marvell.com>
+Haim Boot <hayim@marvell.com>
+Yaron David <yarond@marvell.com>
+Daniel Elkaslassy <daniel@marvell.com>
+Adi Yekutiel <adiy@marvell.com>
+Reuven Cohen <reuvenc@marvell.com>
+Deeb Bshara <deeb@marvell.com>
+Vladimir Tentser <vladimir@marvell.com>

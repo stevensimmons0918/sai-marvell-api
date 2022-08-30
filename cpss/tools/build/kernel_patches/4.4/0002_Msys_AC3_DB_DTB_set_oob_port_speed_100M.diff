@@ -1,0 +1,30 @@
+commit 1dc2b5dfddf51c19fdb17f2eff6d8afad2c957df
+Author: Sergei Shkonda <sergeish@marvell.com>
+Date:   Sun Nov 5 16:12:10 2017 +0200
+
+    dtb: msys-ac3-db: Set OOB eth speed to 100M
+    
+    Change-Id: If098a69d8647704d525320ea70eb6c1c4cb98a95
+
+diff --git a/arch/arm/boot/dts/msys-ac3-db.dts b/arch/arm/boot/dts/msys-ac3-db.dts
+index 0e4450d..372a13c 100644
+--- a/arch/arm/boot/dts/msys-ac3-db.dts
++++ b/arch/arm/boot/dts/msys-ac3-db.dts
+@@ -83,7 +83,7 @@
+ 				compatible = "marvell,armada-xp-neta";
+ 				phy-mode = "sgmii";
+ 				fixed-link {
+-					speed = <1000>;
++					speed = <100>;
+ 					full-duplex;
+ 				};
+ 			};
+@@ -92,7 +92,7 @@
+ 				compatible = "marvell,armada-xp-neta";
+ 				phy-mode = "sgmii";
+ 				fixed-link {
+-					speed = <1000>;
++					speed = <100>;
+ 					full-duplex;
+ 				};
+ 			};

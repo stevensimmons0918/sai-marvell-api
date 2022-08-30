@@ -1,0 +1,63 @@
+# $(warning "Started") 
+
+#SUBDIRS = NONE
+MODULES :=
+
+ifeq (y,$(CONFIG_CMD_LUA_CLI))
+ MODULES := \
+  cpssCommon \
+  generic
+
+ ifneq (,$(findstring DX, $(FAMILY)))
+  MODULES += dxCh
+ endif
+ 
+ ifneq (,$(findstring PX, $(FAMILY)))
+  MODULES += px
+ endif
+ 
+#'simulation' : for all compilations !
+# because the 'ASIM' env , the SLAN commands implemented using 'IPC' between CPSS to WM
+MODULES += simulation
+ 
+ #SUBDIRS      += cpssCommon generic tgf
+ 
+ ifeq (y, $(CONFIG_INCLUDE_UTF))
+ MODULES += tgf
+ else
+  ifeq (y, $(CONFIG_CMD_LUA_CLI))
+   MODULES += tgf
+  endif
+ endif
+ 
+ ifeq ($(CONFIG_INCLUDE_EZ_BRINGUP), y) 
+ MODULES += ez_bringup
+ endif
+
+
+endif
+
+##List of subfolders to include in build
+#MODULES := \
+# cpssCommon \
+# dxCh \
+# generic \
+# simulation \
+# tgf 
+
+#List of files to include in list
+FILES := 
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINLUAWRAPPER_SRC += $(patsubst %,$(CWD)%,$(FILES))
+MAINLUAWRAPPER_LUA_STANDALONE_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

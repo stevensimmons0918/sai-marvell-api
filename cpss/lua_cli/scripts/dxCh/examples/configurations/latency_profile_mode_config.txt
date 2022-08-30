@@ -1,0 +1,8 @@
+//TAG:               latency-monitor profile mode;
+//Short Description: Configure test type for latency profile assignment mode
+//Description:       Configure test type for latency profile assignment mode
+end
+configure
+latency-monitor profile-mode device ${dev} mode ${@@lmu_env.mode}
+do show latency-profile-mode device ${dev}
+end

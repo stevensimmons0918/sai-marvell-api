@@ -1,0 +1,77 @@
+/*******************************************************************************
+*                Copyright 2001, Marvell International Ltd.
+* This code contains confidential information of Marvell semiconductor, inc.
+* no rights are granted herein under any patent, mask work right or copyright
+* of Marvell or any third party.
+* Marvell reserves the right at its sole discretion to request that this code
+* be immediately returned to Marvell. This code is provided "as is".
+* Marvell makes no warranties, express, implied or otherwise, regarding its
+* accuracy, completeness or performance.
+********************************************************************************
+*/
+/**
+********************************************************************************
+* @file mvHwsCpuRsfecUnits.h
+*
+* @brief Hawk port interface header file
+*
+* @version   1
+********************************************************************************
+*/
+#ifndef __mvHwsCpuRsfecUnits_H
+#define __mvHwsCpuRsfecUnits_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef enum {
+  /*0*/  CPU_PCS_RSFEC_UNITS_RSFEC_CONTROL_BYPASS_CORRECTION_E,
+  /*1*/  CPU_PCS_RSFEC_UNITS_RSFEC_CONTROL_BYPASS_ERROR_INDICATION_E,
+  /*2*/  CPU_PCS_RSFEC_UNITS_RSFEC_STATUS_BYPASS_CORRECTION_ABILITY_E,
+  /*3*/  CPU_PCS_RSFEC_UNITS_RSFEC_STATUS_BYPASS_INDICATION_ABILITY_E,
+  /*4*/  CPU_PCS_RSFEC_UNITS_RSFEC_STATUS_HIGH_SER_E,
+  /*5*/  CPU_PCS_RSFEC_UNITS_RSFEC_STATUS_AMPS_LOCK_E,
+  /*6*/  CPU_PCS_RSFEC_UNITS_RSFEC_STATUS_FEC_ALIGN_STATUS_E,
+  /*7*/  CPU_PCS_RSFEC_UNITS_RSFEC_STATUS_FEC_PCS_ALIGN_STATUS_E,
+  /*8*/  CPU_PCS_RSFEC_UNITS_RSFEC_CCW_LO_RSFEC_CCW_LO_E,
+  /*9*/  CPU_PCS_RSFEC_UNITS_RSFEC_CCW_HI_RSFEC_CCW_HI_E,
+  /*10*/  CPU_PCS_RSFEC_UNITS_RSFEC_NCCW_LO_RSFEC_NCCW_LO_E,
+  /*11*/  CPU_PCS_RSFEC_UNITS_RSFEC_NCCW_HI_RSFEC_NCCW_HI_E,
+  /*12*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR0_LO_SYMBLERR0_LO_E,
+  /*13*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR0_HI_SYMBLERR0_HI_E,
+  /*14*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR1_LO_SYMBLERR1_LO_E,
+  /*15*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR1_HI_SYMBLERR1_HI_E,
+  /*16*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR2_LO_SYMBLERR2_LO_E,
+  /*17*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR2_HI_SYMBLERR2_HI_E,
+  /*18*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR3_LO_SYMBLERR3_LO_E,
+  /*19*/  CPU_PCS_RSFEC_UNITS_RSFEC_SYMBLERR3_HI_SYMBLERR3_HI_E,
+  /*20*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_AMPS_LOCK_E,
+  /*21*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_ALIGN_STATUS_LH_E,
+  /*22*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_MARKER_CHECK_RESTART_E,
+  /*23*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_RX_DATAPATH_RESTART_E,
+  /*24*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_TX_DATAPATH_RESTART_E,
+  /*25*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_RX_DP_OVERFLOW_E,
+  /*26*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_TX_DP_OVERFLOW_E,
+  /*27*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO1_VENDOR_ALIGN_STATUS_LL_E,
+  /*28*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_REVISION_REVISION_E,
+  /*29*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_CONTROL_RS_FEC_ENABLE_E,
+  /*30*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_CONTROL_RS_FEC_ENABLE_STATUS_E,
+  /*31*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_FEC_ABILITY_FEC_ABILITY_E,
+  /*32*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_INFO2_VENDOR_INFO2_RSVD_E,
+  /*33*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_FEC_CONTROL_FEC_CONTROL_E,
+  /*34*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_FEC_STATUS_FEC_STATUS_E,
+  /*35*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_VL0_CCW_LO_VL0_CCW_LO_E,
+  /*36*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_VL0_NCCW_LO_VL0_NCCW_LO_E,
+  /*37*/  CPU_PCS_RSFEC_UNITS_RSFEC_VENDOR_COUNTER_HI_VENDOR_COUNTER_HI_E,
+          CPU_PCS_RSFEC_UNITS_RSFEC_REGISTER_LAST_E /* should be last */
+} MV_HWS_CPU_PCS_RSFEC_UNITS_FIELDS_E;
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __mvHwsCpuRsfecUnits_H */
+

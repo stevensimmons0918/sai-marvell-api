@@ -1,0 +1,91 @@
+/*******************************************************************************
+*              (c), Copyright 2018, Marvell International Ltd.                 *
+* THIS CODE IS A REFERENCE CODE FOR MARVELL SWITCH PRODUCTS.  IT IS PROVIDED   *
+* "AS IS" WITH NO WARRANTIES, EXPRESSED, IMPLIED OR OTHERWISE, REGARDING ITS   *
+* ACCURACY, COMPLETENESS OR PERFORMANCE.                                       *
+* CUSTOMERS ARE FREE TO MODIFY IT AND USE IT ONLY IN THEIR PRODUCTION          *
+* SOFTWARE RELEASES WITH MARVELL SWITCH CHIPSETS.                              *
+*******************************************************************************/
+/**
+********************************************************************************
+* @file DB-98EX5520-6ZQSFP-48SFP.c
+*
+* @brief Aldrin profile related file.
+*
+* @version   1
+********************************************************************************
+*/
+
+#include <profiles/cpssAppPlatformProfile.h>
+#include <profiles/cpssAppPlatformProfileDecl.h>
+
+/*** Falcon with one PP ****/
+CPSS_CAP_PROFILE_START( WM_Falcon_12_8_R0_1_all )
+  CPSS_CAP_ADD_BOARD_PROFILE( &WM_FALCON_12_8_R0_1_BOARD_INFO )
+  CPSS_CAP_ADD_PP_PROFILE( &WM_FALCON_12_8_R0_1_PP_INFO, &WM_FALCON_12_8_R0_1_PP_MAP_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_PORT_MANAGER_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_GEN_EVENT_INFO )
+CPSS_CAP_PROFILE_END( WM_Falcon_12_8_R0_1_all, "Falcon WM - 12.8T R0-1" )
+
+/*** Falcon no ports Profile ****/
+CPSS_CAP_PROFILE_START( WM_Falcon_12_8_R0_1_all_no_ports )
+  CPSS_CAP_ADD_BOARD_PROFILE( &WM_FALCON_12_8_R0_1_BOARD_INFO )
+  CPSS_CAP_ADD_PP_PROFILE( &WM_FALCON_12_8_R0_1_PP_INFO, &WM_FALCON_12_8_R0_1_PP_MAP_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_NOPORTS_FALCON_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_PORT_MANAGER_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_GEN_EVENT_INFO )
+CPSS_CAP_PROFILE_END( WM_Falcon_12_8_R0_1_all_no_ports, "Falcon - 12.8T R0-1 with no ports initialized" )
+
+CPSS_CAP_PROFILE_START( WM_Falcon_12_8_Z2_all )
+  CPSS_CAP_ADD_BOARD_PROFILE( &WM_FALCON_12_8_Z2_BOARD_INFO )
+  CPSS_CAP_ADD_PP_PROFILE( &WM_FALCON_12_8_R0_1_PP_INFO, &WM_FALCON_12_8_Z2_PP_MAP_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_GEN_EVENT_INFO )
+CPSS_CAP_PROFILE_END( WM_Falcon_12_8_Z2_all, "Falcon WM - 12.8T Z2" )
+
+/*** Falcon Belly2Belly ****/
+CPSS_CAP_PROFILE_START( Falcon_12_8_Belly2Belly_all )
+  CPSS_CAP_ADD_BOARD_PROFILE( &WM_FALCON_12_8_Belly2Belly_1_BOARD_INFO )
+  CPSS_CAP_ADD_PP_PROFILE( &WM_FALCON_12_8_R0_1_BELLY2BELLY_PP_INFO, &WM_FALCON_12_8_R0_1_PP_MAP_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_BELLY2BELLY_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_PORT_MANAGER_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_GEN_EVENT_INFO )
+CPSS_CAP_PROFILE_END( Falcon_12_8_Belly2Belly_all, "Falcon - 12.8T Belly to Belly" )
+
+/*** Falcon Belly2Belly - No ports ****/
+CPSS_CAP_PROFILE_START( Falcon_12_8_Belly2Belly_all_no_ports )
+  CPSS_CAP_ADD_BOARD_PROFILE( &WM_FALCON_12_8_Belly2Belly_1_BOARD_INFO )
+  CPSS_CAP_ADD_PP_PROFILE( &WM_FALCON_12_8_R0_1_BELLY2BELLY_PP_INFO, &WM_FALCON_12_8_R0_1_PP_MAP_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_NOPORTS_FALCON_BELLY2BELLY_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_PORT_MANAGER_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_GEN_EVENT_INFO )
+CPSS_CAP_PROFILE_END( Falcon_12_8_Belly2Belly_all_no_ports, "Falcon - 12.8T Belly to Belly - No Ports" )
+
+/*** Falcon 6.4 - board only profile ****/
+CPSS_CAP_PROFILE_START( Falcon_6_4_board_only )
+  CPSS_CAP_ADD_BOARD_PROFILE( &WM_FALCON_6_4_BOARD_INFO )
+CPSS_CAP_PROFILE_END( Falcon_6_4_board_only, "Falcon - Board only" )
+
+/*** Falcon with one PP - 6.4T ****/
+CPSS_CAP_PROFILE_START( Falcon_6_4_PP_only)
+  CPSS_CAP_ADD_PP_PROFILE( &WM_FALCON_6_4_PP_INFO, &WM_FALCON_12_8_R0_1_PP_MAP_INFO )
+CPSS_CAP_PROFILE_END( Falcon_6_4_PP_only, "Falcon WM - 6.4T PP Profile" )
+
+/*** Falcon RT Profile - 6.4T ****/
+CPSS_CAP_PROFILE_START( Falcon_6_4_RT)
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_6_4_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_PORT_MANAGER_INFO )
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RUNTIME_WM_FALCON_GEN_EVENT_INFO )
+CPSS_CAP_PROFILE_END( Falcon_6_4_RT, "Falcon WM - 6.4T runtime profile" )
+
+/*** Falcon Link Profile - 6.4T ****/
+CPSS_CAP_PROFILE_START( Falcon_6_4_Link)
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &LINK_WM_FALCON_6_4_INFO )
+CPSS_CAP_PROFILE_END( Falcon_6_4_Link, "Falcon WM - 6.4T link profile" )
+
+/*** Falcon Rx Profile - 6.4T ****/
+CPSS_CAP_PROFILE_START( Falcon_6_4_Rx)
+  CPSS_CAP_ADD_RUNTIME_PROFILE( &RX_WM_FALCON_6_4_INFO )
+CPSS_CAP_PROFILE_END( Falcon_6_4_Rx, "Falcon WM - 6.4T rx profile" )
+

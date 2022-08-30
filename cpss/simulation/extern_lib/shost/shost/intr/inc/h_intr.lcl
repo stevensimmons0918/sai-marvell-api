@@ -1,0 +1,39 @@
+/*!**************************************************RND Template version 4.1
+ *!           L O C A L   V A R I A B L E   D E C L A R A T I O N S
+ *!==========================================================================
+ *$ TITLE: the interrupt table
+ *!--------------------------------------------------------------------------
+ *$ FILENAME:
+ *!--------------------------------------------------------------------------
+ *$ SYSTEM, SUBSYSTEM: nste
+ *!--------------------------------------------------------------------------
+ *$ AUTHORS: eyran,OrenV,LiranP
+ *!--------------------------------------------------------------------------
+ *$ LATEST UPDATE: 7-Apr-2008, 3:3 PM CREATION DATE: 18-Jun-97
+ *!**************************************************************************
+ *!
+ *!**************************************************************************
+ *!
+ *$ GENERAL DESCRIPTION:
+ *!
+ *$ INCLUDE REQUIRED:
+ *!
+ *$ REMARKS: added, on 21.1.2000, SHOSTP_cib_mutex_fun_PTR to handle prevent
+ *!                         interrupt thread creating dead locks.
+ *!**************************************************************************
+ *!*/
+
+/*
+ * Who initializes:  here ,init
+ * Who reads (uses): SHOSTP_intr_thread
+ * Who updates:  SHOSTC_bind_interrupt , SHOSTG_bind_CIB_DB_lock
+ * Protecting mechanism:
+ */
+
+static UINT_32          SHOSTP_intr_susp_thd_id = 0;
+static UINT_32          SHOSTP_intr_susp_all = 0;
+static UINT_32          SHOSTP_intr_enable = 0 ;
+static SHOSTP_intr_STC  SHOSTP_intr_table[SHOSTP_max_intr_CNS] ;
+
+
+

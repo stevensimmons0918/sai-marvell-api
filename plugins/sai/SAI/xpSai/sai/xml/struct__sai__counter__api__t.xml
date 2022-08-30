@@ -1,0 +1,438 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__counter__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_counter_api_t</compoundname>
+    <includes refid="saicounter_8h" local="no">saicounter.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__counter__api__t_1a4c7bf701d6987e44ca1e3fee8789d490" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_c_o_u_n_t_e_r_1ga0721458715bb4fff216303ff90c769ce" kindref="member">sai_create_counter_fn</ref></type>
+        <definition>sai_create_counter_fn _sai_counter_api_t::create_counter</definition>
+        <argsstring></argsstring>
+        <name>create_counter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saicounter.h" line="206" column="1" bodyfile="inc/saicounter.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__counter__api__t_1a90dbe2c34cc706d7cb4b850a32255fe6" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_c_o_u_n_t_e_r_1ga7739268aa14bac93ae8eddc1c2160b68" kindref="member">sai_remove_counter_fn</ref></type>
+        <definition>sai_remove_counter_fn _sai_counter_api_t::remove_counter</definition>
+        <argsstring></argsstring>
+        <name>remove_counter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saicounter.h" line="207" column="1" bodyfile="inc/saicounter.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__counter__api__t_1a9fe2946bd835d8a0d52d97e7aa7950cf" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_c_o_u_n_t_e_r_1gacca6211933d5dca43ef6a5b6fda6d701" kindref="member">sai_set_counter_attribute_fn</ref></type>
+        <definition>sai_set_counter_attribute_fn _sai_counter_api_t::set_counter_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_counter_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saicounter.h" line="208" column="1" bodyfile="inc/saicounter.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__counter__api__t_1acc5960815af08e7aa9391fce90ee51f2" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_c_o_u_n_t_e_r_1ga547b935eb0821a5bcbc3bf09a76273e1" kindref="member">sai_get_counter_attribute_fn</ref></type>
+        <definition>sai_get_counter_attribute_fn _sai_counter_api_t::get_counter_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_counter_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saicounter.h" line="209" column="1" bodyfile="inc/saicounter.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__counter__api__t_1a81eeadff90f2672c6c24510b9114392b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_c_o_u_n_t_e_r_1ga17533b6797b34f1de4664e93c4ba8491" kindref="member">sai_get_counter_stats_fn</ref></type>
+        <definition>sai_get_counter_stats_fn _sai_counter_api_t::get_counter_stats</definition>
+        <argsstring></argsstring>
+        <name>get_counter_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saicounter.h" line="210" column="1" bodyfile="inc/saicounter.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__counter__api__t_1a6faea000a00e18c068fd8297c3a59c34" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_c_o_u_n_t_e_r_1gacfffb35c6977bf7f86e9f75dfd9ec505" kindref="member">sai_get_counter_stats_ext_fn</ref></type>
+        <definition>sai_get_counter_stats_ext_fn _sai_counter_api_t::get_counter_stats_ext</definition>
+        <argsstring></argsstring>
+        <name>get_counter_stats_ext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saicounter.h" line="211" column="1" bodyfile="inc/saicounter.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__counter__api__t_1a01489bf7513bb86c9a28325cb7f730bf" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_c_o_u_n_t_e_r_1ga5f3f28c0ff246c37341f77d404cf291d" kindref="member">sai_clear_counter_stats_fn</ref></type>
+        <definition>sai_clear_counter_stats_fn _sai_counter_api_t::clear_counter_stats</definition>
+        <argsstring></argsstring>
+        <name>clear_counter_stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saicounter.h" line="212" column="1" bodyfile="inc/saicounter.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Counter methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="315">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="316" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="301">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="302">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="303" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="318">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="322">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="323" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="316">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="310">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="303">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="304" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="304">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="326">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="308">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="309" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="312" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="329">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="330" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="297">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="298" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="296">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="297" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="319">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="295">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="317">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="328">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="294">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="295" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="296" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="300" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="302" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="305" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="308" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="313" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="314" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="315" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="317" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="318" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="316" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="319" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="320" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="310" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="321" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="322" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="324" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="306" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="311" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="325" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="326" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="327" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="328" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="329" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="331" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="333" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="309">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="310" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="311" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="293">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="294" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="314">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="307" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="325">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="324">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="298">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="299" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="292">
+        <label>_sai_counter_api_t</label>
+        <link refid="struct__sai__counter__api__t"/>
+        <childnode refid="293" relation="usage">
+          <edgelabel>create_counter</edgelabel>
+          <edgelabel>set_counter_attribute</edgelabel>
+          <edgelabel>get_counter_attribute</edgelabel>
+        </childnode>
+      </node>
+      <node id="331">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="332" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="333">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="299">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="312">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="311" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="321">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="332">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="330">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="300">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="301" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="306">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="307" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="320">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="305">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="306" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="307">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="311">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="313">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="323">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="310" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="306" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="327">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="320" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saicounter.h" line="205" column="1" bodyfile="inc/saicounter.h" bodystart="204" bodyend="214"/>
+    <listofallmembers>
+      <member refid="struct__sai__counter__api__t_1a01489bf7513bb86c9a28325cb7f730bf" prot="public" virt="non-virtual"><scope>_sai_counter_api_t</scope><name>clear_counter_stats</name></member>
+      <member refid="struct__sai__counter__api__t_1a4c7bf701d6987e44ca1e3fee8789d490" prot="public" virt="non-virtual"><scope>_sai_counter_api_t</scope><name>create_counter</name></member>
+      <member refid="struct__sai__counter__api__t_1acc5960815af08e7aa9391fce90ee51f2" prot="public" virt="non-virtual"><scope>_sai_counter_api_t</scope><name>get_counter_attribute</name></member>
+      <member refid="struct__sai__counter__api__t_1a81eeadff90f2672c6c24510b9114392b" prot="public" virt="non-virtual"><scope>_sai_counter_api_t</scope><name>get_counter_stats</name></member>
+      <member refid="struct__sai__counter__api__t_1a6faea000a00e18c068fd8297c3a59c34" prot="public" virt="non-virtual"><scope>_sai_counter_api_t</scope><name>get_counter_stats_ext</name></member>
+      <member refid="struct__sai__counter__api__t_1a90dbe2c34cc706d7cb4b850a32255fe6" prot="public" virt="non-virtual"><scope>_sai_counter_api_t</scope><name>remove_counter</name></member>
+      <member refid="struct__sai__counter__api__t_1a9fe2946bd835d8a0d52d97e7aa7950cf" prot="public" virt="non-virtual"><scope>_sai_counter_api_t</scope><name>set_counter_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

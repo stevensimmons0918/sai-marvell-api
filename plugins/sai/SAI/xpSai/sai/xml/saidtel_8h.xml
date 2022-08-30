@@ -1,0 +1,1682 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saidtel_8h" kind="file" language="C++">
+    <compoundname>saidtel.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="97">
+        <label>stdbool.h</label>
+      </node>
+      <node id="96">
+        <label>stdint.h</label>
+      </node>
+      <node id="94">
+        <label>inc/saidtel.h</label>
+        <link refid="saidtel.h"/>
+        <childnode refid="95" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>sys/types.h</label>
+      </node>
+      <node id="95">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="99">
+        <label>inc/saidtel.h</label>
+        <link refid="saidtel.h"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__dtel__api__t" prot="public">_sai_dtel_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_d_t_e_l_1ga4671f4e49001568353b72c0e4e080083" prot="public" static="no">
+        <name>_sai_dtel_attr_t</name>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aa065bb2969de92c1970b86db82ce11e5" prot="public">
+          <name>SAI_DTEL_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a11cbc082e5b15f00af0ff1bf31e4e68d" prot="public">
+          <name>SAI_DTEL_ATTR_INT_ENDPOINT_ENABLE</name>
+          <initializer>= SAI_DTEL_ATTR_START</initializer>
+          <briefdescription>
+<para>Enable DTEL INT endpoint. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a9cd8793f83cd35e8468328c497813839" prot="public">
+          <name>SAI_DTEL_ATTR_INT_TRANSIT_ENABLE</name>
+          <briefdescription>
+<para>Enable DTEL INT transit. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a0f35d3582e86f472c18062673ff06635" prot="public">
+          <name>SAI_DTEL_ATTR_POSTCARD_ENABLE</name>
+          <briefdescription>
+<para>Enable Packet postcard. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a6e9fee1d9dd16679ecdb132a7c9eb83e" prot="public">
+          <name>SAI_DTEL_ATTR_DROP_REPORT_ENABLE</name>
+          <briefdescription>
+<para>Enable Drop Report. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a825101ba4f9dd182d4d32d0dc23e6a93" prot="public">
+          <name>SAI_DTEL_ATTR_QUEUE_REPORT_ENABLE</name>
+          <briefdescription>
+<para>Enable Queue Report. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a46867fefded15a97cd8b8533d8515b87" prot="public">
+          <name>SAI_DTEL_ATTR_SWITCH_ID</name>
+          <briefdescription>
+<para>Globally unique switch ID. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a7f05cfa03244c211537df3755b68fce3" prot="public">
+          <name>SAI_DTEL_ATTR_FLOW_STATE_CLEAR_CYCLE</name>
+          <briefdescription>
+<para>DTEL flow state clear cycle. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aa0bd57822f02325faa6370b60fc52dcd" prot="public">
+          <name>SAI_DTEL_ATTR_LATENCY_SENSITIVITY</name>
+          <briefdescription>
+<para>Latency sensitivity for flow state change detection. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083abdcbb7818fca29f0dbd96f3839e4d661" prot="public">
+          <name>SAI_DTEL_ATTR_SINK_PORT_LIST</name>
+          <briefdescription>
+<para>DTEL sink ports. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_PORT </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a9ac44537422fcbbcf6d819651a552173" prot="public">
+          <name>SAI_DTEL_ATTR_INT_L4_DSCP</name>
+          <briefdescription>
+<para>Reserved DSCP value for INT over L4. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_acl_field_data_t sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        disabled </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a3744fe61c3aae9946b4952a38f1272e8" prot="public">
+          <name>SAI_DTEL_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aca6f554ae4d51a3f59a91f27c5009945" prot="public">
+          <name>SAI_DTEL_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+<para>Custom range base value start. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a1060d73bc70fc44f675a1f91e0f0df78" prot="public">
+          <name>SAI_DTEL_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+<para>End of Custom range base. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>DTEL attributes for the switch. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="note"><para>Only one DTEL object per switch is allowed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="46" column="1" bodyfile="inc/saidtel.h" bodystart="45" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_d_t_e_l_1ga66b72870af834da3552015edfd0b7e12" prot="public" static="no">
+        <name>_sai_dtel_queue_report_attr_t</name>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a088f284b19d306a3c65d40ef6f2e60b8" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a941eda0022eb080829b97423c6ddc359" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_QUEUE_ID</name>
+          <initializer>= SAI_DTEL_QUEUE_REPORT_ATTR_START</initializer>
+          <briefdescription>
+<para>Queue object ID. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_QUEUE </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12ae624db3dbc219579a5f842ed885ba381" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_DEPTH_THRESHOLD</name>
+          <briefdescription>
+<para>Queue depth threshold in byte. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a925e0dfc9e2b26725ff1667857683674" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_LATENCY_THRESHOLD</name>
+          <briefdescription>
+<para>Queue latency threshold in nanosecond. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a08138fcd6bbef2ef6905f69c2123aeb5" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_BREACH_QUOTA</name>
+          <briefdescription>
+<para>Maximum number of continuous reports after threshold breach. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint32_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a259d6b9e8b2be82a2749cee89463f773" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_TAIL_DROP</name>
+          <briefdescription>
+<para>Send report for packets dropped by the queue. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12ae97dfe17fd3ad4b43bcebb30bc896fea" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12abdea4958b291e8c6dcd9d26cd985f9f3" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+<para>Custom range base value start. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a0b429a8b268d72f5a7f392ea6aac4d26" prot="public">
+          <name>SAI_DTEL_QUEUE_REPORT_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+<para>End of Custom range base. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Queue report trigger attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="187" column="1" bodyfile="inc/saidtel.h" bodystart="186" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_d_t_e_l_1ga86a279445835375bb60ac75b2b4cfcc8" prot="public" static="no">
+        <name>_sai_dtel_int_session_attr_t</name>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8ab0f2c08feca9cf5e319cabf04a4f8e9a" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a6c6325cd4a211826b8cd63f10dcb7131" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_MAX_HOP_COUNT</name>
+          <initializer>= SAI_DTEL_INT_SESSION_ATTR_START</initializer>
+          <briefdescription>
+<para>INT max hop count. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+The maximum number of hops that are allowed to add their metadata to the packet</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        8 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a451c3857e553820ddf791836d5c6319d" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_COLLECT_SWITCH_ID</name>
+          <briefdescription>
+<para>Collect switch ID. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a81a815f1c8cfbf206fedb774153b0192" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_COLLECT_SWITCH_PORTS</name>
+          <briefdescription>
+<para>Collect ingress and egress ports. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a72ec34857089a60c6e2e204b3e53c849" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_COLLECT_INGRESS_TIMESTAMP</name>
+          <briefdescription>
+<para>Collect ingress timestamp. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a95f7bd6ab487a892d7e4d98626065646" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_COLLECT_EGRESS_TIMESTAMP</name>
+          <briefdescription>
+<para>Collect egress timestamp. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a5d90cbdce7d20dcc45cc713c983f1ad8" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_COLLECT_QUEUE_INFO</name>
+          <briefdescription>
+<para>Collect queue information. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           bool </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        false </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8ab2923de2eb347564cf7739e38d1ff731" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a1d55009e76a1e0df2d33dd7b1f4828db" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+<para>Custom range base value start. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8aca917c15c21c94ed0dd02001539a64fb" prot="public">
+          <name>SAI_DTEL_INT_SESSION_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+<para>End of Custom range base. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>INT session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="271" column="1" bodyfile="inc/saidtel.h" bodystart="270" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_d_t_e_l_1gaf034cd591c2c046bab01ac637721c0ce" prot="public" static="no">
+        <name>_sai_dtel_report_session_attr_t</name>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceaac1750302f5a7c565cab7319d39cd5bc" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea1c4de16954768606c9224cf88428dcab" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_SRC_IP</name>
+          <initializer>= SAI_DTEL_REPORT_SESSION_ATTR_START</initializer>
+          <briefdescription>
+<para>DTEL report source IP address. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0.0.0.0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceabaf9e3f3ce8cf0fb749702cc6d3ff3d3" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_DST_IP_LIST</name>
+          <briefdescription>
+<para>DTEL report destination IP addresses. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_ip_address_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceab30eb390d3085c5d258d77ff1bf730cf" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_VIRTUAL_ROUTER_ID</name>
+          <briefdescription>
+<para>DTEL report virtual router ID. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_VIRTUAL_ROUTER </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea065a4949e7cca687749202f4929f9cbd" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_TRUNCATE_SIZE</name>
+          <briefdescription>
+<para>DTEL report truncate size. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea177b7a26eb26c0d8e3eac4c291e2750e" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_UDP_DST_PORT</name>
+          <briefdescription>
+<para>DTEL report UDP destination port. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint16_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>IsVlan:</title><para> @@isvlan         false </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceadbad940df1654175c8d99ad852d3409d" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea4f22f62747b4f81cb0b31a88c879116a" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+<para>Custom range base value start. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea3b7b1b930275ef8390e0d49eb12d52db" prot="public">
+          <name>SAI_DTEL_REPORT_SESSION_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+<para>End of Custom range base. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>DTEL report session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="369" column="1" bodyfile="inc/saidtel.h" bodystart="368" bodyend="449"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_d_t_e_l_1ga35ae472d10f5076afda1fd9f7fe80498" prot="public" static="no">
+        <name>_sai_dtel_event_type_t</name>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498aa7144eb4d8b51b1b47ce19b7fbea768e" prot="public">
+          <name>SAI_DTEL_EVENT_TYPE_FLOW_STATE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Report triggered by new flow or flow state (e.g., path, latency) change </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1a7390aea0d82428b3fda8917bafa736" prot="public">
+          <name>SAI_DTEL_EVENT_TYPE_FLOW_REPORT_ALL_PACKETS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Report triggered by REPORT_ALL_PACKETS in watchlist entry action </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a63d35373afc27802d91f05ea3ee77a99" prot="public">
+          <name>SAI_DTEL_EVENT_TYPE_FLOW_TCPFLAG</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Report triggered by TCP FLAGS </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1aaeb26a93beeca13e214c8bb8f2c7a1" prot="public">
+          <name>SAI_DTEL_EVENT_TYPE_QUEUE_REPORT_THRESHOLD_BREACH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Report triggered by queue depth or latency threshold breach </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a388baaa319b2fe36408cc7150313de99" prot="public">
+          <name>SAI_DTEL_EVENT_TYPE_QUEUE_REPORT_TAIL_DROP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Report triggered by queue tail drop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1623f96e74cbc6f1c16ec9412cb2c949" prot="public">
+          <name>SAI_DTEL_EVENT_TYPE_DROP_REPORT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Report triggered by packet drop </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498aed7530e9089b9272e33b8644096a2f9b" prot="public">
+          <name>SAI_DTEL_EVENT_TYPE_MAX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining DTEL event types. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="457" column="1" bodyfile="inc/saidtel.h" bodystart="456" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_d_t_e_l_1ga9e0c2860f0584ad47fd78e7cb0c36019" prot="public" static="no">
+        <name>_sai_dtel_event_attr_t</name>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a545fe70c410a8a437dc87bdb736c65d5" prot="public">
+          <name>SAI_DTEL_EVENT_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019ac4ae8113fcfb0cf4190d43ac4a6248a9" prot="public">
+          <name>SAI_DTEL_EVENT_ATTR_TYPE</name>
+          <initializer>= SAI_DTEL_EVENT_ATTR_START</initializer>
+          <briefdescription>
+<para>DTEL event type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_dtel_event_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a5d51630563a9d68f6c2da433ff3f63c9" prot="public">
+          <name>SAI_DTEL_EVENT_ATTR_REPORT_SESSION</name>
+          <briefdescription>
+<para>DTEL report session. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_object_id_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Allowed object types</title><para> @@objects        SAI_OBJECT_TYPE_DTEL_REPORT_SESSION </para></simplesect>
+<simplesect kind="par"><title>Allows NULL object ID</title><para> @@allownull      true </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        SAI_NULL_OBJECT_ID </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a2ed8ed49def8026ff22ce453ad630108" prot="public">
+          <name>SAI_DTEL_EVENT_ATTR_DSCP_VALUE</name>
+          <briefdescription>
+<para>DTEL report DSCP value. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="par"><title>Value Type:</title><para> @@type           sai_uint8_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        0 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a2814c2be7cb3b0aa5ba4db8412781fc0" prot="public">
+          <name>SAI_DTEL_EVENT_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019ae3958f12ba427d807d6fc070496bb6bb" prot="public">
+          <name>SAI_DTEL_EVENT_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+<para>Custom range base value start. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a24bd252ad4ff445d9446b75859369c9d" prot="public">
+          <name>SAI_DTEL_EVENT_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+<para>End of Custom range base. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>DTEL events attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="486" column="1" bodyfile="inc/saidtel.h" bodystart="485" bodyend="541"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga629a0a66b5d0b91b51e67371f6c46fa5" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_d_t_e_l_1ga4671f4e49001568353b72c0e4e080083" kindref="member">_sai_dtel_attr_t</ref></type>
+        <definition>typedef enum _sai_dtel_attr_t  sai_dtel_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_dtel_attr_t</name>
+        <briefdescription>
+<para>DTEL attributes for the switch. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<simplesect kind="note"><para>Only one DTEL object per switch is allowed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="179" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga5c594e0ea9d0bdda819999a4ab216970" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_d_t_e_l_1ga66b72870af834da3552015edfd0b7e12" kindref="member">_sai_dtel_queue_report_attr_t</ref></type>
+        <definition>typedef enum _sai_dtel_queue_report_attr_t  sai_dtel_queue_report_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_dtel_queue_report_attr_t</name>
+        <briefdescription>
+<para>Queue report trigger attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="263" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga1c4b0f1003e03694156d8c46efdc1be8" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_d_t_e_l_1ga86a279445835375bb60ac75b2b4cfcc8" kindref="member">_sai_dtel_int_session_attr_t</ref></type>
+        <definition>typedef enum _sai_dtel_int_session_attr_t  sai_dtel_int_session_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_dtel_int_session_attr_t</name>
+        <briefdescription>
+<para>INT session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="361" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1gaf51a6be1d13544e805ed2994ac73c49f" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_d_t_e_l_1gaf034cd591c2c046bab01ac637721c0ce" kindref="member">_sai_dtel_report_session_attr_t</ref></type>
+        <definition>typedef enum _sai_dtel_report_session_attr_t  sai_dtel_report_session_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_dtel_report_session_attr_t</name>
+        <briefdescription>
+<para>DTEL report session attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="449" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga79cc1c4e607018dca957ccd093a15f4e" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_d_t_e_l_1ga35ae472d10f5076afda1fd9f7fe80498" kindref="member">_sai_dtel_event_type_t</ref></type>
+        <definition>typedef enum _sai_dtel_event_type_t  sai_dtel_event_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_dtel_event_type_t</name>
+        <briefdescription>
+<para>Enum defining DTEL event types. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="478" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga8412f7c6ce108f24a04bcc7dc15afc18" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_d_t_e_l_1ga9e0c2860f0584ad47fd78e7cb0c36019" kindref="member">_sai_dtel_event_attr_t</ref></type>
+        <definition>typedef enum _sai_dtel_event_attr_t  sai_dtel_event_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_dtel_event_attr_t</name>
+        <briefdescription>
+<para>DTEL events attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="541" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga759c00aa5292a9caa86195fa18c849cd" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_dtel_fn) (_Out_ sai_object_id_t *dtel_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *dtel_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_dtel_fn</name>
+        <briefdescription>
+<para>Create and return a DTEL object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">dtel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="555" column="1" bodyfile="inc/saidtel.h" bodystart="555" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga341587dcf154201bf86bb0ff8f164e1e" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_dtel_fn) (_In_ sai_object_id_t dtel_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_id)</argsstring>
+        <name>sai_remove_dtel_fn</name>
+        <briefdescription>
+<para>Delete a DTEL object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL object id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="570" column="1" bodyfile="inc/saidtel.h" bodystart="570" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga90d53e80d65ecaa300fca939331bd606" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_dtel_attribute_fn) (_In_ sai_object_id_t dtel_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_dtel_attribute_fn</name>
+        <briefdescription>
+<para>Set DTEL attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="583" column="1" bodyfile="inc/saidtel.h" bodystart="583" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga5251ecfc9040eb90bb7746eec682c4c4" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_dtel_attribute_fn) (_In_ sai_object_id_t dtel_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_dtel_attribute_fn</name>
+        <briefdescription>
+<para>Get DTEL attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="598" column="1" bodyfile="inc/saidtel.h" bodystart="598" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga06f9fa31c641bd82a52bcd821af97fbd" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_dtel_queue_report_fn) (_Out_ sai_object_id_t *dtel_queue_report_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *dtel_queue_report_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_dtel_queue_report_fn</name>
+        <briefdescription>
+<para>Create and return a DTEL queue report object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">dtel_queue_report_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL queue report object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="615" column="1" bodyfile="inc/saidtel.h" bodystart="615" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1gac3d231cdfd022130e10b8c7ac99d89b4" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_dtel_queue_report_fn) (_In_ sai_object_id_t dtel_queue_report_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_queue_report_id)</argsstring>
+        <name>sai_remove_dtel_queue_report_fn</name>
+        <briefdescription>
+<para>Delete a DTEL queue report. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_queue_report_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL queue report id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="630" column="1" bodyfile="inc/saidtel.h" bodystart="630" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga408c355ddf64de668f1f825e6480932a" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_dtel_queue_report_attribute_fn) (_In_ sai_object_id_t dtel_queue_report_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_queue_report_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_dtel_queue_report_attribute_fn</name>
+        <briefdescription>
+<para>Set DTEL queue report attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_queue_report_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL queue report id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="643" column="1" bodyfile="inc/saidtel.h" bodystart="643" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga668dc6202e1672624c8aee12e2e352b8" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_dtel_queue_report_attribute_fn) (_In_ sai_object_id_t dtel_queue_report_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_queue_report_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_dtel_queue_report_attribute_fn</name>
+        <briefdescription>
+<para>Get DTEL queue report attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_queue_report_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL queue report id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="658" column="1" bodyfile="inc/saidtel.h" bodystart="658" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga77337bc010813b0becae2f122edc2b7c" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_dtel_int_session_fn) (_Out_ sai_object_id_t *dtel_int_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *dtel_int_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_dtel_int_session_fn</name>
+        <briefdescription>
+<para>Create and return a DTEL INT session object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">dtel_int_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL INT session object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="675" column="1" bodyfile="inc/saidtel.h" bodystart="675" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga7b83a37851f59ae5f0c5a102ae28141e" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_dtel_int_session_fn) (_In_ sai_object_id_t dtel_int_session_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_int_session_id)</argsstring>
+        <name>sai_remove_dtel_int_session_fn</name>
+        <briefdescription>
+<para>Delete a DTEL INT session. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_int_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL INT session id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="690" column="1" bodyfile="inc/saidtel.h" bodystart="690" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga19c7defddde13475d630b2c7e740592e" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_dtel_int_session_attribute_fn) (_In_ sai_object_id_t dtel_int_session_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_int_session_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_dtel_int_session_attribute_fn</name>
+        <briefdescription>
+<para>Set DTEL INT session attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_int_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL INT session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="703" column="1" bodyfile="inc/saidtel.h" bodystart="703" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1gaa23436870b43de96622ba59dd03638d4" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_dtel_int_session_attribute_fn) (_In_ sai_object_id_t dtel_int_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_int_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_dtel_int_session_attribute_fn</name>
+        <briefdescription>
+<para>Get DTEL INT session attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_int_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL INT session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="718" column="1" bodyfile="inc/saidtel.h" bodystart="718" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga682213be7e680579e3fab0e0bedef46f" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_dtel_report_session_fn) (_Out_ sai_object_id_t *dtel_report_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *dtel_report_session_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_dtel_report_session_fn</name>
+        <briefdescription>
+<para>Create and return a DTEL report session object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">dtel_report_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL report session object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="735" column="1" bodyfile="inc/saidtel.h" bodystart="735" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1gac3af1f2e7fd4b631f961b902b1c80ade" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_dtel_report_session_fn) (_In_ sai_object_id_t dtel_report_session_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_report_session_id)</argsstring>
+        <name>sai_remove_dtel_report_session_fn</name>
+        <briefdescription>
+<para>Delete a DTEL report session. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_report_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL report session id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="750" column="1" bodyfile="inc/saidtel.h" bodystart="750" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1gadaa55d26ac22a32d15553bbf0cc0fed6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_dtel_report_session_attribute_fn) (_In_ sai_object_id_t dtel_report_session_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_report_session_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_dtel_report_session_attribute_fn</name>
+        <briefdescription>
+<para>Set DTEL report session attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_report_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL report session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="763" column="1" bodyfile="inc/saidtel.h" bodystart="763" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga2452e646b05c6363846a85dc1e1c77b6" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_dtel_report_session_attribute_fn) (_In_ sai_object_id_t dtel_report_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_report_session_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_dtel_report_session_attribute_fn</name>
+        <briefdescription>
+<para>Get DTEL report session attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_report_session_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL report session id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="778" column="1" bodyfile="inc/saidtel.h" bodystart="778" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1gab5a30cff56275f6cf7f23f62d1e5fa84" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_dtel_event_fn) (_Out_ sai_object_id_t *dtel_event_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *dtel_event_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_dtel_event_fn</name>
+        <briefdescription>
+<para>Create and return a DTEL event object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">dtel_event_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL event object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch object id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="795" column="1" bodyfile="inc/saidtel.h" bodystart="795" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga19a80ab756bc8354dbed3c0f55e43905" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_dtel_event_fn) (_In_ sai_object_id_t dtel_event_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_event_id)</argsstring>
+        <name>sai_remove_dtel_event_fn</name>
+        <briefdescription>
+<para>Delete a DTEL event. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_event_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL event id</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="810" column="1" bodyfile="inc/saidtel.h" bodystart="810" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga523cb43650ba41accce150ac5ba45945" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_dtel_event_attribute_fn) (_In_ sai_object_id_t dtel_event_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_event_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_dtel_event_attribute_fn</name>
+        <briefdescription>
+<para>Set DTEL event attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_event_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL event id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="823" column="1" bodyfile="inc/saidtel.h" bodystart="823" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1ga697a04bbf08f3a1731dbd8d33abb4ee8" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_dtel_event_attribute_fn) (_In_ sai_object_id_t dtel_event_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t dtel_event_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_dtel_event_attribute_fn</name>
+        <briefdescription>
+<para>Get DTEL event attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Warning:</title><para> @@warning        experimental</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dtel_event_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DTEL event id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="838" column="1" bodyfile="inc/saidtel.h" bodystart="838" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_d_t_e_l_1gaffcd6a191b0b4effb61738dc1d298ae2" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__dtel__api__t" kindref="compound">_sai_dtel_api_t</ref></type>
+        <definition>typedef struct _sai_dtel_api_t  sai_dtel_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_dtel_api_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saidtel.h" line="870" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI data plane telemetry (DTEL) interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd.</para><para><simplesect kind="par"><title>Warning:</title><para> @@warning        This is a SAI experimental module </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="27"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIDTEL_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIDTEL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_d_t_e_l_1ga4671f4e49001568353b72c0e4e080083" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_d_t_e_l_1ga4671f4e49001568353b72c0e4e080083" kindref="member">_sai_dtel_attr_t</ref></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aa065bb2969de92c1970b86db82ce11e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aa065bb2969de92c1970b86db82ce11e5" kindref="member">SAI_DTEL_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a11cbc082e5b15f00af0ff1bf31e4e68d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a11cbc082e5b15f00af0ff1bf31e4e68d" kindref="member">SAI_DTEL_ATTR_INT_ENDPOINT_ENABLE</ref><sp/>=<sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aa065bb2969de92c1970b86db82ce11e5" kindref="member">SAI_DTEL_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a9cd8793f83cd35e8468328c497813839" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a9cd8793f83cd35e8468328c497813839" kindref="member">SAI_DTEL_ATTR_INT_TRANSIT_ENABLE</ref>,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a0f35d3582e86f472c18062673ff06635" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a0f35d3582e86f472c18062673ff06635" kindref="member">SAI_DTEL_ATTR_POSTCARD_ENABLE</ref>,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a6e9fee1d9dd16679ecdb132a7c9eb83e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a6e9fee1d9dd16679ecdb132a7c9eb83e" kindref="member">SAI_DTEL_ATTR_DROP_REPORT_ENABLE</ref>,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a825101ba4f9dd182d4d32d0dc23e6a93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a825101ba4f9dd182d4d32d0dc23e6a93" kindref="member">SAI_DTEL_ATTR_QUEUE_REPORT_ENABLE</ref>,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a46867fefded15a97cd8b8533d8515b87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a46867fefded15a97cd8b8533d8515b87" kindref="member">SAI_DTEL_ATTR_SWITCH_ID</ref>,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a7f05cfa03244c211537df3755b68fce3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a7f05cfa03244c211537df3755b68fce3" kindref="member">SAI_DTEL_ATTR_FLOW_STATE_CLEAR_CYCLE</ref>,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aa0bd57822f02325faa6370b60fc52dcd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aa0bd57822f02325faa6370b60fc52dcd" kindref="member">SAI_DTEL_ATTR_LATENCY_SENSITIVITY</ref>,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083abdcbb7818fca29f0dbd96f3839e4d661" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083abdcbb7818fca29f0dbd96f3839e4d661" kindref="member">SAI_DTEL_ATTR_SINK_PORT_LIST</ref>,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a9ac44537422fcbbcf6d819651a552173" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a9ac44537422fcbbcf6d819651a552173" kindref="member">SAI_DTEL_ATTR_INT_L4_DSCP</ref>,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a3744fe61c3aae9946b4952a38f1272e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a3744fe61c3aae9946b4952a38f1272e8" kindref="member">SAI_DTEL_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aca6f554ae4d51a3f59a91f27c5009945" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083aca6f554ae4d51a3f59a91f27c5009945" kindref="member">SAI_DTEL_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a1060d73bc70fc44f675a1f91e0f0df78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga4671f4e49001568353b72c0e4e080083a1060d73bc70fc44f675a1f91e0f0df78" kindref="member">SAI_DTEL_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}<sp/><ref refid="group___s_a_i_d_t_e_l_1ga629a0a66b5d0b91b51e67371f6c46fa5" kindref="member">sai_dtel_attr_t</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="group___s_a_i_d_t_e_l_1ga66b72870af834da3552015edfd0b7e12" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_d_t_e_l_1ga66b72870af834da3552015edfd0b7e12" kindref="member">_sai_dtel_queue_report_attr_t</ref></highlight></codeline>
+<codeline lineno="187"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a088f284b19d306a3c65d40ef6f2e60b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a088f284b19d306a3c65d40ef6f2e60b8" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a941eda0022eb080829b97423c6ddc359" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a941eda0022eb080829b97423c6ddc359" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_QUEUE_ID</ref><sp/>=<sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a088f284b19d306a3c65d40ef6f2e60b8" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12ae624db3dbc219579a5f842ed885ba381" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12ae624db3dbc219579a5f842ed885ba381" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_DEPTH_THRESHOLD</ref>,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a925e0dfc9e2b26725ff1667857683674" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a925e0dfc9e2b26725ff1667857683674" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_LATENCY_THRESHOLD</ref>,</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a08138fcd6bbef2ef6905f69c2123aeb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a08138fcd6bbef2ef6905f69c2123aeb5" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_BREACH_QUOTA</ref>,</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a259d6b9e8b2be82a2749cee89463f773" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a259d6b9e8b2be82a2749cee89463f773" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_TAIL_DROP</ref>,</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12ae97dfe17fd3ad4b43bcebb30bc896fea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12ae97dfe17fd3ad4b43bcebb30bc896fea" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12abdea4958b291e8c6dcd9d26cd985f9f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12abdea4958b291e8c6dcd9d26cd985f9f3" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a0b429a8b268d72f5a7f392ea6aac4d26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga66b72870af834da3552015edfd0b7e12a0b429a8b268d72f5a7f392ea6aac4d26" kindref="member">SAI_DTEL_QUEUE_REPORT_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}<sp/><ref refid="group___s_a_i_d_t_e_l_1ga5c594e0ea9d0bdda819999a4ab216970" kindref="member">sai_dtel_queue_report_attr_t</ref>;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270" refid="group___s_a_i_d_t_e_l_1ga86a279445835375bb60ac75b2b4cfcc8" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_d_t_e_l_1ga86a279445835375bb60ac75b2b4cfcc8" kindref="member">_sai_dtel_int_session_attr_t</ref></highlight></codeline>
+<codeline lineno="271"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="275" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8ab0f2c08feca9cf5e319cabf04a4f8e9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8ab0f2c08feca9cf5e319cabf04a4f8e9a" kindref="member">SAI_DTEL_INT_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a6c6325cd4a211826b8cd63f10dcb7131" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a6c6325cd4a211826b8cd63f10dcb7131" kindref="member">SAI_DTEL_INT_SESSION_ATTR_MAX_HOP_COUNT</ref><sp/>=<sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8ab0f2c08feca9cf5e319cabf04a4f8e9a" kindref="member">SAI_DTEL_INT_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a451c3857e553820ddf791836d5c6319d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a451c3857e553820ddf791836d5c6319d" kindref="member">SAI_DTEL_INT_SESSION_ATTR_COLLECT_SWITCH_ID</ref>,</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a81a815f1c8cfbf206fedb774153b0192" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a81a815f1c8cfbf206fedb774153b0192" kindref="member">SAI_DTEL_INT_SESSION_ATTR_COLLECT_SWITCH_PORTS</ref>,</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a72ec34857089a60c6e2e204b3e53c849" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a72ec34857089a60c6e2e204b3e53c849" kindref="member">SAI_DTEL_INT_SESSION_ATTR_COLLECT_INGRESS_TIMESTAMP</ref>,</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a95f7bd6ab487a892d7e4d98626065646" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a95f7bd6ab487a892d7e4d98626065646" kindref="member">SAI_DTEL_INT_SESSION_ATTR_COLLECT_EGRESS_TIMESTAMP</ref>,</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a5d90cbdce7d20dcc45cc713c983f1ad8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a5d90cbdce7d20dcc45cc713c983f1ad8" kindref="member">SAI_DTEL_INT_SESSION_ATTR_COLLECT_QUEUE_INFO</ref>,</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8ab2923de2eb347564cf7739e38d1ff731" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8ab2923de2eb347564cf7739e38d1ff731" kindref="member">SAI_DTEL_INT_SESSION_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a1d55009e76a1e0df2d33dd7b1f4828db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8a1d55009e76a1e0df2d33dd7b1f4828db" kindref="member">SAI_DTEL_INT_SESSION_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359" refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8aca917c15c21c94ed0dd02001539a64fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga86a279445835375bb60ac75b2b4cfcc8aca917c15c21c94ed0dd02001539a64fb" kindref="member">SAI_DTEL_INT_SESSION_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal">}<sp/><ref refid="group___s_a_i_d_t_e_l_1ga1c4b0f1003e03694156d8c46efdc1be8" kindref="member">sai_dtel_int_session_attr_t</ref>;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368" refid="group___s_a_i_d_t_e_l_1gaf034cd591c2c046bab01ac637721c0ce" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_d_t_e_l_1gaf034cd591c2c046bab01ac637721c0ce" kindref="member">_sai_dtel_report_session_attr_t</ref></highlight></codeline>
+<codeline lineno="369"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="373" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceaac1750302f5a7c565cab7319d39cd5bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceaac1750302f5a7c565cab7319d39cd5bc" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea1c4de16954768606c9224cf88428dcab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea1c4de16954768606c9224cf88428dcab" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_SRC_IP</ref><sp/>=<sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceaac1750302f5a7c565cab7319d39cd5bc" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceabaf9e3f3ce8cf0fb749702cc6d3ff3d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceabaf9e3f3ce8cf0fb749702cc6d3ff3d3" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_DST_IP_LIST</ref>,</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceab30eb390d3085c5d258d77ff1bf730cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceab30eb390d3085c5d258d77ff1bf730cf" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_VIRTUAL_ROUTER_ID</ref>,</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea065a4949e7cca687749202f4929f9cbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea065a4949e7cca687749202f4929f9cbd" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_TRUNCATE_SIZE</ref>,</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea177b7a26eb26c0d8e3eac4c291e2750e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea177b7a26eb26c0d8e3eac4c291e2750e" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_UDP_DST_PORT</ref>,</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceadbad940df1654175c8d99ad852d3409d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0ceadbad940df1654175c8d99ad852d3409d" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"></highlight></codeline>
+<codeline lineno="442" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea4f22f62747b4f81cb0b31a88c879116a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea4f22f62747b4f81cb0b31a88c879116a" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"></highlight></codeline>
+<codeline lineno="447" refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea3b7b1b930275ef8390e0d49eb12d52db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ggaf034cd591c2c046bab01ac637721c0cea3b7b1b930275ef8390e0d49eb12d52db" kindref="member">SAI_DTEL_REPORT_SESSION_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal">}<sp/><ref refid="group___s_a_i_d_t_e_l_1gaf51a6be1d13544e805ed2994ac73c49f" kindref="member">sai_dtel_report_session_attr_t</ref>;</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456" refid="group___s_a_i_d_t_e_l_1ga35ae472d10f5076afda1fd9f7fe80498" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_d_t_e_l_1ga35ae472d10f5076afda1fd9f7fe80498" kindref="member">_sai_dtel_event_type_t</ref></highlight></codeline>
+<codeline lineno="457"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="459" refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498aa7144eb4d8b51b1b47ce19b7fbea768e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498aa7144eb4d8b51b1b47ce19b7fbea768e" kindref="member">SAI_DTEL_EVENT_TYPE_FLOW_STATE</ref>,</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="462" refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1a7390aea0d82428b3fda8917bafa736" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1a7390aea0d82428b3fda8917bafa736" kindref="member">SAI_DTEL_EVENT_TYPE_FLOW_REPORT_ALL_PACKETS</ref>,</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"></highlight></codeline>
+<codeline lineno="465" refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a63d35373afc27802d91f05ea3ee77a99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a63d35373afc27802d91f05ea3ee77a99" kindref="member">SAI_DTEL_EVENT_TYPE_FLOW_TCPFLAG</ref>,</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"></highlight></codeline>
+<codeline lineno="468" refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1aaeb26a93beeca13e214c8bb8f2c7a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1aaeb26a93beeca13e214c8bb8f2c7a1" kindref="member">SAI_DTEL_EVENT_TYPE_QUEUE_REPORT_THRESHOLD_BREACH</ref>,</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471" refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a388baaa319b2fe36408cc7150313de99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a388baaa319b2fe36408cc7150313de99" kindref="member">SAI_DTEL_EVENT_TYPE_QUEUE_REPORT_TAIL_DROP</ref>,</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="474" refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1623f96e74cbc6f1c16ec9412cb2c949" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga35ae472d10f5076afda1fd9f7fe80498a1623f96e74cbc6f1c16ec9412cb2c949" kindref="member">SAI_DTEL_EVENT_TYPE_DROP_REPORT</ref>,</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/>SAI_DTEL_EVENT_TYPE_MAX</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="normal">}<sp/><ref refid="group___s_a_i_d_t_e_l_1ga79cc1c4e607018dca957ccd093a15f4e" kindref="member">sai_dtel_event_type_t</ref>;</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"></highlight></codeline>
+<codeline lineno="485" refid="group___s_a_i_d_t_e_l_1ga9e0c2860f0584ad47fd78e7cb0c36019" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_d_t_e_l_1ga9e0c2860f0584ad47fd78e7cb0c36019" kindref="member">_sai_dtel_event_attr_t</ref></highlight></codeline>
+<codeline lineno="486"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="490" refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a545fe70c410a8a437dc87bdb736c65d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a545fe70c410a8a437dc87bdb736c65d5" kindref="member">SAI_DTEL_EVENT_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500" refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019ac4ae8113fcfb0cf4190d43ac4a6248a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019ac4ae8113fcfb0cf4190d43ac4a6248a9" kindref="member">SAI_DTEL_EVENT_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a545fe70c410a8a437dc87bdb736c65d5" kindref="member">SAI_DTEL_EVENT_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight></codeline>
+<codeline lineno="513" refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a5d51630563a9d68f6c2da433ff3f63c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a5d51630563a9d68f6c2da433ff3f63c9" kindref="member">SAI_DTEL_EVENT_ATTR_REPORT_SESSION</ref>,</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="524" refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a2ed8ed49def8026ff22ce453ad630108" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a2ed8ed49def8026ff22ce453ad630108" kindref="member">SAI_DTEL_EVENT_ATTR_DSCP_VALUE</ref>,</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"></highlight></codeline>
+<codeline lineno="529" refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a2814c2be7cb3b0aa5ba4db8412781fc0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a2814c2be7cb3b0aa5ba4db8412781fc0" kindref="member">SAI_DTEL_EVENT_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"></highlight></codeline>
+<codeline lineno="534" refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019ae3958f12ba427d807d6fc070496bb6bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019ae3958f12ba427d807d6fc070496bb6bb" kindref="member">SAI_DTEL_EVENT_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"></highlight></codeline>
+<codeline lineno="539" refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a24bd252ad4ff445d9446b75859369c9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gga9e0c2860f0584ad47fd78e7cb0c36019a24bd252ad4ff445d9446b75859369c9d" kindref="member">SAI_DTEL_EVENT_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="540"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal">}<sp/><ref refid="group___s_a_i_d_t_e_l_1ga8412f7c6ce108f24a04bcc7dc15afc18" kindref="member">sai_dtel_event_attr_t</ref>;</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="555" refid="group___s_a_i_d_t_e_l_1ga759c00aa5292a9caa86195fa18c849cd" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga759c00aa5292a9caa86195fa18c849cd" kindref="member">sai_create_dtel_fn</ref>)(</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*dtel_id,</highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"></highlight></codeline>
+<codeline lineno="570" refid="group___s_a_i_d_t_e_l_1ga341587dcf154201bf86bb0ff8f164e1e" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga341587dcf154201bf86bb0ff8f164e1e" kindref="member">sai_remove_dtel_fn</ref>)(</highlight></codeline>
+<codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_id);</highlight></codeline>
+<codeline lineno="572"><highlight class="normal"></highlight></codeline>
+<codeline lineno="583" refid="group___s_a_i_d_t_e_l_1ga90d53e80d65ecaa300fca939331bd606" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga90d53e80d65ecaa300fca939331bd606" kindref="member">sai_set_dtel_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_id,</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"></highlight></codeline>
+<codeline lineno="598" refid="group___s_a_i_d_t_e_l_1ga5251ecfc9040eb90bb7746eec682c4c4" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga5251ecfc9040eb90bb7746eec682c4c4" kindref="member">sai_get_dtel_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="599"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_id,</highlight></codeline>
+<codeline lineno="600"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="601"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="602"><highlight class="normal"></highlight></codeline>
+<codeline lineno="615" refid="group___s_a_i_d_t_e_l_1ga06f9fa31c641bd82a52bcd821af97fbd" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga06f9fa31c641bd82a52bcd821af97fbd" kindref="member">sai_create_dtel_queue_report_fn</ref>)(</highlight></codeline>
+<codeline lineno="616"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*dtel_queue_report_id,</highlight></codeline>
+<codeline lineno="617"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="619"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="620"><highlight class="normal"></highlight></codeline>
+<codeline lineno="630" refid="group___s_a_i_d_t_e_l_1gac3d231cdfd022130e10b8c7ac99d89b4" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1gac3d231cdfd022130e10b8c7ac99d89b4" kindref="member">sai_remove_dtel_queue_report_fn</ref>)(</highlight></codeline>
+<codeline lineno="631"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_queue_report_id);</highlight></codeline>
+<codeline lineno="632"><highlight class="normal"></highlight></codeline>
+<codeline lineno="643" refid="group___s_a_i_d_t_e_l_1ga408c355ddf64de668f1f825e6480932a" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga408c355ddf64de668f1f825e6480932a" kindref="member">sai_set_dtel_queue_report_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="644"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_queue_report_id,</highlight></codeline>
+<codeline lineno="645"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="646"><highlight class="normal"></highlight></codeline>
+<codeline lineno="658" refid="group___s_a_i_d_t_e_l_1ga668dc6202e1672624c8aee12e2e352b8" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga668dc6202e1672624c8aee12e2e352b8" kindref="member">sai_get_dtel_queue_report_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="659"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_queue_report_id,</highlight></codeline>
+<codeline lineno="660"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="661"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="662"><highlight class="normal"></highlight></codeline>
+<codeline lineno="675" refid="group___s_a_i_d_t_e_l_1ga77337bc010813b0becae2f122edc2b7c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga77337bc010813b0becae2f122edc2b7c" kindref="member">sai_create_dtel_int_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="676"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*dtel_int_session_id,</highlight></codeline>
+<codeline lineno="677"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="678"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="679"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="680"><highlight class="normal"></highlight></codeline>
+<codeline lineno="690" refid="group___s_a_i_d_t_e_l_1ga7b83a37851f59ae5f0c5a102ae28141e" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga7b83a37851f59ae5f0c5a102ae28141e" kindref="member">sai_remove_dtel_int_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="691"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_int_session_id);</highlight></codeline>
+<codeline lineno="692"><highlight class="normal"></highlight></codeline>
+<codeline lineno="703" refid="group___s_a_i_d_t_e_l_1ga19c7defddde13475d630b2c7e740592e" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga19c7defddde13475d630b2c7e740592e" kindref="member">sai_set_dtel_int_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="704"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_int_session_id,</highlight></codeline>
+<codeline lineno="705"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="706"><highlight class="normal"></highlight></codeline>
+<codeline lineno="718" refid="group___s_a_i_d_t_e_l_1gaa23436870b43de96622ba59dd03638d4" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1gaa23436870b43de96622ba59dd03638d4" kindref="member">sai_get_dtel_int_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="719"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_int_session_id,</highlight></codeline>
+<codeline lineno="720"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="721"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="722"><highlight class="normal"></highlight></codeline>
+<codeline lineno="735" refid="group___s_a_i_d_t_e_l_1ga682213be7e680579e3fab0e0bedef46f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga682213be7e680579e3fab0e0bedef46f" kindref="member">sai_create_dtel_report_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="736"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*dtel_report_session_id,</highlight></codeline>
+<codeline lineno="737"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="738"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="739"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="740"><highlight class="normal"></highlight></codeline>
+<codeline lineno="750" refid="group___s_a_i_d_t_e_l_1gac3af1f2e7fd4b631f961b902b1c80ade" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1gac3af1f2e7fd4b631f961b902b1c80ade" kindref="member">sai_remove_dtel_report_session_fn</ref>)(</highlight></codeline>
+<codeline lineno="751"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_report_session_id);</highlight></codeline>
+<codeline lineno="752"><highlight class="normal"></highlight></codeline>
+<codeline lineno="763" refid="group___s_a_i_d_t_e_l_1gadaa55d26ac22a32d15553bbf0cc0fed6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1gadaa55d26ac22a32d15553bbf0cc0fed6" kindref="member">sai_set_dtel_report_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="764"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_report_session_id,</highlight></codeline>
+<codeline lineno="765"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="766"><highlight class="normal"></highlight></codeline>
+<codeline lineno="778" refid="group___s_a_i_d_t_e_l_1ga2452e646b05c6363846a85dc1e1c77b6" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga2452e646b05c6363846a85dc1e1c77b6" kindref="member">sai_get_dtel_report_session_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="779"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_report_session_id,</highlight></codeline>
+<codeline lineno="780"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="781"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="782"><highlight class="normal"></highlight></codeline>
+<codeline lineno="795" refid="group___s_a_i_d_t_e_l_1gab5a30cff56275f6cf7f23f62d1e5fa84" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1gab5a30cff56275f6cf7f23f62d1e5fa84" kindref="member">sai_create_dtel_event_fn</ref>)(</highlight></codeline>
+<codeline lineno="796"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*dtel_event_id,</highlight></codeline>
+<codeline lineno="797"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="798"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="799"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="800"><highlight class="normal"></highlight></codeline>
+<codeline lineno="810" refid="group___s_a_i_d_t_e_l_1ga19a80ab756bc8354dbed3c0f55e43905" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga19a80ab756bc8354dbed3c0f55e43905" kindref="member">sai_remove_dtel_event_fn</ref>)(</highlight></codeline>
+<codeline lineno="811"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_event_id);</highlight></codeline>
+<codeline lineno="812"><highlight class="normal"></highlight></codeline>
+<codeline lineno="823" refid="group___s_a_i_d_t_e_l_1ga523cb43650ba41accce150ac5ba45945" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga523cb43650ba41accce150ac5ba45945" kindref="member">sai_set_dtel_event_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="824"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_event_id,</highlight></codeline>
+<codeline lineno="825"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="826"><highlight class="normal"></highlight></codeline>
+<codeline lineno="838" refid="group___s_a_i_d_t_e_l_1ga697a04bbf08f3a1731dbd8d33abb4ee8" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_d_t_e_l_1ga697a04bbf08f3a1731dbd8d33abb4ee8" kindref="member">sai_get_dtel_event_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="839"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>dtel_event_id,</highlight></codeline>
+<codeline lineno="840"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="841"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="842"><highlight class="normal"></highlight></codeline>
+<codeline lineno="843" refid="struct__sai__dtel__api__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__dtel__api__t" kindref="compound">_sai_dtel_api_t</ref></highlight></codeline>
+<codeline lineno="844"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="845"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga759c00aa5292a9caa86195fa18c849cd" kindref="member">sai_create_dtel_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_dtel;</highlight></codeline>
+<codeline lineno="846"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga341587dcf154201bf86bb0ff8f164e1e" kindref="member">sai_remove_dtel_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_dtel;</highlight></codeline>
+<codeline lineno="847"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga90d53e80d65ecaa300fca939331bd606" kindref="member">sai_set_dtel_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_dtel_attribute;</highlight></codeline>
+<codeline lineno="848"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga5251ecfc9040eb90bb7746eec682c4c4" kindref="member">sai_get_dtel_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_dtel_attribute;</highlight></codeline>
+<codeline lineno="849"><highlight class="normal"></highlight></codeline>
+<codeline lineno="850"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga06f9fa31c641bd82a52bcd821af97fbd" kindref="member">sai_create_dtel_queue_report_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_dtel_queue_report;</highlight></codeline>
+<codeline lineno="851"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gac3d231cdfd022130e10b8c7ac99d89b4" kindref="member">sai_remove_dtel_queue_report_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_dtel_queue_report;</highlight></codeline>
+<codeline lineno="852"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga408c355ddf64de668f1f825e6480932a" kindref="member">sai_set_dtel_queue_report_attribute_fn</ref><sp/><sp/><sp/><sp/>set_dtel_queue_report_attribute;</highlight></codeline>
+<codeline lineno="853"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga668dc6202e1672624c8aee12e2e352b8" kindref="member">sai_get_dtel_queue_report_attribute_fn</ref><sp/><sp/><sp/><sp/>get_dtel_queue_report_attribute;</highlight></codeline>
+<codeline lineno="854"><highlight class="normal"></highlight></codeline>
+<codeline lineno="855"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga77337bc010813b0becae2f122edc2b7c" kindref="member">sai_create_dtel_int_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_dtel_int_session;</highlight></codeline>
+<codeline lineno="856"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga7b83a37851f59ae5f0c5a102ae28141e" kindref="member">sai_remove_dtel_int_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_dtel_int_session;</highlight></codeline>
+<codeline lineno="857"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga19c7defddde13475d630b2c7e740592e" kindref="member">sai_set_dtel_int_session_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>set_dtel_int_session_attribute;</highlight></codeline>
+<codeline lineno="858"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gaa23436870b43de96622ba59dd03638d4" kindref="member">sai_get_dtel_int_session_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/>get_dtel_int_session_attribute;</highlight></codeline>
+<codeline lineno="859"><highlight class="normal"></highlight></codeline>
+<codeline lineno="860"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga682213be7e680579e3fab0e0bedef46f" kindref="member">sai_create_dtel_report_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_dtel_report_session;</highlight></codeline>
+<codeline lineno="861"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gac3af1f2e7fd4b631f961b902b1c80ade" kindref="member">sai_remove_dtel_report_session_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_dtel_report_session;</highlight></codeline>
+<codeline lineno="862"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gadaa55d26ac22a32d15553bbf0cc0fed6" kindref="member">sai_set_dtel_report_session_attribute_fn</ref><sp/><sp/>set_dtel_report_session_attribute;</highlight></codeline>
+<codeline lineno="863"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga2452e646b05c6363846a85dc1e1c77b6" kindref="member">sai_get_dtel_report_session_attribute_fn</ref><sp/><sp/>get_dtel_report_session_attribute;</highlight></codeline>
+<codeline lineno="864"><highlight class="normal"></highlight></codeline>
+<codeline lineno="865"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1gab5a30cff56275f6cf7f23f62d1e5fa84" kindref="member">sai_create_dtel_event_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_dtel_event;</highlight></codeline>
+<codeline lineno="866"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga19a80ab756bc8354dbed3c0f55e43905" kindref="member">sai_remove_dtel_event_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_dtel_event;</highlight></codeline>
+<codeline lineno="867"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga523cb43650ba41accce150ac5ba45945" kindref="member">sai_set_dtel_event_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>set_dtel_event_attribute;</highlight></codeline>
+<codeline lineno="868"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_d_t_e_l_1ga697a04bbf08f3a1731dbd8d33abb4ee8" kindref="member">sai_get_dtel_event_attribute_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>get_dtel_event_attribute;</highlight></codeline>
+<codeline lineno="869"><highlight class="normal"></highlight></codeline>
+<codeline lineno="870"><highlight class="normal">}<sp/><ref refid="struct__sai__dtel__api__t" kindref="compound">sai_dtel_api_t</ref>;</highlight></codeline>
+<codeline lineno="871"><highlight class="normal"></highlight></codeline>
+<codeline lineno="875"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saidtel.h"/>
+  </compounddef>
+</doxygen>

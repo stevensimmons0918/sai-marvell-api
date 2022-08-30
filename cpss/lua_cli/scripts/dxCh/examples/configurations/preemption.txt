@@ -1,0 +1,11 @@
+// TAG:               Preemption
+// Short Description: Reconfigure ports in order to use preemption
+end
+config
+interface range ethernet ${dev}/${port[1]},${port[2]},${port[3]},${port[4]},${port[5]},${port[6]}
+speed 25000 mode KR
+no shutdown
+exit
+exit
+
+

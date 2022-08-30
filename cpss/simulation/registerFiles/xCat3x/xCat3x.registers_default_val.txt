@@ -1,0 +1,11 @@
+;;
+;;      try to keep the file in accending oder by addresses (first column)
+;;
+;;
+;;;;;;Addr=0x  Val=0x Repeat=0d Skip=0x
+;;;;
+;;0x13000000 + 0x1000*s: where s (0-32) represents Serdes
+13000000 00000800       33      1000
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; last line
+ffffffff

@@ -1,0 +1,52 @@
+diff --git a/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c b/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c
+index 2e43ef6eee..543faf5cf3 100644
+--- a/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c
++++ b/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c
+@@ -1083,21 +1083,8 @@ GT_STATUS prvExtDrvPciSysfsConfigure
+ #ifdef USE_PP_SRAM
+ #warning "The option USE_PP_SRAM not supported now"
+ #endif
+-        /* Enable PCIe bus mastering.
+-         * Should be enabled for SDMA
+-         * PP will generate master transactions as End Point
+-         *
+-         * PCI Express Command and Status Register
+-         * 0x40004
+-         * Bit 2: Master Enable. This bit controls the ability of the device
+-         *        to act as a master on the PCI Express port.
+-         *        When set to 0, no memory or I/O read/write request packets
+-         *        are generated to PCI Express.
+-         */
+         if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
+         {
+-            prvNoKm_reg_write_field(R.cnm.start, 0x40004, 0x4, 0x4);
+-
+             prvNoKmDrv_configure_dma(R.switching.start, 0);
+         }
+ 
+@@ -1132,7 +1119,24 @@ GT_STATUS prvExtDrvPciSysfsConfigure
+             }
+         }
+     }
+-
++    if (isSip5 == GT_TRUE)
++    {
++        /* Enable PCIe bus mastering.
++         * Should be enabled for SDMA
++         * PP will generate master transactions as End Point
++         *
++         * PCI Express Command and Status Register
++         * 0x40004
++         * Bit 2: Master Enable. This bit controls the ability of the device
++         *        to act as a master on the PCI Express port.
++         *        When set to 0, no memory or I/O read/write request packets
++         *        are generated to PCI Express.
++         */
++        if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
++        {
++            prvNoKm_reg_write_field(R.cnm.start, 0x40004, 0x4, 0x4);
++        }
++    }
+     /* interrupt */
+     rc = sysfs_pci_readNum(DBDF, "irq", &pciInt);
+     if (rc != GT_OK)

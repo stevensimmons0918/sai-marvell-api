@@ -1,0 +1,66 @@
+// TAG:               vxlan-gpe-ioam, uni, nno;
+// Short Description: set vxlan deconfiguration
+// Description:       de-configure ports 1,2,3,4
+//                    the removed NNI are of type 'vxlan-GPE' with next protocol 'IOAM'
+//                    remove configurations of ports 5,6 that are part of 'transit device' , 
+//                     meaning that ingress and egress traffic with the IOAM-vxlan tunnel.
+
+end
+configure
+
+//////////////  ingress device section  /////////////////
+
+no mac address
+
+interface ethernet ${dev}/${port[1]}
+no uni vid 101 src-mac 00:00:00:24:00:01
+exit
+
+interface ethernet ${dev}/${port[2]}
+no uni vid 102 src-mac 00:00:00:24:00:02
+exit
+
+interface ethernet ${dev}/${port[3]}
+no nni vxlan-gpe-ioam vsi 1000000 local-ip-addr 192.176.10.10  remote-ip-addr 192.176.10.11
+exit
+
+interface ethernet ${dev}/${port[4]}
+no nni vxlan-gpe-ioam vsi 1000000 local-ip-addr 192.176.10.10  remote-ip-addr 192.176.10.12
+exit
+
+// unbind the eports and the 'flood-eports' from the phaThread
+do cpss-api call cpssDxChPhaPortThreadIdSet devNum ${dev} portNum 0x311 enable false phaThreadId 0
+do cpss-api call cpssDxChPhaPortThreadIdSet devNum ${dev} portNum 0x411 enable false phaThreadId 0
+do cpss-api call cpssDxChPhaPortThreadIdSet devNum ${dev} portNum 0x312 enable false phaThreadId 0
+do cpss-api call cpssDxChPhaPortThreadIdSet devNum ${dev} portNum 0x412 enable false phaThreadId 0
+// --
+// undef the info of the phaThread
+no pha thread-id-info device ${dev} thread-id 156
+no pha thread-id-info device ${dev} thread-id 200
+
+//////////////  transit device section  /////////////////
+end
+configure
+
+// restore pvid on port 5
+interface ethernet ${dev}/${port[5]}
+no switchport pvid 
+exit 
+// restore pvid on port 6
+interface ethernet ${dev}/${port[6]}
+no switchport pvid 
+exit 
+
+no interface vlan device ${dev} vid 555
+no interface vlan device ${dev} vid 666
+
+// unbind the eports to the needed phaThread for 'ioam-ipv4-transit-switch'
+do cpss-api call cpssDxChPhaPortThreadIdSet devNum ${dev} portNum 500 enable false phaThreadId 0
+do cpss-api call cpssDxChPhaPortThreadIdSet devNum ${dev} portNum 600 enable false phaThreadId 0
+
+// undef the info of the phaThread
+no pha thread-id-info device ${dev} thread-id 150
+no pha thread-id-info device ${dev} thread-id 160
+
+// needed for ingress and transit
+do clear bridge interface ${dev} all

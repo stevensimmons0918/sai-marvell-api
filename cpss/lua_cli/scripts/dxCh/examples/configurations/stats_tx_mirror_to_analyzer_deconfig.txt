@@ -1,0 +1,18 @@
+// TAG:               Port monitoring
+// Short Description: disable port interface configurion for Tx mirroring.
+end
+configure
+
+//disable configurion on port[2] to be Tx mirrored with port[3] analyzer port
+interface ethernet ${dev}/${port[1]}
+no port monitor ${dev}/${port[3]}
+exit
+
+interface ethernet ${dev}/${port[3]}
+switchport allowed vlan add 1 untagged
+end
+
+//clean up MAC table
+clear mac address-table all device all ethernet ${dev}/${port[1]}
+
+end

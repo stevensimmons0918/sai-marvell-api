@@ -1,0 +1,282 @@
+diff --git a/mainPpDrv/h/cpss/dxCh/dxChxGen/virtualTcam/private/prvCpssDxChVirtualTcamDb.h b/mainPpDrv/h/cpss/dxCh/dxChxGen/virtualTcam/private/prvCpssDxChVirtualTcamDb.h
+index 8dbc93eec1..785c8c1908 100644
+--- a/mainPpDrv/h/cpss/dxCh/dxChxGen/virtualTcam/private/prvCpssDxChVirtualTcamDb.h
++++ b/mainPpDrv/h/cpss/dxCh/dxChxGen/virtualTcam/private/prvCpssDxChVirtualTcamDb.h
+@@ -805,6 +805,12 @@ typedef struct{
+      */
+     GT_BOOL autoResizeDisable;
+ 
++
++    /** @brief debug print flags
++     *  0x00000001 - print autoresize info
++     */
++    GT_U32 debugPrintFlags;
++
+ } PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_VTCAM_CFG_STC;
+ 
+ /* typedef for pointer to structure */
+@@ -3193,8 +3199,7 @@ GT_STATUS  prvCpssDxChVirtualTcamFullTcamPortGroupBmpGet
+ * @internal prvCpssDxChVirtualTcamDbManagerDump function
+ * @endinternal
+ *
+-* @brief   Dump tcam info without ‘vtcam info’
+-*
++* @brief   Dump tcam info without Ò¶tcam infoÒŠ*
+ * @note   APPLICABLE DEVICES:      xCat3; AC5; Lion2; Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
+ * @note   NOT APPLICABLE DEVICES:  None.
+ *
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c
+index 932100c55e..ff83d3b798 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c
+@@ -14828,6 +14828,7 @@ static GT_STATUS vtcamDbSegmentTableVTcamDownSize__LogicalIndexMode
+ *                                      GT_TRUE  - hole from end   of range
+ *                                      GT_FALSE - hole from start of range
+ * @param[in] firstTargetLogicalIndex  - the first logical index to move used indexes to it
++* @param[in] downSizeValue            - amounts of place to compress
+ *
+ * @retval GT_OK                    - on success
+ * @retval GT_OUT_OF_CPU_MEM        - on Cpu memory allocation failed.
+@@ -14836,7 +14837,8 @@ static GT_STATUS vtcamDbSegmentTableVTcamDownSize__LogicalIndexMode
+ static GT_STATUS priorityTreeDownSizeRangeUpdate(
+     IN PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_VTCAM_CFG_STC *vTcamInfoPtr,
+     IN   GT_BOOL                                    fromEndOrStart,
+-    IN  GT_U32                                      firstTargetLogicalIndex
++    IN  GT_U32                                      firstTargetLogicalIndex,
++    IN  GT_U32                                      downSizeValue
+ )
+ {
+     GT_U32  *arrPtr = vTcamInfoPtr->usedRulesBitmapArr;
+@@ -14903,66 +14905,14 @@ static GT_STATUS priorityTreeDownSizeRangeUpdate(
+     currentPriorityEntryPtr = (PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_PRIORITY_ENTRY_STC *)dbEntryPtr;
+     currentLogIndex  = firstTargetLogicalIndex;
+     numOfHolesTotal = 0;
+-    if (fromEndOrStart != GT_FALSE)
+-    {
+-        /* firstTargetLogicalIndex inside first found range */
+-        if (currentLogIndex > currentPriorityEntryPtr->baseLogIndex)
+-        {
+-            boundLogIndex = (currentPriorityEntryPtr->baseLogIndex + currentPriorityEntryPtr->rangeSize);
+-            for (/*no init*/; (currentLogIndex < boundLogIndex); currentLogIndex++)
+-            {
+-                U32_GET_FIELD_IN_ENTRY_MAC(arrPtr, currentLogIndex, 1, value);
+-                if (value == 0)
+-                {
+-                    numOfHolesTotal ++;
+-                }
+-            }
+-            currentPriorityEntryPtr->rangeSize -= numOfHolesTotal;
+-            found = prvCpssAvlPathSeek(
+-                vTcamInfoPtr->priorityIndexTree, avlNextType,
+-                avlTreePath, &dbEntryPtr);
+-            if (found == GT_FALSE)
+-            {
+-                return GT_OK;
+-            }
+-        }
+-    }
+-    else
+-    {
+-        /* firstTargetLogicalIndex inside first found range */
+-        if (currentLogIndex < (currentPriorityEntryPtr->baseLogIndex + currentPriorityEntryPtr->rangeSize))
+-        {
+-            boundLogIndex = currentPriorityEntryPtr->baseLogIndex;
+-            for (/*no init*/; (currentLogIndex >= boundLogIndex); currentLogIndex--)
+-            {
+-                U32_GET_FIELD_IN_ENTRY_MAC(arrPtr, currentLogIndex, 1, value);
+-                if (value == 0)
+-                {
+-                    numOfHolesTotal ++;
+-                }
+-                if (currentLogIndex == 0) break; /* to prtevent using negative values */
+-            }
+-            currentPriorityEntryPtr->rangeSize    -= numOfHolesTotal;
+-            currentPriorityEntryPtr->baseLogIndex += numOfHolesTotal;
+-            found = prvCpssAvlPathSeek(
+-                vTcamInfoPtr->priorityIndexTree, avlNextType,
+-                avlTreePath, &dbEntryPtr);
+-            if (found == GT_FALSE)
+-            {
+-                return GT_OK;
+-            }
+-        }
+-    }
+-
+     while (1)
+     {
+-        currentPriorityEntryPtr = (PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_PRIORITY_ENTRY_STC *)dbEntryPtr;
+-
+         if (fromEndOrStart != GT_FALSE)
+         {
+             boundLogIndex = currentPriorityEntryPtr->baseLogIndex;
+             for (/*no init*/; (currentLogIndex < boundLogIndex); currentLogIndex++)
+             {
++                if (numOfHolesTotal >= downSizeValue) break;
+                 U32_GET_FIELD_IN_ENTRY_MAC(arrPtr, currentLogIndex, 1, value);
+                 if (value == 0)
+                 {
+@@ -14973,13 +14923,14 @@ static GT_STATUS priorityTreeDownSizeRangeUpdate(
+             boundLogIndex = (currentPriorityEntryPtr->baseLogIndex + currentPriorityEntryPtr->rangeSize);
+             for (/*no init*/; (currentLogIndex < boundLogIndex); currentLogIndex++)
+             {
++                if (numOfHolesTotal >= downSizeValue) break;
+                 U32_GET_FIELD_IN_ENTRY_MAC(arrPtr, currentLogIndex, 1, value);
+                 if (value == 0)
+                 {
+                     numOfHolesTotal ++;
+                 }
+             }
+-            currentPriorityEntryPtr->baseLogIndex -= numOfHolesTotal;
++            currentPriorityEntryPtr->baseLogIndex -= numOfHolesPrevPos;
+             currentPriorityEntryPtr->rangeSize -= (numOfHolesTotal - numOfHolesPrevPos);
+         }
+         else
+@@ -14987,6 +14938,7 @@ static GT_STATUS priorityTreeDownSizeRangeUpdate(
+             boundLogIndex = (currentPriorityEntryPtr->baseLogIndex + currentPriorityEntryPtr->rangeSize);
+             for (/*no init*/; (currentLogIndex >= boundLogIndex); currentLogIndex--)
+             {
++                if (numOfHolesTotal >= downSizeValue) break;
+                 U32_GET_FIELD_IN_ENTRY_MAC(arrPtr, currentLogIndex, 1, value);
+                 if (value == 0)
+                 {
+@@ -14998,6 +14950,7 @@ static GT_STATUS priorityTreeDownSizeRangeUpdate(
+             boundLogIndex = currentPriorityEntryPtr->baseLogIndex;
+             for (/*no init*/; (currentLogIndex >= boundLogIndex); currentLogIndex--)
+             {
++                if (numOfHolesTotal >= downSizeValue) break;
+                 U32_GET_FIELD_IN_ENTRY_MAC(arrPtr, currentLogIndex, 1, value);
+                 if (value == 0)
+                 {
+@@ -15015,8 +14968,9 @@ static GT_STATUS priorityTreeDownSizeRangeUpdate(
+         {
+             return GT_OK;
+         }
++        currentPriorityEntryPtr = (PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_PRIORITY_ENTRY_STC *)dbEntryPtr;
+     }
+-    /* return from loop upper - here not needed */
++    return GT_OK;
+ }
+ 
+ /**
+@@ -15437,11 +15391,29 @@ static GT_STATUS vtcamDbSegmentTableVTcamDownSize__PriorityMode
+ 
+     if (numOfHwMoves != 0)
+     {
++        if (vTcamInfoPtr->debugPrintFlags & 1)
++        {
++            cpssOsPrintf(
++                "priorityTreeDownSizeRangeUpdate fromEndOrStart %d targetIndex %d downSizeValue %d\n",
++                fromEndOrStart, targetIndex, downSizeValue);
++            cpssOsPrintf("Priority Tree before call:\n");
++            prvCpssDxChVirtualTcamDbVTcamDumpByField(
++                vTcamMngId, vTcamId, "usedRulesBitmapArr");
++            prvCpssDxChVirtualTcamDbVTcamDumpByField(
++                vTcamMngId, vTcamId, "priorityIndexTree");
++        }
+         /* update the priority ranges */
+         rc = priorityTreeDownSizeRangeUpdate(
+             vTcamInfoPtr,
+             fromEndOrStart,
+-            targetIndex);
++            targetIndex,
++            downSizeValue);
++        if (vTcamInfoPtr->debugPrintFlags & 1)
++        {
++            cpssOsPrintf("Priority Tree after call:\n");
++            prvCpssDxChVirtualTcamDbVTcamDumpByField(
++                vTcamMngId, vTcamId, "priorityIndexTree");
++        }
+         if(rc != GT_OK)
+         {
+             return rc;
+@@ -15500,9 +15472,15 @@ static GT_STATUS vtcamDbSegmentTableVTcamDownSize__PriorityMode
+         rc = priorityTreeDownSizeRangeUpdate_InPlace(
+             vTcamInfoPtr,
+             numOfDetachedRules);
+-        if(rc != GT_OK)
++        if (vTcamInfoPtr->debugPrintFlags & 1)
+         {
+-            return rc;
++            cpssOsPrintf("Priority Tree after priorityTreeDownSizeRangeUpdate_InPlace:\n");
++            prvCpssDxChVirtualTcamDbVTcamDumpByField(
++                vTcamMngId, vTcamId, "priorityIndexTree");
++            if(rc != GT_OK)
++            {
++                return rc;
++            }
+         }
+ 
+         /* update vTcamInfoPtr->usedRulesBitmapArr[] */
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcamDebug.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcamDebug.c
+index e06e8743fb..da6a048b33 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcamDebug.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcamDebug.c
+@@ -2093,7 +2093,7 @@ GT_STATUS prvCpssDxChVirtualTcamDbVerifyAllTrees
+ * @internal prvCpssDxChVirtualTcamDbManagerDump function
+ * @endinternal
+ *
+-* @brief   Dump tcam info without ‘vtcam info’
++* @brief   Dump tcam info without â€˜vtcam infoâ€™
+ *
+ * @note   APPLICABLE DEVICES:      xCat3; AC5; Lion2; Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
+ * @note   NOT APPLICABLE DEVICES:  None.
+@@ -3391,6 +3391,59 @@ GT_VOID prvCpssDxChVirtualTcamDbVTcamDumpByField
+     prvCpssDxChVirtualTcamDbVTcamDumpByFieldByPtr(vTcamMngPtr, vTcamId, fieldNamePtr);
+ }
+ 
++/**
++* @internal prvCpssDxChVirtualTcamDebugPrintFlagsSet function
++* @endinternal
++*
++* @brief   Set vTCAM Debug print flags.
++*
++* @note   APPLICABLE DEVICES:      xCat3; AC5; Lion2; Bobcat2; Caelum; Aldrin; AC3X; Bobcat3; Aldrin2; Falcon; AC5P; AC5X; Harrier; Ironman.
++* @note   NOT APPLICABLE DEVICES:  None.
++*
++* @param[in] vTcamMngId               - Virtual TCAM Manager Id
++*                                      (APPLICABLE RANGES: 0..31)
++* @param[in] vTcamId                  - unique Id of  Virtual TCAM
++* @param[in] debugPrintFlags          - debug Print Flags - see description of field in
++*                                       PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_VTCAM_CFG_STC.debugPrintFlags
++*/
++GT_VOID prvCpssDxChVirtualTcamDebugPrintFlagsSet
++(
++    IN  GT_U32                                      vTcamMngId,
++    IN  GT_U32                                      vTcamId,
++    IN  GT_U32                                      debugPrintFlags
++)
++{
++    PRV_CPSS_DXCH_VIRTUAL_TCAM_MNG_STC*           vTcamMngPtr; /* pointer to vTcam Manager */
++    PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_VTCAM_CFG_STC*  vTcamCfgPtr; /* pointer to vTcam         */
++
++    vTcamMngPtr = prvCpssDxChVirtualTcamDbVTcamMngGet(vTcamMngId);
++    if (vTcamMngPtr == NULL)
++    {
++        cpssOsPrintf("vTcamMngPtr is NULL, vTcamMngId is %d\n", vTcamMngId);
++        return;
++    }
++
++    /* get's a pointer to the DB of the vTcam */
++    if (vTcamMngPtr->vTcamCfgPtrArr == NULL)
++    {
++        cpssOsPrintf("vTcamCfgPtrArr is NULL (all array not allocated)\n");
++        return;
++    }
++    if(vTcamId >= vTcamMngPtr->vTcamCfgPtrArrSize)
++    {
++        cpssOsPrintf("vTcamId out of range\n");
++        return;
++    }
++    vTcamCfgPtr = vTcamMngPtr->vTcamCfgPtrArr[vTcamId];
++    if (vTcamCfgPtr == NULL)
++    {
++        cpssOsPrintf("vTcamCfgPtr is NULL\n");
++        return;
++    }
++
++    vTcamCfgPtr->debugPrintFlags = debugPrintFlags;
++}
++
+ /**
+ * @internal prvCpssDxChVirtualTcamDbVTcamDumpFullTcamPriorityModeData function
+ * @endinternal

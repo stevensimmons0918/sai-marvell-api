@@ -1,0 +1,78 @@
+From 0039bc60aa4d80b9d2271c051b7cb7a860501b17 Mon Sep 17 00:00:00 2001
+From: Igor Shafir <sigor@marvell.com>
+Date: Sat, 22 Jan 2022 22:42:46 +0200
+Subject: [PATCH] bulk fix cpss-14467
+
+Change-Id: Iae618e846ca58f26f831da465216fcc83be26fef
+---
+ .../lpm/ram/prvCpssDxChSip6LpmRamMng.c        | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
+
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c
+index 45ee658051..e02a9641cd 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c
+@@ -5764,8 +5764,7 @@ static GT_STATUS lpmFalconCalcNeededMemory
+                     if (copyOfCurrentBucketPtr->hwGroupOffsetHandle[0] != 0)
+                     {
+                         if ( (PRV_CPSS_DXCH_LPM_RAM_GET_FALCON_LPM_SIZE_FROM_DMM_MAC(copyOfCurrentBucketPtr->hwGroupOffsetHandle[0]) != grOfNodesSizes[0]) ||
+-                            ((PRV_CPSS_DXCH_LPM_RAM_GET_FALCON_LPM_SIZE_FROM_DMM_MAC(copyOfCurrentBucketPtr->hwGroupOffsetHandle[0]) == grOfNodesSizes[0]) &&
+-                              ( (splitMethod != PRV_CPSS_DXCH_LPM_RAM_SPLIT_LAST_E) && (splitMethod != PRV_CPSS_DXCH_LPM_RAM_SPLIT_OVERWRITE_E))))
++                             (numOfBucketRanges != currNumOfBucketRanges) || ( planedNewBucket[octetIndex] == GT_TRUE))
+                         {
+                             allocIsNeeded = GT_TRUE;
+                             (*neededMemList)->neededMemoryBlocksSizes[0] = grOfNodesSizes[0];
+@@ -5870,8 +5869,7 @@ static GT_STATUS lpmFalconCalcNeededMemory
+                                      CPSS_LOG_ERROR_AND_RETURN_MAC(GT_FAIL, "Error: unexpected copyOfCurrentBucketPtr->hwGroupOffsetHandle[i]=0\n");
+                                 }
+                                 if ( (PRV_CPSS_DXCH_LPM_RAM_GET_FALCON_LPM_SIZE_FROM_DMM_MAC(copyOfCurrentBucketPtr->hwGroupOffsetHandle[i]) != grOfNodesSizes[i]) ||
+-                                    ((PRV_CPSS_DXCH_LPM_RAM_GET_FALCON_LPM_SIZE_FROM_DMM_MAC(copyOfCurrentBucketPtr->hwGroupOffsetHandle[i]) == grOfNodesSizes[i]) &&
+-                                     ( (splitMethod != PRV_CPSS_DXCH_LPM_RAM_SPLIT_LAST_E) && (splitMethod != PRV_CPSS_DXCH_LPM_RAM_SPLIT_OVERWRITE_E))))
++                                     (numOfBucketRanges != currNumOfBucketRanges) || ( planedNewBucket[octetIndex] == GT_TRUE) )
+                                 {
+                                     allocIsNeeded = GT_TRUE;
+                                     allocIsNeededPerGroup[i] = GT_TRUE;
+@@ -6572,6 +6570,7 @@ GT_STATUS prvCpssDxChLpmSip6RamMngEntryDelete
+     GT_U8                                                 *currAddrByte;
+     GT_U32                                                currPrefix;
+     CPSS_DXCH_LPM_NEXT_POINTER_TYPE_ENT                   **currBucketPtrType;
++    CPSS_DXCH_LPM_NEXT_POINTER_TYPE_ENT                   upperLevelRangePtrType = CPSS_DXCH_LPM_ROUTE_ENTRY_NEXT_PTR_TYPE_E;
+     GT_BOOL                                               isDestTreeRootBucket = GT_FALSE;
+     GT_BOOL                                               isSrcTreeRootBucket = GT_FALSE;
+     GT_BOOL                                               regularCompressedConversion = GT_FALSE;
+@@ -6836,6 +6835,11 @@ GT_STATUS prvCpssDxChLpmSip6RamMngEntryDelete
+                                     resizeGroup = GT_TRUE;
+                                     break;
+                                 }
++                                if ( upperLevelRangePtrType !=  (*pRange)->pointerType)
++                                {
++                                    resizeGroup = GT_TRUE;
++                                    break;
++                                }
+                             }
+
+                         }
+@@ -7100,6 +7104,11 @@ GT_STATUS prvCpssDxChLpmSip6RamMngEntryDelete
+                                         resizeGroup = GT_TRUE;
+                                         break;
+                                     }
++                                    if ( upperLevelRangePtrType !=  (*pRange)->pointerType)
++                                    {
++                                        resizeGroup = GT_TRUE;
++                                        break;
++                                    }
+                                 }
+                             }
+
+@@ -7404,7 +7413,7 @@ GT_STATUS prvCpssDxChLpmSip6RamMngEntryDelete
+         parentUpdateParams->isRootNode = isDestTreeRootBucket;
+         parentUpdateParams->shadowPtr = shadowPtr;
+         parentUpdateParams->level = level;
+-
++        upperLevelRangePtrType = **currBucketPtrType;
+         /* Write the prepared shadow bucket to the device's RAM. */
+         retVal = updateMirrorGroupOfNodes((*currLpmPtr)->nextBucket,bucketUpdateMode,
+                                           isDestTreeRootBucket,isSrcTreeRootBucket,rootBucketUpdateState,
+-- 
+2.22.0
+

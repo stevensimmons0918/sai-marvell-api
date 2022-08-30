@@ -1,0 +1,18 @@
+// TAG:               Port monitoring
+// Short Description: disable port configuration for Tx mirroring.
+//                    restore analyzer to stop truncate  
+end
+configure
+
+// call CPSS to disable the analyzer truncation (max length of 128B)
+do cpss-api call cpssDxChMirrorToAnalyzerTruncateSet devNum ${dev} index 2 truncate false
+
+//disable configurion on port[2] to be Tx mirrored with analyzer port[3]
+interface ethernet ${dev}/${port[2]}
+no port monitor ${dev}/${port[3]}
+exit
+
+interface ethernet ${dev}/${port[3]}
+switchport allowed vlan add 1 untagged
+end
+

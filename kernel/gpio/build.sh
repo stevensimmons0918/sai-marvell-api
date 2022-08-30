@@ -1,0 +1,1 @@
+make -C /home/marvell/SONIC-M0-MASTER-APR17-INBAND/sonic-buildimage/src/sonic-linux-kernel/linux-4.19.67/debian/build/build_armhf_none_armmp/ M=/home/arheneus/SONIC_ARM64/PCIE_GPIO CROSS_COMPILE=/sw-tools/armv7-marvell-linux-gnueabi-hard-4.6.4_64K_i686_20160226/bin/arm-marvell-linux-gnueabi- ARCH=arm  modules

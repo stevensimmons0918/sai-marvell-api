@@ -1,0 +1,14 @@
+//TAG:               latency-monitor; delete; pcl-ID; redirect; access-list; service-acl
+//Short Description: Configure latency monitoring test IPCL-triggering
+//Description:       Configure latency monitoring test IPCL-triggering
+end
+configure
+access-list device ${dev} pcl-ID 11
+rule-id ${@@lmu_env.ruleId} action permit mac-destination ${@@lmu_env.mac} FF:FF:FF:FF:FF:FF latency-monitoring-profile ${@@lmu_env.latencyProfile}
+exit
+interface ethernet ${dev}/${port[1]}
+service-acl pcl-ID 11 lookup 0
+exit
+interface ethernet ${dev}/${@@lmu_env.port2}
+latency-monitor enable
+end

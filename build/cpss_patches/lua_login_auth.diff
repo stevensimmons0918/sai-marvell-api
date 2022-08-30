@@ -1,0 +1,58 @@
+diff --git a/cpssEnabler/mainCmd/h/cmdShell/os/cmdStreamImpl.h b/cpssEnabler/mainCmd/h/cmdShell/os/cmdStreamImpl.h
+index 82f2e92b1f..cf939a56c8 100755
+--- a/cpssEnabler/mainCmd/h/cmdShell/os/cmdStreamImpl.h
++++ b/cpssEnabler/mainCmd/h/cmdShell/os/cmdStreamImpl.h
+@@ -240,6 +240,17 @@ GT_STATUS cmdStreamSocketServiceSetPort(
+     IN  GT_U16     portNumber
+ );
+ 
++/**
++* @internal cmdStreamSocketServiceCloseAll function
++* @endinternal
++*
++* @brief   Cleanup: close all open service
++*
++*/
++GT_STATUS cmdStreamSocketServiceCloseAll(
++        void
++);
++
+ /*******************************************************************************
+ * cmdStreamSocketServiceListenerTask
+ *
+diff --git a/cpssEnabler/mainCmd/src/cmdShell/os/generic/cmdStreamSocket.c b/cpssEnabler/mainCmd/src/cmdShell/os/generic/cmdStreamSocket.c
+index 4e3fa0534b..3e50f30219 100644
+--- a/cpssEnabler/mainCmd/src/cmdShell/os/generic/cmdStreamSocket.c
++++ b/cpssEnabler/mainCmd/src/cmdShell/os/generic/cmdStreamSocket.c
+@@ -689,3 +689,30 @@ GT_STATUS cmdStreamSocketServiceSetPort(
+     return GT_OK;
+ }
+ 
++/**
++* @internal cmdStreamSocketServiceCloseAll function
++* @endinternal
++*
++* @brief   Cleanup: close all open service
++*
++*/
++GT_STATUS cmdStreamSocketServiceCloseAll(
++        void
++)
++{
++    int i;
++    SERVICE_PARAMS_STC *s;
++    for (i = 0; i < SERVICES_MAX; i++)
++    {
++        s = &services[i];
++        if (s->serviceName)
++        {
++            cmdOsSocketTcpDestroy(s->masterSocket); /* listen() may be interrupted */
++            cmdOsMemSet(s, 0, sizeof(SERVICE_PARAMS_STC));
++            numServices--;
++        }
++    }
++
++    return GT_OK;
++}
++
+ 

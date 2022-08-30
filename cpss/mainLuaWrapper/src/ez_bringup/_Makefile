@@ -1,0 +1,42 @@
+# $(warning "Started")
+
+
+#List of subfolders to include in build
+MODULES :=
+
+#List of files to include in list
+FILES := \
+    wraplPdlBtn.c \
+    wraplPdlSensor.c \
+    wraplPdlLed.c \
+    wraplPdlFan.c \
+    wraplPdlOob.c \
+    wraplPdlInterface.c \
+    wraplPdlCpu.c \
+    wraplPdlPhy.c \
+    wraplPdlDebug.c \
+    wraplPdlInit.c \
+    wraplPdlSerdes.c \
+    wraplPdlPp.c \
+    wraplPdlInbandPorts.c \
+    wraplPdlPower.c \
+    wraplPdlB2b.c
+
+ifeq ($(CONFIG_INCLUDE_MPD), y)
+    FILES +=           \
+    wraplMpd.c
+
+endif
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINLUAWRAPPER_SRC += $(patsubst %,$(CWD)%,$(FILES))
+MAINLUAWRAPPER_LUA_STANDALONE_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))
+

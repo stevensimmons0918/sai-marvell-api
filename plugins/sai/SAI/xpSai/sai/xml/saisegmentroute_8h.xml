@@ -1,0 +1,392 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saisegmentroute_8h" kind="file" language="C++">
+    <compoundname>saisegmentroute.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="316">
+        <label>stdbool.h</label>
+      </node>
+      <node id="315">
+        <label>stdint.h</label>
+      </node>
+      <node id="313">
+        <label>inc/saisegmentroute.h</label>
+        <link refid="saisegmentroute.h"/>
+        <childnode refid="314" relation="include">
+        </childnode>
+      </node>
+      <node id="317">
+        <label>sys/types.h</label>
+      </node>
+      <node id="314">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="318">
+        <label>inc/saisegmentroute.h</label>
+        <link refid="saisegmentroute.h"/>
+        <childnode refid="319" relation="include">
+        </childnode>
+      </node>
+      <node id="319">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__segmentroute__api__t" prot="public">_sai_segmentroute_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga9e897fb1139bc9b1601c29ef300c3faf" prot="public" static="no">
+        <name>_sai_segmentroute_sidlist_type_t</name>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafaeab9d57770f8b0a806a9efeef6e68e31" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_TYPE_INSERT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insertion of Segment Route Policy </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafa210804b88b20fb8188d5a6c912e697d0" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_TYPE_ENCAPS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Encapsulation in a Segment Route Policy </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafab8a30d9ecfa3df5ab16e138ce97e6641" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_TYPE_CUSTOM_RANGE_BASE</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining Transit or Source types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="40" column="1" bodyfile="inc/saisegmentroute.h" bodystart="39" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga3cbfeccca0733ccfc85ec0903f93a41b" prot="public" static="no">
+        <name>_sai_segmentroute_sidlist_attr_t</name>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba1e633265f16aaa52a8f500e7590d7074" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_ATTR_START</name>
+          <initializer>= 0x00000000</initializer>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac7ebde8f8aea0509dd0f80c25aad1d53" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_ATTR_TYPE</name>
+          <initializer>= SAI_SEGMENTROUTE_SIDLIST_ATTR_START</initializer>
+          <briefdescription>
+<para>Transit or Source Type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_segmentroute_sidlist_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba792a320232c34c07913c525f74ae4378" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_ATTR_TLV_LIST</name>
+          <briefdescription>
+<para>List of Type Length Values for Source. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_tlv_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac3fc8fc738a988951f2b94e74c71d092" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_ATTR_SEGMENT_LIST</name>
+          <briefdescription>
+<para>List of Segments for Source / Transit. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_segment_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          CREATE_AND_SET </para></simplesect>
+<simplesect kind="par"><title>Default value:</title><para> @@default        empty </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac985a9ef17a53a618038e9ee62b2af03" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba0cdd24d6c6b3aca86c652a5f6ad472a6" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41baaadb5d40d8dabb103fd7b17c185d7743" prot="public">
+          <name>SAI_SEGMENTROUTE_SIDLIST_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Attribute data for Segment Route Segment ID List Entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="56" column="1" bodyfile="inc/saisegmentroute.h" bodystart="55" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga129be4aac8c7889627cd32229cfd1332" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga9e897fb1139bc9b1601c29ef300c3faf" kindref="member">_sai_segmentroute_sidlist_type_t</ref></type>
+        <definition>typedef enum _sai_segmentroute_sidlist_type_t  sai_segmentroute_sidlist_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_segmentroute_sidlist_type_t</name>
+        <briefdescription>
+<para>Enum defining Transit or Source types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="50" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga932d17365ee1f36cbc9150c0d5483499" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga3cbfeccca0733ccfc85ec0903f93a41b" kindref="member">_sai_segmentroute_sidlist_attr_t</ref></type>
+        <definition>typedef enum _sai_segmentroute_sidlist_attr_t  sai_segmentroute_sidlist_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_segmentroute_sidlist_attr_t</name>
+        <briefdescription>
+<para>Attribute data for Segment Route Segment ID List Entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="98" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga809223c3853c186c1fbb85072174975e" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_segmentroute_sidlist_fn) (_Out_ sai_object_id_t *segmentroute_sidlist_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *segmentroute_sidlist_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_segmentroute_sidlist_fn</name>
+        <briefdescription>
+<para>Create Segment ID List. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">segmentroute_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="110" column="1" bodyfile="inc/saisegmentroute.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga2100da05e23f1aee43ff94e8bbcf35ab" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_segmentroute_sidlist_fn) (_In_ sai_object_id_t segmentroute_sidlist_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t segmentroute_sidlist_id)</argsstring>
+        <name>sai_remove_segmentroute_sidlist_fn</name>
+        <briefdescription>
+<para>Remove Segment ID List. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">segmentroute_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="123" column="1" bodyfile="inc/saisegmentroute.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga94c4662309e02c0258105215c8046306" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_segmentroute_sidlist_attribute_fn) (_In_ sai_object_id_t segmentroute_sidlist_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t segmentroute_sidlist_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_segmentroute_sidlist_attribute_fn</name>
+        <briefdescription>
+<para>Set Segment ID List attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">segmentroute_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="134" column="1" bodyfile="inc/saisegmentroute.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga0a20ca91c30cd9a6d11aab3f08661926" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_segmentroute_sidlist_attribute_fn) (_In_ sai_object_id_t segmentroute_sidlist_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t segmentroute_sidlist_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_segmentroute_sidlist_attribute_fn</name>
+        <briefdescription>
+<para>Get Segment ID List attribute value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">segmentroute_sidlist_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Segment ID List ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success Failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="147" column="1" bodyfile="inc/saisegmentroute.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga5e4401196efb1a3757dbc3339139ec7d" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__segmentroute__api__t" kindref="compound">_sai_segmentroute_api_t</ref></type>
+        <definition>typedef struct _sai_segmentroute_api_t  sai_segmentroute_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_segmentroute_api_t</name>
+        <briefdescription>
+<para>Segment Route methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saisegmentroute.h" line="163" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI Segment Route Entry interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2017 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAISEGMENTROUTE_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAISEGMENTROUTE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga9e897fb1139bc9b1601c29ef300c3faf" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga9e897fb1139bc9b1601c29ef300c3faf" kindref="member">_sai_segmentroute_sidlist_type_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafaeab9d57770f8b0a806a9efeef6e68e31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafaeab9d57770f8b0a806a9efeef6e68e31" kindref="member">SAI_SEGMENTROUTE_SIDLIST_TYPE_INSERT</ref>,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafa210804b88b20fb8188d5a6c912e697d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafa210804b88b20fb8188d5a6c912e697d0" kindref="member">SAI_SEGMENTROUTE_SIDLIST_TYPE_ENCAPS</ref>,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafab8a30d9ecfa3df5ab16e138ce97e6641" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga9e897fb1139bc9b1601c29ef300c3fafab8a30d9ecfa3df5ab16e138ce97e6641" kindref="member">SAI_SEGMENTROUTE_SIDLIST_TYPE_CUSTOM_RANGE_BASE</ref><sp/>=<sp/>0x10000000</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga129be4aac8c7889627cd32229cfd1332" kindref="member">sai_segmentroute_sidlist_type_t</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga3cbfeccca0733ccfc85ec0903f93a41b" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga3cbfeccca0733ccfc85ec0903f93a41b" kindref="member">_sai_segmentroute_sidlist_attr_t</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba1e633265f16aaa52a8f500e7590d7074" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba1e633265f16aaa52a8f500e7590d7074" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_START</ref><sp/>=<sp/>0x00000000,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac7ebde8f8aea0509dd0f80c25aad1d53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac7ebde8f8aea0509dd0f80c25aad1d53" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba1e633265f16aaa52a8f500e7590d7074" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba792a320232c34c07913c525f74ae4378" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba792a320232c34c07913c525f74ae4378" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_TLV_LIST</ref>,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac3fc8fc738a988951f2b94e74c71d092" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac3fc8fc738a988951f2b94e74c71d092" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_SEGMENT_LIST</ref>,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac985a9ef17a53a618038e9ee62b2af03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41bac985a9ef17a53a618038e9ee62b2af03" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba0cdd24d6c6b3aca86c652a5f6ad472a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41ba0cdd24d6c6b3aca86c652a5f6ad472a6" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41baaadb5d40d8dabb103fd7b17c185d7743" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1gga3cbfeccca0733ccfc85ec0903f93a41baaadb5d40d8dabb103fd7b17c185d7743" kindref="member">SAI_SEGMENTROUTE_SIDLIST_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga932d17365ee1f36cbc9150c0d5483499" kindref="member">sai_segmentroute_sidlist_attr_t</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga809223c3853c186c1fbb85072174975e" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga809223c3853c186c1fbb85072174975e" kindref="member">sai_create_segmentroute_sidlist_fn</ref>)(</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*segmentroute_sidlist_id,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga2100da05e23f1aee43ff94e8bbcf35ab" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga2100da05e23f1aee43ff94e8bbcf35ab" kindref="member">sai_remove_segmentroute_sidlist_fn</ref>)(</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>segmentroute_sidlist_id);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga94c4662309e02c0258105215c8046306" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga94c4662309e02c0258105215c8046306" kindref="member">sai_set_segmentroute_sidlist_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>segmentroute_sidlist_id,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga0a20ca91c30cd9a6d11aab3f08661926" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga0a20ca91c30cd9a6d11aab3f08661926" kindref="member">sai_get_segmentroute_sidlist_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>segmentroute_sidlist_id,</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="struct__sai__segmentroute__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__segmentroute__api__t" kindref="compound">_sai_segmentroute_api_t</ref></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga809223c3853c186c1fbb85072174975e" kindref="member">sai_create_segmentroute_sidlist_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_segmentroute_sidlist;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga2100da05e23f1aee43ff94e8bbcf35ab" kindref="member">sai_remove_segmentroute_sidlist_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_segmentroute_sidlist;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga94c4662309e02c0258105215c8046306" kindref="member">sai_set_segmentroute_sidlist_attribute_fn</ref><sp/>set_segmentroute_sidlist_attribute;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga0a20ca91c30cd9a6d11aab3f08661926" kindref="member">sai_get_segmentroute_sidlist_attribute_fn</ref><sp/>get_segmentroute_sidlist_attribute;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_t_y_p_e_s_1ga4610f346b1ad7a6272ba9d9bf933da94" kindref="member">sai_bulk_object_create_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_segmentroute_sidlists;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_t_y_p_e_s_1ga4bbefb281d59e3e5c25ad8b9868d35c7" kindref="member">sai_bulk_object_remove_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_segmentroute_sidlists;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}<sp/><ref refid="group___s_a_i_s_e_g_m_e_n_t_r_o_u_t_e_1ga5e4401196efb1a3757dbc3339139ec7d" kindref="member">sai_segmentroute_api_t</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saisegmentroute.h"/>
+  </compounddef>
+</doxygen>

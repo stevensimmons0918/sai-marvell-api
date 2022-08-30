@@ -1,0 +1,21 @@
+// TAG:               restore; PIP; Pre-Ingress Prioritization ; sip6 additions
+// Short Description: restore additional sip6 Configuration for device with PIP support.
+// Description:       restore additional sip6 Configuration for device with PIP support.
+//
+end
+//
+// enter the config context
+config
+//
+//Global restore 2 (out of 4) 'latency-sensitive' ethertypes
+// index 0
+no pip latency-sensitive-ethertype "pfc"
+// index 1
+no pip latency-sensitive-ethertype "qcn"
+//thresholds
+//restore 'max' value for the threshold for latency-sensitive
+pip threshold-types device ${dev} type latency-sensitive threshold 65535
+//
+// restore TPID global  - for ingress , egress
+tpid device ${dev} direction ingress index 3 etherType 0x8100  tag-type 4-bytes-tag
+tpid device ${dev} direction egress  index 3 etherType 0x8100  tag-type 4-bytes-tag 

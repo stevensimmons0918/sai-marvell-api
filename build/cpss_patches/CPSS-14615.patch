@@ -1,0 +1,29 @@
+From cbbd3e794d22d58e216cc1fcf7c8e37cdf670f16 Mon Sep 17 00:00:00 2001
+From: Radharani Danda <rdanda@marvell.com>
+Date: Wed, 16 Feb 2022 10:24:42 +0530
+Subject: [PATCH] temp_patch
+
+---
+ .../dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c     | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c
+index 45ee658051..6ce9f8e002 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/private/lpm/ram/prvCpssDxChSip6LpmRamMng.c
+@@ -4403,6 +4403,12 @@ GT_STATUS prvCpssDxChLpmSip6RamMngInsert
+ 
+                         currBucketPtrType[1] = &((*pRange)->pointerType);
+ 
++                        if ((currPrefix <= PRV_CPSS_DXCH_LPM_RAM_MAX_LEVEL_LENGTH_CNS)&&
++                            (insertMode == PRV_CPSS_DXCH_LPM_RAM_TRIE_INSERT_SDW_MEM_MODE_E))
++                        {
++                            (*pRange)->updateRangeInHw = GT_TRUE;
++                        }
++
+                         /* indicate we need to proceed down the bucket trie*/
+                         goDown = GT_TRUE;
+ 
+-- 
+2.22.0
+

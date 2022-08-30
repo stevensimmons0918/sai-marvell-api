@@ -1,0 +1,36 @@
+# $(warning "Started")
+#LIB_NAME = cpssDxChMacSec.lib
+
+
+
+#List of subfolders to include in build
+MODULES := \
+  um 
+ 
+
+#List of files to include in list
+FILES := \
+ adapter_debug.c \
+ adapter_init_warmboot.c \
+ adapter_lock_internal.c \
+ adapter_secy.c \
+ adapter_secy_ext.c \
+ adapter_secy_sa.c \
+ adapter_secy_stats.c \
+ adapter_secy_support.c \
+ adapter_secy_warmboot.c \
+ adapter_warmboot.c \
+ adapter_warmboot_support.c 
+ 
+
+
+CWD := $(dir $(lastword $(MAKEFILE_LIST)))
+
+#Add relative path to original Makefile, to each file in the list
+MAINPPDRV_SRC += $(patsubst %,$(CWD)%,$(FILES))
+
+#Enable this line to add include path of this folder
+#CFLAGS := $(CFLAGS) -I$(CWD)
+
+#Recursively go into list of subfolders
+include $(patsubst %,$(CWD)%/$(MAKEFILE),$(MODULES))

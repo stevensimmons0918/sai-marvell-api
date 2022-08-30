@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__segment__list__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_segment_list_t</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__segment__list__t_1a8c9d983e5b51f45eec4cb8cfd6c191eb" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t _sai_segment_list_t::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of IPv6 Segment Route entries </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="907" column="1" bodyfile="inc/saitypes.h" bodystart="907" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__segment__list__t_1a9a7fb87a43267aed933a1b4786a35f5a" prot="public" static="no" mutable="no">
+        <type>sai_ip6_t *</type>
+        <definition>sai_ip6_t* _sai_segment_list_t::list</definition>
+        <argsstring></argsstring>
+        <name>list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Segment list </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="910" column="1" bodyfile="inc/saitypes.h" bodystart="910" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>List of Segment Routing segment entries. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/saitypes.h" line="905" column="1" bodyfile="inc/saitypes.h" bodystart="904" bodyend="911"/>
+    <listofallmembers>
+      <member refid="struct__sai__segment__list__t_1a8c9d983e5b51f45eec4cb8cfd6c191eb" prot="public" virt="non-virtual"><scope>_sai_segment_list_t</scope><name>count</name></member>
+      <member refid="struct__sai__segment__list__t_1a9a7fb87a43267aed933a1b4786a35f5a" prot="public" virt="non-virtual"><scope>_sai_segment_list_t</scope><name>list</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

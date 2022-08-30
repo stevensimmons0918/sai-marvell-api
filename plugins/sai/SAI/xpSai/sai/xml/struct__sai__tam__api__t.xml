@@ -1,0 +1,964 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__tam__api__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_tam_api_t</compoundname>
+    <includes refid="saitam_8h" local="no">saitam.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a545833bebf86e90931bade4e9434c5b5" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga2cacfddfd10b30828a0bc5777e10aca4" kindref="member">sai_create_tam_fn</ref></type>
+        <definition>sai_create_tam_fn _sai_tam_api_t::create_tam</definition>
+        <argsstring></argsstring>
+        <name>create_tam</name>
+        <briefdescription>
+<para>SAI TAM v1 API set. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2114" column="1" bodyfile="inc/saitam.h" bodystart="2114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a86964b090195092fbc7a834e9e37198b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga878e6310e599ba29376ad8e1ff7b59dc" kindref="member">sai_remove_tam_fn</ref></type>
+        <definition>sai_remove_tam_fn _sai_tam_api_t::remove_tam</definition>
+        <argsstring></argsstring>
+        <name>remove_tam</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2115" column="1" bodyfile="inc/saitam.h" bodystart="2115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1ac8a51d5fef5cf522a990b60dcfce82b1" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga5e3ce6c8ac5fb0698cdfb4a71afa3bc9" kindref="member">sai_set_tam_attribute_fn</ref></type>
+        <definition>sai_set_tam_attribute_fn _sai_tam_api_t::set_tam_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2116" column="1" bodyfile="inc/saitam.h" bodystart="2116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a75523303c319a29c2a089ae62bafa770" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga59c0d5b6f7e4f3c60b3ead44dfb84755" kindref="member">sai_get_tam_attribute_fn</ref></type>
+        <definition>sai_get_tam_attribute_fn _sai_tam_api_t::get_tam_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2117" column="1" bodyfile="inc/saitam.h" bodystart="2117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a8fd1586741863446a2501947944130cc" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga0cb862c944d8e202fedf28c52ff22063" kindref="member">sai_create_tam_math_func_fn</ref></type>
+        <definition>sai_create_tam_math_func_fn _sai_tam_api_t::create_tam_math_func</definition>
+        <argsstring></argsstring>
+        <name>create_tam_math_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2119" column="1" bodyfile="inc/saitam.h" bodystart="2119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1adee3598b09ca134d691928aaf493edec" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaea3ada872936162326ec3b88f8f4094d" kindref="member">sai_remove_tam_math_func_fn</ref></type>
+        <definition>sai_remove_tam_math_func_fn _sai_tam_api_t::remove_tam_math_func</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_math_func</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2120" column="1" bodyfile="inc/saitam.h" bodystart="2120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a8b470102db027b2e08e1f40dc5f89bc0" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga41ca0bfb134e391abbdc3e850a448ec3" kindref="member">sai_set_tam_math_func_attribute_fn</ref></type>
+        <definition>sai_set_tam_math_func_attribute_fn _sai_tam_api_t::set_tam_math_func_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_math_func_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2121" column="1" bodyfile="inc/saitam.h" bodystart="2121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1aeb80bd1f9528e835cb8bcc6195852272" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga65823be9367b50dd2dea25c46dae83df" kindref="member">sai_get_tam_math_func_attribute_fn</ref></type>
+        <definition>sai_get_tam_math_func_attribute_fn _sai_tam_api_t::get_tam_math_func_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_math_func_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2122" column="1" bodyfile="inc/saitam.h" bodystart="2122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a2cce7b2cfb0bc9f266407f62e63d414f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gac09e325337b6f0d9adfd081e6b4628a5" kindref="member">sai_create_tam_report_fn</ref></type>
+        <definition>sai_create_tam_report_fn _sai_tam_api_t::create_tam_report</definition>
+        <argsstring></argsstring>
+        <name>create_tam_report</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2124" column="1" bodyfile="inc/saitam.h" bodystart="2124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1ae345e4ee75ed60fdcbd2079bbe74d79d" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga6c4d92d62406727f74e540438789e43a" kindref="member">sai_remove_tam_report_fn</ref></type>
+        <definition>sai_remove_tam_report_fn _sai_tam_api_t::remove_tam_report</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_report</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2125" column="1" bodyfile="inc/saitam.h" bodystart="2125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1ad0abf547ab63789153a6aff15b298b62" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga0ce913a0bec6eae58cdcfc037bb640c5" kindref="member">sai_set_tam_report_attribute_fn</ref></type>
+        <definition>sai_set_tam_report_attribute_fn _sai_tam_api_t::set_tam_report_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_report_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2126" column="1" bodyfile="inc/saitam.h" bodystart="2126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1adce72b18bd85a149acce4b52f3baa0ec" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga53dc1bccf6ea0103de038757f3ce7ac4" kindref="member">sai_get_tam_report_attribute_fn</ref></type>
+        <definition>sai_get_tam_report_attribute_fn _sai_tam_api_t::get_tam_report_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_report_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2127" column="1" bodyfile="inc/saitam.h" bodystart="2127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a52f3017e252a4a7599b343f099fc7973" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaf94c87c7c74c9649b3298f264fc2b78a" kindref="member">sai_create_tam_event_threshold_fn</ref></type>
+        <definition>sai_create_tam_event_threshold_fn _sai_tam_api_t::create_tam_event_threshold</definition>
+        <argsstring></argsstring>
+        <name>create_tam_event_threshold</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2129" column="1" bodyfile="inc/saitam.h" bodystart="2129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a0146d10f4b6037ea6b02614efc92208a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaec6439591ee484f0446df902ab875ee9" kindref="member">sai_remove_tam_event_threshold_fn</ref></type>
+        <definition>sai_remove_tam_event_threshold_fn _sai_tam_api_t::remove_tam_event_threshold</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_event_threshold</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2130" column="1" bodyfile="inc/saitam.h" bodystart="2130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a00d232ebe372b0d1830ca81c45b83bf9" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga1f3d90254f47e0969f89611b11505c5d" kindref="member">sai_set_tam_event_threshold_attribute_fn</ref></type>
+        <definition>sai_set_tam_event_threshold_attribute_fn _sai_tam_api_t::set_tam_event_threshold_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_event_threshold_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2131" column="1" bodyfile="inc/saitam.h" bodystart="2131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a768029954ed2e44944a39cb38562916f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga41ddc2e1dbcc5640d7bbd0a65844f2cf" kindref="member">sai_get_tam_event_threshold_attribute_fn</ref></type>
+        <definition>sai_get_tam_event_threshold_attribute_fn _sai_tam_api_t::get_tam_event_threshold_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_event_threshold_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2132" column="1" bodyfile="inc/saitam.h" bodystart="2132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a6dbcbaef1b750a9822df76eab54953aa" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga6e2e01fc175658878063dee66ecab388" kindref="member">sai_create_tam_int_fn</ref></type>
+        <definition>sai_create_tam_int_fn _sai_tam_api_t::create_tam_int</definition>
+        <argsstring></argsstring>
+        <name>create_tam_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2134" column="1" bodyfile="inc/saitam.h" bodystart="2134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a9fa4197826b6855e337afda65420b809" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaf765c4b7d7b61766db579431261268d0" kindref="member">sai_remove_tam_int_fn</ref></type>
+        <definition>sai_remove_tam_int_fn _sai_tam_api_t::remove_tam_int</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2135" column="1" bodyfile="inc/saitam.h" bodystart="2135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a60c591e391407dc61b15b3f057a06d56" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga436b39cf88aba67a40c833203349a3bf" kindref="member">sai_set_tam_int_attribute_fn</ref></type>
+        <definition>sai_set_tam_int_attribute_fn _sai_tam_api_t::set_tam_int_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_int_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2136" column="1" bodyfile="inc/saitam.h" bodystart="2136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a99440030669df6b3af0ba2c6cdcae36b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga59a0fe291747388a45fdd826d40056f9" kindref="member">sai_get_tam_int_attribute_fn</ref></type>
+        <definition>sai_get_tam_int_attribute_fn _sai_tam_api_t::get_tam_int_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_int_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2137" column="1" bodyfile="inc/saitam.h" bodystart="2137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1afb29a345a4fedf28f57625efaa159501" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaa52f4fc8a79bb7b3ff320c45c6f8c82c" kindref="member">sai_create_tam_tel_type_fn</ref></type>
+        <definition>sai_create_tam_tel_type_fn _sai_tam_api_t::create_tam_tel_type</definition>
+        <argsstring></argsstring>
+        <name>create_tam_tel_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2139" column="1" bodyfile="inc/saitam.h" bodystart="2139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a274ecc0ca908b18aab28ac9d325fa027" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaebf33e9eedce354df67a7a4919f21c3d" kindref="member">sai_remove_tam_tel_type_fn</ref></type>
+        <definition>sai_remove_tam_tel_type_fn _sai_tam_api_t::remove_tam_tel_type</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_tel_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2140" column="1" bodyfile="inc/saitam.h" bodystart="2140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1aab633c9af622b710099f113ba3cd68a7" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga3dcbb7398286080322c1d1da62f15b40" kindref="member">sai_set_tam_tel_type_attribute_fn</ref></type>
+        <definition>sai_set_tam_tel_type_attribute_fn _sai_tam_api_t::set_tam_tel_type_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_tel_type_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2141" column="1" bodyfile="inc/saitam.h" bodystart="2141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a61f239715441bba0bb3dafa6d23618e5" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga4aefe56c0214213d8136429515a56aad" kindref="member">sai_get_tam_tel_type_attribute_fn</ref></type>
+        <definition>sai_get_tam_tel_type_attribute_fn _sai_tam_api_t::get_tam_tel_type_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_tel_type_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2142" column="1" bodyfile="inc/saitam.h" bodystart="2142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a4cecb0fc2caff39bfb028639b0bae4b2" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gab4d7b4ea211d6176b90ea6942bbc45a3" kindref="member">sai_create_tam_transport_fn</ref></type>
+        <definition>sai_create_tam_transport_fn _sai_tam_api_t::create_tam_transport</definition>
+        <argsstring></argsstring>
+        <name>create_tam_transport</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2144" column="1" bodyfile="inc/saitam.h" bodystart="2144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a2529d208684e9474a1a633183423a26b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gad11ebf00ef2ed00ad6a68994a98e85a8" kindref="member">sai_remove_tam_transport_fn</ref></type>
+        <definition>sai_remove_tam_transport_fn _sai_tam_api_t::remove_tam_transport</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_transport</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2145" column="1" bodyfile="inc/saitam.h" bodystart="2145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1af67fcf87f7d03c981ebaa3ae6d47217f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaeec775993689d92e6d026c948f8be9b9" kindref="member">sai_set_tam_transport_attribute_fn</ref></type>
+        <definition>sai_set_tam_transport_attribute_fn _sai_tam_api_t::set_tam_transport_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_transport_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2146" column="1" bodyfile="inc/saitam.h" bodystart="2146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a76b5f656115ae4881d0b76c4fc0ba027" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga9584aee6eb4307e0512ba02d41244c11" kindref="member">sai_get_tam_transport_attribute_fn</ref></type>
+        <definition>sai_get_tam_transport_attribute_fn _sai_tam_api_t::get_tam_transport_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_transport_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2147" column="1" bodyfile="inc/saitam.h" bodystart="2147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a541ffcf83c8a1de32eeab981c39812f9" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaedde7351b6df5df8b4dafa925fbc731d" kindref="member">sai_create_tam_telemetry_fn</ref></type>
+        <definition>sai_create_tam_telemetry_fn _sai_tam_api_t::create_tam_telemetry</definition>
+        <argsstring></argsstring>
+        <name>create_tam_telemetry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2149" column="1" bodyfile="inc/saitam.h" bodystart="2149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a4383b3ca05da6dc61ec6842feead6aa3" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaafcdffa02ac381790fa08f35a333f3b7" kindref="member">sai_remove_tam_telemetry_fn</ref></type>
+        <definition>sai_remove_tam_telemetry_fn _sai_tam_api_t::remove_tam_telemetry</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_telemetry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2150" column="1" bodyfile="inc/saitam.h" bodystart="2150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1aff9844be409174156b7284857a835160" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaed030605e7e80c9de4b48877015196af" kindref="member">sai_set_tam_telemetry_attribute_fn</ref></type>
+        <definition>sai_set_tam_telemetry_attribute_fn _sai_tam_api_t::set_tam_telemetry_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_telemetry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2151" column="1" bodyfile="inc/saitam.h" bodystart="2151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a5656f8d612d420678c45931946b53f7a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga44de9d2c60f25fe71861ec72a07dad14" kindref="member">sai_get_tam_telemetry_attribute_fn</ref></type>
+        <definition>sai_get_tam_telemetry_attribute_fn _sai_tam_api_t::get_tam_telemetry_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_telemetry_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2152" column="1" bodyfile="inc/saitam.h" bodystart="2152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1af5d560d5943883a608ce6c4df2efd61e" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gac4a269b4e89620082847ca3b55d01b9f" kindref="member">sai_create_tam_collector_fn</ref></type>
+        <definition>sai_create_tam_collector_fn _sai_tam_api_t::create_tam_collector</definition>
+        <argsstring></argsstring>
+        <name>create_tam_collector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2154" column="1" bodyfile="inc/saitam.h" bodystart="2154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a222760e46dd44f46b57343e1a786406d" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gacd0cf0567cc86d19b5b3b9a9f8c8cadf" kindref="member">sai_remove_tam_collector_fn</ref></type>
+        <definition>sai_remove_tam_collector_fn _sai_tam_api_t::remove_tam_collector</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_collector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2155" column="1" bodyfile="inc/saitam.h" bodystart="2155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1aeb199ee1555f0c162a884de86cd1f27e" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga4c85f86271591f1ff841a0d2f4cf0b24" kindref="member">sai_set_tam_collector_attribute_fn</ref></type>
+        <definition>sai_set_tam_collector_attribute_fn _sai_tam_api_t::set_tam_collector_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_collector_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2156" column="1" bodyfile="inc/saitam.h" bodystart="2156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a14a8ace8d56072299f460288d7126c2a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga2c9e0239f92b2887002b9ba5b5c06c54" kindref="member">sai_get_tam_collector_attribute_fn</ref></type>
+        <definition>sai_get_tam_collector_attribute_fn _sai_tam_api_t::get_tam_collector_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_collector_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2157" column="1" bodyfile="inc/saitam.h" bodystart="2157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a3b5888a66f4c57ad04c6cd56280e0d8c" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga1cd4e67bfe0909a99ee9209ae6814513" kindref="member">sai_create_tam_event_action_fn</ref></type>
+        <definition>sai_create_tam_event_action_fn _sai_tam_api_t::create_tam_event_action</definition>
+        <argsstring></argsstring>
+        <name>create_tam_event_action</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2159" column="1" bodyfile="inc/saitam.h" bodystart="2159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1af89897d410b7ed387826836be7ce4b35" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga77a8fa463b85998dbacc61032ed5a464" kindref="member">sai_remove_tam_event_action_fn</ref></type>
+        <definition>sai_remove_tam_event_action_fn _sai_tam_api_t::remove_tam_event_action</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_event_action</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2160" column="1" bodyfile="inc/saitam.h" bodystart="2160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1aaaab249794078f88b1f986b77157079f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga5e23d48688e8ecd9a0ae0e4081fdb750" kindref="member">sai_set_tam_event_action_attribute_fn</ref></type>
+        <definition>sai_set_tam_event_action_attribute_fn _sai_tam_api_t::set_tam_event_action_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_event_action_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2161" column="1" bodyfile="inc/saitam.h" bodystart="2161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a5b4679601b6f73c5a75e0801bdd84a42" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga3fdcad457c187450fa8f4649af46797e" kindref="member">sai_get_tam_event_action_attribute_fn</ref></type>
+        <definition>sai_get_tam_event_action_attribute_fn _sai_tam_api_t::get_tam_event_action_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_event_action_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2162" column="1" bodyfile="inc/saitam.h" bodystart="2162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1ab6bec3756abc18943b1d5b26fbdadd10" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga7fcb3899800b48e20b4d620abd55851c" kindref="member">sai_create_tam_event_fn</ref></type>
+        <definition>sai_create_tam_event_fn _sai_tam_api_t::create_tam_event</definition>
+        <argsstring></argsstring>
+        <name>create_tam_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2164" column="1" bodyfile="inc/saitam.h" bodystart="2164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1ab49cc02f11fe7d0e6212ac9364c93b1a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gac67dcfd9ecb29b595ad258723f20fa3c" kindref="member">sai_remove_tam_event_fn</ref></type>
+        <definition>sai_remove_tam_event_fn _sai_tam_api_t::remove_tam_event</definition>
+        <argsstring></argsstring>
+        <name>remove_tam_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2165" column="1" bodyfile="inc/saitam.h" bodystart="2165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1ae9c9515fb3dce6c9db610291f092ed92" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1gaa7eb323919ad2ca14bae587ba5182fd6" kindref="member">sai_set_tam_event_attribute_fn</ref></type>
+        <definition>sai_set_tam_event_attribute_fn _sai_tam_api_t::set_tam_event_attribute</definition>
+        <argsstring></argsstring>
+        <name>set_tam_event_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2166" column="1" bodyfile="inc/saitam.h" bodystart="2166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__tam__api__t_1a480032f6a7bb447ef6a4bc1f3c6b888a" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_a_m_1ga1a11ad5ac80488a1ab9ed79f4b9284b6" kindref="member">sai_get_tam_event_attribute_fn</ref></type>
+        <definition>sai_get_tam_event_attribute_fn _sai_tam_api_t::get_tam_event_attribute</definition>
+        <argsstring></argsstring>
+        <name>get_tam_event_attribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitam.h" line="2167" column="1" bodyfile="inc/saitam.h" bodystart="2167" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>SAI TAM API set. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1727">
+        <label>_sai_system_port_config_list_t</label>
+        <link refid="struct__sai__system__port__config__list__t"/>
+        <childnode refid="1728" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1713">
+        <label>_sai_acl_resource_t</label>
+        <link refid="struct__sai__acl__resource__t"/>
+      </node>
+      <node id="1714">
+        <label>_sai_qos_map_list_t</label>
+        <link refid="struct__sai__qos__map__list__t"/>
+        <childnode refid="1715" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1730">
+        <label>_sai_fabric_port_reachability_t</label>
+        <link refid="struct__sai__fabric__port__reachability__t"/>
+      </node>
+      <node id="1734">
+        <label>_sai_acl_action_data_t</label>
+        <link refid="struct__sai__acl__action__data__t"/>
+        <childnode refid="1735" relation="usage">
+          <edgelabel>parameter</edgelabel>
+        </childnode>
+      </node>
+      <node id="1728">
+        <label>_sai_system_port_config_t</label>
+        <link refid="struct__sai__system__port__config__t"/>
+      </node>
+      <node id="1722">
+        <label>_sai_object_list_t</label>
+        <link refid="struct__sai__object__list__t"/>
+      </node>
+      <node id="1715">
+        <label>_sai_qos_map_t</label>
+        <link refid="struct__sai__qos__map__t"/>
+        <childnode refid="1716" relation="usage">
+          <edgelabel>key</edgelabel>
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1716">
+        <label>_sai_qos_map_params_t</label>
+        <link refid="struct__sai__qos__map__params__t"/>
+      </node>
+      <node id="1738">
+        <label>_sai_s16_list_t</label>
+        <link refid="struct__sai__s16__list__t"/>
+      </node>
+      <node id="1720">
+        <label>_sai_acl_field_data_t</label>
+        <link refid="struct__sai__acl__field__data__t"/>
+        <childnode refid="1721" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+        <childnode refid="1724" relation="usage">
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1741">
+        <label>_sai_port_eye_values_list_t</label>
+        <link refid="struct__sai__port__eye__values__list__t"/>
+        <childnode refid="1742" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1709">
+        <label>_sai_tlv_t</label>
+        <link refid="struct__sai__tlv__t"/>
+        <childnode refid="1710" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="1708">
+        <label>_sai_tlv_list_t</label>
+        <link refid="struct__sai__tlv__list__t"/>
+        <childnode refid="1709" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1731">
+        <label>_sai_u32_range_t</label>
+        <link refid="struct__sai__u32__range__t"/>
+      </node>
+      <node id="1707">
+        <label>_sai_port_err_status_list_t</label>
+        <link refid="struct__sai__port__err__status__list__t"/>
+      </node>
+      <node id="1729">
+        <label>_sai_segment_list_t</label>
+        <link refid="struct__sai__segment__list__t"/>
+      </node>
+      <node id="1740">
+        <label>_sai_s8_list_t</label>
+        <link refid="struct__sai__s8__list__t"/>
+      </node>
+      <node id="1706">
+        <label>_sai_attribute_value_t</label>
+        <link refid="union__sai__attribute__value__t"/>
+        <childnode refid="1707" relation="usage">
+          <edgelabel>porterror</edgelabel>
+        </childnode>
+        <childnode refid="1708" relation="usage">
+          <edgelabel>tlvlist</edgelabel>
+        </childnode>
+        <childnode refid="1712" relation="usage">
+          <edgelabel>aclresource</edgelabel>
+        </childnode>
+        <childnode refid="1714" relation="usage">
+          <edgelabel>qosmap</edgelabel>
+        </childnode>
+        <childnode refid="1717" relation="usage">
+          <edgelabel>ipaddrlist</edgelabel>
+        </childnode>
+        <childnode refid="1720" relation="usage">
+          <edgelabel>aclfield</edgelabel>
+        </childnode>
+        <childnode refid="1725" relation="usage">
+          <edgelabel>u16list</edgelabel>
+        </childnode>
+        <childnode refid="1726" relation="usage">
+          <edgelabel>ipprefix</edgelabel>
+        </childnode>
+        <childnode refid="1727" relation="usage">
+          <edgelabel>sysportconfiglist</edgelabel>
+        </childnode>
+        <childnode refid="1729" relation="usage">
+          <edgelabel>segmentlist</edgelabel>
+        </childnode>
+        <childnode refid="1730" relation="usage">
+          <edgelabel>reachability</edgelabel>
+        </childnode>
+        <childnode refid="1728" relation="usage">
+          <edgelabel>sysportconfig</edgelabel>
+        </childnode>
+        <childnode refid="1731" relation="usage">
+          <edgelabel>u32range</edgelabel>
+        </childnode>
+        <childnode refid="1732" relation="usage">
+          <edgelabel>s32list</edgelabel>
+        </childnode>
+        <childnode refid="1722" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1733" relation="usage">
+          <edgelabel>timespec</edgelabel>
+        </childnode>
+        <childnode refid="1734" relation="usage">
+          <edgelabel>aclaction</edgelabel>
+        </childnode>
+        <childnode refid="1736" relation="usage">
+          <edgelabel>vlanlist</edgelabel>
+        </childnode>
+        <childnode refid="1718" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+        <childnode refid="1723" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+        <childnode refid="1737" relation="usage">
+          <edgelabel>u32list</edgelabel>
+        </childnode>
+        <childnode refid="1738" relation="usage">
+          <edgelabel>s16list</edgelabel>
+        </childnode>
+        <childnode refid="1739" relation="usage">
+          <edgelabel>aclcapability</edgelabel>
+        </childnode>
+        <childnode refid="1740" relation="usage">
+          <edgelabel>s8list</edgelabel>
+        </childnode>
+        <childnode refid="1741" relation="usage">
+          <edgelabel>porteyevalues</edgelabel>
+        </childnode>
+        <childnode refid="1743" relation="usage">
+          <edgelabel>maplist</edgelabel>
+        </childnode>
+        <childnode refid="1745" relation="usage">
+          <edgelabel>s32range</edgelabel>
+        </childnode>
+      </node>
+      <node id="1721">
+        <label>_sai_acl_field_data_data_t</label>
+        <link refid="union__sai__acl__field__data__data__t"/>
+        <childnode refid="1722" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1723" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1705">
+        <label>_sai_attribute_t</label>
+        <link refid="struct__sai__attribute__t"/>
+        <childnode refid="1706" relation="usage">
+          <edgelabel>value</edgelabel>
+        </childnode>
+      </node>
+      <node id="1726">
+        <label>_sai_ip_prefix_t</label>
+        <link refid="struct__sai__ip__prefix__t"/>
+        <childnode refid="1719" relation="usage">
+          <edgelabel>addr</edgelabel>
+          <edgelabel>mask</edgelabel>
+        </childnode>
+      </node>
+      <node id="1737">
+        <label>_sai_u32_list_t</label>
+        <link refid="struct__sai__u32__list__t"/>
+      </node>
+      <node id="1736">
+        <label>_sai_vlan_list_t</label>
+        <link refid="struct__sai__vlan__list__t"/>
+      </node>
+      <node id="1710">
+        <label>_sai_tlv_entry_t</label>
+        <link refid="union__sai__tlv__entry__t"/>
+        <childnode refid="1711" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+      </node>
+      <node id="1743">
+        <label>_sai_map_list_t</label>
+        <link refid="struct__sai__map__list__t"/>
+        <childnode refid="1744" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1745">
+        <label>_sai_s32_range_t</label>
+        <link refid="struct__sai__s32__range__t"/>
+      </node>
+      <node id="1711">
+        <label>_sai_hmac_t</label>
+        <link refid="struct__sai__hmac__t"/>
+      </node>
+      <node id="1724">
+        <label>_sai_acl_field_data_mask_t</label>
+        <link refid="union__sai__acl__field__data__mask__t"/>
+        <childnode refid="1723" relation="usage">
+          <edgelabel>u8list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1733">
+        <label>_sai_timespec_t</label>
+        <link refid="struct__sai__timespec__t"/>
+      </node>
+      <node id="1704">
+        <label>_sai_tam_api_t</label>
+        <link refid="struct__sai__tam__api__t"/>
+        <childnode refid="1705" relation="usage">
+          <edgelabel>create_tam_int</edgelabel>
+          <edgelabel>get_tam_event_threshold_attribute</edgelabel>
+          <edgelabel>get_tam_report_attribute</edgelabel>
+          <edgelabel>get_tam_attribute</edgelabel>
+          <edgelabel>get_tam_transport_attribute</edgelabel>
+          <edgelabel>set_tam_collector_attribute</edgelabel>
+          <edgelabel>create_tam</edgelabel>
+          <edgelabel>create_tam_event</edgelabel>
+          <edgelabel>set_tam_report_attribute</edgelabel>
+          <edgelabel>create_tam_collector</edgelabel>
+          <edgelabel>...</edgelabel>
+        </childnode>
+      </node>
+      <node id="1744">
+        <label>_sai_map_t</label>
+        <link refid="struct__sai__map__t"/>
+      </node>
+      <node id="1742">
+        <label>_sai_port_lane_eye_values_t</label>
+        <link refid="struct__sai__port__lane__eye__values__t"/>
+      </node>
+      <node id="1712">
+        <label>_sai_acl_resource_list_t</label>
+        <link refid="struct__sai__acl__resource__list__t"/>
+        <childnode refid="1713" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1718">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="1719" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1732">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="1717">
+        <label>_sai_ip_address_list_t</label>
+        <link refid="struct__sai__ip__address__list__t"/>
+        <childnode refid="1718" relation="usage">
+          <edgelabel>list</edgelabel>
+        </childnode>
+      </node>
+      <node id="1719">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+      <node id="1723">
+        <label>_sai_u8_list_t</label>
+        <link refid="struct__sai__u8__list__t"/>
+      </node>
+      <node id="1725">
+        <label>_sai_u16_list_t</label>
+        <link refid="struct__sai__u16__list__t"/>
+      </node>
+      <node id="1735">
+        <label>_sai_acl_action_parameter_t</label>
+        <link refid="union__sai__acl__action__parameter__t"/>
+        <childnode refid="1722" relation="usage">
+          <edgelabel>objlist</edgelabel>
+        </childnode>
+        <childnode refid="1718" relation="usage">
+          <edgelabel>ipaddr</edgelabel>
+        </childnode>
+      </node>
+      <node id="1739">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="1732" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitam.h" line="2110" column="1" bodyfile="inc/saitam.h" bodystart="2109" bodyend="2168"/>
+    <listofallmembers>
+      <member refid="struct__sai__tam__api__t_1a545833bebf86e90931bade4e9434c5b5" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam</name></member>
+      <member refid="struct__sai__tam__api__t_1af5d560d5943883a608ce6c4df2efd61e" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_collector</name></member>
+      <member refid="struct__sai__tam__api__t_1ab6bec3756abc18943b1d5b26fbdadd10" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_event</name></member>
+      <member refid="struct__sai__tam__api__t_1a3b5888a66f4c57ad04c6cd56280e0d8c" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_event_action</name></member>
+      <member refid="struct__sai__tam__api__t_1a52f3017e252a4a7599b343f099fc7973" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_event_threshold</name></member>
+      <member refid="struct__sai__tam__api__t_1a6dbcbaef1b750a9822df76eab54953aa" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_int</name></member>
+      <member refid="struct__sai__tam__api__t_1a8fd1586741863446a2501947944130cc" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_math_func</name></member>
+      <member refid="struct__sai__tam__api__t_1a2cce7b2cfb0bc9f266407f62e63d414f" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_report</name></member>
+      <member refid="struct__sai__tam__api__t_1afb29a345a4fedf28f57625efaa159501" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_tel_type</name></member>
+      <member refid="struct__sai__tam__api__t_1a541ffcf83c8a1de32eeab981c39812f9" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_telemetry</name></member>
+      <member refid="struct__sai__tam__api__t_1a4cecb0fc2caff39bfb028639b0bae4b2" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>create_tam_transport</name></member>
+      <member refid="struct__sai__tam__api__t_1a75523303c319a29c2a089ae62bafa770" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a14a8ace8d56072299f460288d7126c2a" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_collector_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a5b4679601b6f73c5a75e0801bdd84a42" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_event_action_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a480032f6a7bb447ef6a4bc1f3c6b888a" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_event_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a768029954ed2e44944a39cb38562916f" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_event_threshold_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a99440030669df6b3af0ba2c6cdcae36b" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_int_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1aeb80bd1f9528e835cb8bcc6195852272" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_math_func_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1adce72b18bd85a149acce4b52f3baa0ec" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_report_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a61f239715441bba0bb3dafa6d23618e5" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_tel_type_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a5656f8d612d420678c45931946b53f7a" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_telemetry_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a76b5f656115ae4881d0b76c4fc0ba027" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>get_tam_transport_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a86964b090195092fbc7a834e9e37198b" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam</name></member>
+      <member refid="struct__sai__tam__api__t_1a222760e46dd44f46b57343e1a786406d" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_collector</name></member>
+      <member refid="struct__sai__tam__api__t_1ab49cc02f11fe7d0e6212ac9364c93b1a" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_event</name></member>
+      <member refid="struct__sai__tam__api__t_1af89897d410b7ed387826836be7ce4b35" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_event_action</name></member>
+      <member refid="struct__sai__tam__api__t_1a0146d10f4b6037ea6b02614efc92208a" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_event_threshold</name></member>
+      <member refid="struct__sai__tam__api__t_1a9fa4197826b6855e337afda65420b809" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_int</name></member>
+      <member refid="struct__sai__tam__api__t_1adee3598b09ca134d691928aaf493edec" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_math_func</name></member>
+      <member refid="struct__sai__tam__api__t_1ae345e4ee75ed60fdcbd2079bbe74d79d" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_report</name></member>
+      <member refid="struct__sai__tam__api__t_1a274ecc0ca908b18aab28ac9d325fa027" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_tel_type</name></member>
+      <member refid="struct__sai__tam__api__t_1a4383b3ca05da6dc61ec6842feead6aa3" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_telemetry</name></member>
+      <member refid="struct__sai__tam__api__t_1a2529d208684e9474a1a633183423a26b" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>remove_tam_transport</name></member>
+      <member refid="struct__sai__tam__api__t_1ac8a51d5fef5cf522a990b60dcfce82b1" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1aeb199ee1555f0c162a884de86cd1f27e" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_collector_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1aaaab249794078f88b1f986b77157079f" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_event_action_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1ae9c9515fb3dce6c9db610291f092ed92" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_event_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a00d232ebe372b0d1830ca81c45b83bf9" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_event_threshold_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a60c591e391407dc61b15b3f057a06d56" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_int_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1a8b470102db027b2e08e1f40dc5f89bc0" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_math_func_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1ad0abf547ab63789153a6aff15b298b62" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_report_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1aab633c9af622b710099f113ba3cd68a7" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_tel_type_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1aff9844be409174156b7284857a835160" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_telemetry_attribute</name></member>
+      <member refid="struct__sai__tam__api__t_1af67fcf87f7d03c981ebaa3ae6d47217f" prot="public" virt="non-virtual"><scope>_sai_tam_api_t</scope><name>set_tam_transport_attribute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

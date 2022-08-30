@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__ip__address__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_ip_address_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__ip__address__t_1a5b47658356df9a83bf682c770703000f" prot="public" static="no" mutable="no">
+        <type>sai_ip_addr_family_t</type>
+        <definition>sai_ip_addr_family_t _sai_ip_address_t::addr_family</definition>
+        <argsstring></argsstring>
+        <name>addr_family</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="371" column="1" bodyfile="inc/saitypes.h" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__ip__address__t_1aeb84e7bf05fc1bbeb6e90f5f9f93d12e" prot="public" static="no" mutable="no">
+        <type><ref refid="group___s_a_i_t_y_p_e_s_1ga2c8154041ca84e67918574e4d12d9319" kindref="member">sai_ip_addr_t</ref></type>
+        <definition>sai_ip_addr_t _sai_ip_address_t::addr</definition>
+        <argsstring></argsstring>
+        <name>addr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>addr_family </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="374" column="1" bodyfile="inc/saitypes.h" bodystart="374" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="609">
+        <label>_sai_ip_address_t</label>
+        <link refid="struct__sai__ip__address__t"/>
+        <childnode refid="610" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="610">
+        <label>_sai_ip_addr_t</label>
+        <link refid="union__sai__ip__addr__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitypes.h" line="370" column="1" bodyfile="inc/saitypes.h" bodystart="369" bodyend="375"/>
+    <listofallmembers>
+      <member refid="struct__sai__ip__address__t_1aeb84e7bf05fc1bbeb6e90f5f9f93d12e" prot="public" virt="non-virtual"><scope>_sai_ip_address_t</scope><name>addr</name></member>
+      <member refid="struct__sai__ip__address__t_1a5b47658356df9a83bf682c770703000f" prot="public" virt="non-virtual"><scope>_sai_ip_address_t</scope><name>addr_family</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

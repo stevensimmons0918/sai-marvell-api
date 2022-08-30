@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="struct__sai__acl__capability__t" kind="struct" language="C++" prot="public">
+    <compoundname>_sai_acl_capability_t</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct__sai__acl__capability__t_1a4f338ab4e6938610dacb323819204c5c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool _sai_acl_capability_t::is_action_list_mandatory</definition>
+        <argsstring></argsstring>
+        <name>is_action_list_mandatory</name>
+        <briefdescription>
+<para>Output from get function. </para>        </briefdescription>
+        <detaileddescription>
+<para>Flag indicating whether action list is mandatory for table creation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="714" column="1" bodyfile="inc/saitypes.h" bodystart="714" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct__sai__acl__capability__t_1afe57960b23ccb567a160512ba53f4f3c" prot="public" static="no" mutable="no">
+        <type><ref refid="struct__sai__s32__list__t" kindref="compound">sai_s32_list_t</ref></type>
+        <definition>sai_s32_list_t _sai_acl_capability_t::action_list</definition>
+        <argsstring></argsstring>
+        <name>action_list</name>
+        <briefdescription>
+<para>Output from get function. </para>        </briefdescription>
+        <detaileddescription>
+<para>List of actions supported per stage from the sai_acl_table_action_list_t. Max action list can be obtained using the <ref refid="group___s_a_i_s_w_i_t_c_h_1gga96df0871b3925f973f4a9079ffb3e634ace09f38e8a3e86e85298fc18dc361388" kindref="member">SAI_SWITCH_ATTR_MAX_ACL_ACTION_COUNT</ref>.</para><para>enum_list  &amp;sai_metadata_enum_sai_acl_action_type_t </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saitypes.h" line="725" column="1" bodyfile="inc/saitypes.h" bodystart="725" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure for ACL attributes supported at each stage. action_list alone is added now. Qualifier list can also be added when needed. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="56">
+        <label>_sai_s32_list_t</label>
+        <link refid="struct__sai__s32__list__t"/>
+      </node>
+      <node id="55">
+        <label>_sai_acl_capability_t</label>
+        <link refid="struct__sai__acl__capability__t"/>
+        <childnode refid="56" relation="usage">
+          <edgelabel>action_list</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/saitypes.h" line="708" column="1" bodyfile="inc/saitypes.h" bodystart="707" bodyend="726"/>
+    <listofallmembers>
+      <member refid="struct__sai__acl__capability__t_1afe57960b23ccb567a160512ba53f4f3c" prot="public" virt="non-virtual"><scope>_sai_acl_capability_t</scope><name>action_list</name></member>
+      <member refid="struct__sai__acl__capability__t_1a4f338ab4e6938610dacb323819204c5c" prot="public" virt="non-virtual"><scope>_sai_acl_capability_t</scope><name>is_action_list_mandatory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

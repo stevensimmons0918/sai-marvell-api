@@ -1,0 +1,191 @@
+module mts-metadata {
+	yang-version "1.1";
+	namespace "urn:marvell:mts:xml:metadata:yang:MTS-metadata";
+    prefix "mtsmd";
+    
+	organization
+		"Marvell Technology Group Ltd.";
+	contact
+		"WG Web:	 
+<https:// ???/>
+		WG List:	
+<???>
+		WG Chair: ???
+	mailto:???";
+	description
+		"This YANG module defines the essential components for the management
+		of a routing subsystem.Platform Model supported by Marvell MTS.
+		Copyright (c)???.	All rights reserved.";
+
+	revision 2018-08-15 {
+		description "2.0,
+		-- structure change";
+	}
+
+	revision 2018-05-21 {
+		description "1.01,
+		-- fan-controller-role-type changed to fan-role-type";
+	}
+
+	revision 2017-02-21 {
+		description "1.00, Initial revision.";
+		reference "???";
+	}
+
+// typedef annotaion 
+	
+	typedef typedef-type {
+		description "must include every typedef defined in this yang ";
+		type enumeration {
+// basic types
+			enum "boolean" { description " " ;}
+			enum "empty" { description " " ;}
+			enum "enumeration" { description " " ;}
+			enum "string" { description " " ;}
+			enum "uint8" { description " " ;}
+			enum "uint16" { description " " ;}
+			enum "uint32" { description " " ;}
+// typedef to enum
+// MTS-Platform
+			enum "i2c-access-type" { description "i2c-access-type" ;}
+			enum "i2c-bus-id-type" { description "i2c-bus-id-type" ;}
+			enum "i2c-address-type" { description "i2c-address-type" ;}
+			enum "i2c-offset-type" { description "i2c-offset-type" ;}
+			enum "i2c-mask-type" { description "i2c-mask-type" ;}
+			enum "i2c-value-type" { description "i2c-value-type" ;}
+			enum "mpp-device-number-type" { description "mpp-device-number-type" ;}
+			enum "mpp-pin-mode-type" { description "mpp-pin-mode-type" ;}
+			enum "mpp-pin-number-type" { description "mpp-pin-number-type" ;}
+			enum "mpp-pin-value-type" { description "mpp-pin-value-type" ;}
+			enum "mpp-pin-init-value-type" { description "mpp-pin-init-value-type" ;}
+			enum "gpio-device-number-type" { description "gpio-device-number-type" ;}
+			enum "gpio-pin-number-type" { description "gpio-pin-number-type" ;}
+			enum "gpio-pin-value-type" { description "gpio-pin-value-type" ;}
+			enum "interface-type" { description "interface-type" ;}
+			enum "smi-xsmi-interface-id-type" { description "smi-xsmi-interface-id-type" ;}
+			enum "smi-xsmi-address-type" { description "smi-xsmi-address-type" ;}
+			enum "smi-xsmi-register-type" { description "smi-xsmi-register-type" ;}
+			enum "smi-xsmi-device-or-page-type" { description "smi-xsmi-device-or-page-type" ;}
+			enum "smi-xsmi-type-type" { description "smi-xsmi-type-type" ;}
+			enum "smi-xsmi-mask-value-type" { description "smi-xsmi-mask-value-type" ;}
+			enum "number-of-pps-type" { description "number-of-pps-type" ;}
+			enum "pp-device-number-type" { description "pp-device-number-type" ;}
+			enum "pp-port-number-type" { description "pp-port-number-type" ;}
+			enum "panel-group-number-type" { description "panel-group-number-type" ;}
+			enum "panel-port-number-type" { description "panel-port-number-type" ;}
+			enum "panel-group-ordering-type" { description "panel-group-ordering-type" ;}
+			enum "speed-type" { description "speed-type" ;}
+			enum "lane-number-type" { description "lane-number-type" ;}
+			enum "port-lane-number-type" { description "port-lane-number-type" ;}
+			enum "transceiver-type" { description "transceiver-type" ;}
+			enum "connector-type-type" { description "connector-type-type" ;}
+			enum "L1-interface-mode-type" { description "L1-interface-mode-type" ;}
+			enum "list-number-type" { description "list-number-type" ;}
+			enum "list-comment-type" { description "list-comment-type" ;}
+			enum "fan-id-type" { description "fan-id-type" ;}
+			enum "fan-number-type" { description "fan-number-type" ;}
+			enum "fan-controller-number-type" { description "fan-controller-number-type" ;}
+			enum "fan-role-type" { description "fan-role-type" ;}
+			enum "hw-fan-operation-type" { description "hw-fan-operation-type" ;}
+			enum "fan-ADT7476-fault-detection-type" { description "fan-ADT7476-fault-detection-type" ;}
+			enum "fan-type" { description "fan-type" ;}
+			enum "bank-number-type" { description "bank-number-type" ;}
+			enum "bank-watts-type" { description "bank-watts-type" ;}
+			enum "bank-source-type" { description "bank-source-type" ;}
+			enum "PSEindex-type" { description "PSEindex-type" ;}
+			enum "PSEport-type" { description "PSEport-type" ;}
+			enum "power-status-type" { description "power-status-type" ;}
+			enum "phy-number-type" { description "phy-number-type" ;}
+			enum "phy-position-type" { description "phy-position-type" ;}
+			enum "phy-type-type" { description "phy-type-type" ;}
+			enum "phy-firmware-download-method-type" { description "phy-firmware-download-method-type" ;}
+			enum "color-type" { description "color-type" ;}
+			enum "led-state-type" { description "led-state-type" ;}
+			enum "stack-led-id-type" { description "stack-led-id-type" ;}
+			enum "led-gpio-i2c-interface-type" { description "led-gpio-i2c-interface-type" ;}
+			enum "led-gpio-i2c-phy-interface-type" { description "led-gpio-i2c-phy-interface-type" ;}
+			enum "led-gpio-i2c-phy-pp-interface-type" { description "led-gpio-i2c-phy-pp-interface-type" ;}
+			enum "cpu-type-type" { description "cpu-type-type" ;}
+			enum "cpu-port-number-type" { description "cpu-port-number-type" ;}
+			enum "button-type" { description "button-type" ;}
+			enum "sensor-hw-type" { description "sensor-hw-type" ;}
+			enum "threshold-type" { description "threshold-type" ;}
+// MTS-software
+                        enum "cpu-queue-id-type" { description "cpu-queue-id-type" ;}
+                        enum "cpu-schedule-type" { description "cpu-schedule-type" ;}
+                        enum "cpu-packets-weight-type" { description "cpu-packets-weight-type" ;}
+                        enum "cpu-dma-buffers-type" { description "cpu-dma-buffers-type" ;}
+                        enum "cpu-rate-limit-index-type" { description "cpu-rate-limit-index-type" ;}
+                        enum "cpu-rate-limit-rate-type" { description "cpu-rate-limit-rate-type" ;}
+                        enum "cpu-drop-precesence-type" { description "cpu-drop-precesence-type" ;}
+                        enum "cpu-traffic-flow-type" { description "cpu-traffic-flow-type" ;}
+// typedef to enum
+		}		
+	}
+
+// type-def
+		
+		container typedefs {
+			description 
+				"filled by automated tool
+				entries are generated for every value in typedef-type
+				data is taked from typedef of the types in yang";
+			config false;
+			list typedef {
+				key "name";
+				leaf name {
+					type typedef-type;
+					description "the name of the typedef";
+				}
+				leaf type {
+					type typedef-type;
+					description "the type of the typedef";
+				}
+				leaf description {
+					type string;
+					description " the description of the typedef";
+				}
+				choice info { 
+					when "(type = 'uint8') or (type = 'uint16') or (type = 'uint32') ";
+					description "the information on the type def like range or enum data.";
+					case range {
+						leaf min {
+							type uint32;
+							description "minimum value in range";
+						}
+						leaf max {
+							type uint32;	
+							description "maximum value in range";
+						}
+					}
+				}
+				list enum {
+					when "../type = 'enumeration' ";
+					key "name";
+					leaf name {
+						type string;
+							description "the enum value name";
+						}
+						leaf description {
+							type string;
+							description "description of the enum value";
+						}
+						leaf value {
+							type uint32;
+							description "enum value in number format";
+						}
+					}
+				}
+		}
+
+//	version 
+		
+	leaf version {
+		type string;
+		description "yang xml version - mts document, taked from latest revision";
+	}
+
+		
+}	
+
+

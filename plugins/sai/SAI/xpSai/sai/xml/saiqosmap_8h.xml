@@ -1,0 +1,493 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="saiqosmap_8h" kind="file" language="C++">
+    <compoundname>saiqosmap.h</compoundname>
+    <includes refid="saitypes_8h" local="no">saitypes.h</includes>
+    <includedby refid="sai_8h" local="yes">inc/sai.h</includedby>
+    <incdepgraph>
+      <node id="259">
+        <label>stdbool.h</label>
+      </node>
+      <node id="258">
+        <label>stdint.h</label>
+      </node>
+      <node id="260">
+        <label>sys/types.h</label>
+      </node>
+      <node id="256">
+        <label>inc/saiqosmap.h</label>
+        <link refid="saiqosmap.h"/>
+        <childnode refid="257" relation="include">
+        </childnode>
+      </node>
+      <node id="257">
+        <label>saitypes.h</label>
+        <link refid="saitypes_8h"/>
+        <childnode refid="258" relation="include">
+        </childnode>
+        <childnode refid="259" relation="include">
+        </childnode>
+        <childnode refid="260" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="261">
+        <label>inc/saiqosmap.h</label>
+        <link refid="saiqosmap.h"/>
+        <childnode refid="262" relation="include">
+        </childnode>
+      </node>
+      <node id="262">
+        <label>inc/sai.h</label>
+        <link refid="sai_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct__sai__qos__map__api__t" prot="public">_sai_qos_map_api_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___s_a_i_q_o_s_m_a_p_s_1ga9173af471a3cd4e9005383b5c7f1c385" prot="public" static="no">
+        <name>_sai_qos_map_type_t</name>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a67266cced8db19091f28d98d0bb2a95b" prot="public">
+          <name>SAI_QOS_MAP_TYPE_DOT1P_TO_TC</name>
+          <initializer>= 0x00000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set DOT1P to Traffic class </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a5105172eef5cd8edea62117735c9fef4" prot="public">
+          <name>SAI_QOS_MAP_TYPE_DOT1P_TO_COLOR</name>
+          <initializer>= 0x00000001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set DOT1P to color </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a5abbcc0b57ea3881cd59cf2e40d8c505" prot="public">
+          <name>SAI_QOS_MAP_TYPE_DSCP_TO_TC</name>
+          <initializer>= 0x00000002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set DSCP to Traffic class </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385af1fc3511675c54e260d4ed31b0a692e8" prot="public">
+          <name>SAI_QOS_MAP_TYPE_DSCP_TO_COLOR</name>
+          <initializer>= 0x00000003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set DSCP to color </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a287744035c2f87446516d1da9e6d2d16" prot="public">
+          <name>SAI_QOS_MAP_TYPE_TC_TO_QUEUE</name>
+          <initializer>= 0x00000004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set traffic class to queue </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a69b417dfee447f933e525f4822d91335" prot="public">
+          <name>SAI_QOS_MAP_TYPE_TC_AND_COLOR_TO_DSCP</name>
+          <initializer>= 0x00000005</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set traffic class and color to DSCP </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a451d4dc7a0abe5e7208ec4b2117346a9" prot="public">
+          <name>SAI_QOS_MAP_TYPE_TC_AND_COLOR_TO_DOT1P</name>
+          <initializer>= 0x00000006</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set traffic class and color to DSCP </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a77478eb28c4fc160acaf403f434b704c" prot="public">
+          <name>SAI_QOS_MAP_TYPE_TC_TO_PRIORITY_GROUP</name>
+          <initializer>= 0x00000007</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set traffic class to priority group </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a0a2714cc7e3dd8de4177b12566aeefdc" prot="public">
+          <name>SAI_QOS_MAP_TYPE_PFC_PRIORITY_TO_PRIORITY_GROUP</name>
+          <initializer>= 0x00000008</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set PFC priority to priority group </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385ad4427bc6bb6d4e8b30fea4ace15c1241" prot="public">
+          <name>SAI_QOS_MAP_TYPE_PFC_PRIORITY_TO_QUEUE</name>
+          <initializer>= 0x00000009</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set PFC priority to queue </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a78566a1b0c70852b364e36d881aae6f5" prot="public">
+          <name>SAI_QOS_MAP_TYPE_MPLS_EXP_TO_TC</name>
+          <initializer>= 0x0000000a</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set EXP to Traffic class </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a7720e31b7a425e8a1897181188602a31" prot="public">
+          <name>SAI_QOS_MAP_TYPE_MPLS_EXP_TO_COLOR</name>
+          <initializer>= 0x0000000b</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set EXP to color </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385af846b21ac042b300f29efccd6adbdf27" prot="public">
+          <name>SAI_QOS_MAP_TYPE_TC_AND_COLOR_TO_MPLS_EXP</name>
+          <initializer>= 0x0000000c</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>QOS Map to set traffic class and color to EXP </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385aeda54db185a9e888113dad9c9c521f1d" prot="public">
+          <name>SAI_QOS_MAP_TYPE_CUSTOM_RANGE_BASE</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining QOS map types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="40" column="1" bodyfile="inc/saiqosmap.h" bodystart="39" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="enum" id="group___s_a_i_q_o_s_m_a_p_s_1ga93c7bac808f516a1b6554050d0443bdf" prot="public" static="no">
+        <name>_sai_qos_map_attr_t</name>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa27774108e41bb9823f10b5db312b2b86" prot="public">
+          <name>SAI_QOS_MAP_ATTR_START</name>
+          <briefdescription>
+<para>Start of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa9443c10c441c4cca14eb31d2dc079833" prot="public">
+          <name>SAI_QOS_MAP_ATTR_TYPE</name>
+          <initializer>= SAI_QOS_MAP_ATTR_START</initializer>
+          <briefdescription>
+<para>QOS Map type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_qos_map_type_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_ONLY </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfab9b243595c16742d92ededa4fb8b1290" prot="public">
+          <name>SAI_QOS_MAP_ATTR_MAP_TO_VALUE_LIST</name>
+          <initializer>= 0x00000001</initializer>
+          <briefdescription>
+<para>Dot1p to TC Mapping. </para>          </briefdescription>
+          <detaileddescription>
+<para>Defaults:<itemizedlist>
+<listitem><para>All Dot1p/DSCP maps to traffic class 0</para></listitem><listitem><para>All Dot1p/DSCP maps to color <ref refid="group___s_a_i_t_y_p_e_s_1ggaf12aeae877b4c8dfbcd487a2d0a7f392ae2b7d7e629d4583f78747d2be843bc8b" kindref="member">SAI_PACKET_COLOR_GREEN</ref></para></listitem><listitem><para>All traffic class maps to queue 0</para></listitem></itemizedlist>
+</para><para><simplesect kind="par"><title>Value Type:</title><para> @@type           sai_qos_map_list_t </para></simplesect>
+<simplesect kind="par"><title>Flags:</title><para> @@flags          MANDATORY_ON_CREATE | CREATE_AND_SET </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa9f17a7bc20e9d67aff278640ed950074" prot="public">
+          <name>SAI_QOS_MAP_ATTR_END</name>
+          <briefdescription>
+<para>End of attributes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa3548c61ef4f0a3b0d85be666ccf2e4b5" prot="public">
+          <name>SAI_QOS_MAP_ATTR_CUSTOM_RANGE_START</name>
+          <initializer>= 0x10000000</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Custom range base value </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfad61286cce8b3fa7495130a59e41b50fb" prot="public">
+          <name>SAI_QOS_MAP_ATTR_CUSTOM_RANGE_END</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End of custom range base </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum defining attributes for QOS Maps. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="89" column="1" bodyfile="inc/saiqosmap.h" bodystart="88" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___s_a_i_q_o_s_m_a_p_s_1ga0a8c03dc7d3cf1c693c2119aee6e25b5" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga9173af471a3cd4e9005383b5c7f1c385" kindref="member">_sai_qos_map_type_t</ref></type>
+        <definition>typedef enum _sai_qos_map_type_t  sai_qos_map_type_t</definition>
+        <argsstring></argsstring>
+        <name>sai_qos_map_type_t</name>
+        <briefdescription>
+<para>Enum defining QOS map types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_q_o_s_m_a_p_s_1gab31b582ee53fbe86fee75e2b6b410c13" prot="public" static="no">
+        <type>enum <ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga93c7bac808f516a1b6554050d0443bdf" kindref="member">_sai_qos_map_attr_t</ref></type>
+        <definition>typedef enum _sai_qos_map_attr_t  sai_qos_map_attr_t</definition>
+        <argsstring></argsstring>
+        <name>sai_qos_map_attr_t</name>
+        <briefdescription>
+<para>Enum defining attributes for QOS Maps. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="127" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_q_o_s_m_a_p_s_1ga1b3654b4d05d4e716a3cb43f8415a819" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_create_qos_map_fn) (_Out_ sai_object_id_t *qos_map_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_Out_ sai_object_id_t *qos_map_id, _In_ sai_object_id_t switch_id, _In_ uint32_t attr_count, _In_ const sai_attribute_t *attr_list)</argsstring>
+        <name>sai_create_qos_map_fn</name>
+        <briefdescription>
+<para>Create QOS Map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">qos_map_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QOS Map Id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">switch_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Switch id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="139" column="1" bodyfile="inc/saiqosmap.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_q_o_s_m_a_p_s_1ga7d80932373c1deab1a8a439b9730960c" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_remove_qos_map_fn) (_In_ sai_object_id_t qos_map_id)</definition>
+        <argsstring>)(_In_ sai_object_id_t qos_map_id)</argsstring>
+        <name>sai_remove_qos_map_fn</name>
+        <briefdescription>
+<para>Remove QOS Map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">qos_map_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QOS Map id to be removed.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="152" column="1" bodyfile="inc/saiqosmap.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_q_o_s_m_a_p_s_1gabb4bd44ae90d383aaf5de41417dd4281" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_set_qos_map_attribute_fn) (_In_ sai_object_id_t qos_map_id, _In_ const sai_attribute_t *attr)</definition>
+        <argsstring>)(_In_ sai_object_id_t qos_map_id, _In_ const sai_attribute_t *attr)</argsstring>
+        <name>sai_set_qos_map_attribute_fn</name>
+        <briefdescription>
+<para>Set attributes for QOS map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">qos_map_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QOS Map Id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attribute to set</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="163" column="1" bodyfile="inc/saiqosmap.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_q_o_s_m_a_p_s_1gae9ef43d537a2cb5752ffd8b99f18dbef" prot="public" static="no">
+        <type>sai_status_t(*</type>
+        <definition>typedef sai_status_t(* sai_get_qos_map_attribute_fn) (_In_ sai_object_id_t qos_map_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</definition>
+        <argsstring>)(_In_ sai_object_id_t qos_map_id, _In_ uint32_t attr_count, _Inout_ sai_attribute_t *attr_list)</argsstring>
+        <name>sai_get_qos_map_attribute_fn</name>
+        <briefdescription>
+<para>Get attributes of QOS map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">qos_map_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Map id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">attr_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">attr_list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of attributes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group___s_a_i_s_t_a_t_u_s_1gaccbc66056ee29d7f1dc8defdc314cc55" kindref="member">SAI_STATUS_SUCCESS</ref> on success, failure status code on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="176" column="1" bodyfile="inc/saiqosmap.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___s_a_i_q_o_s_m_a_p_s_1gae34941b2e9bebf36b15143f453d49e5f" prot="public" static="no">
+        <type>struct <ref refid="struct__sai__qos__map__api__t" kindref="compound">_sai_qos_map_api_t</ref></type>
+        <definition>typedef struct _sai_qos_map_api_t  sai_qos_map_api_t</definition>
+        <argsstring></argsstring>
+        <name>sai_qos_map_api_t</name>
+        <briefdescription>
+<para>QOS Map methods table retrieved with <ref refid="group___s_a_i_1ga3d199f627b8265366b8481e1c662aaed" kindref="member">sai_api_query()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/saiqosmap.h" line="191" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This module defines SAI QOS Maps interface. </para>    </briefdescription>
+    <detaileddescription>
+<para>Copyright (c) 2014 Microsoft Open Technologies, Inc.</para><para>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at <ulink url="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ulink></para><para>THIS CODE IS PROVIDED ON AN <emphasis>AS IS</emphasis> BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.</para><para>See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.</para><para>Microsoft would like to thank the following companies for their review and assistance with these files: Intel Corporation, Mellanox Technologies Ltd, Dell Products, L.P., Facebook, Inc., Marvell International Ltd. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="25"><highlight class="preprocessor">#if<sp/>!defined<sp/>(__SAIQOSMAP_H_)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__SAIQOSMAP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="saitypes_8h" kindref="compound">saitypes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="group___s_a_i_q_o_s_m_a_p_s_1ga9173af471a3cd4e9005383b5c7f1c385" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga9173af471a3cd4e9005383b5c7f1c385" kindref="member">_sai_qos_map_type_t</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a67266cced8db19091f28d98d0bb2a95b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a67266cced8db19091f28d98d0bb2a95b" kindref="member">SAI_QOS_MAP_TYPE_DOT1P_TO_TC</ref><sp/>=<sp/>0x00000000,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a5105172eef5cd8edea62117735c9fef4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a5105172eef5cd8edea62117735c9fef4" kindref="member">SAI_QOS_MAP_TYPE_DOT1P_TO_COLOR</ref><sp/>=<sp/>0x00000001,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a5abbcc0b57ea3881cd59cf2e40d8c505" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a5abbcc0b57ea3881cd59cf2e40d8c505" kindref="member">SAI_QOS_MAP_TYPE_DSCP_TO_TC</ref><sp/>=<sp/>0x00000002,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385af1fc3511675c54e260d4ed31b0a692e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385af1fc3511675c54e260d4ed31b0a692e8" kindref="member">SAI_QOS_MAP_TYPE_DSCP_TO_COLOR</ref><sp/>=<sp/>0x00000003,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a287744035c2f87446516d1da9e6d2d16" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a287744035c2f87446516d1da9e6d2d16" kindref="member">SAI_QOS_MAP_TYPE_TC_TO_QUEUE</ref><sp/>=<sp/>0x00000004,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a69b417dfee447f933e525f4822d91335" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a69b417dfee447f933e525f4822d91335" kindref="member">SAI_QOS_MAP_TYPE_TC_AND_COLOR_TO_DSCP</ref><sp/>=<sp/>0x00000005,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a451d4dc7a0abe5e7208ec4b2117346a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a451d4dc7a0abe5e7208ec4b2117346a9" kindref="member">SAI_QOS_MAP_TYPE_TC_AND_COLOR_TO_DOT1P</ref><sp/>=<sp/>0x00000006,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a77478eb28c4fc160acaf403f434b704c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a77478eb28c4fc160acaf403f434b704c" kindref="member">SAI_QOS_MAP_TYPE_TC_TO_PRIORITY_GROUP</ref><sp/>=<sp/>0x00000007,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a0a2714cc7e3dd8de4177b12566aeefdc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a0a2714cc7e3dd8de4177b12566aeefdc" kindref="member">SAI_QOS_MAP_TYPE_PFC_PRIORITY_TO_PRIORITY_GROUP</ref><sp/>=<sp/>0x00000008,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385ad4427bc6bb6d4e8b30fea4ace15c1241" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385ad4427bc6bb6d4e8b30fea4ace15c1241" kindref="member">SAI_QOS_MAP_TYPE_PFC_PRIORITY_TO_QUEUE</ref><sp/>=<sp/>0x00000009,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a78566a1b0c70852b364e36d881aae6f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a78566a1b0c70852b364e36d881aae6f5" kindref="member">SAI_QOS_MAP_TYPE_MPLS_EXP_TO_TC</ref><sp/>=<sp/>0x0000000a,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a7720e31b7a425e8a1897181188602a31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385a7720e31b7a425e8a1897181188602a31" kindref="member">SAI_QOS_MAP_TYPE_MPLS_EXP_TO_COLOR</ref><sp/>=<sp/>0x0000000b,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385af846b21ac042b300f29efccd6adbdf27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385af846b21ac042b300f29efccd6adbdf27" kindref="member">SAI_QOS_MAP_TYPE_TC_AND_COLOR_TO_MPLS_EXP</ref><sp/>=<sp/>0x0000000c,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385aeda54db185a9e888113dad9c9c521f1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga9173af471a3cd4e9005383b5c7f1c385aeda54db185a9e888113dad9c9c521f1d" kindref="member">SAI_QOS_MAP_TYPE_CUSTOM_RANGE_BASE</ref><sp/>=<sp/>0x10000000</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}<sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga0a8c03dc7d3cf1c693c2119aee6e25b5" kindref="member">sai_qos_map_type_t</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="group___s_a_i_q_o_s_m_a_p_s_1ga93c7bac808f516a1b6554050d0443bdf" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga93c7bac808f516a1b6554050d0443bdf" kindref="member">_sai_qos_map_attr_t</ref></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93" refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa27774108e41bb9823f10b5db312b2b86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa27774108e41bb9823f10b5db312b2b86" kindref="member">SAI_QOS_MAP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa9443c10c441c4cca14eb31d2dc079833" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa9443c10c441c4cca14eb31d2dc079833" kindref="member">SAI_QOS_MAP_ATTR_TYPE</ref><sp/>=<sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa27774108e41bb9823f10b5db312b2b86" kindref="member">SAI_QOS_MAP_ATTR_START</ref>,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfab9b243595c16742d92ededa4fb8b1290" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfab9b243595c16742d92ededa4fb8b1290" kindref="member">SAI_QOS_MAP_ATTR_MAP_TO_VALUE_LIST</ref><sp/>=<sp/>0x00000001,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa9f17a7bc20e9d67aff278640ed950074" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa9f17a7bc20e9d67aff278640ed950074" kindref="member">SAI_QOS_MAP_ATTR_END</ref>,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa3548c61ef4f0a3b0d85be666ccf2e4b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfa3548c61ef4f0a3b0d85be666ccf2e4b5" kindref="member">SAI_QOS_MAP_ATTR_CUSTOM_RANGE_START</ref><sp/>=<sp/>0x10000000,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfad61286cce8b3fa7495130a59e41b50fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gga93c7bac808f516a1b6554050d0443bdfad61286cce8b3fa7495130a59e41b50fb" kindref="member">SAI_QOS_MAP_ATTR_CUSTOM_RANGE_END</ref></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}<sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gab31b582ee53fbe86fee75e2b6b410c13" kindref="member">sai_qos_map_attr_t</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="group___s_a_i_q_o_s_m_a_p_s_1ga1b3654b4d05d4e716a3cb43f8415a819" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga1b3654b4d05d4e716a3cb43f8415a819" kindref="member">sai_create_qos_map_fn</ref>)(</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Out_<sp/>sai_object_id_t<sp/>*qos_map_id,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>switch_id,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="group___s_a_i_q_o_s_m_a_p_s_1ga7d80932373c1deab1a8a439b9730960c" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga7d80932373c1deab1a8a439b9730960c" kindref="member">sai_remove_qos_map_fn</ref>)(</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>qos_map_id);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="group___s_a_i_q_o_s_m_a_p_s_1gabb4bd44ae90d383aaf5de41417dd4281" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_q_o_s_m_a_p_s_1gabb4bd44ae90d383aaf5de41417dd4281" kindref="member">sai_set_qos_map_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>qos_map_id,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="group___s_a_i_q_o_s_m_a_p_s_1gae9ef43d537a2cb5752ffd8b99f18dbef" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>sai_status_t<sp/>(*<ref refid="group___s_a_i_q_o_s_m_a_p_s_1gae9ef43d537a2cb5752ffd8b99f18dbef" kindref="member">sai_get_qos_map_attribute_fn</ref>)(</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>sai_object_id_t<sp/>qos_map_id,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_In_<sp/>uint32_t<sp/>attr_count,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_Inout_<sp/><ref refid="struct__sai__attribute__t" kindref="compound">sai_attribute_t</ref><sp/>*attr_list);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="struct__sai__qos__map__api__t" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct__sai__qos__map__api__t" kindref="compound">_sai_qos_map_api_t</ref></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga1b3654b4d05d4e716a3cb43f8415a819" kindref="member">sai_create_qos_map_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>create_qos_map;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1ga7d80932373c1deab1a8a439b9730960c" kindref="member">sai_remove_qos_map_fn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove_qos_map;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gabb4bd44ae90d383aaf5de41417dd4281" kindref="member">sai_set_qos_map_attribute_fn</ref><sp/><sp/>set_qos_map_attribute;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gae9ef43d537a2cb5752ffd8b99f18dbef" kindref="member">sai_get_qos_map_attribute_fn</ref><sp/><sp/>get_qos_map_attribute;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}<sp/><ref refid="group___s_a_i_q_o_s_m_a_p_s_1gae34941b2e9bebf36b15143f453d49e5f" kindref="member">sai_qos_map_api_t</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/saiqosmap.h"/>
+  </compounddef>
+</doxygen>

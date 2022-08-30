@@ -1,0 +1,10 @@
+[distribution]
+
+;; tcp_port_synchronic - port of socket where transactions initialized by application side
+;; tcp_port_asynchronous - port of socket where transactions initialized by asic side
+tcp_port_synchronic=12121
+tcp_port_asynchronous=21212
+clientIndex=1
+[log]
+
+file_name = ac5x_dump.txt

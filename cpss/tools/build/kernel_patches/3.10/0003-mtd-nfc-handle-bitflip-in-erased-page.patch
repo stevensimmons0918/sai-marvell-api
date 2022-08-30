@@ -1,0 +1,65 @@
+From 44f718bb3f4a50f2daacdfbcc33c7c0638dd53fb Mon Sep 17 00:00:00 2001
+From: blueh <blueh@marvell.com>
+Date: Tue, 30 Oct 2018 13:26:44 +0800
+Subject: [PATCH 08/11] mtd: nfc: handle bitflip in erased page
+
+    check the bitflips in erased pages when read operation returns
+    an error, if bitflips are below the correctable level report the
+    page as erased and fix the flipped bits, otherwise report uncorrectable
+    page
+---
+ drivers/mtd/nand/mvebu_nfc/nand_nfc.c | 30 +++++++++++++++++++++++++-----
+ 1 file changed, 25 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/mtd/nand/mvebu_nfc/nand_nfc.c b/drivers/mtd/nand/mvebu_nfc/nand_nfc.c
+index c345efe..bdeca7e 100644
+--- a/drivers/mtd/nand/mvebu_nfc/nand_nfc.c
++++ b/drivers/mtd/nand/mvebu_nfc/nand_nfc.c
+@@ -1017,11 +1017,31 @@ static int orion_nfc_dev_ready(struct mtd_info *mtd)
+ 	return (MV_REG_READ(NFC_STATUS_REG) & (NFC_SR_RDY0_MASK | NFC_SR_RDY1_MASK)) ? 1 : 0;
+ }
+ 
+-static inline int is_buf_blank(uint8_t *buf, size_t len)
++static inline int is_buf_blank(uint8_t *buf, size_t len, struct mtd_info *mtd)
+ {
+-	for (; len > 0; len--)
+-		if (*buf++ != 0xff)
+-			return 0;
++        struct nand_chip *nand = (struct nand_chip *)mtd->priv;
++        int flip_bits, i, j;
++        uint8_t *data;
++ 
++        for (i = 0; i < nand->ecc.steps; i++) {
++                flip_bits = 0;
++ 
++                data = &buf[nand->ecc.size * i];
++                for (j = 0; j < nand->ecc.size; j++) {
++                        flip_bits += hweight8(~data[j]);
++                        /* NFC uses ecc strength of 16 for all ecc size */
++                        if (flip_bits > 16)
++                                return 0;
++                }
++ 
++                /* Bit flips falls in correctable level.
++                 * Fill data area with 0xFF
++                 */
++                if (flip_bits) {
++                        memset(data, 0xFF, nand->ecc.size);
++                }
++        }
++
+ 	return 1;
+ }
+ 
+@@ -1086,7 +1106,7 @@ static void orion_nfc_cmdfunc(struct mtd_info *mtd, unsigned command,
+ 			 * 0, which is different from the ECC information within
+ 			 * OOB, ignore such double bit errors
+ 			 */
+-			if (is_buf_blank(info->data_buff, mtd->writesize))
++			if (is_buf_blank(info->data_buff, mtd->writesize, mtd))
+ 				info->retcode = ERR_NONE;
+ 			else
+ 				printk(PRINT_LVL "%s: retCode == ERR_DBERR\n", __func__);
+-- 
+1.9.1
+

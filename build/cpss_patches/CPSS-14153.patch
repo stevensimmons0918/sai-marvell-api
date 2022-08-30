@@ -1,0 +1,101 @@
+From 363432d38cfef810a4e899b49f71e81db23a1930 Mon Sep 17 00:00:00 2001
+From: Ran Dar <rand@marvell.com>
+Date: Thu, 27 Jan 2022 11:40:15 -0500
+Subject: [PATCH] reduce cm3 size
+
+Change-Id: I6bfc3800c099d318a9cec83407e8d4297602810f
+Signed-off-by: Ran Dar <rand@marvell.com>
+---
+ .../port/gop/src/port/mac/mti100Mac/mvHwsMti100MacIf.c       | 2 ++
+ .../port/gop/src/port/mac/mti400Mac/mvHwsMti400MacIf.c       | 2 ++
+ .../port/gop/src/port/mac/mtiCpuMac/mvHwsMtiCpuMacIf.c       | 5 ++++-
+ .../port/gop/src/port/serdes/avago/mvAvagoSerdesIf.c         | 4 ++--
+ 4 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/common/src/cpss/common/labServices/port/gop/src/port/mac/mti100Mac/mvHwsMti100MacIf.c b/common/src/cpss/common/labServices/port/gop/src/port/mac/mti100Mac/mvHwsMti100MacIf.c
+index 723a1e67bd..5e59db8e98 100755
+--- a/common/src/cpss/common/labServices/port/gop/src/port/mac/mti100Mac/mvHwsMti100MacIf.c
++++ b/common/src/cpss/common/labServices/port/gop/src/port/mac/mti100Mac/mvHwsMti100MacIf.c
+@@ -62,8 +62,10 @@ GT_STATUS mvHwsMti100MacIfInit(MV_HWS_MAC_FUNC_PTRS **funcPtrArray)
+     funcPtrArray[MTI_MAC_100]->macModeCfgFunc = mvHwsMti100MacModeCfg;
+     funcPtrArray[MTI_MAC_100]->macLinkGetFunc = mvHwsMti100MacLinkStatus;
+     funcPtrArray[MTI_MAC_100]->macLbCfgFunc   = mvHwsMti100MacLoopbackSet;
++#if !defined(MV_HWS_REDUCED_BUILD_EXT_CM3)
+ #ifndef CO_CPU_RUN
+     funcPtrArray[MTI_MAC_100]->macLbStatusGetFunc = mvHwsMti100MacLoopbackStatusGet;
++#endif
+ #endif
+     funcPtrArray[MTI_MAC_100]->macTypeGetFunc = mvHwsMacTypeGet;
+     funcPtrArray[MTI_MAC_100]->macPortEnableFunc = mvHwsMti100MacPortEnable;
+diff --git a/common/src/cpss/common/labServices/port/gop/src/port/mac/mti400Mac/mvHwsMti400MacIf.c b/common/src/cpss/common/labServices/port/gop/src/port/mac/mti400Mac/mvHwsMti400MacIf.c
+index 4ff5bbf493..b2f846c1da 100755
+--- a/common/src/cpss/common/labServices/port/gop/src/port/mac/mti400Mac/mvHwsMti400MacIf.c
++++ b/common/src/cpss/common/labServices/port/gop/src/port/mac/mti400Mac/mvHwsMti400MacIf.c
+@@ -62,8 +62,10 @@ GT_STATUS mvHwsMti400MacIfInit(MV_HWS_MAC_FUNC_PTRS **funcPtrArray)
+     funcPtrArray[MTI_MAC_400]->macModeCfgFunc = mvHwsMti400MacModeCfg;
+     funcPtrArray[MTI_MAC_400]->macLinkGetFunc = mvHwsMti400MacLinkStatus;
+     funcPtrArray[MTI_MAC_400]->macLbCfgFunc   = mvHwsMti400MacLoopbackSet;
++#if !defined(MV_HWS_REDUCED_BUILD_EXT_CM3)
+ #ifndef CO_CPU_RUN
+     funcPtrArray[MTI_MAC_400]->macLbStatusGetFunc = mvHwsMti400MacLoopbackStatusGet;
++#endif
+ #endif
+     funcPtrArray[MTI_MAC_400]->macTypeGetFunc = mvHwsMacTypeGet;
+     funcPtrArray[MTI_MAC_400]->macPortEnableFunc = mvHwsMti400MacPortEnable;
+diff --git a/common/src/cpss/common/labServices/port/gop/src/port/mac/mtiCpuMac/mvHwsMtiCpuMacIf.c b/common/src/cpss/common/labServices/port/gop/src/port/mac/mtiCpuMac/mvHwsMtiCpuMacIf.c
+index 46703ad8fd..f153a2dc89 100755
+--- a/common/src/cpss/common/labServices/port/gop/src/port/mac/mtiCpuMac/mvHwsMtiCpuMacIf.c
++++ b/common/src/cpss/common/labServices/port/gop/src/port/mac/mtiCpuMac/mvHwsMtiCpuMacIf.c
+@@ -287,6 +287,7 @@ static GT_STATUS mvHwsMtiCpuMacPortEnableGet
+     *enablePtr = (data) ? GT_TRUE : GT_FALSE;
+     return GT_OK;
+ }
++#if !defined(MV_HWS_REDUCED_BUILD_EXT_CM3)
+ 
+ /**
+ * @internal mvHwsMtiCpuMacLoopbackStatusGet function
+@@ -328,7 +329,7 @@ static GT_STATUS mvHwsMtiCpuMacLoopbackStatusGet
+     *lbType = (data == 1) ? RX_2_TX_LB : DISABLE_LB;
+     return GT_OK;
+ }
+-
++#endif
+ /**
+ * @internal mvHwsMtiCpuMacLoopbackSet function
+ * @endinternal
+@@ -413,8 +414,10 @@ GT_STATUS mvHwsMtiCpuMacIfInit(MV_HWS_MAC_FUNC_PTRS **funcPtrArray)
+     funcPtrArray[MTI_CPU_MAC]->macModeCfgFunc = mvHwsMtiCpuMacModeCfg;
+     funcPtrArray[MTI_CPU_MAC]->macLinkGetFunc = mvHwsMtiCpuMacLinkStatus;
+     funcPtrArray[MTI_CPU_MAC]->macLbCfgFunc   = mvHwsMtiCpuMacLoopbackSet;
++#if !defined(MV_HWS_REDUCED_BUILD_EXT_CM3)
+ #ifndef CO_CPU_RUN
+     funcPtrArray[MTI_CPU_MAC]->macLbStatusGetFunc = mvHwsMtiCpuMacLoopbackStatusGet;
++#endif
+ #endif
+     funcPtrArray[MTI_CPU_MAC]->macTypeGetFunc = mvHwsMacTypeGet;
+     funcPtrArray[MTI_CPU_MAC]->macPortEnableFunc = mvHwsMtiCpuMacPortEnable;
+diff --git a/common/src/cpss/common/labServices/port/gop/src/port/serdes/avago/mvAvagoSerdesIf.c b/common/src/cpss/common/labServices/port/gop/src/port/serdes/avago/mvAvagoSerdesIf.c
+index 28f060bd3c..b6051492e8 100644
+--- a/common/src/cpss/common/labServices/port/gop/src/port/serdes/avago/mvAvagoSerdesIf.c
++++ b/common/src/cpss/common/labServices/port/gop/src/port/serdes/avago/mvAvagoSerdesIf.c
+@@ -5022,7 +5022,7 @@ GT_STATUS mvHwsAvagoSerdesManualCtleConfigGet
+ 
+     return GT_OK;
+ }
+-
++#ifndef MV_HWS_REDUCED_BUILD_EXT_CM3
+ /*******************************************************************************
+ * mvHwsAvagoSerdesEyeMetricGet
+ *
+@@ -5074,7 +5074,7 @@ GT_STATUS mvHwsAvagoSerdesEyeMetricGet
+ 
+     return GT_OK;
+ }
+-
++#endif
+ /**
+ * @internal mvHwsAvagoSerdesSignalOkCfg function
+ * @endinternal
+-- 
+2.22.0
+

@@ -1,0 +1,57 @@
+/*!**************************************************RND Template version 4.1
+ *!          S T R U C T U R E   T Y P E   D E F I N I T I O N
+ *!==========================================================================
+ *$ TITLE: the interrupt table stc
+ *!--------------------------------------------------------------------------
+ *$ FILENAME:
+ *!--------------------------------------------------------------------------
+ *$ SYSTEM, SUBSYSTEM: nste
+ *!--------------------------------------------------------------------------
+ *$ AUTHORS: eyran,Boaz Kahana,oren-v,DoronR,GadiE,LiranP,ArikK
+ *!--------------------------------------------------------------------------
+ *$ LATEST UPDATE: 14-Dec-2008, 10:5 AM CREATION DATE: 18-Jun-97
+ *!**************************************************************************
+ *!
+ *!**************************************************************************
+ *!
+ *$ GENERAL DESCRIPTION:
+ *!
+ *$ INCLUDE REQUIRED:
+ *!
+ *$ REMARKS:
+ *!
+ *!**************************************************************************
+ *!*/
+
+/*
+ * If you define specific data types, constants, and macros for
+ * this structure, define them here.
+ */
+
+
+
+#define SHOSTP_max_intr_CNS 255
+
+typedef UINT_32  SHOSTP_intr_FUN(void);
+typedef UINT_32  SHOSTP_intr_param_FUN(UINT_32 param);
+
+
+
+
+typedef struct SHOSTP_intr_STCT
+    {
+        HANDLE hnd ;
+        DWORD  thd_id ;
+        UINT_32 id ;
+        UINT_32 mask ;
+        UINT_32 priority ;
+        UINT_32 susp_flag ;
+        HANDLE  ev ;
+        UINT_32 was_ev ;
+        SHOSTP_intr_FUN *fun ;
+        BOOLEAN param_exist;
+        UINT_32 param;
+        BOOLEAN thd_created;
+    } SHOSTP_intr_STC ;
+
+

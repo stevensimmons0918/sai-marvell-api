@@ -1,0 +1,141 @@
+#!/bin/bash
+
+####################################################
+# filter for combined stdout+stderr output from the build process
+#
+# this takes lines on stdin and outputs filtered stdout
+# 
+# currently we just do syntax coloring and add some lines for better readability
+####################################################
+
+# color  ANSI escape sequences 
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+AQUA='\033[0;36m'
+WHITE='\033[0;37m'
+DEFAULT='\033[0m'
+
+
+####################################################
+# pattern that matches word $2 in a command output
+# $2 can be an alternative of multiple choices, separated by \|
+# if you have alternative escape, or other escapes, then surround argument with
+# '' to minimize the number of escapes
+# 
+# before the word is space (separating from another word) or bracket [ or ( , or 
+# nothing (the beginning)
+# after the word is space or punctuation, or nothing (the end)
+#
+# return value in argument $1 
+####################################################
+function outWordPat {
+	eval $1='\([[:space:]]\|^\|\\[\|\\\(\)\('$2'\)\([[:space:]]\|[[:punct:]]\|$\)'
+}
+
+
+####################################################
+# pattern that matches part of a Linux command, $2, in a build output
+# $2 can be an alternative of multiple choices, separated by \|
+# if you have alternative escape, or other escapes, then surround argument with
+# '' to minimize the number of escapes
+#
+# the part separates from the rest of the command, by '-'
+#
+# return value in argument $1 
+####################################################
+function outPartCmdPat {
+	eval $1='\([[:space:]]\|^\|\-\)\'$2'\([[:space:]]\|\$\|\-\|\;\)'
+}
+
+
+####################################################
+# print string $1 in color $2
+# colors are represented with 2 digit color escape subsequence 
+# that varies among color escape sequences
+####################################################
+function color {
+	printf ${!2}
+	echo "$1"
+	printf $DEFAULT
+}
+
+
+####################################################
+# main script
+####################################################
+
+
+# assign patterns for $2 to arguments $1
+# if you want to have characters in pattern that are meaningful for regex, prepend them with \\\\
+
+outWordPat	errorPat		'error\|Error\|failed\|undefined\|denied\|Stop.\|No\ such\|\ not\ found'
+outWordPat	warningPat		'warning\|WARNING\|Warning'
+outPartCmdPat	gccPat	'g\\+\\+\|gcc'
+
+# $color is the color of the current line, if already known from the previous line
+# or nothing, if not known yet
+
+# we currently implement this only for toolchain commands output by make
+# if such a command contains '\', then it must be the last character and command is continued
+# on the next line, so we color the next line the same
+
+while read -r line
+do
+
+	if [ $color ] 
+	then
+		color "$line" $color
+		if [[ ! $line =~ '\' ]]
+		then
+			color=
+		fi
+		continue
+	fi
+
+	# if lines starts with check..., it is just information
+	if [[ $line =~ ^check ]]
+	then
+		echo "$line"
+		continue
+	fi
+
+	if [[ $line =~ $errorPat ]]
+	then
+		color "$line" RED
+		echo
+		continue
+	fi
+
+	if [[ $line =~ $gccPat ]]
+	then
+		echo
+		color "$line" AQUA
+		if [[ $line =~ '\' ]]
+		then
+			color=AQUA
+		else
+			echo
+			color=
+		fi
+		continue
+	fi
+
+	if [[ $line =~ $warningPat ]]
+	then
+		color "$line" YELLOW
+		echo
+		continue
+	fi
+
+	if [[ $line =~ ^(M|m)ak(e|ing) ]]
+	then
+		color "$line" WHITE
+		continue
+	fi
+
+
+
+    # Misc lines
+    echo "$line"
+
+done
