@@ -2010,9 +2010,21 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
     }
     else if (ALDRIN2EVAL == devType)
     {
-        profile = aldrin2_xl_fujitsu_large_profile_eval;
+        profile = aldrin2_xl_fujitsu_large_profile;
     }
     else if (AC3XFS == devType)
+    {
+        profile = ac3x_fujitsu_small_profile;
+    }
+    else if (AC3XROB == devType)
+    {
+        profile = ac3x_fujitsu_small_profile;
+    }
+    else if (AC3XRAMAN == devType)
+    {
+        profile = ac3x_fujitsu_small_profile;
+    }
+    else if (AC3XMCS == devType)
     {
         profile = ac3x_fujitsu_small_profile;
     }
@@ -2072,16 +2084,12 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
             profile = ac5x_48x1G6x10G_port_profile;
         }
 
-        if (ALDRIN2XLFL == devType)
+        if (IS_DEVICE_FUJITSU_LARGE(devType))
         {
             profile = aldrin2_xl_fujitsu_large_profile;
         }
-        if (ALDRIN2EVAL == devType)
-        {
-            profile = aldrin2_xl_fujitsu_large_profile_eval;
-        }
 
-        if (AC3XFS == devType)
+        if (IS_DEVICE_FUJITSU_SMALL(devType))
         {
             profile = ac3x_fujitsu_small_profile;
         }

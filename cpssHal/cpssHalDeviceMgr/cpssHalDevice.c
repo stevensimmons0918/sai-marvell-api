@@ -852,10 +852,6 @@ GT_STATUS cpssHalSwitchUpdateSku(XP_DEV_TYPE_T devType)
     {
         CPSSHAL_SWITCH(halHwsku2) = &aldrin2_xl_hw_table_sizes_profile[0];
     }
-    else if (IS_DEVICE_FUJITSU_LARGE_EVAL(devType))
-    {
-        CPSSHAL_SWITCH(halHwsku2) = &aldrin2_xl_hw_table_sizes_profile[0];
-    }
     else if (IS_DEVICE_FUJITSU_SMALL(devType))
     {
         CPSSHAL_SWITCH(halHwsku2) = &ac3x_3255_hw_table_sizes_profile[0];
