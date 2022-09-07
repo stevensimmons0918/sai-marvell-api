@@ -627,7 +627,7 @@ GT_STATUS cpssHalLedPortForcedStatus(GT_U8 cpssDevNum,
         }
     }
 
-    if (devType == AC3XFS)
+    if (IS_DEVICE_FUJITSU_SMALL(devType))
     {
         return GT_OK;
     }

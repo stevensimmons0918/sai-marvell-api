@@ -5172,6 +5172,18 @@ sai_status_t xpSaiDefaultProfileSet(const char* switch_hardware_id,
             pProfile->devType = AC3XFS;
             XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC3XFS", AC3XFS);
             break;
+        case XP_SDK_DEV_TYPE_AC3X_ROB:
+            pProfile->devType = AC3XROB;
+            XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC3XROB", AC3XROB);
+            break;
+        case XP_SDK_DEV_TYPE_AC3X_RAMAN:
+            pProfile->devType = AC3XRAMAN;
+            XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC3XRAMAN", AC3XRAMAN);
+            break;
+        case XP_SDK_DEV_TYPE_AC3X_MCS:
+            pProfile->devType = AC3XMCS;
+            XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC3XMCS", AC3XMCS);
+            break;
         default:
             XP_SAI_LOG_ERR("Wrong sdkDevType is passed!\n");
             return SAI_STATUS_FAILURE;

@@ -5220,7 +5220,7 @@ XP_STATUS xpsL3InitIpHostScope(xpsScope_t scopeId)
     cpssHalGetDeviceType((xpsDevice_t)scopeId, &devType);
 
     if (devType == ALDB2B || devType == ALDRIN2XL || devType == TG48M_P || 
-        devType == AC3XFS || devType == ALDRIN2XLFL || devType == ALDRIN2EVAL)
+        IS_DEVICE_FUJITSU_SMALL(devType) || IS_DEVICE_FUJITSU_LARGE(devType))
     {
         xpsL3FdbMgrEnable((xpsDevice_t)scopeId, FALSE);
     }

@@ -675,6 +675,18 @@ void getOptValues(int argc, char* argv[], const char** moduleNames)
                 {
                     xpAppConf.devType = AC3XFS;
                 }
+                if (!strncasecmp("AC3XROB", optarg, strlen("AC3XROB")))
+                {
+                    xpAppConf.devType = AC3XROB;
+                }
+                if (!strncasecmp("AC3XRAMAN", optarg, strlen("AC3XRAMAN")))
+                {
+                    xpAppConf.devType = AC3XRAMAN;
+                }
+                if (!strncasecmp("AC3XMCS", optarg, strlen("AC3XMCS")))
+                {
+                    xpAppConf.devType = AC3XMCS;
+                }
 
                 break;
 
