@@ -970,6 +970,7 @@ XP_STATUS cpssHalMacMgrPortInitWithLinkStatusControl(xpDevice_t devId,
 
     cpssDevId = xpsGlobalIdToDevId(devId, portNum);
     cpssPortNum = xpsGlobalPortToPortnum(devId, portNum);
+    cpssHalGetDeviceType(devId, &devType);
 
     if (cpssPortNum >= MAX_PORTNUM)
     {
@@ -1022,6 +1023,29 @@ XP_STATUS cpssHalMacMgrPortInitWithLinkStatusControl(xpDevice_t devId,
         }
     }
 
+    if (IS_DEVICE_FUJITSU_LARGE(devType))
+    {
+        /* Fujitsu has two modes for 1G: 1000BaseX and SR_LR.
+           This code does not catch this correctly
+           via modifying portmanager port structure.
+           So we need to re-init port if we have change from 1000BASEX to SR_LR
+           with speed 1G.
+        */
+        if (cpssIntfType == CPSS_PORT_INTERFACE_MODE_SR_LR_E && macConfigMode == MAC_MODE_1GB
+            && cpssPortParamsStcPtr.portParamsType.regPort.ifMode == CPSS_PORT_INTERFACE_MODE_1000BASE_X_E)
+        {
+            cpssRet = cpssDxChPortManagerPortParamsStructInit(cpssPortType,
+                                                              &cpssPortParamsStcPtr);
+            if (cpssRet != GT_OK)
+            {
+                ret = xpsConvertCpssStatusToXPStatus(cpssRet);
+                LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                      "cpssDxChPortManagerPortParamsStructInit dev %d port %d failed(%d)", cpssDevId,
+                      cpssPortNum, cpssRet);
+                // return ret;
+            }
+        }
+    }
 
     if (!cpssHalPortMacAnEnableGet(devId, portNum))
     {
@@ -1060,7 +1084,6 @@ XP_STATUS cpssHalMacMgrPortInitWithLinkStatusControl(xpDevice_t devId,
                 cpssPortParamsStcPtr.portParamsType.regPort.ifMode =
                     CPSS_PORT_INTERFACE_MODE_QSGMII_E;
                 cpssPortParamsStcPtr.portParamsType.regPort.speed = CPSS_PORT_SPEED_1000_E;
-                cpssHalGetDeviceType(devId, &devType);
                 if (devType == ALDRIN2XL || devType == ALDRIN2XLFL || devType == ALDRIN2EVAL)
                 {
                     cpssPortParamsStcPtr.portParamsType.regPort.ifMode =
