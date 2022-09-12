@@ -3745,7 +3745,7 @@ GT_STATUS cpssHalInitializePorts
                                 MRVL_HAL_API_TRACE("fujitsu_small_init_phy_0 failed", rc);
                             }
                         } 
-                        else if (laneItr == 3)
+                        else if (profile[laneItr].profileValue.portMap.portNum == 3)
                         {
                             rc = fujitsu_small_init_phy_1(devNum, profile[laneItr].profileValue.portMap.portNum);
                             if (rc != GT_OK)

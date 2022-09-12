@@ -5,10 +5,10 @@
                                                                        |   |   txQNum 
                                                                        |   |   |  interfaceMode                     interfaceSpeed  existsPhy                                             frontPanelPortIdx
                                                                        |   |   |  |                                 |               |                                                                     |    */
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 0,  0,  0, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x00, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  0}},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 1,  1,  1, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x01, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  1}},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 2,  2,  2, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x02, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  2}},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 3,  3,  3, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x03, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  3}},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 0,  0,  0, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x02, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  0}},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 1,  1,  1, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x03, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  1}},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 2,  2,  2, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x04, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  2}},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 3,  3,  3, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {1, 0x05, CPSS_PHY_SMI_INTERFACE_0_E, CPSS_PHY_XSMI_INTERFACE_MAX_E},  3}},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 4,  4,  4, CPSS_PORT_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0},  4}},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 5,  5,  5, CPSS_PORT_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0},  5}},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 6,  6,  6, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {0, 0, 0, 0},  6}},
