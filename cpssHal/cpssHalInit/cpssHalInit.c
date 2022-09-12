@@ -3688,10 +3688,10 @@ GT_STATUS cpssHalInitializePorts
             }
 
             //Per port Led init
-            if (speed >= CPSS_PORT_SPEED_10000_E)
+            if (speed >= CPSS_PORT_SPEED_10000_E || IS_DEVICE_FUJITSU_LARGE(xpDevType))
             {
                 if (IS_DEVICE_FALCON(xpDevType) || xpDevType == ALDRIN2XL ||
-                    IS_DEVICE_AC5X(xpDevType))
+                    IS_DEVICE_AC5X(xpDevType) || IS_DEVICE_FUJITSU_LARGE(xpDevType))
                 {
                     ledPosition = -1; // Override position
                 }

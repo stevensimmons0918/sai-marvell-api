@@ -122,7 +122,7 @@ GT_STATUS cpssHalLedInit(GT_U8 devNum, XP_DEV_TYPE_T devType,
     GT_U32    ledIntf    = 0;
     GT_U32    numLedIntf = 1;
 
-    if (devType == ALDRIN2XL)
+    if (devType == ALDRIN2XL || IS_DEVICE_FUJITSU_LARGE(devType))
     {
         numLedIntf = ALDRIN2_LED_IF_NUM_CNS;
     }
@@ -487,6 +487,61 @@ GT_STATUS cpssHalLedPortConfig(GT_U8 devNum, XP_DEV_TYPE_T devType,
             {
                 /* LED interface - 3 */
                 position = 24;
+            }
+        }
+        else if (IS_DEVICE_FUJITSU_LARGE(devType))
+        {
+            /*
+            LED connectivity for Fujitsu MCU and ALDRIN2XL Evaluation board
+            * LED0 chain is connected to Ports 0-11
+            * LED1 chain is connected to Ports 12-23
+            * LED2 chain is connected to Ports 52-72
+            * LED3 chain is connected to Ports 28-47
+            */
+            if (macNumber < 12)
+            {
+                /* LED interface - 0 */
+                position = macNumber;
+            }
+            else if (macNumber < 24)
+            {
+                /* LED interface - 1 */
+                position = macNumber - 12;
+            }
+            else if (macNumber < 32)
+            {
+                /* LED interface - 3 */
+                position = macNumber - 28;
+            }
+            else if (macNumber < 44)
+            {
+                /* LED interface - 3 */
+                position = macNumber - 32;
+            }
+            else if (macNumber < 47)
+            {
+                /* LED interface - 2 */
+                position = macNumber - 36;
+            }
+            else if (macNumber < 47)
+            {
+                /* LED interface - 2 */
+                position = macNumber - 36;
+            }
+            else if (macNumber < 56)
+            {
+                /* LED interface - 2 */
+                position = macNumber - 52;
+            }
+            else if (macNumber < 64)
+            {
+                /* LED interface - 2 */
+                position = macNumber - 56;
+            }
+            else if (macNumber < 72)
+            {
+                /* LED interface - 2 */
+                position = macNumber - 60;
             }
         }
     }
