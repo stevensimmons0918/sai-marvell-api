@@ -2879,8 +2879,9 @@ GT_STATUS cpssHalInitializePort
     if (speed == CPSS_PORT_SPEED_1000_E)
     {
         CPSS_PM_SET_VALID_ATTR(&portParams, CPSS_PM_PORT_ATTR_AUTO_NEG_ENABLE);
-        portParams.portParamsType.regPort.portAttributes.autoNegotiation.inbandEnable =
-            GT_TRUE;
+        if (interfaceMode != CPSS_PORT_INTERFACE_MODE_SR_LR_E)
+            portParams.portParamsType.regPort.portAttributes.autoNegotiation.inbandEnable =
+                GT_TRUE;
         if (!IS_DEVICE_FUJITSU_LARGE(xpDevType))
         {
             portParams.portParamsType.regPort.portAttributes.autoNegotiation.duplexEnable =
@@ -2890,10 +2891,13 @@ GT_STATUS cpssHalInitializePort
         }
         else
         {
-            portParams.portParamsType.regPort.portAttributes.autoNegotiation.flowCtrlEnable =
-                GT_TRUE;
-            portParams.portParamsType.regPort.portAttributes.autoNegotiation.flowCtrlPauseAdvertiseEnable =
-                GT_TRUE;
+            if (interfaceMode != CPSS_PORT_INTERFACE_MODE_SR_LR_E)
+            {
+                portParams.portParamsType.regPort.portAttributes.autoNegotiation.flowCtrlEnable =
+                    GT_TRUE;
+                portParams.portParamsType.regPort.portAttributes.autoNegotiation.flowCtrlPauseAdvertiseEnable =
+                    GT_TRUE;
+            }
         }
         if (IS_DEVICE_AC5X(xpDevType))
         {
@@ -2923,7 +2927,7 @@ GT_STATUS cpssHalInitializePort
         }
         else
         {
-            if (!IS_DEVICE_FUJITSU_LARGE(xpDevType) && xpDevType != AC3XROB)
+            if (!IS_DEVICE_FUJITSU_LARGE(xpDevType) && xpDevType != AC3XROB && interfaceMode != CPSS_PORT_INTERFACE_MODE_SR_LR_E)
                 portParams.portParamsType.regPort.portAttributes.autoNegotiation.byPassEnable =
                     GT_TRUE;
         }
@@ -2961,20 +2965,7 @@ GT_STATUS cpssHalInitializePort
 
     }
 
-    if (speed == CPSS_PORT_SPEED_10000_E)
-    {
-        if (IS_DEVICE_FUJITSU_LARGE(xpDevType))
-        {
-            if ((interfaceMode == CPSS_PORT_INTERFACE_MODE_KR_E ||
-                interfaceMode == CPSS_PORT_INTERFACE_MODE_SR_LR_E))
-            {
-                portParams.portParamsType.regPort.portAttributes.fecMode =
-                    CPSS_PORT_FEC_MODE_ENABLED_E;
-                CPSS_PM_SET_VALID_ATTR(&portParams, CPSS_PM_ATTR_FEC_MODE_E);
 
-            } 
-        }
-    }
     /* Attributes */
     /* common param - FEC params */
 
