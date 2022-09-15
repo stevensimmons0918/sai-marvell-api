@@ -630,10 +630,13 @@ int appMain(int argc, char *argv[])
             break;
         case AC3XFS:
             XP_CONFIG.withHw = "AC3XFS";
+            break;
         case AC3XROB:
             XP_CONFIG.withHw = "AC3XROB";
+            break;
         case AC3XRAMAN:
             XP_CONFIG.withHw = "AC3XRAMAN";
+            break;
         case AC3XMCS:
             XP_CONFIG.withHw = "AC3XMCS";
             break;
