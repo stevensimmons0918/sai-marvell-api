@@ -35,7 +35,7 @@
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 44, ALDRIN2_MAC_AND_TXQ_PORT_MAC(44), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 44 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 45, ALDRIN2_MAC_AND_TXQ_PORT_MAC(45), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 45 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 46, ALDRIN2_MAC_AND_TXQ_PORT_MAC(46), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 46 }},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 47, ALDRIN2_MAC_AND_TXQ_PORT_MAC(47), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 47 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 47, ALDRIN2_MAC_AND_TXQ_PORT_MAC(47), PROFILE_INTERFACE_MODE_SR_LR_E, 10, .phyInfo = {0, 0, 0, 0}, 47 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 52, ALDRIN2_MAC_AND_TXQ_PORT_MAC(52), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 52 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 53, ALDRIN2_MAC_AND_TXQ_PORT_MAC(53), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 53 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 54, ALDRIN2_MAC_AND_TXQ_PORT_MAC(54), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 54 }},
@@ -47,7 +47,7 @@
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 69, ALDRIN2_MAC_AND_TXQ_PORT_MAC(68), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 69 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 70, ALDRIN2_MAC_AND_TXQ_PORT_MAC(69), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 60 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 71, ALDRIN2_MAC_AND_TXQ_PORT_MAC(70), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 71 }},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 72, ALDRIN2_MAC_AND_TXQ_PORT_MAC(71), PROFILE_INTERFACE_MODE_KR_E, 100, .phyInfo = {0, 0, 0, 0}, 72 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 72, ALDRIN2_MAC_AND_TXQ_PORT_MAC(71), PROFILE_INTERFACE_MODE_SR_LR_E, 10, .phyInfo = {0, 0, 0, 0}, 72 }},
 
    
     //CPU SDMA PORTs
