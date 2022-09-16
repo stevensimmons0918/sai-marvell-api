@@ -800,6 +800,7 @@ GT_STATUS cpssHalPortManagerIsSupported(GT_U8 devId)
     {
         case CPSS_PP_FAMILY_DXCH_FALCON_E:
         case CPSS_PP_FAMILY_DXCH_AC5X_E:
+        case CPSS_PP_FAMILY_DXCH_AC3X_E:
 #ifndef ASIC_SIMULATION
         case CPSS_PP_FAMILY_DXCH_ALDRIN2_E:
 #endif
