@@ -1179,7 +1179,9 @@ XP_STATUS cpssHalHostIfCPUtoPPPacketForward
     txParams.sdmaInfo.evReqHndl = 0;
     txParams.sdmaInfo.invokeTxBufferQueueEvent = GT_FALSE;
     if (devType == CPSS_PP_FAMILY_DXCH_FALCON_E ||
-        devType == CPSS_PP_FAMILY_DXCH_AC5X_E)
+        devType == CPSS_PP_FAMILY_DXCH_AC5X_E ||
+        devType == CPSS_PP_FAMILY_DXCH_ALDRIN2_E ||
+        devType == CPSS_PP_FAMILY_TIGER_E)
     {
         txParams.dsaParam.commonParams.dsaTagType = CPSS_DXCH_NET_DSA_4_WORD_TYPE_ENT;
     }
@@ -1332,7 +1334,9 @@ XP_STATUS cpssHalHostIfCPUtoPPPacketTransmit
     txParams.sdmaInfo.evReqHndl = 0;
     txParams.sdmaInfo.invokeTxBufferQueueEvent = GT_FALSE;
     if (devType == CPSS_PP_FAMILY_DXCH_FALCON_E ||
-        devType == CPSS_PP_FAMILY_DXCH_AC5X_E)
+        devType == CPSS_PP_FAMILY_DXCH_AC5X_E ||
+        devType == CPSS_PP_FAMILY_DXCH_ALDRIN2_E ||
+        devType == CPSS_PP_FAMILY_TIGER_E)
     {
         txParams.dsaParam.commonParams.dsaTagType = CPSS_DXCH_NET_DSA_4_WORD_TYPE_ENT;
     }
