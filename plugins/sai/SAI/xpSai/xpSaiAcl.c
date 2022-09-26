@@ -243,6 +243,7 @@ sai_status_t xpSaiActionSupportCheck(sai_uint32_t attrId)
         case SAI_ACL_ENTRY_ATTR_ACTION_SET_ACL_META_DATA:
         //case SAI_ACL_ENTRY_ATTR_ACTION_SET_CPU_QUEUE:
         case SAI_ACL_ENTRY_ATTR_ACTION_EGRESS_BLOCK_PORT_LIST:
+        case SAI_ACL_ENTRY_ATTR_ACTION_SET_OUTER_VLAN_ID:
             retVal = SAI_STATUS_SUCCESS;
             break;
         default:
@@ -1674,6 +1675,37 @@ static sai_status_t xpSaiAclEntryDataSet(xpSaiAclEntryAttributesT* pAttributes,
                                        saiRetVal);
                         return saiRetVal;
                     }
+                }
+                break;
+
+            case SAI_ACL_ENTRY_ATTR_ACTION_SET_OUTER_VLAN_ID:
+                if (xpSaiAclEntryActionAttributeEnabledCheck(pAttributes,
+                                                             SAI_ACL_ENTRY_ATTR_ACTION_SET_OUTER_VLAN_ID) == TRUE)
+                {
+                    xpSaiAclTableIdMappingT *pSaiAclTableAttribute = NULL;
+                    saiRetVal = xpSaiAclTableAttributesGet(tblId, &pSaiAclTableAttribute);
+                    if (saiRetVal != SAI_STATUS_SUCCESS)
+                    {
+                        XP_SAI_LOG_ERR("Could not get Table Entry, ret %d\n", saiRetVal);
+                        return saiRetVal;
+                    }
+
+                    xpSaiAclEntryActionAttributeGet(pAttributes,
+                                                    SAI_ACL_ENTRY_ATTR_ACTION_SET_OUTER_VLAN_ID, &action);
+                    if (pSaiAclTableAttribute->stage == SAI_ACL_STAGE_INGRESS)
+                    {
+                        // entryData->vlan.ingress.vlanId1Cmd = CPSS_DXCH_PCL_ACTION_INGRESS_VLAN_ID1_CMD_ALL_E;
+                        // entryData->vlan.ingress.vlanId1 = action.parameter.u16;
+                        entryData->vlan.ingress.vlanId = action.parameter.u16;
+                        entryData->vlan.ingress.modifyVlan = CPSS_PACKET_ATTRIBUTE_ASSIGN_FOR_TAGGED_E;
+                    }
+                    else
+                    {
+                        // entryData->vlan.egress.vlanId1ModifyEnable = GT_TRUE;
+                        // entryData->vlan.egress.vlanId1 = action.parameter.u16;
+                        entryData->vlan.egress.vlanId = action.parameter.u16;
+                    }
+
                 }
                 break;
 
