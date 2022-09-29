@@ -1060,6 +1060,7 @@ typedef uint32_t        xpsVsi_t;
 typedef uint32_t xpsInterfaceId_t;
 typedef uint32_t xpsStp_t;
 typedef uint32_t        xpsArpPointer_t;
+typedef uint32_t xpsVlanStack_t;
 /**
  * \struct xpsPacketInfo_t
  * \brief This structure defines the packet Tx/Rx information for Packet Driver

@@ -177,7 +177,8 @@ typedef enum xpsDbStateHandle_e
     XPS_VXLAN_VNI_DB_HNDL = 110,
     XPS_VXLAN_VNI_MAP_DB_HNDL = 111,
     XPS_HOST_INTF_GENETLINK_DB_HNDL = 112,
-    XPS_GLOBAL_DB_HANDLE_LAST = 113, // While adding global db shift this down, and add before this
+    XPS_VLAN_STACK_DATA_DB_HNDL = 113,
+    XPS_GLOBAL_DB_HANDLE_LAST = 114, // While adding global db shift this down, and add before this
 
     XPS_GLOBAL_DB_HANDLE_ENDS = 4120,
     XPS_PER_DEVICE_HANDLE_BEGINS = 4121,

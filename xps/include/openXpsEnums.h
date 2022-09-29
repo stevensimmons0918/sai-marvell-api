@@ -1452,4 +1452,25 @@ typedef  xpOfPacketInReason_e xpsOfPacketInReason_e;
  */
 typedef  xpOfTableType_e xpsOfTableType_e;
 
+/**
+ * \brief VlanStack stage
+ */
+
+typedef enum xpsVlanStackStage_e
+{
+    XP_INGRESS_PORT_STACK,
+    XP_EGRESS_PORT_STACK
+} xpsVlanStackStage_e;
+
+/**
+ * \brief VlanStack action
+ */
+
+typedef enum xpsVlanStackAction_e
+{
+    XP_ACTION_SWAP,
+    XP_ACTION_PUSH,
+    XP_ACTION_POP
+} xpsVlanStackAction_e;
+
 #endif  //_openXpsEnums_h_

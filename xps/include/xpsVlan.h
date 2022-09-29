@@ -1542,6 +1542,11 @@ XP_STATUS xpsVlanSetVniInVlanDb(xpsScope_t scopeId, xpsVlan_t vlanId,
                                 uint32_t vniId);
 XP_STATUS xpsVlanGetVniInVlanDb(xpsScope_t scopeId, xpsVlan_t vlanId,
                                 uint32_t *vniId);
+
+XP_STATUS xpsVlanCreateStack(xpsScope_t scopeId, xpsVlanStackStage_e xpsVlanStackStage,
+                             xpsVlanStackAction_e xpsVlanStackAction, xpsInterfaceId_t intfId,
+                             xpsVlanStack_t *vlanStackId);
+XP_STATUS xpsVlanRemoveStack(xpsScope_t scopeId, xpsVlanStack_t vlanStackId);
 #ifdef __cplusplus
 }
 #endif
