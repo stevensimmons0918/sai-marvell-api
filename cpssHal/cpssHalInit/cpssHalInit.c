@@ -2927,7 +2927,7 @@ GT_STATUS cpssHalInitializePort
         }
         else
         {
-            if (!IS_DEVICE_FUJITSU_LARGE(xpDevType) && xpDevType != AC3XROB && interfaceMode != CPSS_PORT_INTERFACE_MODE_SR_LR_E)
+            if (!IS_DEVICE_FUJITSU_LARGE(xpDevType) && interfaceMode != CPSS_PORT_INTERFACE_MODE_SR_LR_E)
                 portParams.portParamsType.regPort.portAttributes.autoNegotiation.byPassEnable =
                     GT_TRUE;
         }
