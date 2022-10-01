@@ -221,6 +221,7 @@ sai_status_t xpSaiSetSwitchMac(uint8_t* ifName)
     struct ifreq ifr;
     int sock;
     sai_mac_t switchMac;
+    sai_mac_t zero = {0, 0, 0, 0, 0, 0};
 
     if (ifName == NULL)
     {
@@ -229,6 +230,11 @@ sai_status_t xpSaiSetSwitchMac(uint8_t* ifName)
     }
 
     xpSaiGetSwitchSrcMacAddress(switchMac);
+    if (0 == memcmp(switchMac, zero, sizeof(sai_mac_t)))
+    {
+        XP_SAI_LOG_NOTICE("Grobal variable switch src mac is not set \n");
+        return SAI_STATUS_SUCCESS;
+    }
     memcpy(ifr.ifr_ifrn.ifrn_name, (const char*) ifName,
            sizeof(ifr.ifr_ifrn.ifrn_name));
     sock = socket(AF_INET, SOCK_DGRAM, 0);
