@@ -1079,6 +1079,16 @@ XP_STATUS cpssHalMacMgrPortInitWithLinkStatusControl(xpDevice_t devId,
 
         switch (macConfigMode)
         {
+            case MAC_MODE_10M:
+                cpssPortParamsStcPtr.portParamsType.regPort.ifMode =
+                    CPSS_PORT_INTERFACE_MODE_SGMII_E;
+                cpssPortParamsStcPtr.portParamsType.regPort.speed = CPSS_PORT_SPEED_10_E;
+                break;
+            case MAC_MODE_100M:
+                cpssPortParamsStcPtr.portParamsType.regPort.ifMode =
+                    CPSS_PORT_INTERFACE_MODE_SGMII_E;
+                cpssPortParamsStcPtr.portParamsType.regPort.speed = CPSS_PORT_SPEED_100_E;
+                break;
             case MAC_MODE_1GB:
             case MAC_MODE_4X1GB:
                 cpssPortParamsStcPtr.portParamsType.regPort.ifMode =
@@ -1186,7 +1196,7 @@ XP_STATUS cpssHalMacMgrPortInitWithLinkStatusControl(xpDevice_t devId,
                     = GT_FALSE;
             }
         }
-        if (cpssIntfType != CPSS_PORT_INTERFACE_MODE_NA_E)
+        if (cpssIntfType != CPSS_PORT_INTERFACE_MODE_NA_E && cpssPortParamsStcPtr.portParamsType.regPort.ifMode != CPSS_PORT_INTERFACE_MODE_SGMII_E)
         {
             cpssPortParamsStcPtr.portParamsType.regPort.ifMode = cpssIntfType;
         }
