@@ -696,6 +696,7 @@ void check_attr_object_type_provided(
         case SAI_ATTR_VALUE_TYPE_SYSTEM_PORT_CONFIG_LIST:
         case SAI_ATTR_VALUE_TYPE_FABRIC_PORT_REACHABILITY:
         case SAI_ATTR_VALUE_TYPE_PORT_ERR_STATUS_LIST:
+        case SAI_ATTR_VALUE_TYPE_VLAN_STACKING_VID:
 
             if (md->allowedobjecttypes != NULL)
             {
@@ -921,6 +922,7 @@ void check_attr_default_required(
         case SAI_ATTR_VALUE_TYPE_IPV4:
         case SAI_ATTR_VALUE_TYPE_SYSTEM_PORT_CONFIG:
         case SAI_ATTR_VALUE_TYPE_IPV6:
+        case SAI_ATTR_VALUE_TYPE_VLAN_STACKING_VID:
             break;
 
         case SAI_ATTR_VALUE_TYPE_CHARDATA:
@@ -2610,6 +2612,7 @@ void check_attr_is_primitive(
         case SAI_ATTR_VALUE_TYPE_MACSEC_SALT:
         case SAI_ATTR_VALUE_TYPE_SYSTEM_PORT_CONFIG:
         case SAI_ATTR_VALUE_TYPE_FABRIC_PORT_REACHABILITY:
+        case SAI_ATTR_VALUE_TYPE_VLAN_STACKING_VID:
 
             if (!md->isprimitive)
             {
@@ -4333,7 +4336,8 @@ void check_object_ro_list(
             oi->objecttype == SAI_OBJECT_TYPE_HOSTIF_TABLE_ENTRY ||
             oi->objecttype == SAI_OBJECT_TYPE_DTEL ||
             oi->objecttype == SAI_OBJECT_TYPE_DTEL_QUEUE_REPORT ||
-            oi->objecttype == SAI_OBJECT_TYPE_DTEL_EVENT)
+            oi->objecttype == SAI_OBJECT_TYPE_DTEL_EVENT ||
+            oi->objecttype == SAI_OBJECT_TYPE_VLAN_STACK)
     {
         /*
          * We skip hostif table entry since there is no 1 object which can

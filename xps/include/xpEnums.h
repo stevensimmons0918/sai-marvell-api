@@ -1507,6 +1507,7 @@ typedef enum xpsAllocatorId
     XP_ALLOC_LTT_ECMP,
     XP_ALLOC_VXLAN_UNI_TTI_HW_ENTRY,
     XP_ALLOC_VXLAN_IPV6_ACL,
+    XP_ALLOCATOR_VLAN_STACK,
     XPS_ALLOCATOR_ENDS,
 } xpsAllocatorId;
 

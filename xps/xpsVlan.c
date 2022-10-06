@@ -23,6 +23,7 @@
 #include "xpsLag.h"
 #include "xpsVxlan.h"
 #include "xpsAcl.h"
+#include "xpsAllocator.h"
 
 #include "gtGenTypes.h"
 #include "gtEnvDep.h"
@@ -43,6 +44,7 @@ extern "C" {
 
 #include <cpss/common/private/globalShared/prvCpssGlobalDb.h>
 #include <cpss/common/private/globalShared/prvCpssGlobalDbInterface.h>
+#include <cpss/dxCh/dxChxGen/bridge/cpssDxChBrgNestVlan.h>
 
 extern xpsStpMode_e stpMode_g;
 
@@ -64,6 +66,10 @@ extern xpsStpMode_e stpMode_g;
 #define XPS_VLAN_L3_DEFAULT_VRID 0
 //TODO set marvell fdb size
 #define XPS_MAXFDB_LIMIT (32*1024)
+
+#define XP_VLAN_STACK_RANGE_START             0
+#define XP_VLAN_STACK_MAX_IDS 128
+
 extern GT_STATUS cpssHalL3UpdtIntfIpUcRoutingEn(GT_U8 cpssDevId,
                                                 GT_U32 cpssPortNum,
                                                 CPSS_IP_PROTOCOL_STACK_ENT protocol,
@@ -80,6 +86,8 @@ static xpsDbHandle_t lagVlanListDbHndl = XPS_STATE_INVALID_DB_HANDLE;
 
 
 static xpsDbHandle_t vlanStaticDataDbHndl = XPS_STATE_INVALID_DB_HANDLE;
+
+static xpsDbHandle_t vlanStackDataDbHndl = XPS_STATE_INVALID_DB_HANDLE;
 
 /*  xpsVlanContextDbEntry
 
@@ -205,6 +213,17 @@ typedef struct xpsVlanStaticDbEntry
     uint32_t     nullPortVif;
 } xpsVlanStaticDbEntry;
 
+typedef struct xpsVlanStackDbEntry
+{
+    // Key
+    xpsVlanStack_t vlanStackId;
+
+    // Data
+    xpsVlanStackStage_e xpsVlanStackStage;
+    xpsVlanStackAction_e xpsVlanStackAction;
+    xpsInterfaceId_t xpsIntf;
+} xpsVlanStackDbEntry;
+
 static uint32_t xpsIntfVlanDbKey(xpsScope_t scopeId, xpsInterfaceId_t intfId,
                                  xpsVlan_t vlanId)
 {
@@ -264,7 +283,12 @@ static int32_t vlanStaticVarKeyComp(void* key1, void* key2)
                                                                       xpsVlanStaticDbEntry *) key2)->staticDataType));
 }
 
-
+static int32_t vlanStackVarKeyComp(void *key1, void *key2)
+{
+    return ((((xpsVlanStackDbEntry *)key1)->vlanStackId) - (((
+                                                                 xpsVlanStackDbEntry *)key2)
+                                                                ->vlanStackId));
+}
 
 //Static variables DB functions
 static XP_STATUS xpsVlanGetStaticVariablesDb(xpsScope_t scopeId,
@@ -1142,8 +1166,90 @@ XP_STATUS xpsVlanGetIntfIndex(xpsDevice_t devId, xpsVlan_t vlanId,
     return XP_NO_ERR;
 }
 
+static XP_STATUS xpsVlanStackInsertDb(xpsScope_t scopeId, xpsVlanStack_t vlanStackId,
+                                      xpsVlanStackDbEntry **vlanStackEntry)
+{
 
+    XP_STATUS result = XP_NO_ERR;
 
+    if ((result = xpsStateHeapMalloc(sizeof(xpsVlanStackDbEntry),
+                                     (void **)vlanStackEntry)) != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Memory allocation for vlan stack failed");
+        return result;
+    }
+    if (*vlanStackEntry == NULL)
+    {
+        return XP_ERR_NULL_POINTER;
+    }
+
+    memset(*vlanStackEntry, 0, sizeof(vlanStackEntry));
+
+    (*vlanStackEntry)->vlanStackId = vlanStackId;
+
+    // Insert the vlan stack mapping into the database, vlanStackId is the key
+    if ((result = xpsStateInsertData(scopeId, vlanStackDataDbHndl,
+                                     (void *)*vlanStackEntry)) != XP_NO_ERR)
+    {
+        xpsStateHeapFree((void *)*vlanStackEntry);
+        return result;
+    }
+
+    return result;
+}
+
+static XP_STATUS xpsVlanStackGetDb(xpsScope_t scopeId, xpsVlanStack_t vlanStackId,
+                                   xpsVlanStackDbEntry **vlanStackEntry)
+{
+
+    XP_STATUS result = XP_NO_ERR;
+    xpsVlanStackDbEntry keyVlanStackEntry;
+
+    memset(&keyVlanStackEntry, 0x0, sizeof(keyVlanStackEntry));
+    keyVlanStackEntry.vlanStackId = vlanStackId;
+
+    if ((result = xpsStateSearchData(scopeId, vlanStackDataDbHndl,
+                                     (xpsDbKey_t)&keyVlanStackEntry, (void **)vlanStackEntry)) != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Search data failed, vlanStackId(%d)", vlanStackId);
+        return result;
+    }
+    if (!(*vlanStackEntry))
+    {
+
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Vlan stack entry does not exist");
+        return XP_ERR_KEY_NOT_FOUND;
+    }
+
+    return result;
+}
+
+static XP_STATUS xpsVlanStackRemoveDb(xpsScope_t scopeId, xpsVlanStack_t vlanStackId)
+{
+
+    XP_STATUS result = XP_NO_ERR;
+    xpsVlanStackDbEntry keyVlanStackEntry;
+    xpsVlanStackDbEntry *vlanStackEntry = NULL;
+    memset(&keyVlanStackEntry, 0x0, sizeof(keyVlanStackEntry));
+    keyVlanStackEntry.vlanStackId = vlanStackId;
+
+    if ((result = xpsStateDeleteData(scopeId, vlanStackDataDbHndl,
+                                     (xpsDbKey_t)&keyVlanStackEntry, (void **)vlanStackEntry)) != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Delete vlan stack failed, vlanStackId(%d)", vlanStackId);
+        return result;
+    }
+    if ((result = xpsStateHeapFree((void *)vlanStackEntry)) != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Heap Freeing failed");
+        return result;
+    }
+
+    return result;
+}
 
 //This API not exposed to user. For internal purpose
 
@@ -1287,6 +1393,16 @@ XP_STATUS xpsVlanInitScope(xpsScope_t scopeId)
         return result;
     }
 
+    vlanStackDataDbHndl = XPS_VLAN_STACK_DATA_DB_HNDL;
+    result = xpsStateRegisterDb(scopeId, "Vlan stack variables", XPS_GLOBAL,
+                                &vlanStackVarKeyComp, vlanStackDataDbHndl);
+    if (result != XP_NO_ERR)
+    {
+        vlanStackDataDbHndl = XPS_STATE_INVALID_DB_HANDLE;
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Register db call failed");
+        return result;
+    }
+
     XPS_GLOBAL_PORT_ITER(portNum, maxTotalPorts)
     {
         status = cpssHalEnableBrgVlanPortIngFlt(devId, portNum, GT_TRUE);
@@ -1325,6 +1441,16 @@ XP_STATUS xpsVlanInitScope(xpsScope_t scopeId)
               "VlanIngressTpidProfileSet failed");
         return xpsConvertCpssStatusToXPStatus(status);
 
+    }
+
+    /* initialize the Vlan Stack Id Allocator*/
+    result = xpsAllocatorInitIdAllocator(scopeId, XP_ALLOCATOR_VLAN_STACK,
+                                         XP_VLAN_STACK_MAX_IDS, XP_VLAN_STACK_RANGE_START);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Failed to initialize XPS Vlan Stack allocator\n");
+        return result;
     }
 
     XPS_FUNC_EXIT_LOG();
@@ -6861,6 +6987,244 @@ XP_STATUS xpsVlanGetVniInVlanDb(xpsScope_t scopeId, xpsVlan_t vlanId,
 
     XPS_FUNC_EXIT_LOG();
     return status;
+}
+
+XP_STATUS xpsVlanCreateStack(xpsScope_t scopeId, xpsVlanStackStage_e xpsVlanStackStage,
+                             xpsVlanStackAction_e xpsVlanStackAction, xpsInterfaceId_t intfId,
+                             xpsVlanStack_t *vlanStackId)
+{
+    XPS_FUNC_ENTRY_LOG();
+
+    XPS_LOCK(xpsVlanCreateStack);
+    XP_STATUS result;
+    xpsDevice_t devId;
+    GT_STATUS rc = GT_OK;
+    xpsVlanStackDbEntry *vlanStackEntry;
+    xpsInterfaceType_e intfType = XPS_PORT;
+    xpsInterfaceInfo_t *intfInfo = NULL;
+    uint32_t cpssDevId;
+    uint32_t cpssPortNum;
+    xpsVlan_t prevVlanId = 0;
+    xpsVlan_t vlanId = 0;
+
+    result = xpsScopeGetFirstDevice(scopeId, &devId);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "xpsScopeGetFirstDevice() Failed %d\n", result);
+        return result;
+    }
+
+    result = xpsAllocatorAllocateId(scopeId, XP_ALLOCATOR_VLAN_STACK, vlanStackId);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Allocate vlan stack failed");
+        return result;
+    }
+
+    result = xpsVlanStackInsertDb(scopeId, *vlanStackId, &vlanStackEntry);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Insert into vlanStack list failed");
+        return result;
+    }
+
+    result = xpsInterfaceGetInfoScope(scopeId, intfId, &intfInfo);
+    if (result != XP_NO_ERR || intfInfo == NULL)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Failed to get intf id %d\n", intfId);
+        return result;
+    }
+    // Get interfacetype
+    intfType = intfInfo->type;
+
+    /*According to interface type switch to different l2domain apis*/
+    switch (intfType)
+    {
+    case XPS_PORT:
+    case XPS_EXTENDED_PORT:
+        cpssDevId = xpsGlobalIdToDevId(devId, intfId);
+        cpssPortNum = xpsGlobalPortToPortnum(devId, intfId);
+
+        if (xpsVlanStackStage == XP_INGRESS_PORT_STACK)
+        {
+            if (xpsVlanStackAction == XP_ACTION_PUSH)
+            {
+                if ((rc = cpssDxChBrgNestVlanAccessPortSet(cpssDevId, cpssPortNum, GT_TRUE)) != GT_OK)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          "cpss cpssDxChBrgNestVlanAccessPortSet failed for port %d", cpssPortNum);
+                    return xpsConvertCpssStatusToXPStatus(rc);
+                }
+            }
+        }
+        else
+        {
+            if (xpsVlanStackAction == XP_ACTION_POP)
+            {
+                result = xpsVlanGetFirst(devId, &vlanId);
+                if ((result != XP_NO_ERR) && (result != XP_ERR_NOT_FOUND))
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Getting first vlan failed");
+                    return result;
+                }
+                /* Iterate all vlans and set tagging mode of the port if it is a member of this vlan*/
+                while (1)
+                {
+                    if (xpsVlanIsIntfExist(devId, vlanId, intfId) == XP_NO_ERR)
+                    {
+                        if ((rc = cpssDxChBrgVlanMemberSet(cpssDevId, vlanId, cpssPortNum,
+                                                           GT_TRUE, GT_TRUE, CPSS_DXCH_BRG_VLAN_PORT_POP_OUTER_TAG_CMD_E)) != GT_OK)
+                        {
+                            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                                  "cpss cpssDxChBrgNestVlanAccessPortSet failed for port %d", cpssPortNum);
+                            return xpsConvertCpssStatusToXPStatus(rc);
+                        }
+                    }
+                    prevVlanId = vlanId;
+                    result = xpsVlanGetNext(devId, prevVlanId, &vlanId);
+                    if (result == XP_ERR_NOT_FOUND)
+                    {
+                        result = XP_NO_ERR;
+                        break;
+                    }
+                }
+            }
+        }
+        break;
+    default:
+        break;
+    }
+
+    vlanStackEntry->xpsIntf = intfId;
+    vlanStackEntry->xpsVlanStackAction = xpsVlanStackAction;
+    vlanStackEntry->xpsVlanStackStage = xpsVlanStackStage;
+
+    XPS_FUNC_EXIT_LOG();
+    return result;
+}
+
+XP_STATUS xpsVlanRemoveStack(xpsScope_t scopeId, xpsVlanStack_t vlanStackId)
+{
+    XPS_FUNC_ENTRY_LOG();
+
+    XPS_LOCK(xpsVlanRemoveStack);
+    XP_STATUS result;
+    xpsDevice_t devId;
+    GT_STATUS rc = GT_OK;
+    xpsVlanStackDbEntry *vlanStackEntry;
+    xpsInterfaceType_e intfType = XPS_PORT;
+    xpsInterfaceInfo_t *intfInfo = NULL;
+    uint32_t cpssDevId;
+    uint32_t cpssPortNum;
+    xpsVlan_t prevVlanId = 0;
+    xpsVlan_t vlanId = 0;
+
+    result = xpsScopeGetFirstDevice(scopeId, &devId);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "xpsScopeGetFirstDevice() Failed %d\n", result);
+        return result;
+    }
+
+    result = xpsVlanStackGetDb(scopeId, vlanStackId, &vlanStackEntry);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, " xpsVlanStackGetDb, vlanStackId(%d)",
+              vlanStackId);
+        return result;
+    }
+
+    result = xpsInterfaceGetInfoScope(scopeId, vlanStackEntry->xpsIntf, &intfInfo);
+    if (result != XP_NO_ERR || intfInfo == NULL)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Failed to get intf id %d\n", vlanStackEntry->xpsIntf);
+        return result;
+    }
+    // Get interfacetype
+    intfType = intfInfo->type;
+
+    /*According to interface type switch to different l2domain apis*/
+    switch (intfType)
+    {
+    case XPS_PORT:
+    case XPS_EXTENDED_PORT:
+        cpssDevId = xpsGlobalIdToDevId(devId, vlanStackEntry->xpsIntf);
+        cpssPortNum = xpsGlobalPortToPortnum(devId, vlanStackEntry->xpsIntf);
+
+        if (vlanStackEntry->xpsVlanStackStage == XP_INGRESS_PORT_STACK)
+        {
+            if (vlanStackEntry->xpsVlanStackAction == XP_ACTION_PUSH)
+            {
+                if ((rc = cpssDxChBrgNestVlanAccessPortSet(cpssDevId, cpssPortNum, GT_FALSE)) != GT_OK)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          "cpss cpssDxChBrgNestVlanAccessPortSet failed for port %d", cpssPortNum);
+                    return xpsConvertCpssStatusToXPStatus(rc);
+                }
+            }
+        }
+        else
+        {
+            if (vlanStackEntry->xpsVlanStackAction == XP_ACTION_POP)
+            {
+                result = xpsVlanGetFirst(devId, &vlanId);
+                if ((result != XP_NO_ERR) && (result != XP_ERR_NOT_FOUND))
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Getting first vlan failed");
+                    return result;
+                }
+                /* Iterate all vlans and set tagging mode of the port if it is a member of this vlan*/
+                while (1)
+                {
+                    if (xpsVlanIsIntfExist(devId, vlanId, vlanStackEntry->xpsIntf) == XP_NO_ERR)
+                    {
+                        if ((rc = cpssDxChBrgVlanMemberSet(cpssDevId, vlanId, cpssPortNum,
+                                                           GT_TRUE, GT_FALSE, CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E)) != GT_OK)
+                        {
+                            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                                  "cpss cpssDxChBrgNestVlanAccessPortSet failed for port %d", cpssPortNum);
+                            return xpsConvertCpssStatusToXPStatus(rc);
+                        }
+                    }
+                    prevVlanId = vlanId;
+                    result = xpsVlanGetNext(devId, prevVlanId, &vlanId);
+                    if (result == XP_ERR_NOT_FOUND)
+                    {
+                        result = XP_NO_ERR;
+                        break;
+                    }
+                }
+            }
+        }
+        break;
+    default:
+        break;
+    }
+
+    // de-allocate the vlan stack
+    result = xpsAllocatorReleaseId(scopeId, XP_ALLOCATOR_VLAN_STACK, vlanStackId);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Release of Interface Id failed");
+        return result;
+    }
+
+    result = xpsVlanStackRemoveDb(scopeId, vlanStackId);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Vlan Stack Remove failed, vlanStackId(%d)", vlanStackId);
+        return result;
+    }
+
+    XPS_FUNC_EXIT_LOG();
+    return result;
 }
 
 #ifdef __cplusplus

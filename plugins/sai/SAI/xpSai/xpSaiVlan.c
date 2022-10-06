@@ -3560,6 +3560,150 @@ sai_status_t xpSaiBulkGetVlanMemberAttributes(sai_object_id_t id,
     return SAI_STATUS_SUCCESS;
 }
 
+// Func: xpSaiCreateVlanStack
+
+sai_status_t xpSaiCreateVlanStack(_Out_ sai_object_id_t *vlanStackIdObj,
+                                  _In_ sai_object_id_t switch_id,
+                                  _In_ uint32_t attr_count,
+                                  _In_ const sai_attribute_t *attr_list)
+{
+    XP_STATUS retVal = XP_NO_ERR;
+    sai_status_t saiRetVal = SAI_STATUS_SUCCESS;
+    xpsVlanStack_t vlanStackId;
+    xpsDevice_t devId = xpSaiGetDevId();
+    sai_vlan_stack_stage_t saiVlanStackStage;
+    sai_vlan_stack_action_t saiVlanStackAction;
+    sai_object_id_t saiPortId = SAI_NULL_OBJECT_ID;
+    xpsVlanStackStage_e xpsVlanStackStage;
+    xpsVlanStackAction_e xpsVlanStackAction;
+    xpsInterfaceId_t xpsIntf;
+
+    XP_SAI_LOG_DBG("%s %d:\n", __FUNCNAME__, __LINE__);
+
+    if ((NULL == vlanStackIdObj) || (NULL == attr_list))
+    {
+        XP_SAI_LOG_ERR("Invalid parameter received!");
+        return SAI_STATUS_INVALID_PARAMETER;
+    }
+
+    saiRetVal = xpSaiAttrCheck(attr_count, attr_list,
+                               VLAN_STACK_VALIDATION_ARRAY_SIZE, vlan_stack_attribs,
+                               SAI_COMMON_API_CREATE);
+    if (saiRetVal != SAI_STATUS_SUCCESS)
+    {
+        XP_SAI_LOG_ERR("Attribute check failed with error %d\n", saiRetVal);
+        return saiRetVal;
+    }
+
+    /* Check input conditions.*/
+    if (attr_count < 3)
+    {
+        XP_SAI_LOG_ERR("Wrong number of input attributes received");
+        return SAI_STATUS_INVALID_PARAMETER;
+    }
+
+    for (sai_uint32_t indx = 0; indx < attr_count; indx++)
+    {
+        switch (attr_list[indx].id)
+        {
+        case SAI_VLAN_STACK_ATTR_STAGE:
+            saiVlanStackStage = (sai_vlan_stack_stage_t)attr_list[indx].value.s32;
+            break;
+        case SAI_VLAN_STACK_ATTR_ACTION:
+            saiVlanStackAction = (sai_vlan_stack_action_t)attr_list[indx].value.s32;
+            break;
+        case SAI_VLAN_STACK_ATTR_PORT:
+            saiPortId = attr_list[indx].value.oid;
+            break;
+        default:
+            XP_SAI_LOG_ERR("Invalid attribute received(%u)!", attr_list[indx].id);
+            break;
+        }
+    }
+
+    if (!(XDK_SAI_OBJID_TYPE_CHECK(saiPortId, SAI_OBJECT_TYPE_PORT) ||
+          XDK_SAI_OBJID_TYPE_CHECK(saiPortId, SAI_OBJECT_TYPE_LAG)))
+    {
+        XP_SAI_LOG_ERR("For wrong object type received(%u).\n",
+                       xpSaiObjIdTypeGet(saiPortId));
+        saiRetVal = SAI_STATUS_INVALID_ATTR_VALUE_0;
+        return saiRetVal;
+    }
+
+    if (saiVlanStackStage == SAI_VLAN_STACK_STAGE_INGRESS)
+    {
+        xpsVlanStackStage = XP_INGRESS_PORT_STACK;
+    }
+    else
+    {
+        xpsVlanStackStage = XP_EGRESS_PORT_STACK;
+    }
+
+    if (saiVlanStackAction == SAI_VLAN_STACK_ACTION_SWAP)
+    {
+        XP_SAI_LOG_INFO("SAI_VLAN_STACK_ACTION_SWAP is not supported.");
+        return SAI_STATUS_NOT_SUPPORTED;
+        // xpsVlanStackAction = XP_ACTION_SWAP;
+    }
+    else if (saiVlanStackAction == SAI_VLAN_STACK_ACTION_PUSH)
+    {
+        xpsVlanStackAction = XP_ACTION_PUSH;
+    }
+    else
+    {
+        xpsVlanStackAction = XP_ACTION_POP;
+    }
+
+    xpsIntf = (xpsInterfaceId_t)xpSaiObjIdValueGet(saiPortId);
+
+    retVal = xpsVlanCreateStack(XP_SCOPE_DEFAULT, xpsVlanStackStage,
+                                xpsVlanStackAction, xpsIntf, &vlanStackId);
+    if (retVal != XP_NO_ERR)
+    {
+        XP_SAI_LOG_ERR("xpsVlanCreateStack failed vlanStackId %d | retVal : %d \n", vlanStackId,
+                       retVal);
+        return xpsStatus2SaiStatus(retVal);
+    }
+
+    /*Create vlan stack object after successful creation of vlan*/
+    saiRetVal = xpSaiObjIdCreate(SAI_OBJECT_TYPE_VLAN_STACK, devId, vlanStackId, vlanStackIdObj);
+    if (saiRetVal != SAI_STATUS_SUCCESS)
+    {
+        XP_SAI_LOG_ERR("SAI vlan object could not be created\n");
+        return saiRetVal;
+    }
+
+    return SAI_STATUS_SUCCESS;
+}
+
+// Func: xpSaiRemoveVlanStack
+
+sai_status_t xpSaiRemoveVlanStack(_In_ sai_object_id_t vlanStackIdObj)
+{
+    XP_STATUS retVal = XP_NO_ERR;
+    xpsVlanStack_t vlanStackId;
+
+    XP_SAI_LOG_DBG("%s %d:\n", __FUNCNAME__, __LINE__);
+
+    if (!XDK_SAI_OBJID_TYPE_CHECK(vlanStackIdObj, SAI_OBJECT_TYPE_VLAN_STACK))
+    {
+        XP_SAI_LOG_ERR("Wrong object type received(%u)\n", xpSaiObjIdTypeGet(vlanStackIdObj));
+        return SAI_STATUS_INVALID_OBJECT_TYPE;
+    }
+
+    vlanStackId = (xpsStp_t)xpSaiObjIdValueGet(vlanStackIdObj);
+
+    retVal = xpsVlanRemoveStack(XP_SCOPE_DEFAULT, vlanStackId);
+    if (retVal != XP_NO_ERR)
+    {
+        XP_SAI_LOG_ERR("xpsVlanCreateStack failed vlanStackId %d | retVal : %d \n", vlanStackId,
+                       retVal);
+        return xpsStatus2SaiStatus(retVal);
+    }
+
+    return SAI_STATUS_SUCCESS;
+}
+
 /*
 * Routine Description:
 *     Removes interface from all VLAN in which it participates
@@ -3838,6 +3982,11 @@ XP_STATUS xpSaiVlanApiInit(uint64_t flag,
     _xpSaiVlanApi->set_vlan_member_attribute = xpSaiSetVlanMemberAttribute;
     _xpSaiVlanApi->get_vlan_member_attribute = xpSaiGetVlanMemberAttributes;
     _xpSaiVlanApi->get_vlan_stats = xpSaiGetVlanStats;
+    _xpSaiVlanApi->clear_vlan_stats = xpSaiClearVlanStats;
+    _xpSaiVlanApi->create_vlan_stack = xpSaiCreateVlanStack;
+    _xpSaiVlanApi->remove_vlan_stack = xpSaiRemoveVlanStack;
+    // _xpSaiVlanApi->set_vlan_stack_attribute = xpSaiSetVlanStackAttributes;
+    // _xpSaiVlanApi->get_vlan_stack_attribute = xpSaiGetVlanStackAttributes;
     _xpSaiVlanApi->clear_vlan_stats = xpSaiClearVlanStats;
 
     _xpSaiVlanApi->create_vlan_members = (sai_bulk_object_create_fn)

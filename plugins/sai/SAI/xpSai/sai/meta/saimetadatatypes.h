@@ -435,6 +435,12 @@ typedef enum _sai_attr_value_type_t
      * @brief Attribute value is fabric port error status.
      */
     SAI_ATTR_VALUE_TYPE_PORT_ERR_STATUS_LIST,
+    
+    /**
+     * @brief Attribute value is Vlan Stacking VID.
+     */
+    SAI_ATTR_VALUE_TYPE_VLAN_STACKING_VID,
+
 } sai_attr_value_type_t;
 
 /**

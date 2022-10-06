@@ -120,6 +120,7 @@ TTL - Time to Leave
 UDF - User-Defined Field
 UDP - User Datagram Protocol
 VOQ - Virtual Output Queue
+VID - Vlan Identifier
 VNI - Virtual Network Interface
 VNID - Virtual Network Identifier
 VR - Virtual Router

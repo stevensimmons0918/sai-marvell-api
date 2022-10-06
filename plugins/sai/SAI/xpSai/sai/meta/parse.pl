@@ -244,6 +244,8 @@ sub ProcessTagDefault
 
     return $val if $val eq "\"\"";
 
+    return $val if $val =~ /^0,0$/;
+
     LogError "invalid default tag value '$val' on $type $value";
     return undef;
 }
@@ -1337,6 +1339,8 @@ sub ProcessDefaultValueType
 
     return "SAI_DEFAULT_VALUE_TYPE_CONST" if $default eq "\"\"";
 
+    return "SAI_DEFAULT_VALUE_TYPE_CONST" if $default =~ /^0,0$/;
+
     LogError "invalid default value type '$default' on $attr";
 
     return "";
@@ -1403,6 +1407,10 @@ sub ProcessDefaultValue
     elsif ($default =~ /^0\.0\.0\.0$/ and $type =~ /^(sai_ip4_t)/)
     {
         WriteSource "$val = { 0 };";
+    }
+    elsif ($default =~ /^0,0$/ and $type =~ /^(sai_vlan_stacking_vid_t)/)
+    {
+        WriteSource "$val = { .$VALUE_TYPES{$1} = { .outer = 0, .inner = 0 } };";
     }
     else
     {
@@ -2235,6 +2243,7 @@ sub ProcessStructValueType
     return "SAI_ATTR_VALUE_TYPE_IP_ADDRESS"     if $type eq "sai_ip_address_t";
     return "SAI_ATTR_VALUE_TYPE_IP_PREFIX"      if $type eq "sai_ip_prefix_t";
     return "SAI_ATTR_VALUE_TYPE_PRBS_RX_STATE"  if $type eq "sai_prbs_rx_state_t";
+    return "SAI_ATTR_VALUE_TYPE_VLAN_STACKING_VID" if $type eq "sai_vlan_stacking_vid_t";
     return "SAI_ATTR_VALUE_TYPE_UINT16"         if $type eq "sai_vlan_id_t";
     return "SAI_ATTR_VALUE_TYPE_UINT32"         if $type eq "sai_label_id_t";
     return "SAI_ATTR_VALUE_TYPE_UINT32"         if $type eq "uint32_t";
