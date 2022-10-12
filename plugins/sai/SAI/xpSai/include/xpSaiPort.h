@@ -22,7 +22,7 @@ extern "C" {
 
 #define XPSAI_DIRECTED_MIRROR_SESSION_NUM 1
 
-#define XPSAI_PORT_DEFAULT_MTU      1514
+#define XPSAI_PORT_DEFAULT_MTU      9600
 #define XPSAI_PORT_MAX_QUEUES       32  /* falcon supports upto 16 queues per port + 16 queues for SNMP testcase WA */
 
 #define XPS_MAX_QUEUES_PER_PORT     8
