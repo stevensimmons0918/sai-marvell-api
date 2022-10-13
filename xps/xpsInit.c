@@ -2022,11 +2022,11 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
     }
     else if (AC3XRAMAN == devType)
     {
-        profile = ac3x_fujitsu_small_profile;
+        profile = ac3x_fujitsu_small_25_profile;
     }
     else if (AC3XMCS == devType)
     {
-        profile = ac3x_fujitsu_small_profile;
+        profile = ac3x_fujitsu_small_25_profile;
     }
     else
     {
@@ -2091,7 +2091,9 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
 
         if (IS_DEVICE_FUJITSU_SMALL(devType))
         {
-            profile = ac3x_fujitsu_small_profile;
+            if (devType == AC3XMCS || devType ==  AC3XRAMAN) {
+                profile = ac3x_fujitsu_small_25_profile;
+            } else profile = ac3x_fujitsu_small_profile;
         }
 
         rc = cpssHalInitializeDeviceApi(devNum, devType, profile);
