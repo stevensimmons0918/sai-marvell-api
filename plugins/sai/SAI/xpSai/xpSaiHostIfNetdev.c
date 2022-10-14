@@ -117,8 +117,10 @@ XP_STATUS xpSaiHostIfLinkStatusSet(xpsDevice_t devId, xpsInterfaceId_t intfId,
     rc = xpsNetdevLinkStatusSet(devId, xpnetId, status);
     if (XP_NO_ERR != rc)
     {
+#if 0
         XP_SAI_LOG_WARNING("Unable to set operational status for interface: %u.\n",
                            intfId);
+#endif
     }
 
     return rc;
