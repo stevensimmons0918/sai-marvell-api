@@ -1974,6 +1974,7 @@ typedef enum XP_DEV_TYPE_E
     AC3XROB, /* Fujitsu Small - ROB board*/
     AC3XMCS, /* Fujitsu Small - MCS board*/
     AC3XRAMAN, /* Fujitsu Small - Raman board*/
+    AC3XILA, /* Fujitsu Small - ILA board*/
     XP_DEV_TYPE_TOTAL
 } XP_DEV_TYPE_T;
 
@@ -2035,7 +2036,7 @@ typedef enum XP_DEV_TYPE_E
 
 #define IS_DEVICE_FUJITSU_SMALL(DEV_TYPE)      ( \
                                                 (AC3XFS==DEV_TYPE || AC3XROB==DEV_TYPE || \
-                                                AC3XMCS==DEV_TYPE || AC3XRAMAN==DEV_TYPE) \
+                                                AC3XMCS==DEV_TYPE || AC3XRAMAN==DEV_TYPE || AC3XILA==DEV_TYPE) \
                                                )
 
 /**

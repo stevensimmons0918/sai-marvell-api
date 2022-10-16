@@ -42,6 +42,7 @@ inline CPSS_PP_INTERFACE_CHANNEL_ENT cpssHalSys_param_mngInterfaceType(
         case AC3XROB:
         case AC3XRAMAN:
         case AC3XMCS:
+        case AC3XILA:
         case ALDRIN2XLFL:
         case ALDRIN2EVAL:
             return CPSS_CHANNEL_PEX_MBUS_E;
@@ -69,6 +70,7 @@ inline GT_U32 cpssHalSys_param_rxDescNum(XP_DEV_TYPE_T xpDevType)
         case AC3XROB:
         case AC3XRAMAN:
         case AC3XMCS:
+        case AC3XILA:
         case ALDRIN2XLFL:
         case ALDRIN2EVAL:
             return 256;
@@ -101,6 +103,7 @@ inline GT_U32 cpssHalSys_param_rxBuffNum(XP_DEV_TYPE_T xpDevType)
         case AC3XROB:
         case AC3XRAMAN:
         case AC3XMCS:
+        case AC3XILA:
         case ALDRIN2XLFL:
         case ALDRIN2EVAL:
             return 256;
