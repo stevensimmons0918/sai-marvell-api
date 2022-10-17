@@ -228,6 +228,7 @@ XP_STATUS cpssHalMacMgrPortEnable(xpsDevice_t devId, uint32_t portNum,
     GT_U32 cpssPortNum;
     CPSS_PORT_MANAGER_STC portEventStc;
     CPSS_PORT_MANAGER_STATUS_STC portStagePtr;
+    CPSS_PM_PORT_PARAMS_STC cpssPortParamsStcPtr;
     XP_DEV_TYPE_T devType;
     //GT_BOOL signalDetect = GT_FALSE;
 
@@ -478,6 +479,35 @@ XP_STATUS cpssHalMacMgrPortEnable(xpsDevice_t devId, uint32_t portNum,
             }
                 */
 
+            /* JIRA LARCH-16
+             * We need to enable Bypass for 2.5G CPU port
+             * on RAMAN and MCS boards
+             */
+            cpssRet = cpssDxChPortManagerPortParamsGet(cpssDevId, cpssPortNum,
+                                                       &cpssPortParamsStcPtr);
+            if (cpssRet != GT_OK)
+            {
+                ret = xpsConvertCpssStatusToXPStatus(cpssRet);
+                LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                      "cpssDxChPortManagerPortParamsGet dev %d port %d failed(%d)", cpssDevId,
+                      cpssPortNum, cpssRet);
+                // return ret;
+            }
+            if (cpssPortParamsStcPtr.portParamsType.regPort.speed == CPSS_PORT_SPEED_2500_E && (devType == AC3XRAMAN || devType == AC3XMCS))
+            {
+
+                cpssRet = cpssDxChPortInBandAutoNegBypassEnableSet(cpssDevId, portNum,
+                                                              GT_TRUE);
+                if (cpssRet != GT_OK)
+                {
+                    ret = xpsConvertCpssStatusToXPStatus(cpssRet);
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          "cpssDxChPortInBandAutoNegBypassEnableSet dev %d port %d failed(%d)", devId, portNum,
+                          cpssRet);
+                    return ret;
+                }
+
+            }
         }
     }
     return ret;

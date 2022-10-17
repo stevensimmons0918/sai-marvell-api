@@ -2933,7 +2933,7 @@ GT_STATUS cpssHalInitializePort
         }
     }
 
-    if (speed == CPSS_PORT_SPEED_2500_E)
+    if (speed == CPSS_PORT_SPEED_2500_E && xpDevType != AC3XRAMAN && xpDevType != AC3XMCS)
     {
         portParams.portParamsType.regPort.portAttributes.fecMode =
             CPSS_PORT_RS_FEC_MODE_ENABLED_E;
@@ -3349,6 +3349,22 @@ GT_STATUS cpssHalInitializePort
         return rc;
     }
 #endif
+
+    /* JIRA LARCH-16
+     * We need to enable Bypass for 2.5G CPU port
+     * on RAMAN and MCS boards
+     */
+    if (speed == CPSS_PORT_SPEED_2500_E && (xpDevType == AC3XRAMAN || xpDevType == AC3XMCS))
+    {
+
+        rc = cpssDxChPortInBandAutoNegBypassEnableSet(devNum, portNum,
+                                                      GT_TRUE);
+        if (rc != GT_OK)
+        {
+            MRVL_HAL_API_TRACE("cpssDxChPortInBandAutoNegBypassEnableSet", rc);
+            return rc;
+        }
+    }
     rc = cpssDxChPortFlowControlEnableSet(devNum, portNum,
                                           CPSS_PORT_FLOW_CONTROL_DISABLE_E);
     if (rc != GT_OK)
