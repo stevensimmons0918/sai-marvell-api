@@ -22,6 +22,7 @@
 #include "xpsAllocator.h"
 #include "xpsAcl.h"
 #include "cpssDxChPortCtrl.h"
+#include "fujDefs.h"
 #include <net/if.h>
 #ifdef PCAP_SUPPORT
 #include "pcap.h"
@@ -309,13 +310,13 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
     uint32_t  ii, packetLen;
     uint8_t pass = XPS_NETDEV_FALSE;
     uint8_t insertVlanTag = XPS_NETDEV_FALSE;
-#if 0
+#ifdef FUJ_USE_NETDEV
     int32_t fd = -1;
 #endif
     int32_t ingressPortNum = 0;
     int32_t cpssPortNum = 0;
     uint32_t hwDevNum = 0;
-#if 0
+#ifdef FUJ_USE_NETDEV
     uint32_t xpnetId = 0xFFFF;
     xpsNetDevDbEntry* netDevEntry = NULL;
     xpsHostIfTableGenetlinkDbEntry *hostIfEntry = NULL;
@@ -323,7 +324,7 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
     xpsPacketDrvHostifVlanTagType tagType = XPS_PKT_DRV_HOSTIF_VLAN_TAG_ORIGINAL;
     xpsVlan_t pvid = 1;
     CPSS_NET_RX_CPU_CODE_ENT cpuCode = CPSS_NET_UNDEFINED_CPU_CODE_E;
-#if 0
+#ifdef FUJ_USE_NETDEV
     uint32_t isGenetlinkFd =  XPS_NETDEV_FALSE;
 #endif
     NSLOCK();
@@ -376,7 +377,7 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
         NSUNLOCK();
         return XP_NO_ERR;
     }
-#if 0
+#ifdef FUJ_USE_NETDEV
     /* Get genetlink info from hostIf table db entry, Now we only
      * support packets with cpucode: Mirror to Analyzer(CPU Port).
      */
@@ -466,7 +467,7 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
     {
         if (insertVlanTag == XPS_NETDEV_FALSE)
         {
-#if 0
+#ifdef FUJ_USE_NETDEV
             /* one buffer, no copy */
             if (isGenetlinkFd == XPS_NETDEV_FALSE)
             {
@@ -493,7 +494,7 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
         }
         else
         {
-#if 0
+#ifdef FUJ_USE_NETDEV
             if (isGenetlinkFd == XPS_NETDEV_FALSE)
             {
                 status = cpssHalHostIfNetDevWrite(fd, keepVlanBuff, (buffLen[0]+4));
@@ -552,7 +553,7 @@ static GT_STATUS xpsPacketDriverCpuRxHandlerCb
             packetLen += buffLen[ii];
         }
     }
-#if 0
+#ifdef FUJ_USE_NETDEV
     if (isGenetlinkFd == XPS_NETDEV_FALSE)
     {
         status = cpssHalHostIfNetDevWrite(fd, buff, packetLen);
@@ -907,7 +908,7 @@ static XP_STATUS xpsPacketDriverDeInitScope(xpsScope_t scopeId)
     return status;
 }
 
-#if 0 // UNIT_TEST 
+#if 0 // UNIT_TEST
 static void xpsPacketDriverNetDevDebug()
 {
     uint32_t xpnetId = 0xFFFF;

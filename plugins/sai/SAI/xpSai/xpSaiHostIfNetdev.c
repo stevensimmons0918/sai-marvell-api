@@ -16,6 +16,7 @@
 #include <net/if.h>
 #include "xpSaiHostInterface.h"
 #include "xpsPacketDrv.h"
+#include "fujDefs.h"
 
 extern XP_STATUS xpsPacketDriverUpdateMacNetDevDb(uint32_t xpnetId);
 XP_SAI_LOG_REGISTER_API(SAI_API_HOSTIF);
@@ -117,7 +118,7 @@ XP_STATUS xpSaiHostIfLinkStatusSet(xpsDevice_t devId, xpsInterfaceId_t intfId,
     rc = xpsNetdevLinkStatusSet(devId, xpnetId, status);
     if (XP_NO_ERR != rc)
     {
-#if 0
+#ifdef FUJ_USE_NETDEV
         XP_SAI_LOG_WARNING("Unable to set operational status for interface: %u.\n",
                            intfId);
 #endif
