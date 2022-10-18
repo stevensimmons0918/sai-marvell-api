@@ -3751,6 +3751,9 @@ GT_STATUS cpssHalInitializePorts
                     
                     case AC3XRAMAN:
                         break;
+
+                    case AC3XILA:
+                        break;
                     
                     default:
                         break;

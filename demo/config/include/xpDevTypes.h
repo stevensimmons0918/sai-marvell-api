@@ -83,6 +83,7 @@ typedef enum
     XP_SDK_DEV_TYPE_AC3X_ROB,
     XP_SDK_DEV_TYPE_AC3X_RAMAN,
     XP_SDK_DEV_TYPE_AC3X_MCS,
+    XP_SDK_DEV_TYPE_AC3X_ILA,
     XP_SDK_DEV_TYPE_UNKNOWN
 } xpSdkDevType_t;
 
@@ -167,6 +168,7 @@ static const char *xpSdkDevTypeName[XP_SDK_DEV_TYPE_UNKNOWN + 1] =
     /* [XP_SDK_DEV_TYPE_AC3X_ROB] =*/ "AC3XROB",
     /* [XP_SDK_DEV_TYPE_AC3X_RAMAN] =*/ "AC3XRAMAN",
     /* [XP_SDK_DEV_TYPE_AC3X_MCS] =*/ "AC3XMCS",
+    /* [XP_SDK_DEV_TYPE_AC3X_ILA] =*/ "AC3XILA",
     /* [XP_SDK_DEV_TYPE_UNKNOWN] =*/ "\0"
 };
 

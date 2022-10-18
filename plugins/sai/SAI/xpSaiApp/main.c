@@ -640,6 +640,9 @@ int appMain(int argc, char *argv[])
         case AC3XMCS:
             XP_CONFIG.withHw = "AC3XMCS";
             break;
+        case AC3XILA:
+            XP_CONFIG.withHw = "AC3XILA";
+            break;
         default:
             XP_CONFIG.withHw = "et6448m";
     }
