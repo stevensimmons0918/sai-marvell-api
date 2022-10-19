@@ -113,6 +113,7 @@ extern PROFILE_STC falcon_2T_48x10_8x100_port_profile[];
 extern PROFILE_STC cygnus[];
 extern PROFILE_STC aldrin2_xl_port_profile[];
 extern PROFILE_STC aldrin2_xl_fujitsu_large_profile[];
+extern PROFILE_STC aldrin2_xl_fujitsu_large_eval_profile[];
 extern PROFILE_STC ac3x_fujitsu_small_profile[];
 extern PROFILE_STC ac3x_fujitsu_small_25_profile[];
 extern PROFILE_STC ac3x_fujitsu_small_ila_profile[];
