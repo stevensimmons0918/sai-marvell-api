@@ -767,6 +767,9 @@ PROFILE_STC aldrin2_xl_port_profile[] =
 PROFILE_STC aldrin2_xl_fujitsu_large_profile[] =
 #include "aldrin2_xl_fujitsu_large_profile.h"
 
+PROFILE_STC aldrin2_xl_fujitsu_large_eval_profile[] =
+#include "aldrin2_xl_fujitsu_large_eval_profile.h"
+
 PROFILE_STC ac3x_fujitsu_small_profile[] =
 #include "ac3x_fujitsu_small_profile.h"
 
