@@ -22,7 +22,7 @@
 #include "xpsAllocator.h"
 #include "xpsAcl.h"
 #include "cpssDxChPortCtrl.h"
-#include "fujDefs.h"
+#include "xpsFujDefs.h"
 #include <net/if.h>
 #ifdef PCAP_SUPPORT
 #include "pcap.h"

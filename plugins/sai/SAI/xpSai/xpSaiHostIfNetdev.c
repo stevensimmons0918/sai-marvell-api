@@ -16,7 +16,7 @@
 #include <net/if.h>
 #include "xpSaiHostInterface.h"
 #include "xpsPacketDrv.h"
-#include "fujDefs.h"
+#include "xpsFujDefs.h"
 
 extern XP_STATUS xpsPacketDriverUpdateMacNetDevDb(uint32_t xpnetId);
 XP_SAI_LOG_REGISTER_API(SAI_API_HOSTIF);
