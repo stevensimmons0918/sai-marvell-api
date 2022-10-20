@@ -2,10 +2,10 @@
     /*                                                               portNum          macNum  txQNum            interfaceMode      interfaceSpeed       */
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 28, ALDRIN2_MAC_AND_TXQ_PORT_MAC(28), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 28 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 30, ALDRIN2_MAC_AND_TXQ_PORT_MAC(30), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 30 }},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 39, ALDRIN2_MAC_AND_TXQ_PORT_MAC(39), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 39 }},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 44, ALDRIN2_MAC_AND_TXQ_PORT_MAC(44), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 44 }},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 45, ALDRIN2_MAC_AND_TXQ_PORT_MAC(45), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 45 }},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 46, ALDRIN2_MAC_AND_TXQ_PORT_MAC(46), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 46 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 39, ALDRIN2_MAC_AND_TXQ_PORT_MAC(39), PROFILE_INTERFACE_MODE_SR_LR_E, 10, .phyInfo = {0, 0, 0, 0}, 39 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 44, ALDRIN2_MAC_AND_TXQ_PORT_MAC(44), PROFILE_INTERFACE_MODE_SR_LR_E, 10, .phyInfo = {0, 0, 0, 0}, 44 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 45, ALDRIN2_MAC_AND_TXQ_PORT_MAC(45), PROFILE_INTERFACE_MODE_SR_LR_E, 10, .phyInfo = {0, 0, 0, 0}, 45 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 46, ALDRIN2_MAC_AND_TXQ_PORT_MAC(46), PROFILE_INTERFACE_MODE_SR_LR_E, 10, .phyInfo = {0, 0, 0, 0}, 46 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 47, ALDRIN2_MAC_AND_TXQ_PORT_MAC(47), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 47 }},
 
     //CPU SDMA PORTs
