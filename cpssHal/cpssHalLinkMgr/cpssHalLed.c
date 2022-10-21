@@ -518,12 +518,7 @@ GT_STATUS cpssHalLedPortConfig(GT_U8 devNum, XP_DEV_TYPE_T devType,
                 /* LED interface - 3 */
                 position = macNumber - 32;
             }
-            else if (macNumber < 47)
-            {
-                /* LED interface - 2 */
-                position = macNumber - 36;
-            }
-            else if (macNumber < 47)
+            else if (macNumber < 48)
             {
                 /* LED interface - 2 */
                 position = macNumber - 36;
