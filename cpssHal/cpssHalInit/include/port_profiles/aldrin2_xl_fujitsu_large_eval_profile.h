@@ -9,7 +9,7 @@
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 47, ALDRIN2_MAC_AND_TXQ_PORT_MAC(47), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 47 }},
 
     //CPU SDMA PORTs
-    //  {.profileType = PROFILE_TYPE_CPU_PORT_MAP_E, .profileValue.portMap = { 63, 0, 99, PROFILE_INTERFACE_MODE_KR_E, 10 }},
+    {.profileType = PROFILE_TYPE_CPU_PORT_MAP_E, .profileValue.portMap = { 63, 0, 99, PROFILE_INTERFACE_MODE_KR_E, 10 }},
     
     /* Polarity                                                                lane   invTx    invRx */
     {.profileType = PROFILE_TYPE_LANE_SWAP_E, .profileValue.serdes_polarity = { 28, GT_FALSE, GT_FALSE }},
