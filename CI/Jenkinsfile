@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    stages {
+        stage('Prepare/Checkout') {
+            steps {
+                // Get esal-l2swdrvr-sai from GitHub
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'refs/heads/main']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'esal-l2swdrvr-sai']],
+                    // extensions: [[$class: relativeTargetDir: 'esal-l2swdrvr-sai']],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[credentialsId: 'b49685ac-4000-4035-a63d-27250de40108', url: 'git@github.com:Larch-code/esal-l2swdrvr-sai.git']]
+                  ])
+                // Get esal_vendor_api from GitHub
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'refs/heads/main']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'esal_vendor_api']],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[credentialsId: 'b49685ac-4000-4035-a63d-27250de40108', url: 'git@github.com:Larch-code/esal_vendor_api.git']]
+                  ])
+        }
+    }
+
+        stage('Build') {
+            steps {
+		// switch to sai-marvell-api dir
+                dir("${env.WORKSPACE}/sai-marvell-api"){
+                    sh "pwd"
+                    sh './CI/entrypoint.sh'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                dir("${env.WORKSPACE}/sai-marvell-api"){
+                    sh "pwd"
+                    // run sanity tests
+                    sh './CI/entrypoint_test.sh'
+                }
+            }
+        }
+    }
+}
