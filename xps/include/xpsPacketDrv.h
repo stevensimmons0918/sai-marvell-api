@@ -246,6 +246,20 @@ XP_STATUS xpSendPacket(xpDevice_t deviceId, uint32_t egressPort,
                        uint16_t pktSize, uint8_t queueNum, uint32_t *pktCopies);
 
 /**
+ * \brief send custom packet from CPU
+ *
+ * \param [in] devId Device Id
+ * \param [in] egressPort
+ * \param [in] pktSize
+ * \param [in] queueNum
+ * \param [in] *pktBuf
+ *
+ * \return XP_STATUS On success XP_NO_ERR
+ */
+XP_STATUS xpSendPacketCustom(xpDevice_t deviceId, uint32_t egressPort,
+                       uint16_t pktSize, uint8_t queueNum, uint8_t *pktBuf);                      
+
+/**
  * \brief send predefined packet from CPU
  *
  * \param [in] devId Device Id

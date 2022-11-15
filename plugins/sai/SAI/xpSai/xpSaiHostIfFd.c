@@ -398,7 +398,13 @@ sai_status_t xpSaiFdPacketSend(sai_object_id_t  hif_id,
     xphTxHdr *pTxXpHeader = (xphTxHdr *)pPktInfo->buf;
     pTxXpHeader->TC = 8;
 
-
+    /* Send packet to xpSendPacket */
+    pktInfo.priority = 7;
+    if (XP_NO_ERR != xpSendPacketCustom(devId, egressPort, pPktInfo->bufSize, pktInfo.priority, pPktData))
+    {
+        XP_SAI_LOG_ERR("xpSendPacket send is wrong\n");
+        return SAI_STATUS_FAILURE;
+    }
     return SAI_STATUS_SUCCESS;
 }
 #endif
