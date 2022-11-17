@@ -1258,6 +1258,66 @@ XP_STATUS xpSendPacket(xpDevice_t deviceId, uint32_t egressPort,
     return XP_NO_ERR;
 }
 
+XP_STATUS xpSendPacketCustom(xpDevice_t deviceId, uint32_t egressPort,
+                       uint16_t pktSize, uint8_t queueNum, uint8_t *pktBuf)
+{
+
+    XP_STATUS retVal;
+    struct xpPacketInfo **pktInfo = NULL;
+    uint32_t pktCopies = 1;
+
+    /* PktLen < 64 is not valid */
+    if ((pktSize) && (pktSize < 64 || pktSize > 10000))
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "ERR: Invalid pkt length\n");
+        return XP_ERR_INVALID_DATA;
+    }
+
+    pktInfo = (struct xpPacketInfo **)xpMalloc(sizeof(struct xpPacketInfo *));
+    if (pktInfo == NULL)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Null pointer recieved");
+        return XP_ERR_NULL_POINTER;
+    }
+
+    pktInfo[0]  = (struct xpPacketInfo *) xpMalloc(sizeof(struct xpPacketInfo));
+    if (pktInfo[0] == NULL)
+    {
+        xpFree(pktInfo);
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Null pointer recieved");
+        return XP_ERR_NULL_POINTER;
+    }
+
+    pktInfo[0]->priority = queueNum;
+
+    pktInfo[0]->buf = xpMalloc((sizeof(uint8_t) * pktSize));
+    if (pktInfo[0]->buf == NULL)
+    {
+        xpFree(pktInfo[0]);
+        xpFree(pktInfo);
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Null pointer recieved");
+        return XP_ERR_NULL_POINTER;
+    }
+
+    pktInfo[0]->bufSize = pktSize;
+
+    memcpy(pktInfo[0]->buf, pktBuf, pktSize);
+
+    retVal = xpsPacketDriverSend(deviceId, (const struct xpPacketInfo **)pktInfo,
+                                 &pktCopies, egressPort, SYNC_TX);
+
+    xpFree(pktInfo[0]->buf);
+    xpFree(pktInfo[0]);
+    xpFree(pktInfo);
+
+    if (retVal != XP_NO_ERR)
+    {
+        return retVal;
+    }
+    return XP_NO_ERR;
+
+}
+
 XP_STATUS xpsPacketDriverSend(xpsDevice_t devId,
                               const xpPacketInfo** const pktInfo, uint32_t *numOfPkt, uint32_t outPort,
                               txMode sendMode)
