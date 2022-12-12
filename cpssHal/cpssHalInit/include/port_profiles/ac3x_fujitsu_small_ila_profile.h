@@ -6,7 +6,7 @@
                                                                        |   |   |  interfaceMode                     interfaceSpeed  existsPhy                                             frontPanelPortIdx
                                                                        |   |   |  |                                 |               |                                                                     |    */
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 0,  0,  0, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {0, 0, 0, 0},  0}},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 1,  1,  1, CPSS_PORT_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0},  1}},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 1,  1,  1, CPSS_PORT_INTERFACE_MODE_KR_E, 100, .phyInfo = {0, 0, 0, 0},  1}},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 2,  2,  2, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {0, 0, 0, 0},  2}},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 3,  3,  3, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {0, 0, 0, 0},  3}},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 4,  4,  4, CPSS_PORT_INTERFACE_MODE_SGMII_E, 10, .phyInfo = {0, 0, 0, 0},  4}},
