@@ -1316,8 +1316,9 @@ static GT_STATUS cpssHalPortMgrEventAction
                                  status, cpssPortNum);
                     return status;
                 }
-                cpssOsPrintf("EVENT: Port: %d LinkStatus: %d \n",  cpssPortNum, newLinkStatus);
-
+                /* Suppressing unnecessary print. Flooded console. 
+                 * cpssOsPrintf("EVENT: Port: %d LinkStatus: %d \n",  cpssPortNum, newLinkStatus);
+                 */
 #if 0
                 CPSS_DXCH_BRG_EGR_FLT_PORT_LINK_STATUS_ENT brgLinkState;
                 brgLinkState = (newLinkStatus) ?
@@ -1336,8 +1337,10 @@ static GT_STATUS cpssHalPortMgrEventAction
                 if (newLinkStatus == GT_TRUE)
                 {
                     cpssHalL2GPortNum(devId, cpssPortNum, &xpsPort);
+                /* Suppressing unnecessary print. Flooded console. 
                     cpssOsPrintf("EVENT: xps port number for link status changed to up  in CPSS_PP_PORT_LINK_STATUS_CHANGED_E %d \n",
                                  xpsPort);
+                 */
                     if (cpssHalLinkStateNotify)
                     {
                         cpssHalLinkStateNotify(devId, xpsPort, 1);
@@ -1346,8 +1349,10 @@ static GT_STATUS cpssHalPortMgrEventAction
                 else
                 {
                     cpssHalL2GPortNum(devId, cpssPortNum, &xpsPort);
+                /* Suppressing unnecessary print. Flooded console. 
                     cpssOsPrintf("EVENT: xps port number for link status changed to down  in CPSS_PP_PORT_LINK_STATUS_CHANGED_E %d \n",
                                  xpsPort);
+                 */
                     if (cpssHalLinkStateNotify)
                     {
                         cpssHalLinkStateNotify(devId, xpsPort, 0);
