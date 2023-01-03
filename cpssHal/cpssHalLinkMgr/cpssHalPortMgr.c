@@ -2883,8 +2883,10 @@ GT_STATUS cpssHalLinkstatuschangeEvent(GT_U8 devNum, uint32_t portNum)
     memset(&portStage, 0, sizeof(CPSS_PORT_MANAGER_STATUS_STC));
     memset(&portParams, 0, sizeof(CPSS_PM_PORT_PARAMS_STC));
 
-    cpssOsPrintf("EVENT cpssHalLinkstatuschangeEvent dev=%d, portNum=%d\n", devNum,
-                 portNum);
+/* Suppressing unnecessary print. Flooding consumed console.
+ *  cpssOsPrintf("EVENT cpssHalLinkstatuschangeEvent dev=%d, portNum=%d\n", devNum,
+ *               portNum);
+ */
 
     rc = cpssDxChPortManagerStatusGet(devNum, portNum, &portStage);
     if (rc != GT_OK)
