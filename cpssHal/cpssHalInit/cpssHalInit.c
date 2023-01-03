@@ -1388,8 +1388,10 @@ static GT_STATUS cpssHalPortMgrEventAction
 
                 status = cpssDxChPortManagerEventSet(devId, (GT_PHYSICAL_PORT_NUM) cpssPortNum,
                                                      &portEventStc);
-                cpssOsPrintf("EVENT: Port Event CPSS_PP_PORT_PCS_ALIGN_LOCK_LOST_E  received %d Mac %d Port %d\n",
+                /* Turning off print. Flooding console
+ *                 cpssOsPrintf("EVENT: Port Event CPSS_PP_PORT_PCS_ALIGN_LOCK_LOST_E  received %d Mac %d Port %d\n",
                              uniEv, evExtData, cpssPortNum);
+                  */
             }
             break;
 
@@ -1531,8 +1533,10 @@ static GT_STATUS cpssHalPortMgrEventAction
             cpssPortNum = (GT_U16)evExtData;
             portEventStc.portEvent = CPSS_PORT_MANAGER_EVENT_LOW_LEVEL_STATUS_CHANGED_E;
             {
-                cpssOsPrintf("EVENT: Port Event CPSS_PP_PORT_MMPCS_SIGNAL_DETECT_CHANGE_E.  received %d Mac %d Port %d\n",
+                /* Turning off print. Flooding console
+ *                 cpssOsPrintf("EVENT: Port Event CPSS_PP_PORT_MMPCS_SIGNAL_DETECT_CHANGE_E.  received %d Mac %d Port %d\n",
                              uniEv, evExtData, cpssPortNum);
+                */
                 if (PRV_CPSS_SIP_6_CHECK_MAC(devId) == GT_TRUE)
                 {
                     /* this event is not handled for SIP6 devices */
