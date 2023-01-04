@@ -1286,6 +1286,11 @@ static GT_STATUS internal_cpssDxChPortInterfaceModeSet
     GT_U32 portMacNum;      /* MAC number */
     CPSS_SYSTEM_RECOVERY_INFO_STC tempSystemRecovery_Info;
 
+
+if (portNum == 22) {
+ cpssOsPrintf("internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
+
     PRV_CPSS_DXCH_PORT_INTERFACE_MODE_SET_FUN ifModeSetFuncPtr; /* pointer to [devFamily][ifMode] specific function */
 
     PRV_CPSS_DXCH_DEV_CHECK_MAC(devNum);
@@ -1300,9 +1305,15 @@ static GT_STATUS internal_cpssDxChPortInterfaceModeSet
     if((GT_U32)ifMode >= CPSS_PORT_INTERFACE_MODE_NA_E)
         CPSS_LOG_ERROR_AND_RETURN_MAC(GT_BAD_PARAM, LOG_ERROR_NO_MSG);
 
+if (portNum == 22) {
+ cpssOsPrintf("1. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
     ifModeSetFuncPtr =  (PORT_OBJ_FUNC(devNum)).setPortInterfaceMode[ifMode];
     if(ifModeSetFuncPtr == NULL)
         CPSS_LOG_ERROR_AND_RETURN_MAC(GT_NOT_SUPPORTED, LOG_ERROR_NO_MSG);
+if (portNum == 22) {
+ cpssOsPrintf("2. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
 
     if(portNum != CPSS_CPU_PORT_NUM_CNS)
     {
@@ -1312,28 +1323,55 @@ static GT_STATUS internal_cpssDxChPortInterfaceModeSet
         /*
         //resOld = supportedPortsModes[PRV_CPSS_DXCH_PORT_TYPE_OPTIONS_MAC(devNum,portNum)][ifMode];
         */
+if (portNum == 22) {
+ cpssOsPrintf("3. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
 
         rc = prvCpssDxChPortSupportedModeCheck(devNum,portNum,ifMode,/*OUT*/&resNew);
         if (rc != GT_OK)
         {
+if (portNum == 22) {
+ cpssOsPrintf("4. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
             return GT_OK;
         }
+if (portNum == 22) {
+ cpssOsPrintf("5. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
 
         if (resNew == GT_FALSE)
         {
+if (portNum == 22) {
+ cpssOsPrintf("6. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
             CPSS_LOG_ERROR_AND_RETURN_MAC(GT_NOT_SUPPORTED, LOG_ERROR_NO_MSG);
         }
+if (portNum == 22) {
+ cpssOsPrintf("7. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
     }
 
+if (portNum == 22) {
+ cpssOsPrintf("8. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
     rc = cpssSystemRecoveryStateGet(&tempSystemRecovery_Info);
     if (rc != GT_OK)
     {
+if (portNum == 22) {
+ cpssOsPrintf("9. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
         return rc;
     }
+if (portNum == 22) {
+ cpssOsPrintf("10. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
     if((tempSystemRecovery_Info.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_NOT_ACTIVE_E)
         && (PRV_CPSS_DXCH_PP_MAC(devNum)->genInfo.hitlessWriteMethodEnable))
     {/* do only if we during recovery */
         CPSS_PORT_INTERFACE_MODE_ENT   currentIfMode;
+if (portNum == 22) {
+ cpssOsPrintf("11. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
 
         rc = cpssDxChPortInterfaceModeGet(devNum, portNum, &currentIfMode);
         if(rc != GT_OK)
@@ -1347,25 +1385,43 @@ static GT_STATUS internal_cpssDxChPortInterfaceModeSet
     }
 
     /* configure requested interface mode on port */
+if (portNum == 22) {
+ cpssOsPrintf("12. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
     if((rc = ifModeSetFuncPtr(devNum, portNum, ifMode)) != GT_OK)
         return rc;
 
+if (portNum == 22) {
+ cpssOsPrintf("13. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
     /* cpu port has not entry in phyPortInfoArray - skip SW port info DB update */
     if(portNum == CPSS_CPU_PORT_NUM_CNS)
         return GT_OK;
+if (portNum == 22) {
+ cpssOsPrintf("14. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
 
     /* update current port type - used to define which mac unit currently in use by port
     */
     if(PRV_CPSS_DXCH_PP_MAC(devNum)->genInfo.devFamily < CPSS_PP_FAMILY_DXCH_XCAT_E)
     {
+if (portNum == 22) {
+ cpssOsPrintf("15. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
         prvCpssDxChPortTypeSet(devNum,portNum,ifMode,CPSS_PORT_SPEED_NA_E);
     }
 
+if (portNum == 22) {
+ cpssOsPrintf("16. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
 
     /* save new interface mode in DB */
     PRV_CPSS_DXCH_PORT_NUM_CHECK_AND_MAC_NUM_GET_MAC(devNum, portNum, portMacNum);
     PRV_CPSS_DXCH_PORT_IFMODE_MAC(devNum, portMacNum) = ifMode;
 
+if (portNum == 22) {
+ cpssOsPrintf("17. internal_cpssDxChPortInterfaceModeSet %d %d\n", portNum, (int) ifMode);
+}
     return GT_OK;
 }
 
