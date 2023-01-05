@@ -59,6 +59,9 @@ plugins/sai/SAI/xpSai/sai
 html/
 latex/
 
+# Ignore XC tools
+/sw-tools
+
 # File extensions
 *.l[oa]
 *.ko

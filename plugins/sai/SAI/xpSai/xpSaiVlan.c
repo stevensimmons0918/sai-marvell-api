@@ -3571,8 +3571,8 @@ sai_status_t xpSaiCreateVlanStack(_Out_ sai_object_id_t *vlanStackIdObj,
     sai_status_t saiRetVal = SAI_STATUS_SUCCESS;
     xpsVlanStack_t vlanStackId;
     xpsDevice_t devId = xpSaiGetDevId();
-    sai_vlan_stack_stage_t saiVlanStackStage;
-    sai_vlan_stack_action_t saiVlanStackAction;
+    sai_vlan_stack_stage_t saiVlanStackStage = SAI_VLAN_STACK_STAGE_INGRESS;
+    sai_vlan_stack_action_t saiVlanStackAction = SAI_VLAN_STACK_ACTION_SWAP;
     sai_object_id_t saiPortId = SAI_NULL_OBJECT_ID;
     xpsVlanStackStage_e xpsVlanStackStage;
     xpsVlanStackAction_e xpsVlanStackAction;

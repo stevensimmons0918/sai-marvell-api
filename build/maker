@@ -31,6 +31,9 @@
 #
 ################################################################################
 
+BUILDDIR=${PWD}
+PRJDIR=`dirname ${PWD}`
+
 # if DOCKER_ENABLE is 1, then use dockerized way of maker
 if [ "$DOCKER_ENABLE" = "1" ] ; then
 docker -v

@@ -107,7 +107,7 @@ CPPS_LIBS_IN_ORDER += $(DIST)/$(CPSS_VERSION_LIB)
 
 #$D/LDFLAGS := -lpcap $(LIBGCOV) -lutil -lpython2.7 -lpthread 
 $D/LDFLAGS := $(SHAREDLIBSOPTS) $(LIBGCOV) -lutil -lpython2.7 -lpthread 
-$D/LDFLAGS += -rdynamic -ldl -lrt -lcrypt
+$D/LDFLAGS += -rdynamic -ldl -lrt -lcrypt $(LIBZ)
 
 $D/all: $(DIST)/xpSaiApp $(DIST)/xpUnitTest
 $D/CXX = $(CROSS_COMPILE)gcc  ${XP_SYSROOT}
