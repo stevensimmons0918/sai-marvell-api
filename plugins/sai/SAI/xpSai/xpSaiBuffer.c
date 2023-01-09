@@ -1857,6 +1857,11 @@ sai_uint32_t xpSaiBufferGetPacketMemorySize()
         /* Packet memory: 3MB */
         bufferSize = AC5X_SAI_BUFFER_TOTAL_BUFFER_SIZE;
     }
+    else if (IS_DEVICE_GEMINI(deviceType))
+    {
+        /* Packet memory: 24MB ? */
+        bufferSize = FALCON_2_SAI_BUFFER_TOTAL_BUFFER_SIZE;
+    }
 
     return bufferSize;
 }

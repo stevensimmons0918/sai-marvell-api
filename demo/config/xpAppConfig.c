@@ -691,6 +691,10 @@ void getOptValues(int argc, char* argv[], const char** moduleNames)
                 {
                     xpAppConf.devType = AC3XILA;
                 }
+                if (!strncasecmp("FALCONGEM", optarg, strlen("FALCONGEM")))
+                {
+                    xpAppConf.devType = FALCONGEM;
+                }
 
                 break;
 

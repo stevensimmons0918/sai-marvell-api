@@ -5188,6 +5188,10 @@ sai_status_t xpSaiDefaultProfileSet(const char* switch_hardware_id,
             pProfile->devType = AC3XILA;
             XP_SAI_LOG_INFO("Device Type %s [%d]\n", "AC3XILA", AC3XILA);
             break;
+        case XP_SDK_DEV_TYPE_FALCON_GEM:
+            pProfile->devType = FALCONGEM;
+            XP_SAI_LOG_INFO("Device Type %s [%d]\n", "FALCONGEM", FALCONGEM);
+            break;
         default:
             XP_SAI_LOG_ERR("Wrong sdkDevType is passed!\n");
             return SAI_STATUS_FAILURE;

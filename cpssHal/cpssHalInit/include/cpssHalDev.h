@@ -117,6 +117,7 @@ extern PROFILE_STC aldrin2_xl_fujitsu_large_eval_profile[];
 extern PROFILE_STC ac3x_fujitsu_small_profile[];
 extern PROFILE_STC ac3x_fujitsu_small_25_profile[];
 extern PROFILE_STC ac3x_fujitsu_small_ila_profile[];
+extern PROFILE_STC falcon_2T_gemini_port_profile[];
 
 #ifdef __cplusplus
 }

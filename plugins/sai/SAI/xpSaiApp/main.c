@@ -643,11 +643,19 @@ int appMain(int argc, char *argv[])
         case AC3XILA:
             XP_CONFIG.withHw = "AC3XILA";
             break;
+        case FALCONGEM:
+            XP_CONFIG.withHw = "FALCONGEM";
+            printf("Before break\n");
+            break;
+            printf("Break isn't work :(\n");
         default:
-            XP_CONFIG.withHw = "et6448m";
+            XP_CONFIG.withHw = "FALCONGEM";
     }
     switchAttr[count].value.s8list.list = (sai_int8_t*)malloc(sizeof(sai_int8_t) *
                                                               (strlen(XP_CONFIG.withHw)+1));
+    
+    printf("hardware platform string is : %s\n", XP_CONFIG.withHw);
+
     memset(switchAttr[count].value.s8list.list, 0, strlen(XP_CONFIG.withHw) + 1);
     strcpy((char*)switchAttr[count].value.s8list.list, XP_CONFIG.withHw);
     printf("hardware platform string is : %s\n",

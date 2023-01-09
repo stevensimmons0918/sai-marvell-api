@@ -1682,6 +1682,26 @@ XP_STATUS xpsCreatePortMappingProfile(XP_DEV_TYPE_T devType, int numOfPorts)
         xpsPortConfigARR[idx].profileValue.hwTableSizes = &hw_sku_profiles_falcon[1];
         idx++;
     }
+    else if (IS_DEVICE_GEMINI(devType))
+    {
+        /* CPU ports for 2T */
+        xpsPortConfigARR[idx].profileType = PROFILE_TYPE_CPU_PORT_MAP_E;
+        xpsPortConfigARR[idx].profileValue.portMap.macNum = 136;
+        xpsPortConfigARR[idx].profileValue.portMap.portNum = 63;
+        xpsPortConfigARR[idx].profileValue.portMap.interfaceSpeed = 0;
+        xpsPortConfigARR[idx].profileValue.portMap.interfaceMode =
+            PROFILE_INTERFACE_MODE_KR_E;
+
+        /* simulation 2T */
+        xpsPortConfigARR[idx].profileType = PROFILE_TYPE_SIM_INIFILE_E;
+        sprintf(xpsPortConfigARR[idx].profileValue.sim_inifile, "%s",
+                "-i ./iniFiles/falcon_gemini.ini");
+
+        idx++;
+        xpsPortConfigARR[idx].profileType = PROFILE_TYPE_HW_SKU_E;
+        xpsPortConfigARR[idx].profileValue.hwTableSizes = &hw_sku_profiles_falcon[1];
+        idx++;
+    }
     else   /* unknown */
     {
         LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
@@ -2031,6 +2051,10 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
     else if (AC3XILA == devType)
     {
         profile = ac3x_fujitsu_small_ila_profile;
+    }
+    else if (FALCONGEM == devType)
+    {
+        profile = falcon_2T_gemini_port_profile;
     }
     else
     {

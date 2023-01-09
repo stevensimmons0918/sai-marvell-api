@@ -382,6 +382,10 @@ XP_STATUS cpssHalPortGlobalSwitchControlGetMacMaxChannelNumber(int devId,
     {
         *macMaxChanNum = 8;
     }
+    else if (IS_DEVICE_GEMINI(devType))
+    {
+        *macMaxChanNum = 8;
+    }
     return XP_NO_ERR;
 }
 

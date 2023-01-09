@@ -1975,6 +1975,7 @@ typedef enum XP_DEV_TYPE_E
     AC3XMCS, /* Fujitsu Small - MCS board*/
     AC3XRAMAN, /* Fujitsu Small - Raman board*/
     AC3XILA, /* Fujitsu Small - ILA board*/
+    FALCONGEM, /* Gemini board */
     XP_DEV_TYPE_TOTAL
 } XP_DEV_TYPE_T;
 
@@ -1983,7 +1984,11 @@ typedef enum XP_DEV_TYPE_E
 #define IS_DEVICE_XP60(DEV_TYPE) (((DEV_TYPE) == XP60) ? 1 : 0)
 #define IS_DEVICE_XP70_XP60(DEV_TYPE) ((IS_DEVICE_XP70(DEV_TYPE)) || (IS_DEVICE_XP60(DEV_TYPE)))
 
-#define IS_DEVICE_FALCON(DEV_TYPE)      ((IS_DEVICE_FALCON_12_8(DEV_TYPE)) || (IS_DEVICE_FALCON_6_4(DEV_TYPE)) || (IS_DEVICE_FALCON_3_2(DEV_TYPE)) || (IS_DEVICE_FALCON_2(DEV_TYPE)))
+#define IS_DEVICE_FALCON(DEV_TYPE)      ( \
+                                        (IS_DEVICE_FALCON_12_8(DEV_TYPE)) || (IS_DEVICE_FALCON_6_4(DEV_TYPE)) || \
+                                        (IS_DEVICE_FALCON_3_2(DEV_TYPE)) || (IS_DEVICE_FALCON_2(DEV_TYPE)) || \
+                                        (IS_DEVICE_GEMINI(DEV_TYPE)) \
+                                        )
 #define IS_DEVICE_FALCON_12_8(DEV_TYPE) ( \
                                         (FALCON64x100GR4==DEV_TYPE) || (FALCON128x10G==DEV_TYPE) || \
                                         (FALCON128x25G==DEV_TYPE) || (FALCON32x400G==DEV_TYPE) || (FC24x25G8x200G==DEV_TYPE) || \
@@ -2037,6 +2042,10 @@ typedef enum XP_DEV_TYPE_E
 #define IS_DEVICE_FUJITSU_SMALL(DEV_TYPE)      ( \
                                                 (AC3XFS==DEV_TYPE || AC3XROB==DEV_TYPE || \
                                                 AC3XMCS==DEV_TYPE || AC3XRAMAN==DEV_TYPE || AC3XILA==DEV_TYPE) \
+                                               )
+
+#define IS_DEVICE_GEMINI(DEV_TYPE)             ( \
+                                                (FALCONGEM==DEV_TYPE) \
                                                )
 
 /**

@@ -778,3 +778,6 @@ PROFILE_STC ac3x_fujitsu_small_25_profile[] =
 
 PROFILE_STC ac3x_fujitsu_small_ila_profile[] =
 #include "ac3x_fujitsu_small_ila_profile.h"
+
+PROFILE_STC falcon_2T_gemini_port_profile[] =
+#include "falcon_2T_gemini_port_profile.h"

@@ -479,6 +479,26 @@ static CPSS_PORT_MAC_TO_SERDES_STC  falcon_2T4T_MacToSerdesMap[] =
     APPDEMO_FALCON_2T4T_MAC_2_SD_MAP_1, /* Raven 7 MACs: 120-127  SDs: 72-79 */
 };
 
+static CPSS_PORT_MAC_TO_SERDES_STC  falcon_gemini_MacToSerdesMap[] =
+{
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{0,1,2,3,4,5,6,7}},
+    {{2,3,1,0,7,6,4,5}},  /*96-103*/  /*Raven 6 */
+    {{4,5,6,7,0,1,2,3}},  /*104-111*/ /*Raven 6 */
+    {{2,3,1,0,7,6,4,5}},  /*112-119*/ /*Raven 7 */
+    {{4,6,5,7,0,1,3,2}},  /*120-127*/ /*Raven 7 */
+};
+
 // TODO: Shud be  per device array
 mrvDevInfo mrvDevInfodata = {};
 
@@ -2602,6 +2622,8 @@ GT_STATUS cpssHalInitializeLanesSwap
 #include "falcon_6_4T_lane_polarity.h"
                     PROFILE_STC falcon_12_8t_lane_polarity[] =
 #include "falcon_12_8T_lane_polarity.h"
+                        PROFILE_STC falcon_gemini_lane_polarity[] =
+#include "falcon_gemini_lane_polarity.h"
                         // Default belly2belly is FALSE
                         while (lanesSwapProfilePtr[laneItr].profileType != PROFILE_TYPE_LAST_E)
         {
@@ -2614,7 +2636,8 @@ GT_STATUS cpssHalInitializeLanesSwap
                     if ((IS_DEVICE_FALCON_6_4(devType)) ||
                         (IS_DEVICE_FALCON_3_2(devType)) ||
                         (IS_DEVICE_FALCON_12_8(devType)) ||
-                        (IS_DEVICE_FALCON_2(devType)))
+                        (IS_DEVICE_FALCON_2(devType)) ||
+                        (IS_DEVICE_GEMINI(devType)))
                     {
                         if (IS_DEVICE_FALCON_6_4(devType))
                         {
@@ -2649,6 +2672,13 @@ GT_STATUS cpssHalInitializeLanesSwap
                             rc = cpssDxChPortLaneMacToSerdesMuxSet(devNum,
                                                                    lanesSwapProfilePtr[laneItr].profileValue.portMap.portNum,
                                                                    &falcon_2T4T_MacToSerdesMap[ lanesSwapProfilePtr[laneItr].profileValue.portMap.macNum /8]);
+
+                        }
+                        else if (IS_DEVICE_GEMINI(devType))
+                        {
+                            rc = cpssDxChPortLaneMacToSerdesMuxSet(devNum,
+                                                                   lanesSwapProfilePtr[laneItr].profileValue.portMap.portNum,
+                                                                   &falcon_gemini_MacToSerdesMap[ lanesSwapProfilePtr[laneItr].profileValue.portMap.macNum /8]);
 
                         }
                         else
@@ -2688,6 +2718,10 @@ GT_STATUS cpssHalInitializeLanesSwap
         else if (IS_DEVICE_FALCON_2(devType))
         {
             lanesSwapProfilePtr = falcon_2T_lane_polarity;
+        }
+        else if (IS_DEVICE_GEMINI(devType))
+        {
+            lanesSwapProfilePtr = falcon_gemini_lane_polarity;
         }
     }
 

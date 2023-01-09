@@ -1,0 +1,102 @@
+{
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  1,   1,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  1 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  2,   0,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  2 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  3,   5,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  3 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  4,   4,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  4 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  5,  14,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  5 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  6,  15,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  6 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  7,  10,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  7 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  8,  11,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  8 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = {  9,  33,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0},  9 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 10,  32,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 10 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 11,  37,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 11 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 12,  36,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 12 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 13,  46,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 13 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 14,  47,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 14 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 15,  42,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 15 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 16,  43,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 16 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 17,   3,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 17 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 18,   2,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 18 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 19,   7,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 19 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 20,   6,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 20 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 21,  12,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 21 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 22,  13,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 22 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 23,   8,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 23 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 24,   9,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 24 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 25,  35,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 25 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 26,  34,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 26 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 27,  39,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 27 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 28,  38,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 28 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 29,  44,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 29 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 30,  45,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 30 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 31,  40,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 31 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 32,  41,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 32 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 33,  80,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 33 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 34,  81,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 34 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 35,  84,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 35 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 36,  85,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 36 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 37,  82,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 37 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 38,  83,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 38 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 39,  93,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 39 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 40,  95,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 40 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 41,  89,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 41 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 42,  91,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 42 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 43,  86,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 43 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 44,  87,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 44 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 45,  92,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 45 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 46,  94,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 46 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 47,  88,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 47 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 48,  90,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 48 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 64,  96,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 64 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 65,  97,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 65 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 66,  98,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 66 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 67,  99,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 67 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 68, 100,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 68 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 69, 101,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 69 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 70, 102,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 70 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 71, 103,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 71 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 72, 104,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 72 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 73, 105,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 73 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 74, 106,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 74 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 75, 107,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 75 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 76, 108,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 76 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 77, 109,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 77 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 78, 110,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 78 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 79, 111,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 79 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 80, 112,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 80 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 81, 113,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 81 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 82, 114,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 82 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 83, 115,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 83 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 84, 116,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 84 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 85, 117,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 85 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 86, 118,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 86 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 87, 119,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 87 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 88, 120,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 88 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 89, 121,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 89 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 90, 122,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 90 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 91, 123,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 91 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 92, 124,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 92 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 93, 125,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 93 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 94, 126,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 94 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E,    .profileValue.portMap = { 95, 127,  0, PROFILE_INTERFACE_MODE_KR_E,   100, .phyInfo = {0, 0, 0, 0}, 95 }},
+
+    /* CPU PORT */
+    {.profileType = PROFILE_TYPE_CPU_PORT_MAP_E, .profileValue.portMap = { 63, 136, 0, PROFILE_INTERFACE_MODE_KR_E, 10}},
+
+    /* simulation */
+    {.profileType = PROFILE_TYPE_SIM_INIFILE_E, .profileValue.sim_inifile = "-i ./iniFiles/falcon_gemini.ini"},
+    {.profileType = PROFILE_TYPE_HW_SKU_E, .profileValue.hwTableSizes = &hw_sku_profiles_falcon[0]},
+
+    /* last */
+    {.profileType = PROFILE_TYPE_LAST_E, .profileValue.no_param = 0}
+
+};
+    
+    // /* Falcon ports in 50G mode */
+    // { PORT_LIST_TYPE_INTERVAL,  {1,48,1, APP_INV_PORT_CNS }, CPSS_PORT_SPEED_10000_E,  CPSS_PORT_INTERFACE_MODE_KR_E      }
+    
+    // /* ports 64..127*/
+    // { PORT_LIST_TYPE_INTERVAL,  {64,95,4, APP_INV_PORT_CNS }, CPSS_PORT_SPEED_100G_E,  CPSS_PORT_INTERFACE_MODE_KR4_E      }
+    // { PORT_LIST_TYPE_EMPTY,     {APP_INV_PORT_CNS }, CPSS_PORT_SPEED_NA_E,   CPSS_PORT_INTERFACE_MODE_QSGMII_E    }
+
+

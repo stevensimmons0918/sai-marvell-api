@@ -192,8 +192,11 @@ GT_STATUS cpssHalLedConfig(GT_U8 devNum, GT_U32 ledInterfaceNum,
             //In  6.4 ledUnit 0,3,4 and 7 has CPU Port
             if ((IS_DEVICE_FALCON_6_4(devType)) ||
                 (IS_DEVICE_FALCON_3_2(devType)) ||
-                (IS_DEVICE_FALCON_2(devType)))
+                (IS_DEVICE_FALCON_2(devType)) ||
+                (IS_DEVICE_GEMINI(devType)))
             {
+                //TODO
+                //Check gemini led compatibility
                 if (!IS_DEVICE_FALCON_2(devType))
                 {
                     ledStreamIndication = falcon_6_4_led_indications;
