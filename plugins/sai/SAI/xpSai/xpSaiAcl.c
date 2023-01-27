@@ -3930,7 +3930,7 @@ sai_status_t xpSaiCreateAclTable(sai_object_id_t *acl_table_id,
     tableInfo.vTcamInfo.autoResize = true;
     /* guaranteedNumOfRules is applicable only for legacy ACL design.
      * Not used in falcon */
-    tableInfo.vTcamInfo.guaranteedNumOfRules = 64;
+    tableInfo.vTcamInfo.guaranteedNumOfRules = 70;
     tableInfo.vTcamInfo.ruleAdditionMethod =
         XPS_VIRTUAL_TCAM_RULE_ADDITION_METHOD_PRIORITY_E;
     tableInfo.isMirror = attributes->isMirror;
