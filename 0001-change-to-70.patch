@@ -1,0 +1,25 @@
+From 806e7708515dc4ff1419fcfb15ff99c4a3477652 Mon Sep 17 00:00:00 2001
+From: "Simmons, Steven" <simmonss@localhost>
+Date: Fri, 27 Jan 2023 09:34:10 -0600
+Subject: [PATCH] change to 70
+
+---
+ plugins/sai/SAI/xpSai/xpSaiAcl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/sai/SAI/xpSai/xpSaiAcl.c b/plugins/sai/SAI/xpSai/xpSaiAcl.c
+index 89d1fe1..2e00dd3 100755
+--- a/plugins/sai/SAI/xpSai/xpSaiAcl.c
++++ b/plugins/sai/SAI/xpSai/xpSaiAcl.c
+@@ -3930,7 +3930,7 @@ sai_status_t xpSaiCreateAclTable(sai_object_id_t *acl_table_id,
+     tableInfo.vTcamInfo.autoResize = true;
+     /* guaranteedNumOfRules is applicable only for legacy ACL design.
+      * Not used in falcon */
+-    tableInfo.vTcamInfo.guaranteedNumOfRules = 64;
++    tableInfo.vTcamInfo.guaranteedNumOfRules = 70;
+     tableInfo.vTcamInfo.ruleAdditionMethod =
+         XPS_VIRTUAL_TCAM_RULE_ADDITION_METHOD_PRIORITY_E;
+     tableInfo.isMirror = attributes->isMirror;
+-- 
+1.8.3.1
+

@@ -4586,7 +4586,7 @@ sai_status_t xpSaiSetPortAttrDropTagged(sai_object_id_t port_id,
     xpsInterfaceId_t xpsIntf = XPS_INTF_INVALID_ID;
     uint32_t frameType = FRAMETYPE_MAX;
 
-    XP_SAI_LOG_DBG("Calling xpSaiSetPortAttrDropTagged\n");
+    printf("Calling xpSaiSetPortAttrDropTagged\n");
 
     if (!XDK_SAI_OBJID_TYPE_CHECK(port_id, SAI_OBJECT_TYPE_PORT))
     {
@@ -4597,6 +4597,7 @@ sai_status_t xpSaiSetPortAttrDropTagged(sai_object_id_t port_id,
 
     xpStatus = xpsPortGetField(xpsDevId, xpsIntf, XPS_PORT_ACCEPTED_FRAME_TYPE,
                                &frameType);
+    printf("SIMMONS: frame type: %u\n", frameType); 
     if (xpStatus != XP_NO_ERR)
     {
         XP_SAI_LOG_ERR("Failed to get drop tag on port %u\n", xpsIntf);
@@ -4605,12 +4606,15 @@ sai_status_t xpSaiSetPortAttrDropTagged(sai_object_id_t port_id,
 
     if (value.booldata)
     {
+    printf("SIMMONS: frame type TRUE: %u\n", frameType); 
         if (frameType == FRAMETYPE_TAG)
         {
+    printf("SIMMONS: frame type not supported: %u\n", frameType); 
             return SAI_STATUS_NOT_SUPPORTED;
         }
         else
         {
+    printf("SIMMONS: frame type PRI supported: %u\n", frameType); 
             frameType = FRAMETYPE_UN_PRI;
         }
     }
