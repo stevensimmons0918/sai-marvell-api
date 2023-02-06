@@ -408,6 +408,8 @@ XP_STATUS xpsPolicerAddEntry(xpsDevice_t devId, xpsPolicerType_e policerType,
     GT_STATUS status = GT_OK;
     CPSS_DXCH3_POLICER_METERING_ENTRY_STC entryPtr;
     CPSS_DXCH_POLICER_STAGE_TYPE_ENT         stage;
+    XP_DEV_TYPE_T devType;
+    cpssHalGetDeviceType(devId, &devType);
     memset(&entryPtr, 0, sizeof(entryPtr));
 
     switch (policerType)
@@ -454,6 +456,7 @@ XP_STATUS xpsPolicerAddEntry(xpsDevice_t devId, xpsPolicerType_e policerType,
         entryPtr.meterMode = CPSS_DXCH3_POLICER_METER_MODE_SR_TCM_E;
         entryPtr.tokenBucketParams.srTcmParams.cir = pEntry->cir;
         entryPtr.tokenBucketParams.srTcmParams.cbs = mru + pEntry->cbs;
+        if (!IS_DEVICE_FUJITSU_LARGE(devType) && !IS_DEVICE_FUJITSU_SMALL(devType))
         entryPtr.tokenBucketParams.srTcmParams.ebs = mru + pEntry->pbs;
     }
     else if (pEntry->mode == XPS_POLICER_MODE_STORM_CONTROL)
@@ -461,6 +464,7 @@ XP_STATUS xpsPolicerAddEntry(xpsDevice_t devId, xpsPolicerType_e policerType,
         entryPtr.meterMode = CPSS_DXCH3_POLICER_METER_MODE_SR_TCM_E;
         entryPtr.tokenBucketParams.srTcmParams.cir = pEntry->cir;
         entryPtr.tokenBucketParams.srTcmParams.cbs = mru + pEntry->cbs;
+        if (!IS_DEVICE_FUJITSU_LARGE(devType) && !IS_DEVICE_FUJITSU_SMALL(devType))
         entryPtr.tokenBucketParams.srTcmParams.ebs = mru;
     }
     else if (pEntry->mode == XPS_POLICER_MODE_TRTC_E)
