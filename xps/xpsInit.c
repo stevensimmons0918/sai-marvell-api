@@ -191,8 +191,8 @@ XP_STATUS xpsSdkInitScope(XP_DEV_TYPE_T devType, xpsScope_t scopeId,
 {
     GT_STATUS rc = GT_OK;
     XP_STATUS status = XP_NO_ERR;
-    int numberOfCscdPorts = 0;
-    uint32_t cscdTrunkId = 0;
+    //int numberOfCscdPorts = 0;
+    //uint32_t cscdTrunkId = 0;
     XPS_FUNC_ENTRY_LOG();
 
     rc = xpsCpssInit(devType);
@@ -214,7 +214,7 @@ XP_STATUS xpsSdkInitScope(XP_DEV_TYPE_T devType, xpsScope_t scopeId,
             return status;
         }
     }
-
+#if 0
     if ((status=cpssHalGetDeviceType(scopeId, &devType)) != XP_NO_ERR)
     {
         cpssOsPrintf("Error <dev = %d>: xpSalGetDeviceType failed.\n", scopeId);
@@ -510,7 +510,7 @@ XP_STATUS xpsSdkInitScope(XP_DEV_TYPE_T devType, xpsScope_t scopeId,
             return xpsConvertCpssStatusToXPStatus(rc);
         }
     }
-
+#endif
     XPS_FUNC_EXIT_LOG();
     return XP_NO_ERR;
 }
