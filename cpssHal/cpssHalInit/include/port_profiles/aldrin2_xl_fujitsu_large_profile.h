@@ -36,7 +36,7 @@
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 45, ALDRIN2_MAC_AND_TXQ_PORT_MAC(45), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 45 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 46, ALDRIN2_MAC_AND_TXQ_PORT_MAC(46), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 46 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 47, ALDRIN2_MAC_AND_TXQ_PORT_MAC(47), PROFILE_INTERFACE_MODE_SR_LR_E, 10, .phyInfo = {0, 0, 0, 0}, 47 }},
-    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 52, ALDRIN2_MAC_AND_TXQ_PORT_MAC(52), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 52 }},
+    {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 52, ALDRIN2_MAC_AND_TXQ_PORT_MAC(52), PROFILE_INTERFACE_MODE_SR_LR_E, 100, .phyInfo = {0, 0, 0, 0}, 52 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 53, ALDRIN2_MAC_AND_TXQ_PORT_MAC(53), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 53 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 54, ALDRIN2_MAC_AND_TXQ_PORT_MAC(54), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 54 }},
     {.profileType = PROFILE_TYPE_PORT_MAP_E, .profileValue.portMap = { 55, ALDRIN2_MAC_AND_TXQ_PORT_MAC(55), PROFILE_INTERFACE_MODE_1000BASE_X_E, 10, .phyInfo = {0, 0, 0, 0}, 55 }},
