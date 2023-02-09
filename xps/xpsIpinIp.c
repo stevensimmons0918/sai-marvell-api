@@ -60,7 +60,7 @@ XP_STATUS xpsIpinIpInit(xpsScope_t scopeId)
                 return xpsConvertCpssStatusToXPStatus(rc);
             }
         }
-
+#if 0
         rc = cpssHalTunnelTerminationIPv6KeySet(devNum);
         if (rc != GT_OK)
         {
@@ -69,7 +69,7 @@ XP_STATUS xpsIpinIpInit(xpsScope_t scopeId)
                   rc, devNum);
             return xpsConvertCpssStatusToXPStatus(rc);
         }
-
+#endif
     }
     return rt;
 }

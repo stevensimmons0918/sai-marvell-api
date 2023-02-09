@@ -451,7 +451,7 @@ XP_STATUS xpsVxlanInitScope(xpsScope_t scopeId)
               "Failed vxlan init %d\n", cpssStatus);
         return xpsConvertCpssStatusToXPStatus(cpssStatus);
     }
-
+#if 0
     cpssStatus = cpssHalTunnelVxlanIPv4TTIKeySet(devId);
     if (cpssStatus != GT_OK)
     {
@@ -469,7 +469,7 @@ XP_STATUS xpsVxlanInitScope(xpsScope_t scopeId)
               cpssStatus, devId);
         return xpsConvertCpssStatusToXPStatus(cpssStatus);
     }
-
+#endif
     xpAclTableInfo_t tableInfo;
     memset(&tableInfo, 0x00, sizeof(xpAclTableInfo_t));
 

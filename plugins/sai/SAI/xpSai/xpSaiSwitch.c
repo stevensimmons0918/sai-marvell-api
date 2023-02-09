@@ -6856,7 +6856,6 @@ sai_status_t xpSaiInitializeSwitch(sai_object_id_t* switchId,
 
         XP_SAI_LOG_DBG("XP configuration profile initialized! devType = %d\n",
                        profile.sdkDevType);
-#if 0
         /* TBD : Init global */
         saiStatus = xpSaiSwitchDbInit(&profile);
         if (saiStatus != XP_NO_ERR)
@@ -6874,7 +6873,6 @@ sai_status_t xpSaiInitializeSwitch(sai_object_id_t* switchId,
             XP_SAI_LOG_ERR("Failed to init table entry count DB\n");
             return xpsStatus2SaiStatus(xpStatus);
         }
-#endif
         xpSaiTableEntryCountDbEntry *entryCountCtxPtr = NULL;
         xpStatus = xpSaiInsertTableEntryCountCtxDb(XP_SCOPE_DEFAULT, xpSaiDevId,
                                                    &entryCountCtxPtr);

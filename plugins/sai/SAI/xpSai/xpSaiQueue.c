@@ -1121,7 +1121,7 @@ sai_status_t xpSaiQueueSetSchedulerInfo(sai_object_id_t queueObjId,
     xpSaiPortQosInfo_t   *pPortQosInfo = NULL;
     sai_attribute_value_t value;
     uint32_t              qNum = 0;
-    uint32_t              profileIdx = 0;
+    //uint32_t              profileIdx = 0;
     uint32_t              newProfileIdx = 0;
 
     /* Get the device id from queue object id */
@@ -1177,7 +1177,7 @@ sai_status_t xpSaiQueueSetSchedulerInfo(sai_object_id_t queueObjId,
             portSchedulerObjId[qNum] = SAI_NULL_OBJECT_ID;
         }
     }
-
+#ifdef NOT_WARM_RESTART
     rc = cpssHalBindPortToSchedulerProfileGet(xpDevId, xpPort, &profileIdx);
     if (rc != GT_OK)
     {
@@ -1193,6 +1193,7 @@ sai_status_t xpSaiQueueSetSchedulerInfo(sai_object_id_t queueObjId,
     {
         return saiStatus;
     }
+#endif
 
     /* update new scheduler profile */
     portSchedulerObjId[queueNum] = schedObjId;

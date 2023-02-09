@@ -5285,14 +5285,14 @@ sai_status_t xpSaiSetPortAttrMtu(sai_object_id_t port_id,
     }
 
     xpsIntf = (xpsInterfaceId_t)xpSaiObjIdValueGet(port_id);
-
+#ifdef NOT_WARM_RESTART 
     xpStatus = xpsMtuGetInterfaceMtuSize(xpsDevId, xpsIntf, &get_mtu);
     if (XP_NO_ERR != xpStatus)
     {
         XP_SAI_LOG_ERR("Could not get MTU for port %u.", xpsIntf);
         return  xpsStatus2SaiStatus(xpStatus);
     }
-
+#endif
     xpStatus = xpsMtuSetInterfaceMtuSize(xpsDevId, xpsIntf, value.u32);
     if (XP_NO_ERR != xpStatus)
     {
