@@ -4472,7 +4472,9 @@ GT_STATUS cpssHalPolicerInit(uint32_t devId)
     XPS_DEVICES_PER_SWITCH_ITER(devId, cpssDevNum)
     {
         if ((cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_FALCON_E) &&
-            (cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_AC5X_E))
+            (cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_AC5X_E) &&
+            (cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_ALDRIN2_E) &&
+            (cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_AC3X_E) )
         {
             /* TBD */
             return rc;
@@ -4600,8 +4602,8 @@ GT_STATUS cpssHalPolicerInit(uint32_t devId)
             /* This cpss api is not required for AC5X */
             rc = cpssDxChPolicerMemorySizeModeSet(cpssDevNum,
                                                   CPSS_DXCH_POLICER_MEMORY_FLEX_MODE_E,
-                                                  CPSS_HAL_MAX_PORT_POLICER_INDEX,
-                                                  CPSS_HAL_MAX_FLOW_POLICER_INDEX);
+                                                  512,
+                                                  512);
             if (rc != GT_OK)
             {
                 LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
@@ -4640,25 +4642,28 @@ GT_STATUS cpssHalPolicerInit(uint32_t devId)
                   "cpssDxChPolicerMemorySizeModeSet rc %d\n", rc);
             return rc;
         }
-
-        /* Enable metering for TO_ANALYZER pkts. */
-        rc = cpssDxChPolicerEgressToAnalyzerMeteringAndCountingEnableSet(cpssDevNum,
+        if (cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_ALDRIN2_E &&
+            cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_AC3X_E)
+        { 
+            /* Enable metering for TO_ANALYZER pkts. */
+            rc = cpssDxChPolicerEgressToAnalyzerMeteringAndCountingEnableSet(cpssDevNum,
                                                                          GT_TRUE);
-        if (rc != GT_OK)
-        {
-            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-                  "cpssDxChPolicerEgressToAnalyzerMeteringAndCountingEnableSet rc %d\n", rc);
-            return rc;
-        }
-
-        /* Set Policer Drop type to HARD. To drop TO_ANALYZER pkts by metering. */
-        rc = cpssDxCh3PolicerDropTypeSet(cpssDevNum, CPSS_DXCH_POLICER_STAGE_EGRESS_E,
+            if (rc != GT_OK)
+            {
+                LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                   "cpssDxChPolicerEgressToAnalyzerMeteringAndCountingEnableSet rc %d\n", rc);
+                return rc;
+            }
+        
+            /* Set Policer Drop type to HARD. To drop TO_ANALYZER pkts by metering. */
+            rc = cpssDxCh3PolicerDropTypeSet(cpssDevNum, CPSS_DXCH_POLICER_STAGE_EGRESS_E,
                                          CPSS_DROP_MODE_HARD_E);
-        if (rc != GT_OK)
-        {
-            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-                  "cpssDxCh3PolicerDropTypeSet rc %d\n", rc);
-            return rc;
+            if (rc != GT_OK)
+            {
+                LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                    "cpssDxCh3PolicerDropTypeSet rc %d\n", rc);
+                return rc;
+            }
         }
     }
 
