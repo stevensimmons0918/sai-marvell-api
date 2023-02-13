@@ -992,6 +992,7 @@ GT_STATUS cpssHalTunnelVxlanIPv4TTIKeySet(GT_U32 devId)
     status = cpssDxChTtiUserDefinedByteSet(devId, CPSS_DXCH_TTI_KEY_UDB_IPV4_UDP_E,
                                            0,
                                            CPSS_DXCH_TTI_OFFSET_METADATA_E, CPSS_HAL_TTI_META_PCL_ID_OFFSET);
+    if (status != GT_OK)
     {
         LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
               "cpssDxChTtiUserDefinedByteSet, "
