@@ -30,6 +30,8 @@
 #define NPU_STR         "npu"
 #define ATTR_LIST_LEN   64
 #define XPSAI_DEFAULT_LINKSCAN_DELAY    1000    //ms
+using namespace std;
+bool WARM_RESTART = false;
 
 XP_SAI_LOG_REGISTER_API(SAI_API_SWITCH);
 
@@ -6803,6 +6805,16 @@ sai_status_t xpSaiInitializeSwitch(sai_object_id_t* switchId,
         }
         XP_SAI_LOG_INFO("Ecmp size is set to %d\n",
                         xpSaiInitParam_g.numNhGrpEcmpMember);
+
+        const char *esal_warm_env = std::getenv("PSI_resetReason");
+        if (esal_warm_env != NULL && !strcmp(esal_warm_env, "warm")) 
+        {
+            WARM_RESTART = true;
+        }
+        else
+        {
+            WARM_RESTART = false;
+        }
 
         /* do basic init only first time */
         if (switchInitialized == false)

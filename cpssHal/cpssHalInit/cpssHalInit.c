@@ -78,6 +78,7 @@ extern uint32_t eventHandlerTid;
 static uint32_t portEvntTid;
 extern cpssHalDeviceCfg globalSwitchDb[MAX_GLOBAL_DEVICES];
 extern int cpssHalCurrentSwitchId;
+extern bool WARM_RESTART;
 #define CPSSHAL_SWITCH(x)           globalSwitchDb[cpssHalCurrentSwitchId].x
 
 #ifndef RESET_PP_EXCLUDE_PEX
@@ -1886,18 +1887,20 @@ GT_STATUS cpssHalInitializeDevice
                  MV_EXT_DRV_CFG_FLAG_SPECIAL_INFO_OFFSET_CNS);
     }
 
-    memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
-    recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
-    recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_INIT_STATE_E;
-    recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
-
-    
-    rc = cpssSystemRecoveryStateSet(&recovery_info);
-
-    if (rc != GT_OK)
+    if (WARM_RESTART)
     {
-        MRVL_HAL_API_TRACE("cpssSystemRecoveryStateSet", rc);
-        return rc;
+        memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
+        recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
+        recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_INIT_STATE_E;
+        recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
+
+        rc = cpssSystemRecoveryStateSet(&recovery_info);
+
+        if (rc != GT_OK)
+        {
+            MRVL_HAL_API_TRACE("cpssSystemRecoveryStateSet", rc);
+            return rc;
+        }
     }
     //MRVSave(pciInfo);
 
@@ -2573,17 +2576,20 @@ GT_STATUS cpssHalInitializeDevice
             return rc;
         }
     */
-    memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
-    recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
-    recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_HW_CATCH_UP_STATE_E;
-    recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
-    
-    rc = cpssSystemRecoveryStateSet(&recovery_info);
-
-    if (rc != GT_OK)
+    if (WARM_RESTART)
     {
-        MRVL_HAL_API_TRACE("cpssSystemRecoveryStateSet", rc);
-        return rc;
+        memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
+        recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
+        recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_HW_CATCH_UP_STATE_E;
+        recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
+
+        rc = cpssSystemRecoveryStateSet(&recovery_info);
+
+        if (rc != GT_OK)
+        {
+            MRVL_HAL_API_TRACE("cpssSystemRecoveryStateSet", rc);
+            return rc;
+        }
     }
 
     return rc;
