@@ -10346,6 +10346,8 @@ sai_status_t xpSaiCreatePort(sai_object_id_t *port_id,
         return xpsStatus2SaiStatus(status);
     }
 
+    /*TODO Commenting creation of Mac Stat Counter rules. Will revisit if requirement arises*/
+#if 0 
     /*create v4/v6 acl rule for port*/
     status = xpsMacStatCounterCreateAclRuleForV4V6(xpsDevId, xpsPortId,
                                                    &portStatistics->counterId_Ingress_v4, &portStatistics->counterId_Ingress_v6,
@@ -10367,6 +10369,7 @@ sai_status_t xpSaiCreatePort(sai_object_id_t *port_id,
         XP_SAI_LOG_ERR("Could not clear statistics for the port %u.\n", xpsPortId);
         return  xpsStatus2SaiStatus(status);
     }
+#endif
 
     xpFree(attributes);
     xpFree(info);

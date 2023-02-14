@@ -5578,6 +5578,8 @@ static sai_status_t xpSaiApplySwitchPortsDefaultConfig(xpsDevice_t xpsDevId)
         return xpsStatus2SaiStatus(xpStatus);
     }
 
+    /*TODO Commenting creation of Mac Stat Counter rules. Will revisit if requirement arises*/
+#if 0
     /*create v4/v6 acl rule for CPU port*/
     xpStatus = xpsMacStatCounterCreateAclRuleForV4V6(xpsDevId, cpuPortNum,
                                                      &portStatistics->counterId_Ingress_v4, &portStatistics->counterId_Ingress_v6,
@@ -5590,6 +5592,7 @@ static sai_status_t xpSaiApplySwitchPortsDefaultConfig(xpsDevice_t xpsDevId)
                        cpuPortNum);
         return  xpsStatus2SaiStatus(xpStatus);
     }
+#endif
 
     xpFree(attrList);
     xpFree(queue_attr);
