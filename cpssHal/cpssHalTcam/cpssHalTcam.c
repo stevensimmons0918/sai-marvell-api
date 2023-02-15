@@ -43,11 +43,7 @@ GT_STATUS cpssHalVtcamMgrCreate
 {
     GT_STATUS rc = GT_OK;
     GT_U8     cpssDevId = 0;
-    CPSS_DXCH_VIRTUAL_TCAM_MNG_CONFIG_PARAM_STC vTcamMgrConfig = {GT_TRUE, 0};
-    // CPSS_DXCH_VIRTUAL_TCAM_HA_FEATURE_ENT vTcamFeatures;
-    
-    // vTcamMgrConfig.haSupportEnabled = GT_TRUE;
-    // vTcamMgrConfig.haFeaturesEnabledBmp.
+    CPSS_DXCH_VIRTUAL_TCAM_MNG_CONFIG_PARAM_STC vTcamMgrConfig = {GT_TRUE, CPSS_DXCH_VIRTUAL_TCAM_HA_FEATURE_REPLAY_FAILED_RULES_ADD_E};
 
     if ((rc = cpssDxChVirtualTcamManagerCreate(vTcamMgrId, &vTcamMgrConfig)) != GT_OK)
     {

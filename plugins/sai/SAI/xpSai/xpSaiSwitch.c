@@ -5594,7 +5594,7 @@ static sai_status_t xpSaiApplySwitchPortsDefaultConfig(xpsDevice_t xpsDevId)
                        cpuPortNum);
         return  xpsStatus2SaiStatus(xpStatus);
     }
-#endif
+
     xpFree(attrList);
     xpFree(queue_attr);
     return SAI_STATUS_SUCCESS;

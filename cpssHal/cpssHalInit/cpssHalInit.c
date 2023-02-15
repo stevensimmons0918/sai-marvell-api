@@ -1892,7 +1892,6 @@ GT_STATUS cpssHalInitializeDevice
         memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
         recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
         recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_INIT_STATE_E;
-        recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
 
         rc = cpssSystemRecoveryStateSet(&recovery_info);
 
@@ -2581,7 +2580,6 @@ GT_STATUS cpssHalInitializeDevice
         memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
         recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
         recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_HW_CATCH_UP_STATE_E;
-        recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
 
         rc = cpssSystemRecoveryStateSet(&recovery_info);
 

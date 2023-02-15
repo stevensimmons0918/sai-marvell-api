@@ -31,7 +31,7 @@ extern "C" {
 #include <cpss/common/private/globalShared/prvCpssGlobalDbInterface.h>
 
 #define XPS_TUNNEL_TERM_HW_RANGE_START 0
-#define XPS_TUNNEL_TERM_HW_MAX_IDS     (1024)
+#define XPS_TUNNEL_TERM_HW_MAX_IDS     (100)
 #define XPS_TTI_TCAM_CLIENT_GROUP      CPSS_TCAM_CLIENT_GROUP2
 
 uint32_t curMaxTnlTermEntries = XPS_TUNNEL_TERM_HW_MAX_IDS;
