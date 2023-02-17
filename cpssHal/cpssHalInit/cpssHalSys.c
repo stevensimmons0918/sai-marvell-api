@@ -44,6 +44,7 @@ inline CPSS_PP_INTERFACE_CHANNEL_ENT cpssHalSys_param_mngInterfaceType(
         case AC3XMCS:
         case AC3XILA:
         case ALDRIN2XLFL:
+        case ALDRIN2EB3:
         case ALDRIN2EVAL:
             return CPSS_CHANNEL_PEX_MBUS_E;
         default: //FALCON, AC5X
@@ -72,6 +73,7 @@ inline GT_U32 cpssHalSys_param_rxDescNum(XP_DEV_TYPE_T xpDevType)
         case AC3XMCS:
         case AC3XILA:
         case ALDRIN2XLFL:
+        case ALDRIN2EB3:
         case ALDRIN2EVAL:
             return 256;
         default:
@@ -105,6 +107,7 @@ inline GT_U32 cpssHalSys_param_rxBuffNum(XP_DEV_TYPE_T xpDevType)
         case AC3XMCS:
         case AC3XILA:
         case ALDRIN2XLFL:
+        case ALDRIN2EB3:
         case ALDRIN2EVAL:
             return 256;
         default:

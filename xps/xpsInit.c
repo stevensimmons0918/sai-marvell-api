@@ -2008,6 +2008,10 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
     {
         profile = aldrin2_xl_fujitsu_large_profile;
     }
+    else if (ALDRIN2EB3 == devType)
+    {
+        profile = aldrin2_xl_fujitsu_large_eb3_profile;
+    }
     else if (ALDRIN2EVAL == devType)
     {
         profile = aldrin2_xl_fujitsu_large_eval_profile;
@@ -2093,6 +2097,10 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
             if (ALDRIN2XLFL == devType)
             {
                 profile = aldrin2_xl_fujitsu_large_profile;
+            }
+            else if (ALDRIN2EB3 == devType)
+            {
+                profile = aldrin2_xl_fujitsu_large_eb3_profile;
             }
             else if (ALDRIN2EVAL == devType)
             {

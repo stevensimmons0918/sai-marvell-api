@@ -1975,6 +1975,7 @@ typedef enum XP_DEV_TYPE_E
     AC3XMCS, /* Fujitsu Small - MCS board*/
     AC3XRAMAN, /* Fujitsu Small - Raman board*/
     AC3XILA, /* Fujitsu Small - ILA board*/
+    ALDRIN2EB3, /* Fujitsu Large EB3 board*/
     XP_DEV_TYPE_TOTAL
 } XP_DEV_TYPE_T;
 
@@ -2030,7 +2031,7 @@ typedef enum XP_DEV_TYPE_E
                                                )
 
 #define IS_DEVICE_FUJITSU_LARGE(DEV_TYPE)      ( \
-                                                (ALDRIN2XLFL==DEV_TYPE || ALDRIN2EVAL==DEV_TYPE) \
+                                                (ALDRIN2XLFL==DEV_TYPE || ALDRIN2EVAL==DEV_TYPE || ALDRIN2EB3==DEV_TYPE) \
                                                )
 
 
