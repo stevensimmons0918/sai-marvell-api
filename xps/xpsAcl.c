@@ -1456,7 +1456,7 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
     GT_U32    ipcl0ClientGrpId = 0xffffffff;
     GT_U32    ipcl1ClientGrpId = 0xffffffff;
     GT_U32    epclClientGrpId = 0xffffffff;
-    //uint32_t hitNum = 0;
+    uint32_t hitNum = 0;
 
     memset(&vTcamInfo, 0x00, sizeof(CPSS_DXCH_VIRTUAL_TCAM_INFO_STC));
     rc = cpssHalTcamAclClientGroupIdGet(devId, CPSS_DXCH_TCAM_IPCL_0_E,
@@ -1497,15 +1497,15 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
     vTcamInfo.clientGroup = ipcl1ClientGrpId;
     vTcamInfo.guaranteedNumOfRules = 1;
 
-    // //IPCL_1
-    // if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
-    //                              XPS_L3_MIRROR_ING_STG_TABLE_ID_0,
-    //                              &vTcamInfo)) != GT_OK)
-    // {
-    //     LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-    //           "failed to create tcam region : %d  ", rc);
-    //     return xpsConvertCpssStatusToXPStatus(rc);
-    // }
+    //IPCL_1
+    if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
+                                 XPS_L3_MIRROR_ING_STG_TABLE_ID_0,
+                                 &vTcamInfo)) != GT_OK)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "failed to create tcam region : %d  ", rc);
+        return xpsConvertCpssStatusToXPStatus(rc);
+    }
 
     // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
     //                      XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
@@ -1519,19 +1519,19 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
     //     return xpsConvertCpssStatusToXPStatus(rc);
     // }
 
-    // //IPCL_0 : ING
-    // vTcamInfo.clientGroup = ipcl0ClientGrpId;
-    // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
-    //                      XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
-    // /* Creating tcam regions for control acl rules */
+    //IPCL_0 : ING
+    vTcamInfo.clientGroup = ipcl0ClientGrpId;
+    vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
+                         XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
+    /* Creating tcam regions for control acl rules */
 
-    // if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR, XPS_L3_CTRL_TABLE_ID,
-    //                              &vTcamInfo)) != GT_OK)
-    // {
-    //     LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-    //           "failed to create tcam region : %d  ", rc);
-    //     return xpsConvertCpssStatusToXPStatus(rc);
-    // }
+    if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR, XPS_L3_CTRL_TABLE_ID,
+                                 &vTcamInfo)) != GT_OK)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "failed to create tcam region : %d  ", rc);
+        return xpsConvertCpssStatusToXPStatus(rc);
+    }
 
 
     // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
@@ -1544,35 +1544,35 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
     //     return xpsConvertCpssStatusToXPStatus(rc);
     // }
 
-    // /* Creating tcam regions for 4 parallel lookups for 30B  rules */
+    /* Creating tcam regions for 4 parallel lookups for 30B  rules */
 
-    // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
-    //                      XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
-    // for (hitNum = 0; hitNum < 4; hitNum++)
-    // {
-    //     vTcamInfo.hitNumber = hitNum;
-    //     /* Ingress stage vTcam */
-    //     vTcamInfo.clientGroup = ipcl0ClientGrpId;
-    //     if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
-    //                                  (XPS_L3_ING_STG_TABLE_ID_0+hitNum),
-    //                                  &vTcamInfo)) != GT_OK)
-    //     {
-    //         LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-    //               "failed to create ing tcam region. hitNum :%d rc  %d  ", hitNum, rc);
-    //         return xpsConvertCpssStatusToXPStatus(rc);
-    //     }
+    vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
+                         XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
+    for (hitNum = 0; hitNum < 2; hitNum++)
+    {
+        vTcamInfo.hitNumber = hitNum;
+        /* Ingress stage vTcam */
+        vTcamInfo.clientGroup = ipcl0ClientGrpId;
+        if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
+                                     (XPS_L3_ING_STG_TABLE_ID_0+hitNum),
+                                     &vTcamInfo)) != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "failed to create ing tcam region. hitNum :%d rc  %d  ", hitNum, rc);
+            return xpsConvertCpssStatusToXPStatus(rc);
+        }
 
-    //     /* Egress stage vTcam */
-    //     vTcamInfo.clientGroup = epclClientGrpId;
-    //     if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
-    //                                  (XPS_L3_EGR_STG_TABLE_ID_0+hitNum),
-    //                                  &vTcamInfo)) != GT_OK)
-    //     {
-    //         LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-    //               "failed to create egr tcam region. hitNum :%d rc  %d  ", hitNum, rc);
-    //         return xpsConvertCpssStatusToXPStatus(rc);
-    //     }
-    // }
+        /* Egress stage vTcam */
+        vTcamInfo.clientGroup = epclClientGrpId;
+        if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
+                                     (XPS_L3_EGR_STG_TABLE_ID_0+hitNum),
+                                     &vTcamInfo)) != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "failed to create egr tcam region. hitNum :%d rc  %d  ", hitNum, rc);
+            return xpsConvertCpssStatusToXPStatus(rc);
+        }
+    }
 
     // /* Creating tcam regions for 4 parallel lookups for 60B  rules */
     // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
@@ -1604,62 +1604,62 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
     //     }
     // }
 
-    // Creating tcam regions for port v4/v6 statistcs
-    //IPCL v4
-    vTcamInfo.clientGroup = ipcl1ClientGrpId;
-    vTcamInfo.hitNumber = 3;
-    vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
-                         XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
-    if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
-                                 XPS_PORT_V4_ING_STG_TABLE_ID_0,
-                                 &vTcamInfo)) != GT_OK)
-    {
-        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-              "failed to create tcam region : %d  ", rc);
-        return xpsConvertCpssStatusToXPStatus(rc);
-    }
+    // // Creating tcam regions for port v4/v6 statistcs
+    // //IPCL v4
+    // vTcamInfo.clientGroup = ipcl1ClientGrpId;
+    // vTcamInfo.hitNumber = 3;
+    // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
+    //                      XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
+    // if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
+    //                              XPS_PORT_V4_ING_STG_TABLE_ID_0,
+    //                              &vTcamInfo)) != GT_OK)
+    // {
+    //     LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+    //           "failed to create tcam region : %d  ", rc);
+    //     return xpsConvertCpssStatusToXPStatus(rc);
+    // }
 
-    //EPCL v4
-    vTcamInfo.clientGroup = epclClientGrpId;
-    vTcamInfo.hitNumber = 3;
-    vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
-                         XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
-    if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
-                                 XPS_PORT_V4_ERG_STG_TABLE_ID_0,
-                                 &vTcamInfo)) != GT_OK)
-    {
-        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-              "failed to create tcam region : %d  ", rc);
-        return xpsConvertCpssStatusToXPStatus(rc);
-    }
+    // //EPCL v4
+    // vTcamInfo.clientGroup = epclClientGrpId;
+    // vTcamInfo.hitNumber = 3;
+    // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
+    //                      XPS_VIRTUAL_TCAM_RULE_SIZE_30_B_E;
+    // if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
+    //                              XPS_PORT_V4_ERG_STG_TABLE_ID_0,
+    //                              &vTcamInfo)) != GT_OK)
+    // {
+    //     LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+    //           "failed to create tcam region : %d  ", rc);
+    //     return xpsConvertCpssStatusToXPStatus(rc);
+    // }
 
-    //IPCL v6
-    vTcamInfo.clientGroup = ipcl1ClientGrpId;
-    vTcamInfo.hitNumber = 3;
-    vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
-                         XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
-    if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
-                                 XPS_PORT_V6_ING_STG_TABLE_ID_0,
-                                 &vTcamInfo)) != GT_OK)
-    {
-        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-              "failed to create tcam region : %d  ", rc);
-        return xpsConvertCpssStatusToXPStatus(rc);
-    }
+    // //IPCL v6
+    // vTcamInfo.clientGroup = ipcl1ClientGrpId;
+    // vTcamInfo.hitNumber = 3;
+    // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
+    //                      XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
+    // if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
+    //                              XPS_PORT_V6_ING_STG_TABLE_ID_0,
+    //                              &vTcamInfo)) != GT_OK)
+    // {
+    //     LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+    //           "failed to create tcam region : %d  ", rc);
+    //     return xpsConvertCpssStatusToXPStatus(rc);
+    // }
 
-    //EPCL v6
-    vTcamInfo.clientGroup = epclClientGrpId;
-    vTcamInfo.hitNumber = 3;
-    vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
-                         XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
-    if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
-                                 XPS_PORT_V6_ERG_STG_TABLE_ID_0,
-                                 &vTcamInfo)) != GT_OK)
-    {
-        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
-              "failed to create tcam region : %d  ", rc);
-        return xpsConvertCpssStatusToXPStatus(rc);
-    }
+    // //EPCL v6
+    // vTcamInfo.clientGroup = epclClientGrpId;
+    // vTcamInfo.hitNumber = 3;
+    // vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
+    //                      XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
+    // if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
+    //                              XPS_PORT_V6_ERG_STG_TABLE_ID_0,
+    //                              &vTcamInfo)) != GT_OK)
+    // {
+    //     LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+    //           "failed to create tcam region : %d  ", rc);
+    //     return xpsConvertCpssStatusToXPStatus(rc);
+    // }
 
     return XP_NO_ERR;
 }
