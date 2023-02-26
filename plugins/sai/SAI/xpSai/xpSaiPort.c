@@ -10360,7 +10360,6 @@ sai_status_t xpSaiCreatePort(sai_object_id_t *port_id,
                        xpsPortId);
         return  xpsStatus2SaiStatus(status);
     }
-#endif
     status = (XP_STATUS) xpsMacStatCounterReset(xpsDevId, xpsPortId);
     if (XP_NO_ERR != status)
     {
