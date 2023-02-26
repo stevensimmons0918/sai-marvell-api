@@ -4600,10 +4600,20 @@ GT_STATUS cpssHalPolicerInit(uint32_t devId)
         if (cpssHalDevPPFamilyGet(cpssDevNum) != CPSS_PP_FAMILY_DXCH_AC5X_E)
         {
             /* This cpss api is not required for AC5X */
-            rc = cpssDxChPolicerMemorySizeModeSet(cpssDevNum,
-                                                  CPSS_DXCH_POLICER_MEMORY_FLEX_MODE_E,
-                                                  512,
-                                                  512);
+            if (!IS_DEVICE_FUJITSU_SMALL(devType))
+            {
+                rc = cpssDxChPolicerMemorySizeModeSet(cpssDevNum,
+                                                      CPSS_DXCH_POLICER_MEMORY_FLEX_MODE_E,
+                                                      896,
+                                                      1024);
+            }
+            else
+            {
+                rc = cpssDxChPolicerMemorySizeModeSet(cpssDevNum,
+                                                      CPSS_DXCH_POLICER_MEMORY_CTRL_MODE_0_E,
+                                                      1792,
+                                                      256);
+            }
             if (rc != GT_OK)
             {
                 LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
