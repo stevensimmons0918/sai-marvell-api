@@ -449,6 +449,56 @@ XP_STATUS xpsPortGetDevAndPortNumFromIntfScope(xpsScope_t scopeId,
     return status;
 }
 
+CPSS_PORT_ACCEPT_FRAME_TYPE_ENT xpsConvertXPFrameTypeToCpssType(
+                                    xpsPortFrameType_e xpType) {
+    CPSS_PORT_ACCEPT_FRAME_TYPE_ENT cpssType = CPSS_PORT_ACCEPT_FRAME_ALL_E;
+
+    switch (xpType)
+    {
+        case FRAMETYPE_ALL:
+            cpssType = CPSS_PORT_ACCEPT_FRAME_ALL_E;
+            break;
+
+        case FRAMETYPE_UN_PRI:
+            cpssType = CPSS_PORT_ACCEPT_FRAME_UNTAGGED_E;
+            break;
+
+        case FRAMETYPE_TAG:
+            cpssType = CPSS_PORT_ACCEPT_FRAME_TAGGED_E;
+            break;
+
+        default:
+            break;
+    }
+
+    return cpssType;
+}
+
+xpsPortFrameType_e xpsConvertCpssFrameTypeToXpType(
+                                    CPSS_PORT_ACCEPT_FRAME_TYPE_ENT cpssType) {
+    xpsPortFrameType_e xpType = FRAMETYPE_MAX;
+
+    switch (xpType)
+    {
+        case CPSS_PORT_ACCEPT_FRAME_ALL_E:
+            xpType = FRAMETYPE_ALL;
+            break;
+
+        case CPSS_PORT_ACCEPT_FRAME_UNTAGGED_E:
+            xpType = FRAMETYPE_UN_PRI;
+            break;
+
+        case CPSS_PORT_ACCEPT_FRAME_TAGGED_E:
+            xpType = FRAMETYPE_TAG;
+            break;
+
+        default:
+            break;
+    }
+
+    return xpType;
+}
+
 XP_STATUS xpsPortSetField(xpsDevice_t devId, xpsInterfaceId_t portIfId,
                           xpsPortConfigFieldList_t fNum, uint32_t fData)
 {
@@ -484,6 +534,21 @@ XP_STATUS xpsPortSetField(xpsDevice_t devId, xpsInterfaceId_t portIfId,
             }
             break;
 
+        case XPS_PORT_ACCEPTED_FRAME_TYPE:
+            {
+                xpsPortFrameType_e xpType = (xpsPortFrameType_e)fData;
+                CPSS_PORT_ACCEPT_FRAME_TYPE_ENT type =
+                        xpsConvertXPFrameTypeToCpssType(xpType);
+                rc = cpssDxChBrgVlanPortAccFrameTypeSet(cpssDevId, cpssPortNum, type);
+                if (rc != GT_OK)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                      "Get accepted frames failed for portNum(%d)", portIfId);
+                    return xpsConvertCpssStatusToXPStatus(rc);
+                }
+                break;
+            }
+
         default:
             break;
     }
@@ -492,7 +557,6 @@ XP_STATUS xpsPortSetField(xpsDevice_t devId, xpsInterfaceId_t portIfId,
 
     return XP_NO_ERR;
 }
-
 
 XP_STATUS xpsPortGetField(xpsDevice_t devId, xpsInterfaceId_t portIfId,
                           xpsPortConfigFieldList_t fNum, uint32_t *fData)
@@ -528,6 +592,20 @@ XP_STATUS xpsPortGetField(xpsDevice_t devId, xpsInterfaceId_t portIfId,
                 return ret;
             }
             break;
+
+        case XPS_PORT_ACCEPTED_FRAME_TYPE:
+            {
+                CPSS_PORT_ACCEPT_FRAME_TYPE_ENT type;
+                rc = cpssDxChBrgVlanPortAccFrameTypeGet(cpssDevId, cpssPortNum, &type);
+                *fData = xpsConvertCpssFrameTypeToXpType(type);
+                if (rc != GT_OK)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          "Get accepted frames failed for portNum(%d)", portIfId);
+                    return xpsConvertCpssStatusToXPStatus(rc);
+                }
+                break;
+            }
 
         default:
             break;
