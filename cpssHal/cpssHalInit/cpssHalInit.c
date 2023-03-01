@@ -1964,7 +1964,9 @@ GT_STATUS cpssHalInitializeDevice
         uint8_t retry = 0;
         while (retry < 3)
         {
+             cpssOsPrintf("cpssDxChHwPpPhase1Init_new\n");
             rc = cpssDxChHwPpPhase1Init_new(&cpssPpPhase1Info, &devType);
+             cpssOsPrintf("cpssDxChHwPpPhase1Init_new past\n");
 
             /* HW reset status is determined from reading user defined register.
                Commented Soft-reset in init flow as the scenarios are handled by drv.

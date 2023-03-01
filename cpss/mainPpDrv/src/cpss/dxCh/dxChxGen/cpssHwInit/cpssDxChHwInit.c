@@ -19724,6 +19724,8 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
     CPSS_SYSTEM_RECOVERY_INFO_STC tempSystemRecovery_Info;
 
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init1\n");
+
     CPSS_NULL_PTR_CHECK_MAC(ppPhase1ParamsPtr);
     CPSS_NULL_PTR_CHECK_MAC(deviceTypePtr);
 
@@ -19738,6 +19740,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
             "PRV_CPSS_DXCH_UNIT___LAST_USED_AS_DIRECT_INDEX____E must be 71");
     }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init2\n");
     rc = prvCpssPrePhase1PpInitModeGet(&prePhase1InitMode);
     if(rc != GT_OK)
     {
@@ -19750,6 +19753,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
     /*Lock the access to per device data base in order to avoid corruption*/
     CPSS_API_LOCK_MAC(devNum,PRV_CPSS_FUNCTIONALITY_CONFIGURATION_CNS);
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init3\n");
     /* check input parameters */
     if(devNum >= PRV_CPSS_MAX_PP_DEVICES_CNS)
     {
@@ -19768,6 +19772,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         CPSS_LOG_ERROR_AND_RETURN_MAC(GT_ALREADY_EXIST, LOG_ERROR_NO_MSG);
     }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init4\n");
     /* initialize the cpssDriver , build the DB needed for the device */
     rc = hwPpPhase1Part1(ppPhase1ParamsPtr, deviceTypePtr);
     if(rc != GT_OK)
@@ -19775,6 +19780,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         CPSS_LOG_INFORMATION_MAC("hwPpPhase1Part1(..) : return code is %d", rc);
         goto exit_cleanly_lbl;
     }
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init5\n");
 
     rc = cpssSystemRecoveryStateGet(&tempSystemRecovery_Info);
     if (rc != GT_OK)
@@ -19783,6 +19789,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
     }
 
     /*check if system started in HS mode , if yes check validity of MI version and register state */
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init6\n");
     if ((tempSystemRecovery_Info.systemRecoveryProcess == CPSS_SYSTEM_RECOVERY_PROCESS_HITLESS_STARTUP_E) &&
         (tempSystemRecovery_Info.systemRecoveryState == CPSS_SYSTEM_RECOVERY_INIT_STATE_E))
     {
@@ -19816,6 +19823,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         }
     }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init7\n");
     if(falcon_force_stop_init_after_d2d_init_get())
     {
         /* indication that the debug mode focus only on operations
@@ -19872,6 +19880,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         }
      }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init8\n");
     /* initialize the board specific parameters and registers the packet
     processor for pre-discovery phase access and diagnostics */
     rc = hwPpPhase1Part2(devNum);
@@ -19911,6 +19920,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         PRV_CPSS_GEN_PP_END_LOOP_PORT_GROUPS_MAC(devNum,portGroupId)
     }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init9\n");
     if (prePhase1InitMode != PRV_CPSS_PP_PRE_PHASE1_INIT_MODE_NO_PP_INIT_E)
     {
         /* do enhanced initialization of SW and HW parameters , if needed */
@@ -19932,6 +19942,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         }
     }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init10\n");
     /* init Cheetah tables database .
        called after : prvCpssDxChPpConfigEnhancedInitFuncPtr
        but should be called even if prvCpssDxChPpConfigEnhancedInitFuncPtr
@@ -19958,6 +19969,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         }
     }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init11\n");
     /* TBD: Shadows to be enabled for SIP6 post some logical init handling */
     if(PRV_CPSS_SIP_5_CHECK_MAC(devNum) || PRV_CPSS_DXCH_AC5_CHECK_MAC(devNum))
     {
@@ -19969,6 +19981,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
         }
     }
 
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init12\n");
 #ifndef ASIC_SIMULATION
     if(PRV_CPSS_DEV_DFX_SERVER_SUPPORTED_MAC(devNum) &&
        (PRV_CPSS_PP_MAC(devNum)->devFamily == CPSS_PP_FAMILY_DXCH_ALDRIN2_E ||
@@ -20008,6 +20021,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
        but should be called even if prvCpssDxChPpConfigEnhancedInitFuncPtr
        is NULL
        */
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init13\n");
     if (prePhase1InitMode != PRV_CPSS_PP_PRE_PHASE1_INIT_MODE_NO_PP_INIT_E)
     {
         rc = hwPpPhase1Part5(devNum);
@@ -20054,6 +20068,7 @@ GT_STATUS internal_cpssDxChHwPpPhase1Init
             }
         }
     }
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init14\n");
 
 exit_cleanly_lbl:
     if(rc == GT_HW_ERROR_NEED_RESET)
@@ -20133,6 +20148,7 @@ exit_cleanly_lbl:
         /* we must register the error with the ERROR LOG ! */
         CPSS_LOG_ERROR_AND_RETURN_MAC(rc, LOG_ERROR_NO_MSG);
     }
+cpssOsPrintf("internal_cpssDxChHwPpPhase1Init15\n");
     return rc;
 }
 /**
@@ -20169,11 +20185,13 @@ GT_STATUS cpssDxChHwPpPhase1Init
 {
     GT_STATUS rc;
     CPSS_LOG_FUNC_VARIABLE_DECLARE_MAC(funcId, cpssDxChHwPpPhase1Init);
+  cpssOsPrintf("\n cpssDxChHwPpPhase1Init1 \n");
 
     CPSS_API_LOCK_DEVICELESS_MAC(PRV_CPSS_FUNCTIONALITY_CONFIGURATION_CNS);
     CPSS_LOG_API_ENTER_MAC((funcId, ppPhase1ParamsPtr, deviceTypePtr));
 
     rc = internal_cpssDxChHwPpPhase1Init(ppPhase1ParamsPtr, deviceTypePtr);
+  cpssOsPrintf("\n cpssDxChHwPpPhase1Init2 \n");
 
     CPSS_LOG_API_EXIT_MAC(funcId, rc);
     CPSS_APP_SPECIFIC_CB_MAC((funcId, rc, ppPhase1ParamsPtr, deviceTypePtr));
