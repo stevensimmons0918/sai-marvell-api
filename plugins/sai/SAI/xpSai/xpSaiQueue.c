@@ -25,6 +25,8 @@ xpsDbHandle_t queueQosDbHandle = XPSAI_QUEUE_QOS_DB_HNDL;
 
 xpSaiPortProfile_t *schedulerProfileList[XP_MAX_DEVICES];
 
+extern bool WARM_RESTART;
+
 static sai_status_t xpSaiQueueIsWredConfigured(sai_object_id_t queueObjId,
                                                bool *wredConfiguredPtr);
 static sai_status_t xpSaiQueueIsBufferConfigured(sai_object_id_t queueObjId,
@@ -1121,7 +1123,7 @@ sai_status_t xpSaiQueueSetSchedulerInfo(sai_object_id_t queueObjId,
     xpSaiPortQosInfo_t   *pPortQosInfo = NULL;
     sai_attribute_value_t value;
     uint32_t              qNum = 0;
-    //uint32_t              profileIdx = 0;
+    uint32_t              profileIdx = 0;
     uint32_t              newProfileIdx = 0;
 
     /* Get the device id from queue object id */
@@ -1177,23 +1179,24 @@ sai_status_t xpSaiQueueSetSchedulerInfo(sai_object_id_t queueObjId,
             portSchedulerObjId[qNum] = SAI_NULL_OBJECT_ID;
         }
     }
-#ifdef NOT_WARM_RESTART
-    rc = cpssHalBindPortToSchedulerProfileGet(xpDevId, xpPort, &profileIdx);
-    if (rc != GT_OK)
+    if (!WARM_RESTART)
     {
-        XP_SAI_LOG_ERR("Error: Could not get scheduler profile for port %d | retVal:%d",
-                       xpPort, rc);
-        return cpssStatus2SaiStatus(rc);
-    }
+        rc = cpssHalBindPortToSchedulerProfileGet(xpDevId, xpPort, &profileIdx);
+        if (rc != GT_OK)
+        {
+            XP_SAI_LOG_ERR("Error: Could not get scheduler profile for port %d | retVal:%d",
+                           xpPort, rc);
+            return cpssStatus2SaiStatus(rc);
+        }
 
-    /* Loop through schdeduler profile list and clear the refCount of old profile */
-    saiStatus = xpSaiProfileMgrUnbindProfileToPort(schedulerProfileList[xpDevId],
-                                                   profileIdx, xpPort);
-    if (saiStatus != SAI_STATUS_SUCCESS)
-    {
-        return saiStatus;
+        /* Loop through schdeduler profile list and clear the refCount of old profile */
+        saiStatus = xpSaiProfileMgrUnbindProfileToPort(schedulerProfileList[xpDevId],
+                                                       profileIdx, xpPort);
+        if (saiStatus != SAI_STATUS_SUCCESS)
+        {
+            return saiStatus;
+        }
     }
-#endif
 
     /* update new scheduler profile */
     portSchedulerObjId[queueNum] = schedObjId;
