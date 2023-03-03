@@ -110,6 +110,7 @@ ifneq ("$(wildcard $(SUBDIR)/cpss_patch_done)","")
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14472.patch | patch -p1 -R
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14467.patch | patch -p1 -R
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14153.patch | patch -p1 -R
+	cd ../cpss && cat ../build/cpss_patches/HA_pciex.patch | patch -p1 -R
 	cd ../cpss && cat ../build/cpss_patches/intr_pci_bus_master.patch | patch -p1 -R
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14615.patch | patch -p1 -R
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14537.patch | patch -p1 -R
@@ -144,6 +145,7 @@ $(SUBDIR)/cpss_patch_done:
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14467.patch | patch -p1
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14153.patch | patch -p1
 	cd ../cpss && cat ../build/cpss_patches/intr_pci_bus_master.patch | patch -p1
+	cd ../cpss && cat ../build/cpss_patches/HA_pciex.patch | patch -p1
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14615.patch | patch -p1
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14537.patch | patch -p1
 	cd ../cpss && cat ../build/cpss_patches/CPSS-14256_1.patch | patch -p1
