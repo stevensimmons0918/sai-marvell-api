@@ -1975,6 +1975,18 @@ GT_STATUS cpssHalInitializeDevice
     }
     else
     {
+        // Fujitsu cards don't have reset signal connected to the Packet Processor
+        // We need reset PP every time when COLD restart happened.  
+        if (!WARM_RESTART)
+        {
+            rc = cpssDxChHwPpSoftResetSkipParamSet(devNum,
+                                                   CPSS_HW_PP_RESET_SKIP_TYPE_ALL_EXCLUDE_PEX_E, GT_FALSE);
+            cpssOsPrintf("cpssDxChHwPpSoftResetSkipParamSet ret=%d dev=%d\n",
+                         rc, devNum);
+            rc = cpssDxChHwPpSoftResetTrigger(devNum);
+            cpssOsPrintf("cpssDxChHwPpSoftResetTrigger ret=%d dev=%d\n",
+                         rc, devNum);
+        }
 
         /* devType is retrieved in hwPpPhase1Part1*/
         uint8_t retry = 0;
