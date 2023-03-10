@@ -6807,16 +6807,6 @@ sai_status_t xpSaiInitializeSwitch(sai_object_id_t* switchId,
         XP_SAI_LOG_INFO("Ecmp size is set to %d\n",
                         xpSaiInitParam_g.numNhGrpEcmpMember);
 
-        const char *esal_warm_env = std::getenv("resetReason");
-        if (esal_warm_env != NULL && !strcmp(esal_warm_env, "warm")) 
-        {
-            WARM_RESTART = true;
-        }
-        else
-        {
-            WARM_RESTART = false;
-        }
-
         /* do basic init only first time */
         if (switchInitialized == false)
         {
