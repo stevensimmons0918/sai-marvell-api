@@ -43,8 +43,9 @@ GT_STATUS cpssHalVtcamMgrCreate
 {
     GT_STATUS rc = GT_OK;
     GT_U8     cpssDevId = 0;
+    CPSS_DXCH_VIRTUAL_TCAM_MNG_CONFIG_PARAM_STC vTcamMgrConfig = {GT_TRUE, CPSS_DXCH_VIRTUAL_TCAM_HA_FEATURE_REPLAY_FAILED_RULES_ADD_E};
 
-    if ((rc = cpssDxChVirtualTcamManagerCreate(vTcamMgrId, NULL)) != GT_OK)
+    if ((rc = cpssDxChVirtualTcamManagerCreate(vTcamMgrId, &vTcamMgrConfig)) != GT_OK)
     {
         LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
               " cpssDxChVirtualTcamManagerCreate failed with err : %d on device :%d\n ", rc,

@@ -175,6 +175,7 @@ sai_status_t xpSaiSetPortAttrAdvertisedSpeed(sai_object_id_t port_id,
 static xpsDbHandle_t gXpSaiPortDbHandle = XPSAI_PORT_DB_HNDL;
 static xpsDbHandle_t gXpSaiPortStatisticDbHandle = XPSAI_PORT_STATISTIC_DB_HNDL;
 extern bool gResetInProgress;
+extern bool WARM_RESTART;
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -5285,12 +5286,14 @@ sai_status_t xpSaiSetPortAttrMtu(sai_object_id_t port_id,
     }
 
     xpsIntf = (xpsInterfaceId_t)xpSaiObjIdValueGet(port_id);
-
-    xpStatus = xpsMtuGetInterfaceMtuSize(xpsDevId, xpsIntf, &get_mtu);
-    if (XP_NO_ERR != xpStatus)
+    if (!WARM_RESTART)
     {
-        XP_SAI_LOG_ERR("Could not get MTU for port %u.", xpsIntf);
-        return  xpsStatus2SaiStatus(xpStatus);
+        xpStatus = xpsMtuGetInterfaceMtuSize(xpsDevId, xpsIntf, &get_mtu);
+        if (XP_NO_ERR != xpStatus)
+        {
+            XP_SAI_LOG_ERR("Could not get MTU for port %u.", xpsIntf);
+            return xpsStatus2SaiStatus(xpStatus);
+        }
     }
 
     xpStatus = xpsMtuSetInterfaceMtuSize(xpsDevId, xpsIntf, value.u32);

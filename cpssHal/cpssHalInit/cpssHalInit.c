@@ -78,6 +78,7 @@ extern uint32_t eventHandlerTid;
 static uint32_t portEvntTid;
 extern cpssHalDeviceCfg globalSwitchDb[MAX_GLOBAL_DEVICES];
 extern int cpssHalCurrentSwitchId;
+extern bool WARM_RESTART;
 #define CPSSHAL_SWITCH(x)           globalSwitchDb[cpssHalCurrentSwitchId].x
 
 #ifndef RESET_PP_EXCLUDE_PEX
@@ -1849,6 +1850,8 @@ GT_STATUS cpssHalInitializeDevice
 #ifdef RETRY_PP_SOFT_RESET
     GT_STATUS                           devInitStatus = GT_OK;
 #endif
+    CPSS_SYSTEM_RECOVERY_INFO_STC recovery_info;
+    
 
 
     if (profile == NULL)
@@ -1884,7 +1887,20 @@ GT_STATUS cpssHalInitializeDevice
                  MV_EXT_DRV_CFG_FLAG_SPECIAL_INFO_OFFSET_CNS);
     }
 
+    if (WARM_RESTART)
+    {
+        memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
+        recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
+        recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_INIT_STATE_E;
 
+        rc = cpssSystemRecoveryStateSet(&recovery_info);
+
+        if (rc != GT_OK)
+        {
+            MRVL_HAL_API_TRACE("cpssSystemRecoveryStateSet", rc);
+            return rc;
+        }
+    }
     //MRVSave(pciInfo);
 
     /* Phase 1 */
@@ -1959,7 +1975,18 @@ GT_STATUS cpssHalInitializeDevice
     }
     else
     {
-
+        // Fujitsu cards don't have reset signal connected to the Packet Processor
+        // We need reset PP every time when COLD restart happened.  
+        if (!WARM_RESTART)
+        {
+            rc = cpssDxChHwPpSoftResetSkipParamSet(devNum,
+                                                   CPSS_HW_PP_RESET_SKIP_TYPE_ALL_EXCLUDE_PEX_E, GT_FALSE);
+            cpssOsPrintf("cpssDxChHwPpSoftResetSkipParamSet ret=%d dev=%d\n",
+                         rc, devNum);
+            rc = cpssDxChHwPpSoftResetTrigger(devNum);
+            cpssOsPrintf("cpssDxChHwPpSoftResetTrigger ret=%d dev=%d\n",
+                         rc, devNum);
+        }
         /* devType is retrieved in hwPpPhase1Part1*/
         uint8_t retry = 0;
         while (retry < 3)
@@ -2559,6 +2586,20 @@ GT_STATUS cpssHalInitializeDevice
             return rc;
         }
     */
+    if (WARM_RESTART)
+    {
+        memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
+        recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
+        recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_HW_CATCH_UP_STATE_E;
+
+        rc = cpssSystemRecoveryStateSet(&recovery_info);
+
+        if (rc != GT_OK)
+        {
+            MRVL_HAL_API_TRACE("cpssSystemRecoveryStateSet", rc);
+            return rc;
+        }
+    }
 
     return rc;
 }

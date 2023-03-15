@@ -30,6 +30,8 @@
 #define NPU_STR         "npu"
 #define ATTR_LIST_LEN   64
 #define XPSAI_DEFAULT_LINKSCAN_DELAY    1000    //ms
+using namespace std;
+bool WARM_RESTART = false;
 
 XP_SAI_LOG_REGISTER_API(SAI_API_SWITCH);
 

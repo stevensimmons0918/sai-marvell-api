@@ -1,0 +1,78 @@
+diff --git a/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c b/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c
+index 543faf5..08c6b18 100755
+--- a/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c
++++ b/cpssEnabler/mainExtDrv/src/gtExtDrv/linuxNoKernelModule/noKmDrvPciDrvSysfs.c
+@@ -932,15 +932,12 @@ static GT_STATUS sysfs_pci_configure_map(
+     NOKMDRV_IPRINTF(("Configuring %s @ %04x:%02x:%02x.%x PEX mapping...\n",
+             prestera_sysmap[i].name, DBDF));
+     /* disable all windows which points bar2 & bar4 */
+-    if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
+-    {
+         for (i = 0; i < 6; i++)
+         {
+             prvNoKm_reg_write(R.cnm.start, mv_window_ctl_reg(i), 0);
+             prvNoKm_reg_write(R.cnm.start, mv_window_base_reg(i), 0);
+             prvNoKm_reg_write(R.cnm.start, mv_window_remap_reg(i), 0);
+         }
+-    }
+ 
+ 
+ #ifdef COMPAT_LEGACY_BARS
+@@ -983,12 +980,9 @@ static GT_STATUS sysfs_pci_configure_map(
+                     0x1 /* enable window */;
+         phys = (GT_U32)(barPhys[win_map->bar]);
+         phys += win_map->base_offset;
+-        if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
+-        {
+             prvNoKm_reg_write(R.cnm.start, win_base, phys);
+             prvNoKm_reg_write(R.cnm.start, win_remap, win_map->remap | 0x1/*remap_enable*/);
+             prvNoKm_reg_write(R.cnm.start, win_ctl, ctl_val);
+-        }
+ 
+         NOKMDRV_IPRINTF(("  BAR%d: win%d_ctrl = 0x%08x, win_base = 0x%08x\n",
+                 win_map->bar, win_map->win,
+@@ -1083,10 +1077,7 @@ GT_STATUS prvExtDrvPciSysfsConfigure
+ #ifdef USE_PP_SRAM
+ #warning "The option USE_PP_SRAM not supported now"
+ #endif
+-        if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
+-        {
+             prvNoKmDrv_configure_dma(R.switching.start, 0);
+-        }
+ 
+         if (prvExtDrvMvIntDrvConnected() == GT_TRUE)
+         {
+@@ -1100,22 +1091,16 @@ GT_STATUS prvExtDrvPciSysfsConfigure
+                  *         bit 28: Interrupt enable i
+                  *         bit 31: Endpoint Mask i
+                  */
+-                if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
+-                {
+                     prvNoKm_reg_write_field(R.cnm.start, 0x20b00+4*33, 0x90000000, 0x90000000);
+                     prvNoKm_reg_write_field(R.cnm.start, 0x20b00+4*34, 0x90000000, 0x90000000);
+                     prvNoKm_reg_write_field(R.cnm.start, 0x20b00+4*35, 0x90000000, 0x90000000);
+                     prvNoKm_reg_write_field(R.cnm.start, 0x20b00+4*36, 0x90000000, 0x90000000);
+-                }
+             }
+ 
+             /* Try to enable MSI interrupts */
+             if (prvExtDrvMvIntDrvEnableMsi(DBDF) == GT_OK)
+             {
+-                if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
+-                {
+                     prvNoKm_reg_write_field(R.cnm.start, 0x40050, 0x00010000, 0x00010000);
+-                }
+             }
+         }
+     }
+@@ -1132,10 +1117,7 @@ GT_STATUS prvExtDrvPciSysfsConfigure
+          *        When set to 0, no memory or I/O read/write request packets
+          *        are generated to PCI Express.
+          */
+-        if (system_recovery.systemRecoveryProcess != CPSS_SYSTEM_RECOVERY_PROCESS_HA_E)
+-        {
+             prvNoKm_reg_write_field(R.cnm.start, 0x40004, 0x4, 0x4);
+-        }
+     }
+     /* interrupt */
+     rc = sysfs_pci_readNum(DBDF, "irq", &pciInt);

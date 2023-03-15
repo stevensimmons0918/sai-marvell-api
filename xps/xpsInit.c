@@ -214,7 +214,6 @@ XP_STATUS xpsSdkInitScope(XP_DEV_TYPE_T devType, xpsScope_t scopeId,
             return status;
         }
     }
-
     if ((status=cpssHalGetDeviceType(scopeId, &devType)) != XP_NO_ERR)
     {
         cpssOsPrintf("Error <dev = %d>: xpSalGetDeviceType failed.\n", scopeId);
@@ -510,7 +509,6 @@ XP_STATUS xpsSdkInitScope(XP_DEV_TYPE_T devType, xpsScope_t scopeId,
             return xpsConvertCpssStatusToXPStatus(rc);
         }
     }
-
     XPS_FUNC_EXIT_LOG();
     return XP_NO_ERR;
 }
