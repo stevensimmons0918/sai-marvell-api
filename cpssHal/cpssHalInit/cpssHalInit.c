@@ -3625,6 +3625,62 @@ static GT_STATUS fujitsu_small_init_phy_1
     }
     return GT_OK;
 }
+
+// For user port. Set max autoneg advertise speed to 10M
+static GT_STATUS fujitsu_small_init_phy_2
+(
+    GT_U8                 devNum,
+    GT_PHYSICAL_PORT_NUM  firstPort
+)
+{
+    GT_STATUS       rc;           /* return code */
+    GT_U32          ii;           /* iterator */
+    GT_PHYSICAL_PORT_NUM ppPort;  /* port of PP for PHY configuration */
+    GT_U8           phyRegAddr;   /* PHY reg address */
+    GT_U16          phyRegData;   /* PHY reg data */
+    static APP_DEMO_QUAD_PHY_CFG_STC
+    fujitsu_small_init_phy_2_Init_Array [] =
+    {
+        { AD_ALL_PORTS,  0x00, 0x9140 } ,
+        { AD_ALL_PORTS,  0x1c, 0x8806 } ,
+        { AD_ALL_PORTS,  0x1c, 0x0806 } ,
+        { AD_ALL_PORTS,  0x1c, 0xb4a0 } ,
+        { AD_ALL_PORTS,  0x1c, 0x34a0 } ,
+        { AD_ALL_PORTS,  0x17, 0x0f04 } ,
+        { AD_ALL_PORTS,  0x15, 0x0100 } ,
+        { AD_ALL_PORTS,  0x1c, 0xfc08 } ,
+        { AD_ALL_PORTS,  0x1c, 0x7c08 } ,
+        { AD_ALL_PORTS,  0x04, 0x0061 } ,
+        { AD_ALL_PORTS,  0x09, 0x0000 } ,
+        { AD_ALL_PORTS,  0x00, 0x1340 } ,
+        { AD_ALL_PORTS,  0x18, 0x0901 } ,
+        { AD_ALL_PORTS,  0x18, 0x1007 } 
+    };
+
+    APP_DEMO_QUAD_PHY_CFG_STC     *configArrayPtr =
+        &fujitsu_small_init_phy_2_Init_Array[0];
+    GT_U32 numOfConfigs = sizeof(
+                              fujitsu_small_init_phy_2_Init_Array)/sizeof(
+                              fujitsu_small_init_phy_2_Init_Array[0]);
+
+    ppPort = firstPort;
+    for (ii = 0; ii < numOfConfigs; ii++)
+    {
+        phyRegAddr = (GT_U8)configArrayPtr[ii].phyRegAddr;
+        phyRegData = configArrayPtr[ii].phyRegData;
+        //cpssOsPrintf("\n            PP port[%d] Reg[%d] Data[%04X] ... ", ppPort,phyRegAddr, phyRegData);
+        rc = cpssDxChPhyPortSmiRegisterWrite(devNum, ppPort, phyRegAddr, phyRegData);
+        //CPSS_ENABLER_DBG_TRACE_RC_MAC("cpssDxChPhyPortSmiRegisterWrite", rc);
+        if (rc != GT_OK)
+        {
+            cpssOsPrintf("ERROR : fujitsu_small_init_phy_2_Init  rc%d: portNum[%d] PPort[%d] Reg[%d] Data[%04X]\n",
+                         rc, firstPort, ppPort, phyRegAddr, phyRegData);
+            return rc;
+        }
+    }
+    return GT_OK;
+}
+
 /*******************************************************************************
 * cpssHalInitializePortsApi
 *
@@ -3794,7 +3850,7 @@ GT_STATUS cpssHalInitializePorts
                         break;
 
                     case AC3XROB:
-                        if (profile[laneItr].profileValue.portMap.portNum < 3)
+                        if (profile[laneItr].profileValue.portMap.portNum < 2)
                         {
                             rc = fujitsu_small_init_phy_0(devNum, profile[laneItr].profileValue.portMap.portNum);
                             if (rc != GT_OK)
@@ -3808,6 +3864,14 @@ GT_STATUS cpssHalInitializePorts
                             if (rc != GT_OK)
                             {
                                 MRVL_HAL_API_TRACE("fujitsu_small_init_phy_1 failed", rc);
+                            }
+                        }
+                        else if (profile[laneItr].profileValue.portMap.portNum == 2)
+                        {
+                            rc = fujitsu_small_init_phy_2(devNum, profile[laneItr].profileValue.portMap.portNum);
+                            if (rc != GT_OK)
+                            {
+                                MRVL_HAL_API_TRACE("fujitsu_small_init_phy_2 failed", rc);
                             }
                         }
                         break;
