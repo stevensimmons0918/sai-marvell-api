@@ -10294,11 +10294,18 @@ static GT_STATUS hwPpDxChLion2RegsDefault
         {
             return rc;
         }
-        /* init the default values */
-        rc = prvCpssDxChHwInitSip5TcamDefaultsInit(devNum);
-        if (rc != GT_OK)
+        if (!((oldSystemRecoveryInfo.systemRecoveryProcess == CPSS_SYSTEM_RECOVERY_PROCESS_HA_E) &&
+            (oldSystemRecoveryInfo.systemRecoveryState == CPSS_SYSTEM_RECOVERY_INIT_STATE_E)))
         {
-            return rc;
+            if (PRV_CPSS_PP_MAC(devNum)->devFamily != CPSS_PP_FAMILY_DXCH_AC3X_E)
+            {
+                /* init the default values */
+                rc = prvCpssDxChHwInitSip5TcamDefaultsInit(devNum);
+                if (rc != GT_OK)
+                {
+                    return rc;
+                }
+            }
         }
     }
     else
