@@ -3852,26 +3852,35 @@ GT_STATUS cpssHalInitializePorts
                     case AC3XROB:
                         if (profile[laneItr].profileValue.portMap.portNum < 2)
                         {
-                            rc = fujitsu_small_init_phy_0(devNum, profile[laneItr].profileValue.portMap.portNum);
-                            if (rc != GT_OK)
+                            if (!WARM_RESTART)
                             {
-                                MRVL_HAL_API_TRACE("fujitsu_small_init_phy_0 failed", rc);
+                                rc = fujitsu_small_init_phy_0(devNum, profile[laneItr].profileValue.portMap.portNum);
+                                if (rc != GT_OK)
+                                {
+                                    MRVL_HAL_API_TRACE("fujitsu_small_init_phy_0 failed", rc);
+                                }
                             }
-                        } 
+                        }
                         else if (profile[laneItr].profileValue.portMap.portNum == 3)
                         {
-                            rc = fujitsu_small_init_phy_1(devNum, profile[laneItr].profileValue.portMap.portNum);
-                            if (rc != GT_OK)
+                            if (!WARM_RESTART)
                             {
-                                MRVL_HAL_API_TRACE("fujitsu_small_init_phy_1 failed", rc);
+                                rc = fujitsu_small_init_phy_1(devNum, profile[laneItr].profileValue.portMap.portNum);
+                                if (rc != GT_OK)
+                                {
+                                    MRVL_HAL_API_TRACE("fujitsu_small_init_phy_1 failed", rc);
+                                }
                             }
                         }
                         else if (profile[laneItr].profileValue.portMap.portNum == 2)
                         {
-                            rc = fujitsu_small_init_phy_2(devNum, profile[laneItr].profileValue.portMap.portNum);
-                            if (rc != GT_OK)
+                            if (!WARM_RESTART)
                             {
-                                MRVL_HAL_API_TRACE("fujitsu_small_init_phy_2 failed", rc);
+                                rc = fujitsu_small_init_phy_2(devNum, profile[laneItr].profileValue.portMap.portNum);
+                                if (rc != GT_OK)
+                                {
+                                    MRVL_HAL_API_TRACE("fujitsu_small_init_phy_2 failed", rc);
+                                }
                             }
                         }
                         break;
