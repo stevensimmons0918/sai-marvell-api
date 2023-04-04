@@ -1236,7 +1236,7 @@ static XP_STATUS xpsVlanStackRemoveDb(xpsScope_t scopeId, xpsVlanStack_t vlanSta
     keyVlanStackEntry.vlanStackId = vlanStackId;
 
     if ((result = xpsStateDeleteData(scopeId, vlanStackDataDbHndl,
-                                     (xpsDbKey_t)&keyVlanStackEntry, (void **)vlanStackEntry)) != XP_NO_ERR)
+                                     (xpsDbKey_t)&keyVlanStackEntry, (void **)&vlanStackEntry)) != XP_NO_ERR)
     {
         LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
               "Delete vlan stack failed, vlanStackId(%d)", vlanStackId);
