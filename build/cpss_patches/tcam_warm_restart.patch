@@ -1,0 +1,69 @@
+diff --git a/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c b/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c
+index ff83d3b..2cb9c05 100755
+--- a/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c
++++ b/mainPpDrv/src/cpss/dxCh/dxChxGen/virtualTcam/cpssDxChVirtualTcam.c
+@@ -20710,38 +20710,35 @@ static GT_STATUS internal_cpssDxChVirtualTcamCreate
+         }
+     }
+ 
+-    if (vTcamInfoPtr->guaranteedNumOfRules)
++    if (tcamCfgPtr->rulesAmount > vTcamInfoPtr->guaranteedNumOfRules)
+     {
+-        if (tcamCfgPtr->rulesAmount >= vTcamInfoPtr->guaranteedNumOfRules)
+-        {
+-            maxNumOfRules = tcamCfgPtr->rulesAmount;
+-        }
+-        else
+-        {
+-            /* HA case, rulesAmount is not assigned yet.
+-               use maximal possible value after alignments. */
+-            maxNumOfRules = vTcamInfoPtr->guaranteedNumOfRules +
+-                            PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_DEFAULT_AUTO_RESIZE_GRANULARITY_CNS;
+-        }
+-
+-        bmpSize = (((maxNumOfRules + 31) / 32) * sizeof(GT_U32));
+-        tcamCfgPtr->usedRulesBitmapArr = (GT_U32*)cpssOsMalloc(bmpSize);
+-        if (tcamCfgPtr->usedRulesBitmapArr == NULL)
+-        {
+-            prvCpssDxChVirtualTcamDbSegmentTableVTcamFree(tcamCfgPtr);
+-            prvCpssDxChVirtualTcamDbPriorityTableVTcamTreesDelete(
+-                vTcamMngDBPtr,  tcamCfgPtr);
+-            prvCpssDxChVirtualTcamDbRuleIdTableVTcamTreesDelete(
+-                vTcamMngDBPtr,  tcamCfgPtr);
+-            cpssOsFree(tcamCfgPtr);
+-            vTcamMngDBPtr->vTcamCfgPtrArr[vTcamId] = NULL;
+-            CPSS_LOG_ERROR_AND_RETURN_MAC(GT_NO_RESOURCE, LOG_ERROR_NO_MSG);
+-        }
+-        /*reset the allocated memory */
+-        cpssOsMemSet(tcamCfgPtr->usedRulesBitmapArr,0,bmpSize);
++        maxNumOfRules = tcamCfgPtr->rulesAmount;
++    }
++    else
++    {
++        /* HA case, rulesAmount is not assigned yet.
++           use maximal possible value after alignments. */
++        maxNumOfRules = vTcamInfoPtr->guaranteedNumOfRules +
++                        PRV_CPSS_DXCH_VIRTUAL_TCAM_DB_DEFAULT_AUTO_RESIZE_GRANULARITY_CNS;
++    }
+ 
+-        tcamCfgPtr->usedRulesBitmapArrSizeHa = bmpSize;
++    bmpSize = (((maxNumOfRules + 31) / 32) * sizeof(GT_U32));
++    tcamCfgPtr->usedRulesBitmapArr = (GT_U32 *)cpssOsMalloc(bmpSize);
++    if (tcamCfgPtr->usedRulesBitmapArr == NULL)
++    {
++        prvCpssDxChVirtualTcamDbSegmentTableVTcamFree(tcamCfgPtr);
++        prvCpssDxChVirtualTcamDbPriorityTableVTcamTreesDelete(
++            vTcamMngDBPtr, tcamCfgPtr);
++        prvCpssDxChVirtualTcamDbRuleIdTableVTcamTreesDelete(
++            vTcamMngDBPtr, tcamCfgPtr);
++        cpssOsFree(tcamCfgPtr);
++        vTcamMngDBPtr->vTcamCfgPtrArr[vTcamId] = NULL;
++        CPSS_LOG_ERROR_AND_RETURN_MAC(GT_NO_RESOURCE, LOG_ERROR_NO_MSG);
+     }
++    /*reset the allocated memory */
++    cpssOsMemSet(tcamCfgPtr->usedRulesBitmapArr, 0, bmpSize);
++
++    tcamCfgPtr->usedRulesBitmapArrSizeHa = bmpSize;
+ 
+     return GT_OK;
+ }

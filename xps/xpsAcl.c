@@ -1495,7 +1495,6 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
 
     /* Creating tcam regions for mirror acls */
     vTcamInfo.clientGroup = ipcl1ClientGrpId;
-    vTcamInfo.guaranteedNumOfRules = 1;
 
     //IPCL_1
     if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,
@@ -1506,7 +1505,7 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
               "failed to create tcam region : %d  ", rc);
         return xpsConvertCpssStatusToXPStatus(rc);
     }
-#if 0
+
     vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
                          XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
     //IPCL_1
@@ -1518,7 +1517,7 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
               "failed to create tcam region : %d  ", rc);
         return xpsConvertCpssStatusToXPStatus(rc);
     }
-#endif
+
     //IPCL_0 : ING
     vTcamInfo.clientGroup = ipcl0ClientGrpId;
     vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
@@ -1533,7 +1532,6 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
         return xpsConvertCpssStatusToXPStatus(rc);
     }
 
-#if 0
     vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
                          XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
     if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR, XPS_L3V6_CTRL_TABLE_ID,
@@ -1543,7 +1541,7 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
               "failed to create tcam region : %d  ", rc);
         return xpsConvertCpssStatusToXPStatus(rc);
     }
-#endif
+
     /* Creating tcam regions for 4 parallel lookups for 30B  rules */
 
     vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
@@ -1573,7 +1571,7 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
             return xpsConvertCpssStatusToXPStatus(rc);
         }
     }
-#if 0
+
     /* Creating tcam regions for 4 parallel lookups for 60B  rules */
     vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
                          XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
@@ -1660,7 +1658,7 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
               "failed to create tcam region : %d  ", rc);
         return xpsConvertCpssStatusToXPStatus(rc);
     }
-#endif
+
     return XP_NO_ERR;
 }
 
