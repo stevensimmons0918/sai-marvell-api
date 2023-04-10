@@ -2958,6 +2958,166 @@ XP_STATUS xpsVlanSetRoutingEnable(xpsDevice_t devId, xpsVlan_t vlanId,
     return result;
 }
 
+XP_STATUS xpsVlanUpdateEndPoint(xpsDevice_t devId, xpsVlan_t vlanId,
+                                xpsInterfaceId_t intfId, xpsL2EncapType_e tagType, uint16_t intfPvid)
+{
+    XPS_FUNC_ENTRY_LOG();
+    GT_STATUS rc = GT_OK;
+    XP_STATUS result = XP_NO_ERR;
+    xpsInterfaceType_e intfType = XPS_PORT;
+    xpsVlanContextDbEntry * vlanCtx = NULL;
+    xpsScope_t scopeId;
+    uint8_t cpssDevNum;
+    uint32_t cpssPortNum ;
+    xpsIntfVlanEncapInfoDbEntry *intfVlan = NULL;
+    xpsLagPortIntfList_t lagPortList;
+
+    memset(&lagPortList, 0, sizeof(lagPortList));
+
+    if (IS_ENCAP_VALID(tagType) == 0)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Invalid tagType (%d)",
+              tagType);
+        return XP_ERR_INVALID_ARG;
+    }
+
+    if (IS_DEVICE_VALID(devId) == 0)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Invalid Device ID(%d)",
+              devId);
+        return XP_ERR_INVALID_DEV_ID;
+    }
+
+    //get scope from Device ID
+    result = xpsScopeGetScopeId(devId, &scopeId);
+    if (result != XP_NO_ERR)
+    {
+        return result;
+    }
+
+    if (vlanId > XPS_VLANID_MAX)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Invalid vlanId.");
+        return XP_ERR_INVALID_VLAN_ID;
+    }
+
+    result = xpsVlanGetVlanCtxDb(scopeId, vlanId, &vlanCtx);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Get Vlan Context Db failed, vlanId(%d)", vlanId);
+        return result;
+    }
+
+    result = xpsVlanGetIntfEntryDb(scopeId, vlanId, intfId, &intfVlan);
+    if (result != XP_NO_ERR)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Get interface entry failed, interface(%d)", intfId);
+        return result;
+    }
+
+    if (!intfVlan)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Interface is not added in vlanId(%d)", vlanId);
+        return XP_ERR_KEY_NOT_FOUND;
+    }
+
+    xpsInterfaceInfo_t *intfInfo = NULL;
+    result = xpsInterfaceGetInfoScope(scopeId, intfId, &intfInfo);
+    if (result != XP_NO_ERR || intfInfo == NULL)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "Failed to get intf id %d\n", intfId);
+        return result;
+    }
+
+    //Get interfacetype
+    intfType = intfInfo->type;
+
+    if (intfType == XPS_PORT)
+    {
+        lagPortList.portIntf[0] = intfId;
+        lagPortList.size = 1;
+    }
+    else if (intfType == XPS_LAG)
+    {
+        if ((result = xpsLagGetPortIntfList(intfId, &lagPortList)) != XP_NO_ERR)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "Get ports failed, lag interface(%d)", intfId);
+            return result;
+        }
+    }
+
+    CPSS_DXCH_BRG_VLAN_PORT_TAG_CMD_ENT cpssTagType =
+        CPSS_DXCH_BRG_VLAN_PORT_UNTAGGED_CMD_E;
+    GT_BOOL         tag = GT_FALSE;
+
+    if (tagType == XP_L2_ENCAP_DOT1Q_TAGGED)
+    {
+        cpssTagType = CPSS_DXCH_BRG_VLAN_PORT_TAG0_CMD_E;
+        tag = GT_TRUE;
+    }
+
+    /*Update port's default VLAN for untagged ports*/
+    if (tagType == XP_L2_ENCAP_DOT1Q_UNTAGGED)
+    {
+        result = xpsVlanUpdatePvid(devId, intfId, vlanId);
+        if (result != XP_NO_ERR)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Pvid updation failed");
+            return result;
+        }
+    }
+    else
+    {
+        xpsVlan_t defaultVlanId;
+        result = xpsVlanGetDefault(devId, &defaultVlanId);
+        if (result != XP_NO_ERR)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Get default vlan failed");
+            return result;
+        }
+
+        /* If intfPvid is configured, set that */
+        if (intfPvid != defaultVlanId)
+        {
+            result = xpsVlanUpdatePvid(devId, intfId, intfPvid);
+        }
+        else
+        {
+            result = xpsVlanUpdatePvid(devId, intfId, defaultVlanId);
+        }
+
+        if (result != XP_NO_ERR)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR, "Pvid updation failed");
+            return result;
+        }
+    }
+
+    for (uint32_t j = 0; j < lagPortList.size; j++)
+    {
+        cpssDevNum = xpsGlobalIdToDevId(devId, lagPortList.portIntf[j]);
+        cpssPortNum = xpsGlobalPortToPortnum(devId, lagPortList.portIntf[j]);
+
+        rc = cpssHalBrgVlanMemberTagCmdSet(cpssDevNum, vlanId, cpssPortNum, tag,
+                                           cpssTagType);
+        if (rc != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "cpssHalBrgVlanMemberTagCmdSet Failed %d Err %d \n", cpssPortNum, rc);
+            return xpsConvertCpssStatusToXPStatus(rc);
+        }
+    }
+    intfVlan->tagType = tagType;
+
+    XPS_FUNC_EXIT_LOG();
+    return result;
+}
+
 XP_STATUS xpsVlanAddEndpoint(xpsDevice_t devId, xpsVlan_t vlanId,
                              xpsInterfaceId_t intfId, xpsL2EncapType_e tagType, uint32_t data)
 {

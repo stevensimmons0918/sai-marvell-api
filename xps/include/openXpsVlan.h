@@ -317,6 +317,9 @@ XP_STATUS xpsVlanBindStp(xpsDevice_t devId, xpsVlan_t vlanId, xpsStp_t stpId);
  */
 XP_STATUS xpsVlanUnbindStp(xpsDevice_t devId, xpsVlan_t vlanId, xpsStp_t stpId);
 
+XP_STATUS xpsVlanUpdateEndPoint(xpsDevice_t devId, xpsVlan_t vlanId,
+                                xpsInterfaceId_t intfId, xpsL2EncapType_e tagType, uint16_t intfPvid);
+
 #ifdef __cplusplus
 }
 #endif

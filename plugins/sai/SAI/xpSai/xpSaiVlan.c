@@ -3362,6 +3362,8 @@ sai_status_t xpSaiSetVlanMemberAttribute(_In_ sai_object_id_t vlan_member_id,
                                          _In_ const sai_attribute_t *attr)
 {
     sai_status_t saiRetVal = SAI_STATUS_SUCCESS;
+    xpsDevice_t     devId       = xpSaiGetDevId();
+    XP_STATUS              xpsRetVal          = XP_NO_ERR;
 
     XP_SAI_LOG_DBG("%s %d:\n", __FUNCNAME__, __LINE__);
 
@@ -3378,8 +3380,88 @@ sai_status_t xpSaiSetVlanMemberAttribute(_In_ sai_object_id_t vlan_member_id,
     {
         case SAI_VLAN_MEMBER_ATTR_VLAN_TAGGING_MODE:
             {
-                XP_SAI_LOG_ERR("SAI_VLAN_MEMBER_ATTR_VLAN_TAGGING_MODE is unsupported\n");
-                return SAI_STATUS_NOT_SUPPORTED;
+                sai_vlan_id_t    vlanId    = xpSaiVlanMemberVlanIdValueGet(vlan_member_id);
+                xpsInterfaceId_t xpsIntf   = xpSaiVlanMemberPortIdValueGet(vlan_member_id);
+                xpsL2EncapType_e tagType   = XP_L2_ENCAP_INVALID;
+
+                xpsRetVal = xpsVlanGetIntfTagTypeScope(XP_SCOPE_DEFAULT, vlanId, xpsIntf,
+                                                       &tagType);
+                if (XP_NO_ERR != xpsRetVal)
+                {
+                    XP_SAI_LOG_ERR("Not able to retrive data for SAI_VLAN_MEMBER_ATTR_VLAN_TAGGING_MODE! Error %d\n",
+                                   xpsRetVal);
+                    return  xpsStatus2SaiStatus(xpsRetVal);
+                }
+                if (attr->value.s32 == xpSaiConvertTaggingModeToSai(tagType))
+                {
+                    return SAI_STATUS_SUCCESS;
+                }
+
+                tagType = xpSaiConvertTaggingMode((sai_vlan_tagging_mode_t)attr->value.s32);
+                xpsInterfaceInfo_t *intfInfo = NULL;
+                xpsRetVal = xpsInterfaceGetInfoScope(XP_SCOPE_DEFAULT, xpsIntf, &intfInfo);
+                if (xpsRetVal != XP_NO_ERR || intfInfo == NULL)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          "Failed to get intf id %d\n", xpsIntf);
+                    return xpsRetVal;
+                }
+
+                sai_attribute_value_t xpsIntfPvid;
+                sai_object_id_t memberOid = SAI_NULL_OBJECT_ID;
+                if (intfInfo->type == XPS_PORT)
+                {
+                    saiRetVal = xpSaiObjIdCreate(SAI_OBJECT_TYPE_PORT, devId,
+                                                 (sai_uint64_t) xpsIntf, &memberOid);
+                    if (SAI_STATUS_SUCCESS != saiRetVal)
+                    {
+                        XP_SAI_LOG_ERR("Could not get LAG OID. vlanId %u | lagId %d | saiRetVal %d \n",
+                                       vlanId, xpsIntf, saiRetVal);
+                        return saiRetVal;
+                    }
+                    saiRetVal = xpSaiGetPVIDFromDB(memberOid, &xpsIntfPvid);
+                    if (SAI_STATUS_SUCCESS != saiRetVal)
+                    {
+                        XP_SAI_LOG_ERR("Could not get pvid for port (%lu).\n",
+                                       xpSaiObjIdTypeGet(xpsIntf));
+                        return saiRetVal;
+                    }
+                }
+                else if (intfInfo->type == XPS_LAG)
+                {
+                    // get LAG OID
+                    saiRetVal = xpSaiObjIdCreate(SAI_OBJECT_TYPE_LAG, devId,
+                                                 (sai_uint64_t) xpsIntf, &memberOid);
+                    if (SAI_STATUS_SUCCESS != saiRetVal)
+                    {
+                        XP_SAI_LOG_ERR("Could not get LAG OID. vlanId %u | lagId %d | saiRetVal %d \n",
+                                       vlanId, xpsIntf, saiRetVal);
+                        return saiRetVal;
+                    }
+                    saiRetVal = xpSaiGetLagAttrPortVlanId(memberOid, &xpsIntfPvid);
+                    if (SAI_STATUS_SUCCESS != saiRetVal)
+                    {
+                        XP_SAI_LOG_ERR("xpSaiGetLagAttrPortVlanId failed. vlanId %u | port_id %u | lagOid %lu | saiRetVal %d \n",
+                                       vlanId, xpsIntf, memberOid, saiRetVal);
+                        return saiRetVal;
+                    }
+                }
+                else
+                {
+                    XP_SAI_LOG_ERR("Not supported type. %d \n", intfInfo->type);
+                    return SAI_STATUS_FAILURE;
+                }
+
+                xpsRetVal = xpsVlanUpdateEndPoint(devId, vlanId, xpsIntf, tagType,
+                                                  xpsIntfPvid.u16);
+
+                if (XP_NO_ERR != xpsRetVal)
+                {
+                    XP_SAI_LOG_ERR("Not able to set SAI_VLAN_MEMBER_ATTR_VLAN_TAGGING_MODE! Error %d\n",
+                                   xpsRetVal);
+                    return  xpsStatus2SaiStatus(xpsRetVal);
+                }
+                break;
             }
         default:
             {

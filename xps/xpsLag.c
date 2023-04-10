@@ -38,6 +38,7 @@
 extern "C" {
 #endif
 
+extern uint32_t gmaxMemberPerLag;
 
 /*TODO 4k lag is allowed as per aldrian spec. But lag creation fails at 64. Need to debug further.
  XP interface state needs unique value for lag(4k onward range),port(<4k). But cpss needs id from 1-4096.
@@ -1156,6 +1157,26 @@ XP_STATUS xpsLagGetEgressPortIntfList(xpsScope_t scopeId,
     XPS_FUNC_ENTRY_LOG();
 
     XPS_FUNC_EXIT_LOG();
+
+    return XP_NO_ERR;
+}
+
+xpsInterfaceId_t * xpsLagAllocPortIntfList()
+{
+    xpsInterfaceId_t *portIntf;
+    portIntf = (xpsInterfaceId_t *) malloc(gmaxMemberPerLag * sizeof(
+                                               xpsInterfaceId_t));
+    memset(portIntf, 0, (gmaxMemberPerLag * sizeof(xpsInterfaceId_t)));
+
+    return (portIntf);
+}
+
+XP_STATUS xpsLagFreePortIntfList(xpsInterfaceId_t *portIntf)
+{
+    if (portIntf)
+    {
+        free(portIntf);
+    }
 
     return XP_NO_ERR;
 }

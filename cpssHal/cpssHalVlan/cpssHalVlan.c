@@ -618,3 +618,26 @@ GT_STATUS cpssHalBrgFdbNaToCpuPerPortSet
     }
     return status;
 }
+
+GT_STATUS cpssHalBrgVlanMemberTagCmdSet
+(
+    GT_U32    cpssDevId,
+    GT_U16 vid,
+    GT_PHYSICAL_PORT_NUM  portNum,
+    GT_BOOL  tagged,
+    CPSS_DXCH_BRG_VLAN_PORT_TAG_CMD_ENT tagType
+)
+{
+    GT_STATUS status = GT_OK;
+
+    status = cpssDxChBrgVlanMemberSet(cpssDevId, vid, portNum, GT_TRUE, tagged,
+                                      tagType);
+    if (status != GT_OK)
+    {
+        LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+              "cpssDxChBrgVlanMemberSet Failed port: %d rc %d\n", portNum,
+              status);
+        return status;
+    }
+    return status;
+}
