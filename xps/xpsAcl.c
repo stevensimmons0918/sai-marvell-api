@@ -1495,7 +1495,6 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
 
     /* Creating tcam regions for mirror acls */
     vTcamInfo.clientGroup = ipcl1ClientGrpId;
-    vTcamInfo.guaranteedNumOfRules = 1;
 
     //IPCL_1
     if ((rc = cpssHalVtcamCreate(XPS_GLOBAL_TACM_MGR,

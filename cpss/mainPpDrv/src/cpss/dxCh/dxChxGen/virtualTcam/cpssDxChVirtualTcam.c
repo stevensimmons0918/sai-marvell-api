@@ -20764,7 +20764,7 @@ static GT_STATUS internal_cpssDxChVirtualTcamCreate
 
         tcamCfgPtr->usedRulesBitmapArrSizeHa = bmpSize;
     }
-
+    cpssOsPrintf("Madhu's Debug: MNOR=%u, BMPS=%u\r\n", maxNumOfRules, bmpSize);
     return GT_OK;
 }
 
