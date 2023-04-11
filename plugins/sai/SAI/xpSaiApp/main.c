@@ -625,6 +625,9 @@ int appMain(int argc, char *argv[])
         case ALDRIN2XLFL:
             XP_CONFIG.withHw = "ALDRIN2XLFL";
             break;
+        case ALDRIN2EB3:
+            XP_CONFIG.withHw = "ALDRIN2EB3";
+            break;
         case ALDRIN2EVAL:
             XP_CONFIG.withHw = "ALDRIN2EVAL";
             break;

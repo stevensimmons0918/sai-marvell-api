@@ -667,6 +667,10 @@ void getOptValues(int argc, char* argv[], const char** moduleNames)
                 {
                     xpAppConf.devType = ALDRIN2XLFL;
                 }
+                if (!strncasecmp("ALDRIN2EB3", optarg, strlen("ALDRIN2EB3")))
+                {
+                    xpAppConf.devType = ALDRIN2EB3;
+                }
                 if (!strncasecmp("ALDRIN2EVAL", optarg, strlen("ALDRIN2EVAL")))
                 {
                     xpAppConf.devType = ALDRIN2EVAL;
