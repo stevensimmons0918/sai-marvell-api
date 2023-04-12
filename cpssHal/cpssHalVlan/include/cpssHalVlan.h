@@ -550,6 +550,15 @@ GT_STATUS cpssHalBrgFdbNaToCpuPerPortSet
     GT_BOOL  enable
 );
 
+GT_STATUS cpssHalBrgVlanMemberTagCmdSet
+(
+    GT_U32    cpssDevId,
+    GT_U16 vid,
+    GT_PHYSICAL_PORT_NUM  portNum,
+    GT_BOOL  tagged,
+    CPSS_DXCH_BRG_VLAN_PORT_TAG_CMD_ENT tagType
+);
+
 #ifdef __cplusplus
 }
 #endif

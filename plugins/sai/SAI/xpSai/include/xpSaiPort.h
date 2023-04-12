@@ -313,6 +313,9 @@ XP_STATUS xpSaiInsertPortStatisticDbEntry(sai_int32_t port_id);
 void xpSaiPortCnpRateLimitParamSet(xpsDevice_t devId, uint32_t portNum,
                                    bool enabled);
 
+sai_status_t xpSaiGetPVIDFromDB(sai_object_id_t port_id,
+                                sai_attribute_value_t *value);
+
 #ifdef __cplusplus
 }
 #endif

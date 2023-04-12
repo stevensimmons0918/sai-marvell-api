@@ -85,6 +85,8 @@ extern bool WARM_RESTART;
 extern GT_STATUS falcon_force_early_check_for_device_not_reset_set(void);
 #endif
 
+uint32_t gmaxMemberPerLag = 0;
+
 int gEnableCpssLog = 0;
 extern GT_STATUS cpssHalEnableLog(int);
 extern GT_STATUS prvCpssDrvHwPpPrePhase1NextDevFamilySet(
@@ -2514,6 +2516,7 @@ GT_STATUS cpssHalInitializeDevice
 
     GT_U32 maxLag = cpssHalGetSKUMaxLAGrps(devNum);
     GT_U32 maxMemberPerLag = cpssHalGetSKUmaxLAGMbrPerGrp(devNum);
+    gmaxMemberPerLag = maxMemberPerLag;
 
     /* We are fixing 8 members per trunk.
      * Device can have upto 16K members. Reserving first half for trunk and later for L2 ECMP.

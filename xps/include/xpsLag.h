@@ -905,6 +905,8 @@ bool xpsLagRandomEnableGet(void);
 void xpsLagRandomEnableSet(bool enable);
 XP_STATUS xpsLagRandomEnableRewrite(xpsDevice_t devId, bool enable);
 XP_STATUS xpsLagSetRandomHashSeed(xpsDevice_t devId, uint32_t hashSeed);
+xpsInterfaceId_t * xpsLagAllocPortIntfList();
+XP_STATUS xpsLagFreePortIntfList(xpsInterfaceId_t *);
 
 #ifdef __cplusplus
 }

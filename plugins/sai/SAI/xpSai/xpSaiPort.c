@@ -4428,6 +4428,33 @@ sai_status_t xpSaiSetPVIDtoDB(sai_object_id_t port_id,
     return saiStatus;
 }
 
+sai_status_t xpSaiGetPVIDFromDB(sai_object_id_t port_id,
+                                sai_attribute_value_t *value)
+{
+    xpsInterfaceId_t xpsIntf = XPS_INTF_INVALID_ID;
+    sai_status_t saiStatus = SAI_STATUS_SUCCESS;
+
+    if (!XDK_SAI_OBJID_TYPE_CHECK(port_id, SAI_OBJECT_TYPE_PORT))
+    {
+        XP_SAI_LOG_ERR("Wrong object type received(%u).", xpSaiObjIdTypeGet(port_id));
+        return SAI_STATUS_INVALID_PARAMETER;
+    }
+    xpsIntf = (xpsInterfaceId_t)xpSaiObjIdValueGet(port_id);
+
+    xpSaiPortDbEntryT *pPortEntry = NULL;
+    saiStatus = xpSaiPortDbInfoGet(xpsIntf, &pPortEntry);
+    if (saiStatus != SAI_STATUS_SUCCESS)
+    {
+        XP_SAI_LOG_ERR("Could not retrieve port info from DB\n");
+        return saiStatus;
+    }
+
+    if (value)
+    {
+        value->u16 = pPortEntry->pvidUserSetting;
+    }
+    return saiStatus;
+}
 
 //Func: xpSaiSetPortAttrDefaultVlanPriority
 
