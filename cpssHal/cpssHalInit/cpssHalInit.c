@@ -1913,6 +1913,9 @@ GT_STATUS cpssHalInitializeDevice
     cpssOsPrintf("pci bus %d, seld %d, func %d cpssPpPhase1Info.hwInfo[0].busType %d\n",
                  pciInfo->pciBusNum, pciInfo->pciIdSel, pciInfo->funcNo,
                  cpssPpPhase1Info.hwInfo[0].busType);
+
+
+/* ------------------- Works until here  --------------------  */
     cpssPpPhase1Info.devNum = devNum;
 
     /* get device index from device type */
@@ -1934,10 +1937,13 @@ GT_STATUS cpssHalInitializeDevice
 
 #ifndef RESET_PP_EXCLUDE_PEX
     //reset fix
+    cpssOsPrintf("FALCON should not execute\n");
     falcon_force_early_check_for_device_not_reset_set();
 #endif
 
+    cpssOsPrintf("cpssDxChPortApEnableSet start\n");
     rc = cpssDxChPortApEnableSet(devNum, 0x1, GT_TRUE);
+    cpssOsPrintf("cpssDxChPortApEnableSet end\n");
 
     if (rc != GT_OK)
     {
@@ -1950,6 +1956,7 @@ GT_STATUS cpssHalInitializeDevice
         //Enable Log
         prvCpssErrorLogEnableSet(0);
 
+    cpssOsPrintf("FALCON or AC5 \n");
         /*use 512 physical ports to support 256+2 MACs and CPU-SDMA port(s) */
         cpssPpPhase1Info.maxNumOfPhyPortsToUse = cpssHalGetSKUMaxPhyPorts(devNum);
 
@@ -1981,6 +1988,7 @@ GT_STATUS cpssHalInitializeDevice
         // We need reset PP every time when COLD restart happened.  
         if (!WARM_RESTART)
         {
+    cpssOsPrintf("Not WARM RESTART\n");
             rc = cpssDxChHwPpSoftResetSkipParamSet(devNum,
                                                    CPSS_HW_PP_RESET_SKIP_TYPE_ALL_EXCLUDE_PEX_E, GT_FALSE);
             cpssOsPrintf("cpssDxChHwPpSoftResetSkipParamSet ret=%d dev=%d\n",
@@ -1993,14 +2001,18 @@ GT_STATUS cpssHalInitializeDevice
         uint8_t retry = 0;
         while (retry < 3)
         {
+    cpssOsPrintf("retry cpssDxChHwPpPhase1Init_new\n");
             rc = cpssDxChHwPpPhase1Init_new(&cpssPpPhase1Info, &devType);
+    cpssOsPrintf("retry cpssDxChHwPpPhase1Init_new end\n");
 
             /* HW reset status is determined from reading user defined register.
                Commented Soft-reset in init flow as the scenarios are handled by drv.
                Phase1 init failure handling with soft-reset is required and can be enhanced later.
                For now, just retry.*/
 #ifdef RETRY_PP_SOFT_RESET
+    cpssOsPrintf("rcpssHalCheckIsHwResetDone start\n");
             devInitStatus = cpssHalCheckIsHwResetDone(devNum);
+    cpssOsPrintf("rcpssHalCheckIsHwResetDone eend\n");
 #endif
             if ((rc != GT_OK)
 #ifdef RETRY_PP_SOFT_RESET
@@ -2042,10 +2054,12 @@ GT_STATUS cpssHalInitializeDevice
             }
             else
             {
+    cpssOsPrintf("break from retry loop\n");
                 break;
             }
             osTimerWkAfter(1000);
             retry++;
+    cpssOsPrintf("break from retry \n");
         }
         cpssOsPrintf("cpssDxChHwPpPhase1Init Sucess in retry %d for dev %d\n", retry,
                      devNum);
