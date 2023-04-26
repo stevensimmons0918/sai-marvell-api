@@ -1894,6 +1894,7 @@ GT_STATUS cpssHalInitializeDevice
         memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
         recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
         recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_INIT_STATE_E;
+        recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
 
         rc = cpssSystemRecoveryStateSet(&recovery_info);
 
@@ -1993,7 +1994,9 @@ GT_STATUS cpssHalInitializeDevice
         uint8_t retry = 0;
         while (retry < 3)
         {
+            extDrvSetIntLockUnlock(INTR_MODE_LOCK, &intKey);
             rc = cpssDxChHwPpPhase1Init_new(&cpssPpPhase1Info, &devType);
+            extDrvSetIntLockUnlock(INTR_MODE_UNLOCK, &intKey);
 
             /* HW reset status is determined from reading user defined register.
                Commented Soft-reset in init flow as the scenarios are handled by drv.
@@ -2594,6 +2597,7 @@ GT_STATUS cpssHalInitializeDevice
         memset(&recovery_info, 0, sizeof(CPSS_SYSTEM_RECOVERY_INFO_STC));
         recovery_info.systemRecoveryProcess = CPSS_SYSTEM_RECOVERY_PROCESS_HA_E;
         recovery_info.systemRecoveryState = CPSS_SYSTEM_RECOVERY_HW_CATCH_UP_STATE_E;
+        recovery_info.systemRecoveryMode.haCpuMemoryAccessBlocked = GT_TRUE;
 
         rc = cpssSystemRecoveryStateSet(&recovery_info);
 
