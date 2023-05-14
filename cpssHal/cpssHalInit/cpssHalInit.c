@@ -4588,4 +4588,9 @@ GT_STATUS cpssHalWriteHwResetDone(uint32_t devNum)
 
     return GT_OK;
 }
+
+GT_STATUS cpssHalWarmResetComplete(void) 
+{
+    return GT_OK;
+}
 #endif
