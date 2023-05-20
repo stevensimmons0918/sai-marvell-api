@@ -4535,6 +4535,23 @@ LED_PROFILE_TYPE_E cpssHalLedProfileGet(int devId)
     return ledProfileMode;
 }
 
+GT_STATUS cpssHalWarmResetComplete()
+{
+    GT_STATUS   rc;
+    uint32_t devNum =0;
+    rc = cpssDxChNetIfRestore(devNum);
+    if (rc != GT_OK)
+    {
+        cpssOsPrintf("cpssDxChNetIfRestore Failed, rc = %d \n", rc);
+        return rc;
+    }
+
+    /* Enable Interrupts */
+    extDrvSetIntLockUnlock(INTR_MODE_UNLOCK, &GlobalIntKey);
+
+    return GT_OK;
+}
+
 #ifdef RETRY_PP_SOFT_RESET
 GT_STATUS cpssHalCheckIsHwResetDone(uint32_t devNum)
 {
@@ -4594,4 +4611,5 @@ GT_STATUS cpssHalWriteHwResetDone(uint32_t devNum)
 
     return GT_OK;
 }
+
 #endif

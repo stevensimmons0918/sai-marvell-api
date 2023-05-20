@@ -237,6 +237,8 @@ GT_STATUS cpssHalLedProfileSet(int devId, const char* ledModeStr);
 *******************************************************************************/
 LED_PROFILE_TYPE_E cpssHalLedProfileGet(int devId);
 
+GT_STATUS cpssHalWarmResetComplete();
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

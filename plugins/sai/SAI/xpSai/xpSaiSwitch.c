@@ -32,7 +32,6 @@
 #define XPSAI_DEFAULT_LINKSCAN_DELAY    1000    //ms
 using namespace std;
 bool WARM_RESTART = false;
-GT_32  GlobalIntKey;
 
 XP_SAI_LOG_REGISTER_API(SAI_API_SWITCH);
 
