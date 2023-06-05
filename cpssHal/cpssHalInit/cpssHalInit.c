@@ -79,6 +79,8 @@ static uint32_t portEvntTid;
 extern cpssHalDeviceCfg globalSwitchDb[MAX_GLOBAL_DEVICES];
 extern int cpssHalCurrentSwitchId;
 extern bool WARM_RESTART;
+GT_32 GlobalIntKey;
+
 #define CPSSHAL_SWITCH(x)           globalSwitchDb[cpssHalCurrentSwitchId].x
 
 #ifndef RESET_PP_EXCLUDE_PEX
@@ -1846,14 +1848,13 @@ GT_STATUS cpssHalInitializeDevice
     GT_U32                              port_index = 0;
     GT_U32                              ASICDataIndex;
     CPSS_DXCH_PORT_MAP_STC              portMapArray[MAX_PORT];
-    GT_32                               intKey;
     GT_BOOL                             useMultiNetIfSdma = GT_FALSE;
     GT_U32                              flags = 0;
 #ifdef RETRY_PP_SOFT_RESET
     GT_STATUS                           devInitStatus = GT_OK;
 #endif
     CPSS_SYSTEM_RECOVERY_INFO_STC recovery_info;
-    
+
 
 
     if (profile == NULL)
@@ -1994,9 +1995,9 @@ GT_STATUS cpssHalInitializeDevice
         uint8_t retry = 0;
         while (retry < 3)
         {
-            extDrvSetIntLockUnlock(INTR_MODE_LOCK, &intKey);
+            if (WARM_RESTART)
+                extDrvSetIntLockUnlock(INTR_MODE_LOCK, &GlobalIntKey);
             rc = cpssDxChHwPpPhase1Init_new(&cpssPpPhase1Info, &devType);
-            extDrvSetIntLockUnlock(INTR_MODE_UNLOCK, &intKey);
 
             /* HW reset status is determined from reading user defined register.
                Commented Soft-reset in init flow as the scenarios are handled by drv.
@@ -2360,9 +2361,11 @@ GT_STATUS cpssHalInitializeDevice
     cpssPpPhase2Info.fuqUseSeparate = cpssHalSys_param_fuqUseSeparate(xpDevType);
     cpssPpPhase2Info.fuqCfg.auDescBlockSize = cpssHalSys_param_fuqDescBlockSize(
                                                   xpDevType);
-
-    /* Lock the interrupts, this phase changes the interrupts nodes pool data  */
-    extDrvSetIntLockUnlock(INTR_MODE_LOCK, &intKey);
+    if (!WARM_RESTART)
+    {
+        /* Lock the interrupts, this phase changes the interrupts nodes pool data  */
+        extDrvSetIntLockUnlock(INTR_MODE_LOCK, &GlobalIntKey);
+    }
 
     rc = cpssDxChHwPpPhase2Init(devNum, &cpssPpPhase2Info);
     if (rc != GT_OK)
@@ -2386,8 +2389,11 @@ GT_STATUS cpssHalInitializeDevice
     }
 #endif
 
-    /* Lock the interrupts, this phase changes the interrupts nodes pool data  */
-    extDrvSetIntLockUnlock(INTR_MODE_UNLOCK, &intKey);
+    if (!WARM_RESTART)
+    {
+        /* Lock the interrupts, this phase changes the interrupts nodes pool data  */
+        extDrvSetIntLockUnlock(INTR_MODE_UNLOCK, &GlobalIntKey);
+    }
 
     /* logical init */
     CPSS_DXCH_PP_CONFIG_INIT_STC ppConfigInit;
@@ -4529,6 +4535,23 @@ LED_PROFILE_TYPE_E cpssHalLedProfileGet(int devId)
     return ledProfileMode;
 }
 
+GT_STATUS cpssHalWarmResetComplete()
+{
+    GT_STATUS   rc;
+    uint32_t devNum =0;
+    rc = cpssDxChNetIfRestore(devNum);
+    if (rc != GT_OK)
+    {
+        cpssOsPrintf("cpssDxChNetIfRestore Failed, rc = %d \n", rc);
+        return rc;
+    }
+
+    /* Enable Interrupts */
+    extDrvSetIntLockUnlock(INTR_MODE_UNLOCK, &GlobalIntKey);
+
+    return GT_OK;
+}
+
 #ifdef RETRY_PP_SOFT_RESET
 GT_STATUS cpssHalCheckIsHwResetDone(uint32_t devNum)
 {
@@ -4588,4 +4611,5 @@ GT_STATUS cpssHalWriteHwResetDone(uint32_t devNum)
 
     return GT_OK;
 }
+
 #endif
