@@ -1573,12 +1573,12 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
             return xpsConvertCpssStatusToXPStatus(rc);
         }
     }
-#if 0
+
     /* Creating tcam regions for 4 parallel lookups for 60B  rules */
     vTcamInfo.ruleSize = (CPSS_DXCH_VIRTUAL_TCAM_RULE_SIZE_ENT)
                          XPS_VIRTUAL_TCAM_RULE_SIZE_60_B_E;
 
-    for (hitNum = 0; hitNum < 4; hitNum++)
+    for (hitNum = 0; hitNum < 2; hitNum++)
     {
         vTcamInfo.hitNumber = hitNum;
         /* Ingress stage vTcam */
@@ -1603,7 +1603,7 @@ XP_STATUS xpsAclTableInit(xpsDevice_t devId)
             return xpsConvertCpssStatusToXPStatus(rc);
         }
     }
-
+#if 0
     // Creating tcam regions for port v4/v6 statistcs
     //IPCL v4
     vTcamInfo.clientGroup = ipcl1ClientGrpId;
