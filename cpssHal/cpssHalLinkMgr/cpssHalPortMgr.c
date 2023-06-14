@@ -1194,8 +1194,12 @@ XP_STATUS cpssHalMacMgrPortInitWithLinkStatusControl(xpDevice_t devId,
             default:
                 break;
         }
-        cpssPortParamsStcPtr.portParamsType.regPort.portAttributes.trainMode =
-            CPSS_PORT_SERDES_AUTO_TUNE_MODE_ADAPTIVE_RX_TRAINING_START_E;
+
+        if (!IS_DEVICE_FUJITSU_LARGE(devType))
+        {
+            cpssPortParamsStcPtr.portParamsType.regPort.portAttributes.trainMode =
+                    CPSS_PORT_SERDES_AUTO_TUNE_MODE_ADAPTIVE_RX_TRAINING_START_E;
+        }
 
         CPSS_PM_SET_VALID_ATTR(&cpssPortParamsStcPtr,
                                CPSS_PM_PORT_ATTR_INTERCONNECT_PROFILE_E);
