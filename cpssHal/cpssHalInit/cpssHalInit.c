@@ -1984,8 +1984,8 @@ GT_STATUS cpssHalInitializeDevice
         if (!WARM_RESTART)
         {
             rc = cpssDxChHwPpSoftResetSkipParamSet(devNum,
-                                                   CPSS_HW_PP_RESET_SKIP_TYPE_ALL_EXCLUDE_PEX_E, GT_FALSE);
-            cpssOsPrintf("cpssDxChHwPpSoftResetSkipParamSet ret=%d dev=%d\n",
+                           CPSS_HW_PP_RESET_SKIP_TYPE_ALL_E, GT_FALSE);
+            cpssOsPrintf("SIMMONS1 cpssDxChHwPpSoftResetSkipParamSet ret=%d dev=%d\n",
                          rc, devNum);
             rc = cpssDxChHwPpSoftResetTrigger(devNum);
             cpssOsPrintf("cpssDxChHwPpSoftResetTrigger ret=%d dev=%d\n",
@@ -2033,8 +2033,8 @@ GT_STATUS cpssHalInitializeDevice
                 }
 
                 rc = cpssDxChHwPpSoftResetSkipParamSet(devNum,
-                                                       CPSS_HW_PP_RESET_SKIP_TYPE_ALL_EXCLUDE_PEX_E, GT_FALSE);
-                cpssOsPrintf("cpssDxChHwPpSoftResetSkipParamSet ret=%d dev=%d\n",
+                           CPSS_HW_PP_RESET_SKIP_TYPE_ALL_E, GT_FALSE);
+                cpssOsPrintf("SIMMONS2 cpssDxChHwPpSoftResetSkipParamSet ret=%d dev=%d\n",
                              rc, devNum);
                 rc = cpssDxChHwPpSoftResetTrigger(devNum);
                 cpssOsPrintf("cpssDxChHwPpSoftResetTrigger ret=%d dev=%d\n",
