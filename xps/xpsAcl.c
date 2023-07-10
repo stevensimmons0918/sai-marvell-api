@@ -2171,6 +2171,15 @@ XP_STATUS xpsAclUdbKeysInitScope(xpsScope_t scopeId)
                     return ret;
                 }
 
+                ret = xpsAclUdbKeysForIpv4Init(devNum, directionId, lookupId,
+                                               XPS_PCL_PACKET_TYPE_IPV4_FRAG);
+                if (ret != XP_NO_ERR)
+                {
+                    LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                          " xpsAclUdbKeysForIpv4Init failed with err : %d ", ret);
+                    return ret;
+                }
+
                 ret = xpsAclUdbKeysForIpv6Init(devNum, directionId, lookupId,
                                                XPS_PCL_PACKET_TYPE_IPV6_TCP);
                 if (ret != XP_NO_ERR)
