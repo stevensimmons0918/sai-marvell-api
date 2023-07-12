@@ -493,7 +493,7 @@ XP_STATUS cpssHalMacMgrPortEnable(xpsDevice_t devId, uint32_t portNum,
                       cpssPortNum, cpssRet);
                 // return ret;
             }
-            if (cpssPortParamsStcPtr.portParamsType.regPort.speed == CPSS_PORT_SPEED_2500_E && (devType == AC3XRAMAN || devType == AC3XMCS))
+            if (cpssPortParamsStcPtr.portParamsType.regPort.speed == CPSS_PORT_SPEED_2500_E && (devType == AC3XRAMAN || devType == AC3XMCS || devType == ALDRIN2EVAL))
             {
 
                 cpssRet = cpssDxChPortInBandAutoNegBypassEnableSet(cpssDevId, portNum,

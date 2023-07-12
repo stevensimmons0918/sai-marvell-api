@@ -1793,6 +1793,30 @@ XP_STATUS xpsUpdatePortMappingProfile(XP_DEV_TYPE_T devType,
     return XP_NO_ERR;
 }
 
+// 15C3 is a PCIe Ethernet Connection X553 Backplane; currently used on 4-core NG Eval only.
+// The CPU port 47 is set SGMII and 2.5G.
+bool is15C3EthConnection()
+{
+    bool rc = false;
+    char * line = NULL;
+    size_t len = 0;
+
+    FILE *fp = fopen("/sys/class/net/eth1/device/device", "r");
+    if (fp != NULL)
+    {
+        if (getline(&line, &len, fp) != -1)
+        {
+            if (!strncmp("0x15c3", line, strlen("0x15c3")))
+                rc = true;
+        }
+        fclose(fp);
+        if (line)
+            free(line);
+    }
+    printf("is15C3EthConnection %d\n", rc);
+    return rc;
+}
+
 GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
 {
     XP_STATUS   ret;
@@ -2012,6 +2036,9 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
     }
     else if (ALDRIN2EVAL == devType)
     {
+      if (is15C3EthConnection())
+        profile = aldrin2_xl_fujitsu_large_eval_4core_profile;
+      else
         profile = aldrin2_xl_fujitsu_large_eval_profile;
     }
     else if (AC3XFS == devType)
@@ -2102,7 +2129,10 @@ GT_STATUS xpsCpssInit(XP_DEV_TYPE_T devType)
             }
             else if (ALDRIN2EVAL == devType)
             {
-                profile = aldrin2_xl_fujitsu_large_eval_profile;
+                if (is15C3EthConnection())
+                    profile = aldrin2_xl_fujitsu_large_eval_4core_profile;
+                else
+                    profile = aldrin2_xl_fujitsu_large_eval_profile;
             }
         }
 
