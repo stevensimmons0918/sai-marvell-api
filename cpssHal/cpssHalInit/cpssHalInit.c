@@ -2996,7 +2996,7 @@ GT_STATUS cpssHalInitializePort
         }
     }
 
-    if (speed == CPSS_PORT_SPEED_2500_E && xpDevType != AC3XRAMAN && xpDevType != AC3XMCS)
+    if (speed == CPSS_PORT_SPEED_2500_E && xpDevType != AC3XRAMAN && xpDevType != AC3XMCS && xpDevType != ALDRIN2EVAL)
     {
         portParams.portParamsType.regPort.portAttributes.fecMode =
             CPSS_PORT_RS_FEC_MODE_ENABLED_E;
@@ -3417,7 +3417,7 @@ GT_STATUS cpssHalInitializePort
      * We need to enable Bypass for 2.5G CPU port
      * on RAMAN and MCS boards
      */
-    if (speed == CPSS_PORT_SPEED_2500_E && (xpDevType == AC3XRAMAN || xpDevType == AC3XMCS))
+    if (speed == CPSS_PORT_SPEED_2500_E && (xpDevType == AC3XRAMAN || xpDevType == AC3XMCS || xpDevType == ALDRIN2EVAL))
     {
 
         rc = cpssDxChPortInBandAutoNegBypassEnableSet(devNum, portNum,
