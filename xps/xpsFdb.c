@@ -221,7 +221,7 @@ static unsigned __TASKCONV AgingTaskFunc(GT_VOID *param)
     GT_BOOL                 aged[2] = {GT_FALSE, GT_FALSE};
     uint32_t SecInNano = (1000*1000*1000);
     uint32_t MilliSecInNano = (1000*1000);
-    uint32_t unitTime = 3; /*in seconds*/
+    uint32_t unitTime = 10; /*in seconds*/
     uint32_t startSeconds, stopSeconds,
              startNanoSeconds, stopNanoSeconds,
              elapsedSeconds=0, elapsedNanoSeconds; /* time of init */
