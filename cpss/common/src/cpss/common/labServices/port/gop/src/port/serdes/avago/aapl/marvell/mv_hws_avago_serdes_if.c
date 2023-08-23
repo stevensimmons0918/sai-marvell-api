@@ -41,6 +41,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #endif
+#include <assert.h>
 
 #include <cpss/common/labServices/port/gop/port/serdes/avago/mv_hws_avago_if.h>
 /* Avago include */
@@ -1796,7 +1797,17 @@ GT_STATUS mvHwsAvagoSpicoInterrupt
 #endif
     }
     AVAGO_UNLOCK(devNum, chipIndex);
+    /* XXX - Fujitsu, Larch-47 issue
+        We see the lock-up only on the Aldrin processor (ROADM MCU only) during Warm Restart.
+        The frequency is 1 out of 10 times. It will always have the following signature..
+        [121.953441] esalbase[902]: mvHwsAvagoSpicoInterrupt failed (return code -1)
+    */
+    if (aaplSerdesDb[chipIndex]->return_code == -1)
+    {
 
+        hwsOsPrintf("%s failed (return code %d)\n", __func__, aaplSerdesDb[chipIndex]->return_code);
+        assert(0);
+    }
     CHECK_AVAGO_RET_CODE();
 
     return GT_OK;
