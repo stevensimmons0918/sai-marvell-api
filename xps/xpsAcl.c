@@ -66,25 +66,25 @@ XP_STATUS xpsAclUdbKeysForNonIpInit(xpsDevice_t devNum, uint32_t direction,
 
 XP_STATUS xpsAclUdbKeysForIpv4Init(xpsDevice_t devNum, uint32_t direction,
                                    uint32_t lookupNum, uint32_t packetType);
-/**************************************************** IPv4 KEY FORMAT *****************************************************************
-* -------------------------------------------------------------------------------------------------------------------------------------
-* Key    | 0...3 |4...5 |6...7| 8...9 |      10        |    11      | 12|13...16|17...20| 21 |   22   |23...24|25...26|  27 | 28 | 29 |
-* Index  |       |      |     |       |                |            |   |       |       |    |        |       |       |     |    |    |
-* -------------------------------------------------------------------------------------------------------------------------------------
-* Key    | Port  |Src   | VID |QoS    | Applicable Flow|IP Protocol |UP0| SIPv4 | DIPv4 |DSCP|L4 Valid|L4 Src |L4 Dst | TCP |ICMP|ICMP|
-* Details| List  |ePort |     |Profile|  Sub-Template  |   Number   |   |       |       |    |        |  Port |  Port |Flags|type|code|
-* -------------------------------------------------------------------------------------------------------------------------------------
-***************************************************************************************************************************************/
+/**************************************************** IPv4 KEY FORMAT *******************************************************************
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* Key    | 0...3 |4...5 |6...7| 8...9 |      10        |    11      | 12| 13...18    |   19...24       | 25...26 |27...28|  27 | 28 | 29 |
+* Index  |       |      |     |       |                |            |   |            |                 |         |       |     |    |    |
+* ---------------------------------------------------------------------------------------------------------------------------------------
+* Key    | Port  |Src   | VID |Ether  | Applicable Flow|IP Protocol |UP0| MAC Source | MAC Destination |  L4 Src |L4 Dst |               |
+* Details| List  |ePort |     |Type   |  Sub-Template  |   Number   |   |            |                 |         |       |               |
+* ---------------------------------------------------------------------------------------------------------------------------------------
+*****************************************************************************************************************************************/
 
 XP_STATUS xpsAclUdbKeysForIpv6Init(xpsDevice_t devNum, uint32_t direction,
                                    uint32_t lookupNum, uint32_t packetType);
 /************************************************ IPv6 KEY FORMAT ************************************************************
 * ----------------------------------------------------------------------------------------------------------------------------
-* Key    | 0...3 |   4   |      5        |   6  | 7 | 8...23|24...39|   40   |41...42|43...44|  45 | 46 | 47 |UDB60_FIXED_STC|
-* Index  |       |       |               |      |   |       |       |        |       |       |     |    |    |               |
+* Key    | 0...3 |   4   |      5        |   6 .. 7 | 8...23|24...39|   40   |41...42|43...44|  45 | 46 | 47 |UDB60_FIXED_STC|
+* Index  |       |       |               |          |       |       |        |       |       |     |    |    |               |
 * ----------------------------------------------------------------------------------------------------------------------------
-* Key    | Port  |Trg Phy|Applicable Flow|Next  |UP0| SIPv6 | DIPv4 |L4 Valid|L4 Src |L4 Dst | TCP |ICMP|ICMP|Src Port, vid  |
-* Details| List  | Port  | Sub-Template  |Header|   |       |       |        |  Port |  Port |Flags|type|code|               |
+* Key    | Port  |Trg Phy|Applicable Flow|    VID   | SIPv6 | DIPv4 |L4 Valid|L4 Src |L4 Dst | TCP |ICMP|ICMP|Src Port, vid  |
+* Details| List  | Port  | Sub-Template  |          |       |       |        |       |  Port |  Port |Flags|type|code|       |
 * ----------------------------------------------------------------------------------------------------------------------------
 ******************************************************************************************************************************/
 
@@ -94,7 +94,7 @@ XP_STATUS xpsAclUdbKeysForArpInit(xpsDevice_t devNum, uint32_t direction,
 * ----------------------------------------------------------------------------------------------------------------------
 * Key Index   | 0...3     |    4...5    | 6...7 |   8...9   |      10          |11...12 |  13...18   |   19...24       |
 * ----------------------------------------------------------------------------------------------------------------------
-* Key Details | Port List | Source ePort|  VID  | Reserved  |  Applicable Flow | Opcode | MAC Source | MAC Destination |
+* Key Details | Port List | Source ePort|  VID  | Ethertype |  Applicable Flow | Opcode | MAC Source | MAC Destination |
 *             |           |             |       |           |   Sub-Template   |        |   Address  |    Address      |
 * ----------------------------------------------------------------------------------------------------------------------
 *************************************************************************************************************************/
@@ -3462,7 +3462,7 @@ XP_STATUS xpsAclUdbKeysForIpv4Init(xpsDevice_t devNum, uint32_t direction,
             return xpsConvertCpssStatusToXPStatus(status);
         }
     }
-
+#if 0
     /* UDB[3-6] offset for Source IPv4 address */
     for (udbIndex = 3, offset = 14 ; udbIndex < 7; udbIndex++, offset++)
     {
@@ -3502,7 +3502,48 @@ XP_STATUS xpsAclUdbKeysForIpv4Init(xpsDevice_t devNum, uint32_t direction,
             return xpsConvertCpssStatusToXPStatus(status);
         }
     }
+#endif
 
+    /* UDB[2-7] offset for Source Mac address */
+    for (udbIndex = 2, offset = 6 ; udbIndex < 8; udbIndex++, offset++)
+    {
+        status = cpssHalPclUserDefinedByteSet(devNum,
+                                              ruleFormat,
+                                              (CPSS_DXCH_PCL_PACKET_TYPE_ENT)packetType,
+                                              (CPSS_PCL_DIRECTION_ENT)direction,
+                                              udbIndex,/* SMAC */
+                                              CPSS_DXCH_PCL_OFFSET_L2_E,
+                                              offset);
+        if (status != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "Failed to set user defined byte,"
+                  " device:%d, direction:%d, udbIndex:%d, offset:%d, error:%d\n ", devNum,
+                  direction, udbIndex, offset, status);
+            return xpsConvertCpssStatusToXPStatus(status);
+        }
+    }
+
+    /* UDB[8-13] offset for Destination Mac address */
+    for (udbIndex = 8, offset = 0 ; udbIndex < 14; udbIndex++, offset++)
+    {
+        status = cpssHalPclUserDefinedByteSet(devNum,
+                                              ruleFormat,
+                                              (CPSS_DXCH_PCL_PACKET_TYPE_ENT)packetType,
+                                              (CPSS_PCL_DIRECTION_ENT)direction,
+                                              udbIndex,/* DMAC */
+                                              CPSS_DXCH_PCL_OFFSET_L2_E,
+                                              offset);
+        if (status != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "Failed to set user defined byte,"
+                  " device:%d, direction:%d, udbIndex:%d, offset:%d, error:%d\n ", devNum,
+                  direction, udbIndex, offset, status);
+            return xpsConvertCpssStatusToXPStatus(status);
+        }
+    }
+#if 0
     /* UDB[11] offset for DSCP */
     for (udbIndex = 11, offset = 3 ; udbIndex < 12; udbIndex++, offset++)
     {
@@ -3544,7 +3585,7 @@ XP_STATUS xpsAclUdbKeysForIpv4Init(xpsDevice_t devNum, uint32_t direction,
               direction, udbIndex, offset, status);
         return xpsConvertCpssStatusToXPStatus(status);
     }
-
+#endif
     /* UDB[39] offset for L4 Valid Metadata */
     offset = (direction == CPSS_PCL_DIRECTION_INGRESS_E) ? 51 : 41;
     for (udbIndex = 39; udbIndex < 40; udbIndex++, offset++)
@@ -3765,23 +3806,25 @@ XP_STATUS xpsAclUdbKeysForIpv4Init(xpsDevice_t devNum, uint32_t direction,
         36;      /* Applicable Flow Sub-Template or Is IPv4 */
     udbSelectStruct.udbSelectArr[11]        = 16;       /* IP protocol number */
     udbSelectStruct.udbSelectArr[12]        = 37;      /* UP0 */
-    for (index = 13, udbIndex = 3; index < 17; index++, udbIndex++)
+    for (index = 13, udbIndex = 2; index < 19; index++, udbIndex++)
     {
-        udbSelectStruct.udbSelectArr[index] = udbIndex; /* SIPv4 */
+        udbSelectStruct.udbSelectArr[index] = udbIndex; /* SMAC */
     }
-    for (index = 17, udbIndex = 7; index < 21; index++, udbIndex++)
+    for (index = 19, udbIndex = 8; index < 25; index++, udbIndex++)
     {
-        udbSelectStruct.udbSelectArr[index] = udbIndex; /* DIPv4 */
+        udbSelectStruct.udbSelectArr[index] = udbIndex; /* DMAC */
     }
+#if 0
     udbSelectStruct.udbSelectArr[21]        = 11;      /* DSCP */
     udbSelectStruct.udbSelectArr[22]        = 39;      /* L4 Valid */
+#endif
     udbIndex = (packetType != CPSS_DXCH_PCL_PACKET_TYPE_IPV4_OTHER_E) ? 13 : 40;
-    for (index = 23; index < 25; index++, udbIndex++)
+    for (index = 25; index < 27; index++, udbIndex++)
     {
         udbSelectStruct.udbSelectArr[index] = udbIndex; /* TCP Src Port */
     }
     udbIndex = (packetType != CPSS_DXCH_PCL_PACKET_TYPE_IPV4_OTHER_E) ? 19 : 42;
-    for (index = 25; index < 27; index++, udbIndex++)
+    for (index = 27; index < 29; index++, udbIndex++)
     {
         udbSelectStruct.udbSelectArr[index] = udbIndex; /* TCP Dst Port */
     }
@@ -3950,7 +3993,7 @@ XP_STATUS xpsAclUdbKeysForIpv6Init(xpsDevice_t devNum, uint32_t direction,
             return xpsConvertCpssStatusToXPStatus(status);
         }
     }
-
+#if 0
     /* UDB[0-15] offset for Source IPv6 address */
     for (udbIndex = 0, offset = 10 ; udbIndex < 16; udbIndex++, offset++)
     {
@@ -3980,6 +4023,47 @@ XP_STATUS xpsAclUdbKeysForIpv6Init(xpsDevice_t devNum, uint32_t direction,
                                               (CPSS_PCL_DIRECTION_ENT)direction,
                                               udbIndex,/* DIPv6 */
                                               CPSS_DXCH_PCL_OFFSET_L3_MINUS_2_E,
+                                              offset);
+        if (status != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "Failed to set user defined byte,"
+                  " device:%d, direction:%d, udbIndex:%d, offset:%d, error:%d\n ", devNum,
+                  direction, udbIndex, offset, status);
+            return xpsConvertCpssStatusToXPStatus(status);
+        }
+    }
+#endif
+
+    /* UDB[2-7] offset for Source Mac address */
+    for (udbIndex = 2, offset = 6 ; udbIndex < 8; udbIndex++, offset++)
+    {
+        status = cpssHalPclUserDefinedByteSet(devNum,
+                                              ruleFormat,
+                                              (CPSS_DXCH_PCL_PACKET_TYPE_ENT)packetType,
+                                              (CPSS_PCL_DIRECTION_ENT)direction,
+                                              udbIndex,/* SMAC */
+                                              CPSS_DXCH_PCL_OFFSET_L2_E,
+                                              offset);
+        if (status != GT_OK)
+        {
+            LOGFN(xpLogModXps, XP_SUBMOD_MAIN, XP_LOG_ERROR,
+                  "Failed to set user defined byte,"
+                  " device:%d, direction:%d, udbIndex:%d, offset:%d, error:%d\n ", devNum,
+                  direction, udbIndex, offset, status);
+            return xpsConvertCpssStatusToXPStatus(status);
+        }
+    }
+
+    /* UDB[8-13] offset for Destination Mac address */
+    for (udbIndex = 8, offset = 0 ; udbIndex < 14; udbIndex++, offset++)
+    {
+        status = cpssHalPclUserDefinedByteSet(devNum,
+                                              ruleFormat,
+                                              (CPSS_DXCH_PCL_PACKET_TYPE_ENT)packetType,
+                                              (CPSS_PCL_DIRECTION_ENT)direction,
+                                              udbIndex,/* DMAC */
+                                              CPSS_DXCH_PCL_OFFSET_L2_E,
                                               offset);
         if (status != GT_OK)
         {
@@ -4195,7 +4279,7 @@ XP_STATUS xpsAclUdbKeysForIpv6Init(xpsDevice_t devNum, uint32_t direction,
         38;      /* Applicable Flow Sub-Template or Is IPv6 */
     udbSelectStruct.udbSelectArr[6]        = 16;      /* Next Header */
     udbSelectStruct.udbSelectArr[7]        = 39;      /* UP0 / DSA-Tag cmd */
-
+#if 0
     for (index = 8, udbIndex = 0; index < 24; index++, udbIndex++)
     {
         udbSelectStruct.udbSelectArr[index] = udbIndex; /* SIPv6 */
@@ -4205,6 +4289,17 @@ XP_STATUS xpsAclUdbKeysForIpv6Init(xpsDevice_t devNum, uint32_t direction,
     {
         udbSelectStruct.udbSelectArr[index] = udbIndex; /* DIPv6 */
     }
+#endif
+
+    for (index = 13, udbIndex = 2; index < 19; index++, udbIndex++)
+    {
+        udbSelectStruct.udbSelectArr[index] = udbIndex; /* SMAC */
+    }
+    for (index = 19, udbIndex = 8; index < 25; index++, udbIndex++)
+    {
+        udbSelectStruct.udbSelectArr[index] = udbIndex; /* DMAC */
+    }
+
     udbSelectStruct.udbSelectArr[40]     = 40;      /* L4 Valid */
 
     for (index = 41, udbIndex = 41; index < 43; index++, udbIndex++)
@@ -4861,6 +4956,20 @@ static XP_STATUS xpsIngressUdbIpv4KeySet(xpsAclkeyFieldList_t *field,
                 memcpy((uint8_t*)&mask->udb[8], field->fldList[index].mask, sizeof(uint16_t));
                 break;
 
+            case XPS_PCL_MAC_SA: /* UDB[13-18] */
+                memcpy((uint8_t*)&value->udb[13], field->fldList[index].value,
+                       (sizeof(uint8_t)*6));
+                memcpy((uint8_t*)&mask->udb[13], field->fldList[index].mask,
+                       (sizeof(uint8_t)*6));
+                break;
+
+            case XPS_PCL_MAC_DA: /* UDB[19-24] */
+                memcpy((uint8_t*)&value->udb[19], field->fldList[index].value,
+                       (sizeof(uint8_t)*6));
+                memcpy((uint8_t*)&mask->udb[19], field->fldList[index].mask,
+                       (sizeof(uint8_t)*6));
+                break;
+#if 0
             case XPS_PCL_SIP: /* UDB[13-16] */
                 memcpy((uint8_t*)&value->udb[13], field->fldList[index].value,
                        (sizeof(uint32_t)));
@@ -4882,7 +4991,7 @@ static XP_STATUS xpsIngressUdbIpv4KeySet(xpsAclkeyFieldList_t *field,
                 value->udb[21] = value->udb[21] <<2;
                 mask->udb[21] = mask->udb[21] <<2;
                 break;
-
+#endif
             case XP_PCL_TCP_FLAGS:
                 memcpy((uint8_t*)&value->udb[27], field->fldList[index].value, sizeof(uint8_t));
                 memcpy((uint8_t*)&mask->udb[27], field->fldList[index].mask, sizeof(uint8_t));
@@ -5175,6 +5284,20 @@ static XP_STATUS xpsIngressUdbIpv6KeySet(xpsAclkeyFieldList_t *field,
                 memcpy((uint8_t*)&mask->udb[7], field->fldList[index].mask, sizeof(uint8_t));
                 break;
 
+            case XPS_PCL_MAC_SA: /* UDB[13-18] */
+                memcpy((uint8_t*)&value->udb[13], field->fldList[index].value,
+                       (sizeof(uint8_t)*6));
+                memcpy((uint8_t*)&mask->udb[13], field->fldList[index].mask,
+                       (sizeof(uint8_t)*6));
+                break;
+
+            case XPS_PCL_MAC_DA: /* UDB[19-24] */
+                memcpy((uint8_t*)&value->udb[19], field->fldList[index].value,
+                       (sizeof(uint8_t)*6));
+                memcpy((uint8_t*)&mask->udb[19], field->fldList[index].mask,
+                       (sizeof(uint8_t)*6));
+                break;
+#if 0
             case XPS_PCL_IPV6_SIP: /* UDB[8-23] */
                 memcpy((uint8_t*)&value->udb[8], field->fldList[index].value,
                        (sizeof(uint8_t)*16));
@@ -5188,7 +5311,7 @@ static XP_STATUS xpsIngressUdbIpv6KeySet(xpsAclkeyFieldList_t *field,
                 memcpy((uint8_t*)&mask->udb[24], field->fldList[index].mask,
                        (sizeof(uint8_t)*16));
                 break;
-
+#endif
             case XPS_PCL_IS_L4_VALID: /* UDB[40] */
                 *(field->fldList[index].value) = XPS_PCL_IS_L4_VALID_IPCL_METADATA_VAL;
                 *(field->fldList[index].mask) = XPS_PCL_IS_L4_VALID_IPCL_METADATA_VAL;
