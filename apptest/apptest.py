@@ -194,6 +194,8 @@ def runApp(xpType, testUnit):
         run_app = "./dist/xpSaiApp -g AC3XFS -u"
     elif xpType == "sai-fl":
         run_app = "./dist/xpSaiApp -g ALDRIN2XLFL -u"
+    elif xpType == "sai-eval":
+        run_app = "./dist/xpSaiApp -g ALDRIN2EVAL -u"
     else:
         print("Invalid argument for xptype. Taking sai as default")
         run_app = "./dist/xpSaiApp -g FALCON128 -u"
@@ -871,6 +873,8 @@ def main():
             devType = "AC3XFS"
         elif argmnts[4] == "sai-fl":
             devType = "ALDRIN2XLFL"
+        elif argmnts[4] == "sai-eval":
+            devType = "ALDRIN2EVAL"
         else:
             devType = "Falcon"
         LOGS_DIR = os.path.join("TestResults",
@@ -905,6 +909,8 @@ def main():
                 test_list = testListFeature.m0_featureRegressionUT
         elif argmnts[5] == "sanity":
             test_list = testList.regressionUT
+        elif devType == "ALDRIN2EVAL":
+            test_list = testListFeature.fujitsu_featureRegressionUT
         else:
             print("Invalid argument for testType. Taking sanity as default")
             test_list = testList.regressionUT
